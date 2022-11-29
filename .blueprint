@@ -2,9 +2,9 @@ created:
     - database/factories/CountryFactory.php
     - database/factories/CityFactory.php
     - database/factories/LecturerFactory.php
-    - database/migrations/2022_11_29_194626_create_countries_table.php
-    - database/migrations/2022_11_29_194627_create_cities_table.php
-    - database/migrations/2022_11_29_194628_create_lecturers_table.php
+    - database/migrations/2022_11_29_195043_create_countries_table.php
+    - database/migrations/2022_11_29_195044_create_cities_table.php
+    - database/migrations/2022_11_29_195045_create_lecturers_table.php
     - app/Models/Country.php
     - app/Models/City.php
     - app/Models/Lecturer.php
