@@ -11,8 +11,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-21gray dark">
 {{ $slot }}
 @stack('modals')
 @livewireScripts

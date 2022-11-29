@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7f539ae281f1a4d721dedb38e381209",
+    "content-hash": "9431bb210b73ea7fa050c97f0d3456c1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4295,6 +4295,137 @@
                 }
             ],
             "time": "2022-07-21T14:21:25+00:00"
+        },
+        {
+            "name": "rappasoft/laravel-livewire-tables",
+            "version": "v2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
+                "reference": "e6069cd0fac4b7f8a5d492388a735a3b7351bc80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/e6069cd0fac4b7f8a5d492388a735a3b7351bc80",
+                "reference": "e6069cd0fac4b7f8a5d492388a735a3b7351bc80",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.0|^9.0",
+                "livewire/livewire": "^2.6",
+                "php": "^7.4|^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "ext-sqlite3": "*",
+                "orchestra/testbench": "^6.13|^7.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rappasoft\\LaravelLivewireTables\\LaravelLivewireTablesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rappasoft\\LaravelLivewireTables\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Rappa",
+                    "email": "rappa819@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A dynamic table component for Laravel Livewire",
+            "homepage": "https://github.com/rappasoft/laravel-livewire-tables",
+            "keywords": [
+                "datatables",
+                "laravel",
+                "livewire",
+                "rappasoft",
+                "tables"
+            ],
+            "support": {
+                "issues": "https://github.com/rappasoft/laravel-livewire-tables/issues",
+                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v2.8.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rappasoft",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-25T00:44:21+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.13.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "4af8e608184471b5568af6265ebb0ca0025c131a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/4af8e608184471b5568af6265ebb0ca0025c131a",
+                "reference": "4af8e608184471b5568af6265ebb0ca0025c131a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.13.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-15T09:10:09+00:00"
         },
         {
             "name": "spatie/once",
