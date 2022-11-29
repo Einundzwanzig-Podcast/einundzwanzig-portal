@@ -1,0 +1,25 @@
+created:
+    - database/factories/CountryFactory.php
+    - database/factories/CityFactory.php
+    - database/factories/LecturerFactory.php
+    - app/Models/Country.php
+    - app/Models/City.php
+    - app/Models/Lecturer.php
+    - database/seeders/CountrySeeder.php
+    - database/seeders/CitySeeder.php
+    - database/seeders/LecturerSeeder.php
+    - app/Nova/Country.php
+    - app/Nova/City.php
+    - app/Nova/Lecturer.php
+updated:
+    - database/migrations/2022_11_29_193116_create_countries_table.php
+    - database/migrations/2022_11_29_193117_create_cities_table.php
+    - database/migrations/2022_11_29_193118_create_lecturers_table.php
+models:
+    Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
+    Team: { user_id: biginteger, name: string, personal_team: boolean }
+    TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
+    Country: { name: string, code: string, relationships: { hasMany: City } }
+    City: { name: string, country_id: 'id foreign', relationships: { belongsTo: Country } }
+    Lecturer: { first_name: string, last_name: string, active: 'boolean default:true' }

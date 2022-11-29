@@ -1,0 +1,17 @@
+models:
+  Country:
+    name: string
+    code: string
+    relationships:
+      hasMany: City
+  City:
+    name: string
+    country_id: id foreign
+    relationships:
+      belongsTo: Country
+  Lecturer:
+    first_name: string
+    last_name: string
+    active: boolean default:true
+
+seeders: Country, City, Lecturer
