@@ -10,32 +10,50 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
      * @return void
      */
     public function boot()
     {
         parent::boot();
+        // login with user id 1, if we are in local environment
+        if (app()->environment('local')) {
+            auth()->loginUsingId(1);
+        }
+    }
+
+    /**
+     * Get the tools that should be listed in the Nova sidebar.
+     * @return array
+     */
+    public function tools()
+    {
+        return [];
     }
 
     /**
      * Register the Nova routes.
-     *
      * @return void
      */
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
+    }
+
+    /**
+     * Register any application services.
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 
     /**
      * Register the Nova gate.
-     *
      * This gate determines who can access Nova in non-local environments.
-     *
      * @return void
      */
     protected function gate()
@@ -49,7 +67,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     /**
      * Get the dashboards that should be listed in the Nova sidebar.
-     *
      * @return array
      */
     protected function dashboards()
@@ -57,25 +74,5 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new \App\Nova\Dashboards\Main,
         ];
-    }
-
-    /**
-     * Get the tools that should be listed in the Nova sidebar.
-     *
-     * @return array
-     */
-    public function tools()
-    {
-        return [];
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
