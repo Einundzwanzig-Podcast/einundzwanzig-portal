@@ -2,23 +2,60 @@ created:
     - database/factories/CountryFactory.php
     - database/factories/CityFactory.php
     - database/factories/LecturerFactory.php
-    - database/migrations/2022_11_29_195043_create_countries_table.php
-    - database/migrations/2022_11_29_195044_create_cities_table.php
-    - database/migrations/2022_11_29_195045_create_lecturers_table.php
+    - database/factories/ParticipantFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/CourseFactory.php
+    - database/factories/VenueFactory.php
+    - database/factories/EventFactory.php
+    - database/factories/RegistrationFactory.php
+    - database/migrations/2022_11_29_205647_create_countries_table.php
+    - database/migrations/2022_11_29_205648_create_cities_table.php
+    - database/migrations/2022_11_29_205649_create_lecturers_table.php
+    - database/migrations/2022_11_29_205650_create_participants_table.php
+    - database/migrations/2022_11_29_205651_create_categories_table.php
+    - database/migrations/2022_11_29_205652_create_courses_table.php
+    - database/migrations/2022_11_29_205653_create_venues_table.php
+    - database/migrations/2022_11_29_205654_create_events_table.php
+    - database/migrations/2022_11_29_205655_create_registrations_table.php
+    - database/migrations/2022_11_29_205656_create_category_course_table.php
     - app/Models/Country.php
     - app/Models/City.php
     - app/Models/Lecturer.php
+    - app/Models/Participant.php
+    - app/Models/Category.php
+    - app/Models/Course.php
+    - app/Models/Venue.php
+    - app/Models/Event.php
+    - app/Models/Registration.php
     - database/seeders/CountrySeeder.php
     - database/seeders/CitySeeder.php
     - database/seeders/LecturerSeeder.php
+    - database/seeders/ParticipantSeeder.php
+    - database/seeders/CategorySeeder.php
+    - database/seeders/CourseSeeder.php
+    - database/seeders/VenueSeeder.php
+    - database/seeders/EventSeeder.php
+    - database/seeders/RegistrationSeeder.php
     - app/Nova/Country.php
     - app/Nova/City.php
     - app/Nova/Lecturer.php
+    - app/Nova/Participant.php
+    - app/Nova/Category.php
+    - app/Nova/Course.php
+    - app/Nova/Venue.php
+    - app/Nova/Event.php
+    - app/Nova/Registration.php
 models:
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     Team: { user_id: biginteger, name: string, personal_team: boolean }
     TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
     Country: { name: string, code: string, relationships: { hasMany: City } }
-    City: { name: string, country_id: 'id foreign' }
-    Lecturer: { first_name: string, last_name: string, active: 'boolean default:true' }
+    City: { country_id: 'id foreign', name: string }
+    Lecturer: { team_id: 'id foreign', name: string, slug: 'string unique', active: 'boolean default:true' }
+    Participant: { first_name: string, last_name: string }
+    Category: { name: string, slug: 'string unique', relationships: { belongsToMany: Course } }
+    Course: { lecturer_id: 'id foreign', name: string, relationships: { belongsToMany: Category } }
+    Venue: { city_id: 'id foreign', name: string, slug: 'string unique', street: string }
+    Event: { course_id: 'id foreign', venue_id: 'id foreign', from: datetime, to: datetime }
+    Registration: { event_id: 'id foreign primary', participant_id: 'id foreign primary', active: 'boolean default:true' }
