@@ -16,7 +16,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
-        "rappasoft/laravel-livewire-tables": "^2.8"
+        "rappasoft/laravel-livewire-tables": "^2.8",
+        "wireui/wireui": "^1.17"
     },
     "require-dev": {
         "naoray/blueprint-nova-addon": "dev-master#a7791033d1cb68d4e82631305e26b64e18464494",
