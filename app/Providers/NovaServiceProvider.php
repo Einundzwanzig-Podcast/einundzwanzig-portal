@@ -15,10 +15,21 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::withBreadcrumbs();
+
+        // disable theme switcher
+        Nova::withoutThemeSwitcher();
+
         // login with user id 1, if we are in local environment
         if (app()->environment('local')) {
             auth()->loginUsingId(1);
         }
+
+        Nova::footer(function ($request) {
+            // return MIT license and date
+            return sprintf("%s %s - %s", date('Y'), config('app.name'), __('MIT License'));
+        });
     }
 
     /**
