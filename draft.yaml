@@ -7,8 +7,6 @@ models:
   City:
     name: string
     country_id: id foreign
-    relationships:
-      belongsTo: Country
   Lecturer:
     first_name: string
     last_name: string

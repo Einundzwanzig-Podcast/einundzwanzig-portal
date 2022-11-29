@@ -14,7 +14,8 @@
         "laravel/jetstream": "^2.12",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "laravel/nova": "~4.0"
     },
     "require-dev": {
         "naoray/blueprint-nova-addon": "dev-master#a7791033d1cb68d4e82631305e26b64e18464494",
@@ -76,6 +77,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/affektde/blueprint-nova-addon"
+        },
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
         }
     ]
 }
