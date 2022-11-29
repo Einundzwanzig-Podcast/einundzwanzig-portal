@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CitySeeder::class,
             LecturerSeeder::class,
+            ParticipantSeeder::class,
+            CategorySeeder::class,
+            CourseSeeder::class,
+            VenueSeeder::class,
+            EventSeeder::class,
+            RegistrationSeeder::class,
         ]);
     }
 }
