@@ -16,15 +16,17 @@
                     </nav>
                 </div>
                 <div class="inline-flex items-center ml-5 text-lg space-x-6 lg:justify-end">
-                    <a href="#"
+                    <a href="{{ route('nova.login') }}"
                        class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
-                        Login </a>
+                        Login
+                    </a>
                     <a href="#"
                        class="inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
-                        Registrieren </a>
+                        Registrieren
+                    </a>
                 </div>
             </div>
-            <div class="flex lg:flex-row flex-col pt-4 md:pt-40 lg:pt-4">
+            <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
                 <div
                     class="w-full lg:w-1/2 flex lg:px-0 px-5 flex-col md:items-center lg:items-start justify-center -mt-12">
                     <h1 class="text-white text-3xl sm:text-5xl lg:max-w-none max-w-4xl lg:text-left text-left md:text-center xl:text-7xl font-black">
@@ -73,7 +75,7 @@
                                class="border-transparent text-gray-200 hover:text-gray-400 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Städte</a>
 
                             <a href="#"
-                               class="border-transparent text-gray-200 hover:text-gray-400 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
+                               class="border-amber-500 text-amber-500 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
 
                             <a href="#"
                                class="border-transparent text-gray-200 hover:text-gray-400 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Kurse</a>
@@ -84,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <livewire:tables.city-table/>
+            <livewire:tables.lecturer-table/>
         </div>
     </section>
 
