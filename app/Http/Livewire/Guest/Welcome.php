@@ -8,6 +8,8 @@ class Welcome extends Component
 {
     public function render()
     {
-        return view('livewire.guest.welcome')->layout('layouts.guest');
+        return view('livewire.guest.welcome', [
+            'cities' => \App\Models\City::all(),
+        ])->layout('layouts.guest');
     }
 }
