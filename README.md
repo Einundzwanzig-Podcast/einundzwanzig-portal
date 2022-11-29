@@ -8,7 +8,7 @@ WIP
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [bt@affekt.de](mailto:bt@affekt.de). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Benjamin Takats via [bt@affekt.de](mailto:bt@affekt.de). All security vulnerabilities will be promptly addressed.
 
 ## License
 
