@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
@@ -14,6 +17,7 @@
         "livewire/livewire": "^2.5"
     },
     "require-dev": {
+        "naoray/blueprint-nova-addon": "dev-master#a7791033d1cb68d4e82631305e26b64e18464494",
         "fakerphp/faker": "^1.9.1",
         "fidum/laravel-blueprint-pestphp-addon": "^2.2",
         "jasonmccreary/laravel-test-assertions": "^2.1",
@@ -50,7 +54,8 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "blueprint": "php artisan blueprint:erase && php artisan blueprint:build && php artisan migrate:fresh --seed"
     },
     "extra": {
         "laravel": {
@@ -66,5 +71,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/affektde/blueprint-nova-addon"
+        }
+    ]
 }
