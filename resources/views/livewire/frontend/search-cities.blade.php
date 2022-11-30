@@ -96,11 +96,10 @@
         </div>
     </section>
     {{-- FOOTER --}}
-    <section class="py-10 bg-gray-900 tails-selected-element" contenteditable="true">
+    <section class="py-10 bg-gray-900">
         <div class="px-10 mx-auto max-w-7xl">
             <div class="flex flex-col items-center md:flex-row md:justify-between">
-                <a href="#_"
-                   class="flex items-center justify-center w-32 p-2 mr-3 rounded-lg mb-7 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-500 rounded-xxl">
+                <a href="#_">
                     <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}"
                          class="text-white fill-current" alt="">
                 </a>
