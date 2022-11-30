@@ -1,5 +1,4 @@
-<div class="bg-21gray flex flex-col h-screen justify-between">
-    {{-- HEADER --}}
+<div>
     <section class="w-full">
         <div class="max-w-7xl mx-auto px-10">
             <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-7xl">
@@ -72,80 +71,4 @@
             </div>
         </div>
     </section>
-    {{-- MAIN --}}
-    <section class="w-full mb-12">
-        <div class="max-w-7xl mx-auto px-10">
-            <div class="border-b border-gray-200 pb-5 sm:pb-0 my-6">
-                <h3 class="text-lg font-medium leading-6 text-gray-200">Suche</h3>
-                <div class="mt-3 sm:mt-4">
-                    <!-- Dropdown menu on small screens -->
-                    <div class="sm:hidden">
-                        <label for="current-tab" class="sr-only">Select a tab</label>
-                        <select id="current-tab" name="current-tab"
-                                class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                            <option selected>Städte</option>
-                            <option>Dozenten</option>
-                            <option>Kurse</option>
-                            <option>Termine</option>
-                        </select>
-                    </div>
-                    <!-- Tabs at small breakpoint and up -->
-                    <div class="hidden sm:block">
-                        <nav class="-mb-px flex space-x-8">
-                            @php
-                                $currentTab = 'border-amber-500 text-amber-600';
-                                $notCurrentTab = 'border-transparent text-gray-200 hover:text-gray-400 hover:border-gray-300';
-                            @endphp
-                            <a href="#"
-                               class="{{ $currentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Städte</a>
-
-                            <a href="#"
-                               class="{{ $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
-
-                            <a href="#"
-                               class="{{ $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Kurse</a>
-
-                            <a href="#"
-                               class="{{ $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Termine</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <livewire:tables.city-table :country="$c"/>
-        </div>
-    </section>
-    {{-- FOOTER --}}
-    <div class="bottom-0 py-6 bg-gray-900 w-full">
-        <div class="px-10 mx-auto max-w-7xl">
-            <div class="flex flex-col items-center md:flex-row md:justify-between">
-                <a href="#_">
-                    <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}"
-                         class="text-white fill-current" alt="">
-                </a>
-
-                <div class="flex flex-row justify-center mb-4 -ml-4 -mr-4">
-                    <a href="#"
-                       class="p-4 text-gray-700 hover:text-gray-400">
-
-                    </a>
-                    <a href="#" class="p-4 text-gray-700 hover:text-gray-400">
-
-                    </a>
-                    <a href="#" class="p-4 text-gray-700 hover:text-gray-400">
-
-                    </a>
-                </div>
-            </div>
-            <div class="flex flex-col justify-between text-center md:flex-row">
-                <p class="order-last text-sm leading-tight text-gray-500 md:order-first"> Built with ❤️ by our
-                    team. </p>
-                <ul class="flex flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
-                    {{--<li> <a href="#_" class="px-4 text-gray-500 hover:text-white">Contact</a> </li>
-                    <li> <a href="#_" class="px-4 text-gray-500 hover:text-white">About US</a> </li>
-                    <li> <a href="#_" class="px-4 text-gray-500 hover:text-white">FAQ's</a> </li>
-                    <li> <a href="#_" class="px-4 text-gray-500 hover:text-white">Terms</a></li>--}}
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>

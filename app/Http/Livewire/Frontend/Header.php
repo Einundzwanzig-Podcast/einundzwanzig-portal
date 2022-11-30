@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Frontend;
 use App\Models\Country;
 use Livewire\Component;
 
-class SearchCities extends Component
+class Header extends Component
 {
     public Country $country;
     public string $c = 'de';
@@ -29,6 +29,6 @@ class SearchCities extends Component
 
     public function render()
     {
-        return view('livewire.frontend.search-cities');
+        return view('livewire.frontend.header');
     }
 }

@@ -14,12 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('search.cities', ['country' => 'de']);
+    return to_route('search.city', ['country' => 'de']);
 })
      ->name('welcome');
 
-Route::get('/{country:code}/suche', \App\Http\Livewire\Frontend\SearchCities::class)
-     ->name('search.cities');
+Route::get('/{country:code}/suche/stadt', \App\Http\Livewire\Frontend\SearchCity::class)
+     ->name('search.city');
+
+Route::get('/{country:code}/suche/dozent', \App\Http\Livewire\Frontend\SearchLecturer::class)
+     ->name('search.lecturer');
+
+Route::get('/{country:code}/suche/kurs', \App\Http\Livewire\Frontend\SearchCity::class)
+     ->name('search.course');
+
+Route::get('/{country:code}/suche/termin', \App\Http\Livewire\Frontend\SearchCity::class)
+     ->name('search.event');
 
 Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)
      ->name('search.lecturers');
