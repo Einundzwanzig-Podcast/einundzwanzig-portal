@@ -2,8 +2,8 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    presets: [
-            require('./vendor/wireui/wireui/tailwind.config.js')
+    presets:  [
+        require('./vendor/wireui/wireui/tailwind.config.js')
     ],
     content:  [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -33,6 +33,18 @@ module.exports = {
                     '700': '#434343',
                     '800': '#383838',
                     '900': '#151515',
+                },
+                'amber':  {
+                    '50':  '#FEF3E6',
+                    '100': '#FDEAD3',
+                    '200': '#FCD3A1',
+                    '300': '#FABE75',
+                    '400': '#F9A949',
+                    '500': '#F7931A',
+                    '600': '#D47807',
+                    '700': '#9E5906',
+                    '800': '#673B04',
+                    '900': '#361F02'
                 },
             },
             fontFamily: {
