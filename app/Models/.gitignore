@@ -1,5 +1,0 @@
-*.php
-!Membership.php
-!Team.php
-!TeamInvitation.php
-!User.php
