@@ -16,16 +16,20 @@
                         <a href="#_" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Termine</a>
                     </nav>
                 </div>
-                <div class="inline-flex items-center ml-5 text-lg space-x-6 lg:justify-end">
-                    <a href="{{ route('nova.login') }}"
-                       class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
-                        Login
-                    </a>
-                    <a href="#"
-                       class="inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
-                        Registrieren
-                    </a>
-                </div>
+                @auth
+                    <div></div>
+                @elseauth
+                    <div class="inline-flex items-center ml-5 text-lg space-x-6 lg:justify-end">
+                        <a href="{{ route('nova.login') }}"
+                           class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
+                            Login
+                        </a>
+                        <a href="#"
+                           class="inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+                            Registrieren
+                        </a>
+                    </div>
+                @endauth
             </div>
             <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
                 <div
@@ -36,6 +40,19 @@
                             class="bg-clip-text text-transparent bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 mt-1 lg:block">School
                         </span> <br class="lg:block sm:hidden"> {{ str($country->name)->upper() }}
                     </h1>
+                    <div>
+                        <x-select
+                            label="Land wechseln"
+                            placeholder="Land wechseln"
+                            wire:model="c"
+                            :clearable="false"
+                        >
+                            <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-de.svg') }}"
+                                                  label="Deutschland" value="de"/>
+                            <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-at.svg') }}"
+                                                  label="Österreich" value="at"/>
+                        </x-select>
+                    </div>
                     <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
                         Finde Bitcoin Kurse in deiner City</p>
                     <a href="#_"
@@ -92,11 +109,11 @@
                     </div>
                 </div>
             </div>
-            <livewire:tables.city-table/>
+            <livewire:tables.city-table :country="$c"/>
         </div>
     </section>
     {{-- FOOTER --}}
-    <section class="sticky bottom-0 py-10 bg-gray-900">
+    <section class="absolute bottom-0 py-10 bg-gray-900 w-full">
         <div class="px-10 mx-auto max-w-7xl">
             <div class="flex flex-col items-center md:flex-row md:justify-between">
                 <a href="#_">

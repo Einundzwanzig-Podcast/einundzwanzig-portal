@@ -20,6 +20,7 @@
         "rappasoft/laravel-livewire-tables": "^2.8",
         "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-sluggable": "^3.4",
+        "stijnvanouplines/blade-country-flags": "^1.0",
         "wireui/wireui": "^1.17"
     },
     "require-dev": {
