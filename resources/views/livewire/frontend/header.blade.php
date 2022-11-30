@@ -9,10 +9,9 @@
                     </a>
                     <nav
                         class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
-                        <a href="#_" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Städte</a>
-                        <a href="#_" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Dozenten</a>
-                        <a href="#_" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Kurse</a>
-                        <a href="#_" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Termine</a>
+                        <a href="{{ route('search.city', ['country' => 'de']) }}" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Städte</a>
+                        <a href="{{ route('search.lecturer', ['country' => 'de']) }}" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Dozenten</a>
+                        <a href="{{ route('search.venue', ['country' => 'de']) }}" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Veranstaltungs-Orte</a>
                     </nav>
                 </div>
                 @auth
