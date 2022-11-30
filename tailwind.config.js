@@ -37,8 +37,12 @@ module.exports = {
             },
             fontFamily: {
                 sans: [
-                    'Nunito',
+                    'Inconsolata',
                     ...defaultTheme.fontFamily.sans
+                ],
+                mono: [
+                    'Inconsolata',
+                    ...defaultTheme.fontFamily.mono
                 ],
             },
         },

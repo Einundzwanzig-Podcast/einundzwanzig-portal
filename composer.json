@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
         "rappasoft/laravel-livewire-tables": "^2.8",
+        "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-sluggable": "^3.4",
         "wireui/wireui": "^1.17"
     },
