@@ -39,5 +39,3 @@ models:
     event_id: id foreign primary
     participant_id: id foreign primary
     active: boolean default:true
-
-seeders: Country, City, Lecturer, Participant, Category, Course, Venue, Event, Registration

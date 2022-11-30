@@ -13,14 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', \App\Http\Livewire\Guest\Welcome::class);
+Route::get('/', function () {
+    return to_route('search.cities', ['country' => \App\Models\Country::first()->code]);
+})
+     ->name('welcome');
+
+Route::get('/{country:code}/suche', \App\Http\Livewire\Frontend\SearchCities::class)
+     ->name('search.cities');
+
+Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)
+     ->name('search.lecturers');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+])
+     ->group(function () {
+         Route::get('/dashboard', function () {
+             return view('dashboard');
+         })
+              ->name('dashboard');
+     });

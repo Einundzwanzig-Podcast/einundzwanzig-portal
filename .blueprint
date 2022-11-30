@@ -8,16 +8,16 @@ created:
     - database/factories/VenueFactory.php
     - database/factories/EventFactory.php
     - database/factories/RegistrationFactory.php
-    - database/migrations/2022_11_29_210451_create_countries_table.php
-    - database/migrations/2022_11_29_210452_create_cities_table.php
-    - database/migrations/2022_11_29_210453_create_lecturers_table.php
-    - database/migrations/2022_11_29_210454_create_participants_table.php
-    - database/migrations/2022_11_29_210455_create_categories_table.php
-    - database/migrations/2022_11_29_210456_create_courses_table.php
-    - database/migrations/2022_11_29_210457_create_venues_table.php
-    - database/migrations/2022_11_29_210458_create_events_table.php
-    - database/migrations/2022_11_29_210459_create_registrations_table.php
-    - database/migrations/2022_11_29_210500_create_category_course_table.php
+    - database/migrations/2022_11_30_135656_create_countries_table.php
+    - database/migrations/2022_11_30_135657_create_cities_table.php
+    - database/migrations/2022_11_30_135658_create_lecturers_table.php
+    - database/migrations/2022_11_30_135659_create_participants_table.php
+    - database/migrations/2022_11_30_135700_create_categories_table.php
+    - database/migrations/2022_11_30_135701_create_courses_table.php
+    - database/migrations/2022_11_30_135702_create_venues_table.php
+    - database/migrations/2022_11_30_135703_create_events_table.php
+    - database/migrations/2022_11_30_135704_create_registrations_table.php
+    - database/migrations/2022_11_30_135705_create_category_course_table.php
     - app/Models/Country.php
     - app/Models/City.php
     - app/Models/Lecturer.php
@@ -27,15 +27,6 @@ created:
     - app/Models/Venue.php
     - app/Models/Event.php
     - app/Models/Registration.php
-    - database/seeders/CountrySeeder.php
-    - database/seeders/CitySeeder.php
-    - database/seeders/LecturerSeeder.php
-    - database/seeders/ParticipantSeeder.php
-    - database/seeders/CategorySeeder.php
-    - database/seeders/CourseSeeder.php
-    - database/seeders/VenueSeeder.php
-    - database/seeders/EventSeeder.php
-    - database/seeders/RegistrationSeeder.php
     - app/Nova/Country.php
     - app/Nova/City.php
     - app/Nova/Lecturer.php
