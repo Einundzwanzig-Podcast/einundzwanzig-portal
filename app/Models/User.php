@@ -11,7 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -22,7 +22,6 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
      * @var string[]
      */
     protected $fillable = [
@@ -31,7 +30,6 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for serialization.
-     *
      * @var array
      */
     protected $hidden = [
@@ -43,7 +41,6 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be cast.
-     *
      * @var array
      */
     protected $casts = [
@@ -52,7 +49,6 @@ class User extends Authenticatable
 
     /**
      * The accessors to append to the model's array form.
-     *
      * @var array
      */
     protected $appends = [
