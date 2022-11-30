@@ -51,6 +51,8 @@
                                                   label="Deutschland" value="de"/>
                             <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-at.svg') }}"
                                                   label="Österreich" value="at"/>
+                            <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-ch.svg') }}"
+                                                  label="Schweiz" value="ch"/>
                         </x-select>
                     </div>
                     <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
