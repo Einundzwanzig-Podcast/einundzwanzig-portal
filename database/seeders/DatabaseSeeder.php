@@ -46,9 +46,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Deutschland',
             'code' => 'de',
         ]);
+        Country::create([
+            'name' => 'Österreich',
+            'code' => 'at',
+        ]);
         City::create([
             'country_id' => 1,
             'name'       => 'Füssen',
+        ]);
+        City::create([
+            'country_id' => 2,
+            'name'       => 'Wien',
         ]);
         Venue::create([
             'city_id' => 1,

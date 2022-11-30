@@ -8,6 +8,7 @@
         <!-- Fonts -->
         @googlefonts
         <!-- Scripts -->
+        <wireui:scripts />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Styles -->
         @livewireStyles

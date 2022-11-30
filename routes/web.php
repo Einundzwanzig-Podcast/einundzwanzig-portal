@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('search.cities', ['country' => \App\Models\Country::first()->code]);
+    return to_route('search.cities', ['country' => 'de']);
 })
      ->name('welcome');
 
