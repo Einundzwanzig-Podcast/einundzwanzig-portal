@@ -21,11 +21,11 @@
         "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-sluggable": "^3.4",
         "stijnvanouplines/blade-country-flags": "^1.0",
-        "wireui/wireui": "^1.17"
+        "wireui/wireui": "^1.17",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
         "naoray/blueprint-nova-addon": "dev-master#a7791033d1cb68d4e82631305e26b64e18464494",
-        "fakerphp/faker": "^1.9.1",
         "fidum/laravel-blueprint-pestphp-addon": "^2.2",
         "jasonmccreary/laravel-test-assertions": "^2.1",
         "laravel-shift/blueprint": "^2.4",
