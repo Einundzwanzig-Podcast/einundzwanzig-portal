@@ -24,6 +24,9 @@ Route::get('/{country:code}/suche/stadt', \App\Http\Livewire\Frontend\SearchCity
 Route::get('/{country:code}/suche/dozent', \App\Http\Livewire\Frontend\SearchLecturer::class)
      ->name('search.lecturer');
 
+Route::get('/{country:code}/suche/ort', \App\Http\Livewire\Frontend\SearchVenue::class)
+     ->name('search.venue');
+
 Route::get('/{country:code}/suche/kurs', \App\Http\Livewire\Frontend\SearchCity::class)
      ->name('search.course');
 

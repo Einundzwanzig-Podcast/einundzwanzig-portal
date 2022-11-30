@@ -7,10 +7,9 @@
                 <label for="current-tab" class="sr-only">Select a tab</label>
                 <select id="current-tab" name="current-tab"
                         class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                    <option selected>Städte</option>
-                    <option>Dozenten</option>
-                    <option>Kurse</option>
-                    <option>Termine</option>
+                    <option {{ route('search.city', ['country' => 'de']) ? 'selected' : '' }}>Städte</option>
+                    <option {{ route('search.lecturer', ['country' => 'de']) ? 'selected' : '' }}>Dozenten</option>
+                    <option {{ route('search.venue', ['country' => 'de']) ? 'selected' : '' }}>Veranstalungs-Orte</option>
                 </select>
             </div>
             <!-- Tabs at small breakpoint and up -->
@@ -26,11 +25,9 @@
                     <a href="{{ route('search.lecturer', ['country' => 'de']) }}"
                        class="{{ request()->routeIs('search.lecturer') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
 
-                    <a href="{{ route('search.course', ['country' => 'de']) }}"
-                       class="{{ request()->routeIs('search.course') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Kurse</a>
+                    <a href="{{ route('search.venue', ['country' => 'de']) }}"
+                       class="{{ request()->routeIs('search.venue') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Veranstaltungs-Orte</a>
 
-                    <a href="{{ route('search.event', ['country' => 'de']) }}"
-                       class="{{ request()->routeIs('search.event') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Termine</a>
                 </nav>
             </div>
         </div>

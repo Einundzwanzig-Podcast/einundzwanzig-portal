@@ -5,7 +5,7 @@
     <section class="w-full mb-12">
         <div class="max-w-7xl mx-auto px-10">
             <livewire:frontend.search-tabs/>
-            <livewire:tables.course-table :country="$country->code"/>
+            <livewire:tables.venue-table :country="$country->code"/>
         </div>
     </section>
     {{-- FOOTER --}}
