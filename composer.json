@@ -63,7 +63,7 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "blueprint": "php artisan blueprint:erase && php artisan blueprint:build && php artisan migrate:fresh --seed"
+        "blueprint": "php artisan blueprint:erase && php artisan blueprint:build && php artisan migrate:fresh --seed --force"
     },
     "extra": {
         "laravel": {
