@@ -19,7 +19,7 @@
                 @auth
                     <div></div>
                 @else
-                    <div class="inline-flex items-center ml-5 text-lg space-x-6 lg:justify-end">
+                    <div class="inline-flex items-center ml-5 my-2 text-lg space-x-6 lg:justify-end">
                         <a href="{{ route('login') }}"
                            class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
                             Login
@@ -61,7 +61,7 @@
                     </a>
                     <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
                 </div>
-                <div class="w-full lg:w-1/2 relative lg:mt-0 mt-20 flex items-center justify-center">
+                <div class="hidden lg:inline-flex lg:w-full lg:w-1/2 relative lg:mt-0 mt-20 flex items-center justify-center">
                     {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
                          class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
                     <img src="{{ asset('img/btc-logo-6219386_1280.png') }}"
@@ -113,7 +113,7 @@
         </div>
     </section>
     {{-- FOOTER --}}
-    <section class="absolute bottom-0 py-10 bg-gray-900 w-full">
+    <section class="sticky bottom-0 py-10 bg-gray-900 w-full">
         <div class="px-10 mx-auto max-w-7xl">
             <div class="flex flex-col items-center md:flex-row md:justify-between">
                 <a href="#_">
