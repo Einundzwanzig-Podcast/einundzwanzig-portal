@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/nova/resources/courses/new" target="_blank">
+                    <x-jet-nav-link href="/nova" target="_blank">
                         {{ __('Kurs eintragen') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
