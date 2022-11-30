@@ -19,7 +19,9 @@
     <body class="font-sans antialiased bg-21gray dark">
         <x-jet-banner />
         <div class="min-h-screen">
-            @livewire('navigation-menu')
+            @auth
+                @livewire('navigation-menu')
+            @endauth
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">

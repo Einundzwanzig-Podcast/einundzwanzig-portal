@@ -18,7 +18,7 @@
                 </div>
                 @auth
                     <div></div>
-                @elseauth
+                @else
                     <div class="inline-flex items-center ml-5 text-lg space-x-6 lg:justify-end">
                         <a href="{{ route('nova.login') }}"
                            class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
