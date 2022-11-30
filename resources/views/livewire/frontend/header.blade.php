@@ -9,9 +9,12 @@
                     </a>
                     <nav
                         class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
-                        <a href="{{ route('search.city', ['country' => $c]) }}" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Städte</a>
-                        <a href="{{ route('search.lecturer', ['country' => $c]) }}" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Dozenten</a>
-                        <a href="{{ route('search.venue', ['country' => $c]) }}" class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Veranstaltungs-Orte</a>
+                        <a href="{{ route('search.city', ['country' => $c]) }}"
+                           class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Städte</a>
+                        <a href="{{ route('search.lecturer', ['country' => $c]) }}"
+                           class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Dozenten</a>
+                        <a href="{{ route('search.venue', ['country' => $c]) }}"
+                           class="mr-5 font-medium leading-6 text-gray-400 hover:text-gray-300">Veranstaltungs-Orte</a>
                     </nav>
                 </div>
                 @auth
@@ -55,13 +58,21 @@
                     </div>
                     <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
                         Finde Bitcoin Kurse in deiner City</p>
+                    @php
+                        $searchTitle = match ($currentRouteName) {
+                            'search.city' => 'Stadt',
+                            'search.lecturer' => 'Dozent',
+                            'search.venue' => 'Veranstaltungs-Ort',
+                        };
+                    @endphp
                     <a href="#_"
-                       class="bg-white px-12 lg:px-16 py-4 text-center lg:py-5 font-bold rounded text-lg md:text-xl lg:text-2xl mt-8 inline-block w-auto">
-                        👇 Kurs finden 👇
+                       class="whitespace-nowrap bg-white px-12 lg:px-16 py-4 text-center lg:py-5 font-bold rounded text-lg md:text-xl lg:text-2xl mt-8 inline-block w-auto">
+                        👇 {{ $searchTitle }} finden 👇
                     </a>
                     <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
                 </div>
-                <div class="hidden lg:inline-flex lg:w-full lg:w-1/2 relative lg:mt-0 mt-20 flex items-center justify-center">
+                <div
+                    class="hidden lg:inline-flex lg:w-full lg:w-1/2 relative lg:mt-0 mt-20 flex items-center justify-center">
                     {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
                          class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
                     <img src="{{ asset('img/btc-logo-6219386_1280.png') }}"
