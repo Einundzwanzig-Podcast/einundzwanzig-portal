@@ -1,4 +1,4 @@
-<div class="bg-21gray">
+<div class="bg-21gray flex flex-col h-screen justify-between">
     {{-- HEADER --}}
     <section class="w-full">
         <div class="max-w-7xl mx-auto px-10">
@@ -115,7 +115,7 @@
         </div>
     </section>
     {{-- FOOTER --}}
-    <section class="sticky bottom-0 py-10 bg-gray-900 w-full">
+    <div class="bottom-0 py-6 bg-gray-900 w-full">
         <div class="px-10 mx-auto max-w-7xl">
             <div class="flex flex-col items-center md:flex-row md:justify-between">
                 <a href="#_">
@@ -147,5 +147,5 @@
                 </ul>
             </div>
         </div>
-    </section>
+    </div>
 </div>
