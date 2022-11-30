@@ -20,11 +20,11 @@
                     <div></div>
                 @else
                     <div class="inline-flex items-center ml-5 text-lg space-x-6 lg:justify-end">
-                        <a href="{{ route('nova.login') }}"
+                        <a href="{{ route('login') }}"
                            class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
                             Login
                         </a>
-                        <a href="#"
+                        <a href="{{ route('register') }}"
                            class="inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
                             Registrieren
                         </a>
