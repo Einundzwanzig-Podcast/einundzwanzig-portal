@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\Lecturer;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
@@ -38,9 +39,14 @@ class LecturerTable extends DataTableComponent
                   ),
             Column::make('')
                   ->label(
-                    fn($row, Column $column) => view('columns.lectures.action')->withRow($row)
-                ),
+                      fn($row, Column $column) => view('columns.lectures.action')->withRow($row)
+                  ),
 
         ];
+    }
+
+    public function builder(): Builder
+    {
+        return Lecturer::query();
     }
 }
