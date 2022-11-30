@@ -96,7 +96,7 @@
         </div>
     </section>
     {{-- FOOTER --}}
-    <section class="py-10 bg-gray-900">
+    <section class="sticky bottom-0 py-10 bg-gray-900">
         <div class="px-10 mx-auto max-w-7xl">
             <div class="flex flex-col items-center md:flex-row md:justify-between">
                 <a href="#_">

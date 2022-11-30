@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b border-gray-100">
+<nav x-data="{ open: false }" class="border-b border-gray-100 bg-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -19,7 +19,7 @@
                         {{ __('Mein Profil') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
-                        {{ __('Mein Profil') }}
+                        {{ __('Meine Termine') }}
                     </x-jet-nav-link>
                 </div>
             </div>
