@@ -2,7 +2,9 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "build-start": "cd nova-components/Start && npm run dev",
+        "build-start-prod": "cd nova-components/Start && npm run prod"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

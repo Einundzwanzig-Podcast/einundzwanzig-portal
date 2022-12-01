@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\BelongsTo;
 
 class Venue extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -31,6 +33,11 @@ class Venue extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Venues');
+    }
 
     /**
      * Get the fields displayed by the resource.

@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\BelongsTo;
 
 class Registration extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -31,6 +33,11 @@ class Registration extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Registrations');
+    }
 
     /**
      * Get the fields displayed by the resource.

@@ -10,6 +10,8 @@ use Laravel\Nova\Fields\BelongsToMany;
 
 class Course extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -32,6 +34,11 @@ class Course extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Courses');
+    }
 
     /**
      * Get the fields displayed by the resource.
