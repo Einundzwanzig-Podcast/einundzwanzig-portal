@@ -95,9 +95,10 @@
                         earth: null,
                         init() {
                             this.earth = new Earth(this.$refs.myearth, {
-                                location : {lat: 18, lng: 50},
+                                location : {lat: {{ $cities->first()->latitude }}, lng: {{ $cities->first()->longitude }}},
                                 zoom: 1.05,
                                 light: 'none',
+                                polarLimit: 0.6,
 
                                 transparent : true,
                                 mapSeaColor : 'RGBA(34, 34, 34,0.76)',
@@ -108,7 +109,7 @@
 
                                 autoRotate: true,
                                 autoRotateSpeed: 0.7,
-                                autoRotateDelay: 4000,
+                                autoRotateDelay: 500,
                             });
                             this.earth.addEventListener('ready', function() {
                                 @foreach($cities as $city)
