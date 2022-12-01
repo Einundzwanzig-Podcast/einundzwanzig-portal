@@ -42,4 +42,9 @@ class Venue extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function events(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
 }

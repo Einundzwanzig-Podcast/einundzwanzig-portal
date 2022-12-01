@@ -43,4 +43,9 @@ class Lecturer extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function courses(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Course::class);
+    }
 }

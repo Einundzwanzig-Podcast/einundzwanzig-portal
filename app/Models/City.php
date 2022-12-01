@@ -44,4 +44,14 @@ class City extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    public function venues(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Venue::class);
+    }
+
+    function events()
+    {
+        return $this->hasManyThrough(Event::class, Venue::class);
+    }
 }

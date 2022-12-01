@@ -21,12 +21,14 @@ class VenueTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("City id", "city_id")
-                  ->sortable(),
             Column::make("Name", "name")
                   ->sortable(),
             Column::make("Street", "street")
                   ->sortable(),
+            Column::make('Termine')
+                  ->label(
+                      fn($row, Column $column) => $row->events_count
+                  ),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.venues.action')->withRow($row)
@@ -37,6 +39,9 @@ class VenueTable extends DataTableComponent
     public function builder(): Builder
     {
         return Venue::query()
+                    ->withCount([
+                        'events',
+                    ])
                     ->whereHas('city.country', fn($query) => $query->where('code', $this->country));
     }
 }
