@@ -35,4 +35,9 @@ class Course extends Model
     {
         return $this->belongsTo(Lecturer::class);
     }
+
+    public function events(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
 }

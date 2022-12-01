@@ -27,6 +27,10 @@ class VenueTable extends DataTableComponent
                   ->sortable(),
             Column::make("Street", "street")
                   ->sortable(),
+            Column::make('')
+                  ->label(
+                      fn($row, Column $column) => view('columns.venues.action')->withRow($row)
+                  ),
         ];
     }
 

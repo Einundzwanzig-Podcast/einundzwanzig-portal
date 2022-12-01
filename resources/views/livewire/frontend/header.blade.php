@@ -1,7 +1,7 @@
 <div>
     <section class="w-full">
-        <div class="max-w-7xl mx-auto px-10">
-            <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-7xl">
+        <div class="max-w-screen-2xl mx-auto px-10">
+            <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
                     <a href="#_"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
@@ -15,6 +15,10 @@
                            class="{{ request()->routeIs('search.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten</a>
                         <a href="{{ route('search.venue', ['country' => $c]) }}"
                            class="{{ request()->routeIs('search.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
+                        <a href="{{ route('search.course', ['country' => $c]) }}"
+                           class="{{ request()->routeIs('search.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
+                    <a href="{{ route('search.event', ['country' => $c]) }}"
+                           class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
                     </nav>
                 </div>
                 @auth
@@ -63,6 +67,8 @@
                             'search.city' => 'Stadt',
                             'search.lecturer' => 'Dozent',
                             'search.venue' => 'Veranstaltungs-Ort',
+                            'search.course' => 'Kurs',
+                            'search.event' => 'Termin',
                         };
                     @endphp
                     <a href="#_"

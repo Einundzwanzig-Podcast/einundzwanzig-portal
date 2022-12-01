@@ -3,7 +3,7 @@
     <livewire:frontend.header :country="$country"/>
     {{-- MAIN --}}
     <section class="w-full mb-12">
-        <div class="max-w-7xl mx-auto px-10">
+        <div class="max-w-screen-2xl mx-auto px-10">
             <livewire:frontend.search-tabs/>
             <livewire:tables.course-table :country="$country->code"/>
         </div>
