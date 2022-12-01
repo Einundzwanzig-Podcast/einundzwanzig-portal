@@ -96,8 +96,8 @@
                         init() {
                             this.earth = new Earth(this.$refs.myearth, {
                                 location : {lat: {{ $cities->first()->latitude }}, lng: {{ $cities->first()->longitude }}},
-                                zoom: 1.05,
-                                light: 'none',
+                                zoom: 2,
+                                light: 'sun',
                                 polarLimit: 0.6,
 
                                 transparent : true,
