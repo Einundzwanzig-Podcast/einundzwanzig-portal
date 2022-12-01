@@ -61,14 +61,20 @@ class DatabaseSeeder extends Seeder
         City::create([
             'country_id' => 1,
             'name'       => 'Füssen',
+            'latitude'   => 47.57143,
+            'longitude'  => 10.70171,
         ]);
         City::create([
             'country_id' => 2,
             'name'       => 'Wien',
+            'latitude'   => 48.20835,
+            'longitude'  => 16.37250,
         ]);
         City::create([
             'country_id' => 3,
             'name'       => 'Zürich',
+            'latitude'   => 47.41330,
+            'longitude'  => 8.65639,
         ]);
         Venue::create([
             'city_id' => 1,

@@ -38,12 +38,12 @@ class EventTable extends DataTableComponent
                   ->sortable(),
             Column::make("Zuletzt geändert", "updated_at")
                   ->sortable(),
-            Column::make("Teilnehmer")
+            /*Column::make("Teilnehmer")
                   ->label(
                       fn($row, Column $column) => '<strong>'.$row->registrations->count().'</strong>'
                   )
                   ->html()
-                  ->sortable(),
+                  ->sortable(),*/
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.events.action')->withRow($row)

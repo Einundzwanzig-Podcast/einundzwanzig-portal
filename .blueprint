@@ -1,11 +1,11 @@
 models:
     Category: { name: string, slug: string }
-    City: { country_id: biginteger, name: string, slug: string }
+    City: { country_id: biginteger, name: string, slug: string, longitude: 'float:10', latitude: 'float:10' }
     Country: { name: string, code: string }
     Course: { lecturer_id: biginteger, name: string }
     Event: { course_id: biginteger, venue_id: biginteger, '"from"': datetime, '"to"': datetime }
     Lecturer: { team_id: biginteger, name: string, slug: string, active: 'boolean default:1' }
-    LoginKey: {  }
+    LoginKey: { k1: string, user_id: biginteger }
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     Participant: { first_name: string, last_name: string }
     Registration: { event_id: biginteger, participant_id: biginteger, active: 'boolean default:1' }

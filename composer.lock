@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1978838425670301ad666b43b7517ec",
+    "content-hash": "b619fdadb0135e8be1b5114237433108",
     "packages": [
+        {
+            "name": "akuechler/laravel-geoly",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akuechler/laravel-geoly.git",
+                "reference": "07b76c573abe1049d9a3f65ee870649443903dbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akuechler/laravel-geoly/zipball/07b76c573abe1049d9a3f65ee870649443903dbf",
+                "reference": "07b76c573abe1049d9a3f65ee870649443903dbf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0@dev",
+                "phpunit/phpunit": "^9.2@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Akuechler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexsander Küchler",
+                    "email": "composer@alexsander-kuechler.com"
+                }
+            ],
+            "description": "Perform fast and efficient radius searches on your Laravel Eloquent models.",
+            "keywords": [
+                "distance",
+                "framework",
+                "geo",
+                "laravel",
+                "lat",
+                "latitude",
+                "lng",
+                "lon",
+                "longitude",
+                "models",
+                "radius",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/akuechler/laravel-geoly/issues",
+                "source": "https://github.com/akuechler/laravel-geoly/tree/v1.0.6"
+            },
+            "time": "2021-04-20T07:17:32+00:00"
+        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.7",

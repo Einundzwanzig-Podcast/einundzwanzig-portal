@@ -1,1 +1,1 @@
-<x-button amber>Umkreis-Suche Füssen</x-button>
+<x-button amber wire:click="proximitySearch({{ $row->id }})">Umkreis-Suche {{ $row->name }} (100km)</x-button>

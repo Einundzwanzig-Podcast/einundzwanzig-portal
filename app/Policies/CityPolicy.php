@@ -53,7 +53,7 @@ class CityPolicy
      */
     public function update(User $user, City $city)
     {
-        //
+        return $user->is_lecturer;
     }
 
     /**
