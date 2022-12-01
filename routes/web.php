@@ -20,10 +20,10 @@ Route::get('/{country:code}/suche/dozent', \App\Http\Livewire\Frontend\SearchLec
 Route::get('/{country:code}/suche/ort', \App\Http\Livewire\Frontend\SearchVenue::class)
      ->name('search.venue');
 
-Route::get('/{country:code}/suche/kurs', \App\Http\Livewire\Frontend\SearchCity::class)
+Route::get('/{country:code}/suche/kurs', \App\Http\Livewire\Frontend\SearchCourse::class)
      ->name('search.course');
 
-Route::get('/{country:code}/suche/termin', \App\Http\Livewire\Frontend\SearchCity::class)
+Route::get('/{country:code}/suche/termin', \App\Http\Livewire\Frontend\SearchEvent::class)
      ->name('search.event');
 
 Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)

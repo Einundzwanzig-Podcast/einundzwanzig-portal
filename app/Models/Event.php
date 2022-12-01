@@ -38,4 +38,9 @@ class Event extends Model
     {
         return $this->belongsTo(Venue::class);
     }
+
+    public function registrations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
 }

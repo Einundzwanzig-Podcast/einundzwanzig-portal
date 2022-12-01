@@ -9,6 +9,8 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class CourseTable extends DataTableComponent
 {
+    public string $country;
+
     protected $model = Course::class;
 
     public function configure(): void
@@ -19,22 +21,29 @@ class CourseTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Id", "id")
-                  ->sortable(),
-            Column::make("Lecturer id", "lecturer_id")
+            Column::make("Dozent", "lecturer.name")
                   ->sortable(),
             Column::make("Name", "name")
                   ->sortable(),
-            Column::make("Created at", "created_at")
+            Column::make("Termine")
+                  ->label(
+                      fn($row, Column $column) => '<strong>'.$row->events->count().'</strong>'
+                  )
+                  ->html()
                   ->sortable(),
-            Column::make("Updated at", "updated_at")
+            Column::make("Erstellt am", "created_at")
                   ->sortable(),
+            Column::make('')
+                  ->label(
+                      fn($row, Column $column) => view('columns.courses.action')->withRow($row)
+                  ),
         ];
     }
 
     public function builder(): Builder
     {
         return Course::query()
-                     ->whereHas('country', fn($query) => $query->where('code', $this->country));
+                     ->whereHas('events.venue.city.country',
+                         fn($query) => $query->where('countries.code', $this->country));
     }
 }

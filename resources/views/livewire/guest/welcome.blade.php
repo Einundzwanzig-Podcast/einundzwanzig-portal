@@ -1,7 +1,7 @@
 <div>
     <section class="w-full">
-        <div class="max-w-7xl mx-auto px-10">
-            <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-7xl">
+        <div class="max-w-screen-2xl mx-auto px-10">
+            <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
                     <a href="#_"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
@@ -52,7 +52,7 @@
     </section>
 
     <section class="w-full mb-12">
-        <div class="max-w-7xl mx-auto px-10">
+        <div class="max-w-screen-2xl mx-auto px-10">
             <div class="border-b border-gray-200 pb-5 sm:pb-0 my-6">
                 <h3 class="text-lg font-medium leading-6 text-gray-200">Suche</h3>
                 <div class="mt-3 sm:mt-4">
