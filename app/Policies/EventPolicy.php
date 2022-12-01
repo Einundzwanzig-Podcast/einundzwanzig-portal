@@ -30,7 +30,7 @@ class EventPolicy
      */
     public function view(User $user, Event $event)
     {
-        //
+        return $user->is_lecturer;
     }
 
     /**
@@ -41,7 +41,7 @@ class EventPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->is_lecturer;
     }
 
     /**
@@ -53,7 +53,7 @@ class EventPolicy
      */
     public function update(User $user, Event $event)
     {
-        //
+        return $user->belongsToTeam($event->course->lecturer->team);
     }
 
     /**

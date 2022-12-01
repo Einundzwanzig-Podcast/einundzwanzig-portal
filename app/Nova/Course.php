@@ -23,7 +23,7 @@ class Course extends Resource
      * The single value that should be used to represent the resource when being displayed.
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,6 +31,7 @@ class Course extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     public static function relatableLecturers(NovaRequest $request, $query, Field $field)

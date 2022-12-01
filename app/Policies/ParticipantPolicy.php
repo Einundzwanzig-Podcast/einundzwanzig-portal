@@ -14,6 +14,7 @@ class ParticipantPolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -26,17 +27,24 @@ class ParticipantPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Participant  $participant
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Participant $participant)
     {
-        //
+        if ($participant->registrations) {
+            return $participant->whereHas('registrations.event.course.lecturer',
+                fn($q) => $q->where('team_id', $user->current_team_id))
+                               ->exists();
+        }
+        return false;
     }
 
     /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
@@ -49,6 +57,7 @@ class ParticipantPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Participant  $participant
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Participant $participant)
@@ -61,6 +70,7 @@ class ParticipantPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Participant  $participant
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Participant $participant)
@@ -73,6 +83,7 @@ class ParticipantPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Participant  $participant
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Participant $participant)
@@ -85,6 +96,7 @@ class ParticipantPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Participant  $participant
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Participant $participant)
