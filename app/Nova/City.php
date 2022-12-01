@@ -51,10 +51,14 @@ class City extends Resource
                 ->exceptOnForms(),
 
             Number::make('Latitude')
-                  ->rules('required', 'numeric')->step(0.00001),
+                  ->rules('required', 'numeric')
+                  ->step(0.00001)
+                  ->help('https://latitude.to/lat/47.72671/lng/10.31688'),
 
             Number::make('Longitude')
-                  ->rules('required', 'numeric')->step(0.00001),
+                  ->rules('required', 'numeric')
+                  ->step(0.00001)
+                  ->help('https://latitude.to/lat/47.72671/lng/10.31688'),
 
             BelongsTo::make('Country'),
 
