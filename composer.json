@@ -28,6 +28,7 @@
         "fidum/laravel-blueprint-pestphp-addon": "^2.2",
         "jasonmccreary/laravel-test-assertions": "^2.1",
         "laravel-lang/attributes": "^2.0",
+        "laravel-lang/http-statuses": "^3.1",
         "laravel-lang/lang": "^12.5",
         "laravel-lang/publisher": "^14.4",
         "laravel-shift/blueprint": "^2.4",
