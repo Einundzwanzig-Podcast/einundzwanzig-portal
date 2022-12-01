@@ -5,10 +5,11 @@ models:
     Course: { lecturer_id: biginteger, name: string }
     Event: { course_id: biginteger, venue_id: biginteger, '"from"': datetime, '"to"': datetime }
     Lecturer: { team_id: biginteger, name: string, slug: string, active: 'boolean default:1' }
+    LoginKey: {  }
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     Participant: { first_name: string, last_name: string }
     Registration: { event_id: biginteger, participant_id: biginteger, active: 'boolean default:1' }
     Team: { user_id: biginteger, name: string, personal_team: boolean }
     TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
-    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', is_lecturer: 'boolean default:', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
+    User: { name: string, public_key: 'string nullable', email: 'string nullable', email_verified_at: 'datetime nullable', password: 'string nullable', remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', is_lecturer: 'boolean default:', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
     Venue: { city_id: biginteger, name: string, slug: string, street: string }
