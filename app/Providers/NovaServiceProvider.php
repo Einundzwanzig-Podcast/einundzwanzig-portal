@@ -57,6 +57,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])
                            ->icon('key')
                            ->collapsable(),
+
+                MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
+                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
+                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
+                        'resources/permissions'),
+                ])
+                           ->icon('key')
+                           ->collapsable(),
             ];
         });
 

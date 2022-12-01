@@ -19,7 +19,7 @@ class TeamPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->hasRole('super-admin');
     }
 
     /**
@@ -44,7 +44,7 @@ class TeamPolicy
      */
     public function create(User $user)
     {
-        return false;
+        return $user->hasRole('super-admin');
     }
 
     /**
@@ -109,7 +109,6 @@ class TeamPolicy
      */
     public function delete(User $user, Team $team)
     {
-        // return $user->ownsTeam($team);
-        return false;
+        return $user->hasRole('super-admin');
     }
 }
