@@ -2,24 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return to_route('search.city', ['country' => 'de']);
 })
      ->name('welcome');
 
 Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
-     ->name('auth.ln');
+     ->name('auth.ln')
+     ->middleware('guest');
 
 Route::get('/{country:code}/suche/stadt', \App\Http\Livewire\Frontend\SearchCity::class)
      ->name('search.city');
