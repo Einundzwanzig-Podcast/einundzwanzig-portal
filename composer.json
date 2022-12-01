@@ -24,14 +24,17 @@
         "wireui/wireui": "^1.17"
     },
     "require-dev": {
-        "naoray/blueprint-nova-addon": "dev-master#a7791033d1cb68d4e82631305e26b64e18464494",
         "fakerphp/faker": "^1.9.1",
         "fidum/laravel-blueprint-pestphp-addon": "^2.2",
         "jasonmccreary/laravel-test-assertions": "^2.1",
+        "laravel-lang/attributes": "^2.0",
+        "laravel-lang/lang": "^12.5",
+        "laravel-lang/publisher": "^14.4",
         "laravel-shift/blueprint": "^2.4",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.16",
         "mockery/mockery": "^1.4.4",
+        "naoray/blueprint-nova-addon": "dev-master#a7791033d1cb68d4e82631305e26b64e18464494",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
