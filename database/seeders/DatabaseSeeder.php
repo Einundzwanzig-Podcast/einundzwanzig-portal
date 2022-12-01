@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'remember_token'    => Str::random(10),
             'is_lecturer'       => true,
         ]);
+        $user->assignRole('super-admin');
         $team = Team::create([
             'name'          => 'Admin Team',
             'user_id'       => $user->id,
