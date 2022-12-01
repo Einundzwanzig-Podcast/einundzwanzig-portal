@@ -24,6 +24,18 @@ class CityTable extends DataTableComponent
             Column::make("Stadt Name", "name")
                   ->sortable()
                   ->searchable(),
+            Column::make('Veranstaltungs-Orte')
+                  ->label(
+                      fn($row, Column $column) => random_int(0, 100)
+                  ),
+            Column::make('Kurse')
+                  ->label(
+                      fn($row, Column $column) => random_int(0, 100)
+                  ),
+            Column::make('')
+                  ->label(
+                      fn($row, Column $column) => view('columns.cities.action')->withRow($row)
+                  ),
         ];
     }
 
