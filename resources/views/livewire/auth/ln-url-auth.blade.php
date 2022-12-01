@@ -15,9 +15,13 @@
 
         <div class="flex items-center justify-end mt-4">
 
-            <x-jet-button class="ml-4" wire:click="switchToEmail">
+            <x-button icon="login" secondary class="ml-4" wire:click="switchToEmail">
                 {{ __('Switch to E-Mail login') }}
-            </x-jet-button>
+            </x-button>
+
+            <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmail">
+                {{ __('Switch to E-Mail signup') }}
+            </x-button>
 
         </div>
     </div>
