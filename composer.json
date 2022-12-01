@@ -17,12 +17,13 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
+        "nova/start": "*",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-sluggable": "^3.4",
         "stijnvanouplines/blade-country-flags": "^1.0",
         "wireui/wireui": "^1.17",
-        "nova/start": "*"
+        "ziffmedia/nova-select-plus": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

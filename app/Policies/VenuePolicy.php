@@ -30,7 +30,7 @@ class VenuePolicy
      */
     public function view(User $user, Venue $venue)
     {
-        //
+        return $user->is_lecturer;
     }
 
     /**
@@ -41,7 +41,7 @@ class VenuePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->is_lecturer;
     }
 
     /**

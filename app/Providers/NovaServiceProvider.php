@@ -39,8 +39,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuSection::make('Schule', [
                     MenuItem::resource(City::class),
-                    MenuItem::resource(Lecturer::class),
                     MenuItem::resource(Venue::class),
+                    MenuItem::resource(Lecturer::class),
                     MenuItem::resource(Course::class),
                     MenuItem::resource(Event::class),
                     MenuItem::resource(Participant::class),

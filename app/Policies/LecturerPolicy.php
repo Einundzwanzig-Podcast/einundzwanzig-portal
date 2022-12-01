@@ -14,6 +14,7 @@ class LecturerPolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -26,22 +27,24 @@ class LecturerPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Lecturer  $lecturer
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Lecturer $lecturer)
     {
-        return false;
+        return $user->is_lecturer;
     }
 
     /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {
-        //
+        return $user->is_lecturer;
     }
 
     /**
@@ -49,11 +52,12 @@ class LecturerPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Lecturer  $lecturer
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Lecturer $lecturer)
     {
-        //
+        return $user->belongsToTeam($lecturer->team);
     }
 
     /**
@@ -61,6 +65,7 @@ class LecturerPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Lecturer  $lecturer
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Lecturer $lecturer)
@@ -73,6 +78,7 @@ class LecturerPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Lecturer  $lecturer
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Lecturer $lecturer)
@@ -85,6 +91,7 @@ class LecturerPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Lecturer  $lecturer
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Lecturer $lecturer)

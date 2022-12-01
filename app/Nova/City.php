@@ -21,7 +21,7 @@ class City extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -30,6 +30,7 @@ class City extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -47,10 +48,9 @@ class City extends Resource
                 ->rules('required', 'string'),
 
             Text::make('Slug')
-                ->rules('required', 'string', 'unique:cities,slug'),
+                ->exceptOnForms(),
 
             BelongsTo::make('Country'),
-
 
         ];
     }
