@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\LoginKey;
+use App\Models\User;
+use eza\lnurl;
 
 /*
 |--------------------------------------------------------------------------
