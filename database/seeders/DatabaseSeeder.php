@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password'          => bcrypt('1234'),
             'remember_token'    => Str::random(10),
+            'is_lecturer'       => true,
         ]);
         $team = Team::create([
             'name'          => 'Admin Team',
@@ -59,28 +60,23 @@ class DatabaseSeeder extends Seeder
         City::create([
             'country_id' => 1,
             'name'       => 'Füssen',
-            'slug'       => str('Füssen')->slug('-', 'de'),
         ]);
         City::create([
             'country_id' => 2,
             'name'       => 'Wien',
-            'slug'       => str('Wien')->slug('-', 'de'),
         ]);
         City::create([
             'country_id' => 3,
             'name'       => 'Zürich',
-            'slug'       => str('Zürich')->slug('-', 'de'),
         ]);
         Venue::create([
             'city_id' => 1,
             'name'    => 'The Blue Studio Coworking',
-            'slug'    => str('The Blue Studio Coworking')->slug('-', 'de'),
             'street'  => 'Teststraße 12',
         ]);
         Lecturer::create([
             'team_id' => 1,
             'name'    => 'Markus Turm',
-            'slug'    => str('Markus Turm')->slug('-', 'de'),
             'active'  => true,
         ]);
         $category = Category::create([

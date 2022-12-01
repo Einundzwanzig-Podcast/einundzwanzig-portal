@@ -33,7 +33,7 @@ class City extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-                          ->generateSlugsFrom('name')
+                          ->generateSlugsFrom(['country.code', 'name'])
                           ->saveSlugsTo('slug')
                           ->usingLanguage('de');
     }
