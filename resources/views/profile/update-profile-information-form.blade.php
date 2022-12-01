@@ -67,7 +67,7 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email"/>
             <x-jet-input-error for="email" class="mt-2"/>
 
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
+            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && !$this->user->hasVerifiedEmail() && $this->user->email)
                 <p class="text-sm mt-2">
                     {{ __('Your email address is unverified.') }}
 
