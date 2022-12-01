@@ -59,14 +59,17 @@ class DatabaseSeeder extends Seeder
         City::create([
             'country_id' => 1,
             'name'       => 'Füssen',
+            'slug'       => str('Füssen')->slug('-', 'de'),
         ]);
         City::create([
             'country_id' => 2,
             'name'       => 'Wien',
+            'slug'       => str('Wien')->slug('-', 'de'),
         ]);
         City::create([
             'country_id' => 3,
             'name'       => 'Zürich',
+            'slug'       => str('Zürich')->slug('-', 'de'),
         ]);
         Venue::create([
             'city_id' => 1,

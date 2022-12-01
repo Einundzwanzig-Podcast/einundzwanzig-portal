@@ -9,8 +9,6 @@ use Laravel\Nova\Fields\BelongsTo;
 
 class Event extends Resource
 {
-
-
     /**
      * The model the resource corresponds to.
      *
@@ -33,11 +31,6 @@ class Event extends Resource
     public static $search = [
         'id',
     ];
-
-    public static function label()
-    {
-        return __('Events');
-    }
 
     /**
      * Get the fields displayed by the resource.

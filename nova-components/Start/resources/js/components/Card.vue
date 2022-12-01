@@ -12,7 +12,7 @@
             <Card class="mt-8">
                 <div class="md:grid md:grid-cols-2">
                     <div class="border-r border-b border-gray-200 dark:border-gray-700">
-                        <a :href="resources" class="no-underline flex p-6">
+                        <a target="_blank" :href="cities" class="no-underline flex p-6">
                             <div class="flex justify-center w-11 flex-shrink-0 mr-6">
                                 <div class="text-4xl text-primary-500 dark:text-primary-600">1.</div>
                             </div>
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="border-b border-gray-200 dark:border-gray-700">
-                        <a :href="actions" class="no-underline flex p-6">
+                        <a target="_blank" :href="venues" class="no-underline flex p-6">
                             <div class="flex justify-center w-11 flex-shrink-0 mr-6">
                                 <div class="text-4xl text-primary-500 dark:text-primary-600">2.</div>
                             </div>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="border-r border-b border-gray-200 dark:border-gray-700">
-                        <a :href="filters" class="no-underline flex p-6">
+                        <a target="_blank" :href="lecturers" class="no-underline flex p-6">
                             <div class="flex justify-center w-11 flex-shrink-0 mr-6">
                                 <div class="text-4xl text-primary-500 dark:text-primary-600">3.</div>
                             </div>
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="border-b border-gray-200 dark:border-gray-700">
-                        <a :href="lenses" class="no-underline flex p-6">
+                        <a target="_blank" :href="courses" class="no-underline flex p-6">
                             <div class="flex justify-center w-11 flex-shrink-0 mr-6">
                                 <div class="text-4xl text-primary-500 dark:text-primary-600">4.</div>
                             </div>
@@ -82,7 +82,7 @@
                     <div
                         class="border-r md:border-b-0 border-b border-gray-200 dark:border-gray-700"
                     >
-                        <a :href="metrics" class="no-underline flex p-6">
+                        <a target="_blank" :href="events" class="no-underline flex p-6">
                             <div class="flex justify-center w-11 flex-shrink-0 mr-6">
                                 <div class="text-4xl text-primary-500 dark:text-primary-600">5.</div>
                             </div>
@@ -101,7 +101,7 @@
                     <div
                         class="md:border-b-0 border-b border-gray-200 dark:border-gray-700"
                     >
-                        <a :href="cards" class="no-underline flex p-6">
+                        <a href="#" class="no-underline flex p-6">
                             <div class="flex justify-center w-11 flex-shrink-0 mr-6">
                                 <div class="text-4xl text-primary-500 dark:text-primary-600">6.</div>
                             </div>
@@ -132,35 +132,25 @@ export default {
 
     methods: {
         link (path) {
-            return `https://nova.laravel.com/docs/${this.version}/${path}`
+            return `/nova/${path}`
         },
     },
 
     computed: {
-        resources () {
-            return this.link('resources')
+        cities () {
+            return this.link('resources/cities')
         },
-        actions () {
-            return this.link('actions/defining-actions.html')
+        venues () {
+            return this.link('resources/venues')
         },
-        filters () {
-            return this.link('filters/defining-filters.html')
+        lecturers () {
+            return this.link('resources/lecturers')
         },
-        lenses () {
-            return this.link('lenses/defining-lenses.html')
+        courses () {
+            return this.link('resources/courses')
         },
-        metrics () {
-            return this.link('metrics/defining-metrics.html')
-        },
-        cards () {
-            return this.link('customization/cards.html')
-        },
-        version () {
-            const parts = Nova.config('version')
-                .split('.')
-            parts.splice(-2)
-
-            return `${parts}.0`
+        events () {
+            return this.link('resources/events')
         },
     },
 }

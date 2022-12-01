@@ -9,8 +9,6 @@ use Laravel\Nova\Fields\BelongsToMany;
 
 class Category extends Resource
 {
-
-
     /**
      * The model the resource corresponds to.
      *
@@ -33,11 +31,6 @@ class Category extends Resource
     public static $search = [
         'id',
     ];
-
-    public static function label()
-    {
-        return __('Categories');
-    }
 
     /**
      * Get the fields displayed by the resource.

@@ -112,7 +112,7 @@ return [
     | generated "unguarded" models.
     |
     */
-    'use_guarded' => false,
+    'use_guarded' => true,
 
     /*
     |--------------------------------------------------------------------------

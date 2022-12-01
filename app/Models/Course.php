@@ -10,14 +10,11 @@ class Course extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'lecturer_id',
-        'name',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.

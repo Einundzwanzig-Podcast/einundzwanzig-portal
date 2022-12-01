@@ -8,16 +8,16 @@ created:
     - database/factories/VenueFactory.php
     - database/factories/EventFactory.php
     - database/factories/RegistrationFactory.php
-    - database/migrations/2022_12_01_100450_create_countries_table.php
-    - database/migrations/2022_12_01_100451_create_cities_table.php
-    - database/migrations/2022_12_01_100452_create_lecturers_table.php
-    - database/migrations/2022_12_01_100453_create_participants_table.php
-    - database/migrations/2022_12_01_100454_create_categories_table.php
-    - database/migrations/2022_12_01_100455_create_courses_table.php
-    - database/migrations/2022_12_01_100456_create_venues_table.php
-    - database/migrations/2022_12_01_100457_create_events_table.php
-    - database/migrations/2022_12_01_100458_create_registrations_table.php
-    - database/migrations/2022_12_01_100459_create_category_course_table.php
+    - database/migrations/2022_12_01_145948_create_countries_table.php
+    - database/migrations/2022_12_01_145949_create_cities_table.php
+    - database/migrations/2022_12_01_145950_create_lecturers_table.php
+    - database/migrations/2022_12_01_145951_create_participants_table.php
+    - database/migrations/2022_12_01_145952_create_categories_table.php
+    - database/migrations/2022_12_01_145953_create_courses_table.php
+    - database/migrations/2022_12_01_145954_create_venues_table.php
+    - database/migrations/2022_12_01_145955_create_events_table.php
+    - database/migrations/2022_12_01_145956_create_registrations_table.php
+    - database/migrations/2022_12_01_145957_create_category_course_table.php
     - app/Models/Country.php
     - app/Models/City.php
     - app/Models/Lecturer.php
@@ -40,9 +40,9 @@ models:
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     Team: { user_id: biginteger, name: string, personal_team: boolean }
     TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
-    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', is_lecturer: 'boolean default:', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
     Country: { name: string, code: string, relationships: { hasMany: City } }
-    City: { country_id: 'id foreign', name: string }
+    City: { country_id: 'id foreign', name: string, slug: 'string unique' }
     Lecturer: { team_id: 'id foreign', name: string, slug: 'string unique', active: 'boolean default:true' }
     Participant: { first_name: string, last_name: string }
     Category: { name: string, slug: 'string unique', relationships: { belongsToMany: Course } }
