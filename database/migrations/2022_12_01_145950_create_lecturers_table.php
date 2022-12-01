@@ -18,7 +18,7 @@ class CreateLecturersTable extends Migration
         Schema::create('lecturers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();

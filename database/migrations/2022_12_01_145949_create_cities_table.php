@@ -8,7 +8,6 @@ class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up(): void
@@ -17,9 +16,14 @@ class CreateCitiesTable extends Migration
 
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('name');
-            $table->string('slug')->unique();
+            $table->foreignId('country_id')
+                  ->constrained()
+                  ->cascadeOnDelete()
+                  ->cascadeOnUpdate();
+            $table->string('name')
+                  ->unique();
+            $table->string('slug')
+                  ->unique();
             $table->timestamps();
         });
 
@@ -28,7 +32,6 @@ class CreateCitiesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down(): void
