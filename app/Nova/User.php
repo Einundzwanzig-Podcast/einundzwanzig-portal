@@ -12,6 +12,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      * @var class-string<\App\Models\User>
@@ -31,6 +33,11 @@ class User extends Resource
     public static $search = [
         'id', 'name', 'email',
     ];
+
+    public static function label()
+    {
+        return __('Users');
+    }
 
     /**
      * Get the fields displayed by the resource.

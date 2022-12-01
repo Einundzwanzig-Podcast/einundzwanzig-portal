@@ -8,6 +8,8 @@ use Laravel\Nova\Fields\Text;
 
 class Participant extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -30,6 +32,11 @@ class Participant extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Participants');
+    }
 
     /**
      * Get the fields displayed by the resource.

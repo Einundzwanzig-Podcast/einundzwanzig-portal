@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\HasMany;
 
 class Country extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -31,6 +33,11 @@ class Country extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Countries');
+    }
 
     /**
      * Get the fields displayed by the resource.

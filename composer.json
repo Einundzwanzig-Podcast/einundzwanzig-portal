@@ -21,7 +21,8 @@
         "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-sluggable": "^3.4",
         "stijnvanouplines/blade-country-flags": "^1.0",
-        "wireui/wireui": "^1.17"
+        "wireui/wireui": "^1.17",
+        "nova/start": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -92,6 +93,10 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Start"
         }
     ]
 }

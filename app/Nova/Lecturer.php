@@ -10,6 +10,8 @@ use Laravel\Nova\Fields\BelongsTo;
 
 class Lecturer extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -32,6 +34,11 @@ class Lecturer extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Lecturers');
+    }
 
     /**
      * Get the fields displayed by the resource.
