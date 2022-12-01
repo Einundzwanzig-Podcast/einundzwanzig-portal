@@ -22,16 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use TwoFactorAuthenticatable;
     use HasRoles;
 
-    /**
-     * The attributes that are mass assignable.
-     * @var string[]
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'is_lecturer',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.

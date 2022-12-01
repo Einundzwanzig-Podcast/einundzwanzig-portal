@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -46,6 +47,12 @@ module.exports = {
                     '800': '#673B04',
                     '900': '#361F02'
                 },
+                primary: colors.amber,
+                secondary: colors.slate,
+                positive: colors.emerald,
+                negative: colors.red,
+                warning: colors.amber,
+                info: colors.blue,
             },
             fontFamily: {
                 sans: [

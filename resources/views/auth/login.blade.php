@@ -50,6 +50,10 @@
                 </x-jet-button>
 
             </div>
+
+            <div class="flex items-center justify-left mt-4">
+                <x-button href="{{ route('auth.ln') }}" primary icon="lightning-bolt">LN-Auth</x-button>
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

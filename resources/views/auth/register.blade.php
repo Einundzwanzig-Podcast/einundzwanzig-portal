@@ -66,10 +66,13 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
-                Wurde noch nicht implementiert
-                {{--<x-jet-button class="ml-4">
+                <x-jet-button class="ml-4">
                     {{ __('Register') }}
-                </x-jet-button>--}}
+                </x-jet-button>
+            </div>
+
+            <div class="flex items-center justify-left mt-4">
+                <x-button href="{{ route('auth.ln') }}" primary icon="lightning-bolt">LN-Auth</x-button>
             </div>
         </form>
     </x-jet-authentication-card>
