@@ -1,4 +1,17 @@
 <div>
+    <script src="{{ asset('earth/miniature.earth.js') }}"></script>
+    <style>
+        .earth-container::after {
+            content: "";
+            position: absolute;
+            height: 22%;
+            bottom: 4%;
+            left: 13%;
+            right: 13%;
+            background: radial-gradient(ellipse at center, rgba(247, 147, 26, 0.7) 0%, rgba(247, 147, 26, 0.55) 20%, rgba(247, 147, 26, 0.2) 40%, rgba(247, 147, 26, 0.1) 50%, rgba(247, 147, 26, 0.02) 60%, rgba(247, 147, 26, 0) 70%, rgba(247, 147, 26, 0) 100%);
+        }
+
+    </style>
     <section class="w-full">
         <div class="max-w-screen-2xl mx-auto px-10">
             <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
@@ -17,7 +30,7 @@
                            class="{{ request()->routeIs('search.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
                         <a href="{{ route('search.course', ['country' => $c]) }}"
                            class="{{ request()->routeIs('search.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
-                    <a href="{{ route('search.event', ['country' => $c]) }}"
+                        <a href="{{ route('search.event', ['country' => $c]) }}"
                            class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
                     </nav>
                 </div>
@@ -78,11 +91,38 @@
                     <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
                 </div>
                 <div
-                    class="hidden lg:inline-flex lg:w-full lg:w-1/2 relative lg:mt-0 mt-20 flex items-center justify-center">
+                    x-data="{
+                        earth: null,
+                        init() {
+                            this.earth = new Earth(this.$refs.myearth, {
+                                location : {lat: 18, lng: 50},
+                                zoom: 1.05,
+                                light: 'none',
+
+                                transparent : true,
+                                mapSeaColor : 'RGBA(34, 34, 34,0.76)',
+                                mapLandColor : '#F7931A',
+                                mapBorderColor : '#5D5D5D',
+                                mapBorderWidth : 0.25,
+                                mapHitTest : true,
+
+                                autoRotate: true,
+                                autoRotateSpeed: 0.7,
+                                autoRotateDelay: 4000,
+                            });
+                            this.earth.addEventListener('ready', function() {
+                                @foreach($cities as $city)
+                                    this.addMarker( {
+                                        mesh : ['Needle'],
+                                        location : { lat: {{ $city->latitude }}, lng: {{ $city->longitude }} },
+                                    });
+                                @endforeach
+                            });
+                        }
+                    }" class="w-1/2">
                     {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
                          class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
-                    <img src="{{ asset('img/btc-logo-6219386_1280.png') }}"
-                         class="w-full md:w-auto w-72 max-w-md max-w-sm ml-4 md:ml-20 lg:ml-0 xl:max-w-lg relative">
+                    <div x-ref="myearth" class="earth-container"></div>
                 </div>
             </div>
         </div>
