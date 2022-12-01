@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Akuechler\Geoly;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
@@ -11,6 +12,7 @@ class City extends Model
 {
     use HasFactory;
     use HasSlug;
+    use Geoly;
 
     /**
      * The attributes that aren't mass assignable.
