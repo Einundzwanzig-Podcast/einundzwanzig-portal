@@ -4,20 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Lecturer extends Model
+class Lecturer extends Model implements HasMedia
 {
     use HasFactory;
     use HasSlug;
+    use InteractsWithMedia;
 
     /**
      * The attributes that aren't mass assignable.
      * @var array
      */
     protected $guarded = [];
-
     /**
      * The attributes that should be cast to native types.
      * @var array
@@ -27,6 +31,24 @@ class Lecturer extends Model
         'team_id' => 'integer',
         'active'  => 'boolean',
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
+        $this->addMediaConversion('thumb')
+             ->fit(Manipulations::FIT_CROP, 130, 130)
+             ->width(130)
+             ->height(130);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatar')
+             ->singleFile();
+    }
 
     /**
      * Get the options for generating the slug.

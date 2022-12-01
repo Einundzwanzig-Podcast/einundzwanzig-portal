@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Field;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -52,8 +52,9 @@ class Lecturer extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()
-              ->sortable(),
+            Images::make('Avatar', 'avatar') // second parameter is the media collection name
+                  ->conversionOnIndexView('thumb') // conversion used to display the image
+                  ->rules('required'), // validation rules
 
             Text::make('Name')
                 ->rules('required', 'string'),
