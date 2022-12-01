@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\LoginKey;
-use App\Models\User;
-use eza\lnurl;
 use Illuminate\Support\Facades\Route;
 
 /*
