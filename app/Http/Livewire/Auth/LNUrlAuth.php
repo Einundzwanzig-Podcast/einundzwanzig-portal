@@ -23,7 +23,7 @@ class LNUrlAuth extends Component
     public function mount()
     {
         $this->k1 = bin2hex(str()->random(32));
-        $this->url = url('/lnurl-auth-callback?tag=login&k1='.$this->k1.'&action=login');
+        $this->url = url('/api/lnurl-auth-callback?tag=login&k1='.$this->k1.'&action=login');
         $this->lnurl = lnurl\encodeUrl($this->url);
         $this->qrCode = QrCode::size(300)
                               ->generate($this->lnurl);
