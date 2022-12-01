@@ -10,16 +10,11 @@ class Lecturer extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'team_id',
-        'name',
-        'slug',
-        'active',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.

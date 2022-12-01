@@ -19,32 +19,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     link: function link(path) {
-      return "https://nova.laravel.com/docs/".concat(this.version, "/").concat(path);
+      return "/nova/".concat(path);
     }
   },
   computed: {
-    resources: function resources() {
-      return this.link('resources');
+    cities: function cities() {
+      return this.link('resources/cities');
     },
-    actions: function actions() {
-      return this.link('actions/defining-actions.html');
+    venues: function venues() {
+      return this.link('resources/venues');
     },
-    filters: function filters() {
-      return this.link('filters/defining-filters.html');
+    lecturers: function lecturers() {
+      return this.link('resources/lecturers');
     },
-    lenses: function lenses() {
-      return this.link('lenses/defining-lenses.html');
+    courses: function courses() {
+      return this.link('resources/courses');
     },
-    metrics: function metrics() {
-      return this.link('metrics/defining-metrics.html');
-    },
-    cards: function cards() {
-      return this.link('customization/cards.html');
-    },
-    version: function version() {
-      var parts = Nova.config('version').split('.');
-      parts.splice(-2);
-      return "".concat(parts, ".0");
+    events: function events() {
+      return this.link('resources/events');
     }
   }
 });
@@ -142,7 +134,10 @@ var _hoisted_25 = {
 var _hoisted_26 = {
   "class": "md:border-b-0 border-b border-gray-200 dark:border-gray-700"
 };
-var _hoisted_27 = ["href"];
+var _hoisted_27 = {
+  href: "#",
+  "class": "no-underline flex p-6"
+};
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center w-11 flex-shrink-0 mr-6"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -165,7 +160,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        href: $options.resources,
+        target: "_blank",
+        href: $options.cities,
         "class": "no-underline flex p-6"
       }, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
         level: 3
@@ -176,7 +172,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         _: 1 /* STABLE */
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Gehe auf die Seite "Städte" und suche nach der Stadt, in der du die Items anlegen möchtest. Wenn du die Stadt nicht findest, kannst du sie anlegen.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        href: $options.actions,
+        target: "_blank",
+        href: $options.venues,
         "class": "no-underline flex p-6"
       }, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
         level: 3
@@ -187,7 +184,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         _: 1 /* STABLE */
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Gehe auf die Seite "Veranstaltungs-Orte" und suche nach dem Ort, an dem du die Items anlegen möchtest. Wenn du den Ort nicht findest, kannst du ihn anlegen.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_11)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        href: $options.filters,
+        target: "_blank",
+        href: $options.lecturers,
         "class": "no-underline flex p-6"
       }, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
         level: 3
@@ -198,7 +196,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         _: 1 /* STABLE */
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Gehe auf die Seite "Dozenten" und suche nach deinem Dozenten-Profil. Wenn du es nicht findest, kannst du es anlegen.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        href: $options.lenses,
+        target: "_blank",
+        href: $options.courses,
         "class": "no-underline flex p-6"
       }, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
         level: 3
@@ -209,7 +208,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         _: 1 /* STABLE */
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Gehe auf die Seite "Kurse" und suche nach dem Kurs, den du editieren möchtest. Wenn du den Kurs nicht findest, kannst du ihn anlegen.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_19)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        href: $options.metrics,
+        target: "_blank",
+        href: $options.events,
         "class": "no-underline flex p-6"
       }, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
         level: 3
@@ -219,10 +219,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
 
         _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Gehe auf die Seite "Termine" und suche nach dem Termin, den du editieren möchtest. Wenn du den Termin nicht findest, kannst du ihn anlegen.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        href: $options.cards,
-        "class": "no-underline flex p-6"
-      }, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Gehe auf die Seite "Termine" und suche nach dem Termin, den du editieren möchtest. Wenn du den Termin nicht findest, kannst du ihn anlegen.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Heading, {
         level: 3
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -230,8 +227,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
 
         _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Wenn Buttons zur Bearbeitung fehlen, dann hast du nicht die nötigen Berechtigungen. Melde dich bei einem der Admins.')), 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_27)])])];
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('Wenn Buttons zur Bearbeitung fehlen, dann hast du nicht die nötigen Berechtigungen. Melde dich bei einem der Admins.')), 1 /* TEXT */)])])])])];
     }),
+
     _: 1 /* STABLE */
   })])]);
 }

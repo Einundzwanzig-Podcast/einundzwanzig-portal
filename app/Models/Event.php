@@ -10,16 +10,11 @@ class Event extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'course_id',
-        'venue_id',
-        'from',
-        'to',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
