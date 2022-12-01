@@ -35,7 +35,7 @@ class LecturerTable extends DataTableComponent
                          ->sortable(),
             Column::make('Kurse')
                   ->label(
-                      fn($row, Column $column) => random_int(0, 100)
+                      fn($row, Column $column) => $row->courses_count
                   ),
             Column::make('')
                   ->label(
@@ -47,6 +47,9 @@ class LecturerTable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return Lecturer::query();
+        return Lecturer::query()
+                       ->withCount([
+                           'courses',
+                       ]);
     }
 }

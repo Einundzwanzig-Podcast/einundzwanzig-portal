@@ -30,11 +30,11 @@ class CityTable extends DataTableComponent
                   ->searchable(),
             Column::make('Veranstaltungs-Orte')
                   ->label(
-                      fn($row, Column $column) => random_int(0, 100)
+                      fn($row, Column $column) => $row->venues_count
                   ),
-            Column::make('Kurse')
+            Column::make('Termine')
                   ->label(
-                      fn($row, Column $column) => random_int(0, 100)
+                      fn($row, Column $column) => $row->events_count
                   ),
             Column::make('')
                   ->label(
@@ -46,6 +46,10 @@ class CityTable extends DataTableComponent
     public function builder(): Builder
     {
         return City::query()
+                   ->withCount([
+                       'venues',
+                       'events',
+                   ])
                    ->whereHas('country', fn($query) => $query->where('code', $this->country));
     }
 
