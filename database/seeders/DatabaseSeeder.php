@@ -37,11 +37,13 @@ class DatabaseSeeder extends Seeder
             'password'          => bcrypt('1234'),
             'remember_token'    => Str::random(10),
         ]);
-        Team::create([
+        $team = Team::create([
             'name'          => 'Admin Team',
             'user_id'       => $user->id,
             'personal_team' => true,
         ]);
+        $user->current_team_id = $team->id;
+        $user->save();
         Country::create([
             'name' => 'Deutschland',
             'code' => 'de',

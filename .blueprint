@@ -8,16 +8,16 @@ created:
     - database/factories/VenueFactory.php
     - database/factories/EventFactory.php
     - database/factories/RegistrationFactory.php
-    - database/migrations/2022_11_30_170514_create_countries_table.php
-    - database/migrations/2022_11_30_170515_create_cities_table.php
-    - database/migrations/2022_11_30_170516_create_lecturers_table.php
-    - database/migrations/2022_11_30_170517_create_participants_table.php
-    - database/migrations/2022_11_30_170518_create_categories_table.php
-    - database/migrations/2022_11_30_170519_create_courses_table.php
-    - database/migrations/2022_11_30_170520_create_venues_table.php
-    - database/migrations/2022_11_30_170521_create_events_table.php
-    - database/migrations/2022_11_30_170522_create_registrations_table.php
-    - database/migrations/2022_11_30_170523_create_category_course_table.php
+    - database/migrations/2022_12_01_100450_create_countries_table.php
+    - database/migrations/2022_12_01_100451_create_cities_table.php
+    - database/migrations/2022_12_01_100452_create_lecturers_table.php
+    - database/migrations/2022_12_01_100453_create_participants_table.php
+    - database/migrations/2022_12_01_100454_create_categories_table.php
+    - database/migrations/2022_12_01_100455_create_courses_table.php
+    - database/migrations/2022_12_01_100456_create_venues_table.php
+    - database/migrations/2022_12_01_100457_create_events_table.php
+    - database/migrations/2022_12_01_100458_create_registrations_table.php
+    - database/migrations/2022_12_01_100459_create_category_course_table.php
     - app/Models/Country.php
     - app/Models/City.php
     - app/Models/Lecturer.php
