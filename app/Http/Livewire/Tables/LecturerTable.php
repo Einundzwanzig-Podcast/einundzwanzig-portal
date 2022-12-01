@@ -23,10 +23,10 @@ class LecturerTable extends DataTableComponent
         return [
             ImageColumn::make('')
                        ->location(
-                           fn($row) => 'https://avatars.dicebear.com/api/male/'.fake()->name().'.svg?background=%23000'
+                           fn($row) => $row->getFirstMediaUrl('avatar', 'thumb')
                        )
                        ->attributes(fn($row) => [
-                           'class' => 'rounded-full h-16 w-16',
+                           'class' => 'rounded h-16 w-16',
                            'alt'   => $row->name.' Avatar',
                        ]),
             Column::make("Name", "name")

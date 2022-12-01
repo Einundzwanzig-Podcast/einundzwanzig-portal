@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "akuechler/laravel-geoly": "^1.0",
+        "ebess/advanced-nova-media-library": "^4.0",
         "ezadr/lnurl-php": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "itsmejoshua/novaspatiepermissions": "^1.0",
@@ -23,6 +24,7 @@
         "rappasoft/laravel-livewire-tables": "^2.8",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-google-fonts": "^1.2",
+        "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.4",
         "stijnvanouplines/blade-country-flags": "^1.0",
         "symfony/http-client": "^6.2",
