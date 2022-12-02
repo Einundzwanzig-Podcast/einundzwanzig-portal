@@ -7,11 +7,11 @@
                 <label for="current-tab" class="sr-only">Select a tab</label>
                 <select id="current-tab" name="current-tab"
                         class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                    <option {{ route('search.city', ['country' => 'de']) ? 'selected' : '' }}>Städte</option>
-                    <option {{ route('search.lecturer', ['country' => 'de']) ? 'selected' : '' }}>Dozenten</option>
-                    <option {{ route('search.venue', ['country' => 'de']) ? 'selected' : '' }}>Veranstalungs-Orte
+                    <option {{ route('search.city', ['country' => $country]) ? 'selected' : '' }}>Städte</option>
+                    <option {{ route('search.lecturer', ['country' => $country]) ? 'selected' : '' }}>Dozenten</option>
+                    <option {{ route('search.venue', ['country' => $country]) ? 'selected' : '' }}>Veranstalungs-Orte
                     </option>
-                    <option {{ route('search.course', ['country' => 'de']) ? 'selected' : '' }}>Kurse</option>
+                    <option {{ route('search.course', ['country' => $country]) ? 'selected' : '' }}>Kurse</option>
                 </select>
             </div>
             <!-- Tabs at small breakpoint and up -->
@@ -21,19 +21,19 @@
                         $currentTab = 'border-amber-500 text-amber-600';
                         $notCurrentTab = 'border-transparent text-gray-200 hover:text-gray-400 hover:border-gray-300';
                     @endphp
-                    <a href="{{ route('search.city', ['country' => 'de']) }}"
+                    <a href="{{ route('search.city', ['country' => $country]).'#table' }}"
                        class="{{ request()->routeIs('search.city') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Städte</a>
 
-                    <a href="{{ route('search.lecturer', ['country' => 'de']) }}"
+                    <a href="{{ route('search.lecturer', ['country' => $country]).'#table' }}"
                        class="{{ request()->routeIs('search.lecturer') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
 
-                    <a href="{{ route('search.venue', ['country' => 'de']) }}"
+                    <a href="{{ route('search.venue', ['country' => $country]).'#table' }}"
                        class="{{ request()->routeIs('search.venue') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Veranstaltungs-Orte</a>
 
-                    <a href="{{ route('search.course', ['country' => 'de']) }}"
+                    <a href="{{ route('search.course', ['country' => $country]).'#table' }}"
                        class="{{ request()->routeIs('search.course') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Kurse</a>
 
-                    <a href="{{ route('search.event', ['country' => 'de']) }}"
+                    <a href="{{ route('search.event', ['country' => $country]).'#table' }}"
                        class="{{ request()->routeIs('search.event') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Termine</a>
 
                 </nav>
