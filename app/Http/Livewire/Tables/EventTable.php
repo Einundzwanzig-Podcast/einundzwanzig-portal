@@ -34,9 +34,15 @@ class EventTable extends DataTableComponent
                   ->sortable(),
             Column::make("Kurs", "course.name")
                   ->sortable(),
-            Column::make("Erstellt am", "created_at")
+            Column::make("Von", "from")
+                  ->format(
+                      fn($value, $row, Column $column) => $value->asDateTime()
+                  )
                   ->sortable(),
-            Column::make("Zuletzt geändert", "updated_at")
+            Column::make("Bis", "to")
+                  ->format(
+                      fn($value, $row, Column $column) => $value->asDateTime()
+                  )
                   ->sortable(),
             /*Column::make("Teilnehmer")
                   ->label(

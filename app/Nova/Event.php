@@ -57,11 +57,11 @@ class Event extends Resource
 
             DateTime::make('From')
                     ->rules('required')
-                    ->step(CarbonInterval::minutes(30)),
+                    ->step(CarbonInterval::minutes(30))->displayUsing(fn ($value) => $value->asDateTime()),
 
             DateTime::make('To')
                     ->rules('required')
-                    ->step(CarbonInterval::minutes(30)),
+                    ->step(CarbonInterval::minutes(30))->displayUsing(fn ($value) => $value->asDateTime()),
 
             BelongsTo::make('Course'),
             BelongsTo::make('Venue')

@@ -82,6 +82,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             // return MIT license and date
             return sprintf("%s %s - %s", date('Y'), config('app.name'), __('MIT License'));
         });
+
+        Nova::userTimezone(function (Request $request) {
+            return $request->user()->timezone;
+        });
     }
 
     /**

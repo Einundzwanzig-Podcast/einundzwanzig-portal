@@ -12,7 +12,11 @@ Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
      ->middleware('guest');
 
 Route::get('/{country:code}/suche/stadt', \App\Http\Livewire\Frontend\SearchCity::class)
-     ->name('search.city');
+     ->name('search.city')
+     ->where(
+         'country',
+         '(.*)'
+     );
 
 Route::get('/{country:code}/suche/dozent', \App\Http\Livewire\Frontend\SearchLecturer::class)
      ->name('search.lecturer');

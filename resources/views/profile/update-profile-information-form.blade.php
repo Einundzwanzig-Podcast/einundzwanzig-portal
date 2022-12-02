@@ -84,6 +84,12 @@
                 @endif
             @endif
         </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="timezone" value="{{ __('Timezone') }}"/>
+            <x-select :clearable="false" wire:model.defer="state.timezone" id="timezone"
+                      :options="collect(Timezonelist::toArray(false))->collapse()->keys()"/>
+        </div>
     </x-slot>
 
     <x-slot name="actions">

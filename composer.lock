@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b14fa82c7df08a15f0e0584c572402b",
+    "content-hash": "ff5b859d3c6ae9f19b73878a2e055f42",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -2005,6 +2005,66 @@
             "time": "2022-05-16T01:34:26+00:00"
         },
         {
+            "name": "jackiedo/timezonelist",
+            "version": "5.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JackieDo/Timezone-List.git",
+                "reference": "f1c64d0159b4401a78c7ab536505175238c38837"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JackieDo/Timezone-List/zipball/f1c64d0159b4401a78c7ab536505175238c38837",
+                "reference": "f1c64d0159b4401a78c7ab536505175238c38837",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                },
+                "laravel": {
+                    "aliases": {
+                        "Timezonelist": "Jackiedo\\Timezonelist\\Facades\\Timezonelist"
+                    },
+                    "providers": [
+                        "Jackiedo\\Timezonelist\\TimezonelistServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jackiedo\\Timezonelist\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jackie Do",
+                    "email": "anhvudo@gmail.com"
+                }
+            ],
+            "description": "A small package use to create a timezone list box in Laravel",
+            "keywords": [
+                "laravel",
+                "timezone",
+                "timezonelist",
+                "timezones"
+            ],
+            "support": {
+                "issues": "https://github.com/JackieDo/Timezone-List/issues",
+                "source": "https://github.com/JackieDo/Timezone-List/tree/5.1.3"
+            },
+            "time": "2022-03-17T15:10:43+00:00"
+        },
+        {
             "name": "jaybizzle/crawler-detect",
             "version": "v1.2.112",
             "source": {
@@ -3656,16 +3716,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.63.0",
+            "version": "2.64.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "ad35dd71a6a212b98e4b87e97389b6fa85f0e347"
+                "reference": "889546413c97de2d05063b8cb7b193c2531ea211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ad35dd71a6a212b98e4b87e97389b6fa85f0e347",
-                "reference": "ad35dd71a6a212b98e4b87e97389b6fa85f0e347",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/889546413c97de2d05063b8cb7b193c2531ea211",
+                "reference": "889546413c97de2d05063b8cb7b193c2531ea211",
                 "shasum": ""
             },
             "require": {
@@ -3676,7 +3736,7 @@
                 "symfony/translation": "^3.4 || ^4.0 || ^5.0 || ^6.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^2.0 || ^3.0",
+                "doctrine/dbal": "^2.0 || ^3.1.4",
                 "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
@@ -3754,7 +3814,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-30T18:34:28+00:00"
+            "time": "2022-11-26T17:36:00+00:00"
         },
         {
             "name": "nette/schema",
@@ -10996,16 +11056,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "12.5.4",
+            "version": "12.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "94ae1763dd0750ed97034c20949e481ccf13baac"
+                "reference": "6d4f8ccd4694530f0c4c424eded37d5b1308c062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/94ae1763dd0750ed97034c20949e481ccf13baac",
-                "reference": "94ae1763dd0750ed97034c20949e481ccf13baac",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/6d4f8ccd4694530f0c4c424eded37d5b1308c062",
+                "reference": "6d4f8ccd4694530f0c4c424eded37d5b1308c062",
                 "shasum": ""
             },
             "require": {
@@ -11067,7 +11127,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-11-27T15:40:48+00:00"
+            "time": "2022-12-01T13:15:55+00:00"
         },
         {
             "name": "laravel-lang/publisher",
