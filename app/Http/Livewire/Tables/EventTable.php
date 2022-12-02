@@ -44,7 +44,10 @@ class EventTable extends DataTableComponent
                   ->sortable(),
             Column::make("Veranstaltungs-Ort", "venue.name")
                   ->sortable(),
-            Column::make("Dozent", "course.lecturer.name")
+            Column::make('Dozent', "course.lecturer.name")
+                  ->label(
+                      fn($row, Column $column) => view('columns.events.lecturer')->withRow($row)
+                  )
                   ->sortable(),
             Column::make("Kurs", "course.name")
                   ->sortable(),
