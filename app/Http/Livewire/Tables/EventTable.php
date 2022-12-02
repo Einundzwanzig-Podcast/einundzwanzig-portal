@@ -20,7 +20,9 @@ class EventTable extends DataTableComponent
             ->setAdditionalSelects([
                 'course_id',
                 'venue_id',
-            ]);
+            ])
+            ->setColumnSelectStatus(false)
+            ->setPerPage(50);
     }
 
     public function columns(): array

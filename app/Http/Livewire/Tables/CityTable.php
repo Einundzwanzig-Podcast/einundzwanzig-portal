@@ -19,7 +19,9 @@ class CityTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['id']);
+             ->setAdditionalSelects(['id'])
+             ->setColumnSelectStatus(false)
+             ->setPerPage(50);
     }
 
     public function columns(): array
