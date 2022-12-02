@@ -21,7 +21,10 @@ class CourseTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Dozent", "lecturer.name")
+            Column::make('Dozent', "lecturer.name")
+                  ->label(
+                      fn($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
+                  )
                   ->sortable(),
             Column::make("Name", "name")
                   ->sortable(),
