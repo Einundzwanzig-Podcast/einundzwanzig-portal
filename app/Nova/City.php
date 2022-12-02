@@ -53,12 +53,12 @@ class City extends Resource
             Number::make('Latitude')
                   ->rules('required', 'numeric')
                   ->step(0.000001)
-                  ->help('https://latitude.to/lat/47.72671/lng/10.31688'),
+                  ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
             Number::make('Longitude')
                   ->rules('required', 'numeric')
                   ->step(0.000001)
-                  ->help('https://latitude.to/lat/47.72671/lng/10.31688'),
+                  ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
             BelongsTo::make('Country'),
 
