@@ -49,6 +49,8 @@ class Lecturer extends Model implements HasMedia
         $this->addMediaCollection('avatar')
              ->singleFile()
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
+        $this->addMediaCollection('images')
+             ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
     /**
