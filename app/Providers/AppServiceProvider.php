@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
@@ -10,22 +12,22 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
      * @return void
      */
     public function register()
     {
-        //
+        Date::use(
+            Carbon::class
+        );
     }
 
     /**
      * Bootstrap any application services.
-     *
      * @return void
      */
     public function boot()
     {
-        Stringable::macro('initials', function(){
+        Stringable::macro('initials', function () {
             $words = preg_split("/\s+/", $this);
             $initials = "";
 
@@ -35,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
 
             return new static($initials);
         });
-        Str::macro('initials', function(string $string){
+        Str::macro('initials', function (string $string) {
             return (string) (new Stringable($string))->initials();
         });
     }

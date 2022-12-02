@@ -107,9 +107,9 @@ class DatabaseSeeder extends Seeder
         Event::create([
             'course_id' => 1,
             'venue_id'  => 1,
-            'from'      => now()->addDays(10),
+            'from'      => now()->startOfDay(),
             'to'        => now()
-                ->addDays(10)
+                ->startOfDay()
                 ->addHour(),
         ]);
         Registration::create([
