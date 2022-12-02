@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -56,8 +57,12 @@ class Lecturer extends Resource
             ID::make()
               ->sortable(),
 
-            Images::make('Avatar', 'avatar') // second parameter is the media collection name
-                  ->conversionOnIndexView('thumb'), // conversion used to display the image
+            Images::make('Avatar', 'avatar')
+                  ->conversionOnIndexView('thumb'),
+
+            Images::make('Images', 'images')
+                  ->conversionOnIndexView('thumb')
+                  ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
 
             Text::make('Name')
                 ->rules('required', 'string'),
@@ -69,6 +74,10 @@ class Lecturer extends Resource
             Boolean::make('Active')
                    ->rules('required')
                    ->default(true),
+
+            Markdown::make('Description')
+                    ->alwaysShow()
+                    ->help('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.'),
 
             BelongsTo::make('Team'),
 

@@ -45,7 +45,7 @@ class LecturerTable extends DataTableComponent
                        ]),
             Column::make("Name", "name")
                   ->sortable(),
-            BooleanColumn::make("Aktiv", "active")
+            BooleanColumn::make("Aktiv", 'active')
                          ->sortable(),
             Column::make('Kurse')
                   ->label(
