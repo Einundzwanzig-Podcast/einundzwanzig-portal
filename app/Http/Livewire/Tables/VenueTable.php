@@ -6,6 +6,7 @@ use App\Models\Venue;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
 class VenueTable extends DataTableComponent
 {
@@ -21,6 +22,14 @@ class VenueTable extends DataTableComponent
     public function columns(): array
     {
         return [
+            ImageColumn::make('')
+                       ->location(
+                           fn($row) => $row->getFirstMediaUrl('images', 'thumb')
+                       )
+                       ->attributes(fn($row) => [
+                           'class' => 'rounded h-16 w-16',
+                           'alt'   => $row->name.' Avatar',
+                       ]),
             Column::make("Name", "name")
                   ->sortable(),
             Column::make("Street", "street")

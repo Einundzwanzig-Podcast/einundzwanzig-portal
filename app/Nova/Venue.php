@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -42,6 +43,9 @@ class Venue extends Resource
         return [
             ID::make()
               ->sortable(),
+
+            Images::make('Bilder', 'images') // second parameter is the media collection name
+                  ->conversionOnIndexView('thumb'), // conversion used to display the image
 
             Text::make('Name')
                 ->rules('required', 'string'),
