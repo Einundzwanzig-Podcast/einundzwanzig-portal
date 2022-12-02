@@ -15,7 +15,9 @@ class LecturerTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+             ->setColumnSelectStatus(false)
+             ->setPerPage(50);
     }
 
     public function columns(): array
