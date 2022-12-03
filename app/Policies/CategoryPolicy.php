@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CategoryPolicy
+class CategoryPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 

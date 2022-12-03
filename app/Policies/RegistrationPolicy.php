@@ -6,7 +6,7 @@ use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class RegistrationPolicy
+class RegistrationPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 
