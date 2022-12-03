@@ -11,10 +11,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('lecturers', function (Blueprint $table) {
-            $table->longText('description')
-                  ->fulltext()
-                  ->nullable();
+        Schema::table('events', function (Blueprint $table) {
+            $table->string('link');
         });
     }
 
@@ -24,7 +22,7 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('lecturers', function (Blueprint $table) {
+        Schema::table('events', function (Blueprint $table) {
             //
         });
     }

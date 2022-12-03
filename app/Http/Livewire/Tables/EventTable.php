@@ -13,6 +13,10 @@ class EventTable extends DataTableComponent
 
     protected $model = Event::class;
 
+    public bool $viewingModal = false;
+
+    public $currentModal;
+
     public function configure(): void
     {
         $this
@@ -51,6 +55,10 @@ class EventTable extends DataTableComponent
                   ->sortable(),
             Column::make("Kurs", "course.name")
                   ->sortable(),
+            Column::make("Art")
+                  ->label(
+                      fn($row, Column $column) => view('columns.events.categories')->withRow($row)
+                  ),
             Column::make("Von", "from")
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
@@ -82,5 +90,21 @@ class EventTable extends DataTableComponent
                     ])
                     ->whereHas('venue.city.country',
                         fn($query) => $query->where('countries.code', $this->country));
+    }
+
+    public function viewHistoryModal($modelId): void
+    {
+        $this->viewingModal = true;
+        $this->currentModal = Event::findOrFail($modelId);
+    }
+
+    public function resetModal(): void
+    {
+        $this->reset('viewingModal', 'currentModal');
+    }
+
+    public function customView(): string
+    {
+        return 'modals.events.register';
     }
 }

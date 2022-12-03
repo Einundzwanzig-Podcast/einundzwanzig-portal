@@ -1,1 +1,1 @@
-<x-button amber>Anmelden</x-button>
+<x-button amber wire:click="viewHistoryModal({{ $row->id }})">Anmelden</x-button>

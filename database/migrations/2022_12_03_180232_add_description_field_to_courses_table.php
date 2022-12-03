@@ -11,7 +11,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('lecturers', function (Blueprint $table) {
+        Schema::table('courses', function (Blueprint $table) {
             $table->longText('description')
                   ->fulltext()
                   ->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('lecturers', function (Blueprint $table) {
+        Schema::table('courses', function (Blueprint $table) {
             //
         });
     }
