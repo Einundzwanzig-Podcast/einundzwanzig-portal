@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Präsenzunterricht',
             'slug' => str('Präsenzunterricht')->slug('-', 'de'),
         ]);
-        Category::create([
+        $categoryOnline = Category::create([
             'name' => 'Online-Kurs',
             'slug' => str('Online-Kurs')->slug('-', 'de'),
         ]);
@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
             'name'        => 'Bitcoin <> Crypto',
         ]);
         $course->categories()
-               ->attach($category);
+               ->attach($categoryOnline);
         Participant::create([
             'first_name' => 'Roman',
             'last_name'  => 'Reher',
@@ -135,8 +135,11 @@ class DatabaseSeeder extends Seeder
             'course_id' => 2,
             'venue_id'  => 1,
             'link'      => 'https://einundzwanzig.space',
-            'from'      => now()->addDays(14)->startOfDay(),
-            'to'        => now()->addDays(14)
+            'from'      => now()
+                ->addDays(14)
+                ->startOfDay(),
+            'to'        => now()
+                ->addDays(14)
                 ->startOfDay()
                 ->addHour(),
         ]);
@@ -144,8 +147,11 @@ class DatabaseSeeder extends Seeder
             'course_id' => 1,
             'venue_id'  => 2,
             'link'      => 'https://einundzwanzig.space',
-            'from'      => now()->addDays(3)->startOfDay(),
-            'to'        => now()->addDays(3)
+            'from'      => now()
+                ->addDays(3)
+                ->startOfDay(),
+            'to'        => now()
+                ->addDays(3)
                 ->startOfDay()
                 ->addHour(),
         ]);
@@ -153,8 +159,11 @@ class DatabaseSeeder extends Seeder
             'course_id' => 1,
             'venue_id'  => 3,
             'link'      => 'https://einundzwanzig.space',
-            'from'      => now()->addDays(4)->startOfDay(),
-            'to'        => now()->addDays(4)
+            'from'      => now()
+                ->addDays(4)
+                ->startOfDay(),
+            'to'        => now()
+                ->addDays(4)
                 ->startOfDay()
                 ->addHour(),
         ]);
