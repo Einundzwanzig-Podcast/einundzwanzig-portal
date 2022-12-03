@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Venue;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class VenuePolicy
+class VenuePolicy extends BasePolicy
 {
     use HandlesAuthorization;
 

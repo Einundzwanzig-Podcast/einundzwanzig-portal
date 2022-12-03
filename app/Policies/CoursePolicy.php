@@ -6,7 +6,7 @@ use App\Models\Course;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CoursePolicy
+class CoursePolicy extends BasePolicy
 {
     use HandlesAuthorization;
 

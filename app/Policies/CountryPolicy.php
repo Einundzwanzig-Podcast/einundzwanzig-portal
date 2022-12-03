@@ -6,7 +6,7 @@ use App\Models\Country;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CountryPolicy
+class CountryPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 

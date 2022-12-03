@@ -6,7 +6,7 @@ use App\Models\City;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CityPolicy
+class CityPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 
