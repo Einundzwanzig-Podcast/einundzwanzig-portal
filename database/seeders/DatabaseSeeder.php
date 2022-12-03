@@ -107,6 +107,7 @@ class DatabaseSeeder extends Seeder
         Event::create([
             'course_id' => 1,
             'venue_id'  => 1,
+            'link'      => 'https://einundzwanzig.space',
             'from'      => now()->startOfDay(),
             'to'        => now()
                 ->startOfDay()

@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Event extends Resource
@@ -55,13 +56,18 @@ class Event extends Resource
             ID::make()
               ->sortable(),
 
+            URL::make('Link')
+               ->rules('required', 'url'),
+
             DateTime::make('From')
                     ->rules('required')
-                    ->step(CarbonInterval::minutes(30))->displayUsing(fn ($value) => $value->asDateTime()),
+                    ->step(CarbonInterval::minutes(30))
+                    ->displayUsing(fn($value) => $value->asDateTime()),
 
             DateTime::make('To')
                     ->rules('required')
-                    ->step(CarbonInterval::minutes(30))->displayUsing(fn ($value) => $value->asDateTime()),
+                    ->step(CarbonInterval::minutes(30))
+                    ->displayUsing(fn($value) => $value->asDateTime()),
 
             BelongsTo::make('Course'),
             BelongsTo::make('Venue')

@@ -3132,16 +3132,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.10.4",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a7790f3dd1b27af81d380e6b2afa77c16ab7e181"
+                "reference": "7e423e5dd240a60adfab9bde058d7668863b7731"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a7790f3dd1b27af81d380e6b2afa77c16ab7e181",
-                "reference": "a7790f3dd1b27af81d380e6b2afa77c16ab7e181",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7e423e5dd240a60adfab9bde058d7668863b7731",
+                "reference": "7e423e5dd240a60adfab9bde058d7668863b7731",
                 "shasum": ""
             },
             "require": {
@@ -3203,7 +3203,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.10.4"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.11.0"
             },
             "funding": [
                 {
@@ -3219,7 +3219,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-26T19:48:01+00:00"
+            "time": "2022-12-02T14:39:57+00:00"
         },
         {
             "name": "league/glide",
@@ -11254,16 +11254,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "12.5.5",
+            "version": "12.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "6d4f8ccd4694530f0c4c424eded37d5b1308c062"
+                "reference": "f0503d6bb897070c906847858eab9b4d6e40a85c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/6d4f8ccd4694530f0c4c424eded37d5b1308c062",
-                "reference": "6d4f8ccd4694530f0c4c424eded37d5b1308c062",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/f0503d6bb897070c906847858eab9b4d6e40a85c",
+                "reference": "f0503d6bb897070c906847858eab9b4d6e40a85c",
                 "shasum": ""
             },
             "require": {
@@ -11325,7 +11325,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-12-01T13:15:55+00:00"
+            "time": "2022-12-03T12:40:40+00:00"
         },
         {
             "name": "laravel-lang/publisher",
