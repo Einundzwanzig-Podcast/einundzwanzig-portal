@@ -21,7 +21,7 @@
                             @foreach($currentModal?->course->getMedia('images') ?? [] as $image)
                                 <div class="w-48 h-48">
                                     <img class="rounded-3xl object-cover object-center shadow-2xl w-48 h-48"
-                                         src="{{ $image->getUrl() }}"
+                                         src="{{ $image->getUrl('preview') }}"
                                          alt="{{ $currentModal?->course->name }}">
                                 </div>
                             @endforeach
@@ -37,7 +37,7 @@
                             <div class="flex items-center justify-between">
                                 <h2 class="text-3xl font-bold tracking-tight text-white"
                                     id="join-heading">{{ __('Lecturer') }}: {{ $currentModal?->course->lecturer->name }}</h2>
-                                <img class="w-12 h-12 object-cover"
+                                <img class="w-12 h-12 object-cover rounded"
                                      src="{{ $currentModal?->course->lecturer->getFirstMediaUrl('avatar', 'thumb') }}" alt="{{ $currentModal?->course->lecturer->name }}"/>
                             </div>
                             <h2 class="text-3xl font-bold tracking-tight text-white"
