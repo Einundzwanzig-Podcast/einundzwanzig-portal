@@ -2,25 +2,26 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Models\Category;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class EventTable extends DataTableComponent
 {
     public string $country;
-
-    protected $model = Event::class;
-
     public bool $viewingModal = false;
-
     public $currentModal;
+    protected $model = Event::class;
 
     public function configure(): void
     {
         $this
             ->setPrimaryKey('id')
+            ->setDefaultSort('from', 'asc')
             ->setAdditionalSelects([
                 'course_id',
                 'venue_id',
@@ -39,6 +40,40 @@ class EventTable extends DataTableComponent
             })
             ->setColumnSelectStatus(false)
             ->setPerPage(50);
+    }
+
+    public function filters(): array
+    {
+        return [
+            TextFilter::make('Stadt')
+                      ->config([
+                          'placeholder' => __('Suche Stadt'),
+                      ])
+                      ->filter(function (Builder $builder, string $value) {
+                          if (str($value)->contains(',')) {
+                              $builder
+                                  ->whereHas('venue.city',
+                                      function ($query) use ($value) {
+                                          foreach (str($value)->explode(',') as $item) {
+                                              $query->orWhere('cities.name', 'ilike', "%$item%");
+                                          }
+                                      });
+                          } else {
+                              $builder->whereHas('venue.city',
+                                  fn($query) => $query->where('cities.name', 'ilike', "%$value%"));
+                          }
+                      }),
+            MultiSelectFilter::make('Art')
+                             ->options(
+                                 Category::query()
+                                         ->pluck('name', 'id')
+                                         ->toArray()
+                             )
+                             ->filter(function (Builder $builder, array $values) {
+                                 $builder->whereHas('course.categories',
+                                     fn($query) => $query->whereIn('categories.id', $values));
+                             }),
+        ];
     }
 
     public function columns(): array

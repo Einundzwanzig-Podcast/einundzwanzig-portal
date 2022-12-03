@@ -73,8 +73,16 @@ class CityTable extends DataTableComponent
                     ->find($id);
         $query = City::radius($city->latitude, $city->longitude, 100)
                      ->where('id', '!=', $id);
-        $this->notification()
-             ->success('Proximity Search', 'Found '.$query->count().' cities. '.$query->pluck('name')
-                                                                                      ->implode(', '));
+        return to_route('search.event', [
+            '#table',
+            'country' => $this->country,
+            'table'   => [
+                'filters' => [
+                    'stadt' => $query->pluck('name')
+                                     ->push($city->name)
+                                     ->implode(',')
+                ],
+            ]
+        ]);
     }
 }
