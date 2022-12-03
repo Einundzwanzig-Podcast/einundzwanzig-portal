@@ -64,6 +64,18 @@ class DatabaseSeeder extends Seeder
             'longitude'  => 10.70171,
         ]);
         City::create([
+            'country_id' => 1,
+            'name'       => 'Kempten',
+            'latitude'   => 47.728569,
+            'longitude'  => 10.315784,
+        ]);
+        City::create([
+            'country_id' => 1,
+            'name'       => 'Pfronten',
+            'latitude'   => 47.582359,
+            'longitude'  => 10.5598,
+        ]);
+        City::create([
             'country_id' => 2,
             'name'       => 'Wien',
             'latitude'   => 48.20835,
@@ -77,8 +89,18 @@ class DatabaseSeeder extends Seeder
         ]);
         Venue::create([
             'city_id' => 1,
-            'name'    => 'The Blue Studio Coworking',
-            'street'  => 'Teststraße 12',
+            'name'    => 'The Blue Studio Coworking (Füssen)',
+            'street'  => 'Teststraße 1',
+        ]);
+        Venue::create([
+            'city_id' => 2,
+            'name'    => 'The Blue Studio Coworking (Kempten)',
+            'street'  => 'Teststraße 2',
+        ]);
+        Venue::create([
+            'city_id' => 3,
+            'name'    => 'The Blue Studio Coworking (Pfronten)',
+            'street'  => 'Teststraße 3',
         ]);
         Lecturer::create([
             'team_id' => 1,
@@ -99,16 +121,40 @@ class DatabaseSeeder extends Seeder
         ]);
         $course->categories()
                ->attach($category);
+        $course = Course::create([
+            'lecturer_id' => 1,
+            'name'        => 'Bitcoin <> Crypto',
+        ]);
+        $course->categories()
+               ->attach($category);
         Participant::create([
             'first_name' => 'Roman',
             'last_name'  => 'Reher',
         ]);
         Event::create([
-            'course_id' => 1,
+            'course_id' => 2,
             'venue_id'  => 1,
             'link'      => 'https://einundzwanzig.space',
-            'from'      => now()->startOfDay(),
-            'to'        => now()
+            'from'      => now()->addDays(14)->startOfDay(),
+            'to'        => now()->addDays(14)
+                ->startOfDay()
+                ->addHour(),
+        ]);
+        Event::create([
+            'course_id' => 1,
+            'venue_id'  => 2,
+            'link'      => 'https://einundzwanzig.space',
+            'from'      => now()->addDays(3)->startOfDay(),
+            'to'        => now()->addDays(3)
+                ->startOfDay()
+                ->addHour(),
+        ]);
+        Event::create([
+            'course_id' => 1,
+            'venue_id'  => 3,
+            'link'      => 'https://einundzwanzig.space',
+            'from'      => now()->addDays(4)->startOfDay(),
+            'to'        => now()->addDays(4)
                 ->startOfDay()
                 ->addHour(),
         ]);
