@@ -11,7 +11,7 @@
         }
     </style>
     <section class="w-full">
-        <div class="max-w-screen-2xl mx-auto px-10">
+        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
             <div class="relative sm:sticky sm:top-0 bg-21gray z-50 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
                     <a href="{{ route('search.city', ['country' => $c]) }}"
