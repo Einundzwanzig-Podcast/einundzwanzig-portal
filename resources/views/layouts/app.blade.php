@@ -8,6 +8,7 @@
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     <wireui:scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->

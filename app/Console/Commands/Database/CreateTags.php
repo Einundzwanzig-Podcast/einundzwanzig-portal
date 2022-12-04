@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Console\Commands\Database;
+
+use App\Models\Tag;
+use Illuminate\Console\Command;
+
+class CreateTags extends Command
+{
+    /**
+     * The name and signature of the console command.
+     * @var string
+     */
+    protected $signature = 'tags:create';
+
+    /**
+     * The console command description.
+     * @var string
+     */
+    protected $description = 'Command description';
+
+    /**
+     * Execute the console command.
+     * @return int
+     */
+    public function handle()
+    {
+        $tags = config('tags.tags');
+        foreach ($tags as $tag) {
+            $t = Tag::findOrCreate($tag['de'], 'search');
+            $t->icon = $tag['icon'];
+            $t->setTranslation('name', 'en', $tag['en']);
+            $t->save();
+        }
+
+        return Command::SUCCESS;
+    }
+}

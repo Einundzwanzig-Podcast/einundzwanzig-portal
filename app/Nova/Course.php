@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Spatie\TagsField\Tags;
 use ZiffMedia\NovaSelectPlus\SelectPlus;
 
 class Course extends Resource
@@ -64,6 +65,8 @@ class Course extends Resource
             Images::make('Images', 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
+
+            Tags::make('Tags')->type('search')->withLinkToTagResource(Tag::class),
 
             Text::make('Name')
                 ->rules('required', 'string'),

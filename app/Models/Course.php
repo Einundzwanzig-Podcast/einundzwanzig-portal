@@ -8,11 +8,13 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Tags\HasTags;
 
 class Course extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use HasTags;
 
     /**
      * The attributes that aren't mass assignable.

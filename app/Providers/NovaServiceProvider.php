@@ -11,6 +11,7 @@ use App\Nova\Event;
 use App\Nova\Lecturer;
 use App\Nova\Participant;
 use App\Nova\Registration;
+use App\Nova\Tag;
 use App\Nova\Team;
 use App\Nova\User;
 use App\Nova\Venue;
@@ -54,6 +55,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Country::class),
                     MenuItem::resource(Team::class),
                     MenuItem::resource(User::class),
+                    MenuItem::resource(Tag::class),
                 ])
                            ->icon('key')
                            ->collapsable(),

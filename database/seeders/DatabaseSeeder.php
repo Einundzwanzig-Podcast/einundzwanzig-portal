@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Console\Commands\Database\CreateTags;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
@@ -15,6 +16,7 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\Venue;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
@@ -26,6 +28,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Artisan::call(CreateTags::class);
         Role::create([
             'name'       => 'super-admin',
             'guard_name' => 'web',
@@ -124,18 +127,21 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 1,
             'name'        => 'Hands on Bitcoin',
         ]);
+        $course->syncTagsWithType(['Hardware Wallet'],'search');
         $course->categories()
                ->attach($category);
         $course = Course::create([
             'lecturer_id' => 1,
             'name'        => 'Bitcoin <> Crypto',
         ]);
+        $course->syncTagsWithType(['Lightning'],'search');
         $course->categories()
                ->attach($categoryOnline);
         $course = Course::create([
             'lecturer_id' => 2,
             'name'        => 'Bitcoin Lightning Network',
         ]);
+        $course->syncTagsWithType(['Für Unternehmen'],'search');
         $course->categories()
                ->attach($categoryOnline);
         Participant::create([

@@ -20,15 +20,15 @@
                     </a>
                     <nav
                         class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
-                        <a href="{{ route('search.city', ['country' => $c]) }}"
+                        <a href="{{ route('search.city', ['country' => $c, '#table']) }}"
                            class="{{ request()->routeIs('search.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Städte</a>
-                        <a href="{{ route('search.lecturer', ['country' => $c]) }}"
+                        <a href="{{ route('search.lecturer', ['country' => $c, '#table']) }}"
                            class="{{ request()->routeIs('search.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten</a>
-                        <a href="{{ route('search.venue', ['country' => $c]) }}"
+                        <a href="{{ route('search.venue', ['country' => $c, '#table']) }}"
                            class="{{ request()->routeIs('search.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
-                        <a href="{{ route('search.course', ['country' => $c]) }}"
+                        <a href="{{ route('search.course', ['country' => $c, '#table']) }}"
                            class="{{ request()->routeIs('search.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
-                        <a href="{{ route('search.event', ['country' => $c]) }}"
+                        <a href="{{ route('search.event', ['country' => $c, '#table']) }}"
                            class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
                     </nav>
                 </div>
