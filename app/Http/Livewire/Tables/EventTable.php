@@ -4,10 +4,12 @@ namespace App\Http\Livewire\Tables;
 
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Lecturer;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class EventTable extends DataTableComponent
@@ -54,14 +56,34 @@ class EventTable extends DataTableComponent
                               $builder
                                   ->whereHas('venue.city',
                                       function ($query) use ($value) {
-                                          foreach (str($value)->explode(',') as $item) {
-                                              $query->orWhere('cities.name', 'ilike', "%$item%");
-                                          }
+                                          $query->whereIn('cities.name', str($value)->explode(','));
                                       });
                           } else {
                               $builder->whereHas('venue.city',
                                   fn($query) => $query->where('cities.name', 'ilike', "%$value%"));
                           }
+                      }),
+            TextFilter::make('Veranstaltungs-Ort', 'venue')
+                      ->config([
+                          'placeholder' => __('Suche Veranstaltungs-Ort'),
+                      ])
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereHas('venue',
+                              fn($query) => $query->where('venues.name', 'ilike', "%$value%"));
+                      }),
+            TextFilter::make('Kurs')
+                      ->config([
+                          'placeholder' => __('Suche Kurs'),
+                      ])
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereHas('course',
+                              fn($query) => $query->where('courses.name', 'ilike', "%$value%"));
+                      }),
+            TextFilter::make('Kurs by ID', 'course_id')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereHas('course',
+                              fn($query) => $query->where('courses.id', '=', $value));
                       }),
             MultiSelectFilter::make('Art')
                              ->options(
@@ -73,6 +95,16 @@ class EventTable extends DataTableComponent
                                  $builder->whereHas('course.categories',
                                      fn($query) => $query->whereIn('categories.id', $values));
                              }),
+            SelectFilter::make('Dozent')
+                        ->options(
+                            Lecturer::query()
+                                    ->pluck('name', 'id')
+                                    ->toArray()
+                        )
+                        ->filter(function (Builder $builder, string $value) {
+                            $builder->whereHas('course.lecturer',
+                                fn($query) => $query->where('lecturers.id', $value));
+                        }),
         ];
     }
 

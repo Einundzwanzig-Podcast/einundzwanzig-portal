@@ -34,9 +34,12 @@ class Header extends Component
     public function render()
     {
         return view('livewire.frontend.header', [
-            'cities' => City::query()
-                            ->select(['latitude', 'longitude'])
-                            ->get(),
+            'cities'    => City::query()
+                               ->select(['latitude', 'longitude'])
+                               ->get(),
+            'countries' => Country::query()
+                                  ->select(['code', 'name'])
+                                  ->get(),
         ]);
     }
 }

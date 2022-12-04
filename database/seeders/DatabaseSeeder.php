@@ -107,6 +107,11 @@ class DatabaseSeeder extends Seeder
             'name'    => 'Markus Turm',
             'active'  => true,
         ]);
+        Lecturer::create([
+            'team_id' => 1,
+            'name'    => 'Beppo',
+            'active'  => true,
+        ]);
         $category = Category::create([
             'name' => 'Präsenzunterricht',
             'slug' => str('Präsenzunterricht')->slug('-', 'de'),
@@ -124,6 +129,12 @@ class DatabaseSeeder extends Seeder
         $course = Course::create([
             'lecturer_id' => 1,
             'name'        => 'Bitcoin <> Crypto',
+        ]);
+        $course->categories()
+               ->attach($categoryOnline);
+        $course = Course::create([
+            'lecturer_id' => 2,
+            'name'        => 'Bitcoin Lightning Network',
         ]);
         $course->categories()
                ->attach($categoryOnline);
@@ -157,6 +168,18 @@ class DatabaseSeeder extends Seeder
         ]);
         Event::create([
             'course_id' => 1,
+            'venue_id'  => 3,
+            'link'      => 'https://einundzwanzig.space',
+            'from'      => now()
+                ->addDays(4)
+                ->startOfDay(),
+            'to'        => now()
+                ->addDays(4)
+                ->startOfDay()
+                ->addHour(),
+        ]);
+        Event::create([
+            'course_id' => 3,
             'venue_id'  => 3,
             'link'      => 'https://einundzwanzig.space',
             'from'      => now()

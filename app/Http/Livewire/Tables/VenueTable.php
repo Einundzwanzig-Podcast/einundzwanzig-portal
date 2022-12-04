@@ -67,4 +67,19 @@ class VenueTable extends DataTableComponent
                     ])
                     ->whereHas('city.country', fn($query) => $query->where('code', $this->country));
     }
+
+    public function venueSearch($id)
+    {
+        $venue = Venue::query()->find($id);
+
+        return to_route('search.event', [
+            '#table',
+            'country' => $this->country,
+            'table'   => [
+                'filters' => [
+                    'venue' => $venue->name,
+                ],
+            ]
+        ]);
+    }
 }

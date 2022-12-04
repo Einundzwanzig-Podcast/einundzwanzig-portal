@@ -66,4 +66,17 @@ class CourseTable extends DataTableComponent
                      ->whereHas('events.venue.city.country',
                          fn($query) => $query->where('countries.code', $this->country));
     }
+
+    public function courseSearch($id)
+    {
+        return to_route('search.event', [
+            '#table',
+            'country' => $this->country,
+            'table'   => [
+                'filters' => [
+                    'course_id' => $id,
+                ],
+            ]
+        ]);
+    }
 }
