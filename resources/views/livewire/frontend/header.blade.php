@@ -12,7 +12,7 @@
     </style>
     <section class="w-full">
         <div class="max-w-screen-2xl mx-auto px-10">
-            <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
+            <div class="relative sm:sticky sm:top-0 bg-21gray z-50 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
                     <a href="{{ route('search.city', ['country' => $c]) }}"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
@@ -37,11 +37,11 @@
                 @else
                     <div class="inline-flex items-center ml-5 my-2 text-lg space-x-6 lg:justify-end">
                         <a href="{{ route('login') }}"
-                           class="text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
+                           class="text-xs sm:text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
                             Login
                         </a>
                         <a href="{{ route('register') }}"
-                           class="inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+                           class="text-xs sm:text-base inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
                             Registrieren
                         </a>
                     </div>
@@ -82,7 +82,7 @@
                         };
                     @endphp
                     <a href="#table"
-                       class="whitespace-nowrap bg-white px-12 lg:px-16 py-4 text-center lg:py-5 font-bold rounded text-lg md:text-xl lg:text-2xl mt-8 inline-block w-auto">
+                       class="whitespace-nowrap bg-white px-4 lg:px-16 py-2 text-center lg:py-5 font-bold rounded text-xs md:text-xl lg:text-2xl mt-8 inline-block w-auto">
                         👇 {{ $searchTitle }} finden 👇
                     </a>
                     <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
@@ -117,7 +117,7 @@
                                 @endforeach
                             });
                         }
-                    }" class="w-1/2">
+                    }" class="hidden sm:inline-block w-1/2">
                     {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
                          class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
                     <div x-ref="myearth" class="earth-container"></div>

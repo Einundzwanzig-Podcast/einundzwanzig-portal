@@ -45,11 +45,13 @@ class CityTable extends DataTableComponent
             Column::make('Veranstaltungs-Orte')
                   ->label(
                       fn($row, Column $column) => $row->venues_count
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make('Termine')
                   ->label(
                       fn($row, Column $column) => $row->events_count
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.cities.action')->withRow($row)

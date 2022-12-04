@@ -112,20 +112,24 @@ class EventTable extends DataTableComponent
     {
         return [
             Column::make("Stadt", "venue.city.name")
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make("Veranstaltungs-Ort", "venue.name")
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make('Dozent', "course.lecturer.name")
                   ->label(
                       fn($row, Column $column) => view('columns.events.lecturer')->withRow($row)
                   )
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make("Kurs", "course.name")
                   ->sortable(),
             Column::make("Art")
                   ->label(
                       fn($row, Column $column) => view('columns.events.categories')->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make("Von", "from")
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
@@ -135,17 +139,19 @@ class EventTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
                   )
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             /*Column::make("Teilnehmer")
                   ->label(
                       fn($row, Column $column) => '<strong>'.$row->registrations->count().'</strong>'
                   )
                   ->html()
                   ->sortable(),*/
-            Column::make('')
+            Column::make('Aktion')
                   ->label(
                       fn($row, Column $column) => view('columns.events.action')->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
         ];
     }
 
