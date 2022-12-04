@@ -41,7 +41,7 @@
                             >
                               •
                             </span>
-                            {{ $tag->courses_count }} Kurs{{ $tag->courses_count > 1 ? 'e' : '' }}
+                            {{ $tag->courses_count > 0 ? $tag->courses_count : 'kein' }} Kurs{{ $tag->courses_count > 1 ? 'e' : '' }}
                         </div>
                     </div>
                 </div>
