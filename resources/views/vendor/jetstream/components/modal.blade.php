@@ -1,4 +1,4 @@
-@props(['id', 'maxWidth', 'bg'])
+@props(['id', 'maxWidth', 'bg' => 'bg-white'])
 
 @php
 $id = $id ?? md5($attributes->wire('model'));
