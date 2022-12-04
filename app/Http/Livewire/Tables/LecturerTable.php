@@ -11,6 +11,7 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
 class LecturerTable extends DataTableComponent
 {
+    public string $country;
     protected $model = Lecturer::class;
 
     public function configure(): void
@@ -65,5 +66,20 @@ class LecturerTable extends DataTableComponent
                        ->withCount([
                            'courses',
                        ]);
+    }
+
+    public function lecturerSearch($id)
+    {
+        $lecturer = Lecturer::query()->find($id);
+
+        return to_route('search.event', [
+            '#table',
+            'country' => $this->country,
+            'table'   => [
+                'filters' => [
+                    'dozent' => $lecturer->id,
+                ],
+            ]
+        ]);
     }
 }

@@ -8,15 +8,13 @@
             bottom: 4%;
             left: 13%;
             right: 13%;
-            background: radial-gradient(ellipse at center, rgba(247, 147, 26, 0.7) 0%, rgba(247, 147, 26, 0.55) 20%, rgba(247, 147, 26, 0.2) 40%, rgba(247, 147, 26, 0.1) 50%, rgba(247, 147, 26, 0.02) 60%, rgba(247, 147, 26, 0) 70%, rgba(247, 147, 26, 0) 100%);
         }
-
     </style>
     <section class="w-full">
         <div class="max-w-screen-2xl mx-auto px-10">
             <div class="flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
-                    <a href="#_"
+                    <a href="{{ route('search.city', ['country' => $c]) }}"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
                         <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}">
                     </a>
@@ -65,12 +63,11 @@
                             wire:model="c"
                             :clearable="false"
                         >
-                            <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-de.svg') }}"
-                                                  label="Deutschland" value="de"/>
-                            <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-at.svg') }}"
-                                                  label="Österreich" value="at"/>
-                            <x-select.user-option src="{{ asset('vendor/blade-country-flags/4x3-ch.svg') }}"
-                                                  label="Schweiz" value="ch"/>
+                            @foreach($countries as $country)
+                                <x-select.user-option
+                                    src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
+                                    label="{{ $country->name }}" value="{{ $country->code }}"/>
+                            @endforeach
                         </x-select>
                     </div>
                     <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">

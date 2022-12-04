@@ -1,1 +1,1 @@
-<x-button amber>Termine anzeigen</x-button>
+<x-button amber wire:click="venueSearch({{ $row->id }})">Termine anzeigen</x-button>
