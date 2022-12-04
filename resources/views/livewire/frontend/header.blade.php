@@ -81,7 +81,7 @@
                             'search.event' => 'Termin',
                         };
                     @endphp
-                    <a href="#_"
+                    <a href="#table"
                        class="whitespace-nowrap bg-white px-12 lg:px-16 py-4 text-center lg:py-5 font-bold rounded text-lg md:text-xl lg:text-2xl mt-8 inline-block w-auto">
                         👇 {{ $searchTitle }} finden 👇
                     </a>
