@@ -39,7 +39,8 @@ class CourseTable extends DataTableComponent
                   ->label(
                       fn($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
                   )
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make("Name", "name")
                   ->sortable(),
             Column::make("Termine")
@@ -47,9 +48,11 @@ class CourseTable extends DataTableComponent
                       fn($row, Column $column) => '<strong>'.$row->events_count.'</strong>'
                   )
                   ->html()
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make("Erstellt am", "created_at")
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.courses.action')->withRow($row)

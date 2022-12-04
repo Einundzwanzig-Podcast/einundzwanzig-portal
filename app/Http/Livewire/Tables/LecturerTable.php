@@ -36,22 +36,25 @@ class LecturerTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            ImageColumn::make('')
+            ImageColumn::make('Bild')
                        ->location(
                            fn($row) => $row->getFirstMediaUrl('avatar', 'thumb')
                        )
                        ->attributes(fn($row) => [
                            'class' => 'rounded h-16 w-16',
                            'alt'   => $row->name.' Avatar',
-                       ]),
+                       ])
+                       ->collapseOnMobile(),
             Column::make("Name", "name")
                   ->sortable(),
             BooleanColumn::make("Aktiv", 'active')
-                         ->sortable(),
+                         ->sortable()
+                         ->collapseOnMobile(),
             Column::make('Kurse')
                   ->label(
                       fn($row, Column $column) => $row->courses_count
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.lectures.action')->withRow($row)

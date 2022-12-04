@@ -36,22 +36,25 @@ class VenueTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            ImageColumn::make('')
+            ImageColumn::make('Bild')
                        ->location(
                            fn($row) => $row->getFirstMediaUrl('images', 'thumb')
                        )
                        ->attributes(fn($row) => [
                            'class' => 'rounded h-16 w-16',
                            'alt'   => $row->name.' Avatar',
-                       ]),
+                       ])
+                       ->collapseOnMobile(),
             Column::make("Name", "name")
                   ->sortable(),
             Column::make("Street", "street")
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make('Termine')
                   ->label(
                       fn($row, Column $column) => $row->events_count
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.venues.action')->withRow($row)
