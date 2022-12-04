@@ -37,7 +37,7 @@ class Lecturer extends Resource
 
     public static function relatableTeams(NovaRequest $request, $query, Field $field)
     {
-        if ($field instanceof BelongsTo) {
+        if ($field instanceof BelongsTo && !$request->user()->hasRole('super-admin')) {
             $query->where('id', $request->user()->current_team_id);
         }
 
