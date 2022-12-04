@@ -3,9 +3,11 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\Course;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 
 class CourseTable extends DataTableComponent
 {
@@ -32,6 +34,23 @@ class CourseTable extends DataTableComponent
              ->setPerPage(50);
     }
 
+    public function filters(): array
+    {
+        return [
+            MultiSelectFilter::make('Tag')
+                             ->options(
+                                 Tag::query()
+                                    ->get()
+                                    ->mapWithKeys(fn($item, $key) => [$item->name => $item->name])
+                                    ->toArray()
+                             )
+                             ->filter(function (Builder $builder, array $values) {
+                                 ray($values);
+                                 $builder->withAnyTags($values, 'search');
+                             }),
+        ];
+    }
+
     public function columns(): array
     {
         return [
@@ -43,6 +62,10 @@ class CourseTable extends DataTableComponent
                   ->collapseOnMobile(),
             Column::make("Name", "name")
                   ->sortable(),
+            Column::make("Tags")
+                  ->label(
+                      fn($row, Column $column) => view('columns.courses.tags')->withRow($row)
+                  ),
             Column::make("Termine")
                   ->label(
                       fn($row, Column $column) => '<strong>'.$row->events_count.'</strong>'
