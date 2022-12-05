@@ -7,7 +7,6 @@ use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
@@ -87,7 +86,7 @@ class LibraryItem extends Resource
                   ->rules('required', 'string'),
 
             Code::make('Value')
-                ->rules('required', 'string')
+                ->rules('nullable', 'string')
                 ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
             BelongsTo::make('Lecturer'),
