@@ -38,7 +38,7 @@
 
             <livewire:frontend.search-by-tag-in-library/>
             <div class="my-12">
-                <livewire:tables.library-item-table/>
+                <livewire:tables.library-item-table :currentTab="$currentTab"/>
             </div>
         </div>
     </section>
