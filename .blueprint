@@ -1,3 +1,4 @@
+created: 'database/factories/LibraryFactory.php database/factories/LibraryItemsFactory.php database/migrations/2022_12_05_160932_create_libraries_table.php database/migrations/2022_12_05_160933_create_library_items_table.php app/Models/Library.php app/Models/LibraryItems.php app/Nova/Library.php app/Nova/LibraryItems.php'
 models:
     Category: { name: string, slug: string }
     City: { country_id: biginteger, name: string, slug: string, longitude: 'float:10', latitude: 'float:10' }
@@ -5,6 +6,8 @@ models:
     Course: { lecturer_id: biginteger, name: string, description: 'text nullable' }
     Event: { course_id: biginteger, venue_id: biginteger, '"from"': datetime, '"to"': datetime, link: string }
     Lecturer: { team_id: biginteger, name: string, slug: string, active: 'boolean default:1', description: 'text nullable' }
+    Library: { name: string, language_code: string }
+    LibraryItem: { lecturer_id: biginteger, library_id: biginteger, order_column: integer, type: string, value: text }
     LoginKey: { k1: string, user_id: biginteger }
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     Participant: { first_name: string, last_name: string }

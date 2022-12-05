@@ -2,25 +2,24 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Spatie\TagsField\Tags;
-use ZiffMedia\NovaSelectPlus\SelectPlus;
 
-class Course extends Resource
+class LibraryItem extends Resource
 {
     /**
      * The model the resource corresponds to.
      * @var string
      */
-    public static $model = \App\Models\Course::class;
+    public static $model = \App\Models\LibraryItem::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -37,15 +36,6 @@ class Course extends Resource
         'name',
     ];
 
-    public static function relatableLecturers(NovaRequest $request, $query, Field $field)
-    {
-        if ($field instanceof BelongsTo) {
-            $query->where('team_id', $request->user()->current_team_id);
-        }
-
-        return $query;
-    }
-
     /**
      * Get the fields displayed by the resource.
      *
@@ -59,28 +49,49 @@ class Course extends Resource
             ID::make()
               ->sortable(),
 
-            Images::make('Main picture', 'logo')
+            Images::make('Main picture', 'main')
                   ->conversionOnIndexView('thumb'),
 
             Images::make('Images', 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
 
-            Tags::make('Tags')->type('course')->withLinkToTagResource(Tag::class),
+            Files::make('Downloadable File', 'single_file')
+                 ->help('Für neue Datei-Typen bitte bei den Admins melden. (Derzeit: PDF)'),
+
+            Select::make('Language Code', 'language_code')
+                  ->options(
+                      config('languages.languages')
+                  )
+                  ->rules('required', 'string'),
+
+            Tags::make('Tags')
+                ->type('library_item')
+                ->withLinkToTagResource(Tag::class),
 
             Text::make('Name')
                 ->rules('required', 'string'),
 
-            Markdown::make('Description')
-                    ->alwaysShow()
-                    ->help('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.'),
+            Select::make('Type')
+                  ->options(
+                      [
+                          'book'              => 'book',
+                          'blog_article'      => 'blog_article',
+                          'markdown_article'  => 'markdown_article',
+                          'youtube_video'     => 'youtube_video',
+                          'vimeo_video'       => 'vimeo_video',
+                          'downloadable_file' => 'downloadable_file',
+                      ]
+                  )
+                  ->rules('required', 'string'),
+
+            Code::make('Value')
+                ->rules('required', 'string')
+                ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
             BelongsTo::make('Lecturer'),
 
-            SelectPlus::make('Categories', 'categories', Category::class)
-                      ->usingIndexLabel('name'),
-
-            BelongsToMany::make('Categories')->onlyOnDetail(),
+            BelongsToMany::make('Library'),
 
         ];
     }

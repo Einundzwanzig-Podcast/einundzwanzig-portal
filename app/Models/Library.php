@@ -5,27 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Library extends Model
 {
     use HasFactory;
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'             => 'integer',
+        'id' => 'integer',
         'language_codes' => 'array',
     ];
 
-    public function cities(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function libraryItems(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(City::class);
+        return $this->belongsToMany(LibraryItem::class);
     }
 }

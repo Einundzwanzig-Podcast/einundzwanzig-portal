@@ -12,7 +12,8 @@
     </style>
     <section class="w-full">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
-            <div class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
+            <div
+                class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
                     <a href="{{ route('search.city', ['country' => $c]) }}"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
@@ -30,6 +31,8 @@
                            class="{{ request()->routeIs('search.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
                         <a href="{{ route('search.event', ['country' => $c, '#table']) }}"
                            class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
+                        <a href="{{ route('library', ['country' => $c]) }}"
+                           class="{{ request()->routeIs('library') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bibliothek</a>
                     </nav>
                 </div>
                 @auth
@@ -47,48 +50,49 @@
                     </div>
                 @endauth
             </div>
-            <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
-                <div
-                    class="w-full lg:w-1/2 flex lg:px-0 px-5 flex-col md:items-center lg:items-start justify-center -mt-12">
+            @if($withGlobe)
+                <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
+                    <div
+                        class="w-full lg:w-1/2 flex lg:px-0 px-5 flex-col md:items-center lg:items-start justify-center -mt-12">
 
-                    <h1 class="text-white text-3xl sm:text-5xl lg:max-w-none max-w-4xl lg:text-left text-left md:text-center xl:text-7xl font-black">
-                        Bitcoin <span
-                            class="bg-clip-text text-transparent bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 mt-1 lg:block">School
+                        <h1 class="text-white text-3xl sm:text-5xl lg:max-w-none max-w-4xl lg:text-left text-left md:text-center xl:text-7xl font-black">
+                            Bitcoin <span
+                                class="bg-clip-text text-transparent bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 mt-1 lg:block">School
                         </span> <br class="lg:block sm:hidden"> {{ str($country->name)->upper() }}
-                    </h1>
-                    <div>
-                        <x-select
-                            label="Land wechseln"
-                            placeholder="Land wechseln"
-                            wire:model="c"
-                            :clearable="false"
-                        >
-                            @foreach($countries as $country)
-                                <x-select.user-option
-                                    src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
-                                    label="{{ $country->name }}" value="{{ $country->code }}"/>
-                            @endforeach
-                        </x-select>
+                        </h1>
+                        <div>
+                            <x-select
+                                label="Land wechseln"
+                                placeholder="Land wechseln"
+                                wire:model="c"
+                                :clearable="false"
+                            >
+                                @foreach($countries as $country)
+                                    <x-select.user-option
+                                        src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
+                                        label="{{ $country->name }}" value="{{ $country->code }}"/>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
+                            Finde Bitcoin Kurse in deiner City</p>
+                        @php
+                            $searchTitle = match ($currentRouteName) {
+                                'search.city' => 'Stadt',
+                                'search.lecturer' => 'Dozent',
+                                'search.venue' => 'Veranstaltungs-Ort',
+                                'search.course' => 'Kurs',
+                                'search.event' => 'Termin',
+                            };
+                        @endphp
+                        <a href="#table"
+                           class="whitespace-nowrap bg-white px-4 lg:px-16 py-2 text-center lg:py-5 font-bold rounded text-xs md:text-xl lg:text-2xl mt-8 inline-block w-auto">
+                            👇 {{ $searchTitle }} finden 👇
+                        </a>
+                        <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
                     </div>
-                    <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
-                        Finde Bitcoin Kurse in deiner City</p>
-                    @php
-                        $searchTitle = match ($currentRouteName) {
-                            'search.city' => 'Stadt',
-                            'search.lecturer' => 'Dozent',
-                            'search.venue' => 'Veranstaltungs-Ort',
-                            'search.course' => 'Kurs',
-                            'search.event' => 'Termin',
-                        };
-                    @endphp
-                    <a href="#table"
-                       class="whitespace-nowrap bg-white px-4 lg:px-16 py-2 text-center lg:py-5 font-bold rounded text-xs md:text-xl lg:text-2xl mt-8 inline-block w-auto">
-                        👇 {{ $searchTitle }} finden 👇
-                    </a>
-                    <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
-                </div>
-                <div
-                    x-data="{
+                    <div
+                        x-data="{
                         earth: null,
                         init() {
                             this.earth = new Earth(this.$refs.myearth, {
@@ -118,11 +122,12 @@
                             });
                         }
                     }" class="hidden sm:inline-block w-1/2">
-                    {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
-                         class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
-                    <div x-ref="myearth" class="earth-container"></div>
+                        {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
+                             class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
+                        <div x-ref="myearth" class="earth-container"></div>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </section>
 </div>

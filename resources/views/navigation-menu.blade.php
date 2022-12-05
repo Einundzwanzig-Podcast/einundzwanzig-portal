@@ -12,14 +12,20 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/nova" target="_blank">
+                    <x-jet-nav-link href="/nova/resources/lecturers" target="_blank">
+                        {{ __('Dozent eintragen') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="/nova/resources/courses" target="_blank">
                         {{ __('Kurs eintragen') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="/nova/resources/events" target="_blank">
+                        {{ __('Kurs-Termin eintragen') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
+                        {{ __('Inhalte eintragen') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         {{ __('Mein Profil') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="/nova/resources/events" target="_blank">
-                        {{ __('Meine Termine') }}
                     </x-jet-nav-link>
                 </div>
             </div>

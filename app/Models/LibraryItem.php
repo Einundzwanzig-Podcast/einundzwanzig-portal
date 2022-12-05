@@ -4,32 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
+use Spatie\Tags\HasTags;
 
-class Lecturer extends Model implements HasMedia
+class LibraryItem extends Model implements HasMedia, Sortable
 {
     use HasFactory;
-    use HasSlug;
     use InteractsWithMedia;
+    use HasTags;
+    use SortableTrait;
 
     /**
      * The attributes that aren't mass assignable.
      * @var array
      */
     protected $guarded = [];
+
     /**
      * The attributes that should be cast to native types.
      * @var array
      */
     protected $casts = [
-        'id'      => 'integer',
-        'team_id' => 'integer',
-        'active'  => 'boolean',
+        'id'          => 'integer',
+        'lecturer_id' => 'integer',
+        'library_id'  => 'integer',
     ];
 
     public function registerMediaConversions(Media $media = null): void
@@ -46,36 +49,23 @@ class Lecturer extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('avatar')
+        $this->addMediaCollection('main')
              ->singleFile()
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
+        $this->addMediaCollection('single_file')
+             ->acceptsMimeTypes(['application/pdf'])
+             ->singleFile();
         $this->addMediaCollection('images')
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
-    /**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions(): SlugOptions
+    public function lecturer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return SlugOptions::create()
-                          ->generateSlugsFrom(['name'])
-                          ->saveSlugsTo('slug')
-                          ->usingLanguage('de');
+        return $this->belongsTo(Lecturer::class);
     }
 
-    public function team(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function library(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsTo(Team::class);
-    }
-
-    public function courses(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Course::class);
-    }
-
-    public function libraryItems(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(LibraryItem::class);
+        return $this->belongsToMany(Library::class);
     }
 }

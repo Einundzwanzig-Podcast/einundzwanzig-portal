@@ -9,6 +9,8 @@ use App\Nova\Course;
 use App\Nova\Dashboards\Main;
 use App\Nova\Event;
 use App\Nova\Lecturer;
+use App\Nova\Library;
+use App\Nova\LibraryItem;
 use App\Nova\Participant;
 use App\Nova\Registration;
 use App\Nova\Tag;
@@ -48,6 +50,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Registration::class),
                 ])
                            ->icon('academic-cap')
+                           ->collapsable(),
+
+                MenuSection::make('Bibliothek', [
+                    MenuItem::resource(Library::class),
+                    MenuItem::resource(LibraryItem::class),
+                ])
+                           ->icon('library')
                            ->collapsable(),
 
                 MenuSection::make('Admin', [
