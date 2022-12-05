@@ -16,6 +16,10 @@ class SearchByTagInLibrary extends Component
 
     public function render()
     {
+        $shouldBePublic = request()
+                              ->route()
+                              ->getName() !== 'library.lecturer';
+
         return view('livewire.frontend.search-by-tag-in-library', [
             'tags' => Tag::query()
                          ->with([
@@ -26,9 +30,7 @@ class SearchByTagInLibrary extends Component
                              'libraryItems',
                          ])
                          ->where('type', 'library_item')
-                         ->whereHas('libraryItems.libraries', function ($query) {
-                             $query->where('is_public', true);
-                         })
+                         ->whereHas('libraryItems.libraries', fn($query) => $query->where('is_public', $shouldBePublic))
                          ->get(),
         ]);
     }

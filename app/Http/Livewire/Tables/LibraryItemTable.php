@@ -116,8 +116,12 @@ class LibraryItemTable extends DataTableComponent
 
     public function builder(): Builder
     {
+        $shouldBePublic = request()
+                          ->route()
+                          ->getName() !== 'library.lecturer';
+
         return LibraryItem::query()
-                          ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', true))
+                          ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))
                           ->when($this->currentTab !== 'Alle', fn($query) => $query->whereHas('libraries',
                               fn($query) => $query->where('libraries.name', $this->currentTab)))
                           ->withCount([
