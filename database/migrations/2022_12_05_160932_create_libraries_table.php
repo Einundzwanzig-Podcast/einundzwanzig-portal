@@ -15,6 +15,8 @@ class CreateLibrariesTable extends Migration
         Schema::create('libraries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('is_public')
+                  ->default(true);
             $table->json('language_codes')
                   ->default('[]');
             $table->timestamps();

@@ -7,6 +7,7 @@ use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
@@ -91,7 +92,7 @@ class LibraryItem extends Resource
 
             BelongsTo::make('Lecturer'),
 
-            BelongsToMany::make('Library'),
+            BelongsToMany::make('Library', 'libraries', Library::class),
 
         ];
     }

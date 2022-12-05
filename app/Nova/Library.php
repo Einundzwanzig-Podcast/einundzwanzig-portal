@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Fields\Text;
@@ -46,6 +47,9 @@ class Library extends Resource
 
             Text::make('Name')
                 ->rules('required', 'string'),
+
+            Boolean::make('Is public', 'is_public')
+                   ->rules('required', 'boolean'),
 
             MultiSelect::make('Languages', 'language_codes')
                        ->options(
