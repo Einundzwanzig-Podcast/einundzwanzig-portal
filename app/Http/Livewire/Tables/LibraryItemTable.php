@@ -2,14 +2,17 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Models\Library;
 use App\Models\LibraryItem;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 class LibraryItemTable extends DataTableComponent
 {
+    public string $currentTab;
     protected $model = LibraryItem::class;
 
     public function configure(): void
@@ -17,6 +20,35 @@ class LibraryItemTable extends DataTableComponent
         $this
             ->setPrimaryKey('id')
             ->setDefaultSort('order_column', 'asc');
+    }
+
+    public function filters(): array
+    {
+        return [
+            SelectFilter::make('Bibliothek')
+                        ->options(
+                            Library::query()
+                                   ->get()
+                                   ->prepend(new Library(['name' => 'Alle']))
+                                   ->pluck('name', 'name')
+                                   ->toArray(),
+                        )
+                        ->filter(function (Builder $builder, string $value) {
+                            if ($value === 'Alle') {
+                                return;
+                            }
+                            if (str($value)->contains(',')) {
+                                $builder
+                                    ->whereHas('libraries',
+                                        function ($query) use ($value) {
+                                            $query->whereIn('libraries.name', str($value)->explode(','));
+                                        });
+                            } else {
+                                $builder->whereHas('libraries',
+                                    fn($query) => $query->where('libraries.name', 'ilike', "%$value%"));
+                            }
+                        }),
+        ];
     }
 
     public function columns(): array
@@ -54,6 +86,8 @@ class LibraryItemTable extends DataTableComponent
     public function builder(): Builder
     {
         return LibraryItem::query()
+                          ->when($this->currentTab !== 'Alle', fn($query) => $query->whereHas('libraries',
+                              fn($query) => $query->where('libraries.name', $this->currentTab)))
                           ->withCount([
                               'lecturer',
                           ]);
