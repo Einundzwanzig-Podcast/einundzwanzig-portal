@@ -27,8 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ray()->newScreen('bitcoin');
-
         Stringable::macro('initials', function () {
             $words = preg_split("/\s+/", $this);
             $initials = "";

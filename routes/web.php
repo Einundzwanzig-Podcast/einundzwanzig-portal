@@ -33,6 +33,9 @@ Route::get('/{country:code}/suche/termin', \App\Http\Livewire\Frontend\SearchEve
 Route::get('/{country:code}/bibliothek', \App\Http\Livewire\Frontend\Library::class)
      ->name('library');
 
+Route::get('/{country:code}/dozenten/bibliothek', \App\Http\Livewire\Frontend\Library::class)
+     ->name('library.lecturer');
+
 Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)
      ->name('search.lecturers');
 

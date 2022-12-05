@@ -17,9 +17,16 @@ class Library extends Component
 
     public function render()
     {
+        $shouldBePublic = request()
+                              ->route()
+                              ->getName() !== 'library.lecturer';
+        if (!$shouldBePublic && !auth()->user()->is_lecturer) {
+            abort(403);
+        }
+
         return view('livewire.frontend.library', [
             'libraries' => \App\Models\Library::query()
-                                              ->where('is_public', true)
+                                              ->where('is_public', $shouldBePublic)
                                               ->get()
                                               ->prepend(\App\Models\Library::make([
                                                   'name' => 'Alle',

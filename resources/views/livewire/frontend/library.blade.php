@@ -28,7 +28,7 @@
                                 @php
                                     $currentLibraryClass = $currentTab === $library->name ? 'border-amber-500 text-amber-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300';
                                 @endphp
-                                <a href="{{ route('library', ['country' => $country, 'currentTab' => $library->name]) }}"
+                                <a href="{{ route(request()->route()->getName(), ['country' => $country, 'currentTab' => $library->name]) }}"
                                    class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library->name }}</a>
                             @endforeach
                         </nav>
