@@ -7,9 +7,13 @@
             class="flex flex-1 justify-center p-0 m-0 leading-6 text-center align-baseline border-0 border-solid"
             style="font-size: 128%; background-position: 0px center; list-style: outside;"
         >
+            @php
+                $isActive = collect($table)->pluck('tag')->collapse()->contains($tag->name);
+                $activeClass = $isActive ? 'text-amber-500 bg-amber-500' : 'bg-blue-50 text-white hover:text-amber-500';
+            @endphp
             <a
-                class="flex relative flex-col flex-shrink-0 justify-between py-1 px-3 w-full h-20 text-white hover:text-amber-500 bg-blue-50 border-0 border-solid duration-300 ease-in-out cursor-pointer bg-opacity-[0.07]"
-                href="{{ route('search.course', ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->name]]], '#table']) }}"
+                class="{{ $activeClass }} flex relative flex-col flex-shrink-0 justify-between py-1 px-3 w-full h-20 border-0 border-solid duration-300 ease-in-out cursor-pointer bg-opacity-[0.07]"
+                href="{{ $isActive ? '#table' : route('search.course', ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->name]]], '#table']) }}"
             >
                 <div
                     class="flex flex-1 items-center p-0 m-0 text-center align-baseline border-0 border-solid"
@@ -41,7 +45,8 @@
                             >
                               •
                             </span>
-                            {{ $tag->courses_count > 0 ? $tag->courses_count : 'kein' }} Kurs{{ $tag->courses_count > 1 ? 'e' : '' }}
+                            {{ $tag->courses_count > 0 ? $tag->courses_count : 'kein' }}
+                            Kurs{{ $tag->courses_count > 1 ? 'e' : '' }}
                         </div>
                     </div>
                 </div>
