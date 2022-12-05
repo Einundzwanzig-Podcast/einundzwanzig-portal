@@ -15,9 +15,14 @@ class LNUrlAuth extends Component
     protected ?string $lnurl = null;
     protected ?string $qrCode = null;
 
-    public function switchToEmail()
+    public function switchToEmailLogin()
     {
         return to_route('login');
+    }
+
+    public function switchToEmailSignup()
+    {
+        return to_route('register');
     }
 
     public function mount()
