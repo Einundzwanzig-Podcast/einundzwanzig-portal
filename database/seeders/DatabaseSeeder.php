@@ -10,6 +10,8 @@ use App\Models\Country;
 use App\Models\Course;
 use App\Models\Event;
 use App\Models\Lecturer;
+use App\Models\Library;
+use App\Models\LibraryItem;
 use App\Models\Participant;
 use App\Models\Registration;
 use App\Models\Team;
@@ -49,16 +51,24 @@ class DatabaseSeeder extends Seeder
         $user->current_team_id = $team->id;
         $user->save();
         Country::create([
-            'name' => 'Deutschland',
-            'code' => 'de',
+            'name'           => 'Deutschland',
+            'code'           => 'de',
+            'language_codes' => ['de'],
         ]);
         Country::create([
-            'name' => 'Österreich',
-            'code' => 'at',
+            'name'           => 'Österreich',
+            'code'           => 'at',
+            'language_codes' => ['de'],
         ]);
         Country::create([
-            'name' => 'Schweiz',
-            'code' => 'ch',
+            'name'           => 'Schweiz',
+            'code'           => 'ch',
+            'language_codes' => ['de'],
+        ]);
+        Country::create([
+            'name'           => 'France',
+            'code'           => 'fr',
+            'language_codes' => ['fr'],
         ]);
         City::create([
             'country_id' => 1,
@@ -115,6 +125,16 @@ class DatabaseSeeder extends Seeder
             'name'    => 'Beppo',
             'active'  => true,
         ]);
+        Lecturer::create([
+            'team_id' => 1,
+            'name'    => 'Helper',
+            'active'  => true,
+        ]);
+        Lecturer::create([
+            'team_id' => 1,
+            'name'    => 'Gigi',
+            'active'  => true,
+        ]);
         $category = Category::create([
             'name' => 'Präsenzunterricht',
             'slug' => str('Präsenzunterricht')->slug('-', 'de'),
@@ -127,21 +147,21 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 1,
             'name'        => 'Hands on Bitcoin',
         ]);
-        $course->syncTagsWithType(['Hardware Wallet'],'search');
+        $course->syncTagsWithType(['Hardware Wallet'], 'course');
         $course->categories()
                ->attach($category);
         $course = Course::create([
             'lecturer_id' => 1,
             'name'        => 'Bitcoin <> Crypto',
         ]);
-        $course->syncTagsWithType(['Lightning'],'search');
+        $course->syncTagsWithType(['Lightning'], 'course');
         $course->categories()
                ->attach($categoryOnline);
         $course = Course::create([
             'lecturer_id' => 2,
             'name'        => 'Bitcoin Lightning Network',
         ]);
-        $course->syncTagsWithType(['Für Unternehmen'],'search');
+        $course->syncTagsWithType(['Für Unternehmen'], 'course');
         $course->categories()
                ->attach($categoryOnline);
         Participant::create([
@@ -200,5 +220,45 @@ class DatabaseSeeder extends Seeder
             'event_id'       => 1,
             'participant_id' => 1,
         ]);
+        $library = Library::create([
+            'name'           => 'Einundzwanzig',
+            'language_codes' => ['de'],
+        ]);
+        $libraryItem = LibraryItem::create([
+            'lecturer_id'   => 3,
+            'name'          => 'BITCOIN - Eine Reise in den Kaninchenbau🐇🕳️',
+            'type'          => 'youtube_video',
+            'language_code' => 'de',
+            'value'         => 'https://www.youtube.com/watch?v=Oztd2Sja4k0',
+        ]);
+        $libraryItem->syncTagsWithType(['Bitcoin'], 'library_item');
+        $library->libraryItems()
+                ->attach($libraryItem);
+        $library = Library::create([
+            'name'           => 'Apricot',
+            'language_codes' => ['de', 'en'],
+        ]);
+        $libraryItem = LibraryItem::create([
+            'lecturer_id'   => 4,
+            'name'          => 'Liebe Krypto- und Fiat-Bros️',
+            'type'          => 'blog_article',
+            'language_code' => 'de',
+            'value'         => 'https://aprycot.media/blog/liebe-krypto-und-fiat-bros/',
+        ]);
+        $libraryItem->syncTagsWithType(['Bitcoin'], 'library_item');
+        $library->libraryItems()
+                ->attach($libraryItem);
+        $library = Library::create([
+            'name'           => 'Gigi',
+            'language_codes' => ['de', 'en'],
+        ]);
+        $libraryItem = LibraryItem::create([
+            'lecturer_id'   => 4,
+            'name'          => 'Cryptography is Not Enough - Gigi @ Baltic Honeybadger 2022 ️',
+            'type'          => 'youtube_video',
+            'language_code' => 'de',
+            'value'         => 'https://www.youtube.com/watch?v=C7ynm0Zkwfk',
+        ]);
+        $libraryItem->syncTagsWithType(['Proof of Work'], 'library_item');
     }
 }

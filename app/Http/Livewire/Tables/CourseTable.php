@@ -45,7 +45,7 @@ class CourseTable extends DataTableComponent
                                     ->toArray()
                              )
                              ->filter(function (Builder $builder, array $values) {
-                                 $builder->withAnyTags($values, 'search');
+                                 $builder->withAnyTags($values, 'course');
                              }),
         ];
     }

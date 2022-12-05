@@ -12,6 +12,7 @@ class Header extends Component
     public Country $country;
     public $currentRouteName;
     public string $c = 'de';
+    public bool $withGlobe = true;
 
     public function rules()
     {

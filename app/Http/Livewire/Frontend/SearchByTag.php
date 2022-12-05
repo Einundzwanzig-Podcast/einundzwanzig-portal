@@ -18,6 +18,7 @@ class SearchByTag extends Component
     {
         return view('livewire.frontend.search-by-tag', [
             'tags' => Tag::query()
+                         ->where('type', 'course')
                          ->with([
                              'courses.lecturer',
                          ])

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff7b4ac8af19364e547306d58f6c9479",
+    "content-hash": "fe13b4c19e33aebc3926e4dcd5ddf8e8",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",

@@ -55,6 +55,11 @@ class LecturerTable extends DataTableComponent
                       fn($row, Column $column) => $row->courses_count
                   )
                   ->collapseOnMobile(),
+            Column::make('Inhalte')
+                  ->label(
+                      fn($row, Column $column) => $row->library_items_count
+                  )
+                  ->collapseOnMobile(),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.lectures.action')->withRow($row)
@@ -68,6 +73,7 @@ class LecturerTable extends DataTableComponent
         return Lecturer::query()
                        ->withCount([
                            'courses',
+                           'libraryItems',
                        ]);
     }
 

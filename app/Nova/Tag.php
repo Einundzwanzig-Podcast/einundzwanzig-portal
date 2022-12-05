@@ -28,7 +28,8 @@ class Tag extends Resource
 
             Select::make('Type')
                   ->options([
-                      'search' => 'search',
+                      'course' => 'course',
+                      'library_item' => 'library_item',
                   ]),
 
         ];

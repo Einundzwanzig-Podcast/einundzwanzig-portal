@@ -30,6 +30,9 @@ Route::get('/{country:code}/suche/kurs', \App\Http\Livewire\Frontend\SearchCours
 Route::get('/{country:code}/suche/termin', \App\Http\Livewire\Frontend\SearchEvent::class)
      ->name('search.event');
 
+Route::get('/{country:code}/bibliothek', \App\Http\Livewire\Frontend\Library::class)
+     ->name('library');
+
 Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)
      ->name('search.lecturers');
 

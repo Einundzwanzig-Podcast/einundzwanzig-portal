@@ -25,9 +25,16 @@ class CreateTags extends Command
      */
     public function handle()
     {
-        $tags = config('tags.tags');
+        $tags = config('tags.tags.course');
         foreach ($tags as $tag) {
-            $t = Tag::findOrCreate($tag['de'], 'search');
+            $t = Tag::findOrCreate($tag['de'], 'course');
+            $t->icon = $tag['icon'];
+            $t->setTranslation('name', 'en', $tag['en']);
+            $t->save();
+        }
+        $tags = config('tags.tags.library_item');
+        foreach ($tags as $tag) {
+            $t = Tag::findOrCreate($tag['de'], 'library_item');
             $t->icon = $tag['icon'];
             $t->setTranslation('name', 'en', $tag['en']);
             $t->save();
