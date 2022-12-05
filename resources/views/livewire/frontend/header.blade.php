@@ -33,7 +33,7 @@
                            class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
                         <a href="{{ route('library', ['country' => $c]) }}"
                            class="{{ request()->routeIs('library') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bibliothek</a>
-                        @if(auth()->user()->is_lecturer)
+                        @if(auth()->user()?->is_lecturer)
                             <a href="{{ route('library.lecturer', ['country' => $c]) }}"
                                class="{{ request()->routeIs('library.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten-Bibliothek</a>
                         @endif
