@@ -18,7 +18,9 @@ class Library extends Component
     public function render()
     {
         return view('livewire.frontend.library', [
-            'libraries' => \App\Models\Library::get()
+            'libraries' => \App\Models\Library::query()
+                                              ->where('is_public', true)
+                                              ->get()
                                               ->prepend(\App\Models\Library::make([
                                                   'name' => 'Alle',
                                               ])),

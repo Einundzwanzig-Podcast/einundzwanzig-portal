@@ -254,11 +254,28 @@ class DatabaseSeeder extends Seeder
         ]);
         $libraryItem = LibraryItem::create([
             'lecturer_id'   => 4,
-            'name'          => 'Cryptography is Not Enough - Gigi @ Baltic Honeybadger 2022 ️',
+            'name'          => 'Cryptography is Not Enough - Gigi @ Baltic Honeybadger 2022 ',
             'type'          => 'youtube_video',
             'language_code' => 'de',
             'value'         => 'https://www.youtube.com/watch?v=C7ynm0Zkwfk',
         ]);
         $libraryItem->syncTagsWithType(['Proof of Work'], 'library_item');
+        $library->libraryItems()
+                ->attach($libraryItem);
+        $nonPublicLibrary = Library::create([
+            'name'           => 'Einundzwanzig Dozenten',
+            'is_public'      => false,
+            'language_codes' => ['de', 'en'],
+        ]);
+        $libraryItem = LibraryItem::create([
+            'lecturer_id'   => 4,
+            'name'          => 'Präsentation: Bitcoin VHS Kurs 2022',
+            'type'          => 'downloadable_file',
+            'language_code' => 'de',
+            'value'         => null,
+        ]);
+        $libraryItem->syncTagsWithType(['Präsentationen'], 'library_item');
+        $nonPublicLibrary->libraryItems()
+                         ->attach($libraryItem);
     }
 }

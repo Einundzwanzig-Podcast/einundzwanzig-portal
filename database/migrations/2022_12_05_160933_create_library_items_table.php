@@ -24,7 +24,8 @@ class CreateLibraryItemsTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('language_code');
-            $table->longText('value');
+            $table->longText('value')
+                  ->nullable();
             $table->timestamps();
         });
 

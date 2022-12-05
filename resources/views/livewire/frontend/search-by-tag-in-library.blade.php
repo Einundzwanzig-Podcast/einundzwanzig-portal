@@ -13,7 +13,7 @@
             @endphp
             <a
                 class="{{ $activeClass }} flex relative flex-col flex-shrink-0 justify-between py-1 px-3 w-full h-20 border-0 border-solid duration-300 ease-in-out cursor-pointer bg-opacity-[0.07]"
-                href="#"
+                href="{{ route('library', ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->id]]]]) }}"
             >
                 <div
                     class="flex flex-1 items-center p-0 m-0 text-center align-baseline border-0 border-solid"
@@ -35,14 +35,14 @@
                         <div
                             class="hidden p-0 m-0 text-sm leading-3 text-left text-blue-100 align-baseline border-0 border-solid md:block md:text-blue-100 whitespace-nowrap"
                         >
-                            0
+                            {{ $tag->libraryItems->pluck('lecturer.name')->unique()->count() }}
                             Dozenten
                             <span
                                 class="inline-block relative top-px py-0 px-1 m-0 text-xs leading-4 align-baseline border-0 border-solid"
                             >
                               •
                             </span>
-                            0
+                            {{ $tag->library_items_count }}
                             Inhalte
                         </div>
                     </div>
