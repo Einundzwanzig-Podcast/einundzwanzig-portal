@@ -14,6 +14,29 @@
     <!-- Styles -->
     @livewireStyles
     <style>
+        #seekObjContainer {
+            position: relative;
+            width: 400px;
+            margin: 0 5px;
+            height: 5px;
+        }
+
+        #seekObj {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #e3e3e3;
+            border: 1px solid black;
+        }
+
+        #percentage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: coral;
+        }
+
         [x-cloak] {
             display: none !important;
         }
@@ -38,6 +61,31 @@
     <main>
         {{ $slot }}
     </main>
+</div>
+<div
+    x-data="{
+
+    }"
+    class="hidden fixed bottom-0 w-full flex items-center gap-6 bg-white py-4 px-4 md:px-6">
+    <audio x-ref="audio">
+        <source src="https://thenewcode.com/assets/audio/24-ghosts-III.mp3" type="audio/mp3">
+    </audio>
+    <div class="hidden md:block">
+        <x-button primary @click="togglePlay"><i class="fa fa-thin fa-play"></i></x-button>
+    </div>
+    <div
+        class="mb-[env(safe-area-inset-bottom)] flex flex-1 flex-col gap-3 overflow-hidden p-1 justify-center items-center">
+        <div
+            class="truncate text-center text-sm font-bold leading-6 md:text-left"
+        >
+            PLAYER
+        </div>
+        <div class="flex justify-between gap-6">
+            <div class="md:hidden">
+                <x-button primary @click="togglePlay"><i class="fa fa-thin fa-play"></i></x-button>
+            </div>
+        </div>
+    </div>
 </div>
 @stack('modals')
 @livewireScripts
