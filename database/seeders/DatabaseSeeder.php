@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Console\Commands\Database\CreateTags;
 use App\Console\Commands\Feed\ReadAndSyncEinundzwanzigPodcastFeed;
+use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
@@ -279,5 +280,6 @@ class DatabaseSeeder extends Seeder
         $nonPublicLibrary->libraryItems()
                          ->attach($libraryItem);
         Artisan::call(ReadAndSyncEinundzwanzigPodcastFeed::class);
+        Artisan::call(SyncOpenBooks::class);
     }
 }

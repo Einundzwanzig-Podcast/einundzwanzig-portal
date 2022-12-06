@@ -1,0 +1,17 @@
+models:
+  BookCase:
+    title: string
+    lat: double
+    lon: json
+    address: text
+    type: string
+    open: string
+    comment: text
+    contact: text
+    bcz: text
+    digital: boolean
+    icontype: string
+    deactivated: boolean
+    deactreason: string
+    entrytype: string
+    homepage: string
