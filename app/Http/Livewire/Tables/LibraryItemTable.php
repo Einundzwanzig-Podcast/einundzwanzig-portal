@@ -122,7 +122,7 @@ class LibraryItemTable extends DataTableComponent
             Column::make("Art", "type")
                   ->format(
                       function ($value, $row, Column $column) {
-                          return '<span class="inline-flex items-center rounded-full bg-amber-400 px-2.5 py-0.5 text-base font-medium text-gray-900"><i class="mr-2 fa fa-thin fa-'
+                          return '<span class="whitespace-nowrap inline-flex items-center rounded-full bg-amber-400 px-2.5 py-0.5 text-base font-medium text-gray-900"><i class="mr-2 fa fa-thin fa-'
                                  .LibraryItemType::icons()[$value]
                                  .'"></i>'
                                  .LibraryItemType::labels()[$value]
