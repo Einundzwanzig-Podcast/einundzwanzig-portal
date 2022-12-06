@@ -48,8 +48,8 @@ class BookCaseTable extends DataTableComponent
                       ) => $row->homepage ? '<a target="_blank" class="underline text-amber-500" href="'.$this->url_to_absolute($row->homepage).'">Link</a>' : null
                   )
                   ->html(),
-            BooleanColumn::make('Oranged-Pilled', 'deactivated')
-                         ->sortable(),
+            Column::make('Oranged-Pilled', 'deactivated')
+                         ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')->withRow($row)),
         ];
     }
 
