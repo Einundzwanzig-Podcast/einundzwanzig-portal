@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLibrariesTable extends Migration
+class CreatePodcastsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreateLibrariesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('libraries', function (Blueprint $table) {
+        Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->boolean('is_public')
-                  ->default(true);
-            $table->json('language_codes')
-                  ->default('[]');
+            $table->string('guid')
+                  ->unique();
+            $table->string('title');
+            $table->string('link');
+            $table->string('language_code');
+            $table->json('data');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateLibrariesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('libraries');
+        Schema::dropIfExists('podcasts');
     }
 }

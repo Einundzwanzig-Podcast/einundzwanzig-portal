@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Console\Commands\Database\CreateTags;
+use App\Console\Commands\Feed\ReadAndSyncEinundzwanzigPodcastFeed;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
@@ -277,5 +278,6 @@ class DatabaseSeeder extends Seeder
         $libraryItem->syncTagsWithType(['Präsentationen'], 'library_item');
         $nonPublicLibrary->libraryItems()
                          ->attach($libraryItem);
+        Artisan::call(ReadAndSyncEinundzwanzigPodcastFeed::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLibraryItemsTable extends Migration
+class CreateEpisodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,23 +14,15 @@ class CreateLibraryItemsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('library_items', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lecturer_id')
+            $table->string('guid')
+                  ->unique();
+            $table->foreignId('podcast_id')
                   ->constrained()
                   ->cascadeOnDelete()
                   ->cascadeOnUpdate();
-            $table->foreignId('episode_id')
-                  ->nullable()
-                  ->constrained()
-                  ->cascadeOnDelete()
-                  ->cascadeOnUpdate();
-            $table->unsignedInteger('order_column');
-            $table->string('name');
-            $table->string('type');
-            $table->string('language_code');
-            $table->longText('value')
-                  ->nullable();
+            $table->json('data');
             $table->timestamps();
         });
 
@@ -43,6 +35,6 @@ class CreateLibraryItemsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('library_items');
+        Schema::dropIfExists('episodes');
     }
 }

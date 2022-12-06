@@ -1,16 +1,17 @@
-created: 'database/factories/LibraryFactory.php database/factories/LibraryItemsFactory.php database/migrations/2022_12_05_160932_create_libraries_table.php database/migrations/2022_12_05_160933_create_library_items_table.php app/Models/Library.php app/Models/LibraryItems.php app/Nova/Library.php app/Nova/LibraryItems.php'
 models:
     Category: { name: string, slug: string }
     City: { country_id: biginteger, name: string, slug: string, longitude: 'float:10', latitude: 'float:10' }
-    Country: { name: string, code: string }
+    Country: { name: string, code: string, language_codes: 'json default:[]' }
     Course: { lecturer_id: biginteger, name: string, description: 'text nullable' }
+    Episode: { guid: string, podcast_id: biginteger, data: json }
     Event: { course_id: biginteger, venue_id: biginteger, '"from"': datetime, '"to"': datetime, link: string }
     Lecturer: { team_id: biginteger, name: string, slug: string, active: 'boolean default:1', description: 'text nullable' }
-    Library: { name: string, language_code: string }
-    LibraryItem: { lecturer_id: biginteger, library_id: biginteger, order_column: integer, type: string, value: text }
+    Library: { name: string, is_public: 'boolean default:1', language_codes: 'json default:[]' }
+    LibraryItem: { lecturer_id: biginteger, episode_id: 'biginteger nullable', order_column: integer, name: string, type: string, language_code: string, value: 'text nullable' }
     LoginKey: { k1: string, user_id: biginteger }
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     Participant: { first_name: string, last_name: string }
+    Podcast: { guid: string, title: string, link: string, language_code: string, data: json }
     Registration: { event_id: biginteger, participant_id: biginteger, active: 'boolean default:1' }
     Tag: { name: json, slug: json, type: 'string nullable', order_column: 'integer nullable', icon: 'string default:tag' }
     Team: { user_id: biginteger, name: string, personal_team: boolean }

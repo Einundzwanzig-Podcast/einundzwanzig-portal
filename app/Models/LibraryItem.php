@@ -64,6 +64,11 @@ class LibraryItem extends Model implements HasMedia, Sortable
         return $this->belongsTo(Lecturer::class);
     }
 
+    public function episode(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Episode::class);
+    }
+
     public function libraries(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Library::class);

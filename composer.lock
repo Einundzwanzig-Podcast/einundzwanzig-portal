@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe13b4c19e33aebc3926e4dcd5ddf8e8",
+    "content-hash": "9c4898684e578e46bb709340edf618e8",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -4940,6 +4940,37 @@
                 "source": "https://github.com/silexphp/Pimple/tree/v3.5.0"
             },
             "time": "2021-10-28T11:13:42+00:00"
+        },
+        {
+            "name": "podcastindex/podcastindex-php",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LowSociety/podcastindex-php.git",
+                "reference": "8aa323cf67e1892c8ebec4500803fb8bf14ba84b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LowSociety/podcastindex-php/zipball/8aa323cf67e1892c8ebec4500803fb8bf14ba84b",
+                "reference": "8aa323cf67e1892c8ebec4500803fb8bf14ba84b",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PodcastIndex\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "A PHP wrapper for the PodcastIndex API.",
+            "support": {
+                "issues": "https://github.com/LowSociety/podcastindex-php/issues",
+                "source": "https://github.com/LowSociety/podcastindex-php/tree/1.0.0"
+            },
+            "time": "2020-09-10T10:09:37+00:00"
         },
         {
             "name": "pragmarx/google2fa",

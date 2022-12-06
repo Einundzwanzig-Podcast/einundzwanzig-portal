@@ -7,11 +7,13 @@ use App\Nova\City;
 use App\Nova\Country;
 use App\Nova\Course;
 use App\Nova\Dashboards\Main;
+use App\Nova\Episode;
 use App\Nova\Event;
 use App\Nova\Lecturer;
 use App\Nova\Library;
 use App\Nova\LibraryItem;
 use App\Nova\Participant;
+use App\Nova\Podcast;
 use App\Nova\Registration;
 use App\Nova\Tag;
 use App\Nova\Team;
@@ -57,6 +59,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(LibraryItem::class),
                 ])
                            ->icon('library')
+                           ->collapsable(),
+
+                MenuSection::make('Podcasts', [
+                    MenuItem::resource(Podcast::class),
+                    MenuItem::resource(Episode::class),
+                ])
+                           ->icon('microphone')
                            ->collapsable(),
 
                 MenuSection::make('Admin', [

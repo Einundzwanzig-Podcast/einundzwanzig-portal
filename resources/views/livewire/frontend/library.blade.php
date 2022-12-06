@@ -30,10 +30,10 @@
                         <nav class="-mb-px flex space-x-8">
                             @foreach($libraries as $library)
                                 @php
-                                    $currentLibraryClass = $currentTab === $library->name ? 'border-amber-500 text-amber-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300';
+                                    $currentLibraryClass = $currentTab === $library['name'] ? 'border-amber-500 text-amber-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300';
                                 @endphp
-                                <a href="{{ route(request()->route()->getName(), ['country' => $country, 'currentTab' => $library->name]) }}"
-                                   class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library->name }}</a>
+                                <a href="{{ route(request()->route()->getName(), ['country' => $country, 'currentTab' => $library['name']]) }}"
+                                   class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
                             @endforeach
                         </nav>
                     </div>
@@ -42,6 +42,7 @@
 
             <livewire:frontend.search-by-tag-in-library/>
             <div class="my-12">
+
                 <livewire:tables.library-item-table :currentTab="$currentTab"/>
             </div>
         </div>

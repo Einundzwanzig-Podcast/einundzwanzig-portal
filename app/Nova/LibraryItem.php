@@ -80,6 +80,7 @@ class LibraryItem extends Resource
                           'markdown_article'  => 'markdown_article',
                           'youtube_video'     => 'youtube_video',
                           'vimeo_video'       => 'vimeo_video',
+                          'podcast_episode'   => 'podcast_episode',
                           'downloadable_file' => 'downloadable_file',
                       ]
                   )
@@ -90,6 +91,8 @@ class LibraryItem extends Resource
                 ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
             BelongsTo::make('Lecturer'),
+
+            BelongsTo::make('Episode'),
 
             BelongsToMany::make('Library', 'libraries', Library::class),
 
