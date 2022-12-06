@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Enums\LibraryItemType;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Spatie\LaravelOptions\Options;
 use Spatie\TagsField\Tags;
 
 class LibraryItem extends Resource
@@ -74,15 +76,7 @@ class LibraryItem extends Resource
 
             Select::make('Type')
                   ->options(
-                      [
-                          'book'              => 'book',
-                          'blog_article'      => 'blog_article',
-                          'markdown_article'  => 'markdown_article',
-                          'youtube_video'     => 'youtube_video',
-                          'vimeo_video'       => 'vimeo_video',
-                          'podcast_episode'   => 'podcast_episode',
-                          'downloadable_file' => 'downloadable_file',
-                      ]
+                      Options::forEnum(LibraryItemType::class)->toArray()
                   )
                   ->rules('required', 'string'),
 
@@ -92,7 +86,7 @@ class LibraryItem extends Resource
 
             BelongsTo::make('Lecturer'),
 
-            BelongsTo::make('Episode'),
+            BelongsTo::make('Episode')->rules(['nullable']),
 
             BelongsToMany::make('Library', 'libraries', Library::class),
 

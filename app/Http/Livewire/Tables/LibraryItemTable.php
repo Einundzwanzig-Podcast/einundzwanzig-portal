@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Enums\LibraryItemType;
 use App\Models\Library;
 use App\Models\LibraryItem;
 use App\Models\Tag;
@@ -11,6 +12,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Spatie\LaravelOptions\Options;
 
 class LibraryItemTable extends DataTableComponent
 {
@@ -78,6 +80,22 @@ class LibraryItemTable extends DataTableComponent
                                     fn($query) => $query->where('libraries.name', 'ilike', "%$value%"));
                             }
                         }),
+            SelectFilter::make('Art')
+                        ->options(
+                            collect(
+                                Options::forEnum(LibraryItemType::class)
+                                       ->toArray()
+                            )
+                                ->mapWithKeys(fn($value, $key) => [$value['value'] => $value['label']])
+                                ->prepend('Alle', '')
+                                ->toArray()
+                        )
+                        ->filter(function (Builder $builder, string $value) {
+                            if ($value === 'Alle') {
+                                return;
+                            }
+                            $builder->where('library_items.type', $value);
+                        }),
         ];
     }
 
@@ -102,6 +120,15 @@ class LibraryItemTable extends DataTableComponent
             Column::make("Name", "name")
                   ->sortable(),
             Column::make("Art", "type")
+                  ->format(
+                      function ($value, $row, Column $column) {
+                          return '<span class="inline-flex items-center rounded-full bg-amber-400 px-2.5 py-0.5 text-base font-medium text-gray-900"><i class="mr-2 fa fa-thin fa-'
+                                 .LibraryItemType::icons()[$value]
+                                 .'"></i>'
+                                 .LibraryItemType::labels()[$value]
+                                 .'</span>';
+                      })
+                  ->html()
                   ->sortable(),
             Column::make("Tags")
                   ->label(
@@ -117,8 +144,8 @@ class LibraryItemTable extends DataTableComponent
     public function builder(): Builder
     {
         $shouldBePublic = request()
-                          ->route()
-                          ->getName() !== 'library.lecturer';
+                              ->route()
+                              ->getName() !== 'library.lecturer';
 
         return LibraryItem::query()
                           ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))
