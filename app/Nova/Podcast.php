@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -41,6 +43,8 @@ class Podcast extends Resource
      */
     public function fields(Request $request)
     {
+        $guid = $this->guid ?? Str::uuid();
+
         return [
             ID::make()
               ->sortable(),
@@ -48,8 +52,19 @@ class Podcast extends Resource
             Avatar::make('Image')
                   ->squared()
                   ->thumbnail(function () {
-                      return $this->data['image'];
-                  }),
+                      return $this?->data['image'] ?? '';
+                  })
+                  ->exceptOnForms(),
+
+            Boolean::make('Locked', 'locked', fn($value) => $value ?? false),
+
+            Text::make('Guid', 'guid', function ($value) use ($guid) {
+                if ($value) {
+                    return $value;
+                } else {
+                    return $guid;
+                }
+            }),
 
             Text::make('Title')
                 ->rules('required', 'string'),

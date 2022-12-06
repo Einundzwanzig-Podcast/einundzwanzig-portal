@@ -16,10 +16,13 @@ class CreatePodcastsTable extends Migration
             $table->id();
             $table->string('guid')
                   ->unique();
+            $table->boolean('locked')
+                  ->default(true);
             $table->string('title');
             $table->string('link');
             $table->string('language_code');
-            $table->json('data');
+            $table->json('data')
+                  ->nullable();
             $table->timestamps();
         });
     }
