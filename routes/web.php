@@ -39,6 +39,9 @@ Route::get('/{country:code}/dozenten/bibliothek', \App\Http\Livewire\Frontend\Li
 Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)
      ->name('search.lecturers');
 
+Route::get('/buecher-schraenke', \App\Http\Livewire\Frontend\SearchBookCase::class)
+     ->name('search.bookcases');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

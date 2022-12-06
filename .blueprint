@@ -1,3 +1,8 @@
+created:
+    - database/factories/BookCaseFactory.php
+    - database/migrations/2022_12_06_222651_create_book_cases_table.php
+    - app/Models/BookCase.php
+    - app/Nova/BookCase.php
 models:
     Category: { name: string, slug: string }
     City: { country_id: biginteger, name: string, slug: string, longitude: 'float:10', latitude: 'float:10' }
@@ -18,3 +23,5 @@ models:
     TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
     User: { name: string, public_key: 'string nullable', email: 'string nullable', email_verified_at: 'datetime nullable', password: 'string nullable', remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', is_lecturer: 'boolean default:', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable', timezone: 'string default:Europe/Berlin' }
     Venue: { city_id: biginteger, name: string, slug: string, street: string }
+    Case: { title: string, lat: double, lon: json, address: text, type: string, open: string, comment: text, contact: text, bcz: text, digital: boolean, icontype: string, deactivated: boolean, deactreason: string, entrytype: string, homepage: string }
+    BookCase: { title: string, lat: double, lon: json, address: text, type: string, open: string, comment: text, contact: text, bcz: text, digital: boolean, icontype: string, deactivated: boolean, deactreason: string, entrytype: string, homepage: string }
