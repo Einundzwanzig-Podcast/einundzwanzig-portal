@@ -12,6 +12,8 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
 
+        './app/Http/Livewire/**/*.php',
+
         './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php',
 
         './vendor/wireui/wireui/resources/**/*.blade.php',

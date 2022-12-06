@@ -1,4 +1,11 @@
 {
+    "Book": "Buch",
+    "Article": "Artikel",
+    "Markdown Article": "Interner Artikel",
+    "Youtube Video": "Youtube Video",
+    "Vimeo Video": "Vimeo Video",
+    "Podcast Episode": "Podcast",
+    "Downloadable File": "Download",
     "Done": "Fertig",
     "Registration": "Anmeldung",
     "Lecturer": "Dozent",
