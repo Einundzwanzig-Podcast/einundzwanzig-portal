@@ -14,7 +14,7 @@ class BookCaseTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['id'])
+             ->setAdditionalSelects(['id', 'homepage'])
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -45,7 +45,7 @@ class BookCaseTable extends DataTableComponent
                       fn(
                           $row,
                           Column $column
-                      ) => '<a class="underline text-amber-500" href="'.$row->homepage.'">Link</a>'
+                      ) => $row->homepage ? '<a target="_blank" class="underline text-amber-500" href="'.$row->homepage.'">Link</a>' : null
                   )
                   ->html(),
             BooleanColumn::make('Oranged-Pilled', 'deactivated')
