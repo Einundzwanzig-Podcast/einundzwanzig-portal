@@ -93,7 +93,7 @@ class LibraryItemTable extends DataTableComponent
                            'alt'   => $row->name.' Avatar',
                        ])
                        ->collapseOnMobile(),
-            Column::make('Dozent', "lecturer.name")
+            Column::make('Ersteller', "lecturer.name")
                   ->label(
                       fn($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
                   )

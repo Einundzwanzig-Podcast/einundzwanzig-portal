@@ -13,4 +13,9 @@ class Tag extends \Spatie\Tags\Tag
     {
         return $this->morphedByMany(LibraryItem::class, 'taggable');
     }
+
+    public function episodes()
+    {
+        return $this->morphedByMany(Episode::class, 'taggable');
+    }
 }

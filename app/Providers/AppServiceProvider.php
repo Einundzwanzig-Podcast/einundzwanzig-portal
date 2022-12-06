@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Episode;
+use App\Observers\EpisodeObserver;
 use App\Support\Carbon;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;

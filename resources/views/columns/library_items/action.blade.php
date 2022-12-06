@@ -11,4 +11,10 @@
             Download
         </x-button>
     @endif
+    @if($row->type === 'podcast_episode')
+        <x-button amber href="{{ $row->episode->data['enclosureUrl'] }}" target="_blank">
+            <i class="fa fa-thin fa-headphones mr-2"></i>
+            Anhören
+        </x-button>
+    @endif
 </div>
