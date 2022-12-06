@@ -86,7 +86,7 @@ class LibraryItem extends Resource
 
             BelongsTo::make('Lecturer'),
 
-            BelongsTo::make('Episode')->rules(['nullable']),
+            BelongsTo::make('Episode')->nullable(),
 
             BelongsToMany::make('Library', 'libraries', Library::class),
 
