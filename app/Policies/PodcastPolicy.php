@@ -41,7 +41,7 @@ class PodcastPolicy
      */
     public function create(User $user)
     {
-        return false;
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class PodcastPolicy
      */
     public function update(User $user, Podcast $podcast)
     {
-        return false;
+        return !$podcast->locked;
     }
 
     /**
@@ -65,7 +65,7 @@ class PodcastPolicy
      */
     public function delete(User $user, Podcast $podcast)
     {
-        return false;
+        return !$podcast->locked;
     }
 
     /**
@@ -77,7 +77,7 @@ class PodcastPolicy
      */
     public function restore(User $user, Podcast $podcast)
     {
-        return false;
+        return !$podcast->locked;
     }
 
     /**
@@ -89,6 +89,6 @@ class PodcastPolicy
      */
     public function forceDelete(User $user, Podcast $podcast)
     {
-        return false;
+        return !$podcast->locked;
     }
 }

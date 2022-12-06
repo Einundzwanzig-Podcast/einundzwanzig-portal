@@ -13,7 +13,7 @@
             @endphp
             <a
                 class="{{ $activeClass }} flex relative flex-col flex-shrink-0 justify-between py-1 px-3 w-full h-20 border-0 border-solid duration-300 ease-in-out cursor-pointer bg-opacity-[0.07]"
-                href="{{ route('library', ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->id]]]]) }}"
+                href="{{ route(request()->route()->getName(), ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->id]]]]) }}"
             >
                 <div
                     class="flex flex-1 items-center p-0 m-0 text-center align-baseline border-0 border-solid"
