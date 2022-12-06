@@ -7,6 +7,13 @@
         <x-jet-validation-errors class="mb-4"/>
 
         <form method="POST" action="{{ route('register') }}">
+
+            <div class="flex items-center justify-end mb-4">
+                <x-button icon="arrow-left" secondary class="ml-4" href="/">
+                    {{ __('Zurück zur Webseite') }}
+                </x-button>
+            </div>
+
             @csrf
 
             <div>
@@ -72,7 +79,7 @@
             </div>
 
             <div class="flex items-center justify-left mt-4">
-                <x-button href="{{ route('auth.ln') }}" primary icon="lightning-bolt">LN-Auth</x-button>
+                <x-button href="{{ route('auth.ln') }}" primary icon="lightning-bolt">LNURL-Auth</x-button>
             </div>
         </form>
     </x-jet-authentication-card>

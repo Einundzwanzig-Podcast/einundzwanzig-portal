@@ -7,7 +7,11 @@
 
             <div class="relative border-b border-gray-200 pb-5 sm:pb-0">
                 <div class="md:flex md:items-center md:justify-between">
-                    <h3 class="text-2xl font-medium leading-6 text-gray-200">Bibliotheken</h3>
+                    @if(request()->route()->getName() === 'library.lecturer')
+                        <h3 class="text-2xl font-medium leading-6 text-gray-200">Dozenten-Bibliotheken</h3>
+                    @else
+                        <h3 class="text-2xl font-medium leading-6 text-gray-200">Bibliotheken</h3>
+                    @endif
                 </div>
                 <div class="mt-4">
                     <!-- Dropdown menu on small screens -->
