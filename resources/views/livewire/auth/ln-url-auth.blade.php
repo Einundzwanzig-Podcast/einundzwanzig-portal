@@ -4,7 +4,15 @@
     </x-slot>
 
     <div wire:ignore>
+
+        <div class="flex items-center justify-end mb-4">
+            <x-button icon="arrow-left" secondary class="ml-4" href="/">
+                {{ __('Zurück zur Webseite') }}
+            </x-button>
+        </div>
+
         <div>
+
             <div class="flex justify-center" wire:key="qrcode">
                 {!! $this->qrCode !!}
             </div>
@@ -32,11 +40,11 @@
         <div class="flex items-center justify-end mt-4">
 
             <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
-                {{ __('Switch to E-Mail login') }}
+                {{ __('E-Mail login') }}
             </x-button>
 
             <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmailSignup">
-                {{ __('Switch to E-Mail signup') }}
+                {{ __('E-Mail Registrierung') }}
             </x-button>
 
         </div>
