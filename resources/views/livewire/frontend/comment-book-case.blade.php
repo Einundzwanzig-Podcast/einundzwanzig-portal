@@ -58,66 +58,64 @@
                         </div>
                     @endauth
                 </div>
-                <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
-                    <div
-                        class="w-full lg:w-1/2 flex lg:px-0 px-5 flex-col md:items-center lg:items-start justify-center -mt-12">
-
-                        <h1 class="text-white text-3xl sm:text-5xl lg:max-w-none max-w-4xl lg:text-left text-left md:text-center xl:text-7xl font-black">
-                            Bitcoin <span
-                                class="bg-clip-text text-transparent bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 mt-1 lg:block">School
-                        </span> <br class="lg:block sm:hidden"> Worldwide
-                        </h1>
-                        <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
-                            Finde einen Bücher-Schrank in deiner City</p>
-                        <a href="#table"
-                           class="whitespace-nowrap bg-white px-4 lg:px-16 py-2 text-center lg:py-5 font-bold rounded text-xs md:text-xl lg:text-2xl mt-8 inline-block w-auto">
-                            👇 Bücher-Schrank finden 👇
-                        </a>
-                        <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
-                    </div>
-                    <div
-                        x-data="{
-                        earth: null,
-                        init() {
-                            this.earth = new Earth(this.$refs.myearth, {
-                                location : {lat: {{ $bookCases->first()->lat }}, lng: {{ $bookCases->first()->lon }}},
-                                zoom: 1,
-                                light: 'sun',
-                                polarLimit: 0.6,
-
-                                transparent : true,
-                                mapSeaColor : 'RGBA(34, 34, 34,0.76)',
-                                mapLandColor : '#F7931A',
-                                mapBorderColor : '#5D5D5D',
-                                mapBorderWidth : 0.25,
-                                mapHitTest : true,
-
-                                autoRotate: true,
-                                autoRotateSpeed: 0.7,
-                                autoRotateDelay: 500,
-                            });
-                            this.earth.addEventListener('ready', function() {
-                                @foreach($bookCases as $city)
-                                    this.addMarker( {
-                                        mesh : ['Needle'],
-                                        location : { lat: {{ $city->lat }}, lng: {{ $city->lon }} },
-                                    });
-                                @endforeach
-                            });
-                        }
-                    }" class="hidden sm:inline-block w-1/2">
-                        {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
-                             class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
-                        <div x-ref="myearth" class="earth-container"></div>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
     {{-- MAIN --}}
     <section class="w-full mb-12">
-        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10" id="table">
-            <livewire:tables.book-case-table/>
+        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
+            <div class="flex items-center justify-end space-x-2 my-6">
+                <x-button primary :href="route('search.bookcases', ['country' => $c])">
+                    <i class="fa fa-thin fa-arrow-left"></i>
+                    Zurück zur Übersicht
+                </x-button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+                <div
+                    class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+                    {{--<div class="flex-shrink-0">
+                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                    </div>--}}
+                    <div class="min-w-0 flex-1">
+                        <div class="focus:outline-none">
+                            <p class="text-sm font-medium text-gray-900">Name</p>
+                            <p class="truncate text-sm text-gray-500">{{ $bookCase->title }}</p>
+                            <p class="text-sm font-medium text-gray-900">Link</p>
+                            <p class="text-sm text-gray-500">
+                                <a target="_blank"
+                                   href="{{ $this->url_to_absolute($bookCase->homepage) }}">{{ $this->url_to_absolute($bookCase->homepage) }}</a>
+                            </p>
+                            <p class="text-sm font-medium text-gray-900">Adresse</p>
+                            <p class="truncate text-sm text-gray-500">{{ $bookCase->address }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded">
+                    @map([
+                    'lat' => $bookCase->lat,
+                    'lng' => $bookCase->lon,
+                    'zoom' => 24,
+                    'markers' => [
+                    [
+                    'title' => $bookCase->title,
+                    'lat' => $bookCase->lat,
+                    'lng' => $bookCase->lon,
+                    'url' => 'https://gonoware.com',
+                    'icon' => asset('img/btc-logo-6219386_1280.png'),
+                    'icon_size' => [42, 42],
+                    ],
+                    ],
+                    ])
+                </div>
+
+            </div>
+
+            <div class="my-4">
+                <livewire:comments :model="$bookCase"/>
+            </div>
         </div>
     </section>
     {{-- FOOTER --}}

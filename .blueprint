@@ -1,8 +1,8 @@
 created:
-    - database/factories/BookCaseFactory.php
-    - database/migrations/2022_12_06_222651_create_book_cases_table.php
-    - app/Models/BookCase.php
-    - app/Nova/BookCase.php
+    - database/factories/OrangePillFactory.php
+    - database/migrations/2022_12_07_095709_create_orange_pills_table.php
+    - app/Models/OrangePill.php
+    - app/Nova/OrangePill.php
 models:
     Category: { name: string, slug: string }
     City: { country_id: biginteger, name: string, slug: string, longitude: 'float:10', latitude: 'float:10' }
@@ -25,3 +25,4 @@ models:
     Venue: { city_id: biginteger, name: string, slug: string, street: string }
     Case: { title: string, lat: double, lon: json, address: text, type: string, open: string, comment: text, contact: text, bcz: text, digital: boolean, icontype: string, deactivated: boolean, deactreason: string, entrytype: string, homepage: string }
     BookCase: { title: string, lat: double, lon: json, address: text, type: string, open: string, comment: text, contact: text, bcz: text, digital: boolean, icontype: string, deactivated: boolean, deactreason: string, entrytype: string, homepage: string }
+    OrangePill: { user_id: foreign, book_case_id: foreign, date: datetime, amount: 'integer unsigned' }
