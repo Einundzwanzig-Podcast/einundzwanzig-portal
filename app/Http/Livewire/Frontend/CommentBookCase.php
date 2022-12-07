@@ -4,9 +4,14 @@ namespace App\Http\Livewire\Frontend;
 
 use App\Models\BookCase;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CommentBookCase extends Component
 {
+    use WithFileUploads;
+
+    public $photo;
+
     public string $c = 'de';
 
     public BookCase $bookCase;
@@ -16,28 +21,26 @@ class CommentBookCase extends Component
         return view('livewire.frontend.comment-book-case');
     }
 
+    public function save()
+    {
+        $this->validate([
+            'photo' => 'image|max:4096', // 4MB Max
+        ]);
+
+        $this->bookCase
+            ->addMedia($this->photo)
+            ->toMediaCollection('images');
+
+        return to_route('comment.bookcase', ['bookCase' => $this->bookCase->id]);
+    }
+
     protected function url_to_absolute($url)
     {
-        // Determine request protocol
-        $request_protocol = $request_protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
-        // If dealing with a Protocol Relative URL
-        if (stripos($url, '//') === 0) {
+        if (str($url)->contains('http')) {
             return $url;
         }
-        // If dealing with a Root-Relative URL
-        if (stripos($url, '/') === 0) {
-            return $request_protocol.'://'.$_SERVER['HTTP_HOST'].$url;
+        if (!str($url)->contains('http')) {
+            return str($url)->prepend('https://');
         }
-        // If dealing with an Absolute URL, just return it as-is
-        if (stripos($url, 'http') === 0) {
-            return $url;
-        }
-        // If dealing with a relative URL,
-        // and attempt to handle double dot notation ".."
-        do {
-            $url = preg_replace('/[^\/]+\/\.\.\//', '', $url, 1, $count);
-        } while ($count);
-        // Return the absolute version of a Relative URL
-        return $request_protocol.'://'.$_SERVER['HTTP_HOST'].'/'.$url;
     }
 }

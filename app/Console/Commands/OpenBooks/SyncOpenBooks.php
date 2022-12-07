@@ -35,8 +35,8 @@ class SyncOpenBooks extends Command
                 ],
                 [
                     'title'       => $case['title'],
-                    'lat'         => (float)$case['lat'],
-                    'lon'         => (float)$case['lon'],
+                    'latitude'         => (float)$case['lat'],
+                    'longitude'         => (float)$case['lon'],
                     'address'     => $case['address'],
                     'type'        => $case['type'],
                     'open'        => $case['open'],

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Models\BookCase;
 use App\Models\City;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -82,6 +83,23 @@ class CityTable extends DataTableComponent
                 'filters' => [
                     'stadt' => $query->pluck('name')
                                      ->push($city->name)
+                                     ->implode(',')
+                ],
+            ]
+        ]);
+    }
+
+    public function proximitySearchForBookCases($id)
+    {
+        $city = City::query()
+                    ->find($id);
+        $query = BookCase::radius($city->latitude, $city->longitude, 5);
+        return to_route('search.bookcases', [
+            '#table',
+            'country' => $this->country,
+            'table'   => [
+                'filters' => [
+                    'byids' => $query->pluck('id')
                                      ->implode(',')
                 ],
             ]
