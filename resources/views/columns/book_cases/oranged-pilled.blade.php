@@ -7,7 +7,7 @@
             <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_minus.webp') }}" alt="">
         @endif
         <div class="flex items-center space-x-1">
-            <x-button primary class="text-21gray" wire:click="viewHistoryModal({{ $row->id }})">💊 Orange Pill Now</x-button>
+            <x-button primary class="text-21gray whitespace-nowrap" wire:click="viewHistoryModal({{ $row->id }})">💊 Orange Pill Now</x-button>
             <x-button :href="route('comment.bookcase', ['bookCase' => $row->id])">Details</x-button>
         </div>
     @else
