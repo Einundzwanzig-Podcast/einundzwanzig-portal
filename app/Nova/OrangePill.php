@@ -17,6 +17,11 @@ class OrangePill extends Resource
      */
     public static $model = \App\Models\OrangePill::class;
 
+    public static function label()
+    {
+        return 'Inputs';
+    }
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

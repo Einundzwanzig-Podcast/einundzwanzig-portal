@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Nova\BookCase;
 use App\Nova\Category;
 use App\Nova\City;
+use App\Nova\Comment;
 use App\Nova\Country;
 use App\Nova\Course;
 use App\Nova\Dashboards\Main;
@@ -12,6 +14,7 @@ use App\Nova\Event;
 use App\Nova\Lecturer;
 use App\Nova\Library;
 use App\Nova\LibraryItem;
+use App\Nova\OrangePill;
 use App\Nova\Participant;
 use App\Nova\Podcast;
 use App\Nova\Registration;
@@ -66,6 +69,19 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Episode::class),
                 ])
                            ->icon('microphone')
+                           ->collapsable(),
+
+                MenuSection::make('Books', [
+                    MenuItem::resource(BookCase::class),
+                    MenuItem::resource(OrangePill::class),
+                ])
+                           ->icon('book-open')
+                           ->collapsable(),
+
+                MenuSection::make('Comments', [
+                    MenuItem::resource(Comment::class),
+                ])
+                           ->icon('chat')
                            ->collapsable(),
 
                 MenuSection::make('Admin', [

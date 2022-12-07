@@ -2,58 +2,63 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 
 class BookCase extends Resource
 {
     /**
      * The model the resource corresponds to.
-     *
      * @var string
      */
     public static $model = \App\Models\BookCase::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
-     *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
-     *
      * @var array
      */
     public static $search = [
         'id',
+        'title',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()
+              ->sortable(),
 
             Text::make('Title')
                 ->rules('required', 'string'),
 
-            Number::make('Lat')
-                ->rules('required', 'numeric'),
+            Number::make('Latitude')
+                  ->rules('required', 'numeric')
+                  ->step(0.000001)
+                  ->hideFromIndex(),
 
-            Code::make('Lon')
-                ->rules('required', 'json')
-                ->json(),
+            Number::make('Longitude')
+                ->rules('required', 'numeric')
+                ->step(0.000001)
+                ->hideFromIndex(),
 
             Text::make('Address')
                 ->rules('required', 'string'),
@@ -62,35 +67,47 @@ class BookCase extends Resource
                 ->rules('required', 'string'),
 
             Text::make('Open')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Comment')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Contact')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Bcz')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Boolean::make('Digital')
-                ->rules('required'),
+                   ->rules('required')
+                   ->hideFromIndex(),
 
             Text::make('Icontype')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Boolean::make('Deactivated')
-                ->rules('required'),
+                   ->rules('required'),
 
             Text::make('Deactreason')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Entrytype')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Homepage')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
+            HasMany::make('OrangePills'),
+
+            MorphMany::make('Comments'),
 
         ];
     }
@@ -99,6 +116,7 @@ class BookCase extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function cards(Request $request)
@@ -110,6 +128,7 @@ class BookCase extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function filters(Request $request)
@@ -121,6 +140,7 @@ class BookCase extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function lenses(Request $request)
@@ -132,6 +152,7 @@ class BookCase extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function actions(Request $request)
