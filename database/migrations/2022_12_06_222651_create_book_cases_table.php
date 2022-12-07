@@ -14,6 +14,10 @@ class CreateBookCasesTable extends Migration
     {
         Schema::create('book_cases', function (Blueprint $table) {
             $table->id();
+            $table->boolean('orange_pilled')
+                  ->default(false);
+            $table->unsignedInteger('orange_pilled_amount')
+                  ->default(0);
             $table->string('title');
             $table->double('lat');
             $table->double('lon');

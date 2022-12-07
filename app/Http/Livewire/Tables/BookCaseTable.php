@@ -5,10 +5,15 @@ namespace App\Http\Livewire\Tables;
 use App\Models\BookCase;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 
 class BookCaseTable extends DataTableComponent
 {
+    public bool $viewingModal = false;
+    public $currentModal;
+    public array $orangepill = [
+        'amount' => 1,
+        'date' => null,
+    ];
     protected $model = BookCase::class;
 
     public function configure(): void
@@ -22,6 +27,7 @@ class BookCaseTable extends DataTableComponent
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
+
                  return [
                      'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
@@ -48,8 +54,8 @@ class BookCaseTable extends DataTableComponent
                       ) => $row->homepage ? '<a target="_blank" class="underline text-amber-500" href="'.$this->url_to_absolute($row->homepage).'">Link</a>' : null
                   )
                   ->html(),
-            Column::make('Oranged-Pilled', 'deactivated')
-                         ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')->withRow($row)),
+            Column::make('Orange-Pilled', 'orange_pilled')
+                  ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')->withRow($row)),
         ];
     }
 
@@ -76,5 +82,21 @@ class BookCaseTable extends DataTableComponent
         } while ($count);
         // Return the absolute version of a Relative URL
         return $request_protocol.'://'.$_SERVER['HTTP_HOST'].'/'.$url;
+    }
+
+    public function viewHistoryModal($modelId): void
+    {
+        $this->viewingModal = true;
+        $this->currentModal = BookCase::findOrFail($modelId);
+    }
+
+    public function resetModal(): void
+    {
+        $this->reset('viewingModal', 'currentModal');
+    }
+
+    public function customView(): string
+    {
+        return 'modals.book_cases.orange_pill';
     }
 }
