@@ -24,7 +24,7 @@
                     <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
                         {{ __('Inhalte eintragen') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
+                    <x-jet-nav-link href="/nova/resources/book-cases" target="_blank">
                         {{ __('Bücher-Schränke verwalten') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
