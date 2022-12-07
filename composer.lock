@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e1d276278d181610fa0fab60d465ebc",
+    "content-hash": "8289fc02dc91d846d7179784df552d42",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -112,16 +112,16 @@
         },
         {
             "name": "bacon/bacon-qr-code",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bacon/BaconQrCode.git",
-                "reference": "d70c840f68657ce49094b8d91f9ee0cc07fbf66c"
+                "reference": "8674e51bb65af933a5ffaf1c308a660387c35c22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/d70c840f68657ce49094b8d91f9ee0cc07fbf66c",
-                "reference": "d70c840f68657ce49094b8d91f9ee0cc07fbf66c",
+                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/8674e51bb65af933a5ffaf1c308a660387c35c22",
+                "reference": "8674e51bb65af933a5ffaf1c308a660387c35c22",
                 "shasum": ""
             },
             "require": {
@@ -160,9 +160,9 @@
             "homepage": "https://github.com/Bacon/BaconQrCode",
             "support": {
                 "issues": "https://github.com/Bacon/BaconQrCode/issues",
-                "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.7"
+                "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.8"
             },
-            "time": "2022-03-14T02:02:36+00:00"
+            "time": "2022-12-07T17:46:57+00:00"
         },
         {
             "name": "bitwasp/bech32",
@@ -1161,16 +1161,16 @@
         },
         {
             "name": "ebess/advanced-nova-media-library",
-            "version": "4.0.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ebess/advanced-nova-media-library.git",
-                "reference": "2452eb040a9f9664b88d4d19451e001c17a33973"
+                "reference": "2d7151d8b2159d28e1d73fcc7fe23992e327b7df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ebess/advanced-nova-media-library/zipball/2452eb040a9f9664b88d4d19451e001c17a33973",
-                "reference": "2452eb040a9f9664b88d4d19451e001c17a33973",
+                "url": "https://api.github.com/repos/ebess/advanced-nova-media-library/zipball/2d7151d8b2159d28e1d73fcc7fe23992e327b7df",
+                "reference": "2d7151d8b2159d28e1d73fcc7fe23992e327b7df",
                 "shasum": ""
             },
             "require": {
@@ -1179,6 +1179,7 @@
                 "php": ">=7.4",
                 "spatie/laravel-medialibrary": "^8.0|^9.0|^10.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1203,9 +1204,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ebess/advanced-nova-media-library/issues",
-                "source": "https://github.com/ebess/advanced-nova-media-library/tree/4.0.5"
+                "source": "https://github.com/ebess/advanced-nova-media-library/tree/master"
             },
-            "time": "2022-08-27T08:57:31+00:00"
+            "time": "2022-08-26T17:33:35+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -7772,16 +7773,16 @@
         },
         {
             "name": "spatie/laravel-sluggable",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sluggable.git",
-                "reference": "e3b102ef0f0a0bfbba1eca5961a8e33207c76028"
+                "reference": "8d42bbfac13302e9bfbcc869ea5579c235aa4981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/e3b102ef0f0a0bfbba1eca5961a8e33207c76028",
-                "reference": "e3b102ef0f0a0bfbba1eca5961a8e33207c76028",
+                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/8d42bbfac13302e9bfbcc869ea5579c235aa4981",
+                "reference": "8d42bbfac13302e9bfbcc869ea5579c235aa4981",
                 "shasum": ""
             },
             "require": {
@@ -7819,8 +7820,7 @@
                 "spatie"
             ],
             "support": {
-                "issues": "https://github.com/spatie/laravel-sluggable/issues",
-                "source": "https://github.com/spatie/laravel-sluggable/tree/3.4.0"
+                "source": "https://github.com/spatie/laravel-sluggable/tree/3.4.1"
             },
             "funding": [
                 {
@@ -7828,7 +7828,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-28T11:21:33+00:00"
+            "time": "2022-12-07T13:04:11+00:00"
         },
         {
             "name": "spatie/laravel-tags",
@@ -15497,6 +15497,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "ebess/advanced-nova-media-library": 20,
         "naoray/blueprint-nova-addon": 20
     },
     "prefer-stable": true,
