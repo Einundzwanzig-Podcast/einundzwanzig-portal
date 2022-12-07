@@ -68,6 +68,22 @@ class BookCaseTable extends DataTableComponent
             Column::make("Adresse", "address")
                   ->sortable()
                   ->searchable(),
+            Column::make("Bitcoin-Bücher")
+                  ->label(
+                      fn(
+                          $row,
+                          Column $column
+                      ) => $row->orangePills->sum('amount')
+                  ),
+            Column::make("Letzter Input")
+                  ->label(
+                      fn(
+                          $row,
+                          Column $column
+                      ) => $row->orangePills()
+                               ->latest()
+                               ->first()?->date->asDate()
+                  ),
             Column::make("Link")
                   ->label(
                       fn(
