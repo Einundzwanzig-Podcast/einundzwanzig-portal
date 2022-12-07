@@ -3,16 +3,23 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\BookCase;
+use App\Models\OrangePill;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
+use WireUi\Traits\Actions;
 
 class BookCaseTable extends DataTableComponent
 {
+    use Actions;
+
     public bool $viewingModal = false;
     public $currentModal;
     public array $orangepill = [
-        'amount' => 1,
-        'date' => null,
+        'amount'  => 1,
+        'date'    => null,
+        'comment' => '',
     ];
     protected $model = BookCase::class;
 
@@ -37,12 +44,27 @@ class BookCaseTable extends DataTableComponent
              ->setPerPage(50);
     }
 
+
+    public function filters(): array
+    {
+        return [
+            TextFilter::make('By IDs', 'byids')
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereIn('id', str($value)->explode(','));
+                      }),
+        ];
+    }
+
     public function columns(): array
     {
         return [
             Column::make("Name", "title")
                   ->sortable()
-                  ->searchable(),
+                  ->searchable(
+                      function (Builder $query, $searchTerm) {
+                          $query->where('title', 'ilike', '%'.$searchTerm.'%');
+                      }
+                  ),
             Column::make("Adresse", "address")
                   ->sortable()
                   ->searchable(),
@@ -61,33 +83,45 @@ class BookCaseTable extends DataTableComponent
 
     private function url_to_absolute($url)
     {
-        // Determine request protocol
-        $request_protocol = $request_protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
-        // If dealing with a Protocol Relative URL
-        if (stripos($url, '//') === 0) {
+        if (str($url)->contains('http')) {
             return $url;
         }
-        // If dealing with a Root-Relative URL
-        if (stripos($url, '/') === 0) {
-            return $request_protocol.'://'.$_SERVER['HTTP_HOST'].$url;
+        if (!str($url)->contains('http')) {
+            return str($url)->prepend('https://');
         }
-        // If dealing with an Absolute URL, just return it as-is
-        if (stripos($url, 'http') === 0) {
-            return $url;
-        }
-        // If dealing with a relative URL,
-        // and attempt to handle double dot notation ".."
-        do {
-            $url = preg_replace('/[^\/]+\/\.\.\//', '', $url, 1, $count);
-        } while ($count);
-        // Return the absolute version of a Relative URL
-        return $request_protocol.'://'.$_SERVER['HTTP_HOST'].'/'.$url;
+    }
+
+    public function builder(): Builder
+    {
+        return BookCase::query()
+                       ->withCount([
+                           'orangePills',
+                       ]);
     }
 
     public function viewHistoryModal($modelId): void
     {
         $this->viewingModal = true;
         $this->currentModal = BookCase::findOrFail($modelId);
+    }
+
+    public function submit(): void
+    {
+        $this->validate([
+            'orangepill.amount' => 'required|numeric',
+            'orangepill.date'   => 'required|date',
+        ]);
+        $orangePill = OrangePill::create([
+            'user_id'      => auth()->id(),
+            'book_case_id' => $this->currentModal->id,
+            'amount'       => $this->orangepill['amount'],
+            'date'         => $this->orangepill['date'],
+        ]);
+        if ($this->orangepill['comment']) {
+            $this->currentModal->comment($this->orangepill['comment']);
+        }
+        $this->resetModal();
+        $this->emit('refreshDatatable');
     }
 
     public function resetModal(): void

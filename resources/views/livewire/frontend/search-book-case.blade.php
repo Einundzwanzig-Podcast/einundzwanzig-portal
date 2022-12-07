@@ -1,15 +1,4 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
-    <script src="{{ asset('earth/miniature.earth.js') }}"></script>
-    <style>
-        .earth-container::after {
-            content: "";
-            position: absolute;
-            height: 22%;
-            bottom: 4%;
-            left: 13%;
-            right: 13%;
-        }
-    </style>
     {{-- HEADER --}}
     <div>
         <section class="w-full">
@@ -58,7 +47,7 @@
                         </div>
                     @endauth
                 </div>
-                <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
+                <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4 mt-12">
                     <div
                         class="w-full lg:w-1/2 flex lg:px-0 px-5 flex-col md:items-center lg:items-start justify-center -mt-12">
 
@@ -74,41 +63,6 @@
                             👇 Bücher-Schrank finden 👇
                         </a>
                         <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
-                    </div>
-                    <div
-                        x-data="{
-                        earth: null,
-                        init() {
-                            this.earth = new Earth(this.$refs.myearth, {
-                                location : {lat: {{ $bookCases->first()->lat }}, lng: {{ $bookCases->first()->lon }}},
-                                zoom: 1,
-                                light: 'sun',
-                                polarLimit: 0.6,
-
-                                transparent : true,
-                                mapSeaColor : 'RGBA(34, 34, 34,0.76)',
-                                mapLandColor : '#F7931A',
-                                mapBorderColor : '#5D5D5D',
-                                mapBorderWidth : 0.25,
-                                mapHitTest : true,
-
-                                autoRotate: true,
-                                autoRotateSpeed: 0.7,
-                                autoRotateDelay: 500,
-                            });
-                            this.earth.addEventListener('ready', function() {
-                                @foreach($bookCases as $city)
-                                    this.addMarker( {
-                                        mesh : ['Needle'],
-                                        location : { lat: {{ $city->lat }}, lng: {{ $city->lon }} },
-                                    });
-                                @endforeach
-                            });
-                        }
-                    }" class="hidden sm:inline-block w-1/2">
-                        {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
-                             class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
-                        <div x-ref="myearth" class="earth-container"></div>
                     </div>
                 </div>
             </div>
