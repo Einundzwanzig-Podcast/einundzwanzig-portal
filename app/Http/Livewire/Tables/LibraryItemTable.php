@@ -145,7 +145,7 @@ class LibraryItemTable extends DataTableComponent
     {
         $shouldBePublic = request()
                               ->route()
-                              ->getName() !== 'library.lecturer';
+                              ->getName() !== 'library.table.lecturer';
 
         return LibraryItem::query()
                           ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))

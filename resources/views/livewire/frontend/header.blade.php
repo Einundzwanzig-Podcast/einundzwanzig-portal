@@ -1,15 +1,4 @@
 <div>
-    <script src="{{ asset('earth/miniature.earth.js') }}"></script>
-    <style>
-        .earth-container::after {
-            content: "";
-            position: absolute;
-            height: 22%;
-            bottom: 4%;
-            left: 13%;
-            right: 13%;
-        }
-    </style>
     <section class="w-full">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
             <div
@@ -21,24 +10,53 @@
                     </a>
                     <nav
                         class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
-                        <a href="{{ route('search.city', ['country' => $c, '#table']) }}"
-                           class="{{ request()->routeIs('search.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Städte</a>
-                        <a href="{{ route('search.lecturer', ['country' => $c, '#table']) }}"
-                           class="{{ request()->routeIs('search.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten</a>
-                        <a href="{{ route('search.venue', ['country' => $c, '#table']) }}"
-                           class="{{ request()->routeIs('search.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
-                        <a href="{{ route('search.course', ['country' => $c, '#table']) }}"
-                           class="{{ request()->routeIs('search.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
-                        <a href="{{ route('search.event', ['country' => $c, '#table']) }}"
-                           class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
-                        <a href="{{ route('library', ['country' => $c]) }}"
-                           class="{{ request()->routeIs('library') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bibliothek</a>
-                        <a href="{{ route('search.bookcases', ['country' => $c]) }}"
-                           class="{{ request()->routeIs('search.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bücher-Schränke</a>
-                        @if(auth()->user()?->is_lecturer)
-                            <a href="{{ route('library.lecturer', ['country' => $c]) }}"
-                               class="{{ request()->routeIs('library.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten-Bibliothek</a>
+
+                        <a href="{{ route('welcome') }}"
+                           class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
+                            Zurück zur Übersicht
+                        </a>
+
+                        @if(str(request()->route()->getName())->contains('school.'))
+                            <a href="{{ route('school.table.city', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Städte
+                            </a>
+                            <a href="{{ route('school.table.lecturer', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Dozenten
+                            </a>
+                            <a href="{{ route('school.table.venue', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Veranstaltungs-Orte
+                            </a>
+                            <a href="{{ route('school.table.course', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Kurse
+                            </a>
+                            <a href="{{ route('school.table.event', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Termine
+                            </a>
                         @endif
+                        @if(str(request()->route()->getName())->contains('library.'))
+                            <a href="{{ route('library.table.libraryItems', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('library.table.libraryItems') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Bibliothek
+                            </a>
+                            @if(auth()->user()?->is_lecturer)
+                                <a href="{{ route('library.table.lecturer', ['country' => $c]) }}"
+                                   class="{{ request()->routeIs('library.table.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                    Dozenten-Bibliothek
+                                </a>
+                            @endif
+                        @endif
+                        @if(str(request()->route()->getName())->contains('bookCases.'))
+                            <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('bookCases.table.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Bücher-Schränke
+                            </a>
+                        @endif
+
                     </nav>
                 </div>
                 @auth
@@ -56,84 +74,50 @@
                     </div>
                 @endauth
             </div>
-            @if($withGlobe)
-                <div class="flex lg:flex-row flex-col pt-4 md:pt-4 lg:pt-4">
-                    <div
-                        class="w-full lg:w-1/2 flex lg:px-0 px-5 flex-col md:items-center lg:items-start justify-center -mt-12">
+        </div>
+    </section>
+    <section class="h-auto">
+        <div class="px-10 py-6 mx-auto max-w-7xl">
+            <div class="w-full mx-auto text-left md:text-center">
 
-                        <h1 class="text-white text-3xl sm:text-5xl lg:max-w-none max-w-4xl lg:text-left text-left md:text-center xl:text-7xl font-black">
+                @if(str(request()->route()->getName())->contains('school.'))
+                    <div>
+                        <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                             Bitcoin <span
-                                class="bg-clip-text text-transparent bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-700 mt-1 lg:block">School
-                        </span> <br class="lg:block sm:hidden"> {{ str($country->name)->upper() }}
+                                class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">Kurse</span>
+                            für deine<br class="lg:block hidden"> Reise in den Kaninchenbau.
                         </h1>
-                        <div>
-                            <x-select
-                                label="Land wechseln"
-                                placeholder="Land wechseln"
-                                wire:model="c"
-                                :clearable="false"
-                            >
-                                @foreach($countries as $country)
-                                    <x-select.user-option
-                                        src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
-                                        label="{{ $country->name }}" value="{{ $country->code }}"/>
-                                @endforeach
-                            </x-select>
-                        </div>
-                        <p class="text-gray-500 sm:text-lg md:text-xl xl:text-2xl lg:max-w-none max-w-2xl md:text-center lg:text-left lg:pr-32 mt-6">
-                            Finde Bitcoin Kurse in deiner City</p>
-                        @php
-                            $searchTitle = match ($currentRouteName) {
-                                'search.city' => 'Stadt',
-                                'search.lecturer' => 'Dozent',
-                                'search.venue' => 'Veranstaltungs-Ort',
-                                'search.course' => 'Kurs',
-                                'search.event' => 'Termin',
-                            };
-                        @endphp
-                        <a href="#table"
-                           class="whitespace-nowrap bg-white px-4 lg:px-16 py-2 text-center lg:py-5 font-bold rounded text-xs md:text-xl lg:text-2xl mt-8 inline-block w-auto">
-                            👇 {{ $searchTitle }} finden 👇
-                        </a>
-                        <p class="text-gray-400 font-normal mt-4">{{-- TEXT --}}</p>
+                        <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Wähle deine Stadt, suche im
+                            Umkreis nach
+                            Kursen und wähle ein für dich passendes Thema aus. </p>
                     </div>
-                    <div
-                        x-data="{
-                        earth: null,
-                        init() {
-                            this.earth = new Earth(this.$refs.myearth, {
-                                location : {lat: {{ $cities->first()->latitude }}, lng: {{ $cities->first()->longitude }}},
-                                zoom: 2,
-                                light: 'sun',
-                                polarLimit: 0.6,
+                @endif
 
-                                transparent : true,
-                                mapSeaColor : 'RGBA(34, 34, 34,0.76)',
-                                mapLandColor : '#F7931A',
-                                mapBorderColor : '#5D5D5D',
-                                mapBorderWidth : 0.25,
-                                mapHitTest : true,
-
-                                autoRotate: true,
-                                autoRotateSpeed: 0.7,
-                                autoRotateDelay: 500,
-                            });
-                            this.earth.addEventListener('ready', function() {
-                                @foreach($cities as $city)
-                                    this.addMarker( {
-                                        mesh : ['Needle'],
-                                        location : { lat: {{ $city->latitude }}, lng: {{ $city->longitude }} },
-                                    });
-                                @endforeach
-                            });
-                        }
-                    }" class="hidden sm:inline-block w-1/2">
-                        {{--<img src="https://cdn.devdojo.com/images/march2022/mesh-gradient1.png"
-                             class="absolute lg:max-w-none max-w-3xl mx-auto mt-32 w-full h-full inset-0">--}}
-                        <div x-ref="myearth" class="earth-container"></div>
+                @if(str(request()->route()->getName())->contains('library.'))
+                    <div>
+                        <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
+                            Bitcoin <span
+                                class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">Content</span>
+                            für deine<br class="lg:block hidden"> Reise in den Kaninchenbau.
+                        </h1>
+                        <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Wähle ein für dich passendes
+                            Thema aus. </p>
                     </div>
-                </div>
-            @endif
+                @endif
+
+                @if(str(request()->route()->getName())->contains('bookCases.'))
+                    <div>
+                        <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
+                            Bitcoin <span
+                                class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">Bücher-Schränke</span>
+                            für deine<br class="lg:block hidden"> Reise in den Kaninchenbau.
+                        </h1>
+                        <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Suche einen öffentlichen
+                            Bücher-Schrank aus. </p>
+                    </div>
+                @endif
+
+            </div>
         </div>
     </section>
 </div>

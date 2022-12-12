@@ -9,40 +9,68 @@ Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
      ->name('auth.ln')
      ->middleware('guest');
 
-Route::get('/{country:code}/suche/stadt', \App\Http\Livewire\Frontend\SearchCity::class)
-     ->name('search.city')
-     ->where(
-         'country',
-         '(.*)'
-     );
+/*
+ * School
+ * */
+Route::middleware([])
+     ->as('school.')
+     ->prefix('school')
+     ->group(function () {
+         Route::get('/{country:code}/table/city', \App\Http\Livewire\School\CityTable::class)
+              ->name('table.city');
 
-Route::get('/{country:code}/suche/dozent', \App\Http\Livewire\Frontend\SearchLecturer::class)
-     ->name('search.lecturer');
+         Route::get('/{country:code}/table/lecturer', \App\Http\Livewire\School\LecturerTable::class)
+              ->name('table.lecturer');
 
-Route::get('/{country:code}/suche/ort', \App\Http\Livewire\Frontend\SearchVenue::class)
-     ->name('search.venue');
+         Route::get('/{country:code}/table/venue', \App\Http\Livewire\School\VenueTable::class)
+              ->name('table.venue');
 
-Route::get('/{country:code}/suche/kurs', \App\Http\Livewire\Frontend\SearchCourse::class)
-     ->name('search.course');
+         Route::get('/{country:code}/table/course', \App\Http\Livewire\School\CouseTable::class)
+              ->name('table.course');
 
-Route::get('/{country:code}/suche/termin', \App\Http\Livewire\Frontend\SearchEvent::class)
-     ->name('search.event');
+         Route::get('/{country:code}/table/event', \App\Http\Livewire\School\EventTable::class)
+              ->name('table.event');
+     });
 
-Route::get('/{country:code}/bibliothek', \App\Http\Livewire\Frontend\Library::class)
-     ->name('library');
+/*
+ * Library
+ * */
+Route::middleware([])
+     ->as('library.')
+     ->prefix('library')
+     ->group(function () {
+         Route::get('/{country:code}/table/library-item', \App\Http\Livewire\Library\LibraryTable::class)
+              ->name('table.libraryItems');
 
-Route::get('/{country:code}/dozenten/bibliothek', \App\Http\Livewire\Frontend\Library::class)
-     ->name('library.lecturer');
+         Route::get('/{country:code}/table/content-creator', \App\Http\Livewire\Library\LibraryTable::class)
+              ->name('table.lecturer');
+     });
 
-Route::get('/dozenten', \App\Http\Livewire\Guest\Welcome::class)
-     ->name('search.lecturers');
+/*
+ * Books
+ * */
+Route::middleware([])
+     ->as('bookCases.')
+     ->prefix('book-cases')
+     ->group(function () {
+         Route::get('/table/book-case', \App\Http\Livewire\BookCase\BookCaseTable::class)
+              ->name('table.bookcases');
 
-Route::get('/buecher-schraenke', \App\Http\Livewire\Frontend\SearchBookCase::class)
-     ->name('search.bookcases');
+         Route::get('/book-case/{bookCase}', \App\Http\Livewire\BookCase\CommentBookCase::class)
+              ->name('comment.bookcase');
+     });
 
-Route::get('/buecher-schrank/{bookCase}', \App\Http\Livewire\Frontend\CommentBookCase::class)
-     ->name('comment.bookcase');
+/*
+ * Events
+ * */
 
+/*
+ * Meetups
+ * */
+
+/*
+ * Authenticated
+ * */
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

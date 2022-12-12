@@ -35,7 +35,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-1 xl:col-start-2 sm:row-start-4 md:row-start-5 xl:row-start-2">
-                    <a href="{{ route('search.city', ['country' => 'de']) }}"
+                    <a href="{{ route('school.table.city', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -56,7 +56,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-2 xl:col-start-2 sm:row-start-6 md:row-start-2 xl:row-start-4">
-                    <a href="{{ route('library', ['country' => 'de']) }}"
+                    <a href="{{ route('library.table.libraryItems', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -98,7 +98,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-3 sm:row-start-3 md:row-start-1 xl:row-start-3">
-                    <a href="{{ route('library', ['country' => 'de']) }}"
+                    <a href="{{ route('library.table.libraryItems', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -119,7 +119,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-4 sm:row-start-5 md:row-start-3 xl:row-start-2">
-                    <a href="{{ route('search.bookcases', ['country' => 'de']) }}"
+                    <a href="{{ route('bookCases.table.bookcases', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">

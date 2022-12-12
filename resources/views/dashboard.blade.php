@@ -67,7 +67,7 @@
                     <div
                         class="relative flex items-center space-x-3 rounded-lg border border-amber-300 bg-21gray px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-amber-500 focus-within:ring-offset-2 hover:border-amber-400">
                         <div class="min-w-0 flex-1">
-                            <a href="{{ route('search.course', ['country' => 'de']) }}" class="focus:outline-none">
+                            <a href="{{ route('school.table.course', ['country' => 'de']) }}" class="focus:outline-none">
                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                 <p class="text-sm font-medium text-gray-200">Übersicht der Kurse</p>
                                 <p class="truncate text-sm text-gray-300">Zeige das Benutzer Frontend</p>

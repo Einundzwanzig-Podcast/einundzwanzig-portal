@@ -81,7 +81,7 @@ class LecturerTable extends DataTableComponent
     {
         $lecturer = Lecturer::query()->find($id);
 
-        return to_route('search.event', [
+        return to_route('school.table.event', [
             '#table',
             'country' => $this->country,
             'table'   => [
