@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\Meetup;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
@@ -35,9 +36,37 @@ class MeetupTable extends DataTableComponent
     {
         return [
             Column::make(__('Name'), 'name')
+                  ->format(
+                      fn($value, $row, Column $column) => view('columns.meetups.name')->withRow($row)
+                  )
                   ->sortable(),
             Column::make(__('Link'), 'link')
+                  ->format(
+                      fn($value, $row, Column $column) => view('columns.meetups.link')->withRow($row)
+                  )
                   ->sortable(),
+            Column::make(__('Actions'),)
+                  ->label(
+                      fn($row, Column $column) => view('columns.meetups.action')->withRow($row)
+                  ),
         ];
+    }
+
+    public function builder(): Builder
+    {
+        return Meetup::query()
+                     ->withCount([
+                         'meetupEvents',
+                     ]);
+    }
+
+    public function meetupEventSearch($id)
+    {
+        return to_route('meetup.table.meetupEvent', [
+            'country' => $this->country,
+            'table' => [
+                'filters' => ['id' => $id],
+            ]
+        ]);
     }
 }

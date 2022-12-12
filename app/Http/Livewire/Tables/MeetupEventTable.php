@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Models\MeetupEvent;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\MeetupEvent;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class MeetupEventTable extends DataTableComponent
 {
@@ -15,6 +17,7 @@ class MeetupEventTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setAdditionalSelects(['meetup_events.meetup_id'])
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -31,19 +34,45 @@ class MeetupEventTable extends DataTableComponent
              ->setPerPage(50);
     }
 
+    public function filters(): array
+    {
+        return [
+            TextFilter::make('Meetup-Event by ID', 'id')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereIn('meetup_events.id', str($value)->explode(','));
+                      }),
+        ];
+    }
+
     public function columns(): array
     {
         return [
+            Column::make(__('Meetup'), 'meetup.name')
+                  ->format(
+                      fn($value, $row, Column $column) => view('columns.meetup_events.name')->withRow($row)
+                  )
+                  ->sortable(),
             Column::make(__('Location'), 'location')
-                ->sortable(),
+                  ->sortable(),
             Column::make(__('Start'), 'start')
-                ->sortable(),
+                  ->format(
+                      fn($value, $row, Column $column) => $value->asDateTime()
+                  )
+                  ->sortable(),
             Column::make(__('Link'), 'link')
-                ->sortable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
+                  ->format(
+                      fn($value, $row, Column $column) => view('columns.meetup_events.link')->withRow($row)
+                  )
+                  ->sortable(),
         ];
+    }
+
+    public function builder(): Builder
+    {
+        return MeetupEvent::query()
+                          ->with([
+                              'meetup',
+                          ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -43,6 +44,9 @@ class Meetup extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            Images::make(__('Logo'), 'logo')
+                  ->conversionOnIndexView('thumb'),
 
             Text::make('Name')
                 ->rules('required', 'string', 'unique:meetups,name'),

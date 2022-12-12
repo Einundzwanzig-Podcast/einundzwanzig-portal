@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -44,6 +45,9 @@ class BitcoinEvent extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            Images::make(__('Logo'), 'logo')
+                  ->conversionOnIndexView('thumb'),
 
             DateTime::make('From')
                 ->rules('required'),

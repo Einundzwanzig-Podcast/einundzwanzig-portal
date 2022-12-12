@@ -1,5 +1,5 @@
 <div class="bg-21gray flex flex-col justify-between">
-        <section class="relative px-10 pt-16 pb-24 sm:py-16">
+        <section class="relative px-10 pt-16 pb-24 sm:py-16 sm:overflow-hidden">
             <img class="absolute h-43 left-0 z-0 w-3/4 transform -translate-y-1/2 opacity-70 top-1/2"
                  src="{{ asset('img/gradient-blob.svg') }}">
             <img class="absolute left-0 z-0 object-cover object-center w-full h-full opacity-50 top-24"
@@ -26,7 +26,7 @@
                             </div>
                             <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                         <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Get together</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Plebs together strong</span>
                                 <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                     Meetups
                                 </h4>
