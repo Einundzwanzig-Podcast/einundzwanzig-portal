@@ -56,7 +56,7 @@
     </style>
 </head>
 <body class="font-sans antialiased bg-21gray dark">
-<x-notifications z-index="z-50" blur="md" align="center"/>
+{{--<x-notifications z-index="z-50" blur="md" align="center"/>--}}
 {{ $slot }}
 @stack('modals')
 @livewireScripts
