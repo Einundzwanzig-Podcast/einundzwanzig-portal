@@ -67,6 +67,15 @@ Route::middleware([])
 /*
  * Meetups
  * */
+Route::middleware([])
+     ->as('meetup.')
+     ->prefix('meetup')
+     ->group(function () {
+         Route::get('/{country:code}/table/meetup', \App\Http\Livewire\Meetup\MeetupTable::class)
+              ->name('table.meetup');
+         Route::get('/{country:code}/table/meetup-events', \App\Http\Livewire\Meetup\MeetupEventTable::class)
+              ->name('table.meetupEvent');
+     });
 
 /*
  * Authenticated

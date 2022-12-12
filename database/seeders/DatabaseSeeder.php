@@ -10,10 +10,12 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Course;
-use App\Models\Event;
+use App\Models\CourseEvent;
 use App\Models\Lecturer;
 use App\Models\Library;
 use App\Models\LibraryItem;
+use App\Models\Meetup;
+use App\Models\MeetupEvent;
 use App\Models\Participant;
 use App\Models\Registration;
 use App\Models\Team;
@@ -170,7 +172,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Roman',
             'last_name'  => 'Reher',
         ]);
-        Event::create([
+        CourseEvent::create([
             'course_id' => 2,
             'venue_id'  => 1,
             'link'      => 'https://einundzwanzig.space',
@@ -182,7 +184,7 @@ class DatabaseSeeder extends Seeder
                 ->startOfDay()
                 ->addHour(),
         ]);
-        Event::create([
+        CourseEvent::create([
             'course_id' => 1,
             'venue_id'  => 2,
             'link'      => 'https://einundzwanzig.space',
@@ -194,7 +196,7 @@ class DatabaseSeeder extends Seeder
                 ->startOfDay()
                 ->addHour(),
         ]);
-        Event::create([
+        CourseEvent::create([
             'course_id' => 1,
             'venue_id'  => 3,
             'link'      => 'https://einundzwanzig.space',
@@ -206,7 +208,7 @@ class DatabaseSeeder extends Seeder
                 ->startOfDay()
                 ->addHour(),
         ]);
-        Event::create([
+        CourseEvent::create([
             'course_id' => 3,
             'venue_id'  => 3,
             'link'      => 'https://einundzwanzig.space',
@@ -219,8 +221,8 @@ class DatabaseSeeder extends Seeder
                 ->addHour(),
         ]);
         Registration::create([
-            'event_id'       => 1,
-            'participant_id' => 1,
+            'course_event_id' => 1,
+            'participant_id'  => 1,
         ]);
         $library = Library::create([
             'name'           => 'Einundzwanzig',
@@ -281,5 +283,20 @@ class DatabaseSeeder extends Seeder
                          ->attach($libraryItem);
         Artisan::call(ReadAndSyncEinundzwanzigPodcastFeed::class);
         Artisan::call(SyncOpenBooks::class);
+        Meetup::create([
+            'city_id' => 1,
+            'name'    => 'Einundzwanzig Kempten',
+            'link'    => 'https://t.me/EinundzwanzigKempten',
+        ]);
+        MeetupEvent::create([
+            'meetup_id'   => 1,
+            'start'       => now()
+                ->addDays(2)
+                ->startOfDay()
+                ->addHours(20),
+            'location'    => 'Einundzwanzig Kempten',
+            'description' => fake()->text(),
+            'link'        => 'https://t.me/EinundzwanzigKempten',
+        ]);
     }
 }

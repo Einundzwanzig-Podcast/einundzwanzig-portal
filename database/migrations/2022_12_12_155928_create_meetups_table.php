@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegistrationsTable extends Migration
+class CreateMeetupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,11 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('registrations', function (Blueprint $table) {
+        Schema::create('meetups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_event_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate()->primary();
-            $table->foreignId('participant_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate()->primary();
-            $table->boolean('active')->default(true);
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('name')->unique();
+            $table->string('link');
             $table->timestamps();
         });
 
@@ -33,6 +33,6 @@ class CreateRegistrationsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrations');
+        Schema::dropIfExists('meetups');
     }
 }

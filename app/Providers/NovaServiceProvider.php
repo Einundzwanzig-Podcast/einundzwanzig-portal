@@ -10,10 +10,12 @@ use App\Nova\Country;
 use App\Nova\Course;
 use App\Nova\Dashboards\Main;
 use App\Nova\Episode;
-use App\Nova\Event;
+use App\Nova\CourseEvent;
 use App\Nova\Lecturer;
 use App\Nova\Library;
 use App\Nova\LibraryItem;
+use App\Nova\Meetup;
+use App\Nova\MeetupEvent;
 use App\Nova\OrangePill;
 use App\Nova\Participant;
 use App\Nova\Podcast;
@@ -45,12 +47,19 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::dashboard(Main::class)
                            ->icon('lightning-bolt'),
 
+                MenuSection::make('Meetups', [
+                    MenuItem::resource(Meetup::class),
+                    MenuItem::resource(MeetupEvent::class),
+                ])
+                           ->icon('calendar')
+                           ->collapsable(),
+
                 MenuSection::make('Schule', [
                     MenuItem::resource(City::class),
                     MenuItem::resource(Venue::class),
                     MenuItem::resource(Lecturer::class),
                     MenuItem::resource(Course::class),
-                    MenuItem::resource(Event::class),
+                    MenuItem::resource(CourseEvent::class),
                     MenuItem::resource(Participant::class),
                     MenuItem::resource(Registration::class),
                 ])
@@ -71,7 +80,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->icon('microphone')
                            ->collapsable(),
 
-                MenuSection::make('Books', [
+                MenuSection::make('Book-Cases', [
                     MenuItem::resource(BookCase::class),
                     MenuItem::resource(OrangePill::class),
                 ])

@@ -1,0 +1,13 @@
+models:
+  Meetup:
+    city_id: foreign
+    name: string:unique
+    link: string
+  MeetupEvent:
+    meetup_id: foreign
+    date: date
+    start: time
+    end: time:nullable
+    location: string:nullable
+    description: text:nullable
+    link: string:nullable

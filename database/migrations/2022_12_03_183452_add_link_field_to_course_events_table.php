@@ -11,7 +11,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
+        Schema::table('course_events', function (Blueprint $table) {
             $table->string('link');
         });
     }
@@ -22,7 +22,7 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
+        Schema::table('course_events', function (Blueprint $table) {
             //
         });
     }

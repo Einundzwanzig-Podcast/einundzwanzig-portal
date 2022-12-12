@@ -66,6 +66,6 @@ class Course extends Model implements HasMedia
 
     public function events(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(CourseEvent::class);
     }
 }

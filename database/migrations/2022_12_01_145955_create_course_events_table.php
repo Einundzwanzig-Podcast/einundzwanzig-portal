@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventsTable extends Migration
+class CreateCourseEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('course_events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('venue_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
@@ -34,6 +34,6 @@ class CreateEventsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('course_events');
     }
 }
