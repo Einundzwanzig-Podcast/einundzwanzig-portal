@@ -2,46 +2,33 @@
 
 namespace App\Nova;
 
-use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\URL;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
 
-class Event extends Resource
+class MeetupEvent extends Resource
 {
     /**
      * The model the resource corresponds to.
      * @var string
      */
-    public static $model = \App\Models\Event::class;
+    public static $model = \App\Models\MeetupEvent::class;
+
+    /**
+     * The single value that should be used to represent the resource when being displayed.
+     * @var string
+     */
+    public static $title = 'id';
+
     /**
      * The columns that should be searched.
      * @var array
      */
     public static $search = [
         'id',
-        'course.name',
     ];
-
-    public static function relatableCourses(NovaRequest $request, $query, Field $field)
-    {
-        if ($field instanceof BelongsTo) {
-            $query->whereHas('lecturer', function ($query) use ($request) {
-                $query->where('team_id', $request->user()->id);
-            });
-        }
-
-        return $query;
-    }
-
-    public function title()
-    {
-        return $this->from.' - '.$this->venue->name.' - '.$this->course->name;
-    }
 
     /**
      * Get the fields displayed by the resource.
@@ -56,22 +43,19 @@ class Event extends Resource
             ID::make()
               ->sortable(),
 
-            URL::make('Link')
-               ->rules('required', 'url'),
+            DateTime::make(__('Start'), 'start'),
 
-            DateTime::make('From')
-                    ->rules('required')
-                    ->step(CarbonInterval::minutes(30))
-                    ->displayUsing(fn($value) => $value->asDateTime()),
+            Text::make('Location')
+                ->rules('required', 'string'),
 
-            DateTime::make('To')
-                    ->rules('required')
-                    ->step(CarbonInterval::minutes(30))
-                    ->displayUsing(fn($value) => $value->asDateTime()),
+            Text::make('Description')
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
-            BelongsTo::make('Course'),
+            Text::make('Link')
+                ->rules('required', 'string'),
 
-            BelongsTo::make('Venue')
+            BelongsTo::make('Meetup')
                      ->searchable(),
 
         ];

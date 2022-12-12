@@ -14,7 +14,7 @@
             </div>
             <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 <div class="row-span-2 col-span-full sm:col-span-1 md:col-start-1 sm:row-start-2 md:row-start-3">
-                    <a href="#"
+                    <a href="{{ route('meetup.table.meetup', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -98,7 +98,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-3 sm:row-start-3 md:row-start-1 xl:row-start-3">
-                    <a href="{{ route('library.table.libraryItems', ['country' => 'de']) }}"
+                    <a href="{{ route('bookCases.table.bookcases', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -106,18 +106,18 @@
                                 class="absolute bottom-0 left-0 z-10 w-full h-full opacity-30 bg-gradient-to-b from-transparent to-gray-900"></div>
                             <img
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                                src="{{ asset('img/einundzwanzig_podcast_niko_jilch.jpg') }}" alt="">
+                                src="{{ asset('img/aprycot-media-bitcoin-21-lektionen-01.webp') }}" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                         <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Listening</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Reading</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Podcasts
+                                Bücher-Schränke
                             </h4>
                         </div>
                     </a>
                 </div>
-                <div
+                {{--<div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-4 sm:row-start-5 md:row-start-3 xl:row-start-2">
                     <a href="{{ route('bookCases.table.bookcases', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
@@ -137,7 +137,7 @@
                             </h4>
                         </div>
                     </a>
-                </div>
+                </div>--}}
             </div>
         </div>
     </section>

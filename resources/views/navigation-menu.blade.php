@@ -12,21 +12,40 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/nova/resources/lecturers" target="_blank">
-                        {{ __('Dozent eintragen') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="/nova/resources/courses" target="_blank">
-                        {{ __('Kurs eintragen') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="/nova/resources/events" target="_blank">
-                        {{ __('Kurs-Termin eintragen') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
-                        {{ __('Inhalte eintragen') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="/nova/resources/book-cases" target="_blank">
-                        {{ __('Bücher-Schränke verwalten') }}
-                    </x-jet-nav-link>
+
+                    @if(str(request()->route()->getName())->contains('meetup.'))
+                        <x-jet-nav-link href="/nova/resources/meetups" target="_blank">
+                            {{ __('Meetup eintragen') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="/nova/resources/meetup-events" target="_blank">
+                            {{ __('Meetup-Termin eintragen') }}
+                        </x-jet-nav-link>
+                    @endif
+
+                    @if(str(request()->route()->getName())->contains('school.'))
+                        <x-jet-nav-link href="/nova/resources/lecturers" target="_blank">
+                            {{ __('Dozent eintragen') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="/nova/resources/courses" target="_blank">
+                            {{ __('Kurs eintragen') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="/nova/resources/events" target="_blank">
+                            {{ __('Kurs-Termin eintragen') }}
+                        </x-jet-nav-link>
+                    @endif
+
+                    @if(str(request()->route()->getName())->contains('library.'))
+                        <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
+                            {{ __('Inhalte eintragen') }}
+                        </x-jet-nav-link>
+                    @endif
+
+                    @if(str(request()->route()->getName())->contains('bookCases.'))
+                        <x-jet-nav-link href="/nova/resources/book-cases" target="_blank">
+                            {{ __('Bücher-Schränke verwalten') }}
+                        </x-jet-nav-link>
+                    @endif
+
                     <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         {{ __('Mein Profil') }}
                     </x-jet-nav-link>

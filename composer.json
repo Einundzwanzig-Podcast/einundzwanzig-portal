@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
         "nova/start": "*",
+        "oneduo/nova-time-field": "^1.0",
         "podcastindex/podcastindex-php": "^1.0",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "sentry/sentry-laravel": "^3.1",

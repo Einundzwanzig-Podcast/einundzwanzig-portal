@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Event;
+use App\Models\MeetupEvent;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EventPolicy extends BasePolicy
+class MeetupEventPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class EventPolicy extends BasePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Event $event)
+    public function view(User $user, MeetupEvent $meetupEvent)
     {
-        return $user->is_lecturer;
+        return true;
     }
 
     /**
@@ -41,54 +41,54 @@ class EventPolicy extends BasePolicy
      */
     public function create(User $user)
     {
-        return $user->is_lecturer;
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Event $event)
+    public function update(User $user, MeetupEvent $meetupEvent)
     {
-        return $user->belongsToTeam($event->course->lecturer->team);
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Event $event)
+    public function delete(User $user, MeetupEvent $meetupEvent)
     {
-        //
+        return false;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Event $event)
+    public function restore(User $user, MeetupEvent $meetupEvent)
     {
-        //
+        return false;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Event $event)
+    public function forceDelete(User $user, MeetupEvent $meetupEvent)
     {
-        //
+        return false;
     }
 }

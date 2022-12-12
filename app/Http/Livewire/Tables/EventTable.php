@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\Category;
-use App\Models\Event;
+use App\Models\CourseEvent;
 use App\Models\Lecturer;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -17,7 +17,7 @@ class EventTable extends DataTableComponent
     public string $country;
     public bool $viewingModal = false;
     public $currentModal;
-    protected $model = Event::class;
+    protected $model = CourseEvent::class;
 
     public function configure(): void
     {
@@ -157,18 +157,18 @@ class EventTable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return Event::query()
-                    ->withCount([
+        return CourseEvent::query()
+                          ->withCount([
                         'registrations',
                     ])
-                    ->whereHas('venue.city.country',
+                          ->whereHas('venue.city.country',
                         fn($query) => $query->where('countries.code', $this->country));
     }
 
     public function viewHistoryModal($modelId): void
     {
         $this->viewingModal = true;
-        $this->currentModal = Event::findOrFail($modelId);
+        $this->currentModal = CourseEvent::findOrFail($modelId);
     }
 
     public function resetModal(): void

@@ -75,11 +75,11 @@ class Venue extends Model implements HasMedia
 
     public function courses()
     {
-        return $this->hasManyDeepFromRelations($this->events(), (new Event())->course());
+        return $this->hasManyDeepFromRelations($this->events(), (new CourseEvent())->course());
     }
 
     public function events(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(CourseEvent::class);
     }
 }

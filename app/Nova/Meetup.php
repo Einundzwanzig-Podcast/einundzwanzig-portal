@@ -4,24 +4,24 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 
-class Registration extends Resource
+class Meetup extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Registration::class;
+    public static $model = \App\Models\Meetup::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -30,6 +30,7 @@ class Registration extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -43,11 +44,13 @@ class Registration extends Resource
         return [
             ID::make()->sortable(),
 
-            Boolean::make('Active')
-                ->rules('required'),
+            Text::make('Name')
+                ->rules('required', 'string', 'unique:meetups,name'),
 
-            BelongsTo::make('Course Event'),
-            BelongsTo::make('Participant'),
+            Text::make('Link')
+                ->rules('required', 'string'),
+
+            BelongsTo::make('City')->searchable(),
 
         ];
     }

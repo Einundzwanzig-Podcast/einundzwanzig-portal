@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model
+class Meetup extends Model
 {
     use HasFactory;
 
@@ -23,18 +23,11 @@ class Registration extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'event_id' => 'integer',
-        'participant_id' => 'integer',
-        'active' => 'boolean',
+        'city_id' => 'integer',
     ];
 
-    public function event(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function city(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(CourseEvent::class);
-    }
-
-    public function participant(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Participant::class);
+        return $this->belongsTo(City::class);
     }
 }

@@ -4,18 +4,17 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Course;
-use App\Models\CourseEvent;
-use App\Models\Venue;
+use App\Models\City;
+use App\Models\Meetup;
 
-class EventFactory extends Factory
+class MeetupFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = CourseEvent::class;
+    protected $model = Meetup::class;
 
     /**
      * Define the model's default state.
@@ -25,10 +24,9 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            'course_id' => Course::factory(),
-            'venue_id' => Venue::factory(),
-            'from' => $this->faker->dateTime(),
-            'to' => $this->faker->dateTime(),
+            'city_id' => City::factory(),
+            'name' => $this->faker->name,
+            'link' => $this->faker->word,
         ];
     }
 }
