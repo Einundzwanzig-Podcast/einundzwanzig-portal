@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="apple-touch-icon" href="{{ asset('img/apple_touch_icon.png') }}"/>
+    <link rel="icon" href="{{ asset('img/favicon.svg') }}"/>
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
