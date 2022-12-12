@@ -9,9 +9,9 @@ use App\Nova\City;
 use App\Nova\Comment;
 use App\Nova\Country;
 use App\Nova\Course;
+use App\Nova\CourseEvent;
 use App\Nova\Dashboards\Main;
 use App\Nova\Episode;
-use App\Nova\CourseEvent;
 use App\Nova\Lecturer;
 use App\Nova\Library;
 use App\Nova\LibraryItem;
@@ -43,8 +43,40 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-        Nova::mainMenu(function (Request $request) {
-            return [
+        $adminItems = auth()
+            ->user()
+            ?->hasRole('super-admin') ?
+            [
+
+                MenuSection::make('Comments', [
+                    MenuItem::resource(Comment::class),
+                ])
+                           ->icon('chat')
+                           ->collapsable(),
+
+                MenuSection::make('Admin', [
+                    MenuItem::resource(Category::class),
+                    MenuItem::resource(Country::class),
+                    MenuItem::resource(Team::class),
+                    MenuItem::resource(User::class),
+                    MenuItem::resource(Tag::class),
+                ])
+                           ->icon('key')
+                           ->collapsable(),
+
+                MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
+                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
+                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
+                        'resources/permissions'),
+                ])
+                           ->icon('key')
+                           ->collapsable(),
+
+            ]
+            : [];
+
+        Nova::mainMenu(function (Request $request) use ($adminItems) {
+            return array_merge([
                 MenuSection::dashboard(Main::class)
                            ->icon('lightning-bolt'),
 
@@ -94,30 +126,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->icon('book-open')
                            ->collapsable(),
 
-                MenuSection::make('Comments', [
-                    MenuItem::resource(Comment::class),
-                ])
-                           ->icon('chat')
-                           ->collapsable(),
-
-                MenuSection::make('Admin', [
-                    MenuItem::resource(Category::class),
-                    MenuItem::resource(Country::class),
-                    MenuItem::resource(Team::class),
-                    MenuItem::resource(User::class),
-                    MenuItem::resource(Tag::class),
-                ])
-                           ->icon('key')
-                           ->collapsable(),
-
-                MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
-                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
-                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
-                        'resources/permissions'),
-                ])
-                           ->icon('key')
-                           ->collapsable(),
-            ];
+            ], $adminItems);
         });
 
         Nova::withBreadcrumbs();
