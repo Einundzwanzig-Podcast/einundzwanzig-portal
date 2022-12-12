@@ -76,7 +76,7 @@ class CityTable extends DataTableComponent
                     ->find($id);
         $query = City::radius($city->latitude, $city->longitude, 100)
                      ->where('id', '!=', $id);
-        return to_route('search.event', [
+        return to_route('school.table.event', [
             '#table',
             'country' => $this->country,
             'table'   => [
@@ -94,7 +94,7 @@ class CityTable extends DataTableComponent
         $city = City::query()
                     ->find($id);
         $query = BookCase::radius($city->latitude, $city->longitude, 5);
-        return to_route('search.bookcases', [
+        return to_route('bookCases.table.bookcases', [
             '#table',
             'country' => $this->country,
             'table'   => [

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\School;
 
 use App\Models\Tag;
 use Livewire\Component;
 
-class SearchByTag extends Component
+class SearchByTagComponent extends Component
 {
     public string $country = 'de';
     public ?array $table = [];
@@ -16,7 +16,7 @@ class SearchByTag extends Component
 
     public function render()
     {
-        return view('livewire.frontend.search-by-tag', [
+        return view('livewire.school.search-by-tag-component', [
             'tags' => Tag::query()
                          ->where('type', 'course')
                          ->with([

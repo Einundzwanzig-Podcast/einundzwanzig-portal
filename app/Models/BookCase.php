@@ -74,6 +74,6 @@ class BookCase extends Model implements HasMedia
      */
     public function commentUrl(): string
     {
-        return url()->route('comment.bookcase', ['bookCase' => $this->id]);
+        return url()->route('bookCases.comment.bookcase', ['bookCase' => $this->id]);
     }
 }

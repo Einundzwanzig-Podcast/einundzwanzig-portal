@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\BookCase;
 
 use App\Models\BookCase;
 use Livewire\Component;
@@ -18,7 +18,7 @@ class CommentBookCase extends Component
 
     public function render()
     {
-        return view('livewire.frontend.comment-book-case');
+        return view('livewire.book-case.comment-book-case');
     }
 
     public function save()
@@ -31,7 +31,7 @@ class CommentBookCase extends Component
             ->addMedia($this->photo)
             ->toMediaCollection('images');
 
-        return to_route('comment.bookcase', ['bookCase' => $this->bookCase->id]);
+        return to_route('bookCases.comment.bookcase', ['bookCase' => $this->bookCase->id]);
     }
 
     protected function url_to_absolute($url)

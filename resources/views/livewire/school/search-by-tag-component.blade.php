@@ -13,7 +13,7 @@
             @endphp
             <a
                 class="{{ $activeClass }} flex relative flex-col flex-shrink-0 justify-between py-1 px-3 w-full h-20 border-0 border-solid duration-300 ease-in-out cursor-pointer bg-opacity-[0.07]"
-                href="{{ $isActive ? '#table' : route('search.course', ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->name]]], '#table']) }}"
+                href="{{ $isActive ? '#table' : route('school.table.course', ['country' => $country, 'table' => ['filters' => ['tag' => [$tag->name]]], '#table']) }}"
             >
                 <div
                     class="flex flex-1 items-center p-0 m-0 text-center align-baseline border-0 border-solid"

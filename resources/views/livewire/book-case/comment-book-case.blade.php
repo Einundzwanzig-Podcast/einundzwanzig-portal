@@ -17,29 +17,29 @@
                 <div
                     class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                     <div class="relative flex flex-col md:flex-row">
-                        <a href="{{ route('search.city', ['country' => $c]) }}"
+                        <a href="{{ route('school.table.city', ['country' => $c]) }}"
                            class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
                             <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}">
                         </a>
                         <nav
                             class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
-                            <a href="{{ route('search.city', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('search.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Städte</a>
-                            <a href="{{ route('search.lecturer', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('search.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten</a>
-                            <a href="{{ route('search.venue', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('search.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
-                            <a href="{{ route('search.course', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('search.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
-                            <a href="{{ route('search.event', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('search.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
-                            <a href="{{ route('library', ['country' => $c]) }}"
-                               class="{{ request()->routeIs('library') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bibliothek</a>
-                            <a href="{{ route('search.bookcases', ['country' => $c]) }}"
-                               class="{{ request()->routeIs('search.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bücher-Schränke</a>
+                            <a href="{{ route('school.table.city', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Städte</a>
+                            <a href="{{ route('school.table.lecturer', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten</a>
+                            <a href="{{ route('school.table.venue', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
+                            <a href="{{ route('school.table.course', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
+                            <a href="{{ route('school.table.event', ['country' => $c, '#table']) }}"
+                               class="{{ request()->routeIs('school.table.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
+                            <a href="{{ route('library.table.libraryItems', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('library.table.libraryItems') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bibliothek</a>
+                            <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('bookCases.table.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bücher-Schränke</a>
                             @if(auth()->user()?->is_lecturer)
-                                <a href="{{ route('library.lecturer', ['country' => $c]) }}"
-                                   class="{{ request()->routeIs('library.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten-Bibliothek</a>
+                                <a href="{{ route('library.table.lecturer', ['country' => $c]) }}"
+                                   class="{{ request()->routeIs('library.table.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten-Bibliothek</a>
                             @endif
                         </nav>
                     </div>
@@ -65,7 +65,7 @@
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
             <div class="flex items-center justify-end space-x-2 my-6">
-                <x-button primary :href="route('search.bookcases', ['country' => $c])">
+                <x-button primary :href="route('bookCases.table.bookcases', ['country' => $c])">
                     <i class="fa fa-thin fa-arrow-left"></i>
                     Zurück zur Übersicht
                 </x-button>

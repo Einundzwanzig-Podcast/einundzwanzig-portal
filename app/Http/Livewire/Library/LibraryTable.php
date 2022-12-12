@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Library;
 
 use App\Models\Country;
 use App\Models\Podcast;
 use Livewire\Component;
 
-class Library extends Component
+class LibraryTable extends Component
 {
     public Country $country;
 
@@ -20,7 +20,7 @@ class Library extends Component
     {
         $shouldBePublic = request()
                               ->route()
-                              ->getName() !== 'library.lecturer';
+                              ->getName() !== 'library.table.lecturer';
         if (!$shouldBePublic && !auth()->user()->is_lecturer) {
             abort(403);
         }
@@ -39,7 +39,7 @@ class Library extends Component
             ]);
         }
 
-        return view('livewire.frontend.library', [
+        return view('livewire.library.library-table', [
             'libraries' => $tabs,
         ]);
     }

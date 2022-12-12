@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Library;
 
 use App\Models\Tag;
 use Livewire\Component;
 
-class SearchByTagInLibrary extends Component
+class SearchByTagComponent extends Component
 {
     public string $country = 'de';
     public ?array $table = [];
@@ -18,9 +18,9 @@ class SearchByTagInLibrary extends Component
     {
         $shouldBePublic = request()
                               ->route()
-                              ->getName() !== 'library.lecturer';
+                              ->getName() !== 'library.table.lecturer';
 
-        return view('livewire.frontend.search-by-tag-in-library', [
+        return view('livewire.library.search-by-tag-component', [
             'tags' => Tag::query()
                          ->with([
                              'libraryItems.libraries',

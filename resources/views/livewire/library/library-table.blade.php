@@ -1,13 +1,13 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     {{-- HEADER --}}
-    <livewire:frontend.header :country="$country" :withGlobe="false"/>
+    <livewire:frontend.header :country="$country"/>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10" id="table">
 
             <div class="relative border-b border-gray-200 pb-5 sm:pb-0">
                 <div class="md:flex md:items-center md:justify-between">
-                    @if(request()->route()->getName() === 'library.lecturer')
+                    @if(request()->route()->getName() === 'library.table.lecturer')
                         <h3 class="text-2xl font-medium leading-6 text-gray-200">Dozenten-Bibliotheken</h3>
                     @else
                         <h3 class="text-2xl font-medium leading-6 text-gray-200">Bibliotheken</h3>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <livewire:frontend.search-by-tag-in-library/>
+            <livewire:library.search-by-tag-component/>
             <div class="my-12">
 
                 <livewire:tables.library-item-table :currentTab="$currentTab"/>

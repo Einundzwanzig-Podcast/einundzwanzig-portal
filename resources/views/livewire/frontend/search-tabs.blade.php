@@ -9,20 +9,20 @@
                         $currentTab = 'border-amber-500 text-amber-600';
                         $notCurrentTab = 'border-transparent text-gray-200 hover:text-gray-400 hover:border-gray-300';
                     @endphp
-                    <a href="{{ route('search.city', ['country' => $country]).'#table' }}"
-                       class="{{ request()->routeIs('search.city') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Städte</a>
+                    <a href="{{ route('school.table.city', ['country' => $country]).'#table' }}"
+                       class="{{ request()->routeIs('school.table.city') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Städte</a>
 
-                    <a href="{{ route('search.lecturer', ['country' => $country]).'#table' }}"
-                       class="{{ request()->routeIs('search.lecturer') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
+                    <a href="{{ route('school.table.lecturer', ['country' => $country]).'#table' }}"
+                       class="{{ request()->routeIs('school.table.lecturer') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Dozenten</a>
 
-                    <a href="{{ route('search.venue', ['country' => $country]).'#table' }}"
-                       class="{{ request()->routeIs('search.venue') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Veranstaltungs-Orte</a>
+                    <a href="{{ route('school.table.venue', ['country' => $country]).'#table' }}"
+                       class="{{ request()->routeIs('school.table.venue') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Veranstaltungs-Orte</a>
 
-                    <a href="{{ route('search.course', ['country' => $country]).'#table' }}"
-                       class="{{ request()->routeIs('search.course') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Kurse</a>
+                    <a href="{{ route('school.table.course', ['country' => $country]).'#table' }}"
+                       class="{{ request()->routeIs('school.table.course') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Kurse</a>
 
-                    <a href="{{ route('search.event', ['country' => $country]).'#table' }}"
-                       class="{{ request()->routeIs('search.event') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Termine</a>
+                    <a href="{{ route('school.table.event', ['country' => $country]).'#table' }}"
+                       class="{{ request()->routeIs('school.table.event') ? $currentTab : $notCurrentTab }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">Termine</a>
 
                 </nav>
             </div>

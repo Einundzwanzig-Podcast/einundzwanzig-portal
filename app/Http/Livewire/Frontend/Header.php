@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Header extends Component
 {
-    public Country $country;
+    public ?Country $country = null;
     public $currentRouteName;
     public string $c = 'de';
     public bool $withGlobe = true;
@@ -23,6 +23,11 @@ class Header extends Component
 
     public function mount()
     {
+        if (!$this->country) {
+            $this->country = Country::query()
+                                    ->where('code', $this->c)
+                                    ->first();
+        }
         $this->currentRouteName = Route::currentRouteName();
         $this->c = $this->country->code;
     }

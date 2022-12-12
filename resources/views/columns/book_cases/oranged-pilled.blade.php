@@ -8,7 +8,7 @@
         @endif
         <div class="flex items-center space-x-1">
             <x-button primary class="text-21gray whitespace-nowrap" wire:click="viewHistoryModal({{ $row->id }})">💊 Orange Pill Now</x-button>
-            <x-button :href="route('comment.bookcase', ['bookCase' => $row->id])">Details</x-button>
+            <x-button :href="route('bookCases.comment.bookcase', ['bookCase' => $row->id])">Details</x-button>
         </div>
     @else
         <div>
