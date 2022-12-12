@@ -46,6 +46,12 @@
                         </x-jet-nav-link>
                     @endif
 
+                    @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
+                        <x-jet-nav-link href="/nova/resources/bitcoin-events" target="_blank">
+                            {{ __('Veranstaltung eintragen') }}
+                        </x-jet-nav-link>
+                    @endif
+
                     <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         {{ __('Mein Profil') }}
                     </x-jet-nav-link>

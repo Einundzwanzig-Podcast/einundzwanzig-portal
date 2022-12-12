@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Console\Commands\Database\CreateTags;
 use App\Console\Commands\Feed\ReadAndSyncEinundzwanzigPodcastFeed;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
+use App\Models\BitcoinEvent;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
@@ -22,6 +23,7 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\Venue;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
@@ -118,6 +120,11 @@ class DatabaseSeeder extends Seeder
             'city_id' => 3,
             'name'    => 'The Blue Studio Coworking (Pfronten)',
             'street'  => 'Teststraße 3',
+        ]);
+        Venue::create([
+            'city_id' => 4,
+            'name'    => 'Innsbruck',
+            'street'  => 'Innsbrucker Straße 1',
         ]);
         Lecturer::create([
             'team_id' => 1,
@@ -297,6 +304,23 @@ class DatabaseSeeder extends Seeder
             'location'    => 'Einundzwanzig Kempten',
             'description' => fake()->text(),
             'link'        => 'https://t.me/EinundzwanzigKempten',
+        ]);
+        BitcoinEvent::create([
+            'venue_id'    => 4,
+            'from'        => Carbon::parse('2023-09-12')
+                                   ->startOfDay()
+                                   ->addHours(8),
+            'to'          => Carbon::parse('2023-09-16')
+                                   ->startOfDay()
+                                   ->addHours(18),
+            'title'       => 'BTC23',
+            'description' => 'The largest Bitcoin conference in German is entering the second round: The BTC23 will be even better, more diverse and quite controversial. We are open - for Bitcoiners, interested parties and skeptics from all directions. Three days with bitcoiners, thought leaders and entrepreneurs from space - full of relevant lectures, debates and conversations. And of course parties! The following applies: The BTC23 is there for everyone, no matter what level of knowledge you have on the subject. #bitcoinonly
+
+Advance ticket sales begin on December 21, 2022 at 9:21 p.m. with time-limited early bird tickets.
+
+Ticket presale begins on December 21, 2022 at 9:21 p.m. Be quick - there are a limited amount of early bird tickets again.
+',
+            'link'        => 'https://bconf.de/en/',
         ]);
     }
 }
