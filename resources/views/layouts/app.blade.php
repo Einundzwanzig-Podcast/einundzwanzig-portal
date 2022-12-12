@@ -8,7 +8,6 @@
     <meta name="description" content="Dies ist die Kontakt-Seite ">
     <meta name="keywords" content="Kontakt, Kontaktseite, Kontaktformular, Kontaktformularseite">
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
