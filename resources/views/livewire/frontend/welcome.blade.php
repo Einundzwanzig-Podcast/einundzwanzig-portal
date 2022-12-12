@@ -77,7 +77,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-2 xl:col-start-3 sm:row-start-1 md:row-start-4 xl:row-start-1">
-                    <a href="#"
+                    <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => 'de']) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -91,7 +91,7 @@
                         <span
                             class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Worldwide</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Events
+                                Veranstaltungen
                             </h4>
                         </div>
                     </a>

@@ -66,6 +66,12 @@
                                 Meetup-Termine
                             </a>
                         @endif
+                        @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
+                            <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('bitcoinEvent.table.bitcoinEvent') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Veranstaltungen
+                            </a>
+                        @endif
 
                     </nav>
                 </div>

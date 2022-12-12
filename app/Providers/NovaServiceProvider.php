@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\BitcoinEvent;
 use App\Nova\BookCase;
 use App\Nova\Category;
 use App\Nova\City;
@@ -52,6 +53,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(MeetupEvent::class),
                 ])
                            ->icon('calendar')
+                           ->collapsable(),
+
+                MenuSection::make('Events', [
+                    MenuItem::resource(BitcoinEvent::class),
+                ])
+                           ->icon('star')
                            ->collapsable(),
 
                 MenuSection::make('Schule', [

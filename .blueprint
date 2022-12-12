@@ -1,3 +1,8 @@
+created:
+    - database/factories/BitcoinEventFactory.php
+    - database/migrations/2022_12_12_171115_create_bitcoin_events_table.php
+    - app/Models/BitcoinEvent.php
+    - app/Nova/BitcoinEvent.php
 models:
     BookCase: { title: string, latitude: 'float:10', longitude: 'float:10', address: 'text nullable', type: string, open: 'string nullable', comment: 'text nullable', contact: 'text nullable', bcz: 'text nullable', digital: boolean, icontype: string, deactivated: boolean, deactreason: string, entrytype: string, homepage: 'text nullable' }
     Category: { name: string, slug: string }
@@ -22,3 +27,4 @@ models:
     TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
     User: { name: string, public_key: 'string nullable', email: 'string nullable', email_verified_at: 'datetime nullable', password: 'string nullable', remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', is_lecturer: 'boolean default:', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable', timezone: 'string default:Europe/Berlin' }
     Venue: { city_id: biginteger, name: string, slug: string, street: string }
+    BitcoinEvent: { venue_id: foreign, from: datetime, to: datetime, title: string, description: text, link: string }
