@@ -1,4 +1,4 @@
-<div class="bottom-0 py-6 bg-gray-900 w-full">
+<div class="py-6 bg-gray-900 w-full">
     <div class="px-10 mx-auto max-w-7xl">
         <div class="flex flex-col items-center md:flex-row md:justify-between">
             <a href="#_">
