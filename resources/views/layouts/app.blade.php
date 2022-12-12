@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="Dies ist die Kontakt-Seite ">
-    <meta name="keywords" content="Kontakt, Kontaktseite, Kontaktformular, Kontaktformularseite">
-
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
@@ -79,31 +76,6 @@
     <main>
         {{ $slot }}
     </main>
-</div>
-<div
-    x-data="{
-
-    }"
-    class="hidden fixed bottom-0 w-full flex items-center gap-6 bg-white py-4 px-4 md:px-6">
-    <audio x-ref="audio">
-        <source src="https://thenewcode.com/assets/audio/24-ghosts-III.mp3" type="audio/mp3">
-    </audio>
-    <div class="hidden md:block">
-        <x-button primary @click="togglePlay"><i class="fa fa-thin fa-play"></i></x-button>
-    </div>
-    <div
-        class="mb-[env(safe-area-inset-bottom)] flex flex-1 flex-col gap-3 overflow-hidden p-1 justify-center items-center">
-        <div
-            class="truncate text-center text-sm font-bold leading-6 md:text-left"
-        >
-            PLAYER
-        </div>
-        <div class="flex justify-between gap-6">
-            <div class="md:hidden">
-                <x-button primary @click="togglePlay"><i class="fa fa-thin fa-play"></i></x-button>
-            </div>
-        </div>
-    </div>
 </div>
 @stack('modals')
 @livewireScripts
