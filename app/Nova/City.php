@@ -44,23 +44,23 @@ class City extends Resource
             ID::make()
               ->sortable(),
 
-            Text::make('Name')
+            Text::make(__('Name'), 'name')
                 ->rules('required', 'string'),
 
-            Text::make('Slug')
+            Text::make(__('Slug'), 'slug')
                 ->exceptOnForms(),
 
-            Number::make('Latitude')
+            Number::make(__('Latitude'), 'latitude')
                   ->rules('required', 'numeric')
                   ->step(0.000001)
                   ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
-            Number::make('Longitude')
+            Number::make(__('Longitude'), 'longitude')
                   ->rules('required', 'numeric')
                   ->step(0.000001)
                   ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
-            BelongsTo::make('Country'),
+            BelongsTo::make(__('Country'), 'country', Country::class),
 
         ];
     }

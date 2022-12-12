@@ -80,27 +80,27 @@ class Episode extends Resource
             ID::make()
               ->sortable(),
 
-            Avatar::make('Image')
+            Avatar::make(__('Image'))
                   ->squared()
                   ->thumbnail(function () {
                       return $this->data['image'];
                   })
                   ->exceptOnForms(),
 
-            Tags::make('Tags')
+            Tags::make(__('Tags'))
                 ->type('library_item')
                 ->withLinkToTagResource(Tag::class),
 
-            Text::make('Title', 'data->title')
+            Text::make(__('Title'), 'data->title')
                 ->readonly()
                 ->rules('required', 'string'),
 
-            Code::make('Data')
+            Code::make(__('Data'), 'data')
                 ->readonly()
                 ->rules('required', 'json')
                 ->json(),
 
-            BelongsTo::make('Podcast')
+            BelongsTo::make(__('Podcast'), 'podcast', Podcast::class)
                      ->readonly(),
 
         ];

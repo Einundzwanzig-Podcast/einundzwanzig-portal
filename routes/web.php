@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return to_route('search.city', ['country' => 'de']);
-})
+Route::get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
 
 Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)

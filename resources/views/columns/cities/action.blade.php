@@ -2,7 +2,7 @@
     <div>
         <x-button amber wire:click="proximitySearch({{ $row->id }})" class="text-21gray">
             <i class="fa fa-thin fa-person-chalkboard mr-2"></i>
-            Umkreis-Suche Kurs-Termin {{ $row->name }}(100km)
+            Umkreis-Suche Kurs-Termin {{ $row->name }} (100km)
         </x-button>
     </div>
     <div>
