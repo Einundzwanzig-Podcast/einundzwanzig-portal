@@ -35,10 +35,24 @@ class BitcoinEventTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Venue'), 'venue.name'),
             Column::make(__('Title'), 'title')
+                  ->format(
+                      fn($value, $row, Column $column) => view('columns.bitcoin_events.title')->withRow($row)
+                  )
                   ->sortable(),
+            Column::make(__('From'), 'from')
+                  ->format(
+                      fn($value, $row, Column $column) => $value->asDateTime()
+                  ),
+            Column::make(__('To'), 'to')
+                  ->format(
+                      fn($value, $row, Column $column) => $value->asDateTime()
+                  ),
+            Column::make(__('Venue'), 'venue.name'),
             Column::make(__('Link'), 'link')
+                  ->format(
+                      fn($value, $row, Column $column) => view('columns.bitcoin_events.link')->withRow($row)
+                  )
                   ->sortable(),
         ];
     }
