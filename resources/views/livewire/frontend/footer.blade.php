@@ -23,10 +23,12 @@
             <p class="order-last text-sm leading-tight text-gray-500 md:order-first"> Built with ❤️ by our
                 team. </p>
             <ul class="flex flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
-                {{--<li> <a href="#_" class="px-4 text-gray-500 hover:text-white">Contact</a> </li>
-                <li> <a href="#_" class="px-4 text-gray-500 hover:text-white">About US</a> </li>
-                <li> <a href="#_" class="px-4 text-gray-500 hover:text-white">FAQ's</a> </li>
-                <li> <a href="#_" class="px-4 text-gray-500 hover:text-white">Terms</a></li>--}}
+                <li><a href="https://github.com/affektde/einundzwanzig-bitcoin-school" target="_blank"
+                       class="px-4 text-gray-500 hover:text-white">Github</a></li>
+                <li><a href="https://bitcoin.productlift.dev/t/wunschzettel" target="_blank"
+                       class="px-4 text-gray-500 hover:text-white">Wunschzettel</a></li>
+                {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">FAQ's</a></li>--}}
+                {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">Terms</a></li>--}}
             </ul>
         </div>
     </div>

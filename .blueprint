@@ -1,12 +1,3 @@
-created:
-    - database/factories/MeetupFactory.php
-    - database/factories/MeetupEventFactory.php
-    - database/migrations/2022_12_12_155928_create_meetups_table.php
-    - database/migrations/2022_12_12_155929_create_meetup_events_table.php
-    - app/Models/Meetup.php
-    - app/Models/MeetupEvent.php
-    - app/Nova/Meetup.php
-    - app/Nova/MeetupEvent.php
 models:
     BookCase: { title: string, latitude: 'float:10', longitude: 'float:10', address: 'text nullable', type: string, open: 'string nullable', comment: 'text nullable', contact: 'text nullable', bcz: 'text nullable', digital: boolean, icontype: string, deactivated: boolean, deactreason: string, entrytype: string, homepage: 'text nullable' }
     Category: { name: string, slug: string }
@@ -19,6 +10,8 @@ models:
     Library: { name: string, is_public: 'boolean default:1', language_codes: 'json default:[]' }
     LibraryItem: { lecturer_id: biginteger, episode_id: 'biginteger nullable', order_column: integer, name: string, type: string, language_code: string, value: 'text nullable' }
     LoginKey: { k1: string, user_id: biginteger }
+    Meetup: { city_id: biginteger, name: string, link: string }
+    MeetupEvent: { meetup_id: biginteger, start: datetime, location: 'string nullable', description: 'text nullable', link: 'string nullable' }
     Membership: { team_id: biginteger, user_id: biginteger, role: 'string nullable' }
     OrangePill: { user_id: biginteger, book_case_id: biginteger, date: datetime, amount: integer }
     Participant: { first_name: string, last_name: string }
@@ -29,5 +22,3 @@ models:
     TeamInvitation: { team_id: biginteger, email: string, role: 'string nullable' }
     User: { name: string, public_key: 'string nullable', email: 'string nullable', email_verified_at: 'datetime nullable', password: 'string nullable', remember_token: 'string:100 nullable', current_team_id: 'biginteger nullable', profile_photo_path: 'string:2048 nullable', is_lecturer: 'boolean default:', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable', timezone: 'string default:Europe/Berlin' }
     Venue: { city_id: biginteger, name: string, slug: string, street: string }
-    Meetup: { city_id: foreign, name: 'string unique', link: string }
-    MeetupEvent: { meetup_id: foreign, date: date, start: time, end: time, location: string, description: text, link: string }
