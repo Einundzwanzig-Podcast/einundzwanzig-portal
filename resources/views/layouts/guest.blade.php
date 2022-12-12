@@ -10,6 +10,7 @@
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
+    @mapscripts
     <wireui:scripts/>
     <x-comments::scripts />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
