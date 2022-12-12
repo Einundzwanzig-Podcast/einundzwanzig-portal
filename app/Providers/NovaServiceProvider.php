@@ -43,39 +43,37 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-        $adminItems = auth()
-            ->user()
-            ?->hasRole('super-admin') ?
-            [
+        Nova::mainMenu(function (Request $request) {
+            $adminItems = $request->user()->hasRole('super-admin') ?
+                [
 
-                MenuSection::make('Comments', [
-                    MenuItem::resource(Comment::class),
-                ])
-                           ->icon('chat')
-                           ->collapsable(),
+                    MenuSection::make('Comments', [
+                        MenuItem::resource(Comment::class),
+                    ])
+                               ->icon('chat')
+                               ->collapsable(),
 
-                MenuSection::make('Admin', [
-                    MenuItem::resource(Category::class),
-                    MenuItem::resource(Country::class),
-                    MenuItem::resource(Team::class),
-                    MenuItem::resource(User::class),
-                    MenuItem::resource(Tag::class),
-                ])
-                           ->icon('key')
-                           ->collapsable(),
+                    MenuSection::make('Admin', [
+                        MenuItem::resource(Category::class),
+                        MenuItem::resource(Country::class),
+                        MenuItem::resource(Team::class),
+                        MenuItem::resource(User::class),
+                        MenuItem::resource(Tag::class),
+                    ])
+                               ->icon('key')
+                               ->collapsable(),
 
-                MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
-                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
-                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
-                        'resources/permissions'),
-                ])
-                           ->icon('key')
-                           ->collapsable(),
+                    MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
+                        MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
+                        MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
+                            'resources/permissions'),
+                    ])
+                               ->icon('key')
+                               ->collapsable(),
 
-            ]
-            : [];
+                ]
+                : [];
 
-        Nova::mainMenu(function (Request $request) use ($adminItems) {
             return array_merge([
                 MenuSection::dashboard(Main::class)
                            ->icon('lightning-bolt'),
