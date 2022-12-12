@@ -58,7 +58,6 @@ class OrangePill extends Resource
             BelongsTo::make('User'),
             BelongsTo::make('BookCase'),
 
-
         ];
     }
 
