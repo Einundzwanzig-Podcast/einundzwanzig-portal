@@ -20,26 +20,26 @@ class Comment extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make('title', function (CommentModel $comment) {
+            Text::make(__('Title'), function (CommentModel $comment) {
                 return $comment->topLevel()->commentable?->commentableName() ?? 'Deleted...';
             })->readonly(),
 
-            MorphTo::make('Commentator')->types([
+            MorphTo::make(__('Commentator'), 'commentator')->types([
                 User::class,
             ]),
 
-            Markdown::make('Original text'),
+            Markdown::make(__('Original text'), 'original_text'),
 
             Text::make('', function (CommentModel $comment) {
                 if (! $url = $comment?->commentUrl()) {
                     return '';
                 }
 
-                return "<a target=\"show_comment\" href=\"{$url}\">Show</a>";
+                return "<a target=\"show_comment\" href=\"{$url}\">".__('Show')."</a>";
 
             })->asHtml(),
 
-            Text::make('status', function(CommentModel $comment) {
+            Text::make(__('Status'), function(CommentModel $comment) {
                 if ($comment->isApproved()) {
                     return "<div class='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800'>Approved</div>";
                 }
@@ -47,7 +47,8 @@ class Comment extends Resource
                 return "<div class='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800'>Pending</div>";
             })->asHtml(),
 
-            DateTime::make('Created at'),
+            DateTime::make(__('Created at'), 'created_at'),
+
         ];
     }
 }

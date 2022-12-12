@@ -44,18 +44,18 @@ class Country extends Resource
             ID::make()
               ->sortable(),
 
-            Text::make('Name')
+            Text::make(__('Name'), 'name')
                 ->rules('required', 'string'),
 
-            MultiSelect::make('Languages', 'language_codes')
+            MultiSelect::make(__('Languages'), 'language_codes')
                        ->options(
                            config('languages.languages'),
                        ),
 
-            Text::make('Code')
+            Text::make(__('Code'), 'code')
                 ->rules('required', 'string'),
 
-            HasMany::make('Cities'),
+            HasMany::make(__('Cities'), 'cities', City::class),
         ];
     }
 

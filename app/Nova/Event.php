@@ -70,6 +70,7 @@ class Event extends Resource
                     ->displayUsing(fn($value) => $value->asDateTime()),
 
             BelongsTo::make('Course'),
+
             BelongsTo::make('Venue')
                      ->searchable(),
 

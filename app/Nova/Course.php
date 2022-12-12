@@ -59,28 +59,34 @@ class Course extends Resource
             ID::make()
               ->sortable(),
 
-            Images::make('Main picture', 'logo')
+            Images::make(__('Main picture'), 'logo')
                   ->conversionOnIndexView('thumb'),
 
-            Images::make('Images', 'images')
+            // todo: english
+            Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
-                  ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
+                  ->help(__('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.')),
 
-            Tags::make('Tags')->type('course')->withLinkToTagResource(Tag::class),
+            Tags::make(__('Tags'))
+                ->type('course')
+                ->withLinkToTagResource(Tag::class),
 
-            Text::make('Name')
+            Text::make(__('Name'), 'name')
                 ->rules('required', 'string'),
 
-            Markdown::make('Description')
+            Markdown::make(__('Description'), 'description')
                     ->alwaysShow()
-                    ->help('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.'),
+                    ->help(__('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.')),
 
-            BelongsTo::make('Lecturer'),
+            BelongsTo::make(__('Lecturer'), 'lecturer', Lecturer::class)
+                     ->searchable()
+                     ->help(__('Wähle hier den Dozenten aus, der den Kurs hält. Wenn der Dozent nicht in der Liste ist, dann erstelle ihn zuerst unter "Dozenten".')),
 
-            SelectPlus::make('Categories', 'categories', Category::class)
+            SelectPlus::make(__('Categories'), 'categories', Category::class)
                       ->usingIndexLabel('name'),
 
-            BelongsToMany::make('Categories')->onlyOnDetail(),
+            BelongsToMany::make(__('Categories'), 'categories', Category::class)
+                         ->onlyOnDetail(),
 
         ];
     }

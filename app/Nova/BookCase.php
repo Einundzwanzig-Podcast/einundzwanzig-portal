@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
@@ -47,67 +46,67 @@ class BookCase extends Resource
             ID::make()
               ->sortable(),
 
-            Text::make('Title')
+            Text::make(__('Title'), 'title')
                 ->rules('required', 'string'),
 
-            Number::make('Latitude')
+            Number::make(__('Latitude'), 'latitude')
                   ->rules('required', 'numeric')
                   ->step(0.000001)
                   ->hideFromIndex(),
 
-            Number::make('Longitude')
-                ->rules('required', 'numeric')
-                ->step(0.000001)
-                ->hideFromIndex(),
+            Number::make(__('Longitude'), 'longitude')
+                  ->rules('required', 'numeric')
+                  ->step(0.000001)
+                  ->hideFromIndex(),
 
-            Text::make('Address')
+            Text::make(__('Address'), 'address')
                 ->rules('required', 'string'),
 
-            Text::make('Type')
+            Text::make(__('Type'), 'type')
                 ->rules('required', 'string'),
 
-            Text::make('Open')
+            Text::make(__('Open'), 'open')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Text::make('Comment')
+            Text::make(__('Comment'), 'comment')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Text::make('Contact')
+            Text::make(__('Contact'), 'contact')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Text::make('Bcz')
+            Text::make(__('Bcz'), 'bcz')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Boolean::make('Digital')
+            Boolean::make(__('Digital'), 'digital')
                    ->rules('required')
                    ->hideFromIndex(),
 
-            Text::make('Icontype')
+            Text::make(__('Icontype'), 'icontype')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Boolean::make('Deactivated')
+            Boolean::make(__('Deactivated'), 'deactivated')
                    ->rules('required'),
 
-            Text::make('Deactreason')
+            Text::make(__('Deactreason'), 'deactreason')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Text::make('Entrytype')
+            Text::make(__('Entrytype'), 'entrytype')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            Text::make('Homepage')
+            Text::make(__('Homepage'), 'homepage')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
-            HasMany::make('OrangePills'),
+            HasMany::make(__('OrangePills'), 'orangePills', OrangePill::class),
 
-            MorphMany::make('Comments'),
+            MorphMany::make(__('Comments'), 'comments', Comment::class),
 
         ];
     }

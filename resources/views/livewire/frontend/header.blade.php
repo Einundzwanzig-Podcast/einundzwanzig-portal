@@ -15,7 +15,7 @@
             <div
                 class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
                 <div class="relative flex flex-col md:flex-row">
-                    <a href="{{ route('search.city', ['country' => $c]) }}"
+                    <a href="{{ route('welcome') }}"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
                         <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}">
                     </a>
