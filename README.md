@@ -1,4 +1,4 @@
-[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F03a51b88-6eab-491b-8b80-5183a78d0024%3Fdate%3D1%26commit%3D1&style=plastic)](https://forge.laravel.com)
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Ff25a1151-9c87-4f14-9943-17d05fa736c9%3Fdate%3D1%26commit%3D1&style=plastic)](https://forge.laravel.com)
 
 ## Development
 
