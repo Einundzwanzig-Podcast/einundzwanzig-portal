@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        {{--<div class="flex items-center justify-end mt-4">
 
             <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
                 {{ __('E-Mail login') }}
@@ -47,7 +47,7 @@
                 {{ __('E-Mail Registrierung') }}
             </x-button>
 
-        </div>
+        </div>--}}
     </div>
     <div wire:poll="checkAuth" wire:key="checkAuth"></div>
 </x-jet-authentication-card>

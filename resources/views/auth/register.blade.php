@@ -69,14 +69,14 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            {{--<div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
-            </div>
+            </div>--}}
 
             <div class="flex items-center justify-left mt-4">
                 <x-button href="{{ route('auth.ln') }}" primary icon="lightning-bolt">LNURL-Auth</x-button>
