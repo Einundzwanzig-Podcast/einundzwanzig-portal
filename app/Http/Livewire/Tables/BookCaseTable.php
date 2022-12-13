@@ -49,6 +49,7 @@ class BookCaseTable extends DataTableComponent
     {
         return [
             TextFilter::make('By IDs', 'byids')
+                      ->hiddenFromMenus()
                       ->filter(function (Builder $builder, string $value) {
                           $builder->whereIn('id', str($value)->explode(','));
                       }),

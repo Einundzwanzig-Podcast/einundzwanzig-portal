@@ -14,6 +14,7 @@ class CityTable extends DataTableComponent
     use Actions;
 
     public string $country;
+    public string $type;
 
     protected $model = City::class;
 
@@ -39,25 +40,36 @@ class CityTable extends DataTableComponent
 
     public function columns(): array
     {
-        return [
-            Column::make("Stadt Name", "name")
-                  ->sortable()
-                  ->searchable(),
-            Column::make('Veranstaltungs-Orte')
-                  ->label(
-                      fn($row, Column $column) => $row->venues_count
-                  )
-                  ->collapseOnMobile(),
-            Column::make('Termine')
-                  ->label(
-                      fn($row, Column $column) => $row->events_count
-                  )
-                  ->collapseOnMobile(),
-            Column::make('')
-                  ->label(
-                      fn($row, Column $column) => view('columns.cities.action')->withRow($row)
-                  ),
-        ];
+        $columns = collect([]);
+        if($this->type === 'school') {
+            $columns = $columns->merge([
+                Column::make('Veranstaltungs-Orte')
+                      ->label(
+                          fn($row, Column $column) => $row->venues_count
+                      )
+                      ->collapseOnMobile(),
+                Column::make('Termine')
+                      ->label(
+                          fn($row, Column $column) => $row->events_count
+                      )
+                      ->collapseOnMobile(),
+            ]);
+        }
+        if ($this->type === 'bookCase') {
+            $columns = $columns->merge([
+                Column::make("Stadt Name", "name")
+                      ->sortable()
+                      ->searchable(),
+                Column::make('')
+                      ->label(
+                          fn($row, Column $column) => view('columns.cities.action')
+                              ->withRow($row)
+                              ->withType($this->type)
+                      ),
+            ]);
+        }
+
+        return $columns->toArray();
     }
 
     public function builder(): Builder
@@ -94,13 +106,18 @@ class CityTable extends DataTableComponent
         $city = City::query()
                     ->find($id);
         $query = BookCase::radius($city->latitude, $city->longitude, 5);
+        $ids = $query->pluck('id');
+        if ($ids->isEmpty()) {
+            $this->notification()
+                 ->error(__('No bookcases found in the radius of 5km'));
+            return;
+        }
+
         return to_route('bookCases.table.bookcases', [
             '#table',
-            'country' => $this->country,
-            'table'   => [
+            'table' => [
                 'filters' => [
-                    'byids' => $query->pluck('id')
-                                     ->implode(',')
+                    'byids' => $ids->implode(',')
                 ],
             ]
         ]);

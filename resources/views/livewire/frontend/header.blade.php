@@ -51,6 +51,10 @@
                             @endif
                         @endif
                         @if(str(request()->route()->getName())->contains('bookCases.'))
+                            <a href="{{ route('bookCases.table.city', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('bookCases.table.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Stadt-Suche
+                            </a>
                             <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
                                class="{{ request()->routeIs('bookCases.table.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
                                 Bücher-Schränke

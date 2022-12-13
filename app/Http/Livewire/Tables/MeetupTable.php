@@ -55,6 +55,7 @@ class MeetupTable extends DataTableComponent
     public function builder(): Builder
     {
         return Meetup::query()
+                     ->whereHas('city.country', fn($query) => $query->where('code', $this->country))
                      ->withCount([
                          'meetupEvents',
                      ]);
@@ -64,7 +65,7 @@ class MeetupTable extends DataTableComponent
     {
         return to_route('meetup.table.meetupEvent', [
             'country' => $this->country,
-            'table' => [
+            'table'   => [
                 'filters' => ['id' => $id],
             ]
         ]);

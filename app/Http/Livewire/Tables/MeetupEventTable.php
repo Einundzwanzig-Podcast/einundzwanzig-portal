@@ -71,6 +71,7 @@ class MeetupEventTable extends DataTableComponent
     public function builder(): Builder
     {
         return MeetupEvent::query()
+                          ->whereHas('meetup.city.country', fn($query) => $query->where('code', $this->country))
                           ->with([
                               'meetup',
                           ]);

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\BitcoinEvent;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
@@ -55,5 +56,11 @@ class BitcoinEventTable extends DataTableComponent
                   )
                   ->sortable(),
         ];
+    }
+
+    public function builder(): Builder
+    {
+        return BitcoinEvent::query()
+                     ->whereHas('venue.city.country', fn($query) => $query->where('code', $this->country));
     }
 }

@@ -53,6 +53,9 @@ Route::middleware([])
      ->as('bookCases.')
      ->prefix('book-cases')
      ->group(function () {
+         Route::get('/{country:code}/table/city', \App\Http\Livewire\BookCase\CityTable::class)
+              ->name('table.city');
+
          Route::get('/table/book-case', \App\Http\Livewire\BookCase\BookCaseTable::class)
               ->name('table.bookcases');
 
