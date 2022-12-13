@@ -79,6 +79,20 @@
 
                     </nav>
                 </div>
+                <div class="max-w-sm text-lg text-gray-200">
+                    <x-select
+                        label="Land wechseln"
+                        placeholder="Land wechseln"
+                        wire:model="c"
+                        :clearable="false"
+                    >
+                        @foreach($countries as $country)
+                            <x-select.user-option
+                                src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
+                                label="{{ $country->name }}" value="{{ $country->code }}"/>
+                        @endforeach
+                    </x-select>
+                </div>
                 @auth
                     <div></div>
                 @else
