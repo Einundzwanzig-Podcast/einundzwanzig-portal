@@ -11,7 +11,7 @@
                     <nav
                         class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
 
-                        <a href="{{ route('welcome') }}"
+                        <a href="{{ route('welcome', ['c' => $c]) }}"
                            class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
                             Zurück zur Übersicht
                         </a>

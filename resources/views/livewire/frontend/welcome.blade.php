@@ -11,10 +11,24 @@
                 <p class="max-w-sm text-lg text-gray-200">
                     Eine Bitcoin Community für alle.
                 </p>
+                <div class="max-w-sm text-lg text-gray-200">
+                    <x-select
+                        label="Land wechseln"
+                        placeholder="Land wechseln"
+                        wire:model="c"
+                        :clearable="false"
+                    >
+                        @foreach($countries as $country)
+                            <x-select.user-option
+                                src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
+                                label="{{ $country->name }}" value="{{ $country->code }}"/>
+                        @endforeach
+                    </x-select>
+                </div>
             </div>
             <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 <div class="row-span-2 col-span-full sm:col-span-1 md:col-start-1 sm:row-start-2 md:row-start-3">
-                    <a href="{{ route('meetup.table.meetup', ['country' => 'de']) }}"
+                    <a href="{{ route('meetup.table.meetup', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -24,9 +38,12 @@
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/meetup_saarland.jpg') }}" alt="">
                         </div>
+                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
+                                <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                        </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                        <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Plebs together strong</span>
+                            <span
+                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Plebs together strong</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 Meetups
                             </h4>
@@ -35,7 +52,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-1 xl:col-start-2 sm:row-start-4 md:row-start-5 xl:row-start-2">
-                    <a href="{{ route('school.table.city', ['country' => 'de']) }}"
+                    <a href="{{ route('school.table.city', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -45,8 +62,11 @@
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/vhs_kurs.jpg') }}" alt="">
                         </div>
+                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                        </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                        <span
+                            <span
                             class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Education</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 Kurse
@@ -56,7 +76,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-2 xl:col-start-2 sm:row-start-6 md:row-start-2 xl:row-start-4">
-                    <a href="{{ route('library.table.libraryItems', ['country' => 'de']) }}"
+                    <a href="{{ route('library.table.libraryItems', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -67,7 +87,7 @@
                                 src="{{ asset('img/Krypto-Fiat-Bros.webp') }}" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                        <span
+                            <span
                             class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Content</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 Bibliothek
@@ -77,7 +97,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-2 xl:col-start-3 sm:row-start-1 md:row-start-4 xl:row-start-1">
-                    <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => 'de']) }}"
+                    <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -87,8 +107,11 @@
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/20220915_007_industryday.webp') }}" alt="">
                         </div>
+                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                        </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                        <span
+                            <span
                             class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Worldwide</span>
                             <h4 class="text-2xl sm:text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 Veranstaltungen
@@ -98,7 +121,7 @@
                 </div>
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-3 sm:row-start-3 md:row-start-1 xl:row-start-3">
-                    <a href="{{ route('bookCases.table.bookcases', ['country' => 'de']) }}"
+                    <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -108,8 +131,11 @@
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/aprycot-media-bitcoin-21-lektionen-01.webp') }}" alt="">
                         </div>
+                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                        </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                        <span
+                            <span
                             class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Reading</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 Bücher-Schränke
@@ -119,7 +145,7 @@
                 </div>
                 {{--<div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-4 sm:row-start-5 md:row-start-3 xl:row-start-2">
-                    <a href="{{ route('bookCases.table.bookcases', ['country' => 'de']) }}"
+                    <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
