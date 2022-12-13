@@ -10,6 +10,14 @@
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
+    <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
+          media="screen"/>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/de.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/at.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/ch.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/fr.js') }}"></script>
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
     @mapscripts

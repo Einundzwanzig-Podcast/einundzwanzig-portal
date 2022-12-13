@@ -10,11 +10,19 @@
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
+    <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
+          media="screen"/>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/de.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/at.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/ch.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/fr.js') }}"></script>
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
     @mapscripts
     <wireui:scripts/>
-    <x-comments::scripts />
+    <x-comments::scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
@@ -33,7 +41,7 @@
 
             --comments-color-border: rgb(221, 221, 221);
 
-            --comments-color-text:white;
+            --comments-color-text: white;
             --comments-color-text-dimmed: rgb(164, 164, 164);
             --comments-color-text-inverse: white;
 
@@ -48,6 +56,7 @@
 
             --comments-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+
         .comments-button {
             background-color: #F7931A !important;
         }
