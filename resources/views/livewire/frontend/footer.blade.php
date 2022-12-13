@@ -24,9 +24,15 @@
                 team. </p>
             <ul class="flex flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
                 <li><a href="https://github.com/affektde/einundzwanzig-bitcoin-school" target="_blank"
-                       class="px-4 text-gray-500 hover:text-white">Github</a></li>
+                       class="px-4 text-gray-500 hover:text-white">
+                        <i class="fa fab fa-github mr-1"></i>
+                        Github
+                    </a></li>
                 <li><a href="https://bitcoin.productlift.dev/t/wunschzettel" target="_blank"
-                       class="px-4 text-gray-500 hover:text-white">Wunschzettel</a></li>
+                       class="px-4 text-gray-500 hover:text-white">
+                        <i class="fa fa-thin fa-thought-bubble mr-1"></i>
+                        Wunschzettel/Feedback
+                    </a></li>
                 {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">FAQ's</a></li>--}}
                 {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">Terms</a></li>--}}
             </ul>
