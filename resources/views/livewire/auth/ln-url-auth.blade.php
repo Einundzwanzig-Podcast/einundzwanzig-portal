@@ -37,17 +37,19 @@
             </div>
         </div>
 
-        {{--<div class="flex items-center justify-end mt-4">
+        @if(app()->environment('local'))
+            <div class="flex items-center justify-end mt-4">
 
-            <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
-                {{ __('E-Mail login') }}
-            </x-button>
+                <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
+                    {{ __('E-Mail login') }}
+                </x-button>
 
-            <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmailSignup">
-                {{ __('E-Mail Registrierung') }}
-            </x-button>
+                <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmailSignup">
+                    {{ __('E-Mail Registrierung') }}
+                </x-button>
 
-        </div>--}}
+            </div>
+        @endif
     </div>
     <div wire:poll="checkAuth" wire:key="checkAuth"></div>
 </x-jet-authentication-card>

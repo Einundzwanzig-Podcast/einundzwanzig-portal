@@ -7,14 +7,20 @@
             class="w-full flex justify-center"
             x-data="{
                     init() {
-                        let markers = [{name: 'VAK', coords: [50.0091294, 9.0371812], status: 'closed', offsets: [0, 2]}];
+                        let markers = {{ Js::from($markers) }};
+                        console.log(markers);
 
                         $('#map').vectorMap({
                             zoomButtons : false,
-                            zoomOnScroll: false,
+                            zoomOnScroll: true,
                             map: '{{ $country->code }}_merc',
                             backgroundColor: 'transparent',
-                            // markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
+                            markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
+                            markerStyle: {
+                                initial: {
+                                    image: '{{ asset('img/btc.png') }}',
+                                }
+                            },
                             regionStyle: {
                                 initial: {
                                     fill: '#151515'
