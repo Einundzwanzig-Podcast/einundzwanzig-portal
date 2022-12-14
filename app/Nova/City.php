@@ -66,7 +66,9 @@ class City extends Resource
 
             HasMany::make(__('Venues'), 'venues', Venue::class),
 
-            HasManyThrough::make(__('Course Events'), 'courseEvents', CourseEvent::class)
+            HasManyThrough::make(__('Course Events'), 'courseEvents', CourseEvent::class),
+
+            HasMany::make(__('Meetups'), 'meetups', Meetup::class),
 
         ];
     }

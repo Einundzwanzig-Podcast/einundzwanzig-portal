@@ -54,4 +54,9 @@ class City extends Model
     {
         return $this->hasManyThrough(CourseEvent::class, Venue::class);
     }
+
+    function meetups()
+    {
+        return $this->hasMany(Meetup::class);
+    }
 }

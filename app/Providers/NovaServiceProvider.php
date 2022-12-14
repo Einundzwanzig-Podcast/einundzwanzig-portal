@@ -78,6 +78,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::dashboard(Main::class)
                            ->icon('lightning-bolt'),
 
+                MenuSection::make('Locations', [
+                    MenuItem::resource(City::class),
+                    MenuItem::resource(Venue::class),
+                ])
+                           ->icon('map')
+                           ->collapsable(),
+
                 MenuSection::make('Meetups', [
                     MenuItem::resource(Meetup::class),
                     MenuItem::resource(MeetupEvent::class),
@@ -92,8 +99,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->collapsable(),
 
                 MenuSection::make('Schule', [
-                    MenuItem::resource(City::class),
-                    MenuItem::resource(Venue::class),
                     MenuItem::resource(Lecturer::class),
                     MenuItem::resource(Course::class),
                     MenuItem::resource(CourseEvent::class),
