@@ -85,6 +85,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->icon('map')
                            ->collapsable(),
 
+                MenuSection::make('Bitcoiner', [
+                    MenuItem::resource(Lecturer::class),
+                ])
+                           ->icon('user-group')
+                           ->collapsable(),
+
                 MenuSection::make('Meetups', [
                     MenuItem::resource(Meetup::class),
                     MenuItem::resource(MeetupEvent::class),
@@ -99,7 +105,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->collapsable(),
 
                 MenuSection::make('Schule', [
-                    MenuItem::resource(Lecturer::class),
                     MenuItem::resource(Course::class),
                     MenuItem::resource(CourseEvent::class),
                     MenuItem::resource(Participant::class),
