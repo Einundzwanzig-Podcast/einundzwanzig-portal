@@ -30,7 +30,7 @@ class VenueTable extends DataTableComponent
                  ];
              })
              ->setColumnSelectStatus(false)
-             ->setPerPage(50);
+             ->setPerPage(10);
     }
 
     public function columns(): array

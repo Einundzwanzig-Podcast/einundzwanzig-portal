@@ -41,7 +41,7 @@ class BookCaseTable extends DataTableComponent
                  ];
              })
              ->setColumnSelectStatus(false)
-             ->setPerPage(50);
+             ->setPerPage(10);
     }
 
 
