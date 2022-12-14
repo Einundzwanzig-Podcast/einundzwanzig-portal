@@ -33,12 +33,12 @@ Route::get('/lnurl-auth-callback', function (\Illuminate\Http\Request $request) 
             $user = User::create([
                 'public_key'  => $request->key,
                 'is_lecturer' => true,
-                'name'        => fake()->name(),
+                'name'        => $request->key,
             ]);
             $user->ownedTeams()
                  ->save(Team::forceCreate([
                      'user_id'       => $user->id,
-                     'name'          => explode(' ', $user->name, 2)[0]."'s Team",
+                     'name'          => $request->key."'s Team",
                      'personal_team' => true,
                  ]));
         }
