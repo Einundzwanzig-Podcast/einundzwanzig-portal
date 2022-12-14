@@ -22,6 +22,11 @@ class MeetupEvent extends Resource
      */
     public static $title = 'id';
 
+    public static function label()
+    {
+        return __('Meetup Event');
+    }
+
     /**
      * The columns that should be searched.
      * @var array
@@ -45,10 +50,9 @@ class MeetupEvent extends Resource
 
             DateTime::make(__('Start'), 'start'),
 
-            Text::make('Location')
-                ->rules('required', 'string'),
+            Text::make(__('Location'), 'location'),
 
-            Text::make('Description')
+            Text::make(__('Description'), 'description')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 

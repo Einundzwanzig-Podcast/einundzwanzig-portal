@@ -54,7 +54,7 @@ class Meetup extends Resource
             Text::make('Link')
                 ->rules('required', 'string'),
 
-            BelongsTo::make('City')->searchable(),
+            BelongsTo::make(__('City'), 'city', City::class)->searchable(),
 
         ];
     }

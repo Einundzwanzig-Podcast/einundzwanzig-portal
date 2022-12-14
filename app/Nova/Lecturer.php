@@ -65,7 +65,7 @@ class Lecturer extends Resource
             Images::make('Avatar', 'avatar')
                   ->conversionOnIndexView('thumb'),
 
-            Images::make('Images', 'images')
+            Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
 
