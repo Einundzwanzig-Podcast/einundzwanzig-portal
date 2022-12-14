@@ -26,6 +26,11 @@ class Lecturer extends Resource
      */
     public static $title = 'name';
 
+    public static function label()
+    {
+        return __('Lecturer/Content Creator');
+    }
+
     /**
      * The columns that should be searched.
      * @var array

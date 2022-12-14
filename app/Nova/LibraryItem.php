@@ -84,7 +84,7 @@ class LibraryItem extends Resource
                 ->rules('nullable', 'string')
                 ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
-            BelongsTo::make('Lecturer'),
+            BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class),
 
             BelongsTo::make('Episode')->nullable(),
 
