@@ -28,6 +28,16 @@ class Course extends Resource
      */
     public static $title = 'name';
 
+    public static function label()
+    {
+        return __('Course');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Course');
+    }
+
     /**
      * The columns that should be searched.
      * @var array

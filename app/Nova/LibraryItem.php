@@ -29,6 +29,11 @@ class LibraryItem extends Resource
      */
     public static $title = 'name';
 
+    public static function label()
+    {
+        return __('Library Item');
+    }
+
     /**
      * The columns that should be searched.
      * @var array
@@ -51,17 +56,17 @@ class LibraryItem extends Resource
             ID::make()
               ->sortable(),
 
-            Images::make('Main picture', 'main')
+            Images::make(__('Main picture'), 'main')
                   ->conversionOnIndexView('thumb'),
 
-            Images::make('Images', 'images')
+            Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
 
-            Files::make('Downloadable File', 'single_file')
+            Files::make(__('Downloadable File'), 'single_file')
                  ->help('Für neue Datei-Typen bitte bei den Admins melden. (Derzeit: PDF)'),
 
-            Select::make('Language Code', 'language_code')
+            Select::make(__('Language Code'), 'language_code')
                   ->options(
                       config('languages.languages')
                   )
@@ -74,21 +79,21 @@ class LibraryItem extends Resource
             Text::make('Name')
                 ->rules('required', 'string'),
 
-            Select::make('Type')
+            Select::make(__('Type'))
                   ->options(
                       Options::forEnum(LibraryItemType::class)->toArray()
                   )
                   ->rules('required', 'string'),
 
-            Code::make('Value')
+            Code::make(__('Value'))
                 ->rules('nullable', 'string')
                 ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
             BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class),
 
-            BelongsTo::make('Episode')->nullable(),
+            BelongsTo::make(__('Episode'), 'episode', Episode::class)->nullable(),
 
-            BelongsToMany::make('Library', 'libraries', Library::class),
+            BelongsToMany::make(__('Library'), 'libraries', Library::class),
 
         ];
     }

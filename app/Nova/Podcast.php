@@ -49,14 +49,14 @@ class Podcast extends Resource
             ID::make()
               ->sortable(),
 
-            Avatar::make('Image')
+            Avatar::make(__('Image'))
                   ->squared()
                   ->thumbnail(function () {
                       return $this?->data['image'] ?? '';
                   })
                   ->exceptOnForms(),
 
-            Boolean::make('Locked', 'locked', fn($value) => $value ?? false),
+            Boolean::make(__('Locked'), 'locked', fn($value) => $value ?? false),
 
             Text::make('Guid', 'guid', function ($value) use ($guid) {
                 if ($value) {
@@ -66,20 +66,20 @@ class Podcast extends Resource
                 }
             }),
 
-            Text::make('Title')
+            Text::make(__('Title'), 'title')
                 ->rules('required', 'string'),
 
-            Text::make('Language Code')
+            Text::make(__('Language Code'), 'language_code')
                 ->rules('required', 'string'),
 
             Text::make('Link')
                 ->rules('required', 'string'),
 
-            Code::make('Data')
+            Code::make(__('Data'), 'data')
                 ->rules('required', 'json')
                 ->json(),
 
-            HasMany::make('Episodes'),
+            HasMany::make(__('Episodes'), 'episodes', Episode::class),
         ];
     }
 

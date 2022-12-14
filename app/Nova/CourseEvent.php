@@ -43,6 +43,11 @@ class CourseEvent extends Resource
         return $this->from.' - '.$this->venue->name.' - '.$this->course->name;
     }
 
+    public static function label()
+    {
+        return __('Course Event');
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -59,19 +64,19 @@ class CourseEvent extends Resource
             URL::make('Link')
                ->rules('required', 'url'),
 
-            DateTime::make('From')
+            DateTime::make(__('From'), 'from')
                     ->rules('required')
                     ->step(CarbonInterval::minutes(30))
                     ->displayUsing(fn($value) => $value->asDateTime()),
 
-            DateTime::make('To')
+            DateTime::make(__('To'), 'to')
                     ->rules('required')
                     ->step(CarbonInterval::minutes(30))
                     ->displayUsing(fn($value) => $value->asDateTime()),
 
-            BelongsTo::make('Course'),
+            BelongsTo::make(__('Course'), 'course', Course::class),
 
-            BelongsTo::make('Venue')
+            BelongsTo::make(__('Venue'), 'venue', Venue::class)
                      ->searchable(),
 
         ];

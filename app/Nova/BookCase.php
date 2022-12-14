@@ -23,7 +23,6 @@ class BookCase extends Resource
      * @var string
      */
     public static $title = 'title';
-
     /**
      * The columns that should be searched.
      * @var array
@@ -32,6 +31,11 @@ class BookCase extends Resource
         'id',
         'title',
     ];
+
+    public static function label()
+    {
+        return __('Book Case');
+    }
 
     /**
      * Get the fields displayed by the resource.

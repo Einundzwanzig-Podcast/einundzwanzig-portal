@@ -18,9 +18,7 @@ use App\Nova\LibraryItem;
 use App\Nova\Meetup;
 use App\Nova\MeetupEvent;
 use App\Nova\OrangePill;
-use App\Nova\Participant;
 use App\Nova\Podcast;
-use App\Nova\Registration;
 use App\Nova\Tag;
 use App\Nova\Team;
 use App\Nova\User;
@@ -44,7 +42,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
-            $adminItems = $request->user()->hasRole('super-admin') ?
+            $adminItems = $request->user()
+                                  ->hasRole('super-admin') ?
                 [
 
                     MenuSection::make('Comments', [
@@ -107,8 +106,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make('Schule', [
                     MenuItem::resource(Course::class),
                     MenuItem::resource(CourseEvent::class),
-                    MenuItem::resource(Participant::class),
-                    MenuItem::resource(Registration::class),
+                    // MenuItem::resource(Participant::class),
+                    // MenuItem::resource(Registration::class),
                 ])
                            ->icon('academic-cap')
                            ->collapsable(),

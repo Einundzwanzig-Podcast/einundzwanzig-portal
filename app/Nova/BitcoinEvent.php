@@ -49,23 +49,22 @@ class BitcoinEvent extends Resource
             Images::make(__('Logo'), 'logo')
                   ->conversionOnIndexView('thumb'),
 
-            DateTime::make('From')
+            DateTime::make(__('From'), 'from')
                 ->rules('required'),
 
-            DateTime::make('To')
+            DateTime::make(__('To'), 'to')
                 ->rules('required'),
 
-            Text::make('Title')
+            Text::make(__('Title'), 'title')
                 ->rules('required', 'string'),
 
-            Text::make('Description')
+            Text::make(__('Description'), 'description')
                 ->rules('required', 'string')->hideFromIndex(),
 
             Text::make('Link')
                 ->rules('required', 'string'),
 
-            BelongsTo::make('Venue'),
-
+            BelongsTo::make(__('Venue'), 'venue', Venue::class)->searchable(),
 
         ];
     }

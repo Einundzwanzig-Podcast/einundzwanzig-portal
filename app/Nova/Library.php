@@ -23,6 +23,11 @@ class Library extends Resource
      */
     public static $title = 'name';
 
+    public static function label()
+    {
+        return __('Library');
+    }
+
     /**
      * The columns that should be searched.
      * @var array
@@ -48,10 +53,10 @@ class Library extends Resource
             Text::make('Name')
                 ->rules('required', 'string'),
 
-            Boolean::make('Is public', 'is_public')
+            Boolean::make(__('Is public'), 'is_public')
                    ->rules('required', 'boolean'),
 
-            MultiSelect::make('Languages', 'language_codes')
+            MultiSelect::make(__('Languages'), 'language_codes')
                        ->options(
                            config('languages.languages'),
                        ),
