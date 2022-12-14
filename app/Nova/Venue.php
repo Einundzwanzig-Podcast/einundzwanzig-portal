@@ -22,6 +22,11 @@ class Venue extends Resource
      */
     public static $title = 'name';
 
+    public static function label()
+    {
+        return __('Venue');
+    }
+
     /**
      * The columns that should be searched.
      * @var array
@@ -53,10 +58,10 @@ class Venue extends Resource
             Text::make('Slug')
                 ->exceptOnForms(),
 
-            Text::make('Street')
+            Text::make(__('Street'), 'street')
                 ->rules('required', 'string'),
 
-            BelongsTo::make('City'),
+            BelongsTo::make(__('City'), 'city', City::class),
 
         ];
     }

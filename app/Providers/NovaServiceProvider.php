@@ -78,7 +78,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::dashboard(Main::class)
                            ->icon('lightning-bolt'),
 
-                MenuSection::make('Locations', [
+                MenuSection::make(__('Locations'), [
                     MenuItem::resource(City::class),
                     MenuItem::resource(Venue::class),
                 ])

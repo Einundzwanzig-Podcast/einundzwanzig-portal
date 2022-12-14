@@ -24,6 +24,11 @@ class City extends Resource
      */
     public static $title = 'name';
 
+    public static function label()
+    {
+        return __('City');
+    }
+
     /**
      * The columns that should be searched.
      * @var array
