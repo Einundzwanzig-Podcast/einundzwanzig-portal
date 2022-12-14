@@ -30,7 +30,7 @@ class ImportGithubMeetups extends Command
         $meetups = json_decode(file_get_contents(config_path('meetups/github.json')), true, 512, JSON_THROW_ON_ERROR);
 
         foreach ($meetups as $meetup) {
-            $city = City::updateOrCreate([
+            $city = City::firstOrCreate([
                 'name' => $meetup['city'],
             ], [
                 'country_id' => Country::firstOrCreate([
