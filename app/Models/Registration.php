@@ -28,7 +28,7 @@ class Registration extends Model
         'active' => 'boolean',
     ];
 
-    public function event(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function courseEvent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(CourseEvent::class);
     }

@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasManyThrough;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -61,6 +63,10 @@ class City extends Resource
                   ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
             BelongsTo::make(__('Country'), 'country', Country::class),
+
+            HasMany::make(__('Venues'), 'venues', Venue::class),
+
+            HasManyThrough::make(__('Course Events'), 'courseEvents', CourseEvent::class)
 
         ];
     }

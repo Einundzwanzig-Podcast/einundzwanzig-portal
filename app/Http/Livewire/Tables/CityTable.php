@@ -40,8 +40,12 @@ class CityTable extends DataTableComponent
 
     public function columns(): array
     {
-        $columns = collect([]);
-        if($this->type === 'school') {
+        $columns = collect([
+            Column::make("Stadt Name", "name")
+                  ->sortable()
+                  ->searchable(),
+        ]);
+        if ($this->type === 'school') {
             $columns = $columns->merge([
                 Column::make('Veranstaltungs-Orte')
                       ->label(
@@ -50,26 +54,21 @@ class CityTable extends DataTableComponent
                       ->collapseOnMobile(),
                 Column::make('Termine')
                       ->label(
-                          fn($row, Column $column) => $row->events_count
+                          fn($row, Column $column) => $row->course_events_count
                       )
                       ->collapseOnMobile(),
             ]);
         }
-        if ($this->type === 'bookCase') {
-            $columns = $columns->merge([
-                Column::make("Stadt Name", "name")
-                      ->sortable()
-                      ->searchable(),
-                Column::make('')
-                      ->label(
-                          fn($row, Column $column) => view('columns.cities.action')
-                              ->withRow($row)
-                              ->withType($this->type)
-                      ),
-            ]);
-        }
 
-        return $columns->toArray();
+        return $columns->merge([
+            Column::make('')
+                  ->label(
+                      fn($row, Column $column) => view('columns.cities.action')
+                          ->withRow($row)
+                          ->withType($this->type)
+                  ),
+        ])
+                       ->toArray();
     }
 
     public function builder(): Builder
@@ -77,7 +76,7 @@ class CityTable extends DataTableComponent
         return City::query()
                    ->withCount([
                        'venues',
-                       'events',
+                       'courseEvents',
                    ])
                    ->whereHas('country', fn($query) => $query->where('code', $this->country));
     }

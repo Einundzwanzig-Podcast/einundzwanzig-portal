@@ -52,7 +52,7 @@ class VenueTable extends DataTableComponent
                   ->collapseOnMobile(),
             Column::make('Termine')
                   ->label(
-                      fn($row, Column $column) => $row->events_count
+                      fn($row, Column $column) => $row->course_events_count
                   )
                   ->collapseOnMobile(),
             Column::make('')
@@ -66,7 +66,7 @@ class VenueTable extends DataTableComponent
     {
         return Venue::query()
                     ->withCount([
-                        'events',
+                        'courseEvents',
                     ])
                     ->whereHas('city.country', fn($query) => $query->where('code', $this->country));
     }

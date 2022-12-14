@@ -50,7 +50,7 @@ class City extends Model
         return $this->hasMany(Venue::class);
     }
 
-    function events()
+    function courseEvents()
     {
         return $this->hasManyThrough(CourseEvent::class, Venue::class);
     }

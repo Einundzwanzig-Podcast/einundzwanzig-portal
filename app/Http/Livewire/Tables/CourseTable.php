@@ -67,7 +67,7 @@ class CourseTable extends DataTableComponent
                   ),
             Column::make("Termine")
                   ->label(
-                      fn($row, Column $column) => '<strong>'.$row->events_count.'</strong>'
+                      fn($row, Column $column) => '<strong>'.$row->course_events_count.'</strong>'
                   )
                   ->html()
                   ->sortable()
@@ -86,9 +86,9 @@ class CourseTable extends DataTableComponent
     {
         return Course::query()
                      ->withCount([
-                         'events',
+                         'courseEvents',
                      ])
-                     ->whereHas('events.venue.city.country',
+                     ->whereHas('courseEvents.venue.city.country',
                          fn($query) => $query->where('countries.code', $this->country));
     }
 

@@ -46,7 +46,7 @@ class Registration extends Resource
             Boolean::make('Active')
                 ->rules('required'),
 
-            BelongsTo::make('Course Event'),
+            BelongsTo::make('Course Event', 'courseEvent'),
             BelongsTo::make('Participant'),
 
         ];

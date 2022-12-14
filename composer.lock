@@ -2702,17 +2702,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.19.4",
+            "version": "4.19.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "962deed1c3df3740620be19646c8acd69430e66d"
+                "reference": "1c4f32ab373d93314ae84bd175b644b71c96a28d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-962deed1c3df3740620be19646c8acd69430e66d-zip-804f62.zip",
-                "reference": "962deed1c3df3740620be19646c8acd69430e66d",
-                "shasum": "51ac67d601f0f11213b23a9a8f5df425ae48f122"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-1c4f32ab373d93314ae84bd175b644b71c96a28d-zip-42a3e1.zip",
+                "reference": "1c4f32ab373d93314ae84bd175b644b71c96a28d",
+                "shasum": "853ce862f1e4adb43b3f18b0542512d6dd54f18a"
             },
             "require": {
                 "brick/money": "^0.5.0|^0.6.0|^0.7.0",
@@ -2723,7 +2723,7 @@
                 "laravel/ui": "^3.3|^4.0",
                 "nesbot/carbon": "^2.53.1",
                 "php": "^7.3|^8.0",
-                "rap2hpoutre/fast-excel": "^3.2|^4.1",
+                "rap2hpoutre/fast-excel": "^3.2|^4.1|^5.0",
                 "spatie/once": "^1.1|^2.0|^3.0",
                 "symfony/console": "^5.4|^6.0",
                 "symfony/finder": "^5.4|^6.0",
@@ -2807,9 +2807,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.19.4"
+                "source": "https://github.com/laravel/nova/tree/v4.19.5"
             },
-            "time": "2022-11-29T15:30:53+00:00"
+            "time": "2022-12-14T02:03:19+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -4384,16 +4384,16 @@
         },
         {
             "name": "nova-kit/nova-packages-tool",
-            "version": "v1.6.1",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nova-kit/nova-packages-tool.git",
-                "reference": "c6deaf054a94d36c20b9472979c5dc94415f1283"
+                "reference": "cbed89e52c04b5b2adb415f4f39b6323ae8a683d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nova-kit/nova-packages-tool/zipball/c6deaf054a94d36c20b9472979c5dc94415f1283",
-                "reference": "c6deaf054a94d36c20b9472979c5dc94415f1283",
+                "url": "https://api.github.com/repos/nova-kit/nova-packages-tool/zipball/cbed89e52c04b5b2adb415f4f39b6323ae8a683d",
+                "reference": "cbed89e52c04b5b2adb415f4f39b6323ae8a683d",
                 "shasum": ""
             },
             "require": {
@@ -4428,9 +4428,9 @@
             ],
             "description": "Tool for Laravel Nova Packages Development",
             "support": {
-                "source": "https://github.com/nova-kit/nova-packages-tool/tree/v1.6.1"
+                "source": "https://github.com/nova-kit/nova-packages-tool/tree/v1.6.2"
             },
-            "time": "2022-11-22T21:40:15+00:00"
+            "time": "2022-12-14T02:09:50+00:00"
         },
         {
             "name": "nova/start",
@@ -4695,32 +4695,36 @@
         },
         {
             "name": "openspout/openspout",
-            "version": "v3.7.4",
+            "version": "v4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openspout/openspout.git",
-                "reference": "dfbbd53b5edcd486b45a37f6a04fac33073c70f3"
+                "reference": "7b0db352e25c83e42d3375f57041a30a1ea9cd2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openspout/openspout/zipball/dfbbd53b5edcd486b45a37f6a04fac33073c70f3",
-                "reference": "dfbbd53b5edcd486b45a37f6a04fac33073c70f3",
+                "url": "https://api.github.com/repos/openspout/openspout/zipball/7b0db352e25c83e42d3375f57041a30a1ea9cd2c",
+                "reference": "7b0db352e25c83e42d3375f57041a30a1ea9cd2c",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
+                "ext-fileinfo": "*",
                 "ext-filter": "*",
                 "ext-libxml": "*",
                 "ext-xmlreader": "*",
                 "ext-zip": "*",
-                "php": "~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "require-dev": {
                 "ext-zlib": "*",
-                "friendsofphp/php-cs-fixer": "^3.4",
-                "phpstan/phpstan": "^1.4",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5"
+                "friendsofphp/php-cs-fixer": "^3.8.0",
+                "infection/infection": "^0.26.10",
+                "phpbench/phpbench": "^1.2.5",
+                "phpstan/phpstan": "^1.6.8",
+                "phpstan/phpstan-phpunit": "^1.1.1",
+                "phpstan/phpstan-strict-rules": "^1.2.3",
+                "phpunit/phpunit": "^9.5.20"
             },
             "suggest": {
                 "ext-iconv": "To handle non UTF-8 CSV files (if \"php-intl\" is not already installed or is too limited)",
@@ -4768,7 +4772,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openspout/openspout/issues",
-                "source": "https://github.com/openspout/openspout/tree/v3.7.4"
+                "source": "https://github.com/openspout/openspout/tree/v4.9.0"
             },
             "funding": [
                 {
@@ -4780,7 +4784,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-31T06:15:15+00:00"
+            "time": "2022-12-13T07:41:37+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -6155,22 +6159,22 @@
         },
         {
             "name": "rap2hpoutre/fast-excel",
-            "version": "v4.1.0",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/fast-excel.git",
-                "reference": "724557e844170a231fd4515bbc3ea435ca622e7d"
+                "reference": "ae87162555c6c359964d671af6b7ad6c73f5f013"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/724557e844170a231fd4515bbc3ea435ca622e7d",
-                "reference": "724557e844170a231fd4515bbc3ea435ca622e7d",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/ae87162555c6c359964d671af6b7ad6c73f5f013",
+                "reference": "ae87162555c6c359964d671af6b7ad6c73f5f013",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "openspout/openspout": "^3",
-                "php": "^7.3 || ^8.0"
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "openspout/openspout": "^4.1.1",
+                "php": "^8.0"
             },
             "require-dev": {
                 "illuminate/database": "^6.20.12 || ^7.30.4 || ^8.24.0 || ^9.0",
@@ -6213,7 +6217,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rap2hpoutre/fast-excel/issues",
-                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v4.1.0"
+                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v5.0.0"
             },
             "funding": [
                 {
@@ -6221,7 +6225,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-21T14:21:25+00:00"
+            "time": "2022-12-09T15:18:32+00:00"
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
@@ -12539,20 +12543,20 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.20.0",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "37f751c67a5372d4e26353bd9384bc03744ec77b"
+                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/37f751c67a5372d4e26353bd9384bc03744ec77b",
-                "reference": "37f751c67a5372d4e26353bd9384bc03744ec77b",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/92efad6a967f0b79c499705c69b662f738cc9e4d",
+                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0",
+                "php": "^7.4 || ^8.0",
                 "psr/container": "^1.0 || ^2.0",
                 "symfony/deprecation-contracts": "^2.2 || ^3.0"
             },
@@ -12563,7 +12567,8 @@
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "doctrine/persistence": "^1.3 || ^2.0",
                 "ext-intl": "*",
-                "symfony/phpunit-bridge": "^4.4 || ^5.2"
+                "phpunit/phpunit": "^9.5.26",
+                "symfony/phpunit-bridge": "^5.4.16"
             },
             "suggest": {
                 "doctrine/orm": "Required to use Faker\\ORM\\Doctrine",
@@ -12575,7 +12580,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "v1.20-dev"
+                    "dev-main": "v1.21-dev"
                 }
             },
             "autoload": {
@@ -12600,9 +12605,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.20.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.21.0"
             },
-            "time": "2022-07-20T13:12:54+00:00"
+            "time": "2022-12-13T13:54:32+00:00"
         },
         {
             "name": "fidum/laravel-blueprint-pestphp-addon",
@@ -13006,16 +13011,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "12.6.1",
+            "version": "12.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "4d099a2b7f5cfcda82cc8dc1c39620eb69d66d1f"
+                "reference": "d900bc6dc001a8ca63cc13184c0720d4262e0d23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/4d099a2b7f5cfcda82cc8dc1c39620eb69d66d1f",
-                "reference": "4d099a2b7f5cfcda82cc8dc1c39620eb69d66d1f",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/d900bc6dc001a8ca63cc13184c0720d4262e0d23",
+                "reference": "d900bc6dc001a8ca63cc13184c0720d4262e0d23",
                 "shasum": ""
             },
             "require": {
@@ -13077,7 +13082,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-12-11T22:31:57+00:00"
+            "time": "2022-12-14T07:53:56+00:00"
         },
         {
             "name": "laravel-lang/publisher",
@@ -13351,16 +13356,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.16.3",
+            "version": "v1.16.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "0dbee8802e17911afbe29a8506316343829b056e"
+                "reference": "72412b14d6f4e73b71b5f3068bdb064184fbb001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/0dbee8802e17911afbe29a8506316343829b056e",
-                "reference": "0dbee8802e17911afbe29a8506316343829b056e",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/72412b14d6f4e73b71b5f3068bdb064184fbb001",
+                "reference": "72412b14d6f4e73b71b5f3068bdb064184fbb001",
                 "shasum": ""
             },
             "require": {
@@ -13407,7 +13412,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-11-21T16:19:18+00:00"
+            "time": "2022-12-12T16:47:37+00:00"
         },
         {
             "name": "mockery/mockery",
