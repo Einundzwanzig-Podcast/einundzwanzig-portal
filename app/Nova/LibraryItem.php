@@ -111,7 +111,7 @@ class LibraryItem extends Resource
             Text::make('Name')
                 ->rules('required', 'string'),
 
-            Select::make(__('Type'))
+            Select::make(__('Type'), 'type')
                   ->options(
                       Options::forEnum(LibraryItemType::class)
                              ->toArray()
