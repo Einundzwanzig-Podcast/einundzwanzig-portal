@@ -38,11 +38,8 @@
                         init() {
                             let events = {{ Js::from($events) }};
                             events = events.map(function(e){
-                                console.log(e.startDate);
-                                console.log(e.endDate);
-                                return {startDate: new Date(e.startDate), endDate: new Date(e.endDate), location: e.location, description: e.description}
+                                return {id: e.id, startDate: new Date(e.startDate), endDate: new Date(e.endDate), location: e.location, description: e.description}
                             })
-                            console.log(events);
 
                             new Calendar(this.$refs.calendar, {
                                 style: 'background',
@@ -51,16 +48,18 @@
                                 clickDay: function(e) {
                                     if(e.events.length > 0) {
                                         var content = '';
+                                        var ids = [];
 
                                         for(var i in e.events) {
+                                            ids.push(e.events[i].id);
                                             content += '<div class=\'event-tooltip-content\'>'
-                                        + '<div class=\'event-name\'>' + e.events[i].location + '</div>'
-                                        + '<div class=\'event-location\'>' + e.events[i].description + '</div>'
-                                        + '</div>';
+                                            + '<div class=\'event-name\'>' + e.events[i].location + '</div>'
+                                            + '<div class=\'event-location\'>' + e.events[i].description + '</div>'
+                                            + '</div>';
                                         }
                                         console.log(content);
 
-                                        $wire.call('popover', content);
+                                        $wire.call('popover', content, ids.join(','));
                                     }
                                 },
                             });

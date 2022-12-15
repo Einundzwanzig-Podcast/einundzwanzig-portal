@@ -16,17 +16,26 @@ class MeetupEventTable extends Component
     public function render()
     {
         return view('livewire.meetup.meetup-event-table', [
-            'events' => MeetupEvent::query()->get()->map(fn($event) => [
-                'startDate' => $event->start,
-                'endDate' => $event->start->endOfDay(),
-                'location' => $event->location,
-                'description' => $event->description,
-            ]),
+            'events' => MeetupEvent::query()
+                                   ->get()
+                                   ->map(fn($event) => [
+                                       'id'          => $event->id,
+                                       'startDate'   => $event->start,
+                                       'endDate'     => $event->start->endOfDay(),
+                                       'location'    => $event->location,
+                                       'description' => $event->description,
+                                   ]),
         ]);
     }
 
-    public function popover($content)
+    public function popover($content, $ids)
     {
-        $this->notification()->success($content);
+        return to_route('meetup.table.meetupEvent', [
+            'country' => $this->country->code, 'table' => [
+                'filters' => [
+                    'byid' => $ids,
+                ]
+            ]
+        ]);
     }
 }
