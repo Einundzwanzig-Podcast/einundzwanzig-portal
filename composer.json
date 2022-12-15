@@ -26,6 +26,7 @@
         "nova/start": "*",
         "oneduo/nova-time-field": "^1.0",
         "podcastindex/podcastindex-php": "^1.0",
+        "ralphjsmit/laravel-seo": "^1.2",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "sentry/sentry-laravel": "^3.1",
         "simplesoftwareio/simple-qrcode": "^4.2",

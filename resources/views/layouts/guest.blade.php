@@ -7,6 +7,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="apple-touch-icon" href="{{ asset('img/apple_touch_icon.png') }}"/>
     <link rel="icon" href="{{ asset('img/favicon.svg') }}"/>
+    {!! seo() !!}
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
