@@ -95,7 +95,8 @@ class Lecturer extends Resource
                     ->alwaysShow()
                     ->help('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.'),
 
-            BelongsTo::make('Team'),
+            BelongsTo::make('Team')
+                     ->exceptOnForms(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->exceptOnForms(),

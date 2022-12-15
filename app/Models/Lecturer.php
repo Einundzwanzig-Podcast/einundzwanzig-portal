@@ -36,6 +36,7 @@ class Lecturer extends Model implements HasMedia
     {
         static::creating(function ($model) {
             $model->created_by = auth()->id();
+            $model->team_id = auth()->user()->current_team_id;
         });
     }
 
