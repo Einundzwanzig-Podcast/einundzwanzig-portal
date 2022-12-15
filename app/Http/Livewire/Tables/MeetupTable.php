@@ -39,13 +39,14 @@ class MeetupTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetups.name')->withRow($row)
                   )
+                  ->searchable()
                   ->sortable(),
             Column::make(__('Link'), 'link')
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetups.link')->withRow($row)
                   )
                   ->sortable(),
-            Column::make(__('Actions'),)
+            Column::make(__('Links'),)
                   ->label(
                       fn($row, Column $column) => view('columns.meetups.action')->withRow($row)
                   ),
