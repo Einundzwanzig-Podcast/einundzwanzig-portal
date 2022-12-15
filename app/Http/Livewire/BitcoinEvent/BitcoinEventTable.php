@@ -36,7 +36,7 @@ class BitcoinEventTable extends Component
                                      ->get()
                                      ->map(fn($event) => [
                                          'id'     => $event->id,
-                                         'name'   => $event->name,
+                                         'name'   => $event->title,
                                          'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
                                      ]),
             'events'  => BitcoinEvent::query()
