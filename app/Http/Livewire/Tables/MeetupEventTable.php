@@ -52,8 +52,10 @@ class MeetupEventTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetup_events.name')->withRow($row)
                   )
+                  ->searchable()
                   ->sortable(),
             Column::make(__('Location'), 'location')
+                  ->searchable()
                   ->sortable(),
             Column::make(__('Start'), 'start')
                   ->format(
