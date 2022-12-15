@@ -80,7 +80,7 @@ class MeetupTable extends DataTableComponent
         return to_route('meetup.table.meetupEvent', [
             'country' => $this->country,
             'table'   => [
-                'filters' => ['byid' => $id],
+                'filters' => ['bymeetupid' => $id],
             ]
         ]);
     }
