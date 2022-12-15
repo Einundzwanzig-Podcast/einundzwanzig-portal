@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend;
 
 use App\Models\Country;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class Welcome extends Component
 {
@@ -29,6 +30,10 @@ class Welcome extends Component
     {
         return view('livewire.frontend.welcome', [
             'countries' => Country::get(),
-        ])->layout('layouts.guest');
+        ])->layout('layouts.guest', [
+            'SEOData' => new SEOData(
+                image: asset('img/screenshot.png')
+            )
+        ]);
     }
 }
