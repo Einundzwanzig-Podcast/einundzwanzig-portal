@@ -16,22 +16,27 @@ class BitcoinEvent extends Model implements HasMedia
 
     /**
      * The attributes that aren't mass assignable.
-     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
+        'id'       => 'integer',
         'venue_id' => 'integer',
-        'from' => 'datetime',
-        'to' => 'datetime',
+        'from'     => 'datetime',
+        'to'       => 'datetime',
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->created_by = auth()->id();
+        });
+    }
 
     public function registerMediaConversions(Media $media = null): void
     {

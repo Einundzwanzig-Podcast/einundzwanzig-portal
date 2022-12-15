@@ -9,10 +9,25 @@ use Livewire\Component;
 class BookCaseTable extends Component
 {
     public string $c = 'de';
+    public array $table = [];
+
+    protected $queryString = ['table'];
 
     public function render()
     {
         return view('livewire.book-case.book-case-table', [
+            'markers'   => BookCase::when($this->table['filters']['byids'] ?? false,
+                fn($query) => $query->whereIn('id', str($this->table['filters']['byids'] ?? '')->explode(',')))
+                                   ->get()
+                                   ->map(fn($b) => [
+                                       'title'     => $b->title,
+                                       'lat'       => $b->latitude,
+                                       'lng'       => $b->longitude,
+                                       'url'       => 'https://gonoware.com',
+                                       'icon'      => asset('img/btc-logo-6219386_1280.png'),
+                                       'icon_size' => [42, 42],
+                                   ])
+                                   ->toArray(),
             'bookCases' => BookCase::get(),
             'countries' => Country::query()
                                   ->select(['code', 'name'])

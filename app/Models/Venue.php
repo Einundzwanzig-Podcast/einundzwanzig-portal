@@ -34,6 +34,13 @@ class Venue extends Model implements HasMedia
         'city_id' => 'integer',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->created_by = auth()->id();
+        });
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this

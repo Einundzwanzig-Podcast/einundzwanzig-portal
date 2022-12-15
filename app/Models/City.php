@@ -29,6 +29,13 @@ class City extends Model
         'country_id' => 'integer',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->created_by = auth()->id();
+        });
+    }
+
     /**
      * Get the options for generating the slug.
      */

@@ -37,6 +37,13 @@ class BookCase extends Model implements HasMedia
         'deactivated' => 'boolean',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->created_by = auth()->id();
+        });
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this

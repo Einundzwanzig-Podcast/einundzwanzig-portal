@@ -37,6 +37,13 @@ class LibraryItem extends Model implements HasMedia, Sortable
         'library_id'  => 'integer',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->created_by = auth()->id();
+        });
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this
