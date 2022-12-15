@@ -86,7 +86,7 @@
                                 $('#map').vectorMap({
                                     zoomButtons : false,
                                     zoomOnScroll: true,
-                                    map: '{{ $country->code }}_merc',
+                                    map: 'europe_merc',
                                     backgroundColor: 'transparent',
                                     markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
                                     onMarkerClick: function(event, index) {
@@ -110,7 +110,7 @@
                             }
                         }"
                     >
-                        <div id="map" style="width: 100%; height: 400px"></div>
+                        <div id="map" style="width: 100%; height: 800px"></div>
                     </div>
                 </div>
             </div>
