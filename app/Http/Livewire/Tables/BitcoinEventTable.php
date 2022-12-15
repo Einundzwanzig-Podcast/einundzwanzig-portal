@@ -77,6 +77,7 @@ class BitcoinEventTable extends DataTableComponent
                            ->where(fn($query) => $query
                                ->whereHas('venue.city.country',
                                    fn($query) => $query->where('code', $this->country))
-                               ->orWhere('show_worldwide', true));
+                               ->orWhere('show_worldwide', true)
+                           );
     }
 }
