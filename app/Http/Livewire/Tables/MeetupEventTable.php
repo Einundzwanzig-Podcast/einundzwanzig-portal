@@ -37,7 +37,7 @@ class MeetupEventTable extends DataTableComponent
     public function filters(): array
     {
         return [
-            TextFilter::make('Meetup-Event by ID', 'id')
+            TextFilter::make('Meetup-Event by ID', 'byid')
                       ->hiddenFromMenus()
                       ->filter(function (Builder $builder, string $value) {
                           $builder->whereIn('meetup_events.id', str($value)->explode(','));
