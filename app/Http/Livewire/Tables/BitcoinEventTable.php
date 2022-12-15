@@ -6,6 +6,7 @@ use App\Models\BitcoinEvent;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class BitcoinEventTable extends DataTableComponent
 {
@@ -32,6 +33,17 @@ class BitcoinEventTable extends DataTableComponent
              })
              ->setColumnSelectStatus(false)
              ->setPerPage(10);
+    }
+
+    public function filters(): array
+    {
+        return [
+            TextFilter::make('Event by ID', 'byid')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereIn('bitcoin_events.id', str($value)->explode(','));
+                      }),
+        ];
     }
 
     public function columns(): array
