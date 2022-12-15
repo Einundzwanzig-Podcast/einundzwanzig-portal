@@ -118,7 +118,7 @@ class LibraryItem extends Resource
                   )
                   ->rules('required', 'string'),
 
-            Code::make(__('Value'))
+            Code::make(__('Value'), 'value')
                 ->rules('nullable', 'string')
                 ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
