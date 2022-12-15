@@ -41,7 +41,7 @@ class CategoryPolicy extends BasePolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -53,7 +53,7 @@ class CategoryPolicy extends BasePolicy
      */
     public function update(User $user, Category $category)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryPolicy extends BasePolicy
      */
     public function delete(User $user, Category $category)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoryPolicy extends BasePolicy
      */
     public function restore(User $user, Category $category)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -89,6 +89,6 @@ class CategoryPolicy extends BasePolicy
      */
     public function forceDelete(User $user, Category $category)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 }

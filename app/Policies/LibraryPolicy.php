@@ -53,7 +53,7 @@ class LibraryPolicy extends BasePolicy
      */
     public function update(User $user, Library $library)
     {
-        return $library->created_by === $user->id;
+        return $library->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**

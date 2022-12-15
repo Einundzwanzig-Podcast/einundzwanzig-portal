@@ -53,7 +53,7 @@ class CityPolicy extends BasePolicy
      */
     public function update(User $user, City $city)
     {
-        return $city->created_by === $user->id;
+        return $city->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**

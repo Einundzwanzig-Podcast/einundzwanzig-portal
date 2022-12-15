@@ -57,7 +57,7 @@ class LecturerPolicy extends BasePolicy
      */
     public function update(User $user, Lecturer $lecturer)
     {
-        return $lecturer->created_by === $user->id;
+        return $lecturer->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**

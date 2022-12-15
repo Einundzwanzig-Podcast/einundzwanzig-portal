@@ -53,7 +53,7 @@ class CoursePolicy extends BasePolicy
      */
     public function update(User $user, Course $course)
     {
-        return $user->belongsToTeam($course->lecturer->team);
+        return $user->belongsToTeam($course->lecturer->team) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**

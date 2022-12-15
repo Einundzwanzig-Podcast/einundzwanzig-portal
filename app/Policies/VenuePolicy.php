@@ -32,7 +32,7 @@ class VenuePolicy extends BasePolicy
      */
     public function view(User $user, Venue $venue)
     {
-        return $user->is_lecturer;
+        return $user->is_lecturer || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -44,7 +44,7 @@ class VenuePolicy extends BasePolicy
      */
     public function create(User $user)
     {
-        return $user->is_lecturer;
+        return $user->is_lecturer || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -57,7 +57,7 @@ class VenuePolicy extends BasePolicy
      */
     public function update(User $user, Venue $venue)
     {
-        return $venue->created_by === $user->id;
+        return $venue->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**

@@ -14,11 +14,12 @@ class PermissionPolicy extends BasePolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -26,22 +27,24 @@ class PermissionPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \Spatie\Permission\Models\Permission  $permission
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Permission $permission)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -49,11 +52,12 @@ class PermissionPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \Spatie\Permission\Models\Permission  $permission
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Permission $permission)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -61,11 +65,12 @@ class PermissionPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \Spatie\Permission\Models\Permission  $permission
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Permission $permission)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -73,11 +78,12 @@ class PermissionPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \Spatie\Permission\Models\Permission  $permission
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Permission $permission)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -85,10 +91,11 @@ class PermissionPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \Spatie\Permission\Models\Permission  $permission
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Permission $permission)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 }

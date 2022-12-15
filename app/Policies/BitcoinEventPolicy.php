@@ -57,7 +57,7 @@ class BitcoinEventPolicy extends BasePolicy
      */
     public function update(User $user, BitcoinEvent $bitcoinEvent)
     {
-        return $bitcoinEvent->created_by === $user->id;
+        return $bitcoinEvent->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**

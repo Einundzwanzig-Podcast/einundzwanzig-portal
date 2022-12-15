@@ -42,16 +42,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
-            $adminItems = $request->user()
-                                  ->hasRole('super-admin') ?
+            $comments = $request->user()->can('CommentPolicy.viewAny') ? [
+                MenuSection::make('Comments', [
+                    MenuItem::resource(Comment::class),
+                ])
+                           ->icon('chat')
+                           ->collapsable(),
+            ] : [];
+
+            $adminItems = $request->user()->can('NovaAdminPolicy.viewAny') ?
                 [
-
-                    MenuSection::make('Comments', [
-                        MenuItem::resource(Comment::class),
-                    ])
-                               ->icon('chat')
-                               ->collapsable(),
-
                     MenuSection::make('Admin', [
                         MenuItem::resource(Category::class),
                         MenuItem::resource(Country::class),
@@ -62,16 +62,18 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                                ->icon('key')
                                ->collapsable(),
 
-                    MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
-                        MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
-                        MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
-                            'resources/permissions'),
-                    ])
-                               ->icon('key')
-                               ->collapsable(),
-
                 ]
                 : [];
+
+            $permissions = $request->user()->can('PermissionPolicy.viewAny') ? [
+                MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
+                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
+                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
+                        'resources/permissions'),
+                ])
+                           ->icon('key')
+                           ->collapsable(),
+            ] : [];
 
             return array_merge([
                 MenuSection::dashboard(Main::class)
@@ -133,7 +135,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->icon('book-open')
                            ->collapsable(),
 
-            ], $adminItems);
+            ], $comments, $adminItems, $permissions);
         });
 
         Nova::withBreadcrumbs();

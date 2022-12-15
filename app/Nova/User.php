@@ -71,7 +71,9 @@ class User extends Resource
                     ->updateRules('nullable', Rules\Password::defaults()),
 
             MorphToMany::make('Roles', 'roles', \Itsmejoshua\Novaspatiepermissions\Role::class),
+
             MorphToMany::make('Permissions', 'permissions', \Itsmejoshua\Novaspatiepermissions\Permission::class),
+
         ];
     }
 

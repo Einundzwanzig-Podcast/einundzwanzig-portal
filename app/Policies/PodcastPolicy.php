@@ -6,7 +6,7 @@ use App\Models\Podcast;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PodcastPolicy
+class PodcastPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 

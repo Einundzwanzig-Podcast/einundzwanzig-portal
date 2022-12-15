@@ -19,7 +19,7 @@ class TeamPolicy extends BasePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -44,7 +44,7 @@ class TeamPolicy extends BasePolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -109,6 +109,6 @@ class TeamPolicy extends BasePolicy
      */
     public function delete(User $user, Team $team)
     {
-        return $user->hasRole('super-admin');
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 }
