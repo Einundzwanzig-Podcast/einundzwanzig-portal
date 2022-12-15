@@ -50,6 +50,11 @@
 
             </div>
         @endif
+
+        <div class="pt-12">
+            <p class="text-xs">Zeus not working: <a target="_blank" href="https://github.com/ZeusLN/zeus/issues/1045">https://github.com/ZeusLN/zeus/issues/1045</a>
+            </p>
+        </div>
     </div>
     <div wire:poll="checkAuth" wire:key="checkAuth"></div>
 </x-jet-authentication-card>
