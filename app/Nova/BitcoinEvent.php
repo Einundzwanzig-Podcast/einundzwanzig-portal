@@ -8,6 +8,7 @@ use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -60,6 +61,9 @@ class BitcoinEvent extends Resource
 
             Images::make(__('Logo'), 'logo')
                   ->conversionOnIndexView('thumb'),
+
+            Boolean::make(__('Show worldwide'), 'show_worldwide')
+                   ->help(__('If checked, the event will be shown everywhere.')),
 
             DateTime::make(__('From'), 'from')
                     ->step(CarbonInterval::minutes(15))

@@ -61,6 +61,7 @@ class BitcoinEventTable extends DataTableComponent
     public function builder(): Builder
     {
         return BitcoinEvent::query()
-                     ->whereHas('venue.city.country', fn($query) => $query->where('code', $this->country));
+                           ->whereHas('venue.city.country', fn($query) => $query->where('code', $this->country))
+                           ->orWhere('show_worldwide', true);
     }
 }
