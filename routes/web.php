@@ -68,7 +68,7 @@ Route::middleware([])
  * */
 Route::middleware([])
      ->as('bitcoinEvent.')
-     ->prefix('meetup')
+     ->prefix('event')
      ->group(function () {
          Route::get('/{country:code}/table/event', \App\Http\Livewire\BitcoinEvent\BitcoinEventTable::class)
               ->name('table.bitcoinEvent');
