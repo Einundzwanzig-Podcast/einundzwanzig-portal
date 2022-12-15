@@ -55,6 +55,7 @@ class BitcoinEventTable extends Component
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
             'country' => $this->country->code,
+            'year'    => $this->year,
             'table'   => [
                 'filters' => [
                     'byid' => $id,
