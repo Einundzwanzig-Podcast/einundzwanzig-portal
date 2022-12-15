@@ -100,7 +100,7 @@ return [
          * don't have an image set via an associated ->seo model or via the ->getDynamicSEOData() method.
          * This should be a path to an image. The url to the path is generated using the `secure_url()` function (`secure_url($yourProvidedPath)`).
          */
-        'fallback' => '/img/einundzwanzig-horizontal.svg',
+        'fallback' => '/img/screenshot.png',
     ],
 
     'author' => [
