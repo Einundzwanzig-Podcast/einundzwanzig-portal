@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -78,7 +79,7 @@ class BitcoinEvent extends Resource
             Text::make(__('Title'), 'title')
                 ->rules('required', 'string'),
 
-            Text::make(__('Description'), 'description')
+            Markdown::make(__('Description'), 'description')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
