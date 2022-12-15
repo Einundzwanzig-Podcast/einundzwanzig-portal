@@ -45,7 +45,11 @@
                             new Calendar(this.$refs.calendar, {
                                 style: 'background',
                                 language: 'de',
+                                startYear: {{ $year }},
                                 dataSource: events,
+                                yearChanged: function(e) {
+                                    @this.set('year', e.currentYear);
+                                },
                                 clickDay: function(e) {
                                     if(e.events.length > 0) {
                                         var content = '';

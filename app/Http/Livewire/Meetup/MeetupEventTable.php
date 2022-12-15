@@ -13,6 +13,17 @@ class MeetupEventTable extends Component
 
     public Country $country;
 
+    public ?int $year = null;
+
+    protected $queryString = ['year'];
+
+    public function mount()
+    {
+        if (!$this->year) {
+            $this->year = now()->year;
+        }
+    }
+
     public function render()
     {
         return view('livewire.meetup.meetup-event-table', [
@@ -39,6 +50,19 @@ class MeetupEventTable extends Component
                                     ]),
         ]);
     }
+    public function filterByMarker($id)
+    {
+        return to_route('meetup.table.meetupEvent', [
+            'country' => $this->country->code,
+            'year'    => $this->year,
+            'table'   => [
+                'filters' => [
+                    'byid' => $id,
+                ],
+            ]
+        ]);
+    }
+
 
     public function popover($content, $ids)
     {
