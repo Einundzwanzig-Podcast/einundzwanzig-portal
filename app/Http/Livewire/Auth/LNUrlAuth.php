@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Auth;
 
 use App\Models\LoginKey;
 use App\Models\User;
+use App\Notifications\ModelCreatedNotification;
 use eza\lnurl;
 use Livewire\Component;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -44,6 +45,10 @@ class LNUrlAuth extends Component
 
         if ($loginKey) {
             $user = User::find($loginKey->user_id);
+
+            \App\Models\User::find(1)
+                            ->notify(new ModelCreatedNotification($user, 'users'));
+
             auth()->login($user);
 
             return to_route('welcome');
