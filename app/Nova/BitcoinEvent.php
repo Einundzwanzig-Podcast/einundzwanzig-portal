@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Notifications\ModelCreatedNotification;
+use Carbon\CarbonInterval;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -61,9 +62,13 @@ class BitcoinEvent extends Resource
                   ->conversionOnIndexView('thumb'),
 
             DateTime::make(__('From'), 'from')
+                    ->step(CarbonInterval::minutes(15))
+                    ->displayUsing(fn($value) => $value->asDateTime())
                     ->rules('required'),
 
             DateTime::make(__('To'), 'to')
+                    ->step(CarbonInterval::minutes(15))
+                    ->displayUsing(fn($value) => $value->asDateTime())
                     ->rules('required'),
 
             Text::make(__('Title'), 'title')

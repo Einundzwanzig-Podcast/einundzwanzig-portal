@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Notifications\ModelCreatedNotification;
+use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -24,12 +25,6 @@ class MeetupEvent extends Resource
      * @var string
      */
     public static $title = 'id';
-
-    public static function label()
-    {
-        return __('Meetup Event');
-    }
-
     /**
      * The columns that should be searched.
      * @var array
@@ -37,6 +32,11 @@ class MeetupEvent extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return __('Meetup Event');
+    }
 
     public static function afterCreate(NovaRequest $request, Model $model)
     {
@@ -60,7 +60,9 @@ class MeetupEvent extends Resource
             ID::make()
               ->sortable(),
 
-            DateTime::make(__('Start'), 'start'),
+            DateTime::make(__('Start'), 'start')
+                    ->step(CarbonInterval::minutes(15))
+                    ->displayUsing(fn($value) => $value->asDateTime()),
 
             Text::make(__('Location'), 'location'),
 

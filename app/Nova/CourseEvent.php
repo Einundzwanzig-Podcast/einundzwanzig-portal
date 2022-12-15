@@ -82,7 +82,7 @@ class CourseEvent extends Resource
 
             DateTime::make(__('To'), 'to')
                     ->rules('required')
-                    ->step(CarbonInterval::minutes(30))
+                    ->step(CarbonInterval::minutes(15))
                     ->displayUsing(fn($value) => $value->asDateTime()),
 
             BelongsTo::make(__('Course'), 'course', Course::class),
