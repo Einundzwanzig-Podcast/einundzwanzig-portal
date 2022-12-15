@@ -40,6 +40,11 @@ class MeetupEventTable extends Component
                                         'coords' => [$event->meetup->city->latitude, $event->meetup->city->longitude],
                                     ]),
             'events'  => MeetupEvent::query()
+                                    ->with([
+                                        'meetup.city.country',
+                                    ])
+                                    ->whereHas('meetup.city.country',
+                                        fn($query) => $query->where('countries.code', $this->country->code))
                                     ->get()
                                     ->map(fn($event) => [
                                         'id'          => $event->id,
