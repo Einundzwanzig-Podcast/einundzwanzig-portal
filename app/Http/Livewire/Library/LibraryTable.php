@@ -13,7 +13,7 @@ class LibraryTable extends Component
     public $currentTab = 'Alle';
 
     protected $queryString = [
-        'currentTab' => ['except' => 'alle'],
+        'currentTab' => ['except' => 'Alle'],
     ];
 
     public function render()
