@@ -82,6 +82,8 @@ Route::middleware([])
      ->as('meetup.')
      ->prefix('/{country:code}/meetup')
      ->group(function () {
+         Route::get('world', \App\Http\Livewire\Meetup\WorldMap::class)
+              ->name('world');
          Route::get('overview', \App\Http\Livewire\Meetup\MeetupTable::class)
               ->name('table.meetup');
          Route::get('/meetup-events', \App\Http\Livewire\Meetup\MeetupEventTable::class)

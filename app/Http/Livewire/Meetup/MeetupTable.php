@@ -39,16 +39,6 @@ class MeetupTable extends Component
                                    'name'   => $meetup->name,
                                    'coords' => [$meetup->city->latitude, $meetup->city->longitude],
                                ]),
-            'allMarkers' => Meetup::query()
-                               ->with([
-                                   'city.country',
-                               ])
-                               ->get()
-                               ->map(fn($meetup) => [
-                                   'id'     => $meetup->id,
-                                   'name'   => $meetup->name,
-                                   'coords' => [$meetup->city->latitude, $meetup->city->longitude],
-                               ]),
         ]);
     }
 }

@@ -12,17 +12,19 @@
             </h1>
             <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Finde Bitcoiner in deiner Stadt und lerne
                 sie auf einem der Meetups kennen. </p>
+        </div>
+        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
             <div
                 wire:ignore
                 class="w-full flex justify-center"
                 x-data="{
                     init() {
-                        let markers = {{ Js::from($markers) }};
+                        let markers = {{ Js::from($allMarkers) }};
 
-                        $('#map').vectorMap({
+                        $('#mapworld').vectorMap({
                             zoomButtons : false,
                             zoomOnScroll: true,
-                            map: '{{ $country->code }}_merc',
+                            map: 'world_mill',
                             backgroundColor: 'transparent',
                             markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
                             onMarkerClick: function(event, index) {
@@ -46,11 +48,8 @@
                     }
                 }"
             >
-                <div id="map" style="width: 100%; height: 400px"></div>
+                <div id="mapworld" style="width: 100%; height: 800px"></div>
             </div>
-        </div>
-        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
-            <livewire:tables.meetup-table :country="$country->code"/>
         </div>
     </section>
     {{-- FOOTER --}}

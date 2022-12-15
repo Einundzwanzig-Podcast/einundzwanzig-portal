@@ -61,6 +61,10 @@
                             </a>
                         @endif
                         @if(str(request()->route()->getName())->contains('meetup.'))
+                            <a href="{{ route('meetup.world', ['country' => $c]) }}"
+                               class="{{ request()->routeIs('meetup.world') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                Welt-Karte
+                            </a>
                             <a href="{{ route('meetup.table.meetup', ['country' => $c]) }}"
                                class="{{ request()->routeIs('meetup.table.meetup') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
                                 Meetups
