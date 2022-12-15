@@ -13,6 +13,7 @@
             <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Finde Bitcoiner in deiner Stadt und lerne
                 sie auf einem der Meetups kennen. </p>
             <div
+                wire:ignore
                 class="w-full flex justify-center"
                 x-data="{
                     init() {

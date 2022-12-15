@@ -24,6 +24,18 @@ class BitcoinEventTable extends Component
     public function render()
     {
         return view('livewire.bitcoin-event.bitcoin-event-table', [
+            'markers' => BitcoinEvent::query()
+                               ->with([
+                                   'venue.city.country',
+                               ])
+                               ->whereHas('venue.city.country',
+                                   fn($query) => $query->where('countries.code', $this->country->code))
+                               ->get()
+                               ->map(fn($event) => [
+                                   'id'     => $event->id,
+                                   'name'   => $event->name,
+                                   'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
+                               ]),
             'events' => BitcoinEvent::query()
                                     ->get()
                                     ->map(fn($event) => [
@@ -33,6 +45,18 @@ class BitcoinEventTable extends Component
                                         'location'    => $event->title,
                                         'description' => $event->description,
                                     ]),
+        ]);
+    }
+
+    public function filterByMarker($id)
+    {
+        return to_route('bitcoinEvent.table.bitcoinEvent', [
+            'country' => $this->country->code,
+            'table'   => [
+                'filters' => [
+                    'byid' => $id,
+                ],
+            ]
         ]);
     }
 

@@ -4,36 +4,37 @@
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
-            <div class="">
+            <div class="flex items-start">
+                <div class="w-1/2">
 
-                <link rel="stylesheet" type="text/css"
-                      href="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.css"/>
-                <script src="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.js"></script>
-                <script src="https://unpkg.com/js-year-calendar@latest/locales/js-year-calendar.de.js"></script>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.css"/>
+                    <script src="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.js"></script>
+                    <script src="https://unpkg.com/js-year-calendar@latest/locales/js-year-calendar.de.js"></script>
 
-                <style>
-                    .calendar .calendar-header {
-                        background-color: #F7931A;
-                        color: white;
-                        border: 0;
-                    }
+                    <style>
+                        .calendar .calendar-header {
+                            background-color: #F7931A;
+                            color: white;
+                            border: 0;
+                        }
 
-                    .calendar table.month th.month-title {
-                        color: #fff;
-                    }
+                        .calendar table.month th.month-title {
+                            color: #fff;
+                        }
 
-                    .calendar table.month th.day-header {
-                        color: #fff;
-                    }
+                        .calendar table.month th.day-header {
+                            color: #fff;
+                        }
 
-                    .calendar table.month td.day .day-content {
-                        color: #fff;
-                    }
-                </style>
+                        .calendar table.month td.day .day-content {
+                            color: #fff;
+                        }
+                    </style>
 
-                <div
-                    wire:ignore
-                    x-data="{
+                    <div
+                        wire:ignore
+                        x-data="{
                         calendar: null,
                         init() {
                             let events = {{ Js::from($events) }};
@@ -69,8 +70,48 @@
                             });
                         },
                     }"
-                >
-                    <div x-ref="calendar"></div>
+                    >
+                        <div x-ref="calendar"></div>
+                    </div>
+                </div>
+                <div class="w-1/2">
+                    <div
+                        wire:ignore
+                        class="w-full flex justify-center"
+                        x-data="{
+                            init() {
+                                let markers = {{ Js::from($markers) }};
+                                console.log(markers);
+
+                                $('#map').vectorMap({
+                                    zoomButtons : false,
+                                    zoomOnScroll: true,
+                                    map: '{{ $country->code }}_merc',
+                                    backgroundColor: 'transparent',
+                                    markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
+                                    onMarkerClick: function(event, index) {
+                                        $wire.call('filterByMarker', markers[index].id)
+                                    },
+                                    markerStyle: {
+                                        initial: {
+                                            image: '{{ asset('img/btc.png') }}',
+                                        }
+                                    },
+                                    regionStyle: {
+                                        initial: {
+                                            fill: '#151515'
+                                        },
+                                        hover: {
+                                            'fill-opacity': 1,
+                                            cursor: 'default'
+                                        },
+                                    }
+                                });
+                            }
+                        }"
+                    >
+                        <div id="map" style="width: 100%; height: 400px"></div>
+                    </div>
                 </div>
             </div>
 
