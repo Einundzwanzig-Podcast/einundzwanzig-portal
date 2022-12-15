@@ -2,10 +2,13 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Registration extends Resource
 {
@@ -31,6 +34,15 @@ class Registration extends Resource
     public static $search = [
         'id',
     ];
+
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
 
     /**
      * Get the fields displayed by the resource.

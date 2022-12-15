@@ -86,7 +86,8 @@ class City extends Resource
 
             HasMany::make(__('Meetups'), 'meetups', Meetup::class),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->onlyOnIndex(),
 
         ];
     }

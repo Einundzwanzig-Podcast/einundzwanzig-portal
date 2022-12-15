@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Markdown;
@@ -30,6 +32,15 @@ class Comment extends Resource
         return auth()
             ->user()
             ?->hasRole('super-admin');
+    }
+
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
     }
 
     public function fields(NovaRequest $request)

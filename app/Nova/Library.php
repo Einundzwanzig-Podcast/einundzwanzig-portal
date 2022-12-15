@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -9,6 +11,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Library extends Resource
 {
@@ -38,6 +41,15 @@ class Library extends Resource
         'name',
     ];
 
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -64,7 +76,7 @@ class Library extends Resource
 
             BelongsToMany::make('Library Items'),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
 
         ];
     }

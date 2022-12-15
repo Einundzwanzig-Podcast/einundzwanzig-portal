@@ -2,9 +2,12 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Participant extends Resource
 {
@@ -26,6 +29,15 @@ class Participant extends Resource
     public function title()
     {
         return $this->first_name.' '.$this->last_name;
+    }
+
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
     }
 
     /**

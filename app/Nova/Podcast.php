@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Avatar;
@@ -11,6 +13,7 @@ use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Podcast extends Resource
 {
@@ -34,6 +37,15 @@ class Podcast extends Resource
         'id',
         'title',
     ];
+
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
 
     /**
      * Get the fields displayed by the resource.
@@ -82,7 +94,7 @@ class Podcast extends Resource
 
             HasMany::make(__('Episodes'), 'episodes', Episode::class),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
 
         ];
     }

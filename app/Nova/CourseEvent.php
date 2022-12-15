@@ -2,7 +2,9 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
 use Carbon\CarbonInterval;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -48,6 +50,15 @@ class CourseEvent extends Resource
         return __('Course Event');
     }
 
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -79,7 +90,7 @@ class CourseEvent extends Resource
             BelongsTo::make(__('Venue'), 'venue', Venue::class)
                      ->searchable(),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
 
         ];
     }

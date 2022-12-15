@@ -2,11 +2,14 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class MeetupEvent extends Resource
 {
@@ -35,6 +38,15 @@ class MeetupEvent extends Resource
         'id',
     ];
 
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -62,7 +74,7 @@ class MeetupEvent extends Resource
             BelongsTo::make('Meetup')
                      ->searchable(),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
 
         ];
     }

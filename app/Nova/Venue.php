@@ -2,11 +2,14 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Venue extends Resource
 {
@@ -36,6 +39,15 @@ class Venue extends Resource
         'name',
     ];
 
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -63,7 +75,7 @@ class Venue extends Resource
 
             BelongsTo::make(__('City'), 'city', City::class),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
 
         ];
     }
