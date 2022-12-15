@@ -14,6 +14,8 @@ class BookCaseTable extends DataTableComponent
 {
     use Actions;
 
+    public string $country;
+
     public bool $viewingModal = false;
     public $currentModal;
     public array $orangepill = [
@@ -94,7 +96,7 @@ class BookCaseTable extends DataTableComponent
                   )
                   ->html(),
             Column::make('Orange-Pilled', 'orange_pilled')
-                  ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')->withRow($row)),
+                  ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')->withRow($row)->withCountry($this->country))
         ];
     }
 

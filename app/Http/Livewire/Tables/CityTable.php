@@ -114,6 +114,7 @@ class CityTable extends DataTableComponent
 
         return to_route('bookCases.table.bookcases', [
             '#table',
+            'country' => $this->country,
             'table' => [
                 'filters' => [
                     'byids' => $ids->implode(',')

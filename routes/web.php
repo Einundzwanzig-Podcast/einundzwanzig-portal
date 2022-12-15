@@ -14,21 +14,21 @@ Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
  * */
 Route::middleware([])
      ->as('school.')
-     ->prefix('school')
+     ->prefix('/{country:code}/school')
      ->group(function () {
-         Route::get('/{country:code}/table/city', \App\Http\Livewire\School\CityTable::class)
+         Route::get('/city', \App\Http\Livewire\School\CityTable::class)
               ->name('table.city');
 
-         Route::get('/{country:code}/table/lecturer', \App\Http\Livewire\School\LecturerTable::class)
+         Route::get('/lecturer', \App\Http\Livewire\School\LecturerTable::class)
               ->name('table.lecturer');
 
-         Route::get('/{country:code}/table/venue', \App\Http\Livewire\School\VenueTable::class)
+         Route::get('/venue', \App\Http\Livewire\School\VenueTable::class)
               ->name('table.venue');
 
-         Route::get('/{country:code}/table/course', \App\Http\Livewire\School\CouseTable::class)
+         Route::get('/course', \App\Http\Livewire\School\CouseTable::class)
               ->name('table.course');
 
-         Route::get('/{country:code}/table/event', \App\Http\Livewire\School\EventTable::class)
+         Route::get('/event', \App\Http\Livewire\School\EventTable::class)
               ->name('table.event');
      });
 
@@ -37,12 +37,12 @@ Route::middleware([])
  * */
 Route::middleware([])
      ->as('library.')
-     ->prefix('library')
+     ->prefix('/{country:code}/library')
      ->group(function () {
-         Route::get('/{country:code}/table/library-item', \App\Http\Livewire\Library\LibraryTable::class)
+         Route::get('/library-item', \App\Http\Livewire\Library\LibraryTable::class)
               ->name('table.libraryItems');
 
-         Route::get('/{country:code}/table/content-creator', \App\Http\Livewire\Library\LibraryTable::class)
+         Route::get('/content-creator', \App\Http\Livewire\Library\LibraryTable::class)
               ->name('table.lecturer');
      });
 
@@ -51,12 +51,12 @@ Route::middleware([])
  * */
 Route::middleware([])
      ->as('bookCases.')
-     ->prefix('book-cases')
+     ->prefix('/{country:code}/book-cases')
      ->group(function () {
-         Route::get('/{country:code}/table/city', \App\Http\Livewire\BookCase\CityTable::class)
+         Route::get('/city', \App\Http\Livewire\BookCase\CityTable::class)
               ->name('table.city');
 
-         Route::get('/table/book-case', \App\Http\Livewire\BookCase\BookCaseTable::class)
+         Route::get('/overview', \App\Http\Livewire\BookCase\BookCaseTable::class)
               ->name('table.bookcases');
 
          Route::get('/book-case/{bookCase}', \App\Http\Livewire\BookCase\CommentBookCase::class)
@@ -68,9 +68,9 @@ Route::middleware([])
  * */
 Route::middleware([])
      ->as('bitcoinEvent.')
-     ->prefix('event')
+     ->prefix('/{country:code}/event')
      ->group(function () {
-         Route::get('/{country:code}/table/event', \App\Http\Livewire\BitcoinEvent\BitcoinEventTable::class)
+         Route::get('overview', \App\Http\Livewire\BitcoinEvent\BitcoinEventTable::class)
               ->name('table.bitcoinEvent');
      });
 
@@ -80,11 +80,11 @@ Route::middleware([])
  * */
 Route::middleware([])
      ->as('meetup.')
-     ->prefix('meetup')
+     ->prefix('/{country:code}/meetup')
      ->group(function () {
-         Route::get('/{country:code}/table/meetup', \App\Http\Livewire\Meetup\MeetupTable::class)
+         Route::get('overview', \App\Http\Livewire\Meetup\MeetupTable::class)
               ->name('table.meetup');
-         Route::get('/{country:code}/table/meetup-events', \App\Http\Livewire\Meetup\MeetupEventTable::class)
+         Route::get('/meetup-events', \App\Http\Livewire\Meetup\MeetupEventTable::class)
               ->name('table.meetupEvent');
      });
 
