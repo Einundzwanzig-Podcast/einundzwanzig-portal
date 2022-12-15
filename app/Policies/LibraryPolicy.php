@@ -41,7 +41,7 @@ class LibraryPolicy extends BasePolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
