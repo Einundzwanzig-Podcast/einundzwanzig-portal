@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Notifications\ModelCreatedNotification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
@@ -9,6 +11,7 @@ use Laravel\Nova\Fields\HasManyThrough;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class City extends Resource
 {
@@ -23,12 +26,6 @@ class City extends Resource
      * @var string
      */
     public static $title = 'name';
-
-    public static function label()
-    {
-        return __('City');
-    }
-
     /**
      * The columns that should be searched.
      * @var array
@@ -37,6 +34,20 @@ class City extends Resource
         'id',
         'name',
     ];
+
+    public static function label()
+    {
+        return __('City');
+    }
+
+    public static function afterCreate(NovaRequest $request, Model $model)
+    {
+        \App\Models\User::find(1)
+                        ->notify(new ModelCreatedNotification($model, str($request->getRequestUri())
+                            ->after('/nova-api/')
+                            ->before('?')
+                            ->toString()));
+    }
 
     /**
      * Get the fields displayed by the resource.
