@@ -52,10 +52,10 @@ class MeetupEventTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetup_events.name')->withRow($row)
                   )
-                  ->searchable()
+                  ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
             Column::make(__('Location'), 'location')
-                  ->searchable()
+                  ->searchable(fn($builder, $term) => $builder->where('location', 'ilike', '%'.$term.'%'))
                   ->sortable(),
             Column::make(__('Start'), 'start')
                   ->format(
