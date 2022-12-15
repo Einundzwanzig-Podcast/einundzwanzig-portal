@@ -28,6 +28,11 @@ class Episode extends Model
         'data'       => 'array',
     ];
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function podcast(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Podcast::class);

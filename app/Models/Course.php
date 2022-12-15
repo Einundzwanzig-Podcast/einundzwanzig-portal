@@ -54,6 +54,11 @@ class Course extends Model implements HasMedia
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Category::class);

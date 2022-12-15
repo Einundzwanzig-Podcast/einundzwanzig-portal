@@ -49,6 +49,7 @@ class SyncOpenBooks extends Command
                     'deactreason' => $case['deactreason'],
                     'entrytype'   => $case['entrytype'],
                     'homepage'    => $case['homepage'],
+                    'created_by'  => 1,
                 ]
             );
         }

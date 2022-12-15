@@ -25,6 +25,11 @@ class Podcast extends Model
         'data' => 'array',
     ];
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function episodes(): HasMany
     {
         return $this->hasMany(Episode::class);

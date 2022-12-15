@@ -57,7 +57,7 @@ class MeetupPolicy extends BasePolicy
      */
     public function update(User $user, Meetup $meetup)
     {
-        return false;
+        return $meetup->created_by === $user->id;
     }
 
     /**

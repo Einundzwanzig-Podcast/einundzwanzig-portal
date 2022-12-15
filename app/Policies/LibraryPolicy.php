@@ -53,7 +53,7 @@ class LibraryPolicy extends BasePolicy
      */
     public function update(User $user, Library $library)
     {
-        return false;
+        return $library->created_by === $user->id;
     }
 
     /**

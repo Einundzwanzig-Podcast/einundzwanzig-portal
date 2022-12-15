@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\OrangePill;
+use App\Models\BitcoinEvent;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrangePillPolicy extends BasePolicy
+class BitcoinEventPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 
@@ -26,11 +26,11 @@ class OrangePillPolicy extends BasePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OrangePill  $orangePill
+     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, OrangePill $orangePill)
+    public function view(User $user, BitcoinEvent $bitcoinEvent)
     {
         return true;
     }
@@ -44,58 +44,58 @@ class OrangePillPolicy extends BasePolicy
      */
     public function create(User $user)
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OrangePill  $orangePill
+     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, OrangePill $orangePill)
+    public function update(User $user, BitcoinEvent $bitcoinEvent)
     {
-        return $orangePill->user_id === $user->id;
+        return $bitcoinEvent->created_by === $user->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OrangePill  $orangePill
+     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, OrangePill $orangePill)
+    public function delete(User $user, BitcoinEvent $bitcoinEvent)
     {
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OrangePill  $orangePill
+     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, OrangePill $orangePill)
+    public function restore(User $user, BitcoinEvent $bitcoinEvent)
     {
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OrangePill  $orangePill
+     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, OrangePill $orangePill)
+    public function forceDelete(User $user, BitcoinEvent $bitcoinEvent)
     {
-        return false;
+        //
     }
 }

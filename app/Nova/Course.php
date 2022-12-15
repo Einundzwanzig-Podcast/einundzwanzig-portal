@@ -98,6 +98,8 @@ class Course extends Resource
             BelongsToMany::make(__('Categories'), 'categories', Category::class)
                          ->onlyOnDetail(),
 
+            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+
         ];
     }
 

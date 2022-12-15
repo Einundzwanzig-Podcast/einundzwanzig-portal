@@ -16,7 +16,7 @@ class BasePolicy
      */
     public function before(User $user, $ability)
     {
-        if ($user->hasRole('super-admin') || app()->environment('local')) {
+        if ($user->hasRole('super-admin') || config('app.super-admin')) {
             return true;
         }
     }

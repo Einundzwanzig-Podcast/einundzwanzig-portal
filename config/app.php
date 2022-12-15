@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    'super-admin' => env('SUPERADMIN', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

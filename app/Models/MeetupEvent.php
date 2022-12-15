@@ -27,6 +27,11 @@ class MeetupEvent extends Model
         'start' => 'datetime',
     ];
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function meetup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Meetup::class);

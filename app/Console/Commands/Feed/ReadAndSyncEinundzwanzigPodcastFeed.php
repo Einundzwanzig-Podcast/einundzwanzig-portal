@@ -39,6 +39,7 @@ class ReadAndSyncEinundzwanzigPodcastFeed extends Command
                                            'link'     => $podcast->feed->link,
                                            'language_code' => $podcast->feed->language,
                                            'data'     => $podcast->feed,
+                                           'created_by'  => 1,
                                        ]);
         $episodes = $client->episodes->byFeedUrl('https://einundzwanzig.space/feed.xml')
                                      ->json();
@@ -47,6 +48,7 @@ class ReadAndSyncEinundzwanzigPodcastFeed extends Command
                    ->updateOrCreate(['guid' => $item->guid], [
                        'podcast_id' => $einundzwanzigPodcast->id,
                        'data'       => $item,
+                       'created_by'  => 1,
                    ]);
         }
 

@@ -57,8 +57,7 @@ class VenuePolicy extends BasePolicy
      */
     public function update(User $user, Venue $venue)
     {
-        return $venue->lecturers->where('team_id', $user->current_team_id)
-                                ->isNotEmpty();
+        return $venue->created_by === $user->id;
     }
 
     /**

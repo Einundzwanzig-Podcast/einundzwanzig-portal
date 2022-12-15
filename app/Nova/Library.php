@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
@@ -62,6 +63,9 @@ class Library extends Resource
                        ),
 
             BelongsToMany::make('Library Items'),
+
+            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+
         ];
     }
 

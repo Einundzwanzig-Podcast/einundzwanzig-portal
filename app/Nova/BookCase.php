@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -111,6 +112,8 @@ class BookCase extends Resource
             HasMany::make(__('OrangePills'), 'orangePills', OrangePill::class),
 
             MorphMany::make(__('Comments'), 'comments', Comment::class),
+
+            BelongsTo::make(__('Created By'), 'createdBy', User::class),
 
         ];
     }

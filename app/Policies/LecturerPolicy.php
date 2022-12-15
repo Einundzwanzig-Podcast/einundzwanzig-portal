@@ -57,7 +57,7 @@ class LecturerPolicy extends BasePolicy
      */
     public function update(User $user, Lecturer $lecturer)
     {
-        return $user->belongsToTeam($lecturer->team);
+        return $lecturer->created_by === $user->id;
     }
 
     /**

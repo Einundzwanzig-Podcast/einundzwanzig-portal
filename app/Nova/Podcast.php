@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\HasMany;
@@ -80,6 +81,9 @@ class Podcast extends Resource
                 ->json(),
 
             HasMany::make(__('Episodes'), 'episodes', Episode::class),
+
+            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+
         ];
     }
 

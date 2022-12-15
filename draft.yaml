@@ -1,0 +1,4 @@
+models:
+  Item:
+    name: string:unique
+    link: string

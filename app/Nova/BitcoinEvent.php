@@ -66,6 +66,8 @@ class BitcoinEvent extends Resource
 
             BelongsTo::make(__('Venue'), 'venue', Venue::class)->searchable(),
 
+            BelongsTo::make(__('Created By'), 'createdBy', User::class),
+
         ];
     }
 

@@ -54,6 +54,11 @@ class BookCase extends Model implements HasMedia
         $this->addMediaCollection('images');
     }
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function orangePills(): HasMany
     {
         return $this->hasMany(OrangePill::class);

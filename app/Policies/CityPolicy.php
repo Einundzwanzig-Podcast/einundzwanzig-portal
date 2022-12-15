@@ -53,7 +53,7 @@ class CityPolicy extends BasePolicy
      */
     public function update(User $user, City $city)
     {
-        return $user->is_lecturer;
+        return $city->created_by === $user->id;
     }
 
     /**

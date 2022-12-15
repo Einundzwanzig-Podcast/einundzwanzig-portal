@@ -51,6 +51,11 @@ class BitcoinEvent extends Model implements HasMedia
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function venue(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Venue::class);

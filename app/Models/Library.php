@@ -26,6 +26,11 @@ class Library extends Model
         'language_codes' => 'array',
     ];
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function libraryItems(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(LibraryItem::class);

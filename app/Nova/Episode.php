@@ -52,7 +52,6 @@ class Episode extends Resource
                                      'language_code' => $model->podcast->language_code,
                                      'value'         => null,
                                  ]);
-            ray($request->tags);
             $libraryItem->syncTagsWithType(is_array($request->tags) ? $request->tags : str($request->tags)->explode('-----'),
                 'library_item');
             $libraryItem->addMediaFromUrl($model->data['image'])
@@ -102,6 +101,8 @@ class Episode extends Resource
 
             BelongsTo::make(__('Podcast'), 'podcast', Podcast::class)
                      ->readonly(),
+
+            BelongsTo::make(__('Created By'), 'createdBy', User::class),
 
         ];
     }

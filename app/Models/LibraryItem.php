@@ -59,6 +59,11 @@ class LibraryItem extends Model implements HasMedia, Sortable
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function lecturer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Lecturer::class);
