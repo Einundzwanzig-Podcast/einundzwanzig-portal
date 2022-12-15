@@ -25,6 +25,9 @@
                             map: '{{ $country->code }}_merc',
                             backgroundColor: 'transparent',
                             markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
+                            onMarkerClick: function(event, index) {
+                                $wire.call('filterByMarker', markers[index].id)
+                            },
                             markerStyle: {
                                 initial: {
                                     image: '{{ asset('img/btc.png') }}',

@@ -6,6 +6,7 @@ use App\Models\Meetup;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class MeetupTable extends DataTableComponent
 {
@@ -30,6 +31,17 @@ class MeetupTable extends DataTableComponent
              })
              ->setColumnSelectStatus(false)
              ->setPerPage(10);
+    }
+
+    public function filters(): array
+    {
+        return [
+            TextFilter::make('Meetup by ID', 'byid')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereIn('meetups.id', str($value)->explode(','));
+                      }),
+        ];
     }
 
     public function columns(): array
