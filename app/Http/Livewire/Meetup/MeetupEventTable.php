@@ -16,15 +16,27 @@ class MeetupEventTable extends Component
     public function render()
     {
         return view('livewire.meetup.meetup-event-table', [
-            'events' => MeetupEvent::query()
-                                   ->get()
-                                   ->map(fn($event) => [
-                                       'id'          => $event->id,
-                                       'startDate'   => $event->start,
-                                       'endDate'     => $event->start->endOfDay(),
-                                       'location'    => $event->location,
-                                       'description' => $event->description,
-                                   ]),
+            'markers' => MeetupEvent::query()
+                                    ->with([
+                                        'meetup.city.country',
+                                    ])
+                                    ->whereHas('meetup.city.country',
+                                        fn($query) => $query->where('countries.code', $this->country->code))
+                                    ->get()
+                                    ->map(fn($event) => [
+                                        'id'     => $event->id,
+                                        'name'   => $event->meetup->name.': '.$event->location,
+                                        'coords' => [$event->meetup->city->latitude, $event->meetup->city->longitude],
+                                    ]),
+            'events'  => MeetupEvent::query()
+                                    ->get()
+                                    ->map(fn($event) => [
+                                        'id'          => $event->id,
+                                        'startDate'   => $event->start,
+                                        'endDate'     => $event->start->endOfDay(),
+                                        'location'    => $event->location,
+                                        'description' => $event->description,
+                                    ]),
         ]);
     }
 
