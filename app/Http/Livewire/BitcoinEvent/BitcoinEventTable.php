@@ -14,6 +14,13 @@ class BitcoinEventTable extends Component
 
     protected $queryString = ['year'];
 
+    public function mount()
+    {
+        if (!$this->year) {
+            $this->year = now()->year;
+        }
+    }
+
     public function render()
     {
         return view('livewire.bitcoin-event.bitcoin-event-table', [
