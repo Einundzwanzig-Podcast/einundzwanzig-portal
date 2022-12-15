@@ -153,6 +153,7 @@ class LibraryItemTable extends DataTableComponent
                               fn($query) => $query->where('libraries.name', $this->currentTab)))
                           ->withCount([
                               'lecturer',
-                          ]);
+                          ])
+                          ->currentStatus('published');
     }
 }

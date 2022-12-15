@@ -10,6 +10,7 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\ModelStatus\HasStatuses;
 use Spatie\Tags\HasTags;
 
 class LibraryItem extends Model implements HasMedia, Sortable
@@ -18,6 +19,7 @@ class LibraryItem extends Model implements HasMedia, Sortable
     use InteractsWithMedia;
     use HasTags;
     use SortableTrait;
+    use HasStatuses;
 
     /**
      * The attributes that aren't mass assignable.

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f361449843e880ec16cbc06c10871928",
+    "content-hash": "910dfec50f7d5534308b74a252331b64",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -7540,6 +7540,77 @@
             "time": "2022-12-06T07:29:40+00:00"
         },
         {
+            "name": "spatie/laravel-model-status",
+            "version": "1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-model-status.git",
+                "reference": "6380fa82ac98ab755b08a034d2c1608212e26478"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-model-status/zipball/6380fa82ac98ab755b08a034d2c1608212e26478",
+                "reference": "6380fa82ac98ab755b08a034d2c1608212e26478",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.71|^9.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.23|^7.0",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\ModelStatus\\ModelStatusServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ModelStatus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Verhelst",
+                    "email": "tvke91@gmail.com",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to enable assigning statuses to Eloquent Models",
+            "homepage": "https://github.com/spatie/laravel-model-status",
+            "keywords": [
+                "laravel-status",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-model-status/issues",
+                "source": "https://github.com/spatie/laravel-model-status/tree/1.11.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-03T07:36:04+00:00"
+        },
+        {
             "name": "spatie/laravel-options",
             "version": "1.0.3",
             "source": {
@@ -11802,6 +11873,53 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "wesselperik/nova-status-field",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wesselperik/nova-status-field.git",
+                "reference": "1b59ca03b658a2ed73b086df7d41394326fe80ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wesselperik/nova-status-field/zipball/1b59ca03b658a2ed73b086df7d41394326fe80ef",
+                "reference": "1b59ca03b658a2ed73b086df7d41394326fe80ef",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^4.0",
+                "php": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WesselPerik\\StatusField\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WesselPerik\\StatusField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field for displaying statuses.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "status"
+            ],
+            "support": {
+                "issues": "https://github.com/wesselperik/nova-status-field/issues",
+                "source": "https://github.com/wesselperik/nova-status-field/tree/2.1.2"
+            },
+            "time": "2022-09-14T19:06:22+00:00"
         },
         {
             "name": "wireui/wireui",

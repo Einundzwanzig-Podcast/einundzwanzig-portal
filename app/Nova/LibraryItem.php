@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Enums\LibraryItemType;
 use App\Notifications\ModelCreatedNotification;
+use App\Nova\Actions\SetStatusAction;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Spatie\LaravelOptions\Options;
 use Spatie\TagsField\Tags;
+use WesselPerik\StatusField\StatusField;
 
 class LibraryItem extends Resource
 {
@@ -66,6 +68,25 @@ class LibraryItem extends Resource
         return [
             ID::make()
               ->sortable(),
+
+            StatusField::make('Status',)
+                       ->icons([
+                           'clock'        => $this->status === 'draft',
+                           'check-circle' => $this->status === 'published',
+                       ])
+                       ->tooltip([
+                           'clock'        => 'Pending publication',
+                           'check-circle' => 'Published'
+                       ])
+                       ->info([
+                           'clock'        => 'Pending publication.',
+                           'check-circle' => 'Published.'
+                       ])
+                       ->color([
+                           'clock'        => 'blue-500',
+                           'check-circle' => 'green-500'
+                       ])
+                       ->exceptOnForms(),
 
             Images::make(__('Main picture'), 'main')
                   ->conversionOnIndexView('thumb'),
@@ -160,6 +181,8 @@ class LibraryItem extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new SetStatusAction(),
+        ];
     }
 }
