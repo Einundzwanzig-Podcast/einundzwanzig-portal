@@ -48,7 +48,7 @@
                                 style: 'background',
                                 language: 'de',
                                 dataSource: events,
-                                mouseOnDay: function(e) {
+                                clickDay: function(e) {
                                     if(e.events.length > 0) {
                                         var content = '';
 
