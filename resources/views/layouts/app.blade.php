@@ -15,6 +15,7 @@
           media="screen"/>
     <script src="https://unpkg.com/jquery"></script>
     <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/world-mill.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/europe-merc.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/de.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/at.js') }}"></script>

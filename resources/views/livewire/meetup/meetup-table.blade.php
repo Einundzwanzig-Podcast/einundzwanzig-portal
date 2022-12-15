@@ -18,7 +18,6 @@
                 x-data="{
                     init() {
                         let markers = {{ Js::from($markers) }};
-                        console.log(markers);
 
                         $('#map').vectorMap({
                             zoomButtons : false,
@@ -52,6 +51,43 @@
         </div>
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
             <livewire:tables.meetup-table :country="$country->code"/>
+
+            <div
+                wire:ignore
+                class="w-full flex justify-center"
+                x-data="{
+                    init() {
+                        let markers = {{ Js::from($allMarkers) }};
+
+                        $('#mapworld').vectorMap({
+                            zoomButtons : false,
+                            zoomOnScroll: true,
+                            map: 'world_mill',
+                            backgroundColor: 'transparent',
+                            markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
+{{--                            onMarkerClick: function(event, index) {--}}
+{{--                                $wire.call('filterByMarker', markers[index].id)--}}
+{{--                            },--}}
+                            markerStyle: {
+                                initial: {
+                                    image: '{{ asset('img/btc.png') }}',
+                                }
+                            },
+                            regionStyle: {
+                                initial: {
+                                    fill: '#151515'
+                                },
+                                hover: {
+                                    'fill-opacity': 1,
+                                    cursor: 'default'
+                                },
+                            }
+                        });
+                    }
+                }"
+            >
+                <div id="mapworld" style="width: 100%; height: 400px"></div>
+            </div>
         </div>
     </section>
     {{-- FOOTER --}}
