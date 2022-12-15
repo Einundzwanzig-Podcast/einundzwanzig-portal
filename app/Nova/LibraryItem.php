@@ -71,7 +71,7 @@ class LibraryItem extends Resource
 
             StatusField::make('Status',)
                        ->icons([
-                           'clock'        => $this->status === 'draft',
+                           'clock'        => $this->status === '' || $this->status === 'draft',
                            'check-circle' => $this->status === 'published',
                        ])
                        ->tooltip([
