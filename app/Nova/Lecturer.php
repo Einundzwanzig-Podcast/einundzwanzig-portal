@@ -97,7 +97,8 @@ class Lecturer extends Resource
 
             BelongsTo::make('Team'),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

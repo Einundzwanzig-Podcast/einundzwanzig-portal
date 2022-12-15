@@ -31,12 +31,6 @@ class LibraryItem extends Resource
      * @var string
      */
     public static $title = 'name';
-
-    public static function label()
-    {
-        return __('Library Item');
-    }
-
     /**
      * The columns that should be searched.
      * @var array
@@ -45,6 +39,11 @@ class LibraryItem extends Resource
         'id',
         'name',
     ];
+
+    public static function label()
+    {
+        return __('Library Item');
+    }
 
     public static function afterCreate(NovaRequest $request, Model $model)
     {
@@ -93,7 +92,8 @@ class LibraryItem extends Resource
 
             Select::make(__('Type'))
                   ->options(
-                      Options::forEnum(LibraryItemType::class)->toArray()
+                      Options::forEnum(LibraryItemType::class)
+                             ->toArray()
                   )
                   ->rules('required', 'string'),
 
@@ -103,11 +103,14 @@ class LibraryItem extends Resource
 
             BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class),
 
-            BelongsTo::make(__('Episode'), 'episode', Episode::class)->nullable(),
+            BelongsTo::make(__('Episode'), 'episode', Episode::class)
+                     ->nullable()
+                     ->exceptOnForms(),
 
             BelongsToMany::make(__('Library'), 'libraries', Library::class),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

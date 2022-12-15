@@ -59,6 +59,7 @@ class Registration extends Resource
                 ->rules('required'),
 
             BelongsTo::make('Course Event', 'courseEvent'),
+
             BelongsTo::make('Participant'),
 
         ];

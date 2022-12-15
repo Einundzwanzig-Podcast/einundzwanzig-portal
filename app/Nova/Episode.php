@@ -112,7 +112,8 @@ class Episode extends Resource
             BelongsTo::make(__('Podcast'), 'podcast', Podcast::class)
                      ->readonly(),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

@@ -94,7 +94,8 @@ class Podcast extends Resource
 
             HasMany::make(__('Episodes'), 'episodes', Episode::class),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

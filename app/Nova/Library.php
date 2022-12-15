@@ -76,7 +76,8 @@ class Library extends Resource
 
             BelongsToMany::make('Library Items'),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

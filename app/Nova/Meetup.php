@@ -68,7 +68,8 @@ class Meetup extends Resource
 
             BelongsTo::make(__('City'), 'city', City::class)->searchable(),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

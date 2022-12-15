@@ -80,7 +80,7 @@ class BitcoinEvent extends Resource
                      ->searchable(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
-                     ->onlyOnIndex(),
+                     ->exceptOnForms(),
 
         ];
     }

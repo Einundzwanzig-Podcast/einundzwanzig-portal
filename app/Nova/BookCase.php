@@ -125,7 +125,8 @@ class BookCase extends Resource
 
             MorphMany::make(__('Comments'), 'comments', Comment::class),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }

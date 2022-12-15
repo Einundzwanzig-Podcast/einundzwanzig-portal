@@ -68,6 +68,7 @@ class OrangePill extends Resource
                 ->rules('required', 'integer'),
 
             BelongsTo::make('User'),
+
             BelongsTo::make('BookCase'),
 
         ];

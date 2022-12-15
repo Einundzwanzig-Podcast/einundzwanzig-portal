@@ -74,7 +74,8 @@ class MeetupEvent extends Resource
             BelongsTo::make('Meetup')
                      ->searchable(),
 
-            BelongsTo::make(__('Created By'), 'createdBy', User::class)->onlyOnIndex(),
+            BelongsTo::make(__('Created By'), 'createdBy', User::class)
+                     ->exceptOnForms(),
 
         ];
     }
