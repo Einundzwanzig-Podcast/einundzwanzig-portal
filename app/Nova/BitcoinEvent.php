@@ -67,12 +67,10 @@ class BitcoinEvent extends Resource
                    ->help(__('If checked, the event will be shown everywhere.')),
 
             DateTime::make(__('From'), 'from')
-                    ->step(CarbonInterval::minutes(15))
                     ->displayUsing(fn($value) => $value->asDateTime())
                     ->rules('required'),
 
             DateTime::make(__('To'), 'to')
-                    ->step(CarbonInterval::minutes(15))
                     ->displayUsing(fn($value) => $value->asDateTime())
                     ->rules('required'),
 
