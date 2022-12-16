@@ -39,6 +39,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function boot()
     {
+        config([
+            'app.user-timezone' => 'Europe/Berlin',
+        ]);
+
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
@@ -154,6 +158,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         });
 
         Nova::userTimezone(function (Request $request) {
+
             return $request->user()->timezone;
         });
     }

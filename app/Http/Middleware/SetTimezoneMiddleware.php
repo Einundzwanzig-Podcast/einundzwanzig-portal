@@ -17,14 +17,20 @@ class SetTimezoneMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (
-            !collect($request->segments())->contains('nova')
-            && $request->user()
+        if ($request->user()
             && $timezone = $request->user()->timezone
         ) {
-            config(['app.timezone' => $timezone]);
+            config([
+                'app.timezone' => $timezone,
+                'app.user-timezone' => $timezone,
+            ]);
+
+            return $next($request);
         }
-        config(['app.timezone' => 'Europe/Berlin']);
+        config([
+            'app.timezone' => 'Europe/Berlin',
+            'app.user-timezone' => 'Europe/Berlin',
+        ]);
 
         return $next($request);
     }
