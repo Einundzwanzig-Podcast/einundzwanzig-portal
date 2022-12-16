@@ -26,7 +26,7 @@ class Carbon extends CarbonImmutable
             str($dt->month)->padLeft(2, '0'),
             $dt->year,
             $dt->format('H:i'),
-            $dt->timezone
+            $dt->timezoneAbbreviatedName
         );
     }
 }
