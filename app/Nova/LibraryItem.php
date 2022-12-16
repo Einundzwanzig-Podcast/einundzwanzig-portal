@@ -131,7 +131,11 @@ class LibraryItem extends Resource
             BelongsToMany::make(__('Library'), 'libraries', Library::class),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
-                     ->exceptOnForms(),
+                     ->canSee(function ($request) {
+                         return $request->user()
+                                        ->hasRole('super-admin');
+                     })
+                     ->searchable(),
 
         ];
     }

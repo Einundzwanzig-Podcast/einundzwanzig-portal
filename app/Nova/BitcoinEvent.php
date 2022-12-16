@@ -90,7 +90,11 @@ class BitcoinEvent extends Resource
                      ->searchable(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
-                     ->exceptOnForms(),
+                     ->canSee(function ($request) {
+                         return $request->user()
+                                        ->hasRole('super-admin');
+                     })
+                     ->searchable(),
 
         ];
     }
