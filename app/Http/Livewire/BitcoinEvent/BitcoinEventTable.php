@@ -54,6 +54,7 @@ class BitcoinEventTable extends Component
     public function filterByMarker($id)
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
+            '#table',
             'country' => $this->country->code,
             'year'    => $this->year,
             'table'   => [
@@ -67,6 +68,7 @@ class BitcoinEventTable extends Component
     public function popover($content, $ids)
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
+            '#table',
             'country' => $this->country->code,
             'year'    => $this->year,
             'table'   => [

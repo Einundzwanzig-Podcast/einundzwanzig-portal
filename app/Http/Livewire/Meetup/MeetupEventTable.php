@@ -59,6 +59,7 @@ class MeetupEventTable extends Component
     public function filterByMarker($id)
     {
         return to_route('meetup.table.meetupEvent', [
+            '#table',
             'country' => $this->country->code,
             'year'    => $this->year,
             'table'   => [
@@ -73,6 +74,8 @@ class MeetupEventTable extends Component
     public function popover($content, $ids)
     {
         return to_route('meetup.table.meetupEvent', [
+            '#table',
+            'year'    => $this->year,
             'country' => $this->country->code, 'table' => [
                 'filters' => [
                     'byid' => $ids,
