@@ -49,12 +49,13 @@ class MeetupEventTable extends Component
                                     ->map(fn($event) => [
                                         'id'          => $event->id,
                                         'startDate'   => $event->start,
-                                        'endDate'     => $event->start->endOfDay(),
+                                        'endDate'     => $event->start->addHours(1),
                                         'location'    => $event->location,
                                         'description' => $event->description,
                                     ]),
         ]);
     }
+
     public function filterByMarker($id)
     {
         return to_route('meetup.table.meetupEvent', [
