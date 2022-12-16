@@ -61,7 +61,9 @@ class Meetup extends Resource
                   ->conversionOnIndexView('thumb'),
 
             Text::make('Name')
-                ->rules('required', 'string', 'unique:meetups,name'),
+                ->rules('required', 'string')
+                ->creationRules('unique:meetups,name')
+                ->updateRules('unique:meetups,name,{{resourceId}}'),
 
             Text::make('Link')
                 ->rules('required', 'string'),
