@@ -47,6 +47,11 @@ class EventTable extends DataTableComponent
     public function filters(): array
     {
         return [
+            TextFilter::make('Event by ID', 'byid')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->whereIn('course_events.id', str($value)->explode(','));
+                      }),
             TextFilter::make('Stadt')
                       ->config([
                           'placeholder' => __('Suche Stadt'),
