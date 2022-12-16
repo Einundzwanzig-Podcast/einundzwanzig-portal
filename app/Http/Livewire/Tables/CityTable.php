@@ -21,6 +21,7 @@ class CityTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+            ->setDefaultSort('course_events_count', 'desc')
              ->setAdditionalSelects(['id'])
              ->setThAttributes(function (Column $column) {
                  return [
