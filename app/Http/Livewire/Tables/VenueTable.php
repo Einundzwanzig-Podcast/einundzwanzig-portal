@@ -17,6 +17,7 @@ class VenueTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setDefaultSort('course_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -73,7 +74,8 @@ class VenueTable extends DataTableComponent
 
     public function venueSearch($id)
     {
-        $venue = Venue::query()->find($id);
+        $venue = Venue::query()
+                      ->find($id);
 
         return to_route('school.table.event', [
             '#table',
