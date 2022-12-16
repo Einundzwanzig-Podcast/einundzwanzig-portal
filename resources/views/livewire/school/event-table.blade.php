@@ -20,7 +20,7 @@
                         }
 
                         .calendar table.month th.month-title {
-                            color: #fff;
+                            color: #F7931A;
                         }
 
                         .calendar table.month th.day-header {
@@ -29,6 +29,10 @@
 
                         .calendar table.month td.day .day-content {
                             color: #fff;
+                        }
+
+                        .calendar .calendar-header table th:hover {
+                            background: #222;
                         }
                     </style>
 
