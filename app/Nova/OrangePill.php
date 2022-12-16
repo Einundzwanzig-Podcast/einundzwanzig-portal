@@ -3,43 +3,39 @@
 namespace App\Nova;
 
 use App\Notifications\ModelCreatedNotification;
+use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class OrangePill extends Resource
 {
     /**
      * The model the resource corresponds to.
-     *
      * @var string
      */
     public static $model = \App\Models\OrangePill::class;
-
-    public static function label()
-    {
-        return 'Inputs';
-    }
-
     /**
      * The single value that should be used to represent the resource when being displayed.
-     *
      * @var string
      */
     public static $title = 'id';
-
     /**
      * The columns that should be searched.
-     *
      * @var array
      */
     public static $search = [
         'id',
     ];
+
+    public static function label()
+    {
+        return 'Inputs';
+    }
 
     public static function afterCreate(NovaRequest $request, Model $model)
     {
@@ -54,18 +50,21 @@ class OrangePill extends Resource
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()
+              ->sortable(),
 
             DateTime::make('Date')
-                ->rules('required'),
+                    ->step(CarbonInterval::minutes(15))
+                    ->rules('required'),
 
             Number::make('Amount')
-                ->rules('required', 'integer'),
+                  ->rules('required', 'integer'),
 
             BelongsTo::make('User'),
 
@@ -78,6 +77,7 @@ class OrangePill extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function cards(Request $request)
@@ -89,6 +89,7 @@ class OrangePill extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function filters(Request $request)
@@ -100,6 +101,7 @@ class OrangePill extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function lenses(Request $request)
@@ -111,6 +113,7 @@ class OrangePill extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array
      */
     public function actions(Request $request)

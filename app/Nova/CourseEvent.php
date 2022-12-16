@@ -76,10 +76,12 @@ class CourseEvent extends Resource
                ->rules('required', 'url'),
 
             DateTime::make(__('From'), 'from')
+                    ->step(CarbonInterval::minutes(15))
                     ->rules('required')
                     ->displayUsing(fn($value) => $value->asDateTime()),
 
             DateTime::make(__('To'), 'to')
+                    ->step(CarbonInterval::minutes(15))
                     ->rules('required')
                     ->displayUsing(fn($value) => $value->asDateTime()),
 

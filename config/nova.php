@@ -99,7 +99,7 @@ return [
     */
 
     'middleware' => [
-        'web',
+        'nova-web',
         HandleInertiaRequests::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
