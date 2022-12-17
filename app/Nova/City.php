@@ -49,6 +49,11 @@ class City extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Land: :name', ['name' => $this->country->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -78,7 +83,9 @@ class City extends Resource
                   ->step(0.000001)
                   ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
-            BelongsTo::make(__('Country'), 'country', Country::class),
+            BelongsTo::make(__('Country'), 'country', Country::class)
+                     ->searchable()
+                     ->withSubtitles(),
 
             HasMany::make(__('Venues'), 'venues', Venue::class),
 
@@ -91,7 +98,8 @@ class City extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()
+                     ->withSubtitles(),
 
         ];
     }

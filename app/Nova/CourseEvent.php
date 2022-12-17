@@ -29,17 +29,6 @@ class CourseEvent extends Resource
         'course.name',
     ];
 
-    public static function relatableCourses(NovaRequest $request, $query, Field $field)
-    {
-        if ($field instanceof BelongsTo) {
-            $query->whereHas('lecturer', function ($query) use ($request) {
-                $query->where('team_id', $request->user()->id);
-            });
-        }
-
-        return $query;
-    }
-
     public function title()
     {
         return $this->from.' - '.$this->venue->name.' - '.$this->course->name;
@@ -57,6 +46,11 @@ class CourseEvent extends Resource
                             ->after('/nova-api/')
                             ->before('?')
                             ->toString()));
+    }
+
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
     }
 
     /**
@@ -85,17 +79,18 @@ class CourseEvent extends Resource
                     ->rules('required')
                     ->displayUsing(fn($value) => $value->asDateTime()),
 
-            BelongsTo::make(__('Course'), 'course', Course::class),
+            BelongsTo::make(__('Course'), 'course', Course::class)
+                     ->searchable()->showCreateRelationButton()->withSubtitles(),
 
             BelongsTo::make(__('Venue'), 'venue', Venue::class)
-                     ->searchable(),
+                     ->searchable()->showCreateRelationButton()->withSubtitles(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

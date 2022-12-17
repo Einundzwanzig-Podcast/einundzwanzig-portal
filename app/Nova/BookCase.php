@@ -50,6 +50,11 @@ class BookCase extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -130,7 +135,7 @@ class BookCase extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

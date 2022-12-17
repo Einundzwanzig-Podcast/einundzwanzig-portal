@@ -27,12 +27,6 @@ class Lecturer extends Resource
      * @var string
      */
     public static $title = 'name';
-
-    public static function label()
-    {
-        return __('Lecturer/Content Creator');
-    }
-
     /**
      * The columns that should be searched.
      * @var array
@@ -42,9 +36,15 @@ class Lecturer extends Resource
         'name',
     ];
 
+    public static function label()
+    {
+        return __('Lecturer/Content Creator');
+    }
+
     public static function relatableTeams(NovaRequest $request, $query, Field $field)
     {
-        if ($field instanceof BelongsTo && !$request->user()->hasRole('super-admin')) {
+        if ($field instanceof BelongsTo && !$request->user()
+                                                    ->hasRole('super-admin')) {
             $query->where('id', $request->user()->current_team_id);
         }
 
@@ -58,6 +58,11 @@ class Lecturer extends Resource
                             ->after('/nova-api/')
                             ->before('?')
                             ->toString()));
+    }
+
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
     }
 
     /**
@@ -103,7 +108,7 @@ class Lecturer extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

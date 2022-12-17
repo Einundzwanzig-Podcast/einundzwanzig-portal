@@ -48,6 +48,11 @@ class Venue extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Stadt: :name', ['name' => $this->city->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -73,14 +78,14 @@ class Venue extends Resource
             Text::make(__('Street'), 'street')
                 ->rules('required', 'string'),
 
-            BelongsTo::make(__('City'), 'city', City::class),
+            BelongsTo::make(__('City'), 'city', City::class)->searchable()->withSubtitles(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

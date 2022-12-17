@@ -47,6 +47,11 @@ class Podcast extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -99,7 +104,7 @@ class Podcast extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

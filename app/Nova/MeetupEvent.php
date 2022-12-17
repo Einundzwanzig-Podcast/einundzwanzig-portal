@@ -47,6 +47,11 @@ class MeetupEvent extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -74,14 +79,14 @@ class MeetupEvent extends Resource
                 ->rules('required', 'string'),
 
             BelongsTo::make('Meetup')
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

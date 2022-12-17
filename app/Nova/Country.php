@@ -43,6 +43,11 @@ class Country extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Code: :code', ['code' => $this->code]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *

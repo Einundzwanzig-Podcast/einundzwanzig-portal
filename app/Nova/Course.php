@@ -29,6 +29,14 @@ class Course extends Resource
      * @var string
      */
     public static $title = 'name';
+    /**
+     * The columns that should be searched.
+     * @var array
+     */
+    public static $search = [
+        'id',
+        'name',
+    ];
 
     public static function label()
     {
@@ -39,15 +47,6 @@ class Course extends Resource
     {
         return __('Course');
     }
-
-    /**
-     * The columns that should be searched.
-     * @var array
-     */
-    public static $search = [
-        'id',
-        'name',
-    ];
 
     public static function relatableLecturers(NovaRequest $request, $query, Field $field)
     {
@@ -65,6 +64,11 @@ class Course extends Resource
                             ->after('/nova-api/')
                             ->before('?')
                             ->toString()));
+    }
+
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
     }
 
     /**
@@ -101,7 +105,7 @@ class Course extends Resource
 
             BelongsTo::make(__('Lecturer'), 'lecturer', Lecturer::class)
                      ->searchable()
-                     ->help(__('Wähle hier den Dozenten aus, der den Kurs hält. Wenn der Dozent nicht in der Liste ist, dann erstelle ihn zuerst unter "Dozenten".')),
+                     ->help(__('Wähle hier den Dozenten aus, der den Kurs hält. Wenn der Dozent nicht in der Liste ist, dann erstelle ihn zuerst unter "Dozenten".'))->withSubtitles(),
 
             SelectPlus::make(__('Categories'), 'categories', Category::class)
                       ->usingIndexLabel('name'),
@@ -114,7 +118,7 @@ class Course extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

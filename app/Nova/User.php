@@ -15,7 +15,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class User extends Resource
 {
 
-
     /**
      * The model the resource corresponds to.
      * @var class-string<\App\Models\User>

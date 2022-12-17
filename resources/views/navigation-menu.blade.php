@@ -29,7 +29,7 @@
                         <x-jet-nav-link href="/nova/resources/courses" target="_blank">
                             {{ __('Kurs eintragen') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="/nova/resources/events" target="_blank">
+                        <x-jet-nav-link href="/nova/resources/course-events" target="_blank">
                             {{ __('Kurs-Termin eintragen') }}
                         </x-jet-nav-link>
                     @endif

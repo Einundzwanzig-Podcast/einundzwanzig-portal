@@ -56,6 +56,11 @@ class LibraryItem extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -102,7 +107,7 @@ class LibraryItem extends Resource
                   ->options(
                       config('languages.languages')
                   )
-                  ->rules('required', 'string'),
+                  ->rules('required', 'string')->searchable(),
 
             Tags::make('Tags')
                 ->type('library_item')
@@ -122,7 +127,7 @@ class LibraryItem extends Resource
                 ->rules('nullable', 'string')
                 ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
 
-            BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class),
+            BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class)->searchable()->withSubtitles(),
 
             BelongsTo::make(__('Episode'), 'episode', Episode::class)
                      ->nullable()
@@ -135,7 +140,7 @@ class LibraryItem extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }

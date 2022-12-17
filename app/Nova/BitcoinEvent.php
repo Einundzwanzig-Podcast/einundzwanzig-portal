@@ -47,6 +47,11 @@ class BitcoinEvent extends Resource
                             ->toString()));
     }
 
+    public function subtitle()
+    {
+        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -87,14 +92,14 @@ class BitcoinEvent extends Resource
                 ->rules('required', 'string'),
 
             BelongsTo::make(__('Venue'), 'venue', Venue::class)
-                     ->searchable(),
+                     ->searchable()->showCreateRelationButton()->withSubtitles(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable(),
+                     ->searchable()->withSubtitles(),
 
         ];
     }
