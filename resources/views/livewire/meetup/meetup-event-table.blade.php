@@ -78,7 +78,7 @@
                         <div x-ref="calendar"></div>
                     </div>
                 </div>
-                <div class="hidden sm:w-1/2">
+                <div class="hidden sm:inline sm:w-1/2">
                     @php
                         $focus = '';
                         $map = $country->code . '_merc';
