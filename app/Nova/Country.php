@@ -64,6 +64,9 @@ class Country extends Resource
             Text::make(__('Name'), 'name')
                 ->rules('required', 'string'),
 
+            Text::make(__('English name'), 'english_name')
+                ->rules('required', 'string'),
+
             MultiSelect::make(__('Languages'), 'language_codes')
                        ->options(
                            config('languages.languages'),
