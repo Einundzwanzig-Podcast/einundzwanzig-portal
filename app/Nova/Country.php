@@ -23,7 +23,7 @@ class Country extends Resource
      * The single value that should be used to represent the resource when being displayed.
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'english_name';
 
     /**
      * The columns that should be searched.
