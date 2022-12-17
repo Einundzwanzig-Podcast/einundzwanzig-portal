@@ -17,6 +17,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "itsmejoshua/novaspatiepermissions": "^1.0",
         "jackiedo/timezonelist": "^5.1",
+        "joedixon/laravel-translation": "^2.1",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.12",
         "laravel/nova": "~4.0",

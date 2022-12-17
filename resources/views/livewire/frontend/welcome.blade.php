@@ -9,7 +9,7 @@
                 <h2 class="tracking-widest text-amber-500 uppercase">Einundzwanzig</h2>
                 <p class="my-3 text-5xl font-bold tracking-tighter text-amber-500 lg:text-6xl">Bitcoin Portal</p>
                 <p class="max-w-sm text-lg text-gray-200">
-                    Eine Bitcoin Community für alle.
+                    {{ __('Eine Bitcoin Community für alle.') }}
                 </p>
                 <div class="max-w-sm text-lg text-gray-200">
                     <x-select
