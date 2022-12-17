@@ -32,6 +32,8 @@ class Country extends Resource
     public static $search = [
         'id',
         'name',
+        'english_name',
+        'code',
     ];
 
     public static function afterCreate(NovaRequest $request, Model $model)
