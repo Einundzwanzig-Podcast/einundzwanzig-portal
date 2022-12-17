@@ -14,8 +14,8 @@
                 sie auf einem der Meetups kennen. </p>
             @php
                 $map = $country->code . '_merc';
-                if (!\File::exists(public_path('vendor/jvector/maps/' . $map . '.js'))) {
-                    $map = 'europe-merc';
+                if (!\File::exists(public_path('vendor/jvector/maps/' . $country->code . '.js'))) {
+                    $map = 'europe_merc';
                 }
             @endphp
             <div

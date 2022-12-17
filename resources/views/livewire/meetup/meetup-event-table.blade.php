@@ -91,7 +91,6 @@
                         x-data="{
                             init() {
                                 let markers = {{ Js::from($markers) }};
-                                console.log(markers);
 
                                 $('#map').vectorMap({
                                     zoomButtons : false,
