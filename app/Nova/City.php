@@ -83,9 +83,7 @@ class City extends Resource
                   ->step(0.000001)
                   ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
-            BelongsTo::make(__('Country'), 'country', Country::class)
-                     ->searchable()
-                     ->withSubtitles(),
+            BelongsTo::make(__('Country'), 'country', Country::class),
 
             HasMany::make(__('Venues'), 'venues', Venue::class),
 
