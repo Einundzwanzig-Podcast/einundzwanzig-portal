@@ -24,6 +24,7 @@
     <script src="{{ asset('vendor/jvector/maps/es.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/it.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/pt.js') }}"></script>
+    <script src="{{ asset('vendor/jvector/maps/pl.js') }}"></script>
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
     @mapscripts
