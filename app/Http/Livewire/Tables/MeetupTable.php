@@ -61,7 +61,8 @@ class MeetupTable extends DataTableComponent
             Column::make(__('Links'),)
                   ->label(
                       fn($row, Column $column) => view('columns.meetups.action')->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
         ];
     }
 

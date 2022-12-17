@@ -56,7 +56,8 @@ class BitcoinEventTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => view('columns.bitcoin_events.country')->withRow($row)
                   )
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make(__('Title'), 'title')
                   ->format(
                       fn($value, $row, Column $column) => view('columns.bitcoin_events.title')->withRow($row)
@@ -69,13 +70,16 @@ class BitcoinEventTable extends DataTableComponent
             Column::make(__('To'), 'to')
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
-                  ),
-            Column::make(__('Venue'), 'venue.name'),
+                  )
+                  ->collapseOnMobile(),
+            Column::make(__('Venue'), 'venue.name')
+                  ->collapseOnMobile(),
             Column::make(__('Link'), 'link')
                   ->format(
                       fn($value, $row, Column $column) => view('columns.bitcoin_events.link')->withRow($row)
                   )
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
         ];
     }
 

@@ -64,7 +64,8 @@ class CourseTable extends DataTableComponent
             Column::make("Tags")
                   ->label(
                       fn($row, Column $column) => view('columns.courses.tags')->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make("Termine")
                   ->label(
                       fn($row, Column $column) => '<strong>'.$row->course_events_count.'</strong>'

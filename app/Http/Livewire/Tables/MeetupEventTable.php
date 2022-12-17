@@ -62,12 +62,14 @@ class MeetupEventTable extends DataTableComponent
                   ->sortable(),
             Column::make(__('Location'), 'location')
                   ->searchable(fn($builder, $term) => $builder->where('location', 'ilike', '%'.$term.'%'))
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make(__('Start'), 'start')
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
                   )
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make(__('Link'), 'link')
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetup_events.link')->withRow($row)

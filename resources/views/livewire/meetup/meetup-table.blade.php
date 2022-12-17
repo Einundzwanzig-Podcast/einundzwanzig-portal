@@ -55,7 +55,7 @@
                     }
                 }"
             >
-                <div id="map" style="width: 100%; height: 400px"></div>
+                <div id="map" style="width: 100%;" class="h-[200px] sm:h-[400px] my-4 sm:my-0"></div>
             </div>
         </div>
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">

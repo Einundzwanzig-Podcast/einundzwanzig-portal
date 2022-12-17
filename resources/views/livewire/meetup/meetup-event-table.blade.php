@@ -5,7 +5,7 @@
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
             <div class="flex items-start">
-                <div class="w-1/2">
+                <div class="w-full sm:w-1/2">
 
                     <link rel="stylesheet" type="text/css"
                           href="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.css"/>
@@ -78,7 +78,7 @@
                         <div x-ref="calendar"></div>
                     </div>
                 </div>
-                <div class="w-1/2">
+                <div class="hidden sm:w-1/2">
                     @php
                         $focus = '';
                         $map = $country->code . '_merc';
