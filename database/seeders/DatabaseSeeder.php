@@ -76,88 +76,95 @@ class DatabaseSeeder extends Seeder
             'code'           => 'fr',
             'language_codes' => ['fr'],
         ]);
+        Country::create([
+            'name'           => 'Serbia',
+            'code'           => 'rs',
+            'language_codes' => ['rs'],
+            'longitude'      => 21,
+            'latitude'       => 44,
+        ]);
         City::create([
             'country_id' => 1,
             'name'       => 'Füssen',
             'latitude'   => 47.57143,
             'longitude'  => 10.70171,
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         City::create([
             'country_id' => 1,
             'name'       => 'Kempten',
             'latitude'   => 47.728569,
             'longitude'  => 10.315784,
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         City::create([
             'country_id' => 1,
             'name'       => 'Pfronten',
             'latitude'   => 47.582359,
             'longitude'  => 10.5598,
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         City::create([
             'country_id' => 2,
             'name'       => 'Wien',
             'latitude'   => 48.20835,
             'longitude'  => 16.37250,
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         City::create([
             'country_id' => 3,
             'name'       => 'Zürich',
             'latitude'   => 47.41330,
             'longitude'  => 8.65639,
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         Venue::create([
-            'city_id' => 1,
-            'name'    => 'The Blue Studio Coworking (Füssen)',
-            'street'  => 'Teststraße 1',
-            'created_by'  => 1,
+            'city_id'    => 1,
+            'name'       => 'The Blue Studio Coworking (Füssen)',
+            'street'     => 'Teststraße 1',
+            'created_by' => 1,
         ]);
         Venue::create([
-            'city_id' => 2,
-            'name'    => 'The Blue Studio Coworking (Kempten)',
-            'street'  => 'Teststraße 2',
-            'created_by'  => 1,
+            'city_id'    => 2,
+            'name'       => 'The Blue Studio Coworking (Kempten)',
+            'street'     => 'Teststraße 2',
+            'created_by' => 1,
         ]);
         Venue::create([
-            'city_id' => 3,
-            'name'    => 'The Blue Studio Coworking (Pfronten)',
-            'street'  => 'Teststraße 3',
-            'created_by'  => 1,
+            'city_id'    => 3,
+            'name'       => 'The Blue Studio Coworking (Pfronten)',
+            'street'     => 'Teststraße 3',
+            'created_by' => 1,
         ]);
         Venue::create([
-            'city_id' => 4,
-            'name'    => 'Innsbruck',
-            'street'  => 'Innsbrucker Straße 1',
-            'created_by'  => 1,
+            'city_id'    => 4,
+            'name'       => 'Innsbruck',
+            'street'     => 'Innsbrucker Straße 1',
+            'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
-            'name'    => 'Markus Turm',
-            'active'  => true,
-            'created_by'  => 1,
+            'team_id'    => 1,
+            'name'       => 'Markus Turm',
+            'active'     => true,
+            'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
-            'name'    => 'Beppo',
-            'active'  => true,
-            'created_by'  => 1,
+            'team_id'    => 1,
+            'name'       => 'Beppo',
+            'active'     => true,
+            'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
-            'name'    => 'Helper',
-            'active'  => true,
-            'created_by'  => 1,
+            'team_id'    => 1,
+            'name'       => 'Helper',
+            'active'     => true,
+            'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
-            'name'    => 'Gigi',
-            'active'  => true,
-            'created_by'  => 1,
+            'team_id'    => 1,
+            'name'       => 'Gigi',
+            'active'     => true,
+            'created_by' => 1,
         ]);
         $category = Category::create([
             'name' => 'Präsenzunterricht',
@@ -196,56 +203,56 @@ class DatabaseSeeder extends Seeder
             'last_name'  => 'Reher',
         ]);
         CourseEvent::create([
-            'course_id' => 2,
-            'venue_id'  => 1,
-            'link'      => 'https://einundzwanzig.space',
-            'from'      => now()
+            'course_id'  => 2,
+            'venue_id'   => 1,
+            'link'       => 'https://einundzwanzig.space',
+            'from'       => now()
                 ->addDays(14)
                 ->startOfDay(),
-            'to'        => now()
+            'to'         => now()
                 ->addDays(14)
                 ->startOfDay()
                 ->addHour(),
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         CourseEvent::create([
-            'course_id' => 1,
-            'venue_id'  => 2,
-            'link'      => 'https://einundzwanzig.space',
-            'from'      => now()
+            'course_id'  => 1,
+            'venue_id'   => 2,
+            'link'       => 'https://einundzwanzig.space',
+            'from'       => now()
                 ->addDays(3)
                 ->startOfDay(),
-            'to'        => now()
+            'to'         => now()
                 ->addDays(3)
                 ->startOfDay()
                 ->addHour(),
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         CourseEvent::create([
-            'course_id' => 1,
-            'venue_id'  => 3,
-            'link'      => 'https://einundzwanzig.space',
-            'from'      => now()
+            'course_id'  => 1,
+            'venue_id'   => 3,
+            'link'       => 'https://einundzwanzig.space',
+            'from'       => now()
                 ->addDays(4)
                 ->startOfDay(),
-            'to'        => now()
+            'to'         => now()
                 ->addDays(4)
                 ->startOfDay()
                 ->addHour(),
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         CourseEvent::create([
-            'course_id' => 3,
-            'venue_id'  => 3,
-            'link'      => 'https://einundzwanzig.space',
-            'from'      => now()
+            'course_id'  => 3,
+            'venue_id'   => 3,
+            'link'       => 'https://einundzwanzig.space',
+            'from'       => now()
                 ->addDays(4)
                 ->startOfDay(),
-            'to'        => now()
+            'to'         => now()
                 ->addDays(4)
                 ->startOfDay()
                 ->addHour(),
-            'created_by'  => 1,
+            'created_by' => 1,
         ]);
         Registration::create([
             'course_event_id' => 1,
@@ -254,7 +261,7 @@ class DatabaseSeeder extends Seeder
         $library = Library::create([
             'name'           => 'Einundzwanzig',
             'language_codes' => ['de'],
-            'created_by'  => 1,
+            'created_by'     => 1,
         ]);
         $libraryItem = LibraryItem::create([
             'lecturer_id'   => 3,
@@ -262,7 +269,7 @@ class DatabaseSeeder extends Seeder
             'type'          => 'youtube_video',
             'language_code' => 'de',
             'value'         => 'https://www.youtube.com/watch?v=Oztd2Sja4k0',
-            'created_by'  => 1,
+            'created_by'    => 1,
         ]);
         $libraryItem->syncTagsWithType(['Bitcoin'], 'library_item');
         $library->libraryItems()
@@ -270,7 +277,7 @@ class DatabaseSeeder extends Seeder
         $library = Library::create([
             'name'           => 'Apricot',
             'language_codes' => ['de', 'en'],
-            'created_by'  => 1,
+            'created_by'     => 1,
         ]);
         $libraryItem = LibraryItem::create([
             'lecturer_id'   => 4,
@@ -278,7 +285,7 @@ class DatabaseSeeder extends Seeder
             'type'          => 'blog_article',
             'language_code' => 'de',
             'value'         => 'https://aprycot.media/blog/liebe-krypto-und-fiat-bros/',
-            'created_by'  => 1,
+            'created_by'    => 1,
         ]);
         $libraryItem->syncTagsWithType(['Bitcoin'], 'library_item');
         $library->libraryItems()
@@ -286,7 +293,7 @@ class DatabaseSeeder extends Seeder
         $library = Library::create([
             'name'           => 'Gigi',
             'language_codes' => ['de', 'en'],
-            'created_by'  => 1,
+            'created_by'     => 1,
         ]);
         $libraryItem = LibraryItem::create([
             'lecturer_id'   => 4,
@@ -294,7 +301,7 @@ class DatabaseSeeder extends Seeder
             'type'          => 'youtube_video',
             'language_code' => 'de',
             'value'         => 'https://www.youtube.com/watch?v=C7ynm0Zkwfk',
-            'created_by'  => 1,
+            'created_by'    => 1,
         ]);
         $libraryItem->syncTagsWithType(['Proof of Work'], 'library_item');
         $library->libraryItems()
@@ -303,7 +310,7 @@ class DatabaseSeeder extends Seeder
             'name'           => 'Einundzwanzig Dozenten',
             'is_public'      => false,
             'language_codes' => ['de', 'en'],
-            'created_by'  => 1,
+            'created_by'     => 1,
         ]);
         $libraryItem = LibraryItem::create([
             'lecturer_id'   => 4,
@@ -311,7 +318,7 @@ class DatabaseSeeder extends Seeder
             'type'          => 'downloadable_file',
             'language_code' => 'de',
             'value'         => null,
-            'created_by'  => 1,
+            'created_by'    => 1,
         ]);
         $libraryItem->syncTagsWithType(['Präsentationen'], 'library_item');
         $nonPublicLibrary->libraryItems()
@@ -319,10 +326,10 @@ class DatabaseSeeder extends Seeder
         Artisan::call(ReadAndSyncEinundzwanzigPodcastFeed::class);
         Artisan::call(SyncOpenBooks::class);
         Meetup::create([
-            'city_id' => 1,
-            'name'    => 'Einundzwanzig Kempten',
-            'link'    => 'https://t.me/EinundzwanzigKempten',
-            'created_by'  => 1,
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig Kempten',
+            'link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
         ]);
         MeetupEvent::create([
             'meetup_id'   => 1,

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -33,7 +34,9 @@ class Meetup extends Model implements HasMedia
     protected static function booted()
     {
         static::creating(function ($model) {
-            $model->created_by = auth()->id();
+            if (!$model->created_by) {
+                $model->created_by = auth()->id();
+            }
         });
     }
 
@@ -55,12 +58,12 @@ class Meetup extends Model implements HasMedia
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function city(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }

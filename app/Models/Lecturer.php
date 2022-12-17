@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -35,8 +37,12 @@ class Lecturer extends Model implements HasMedia
     protected static function booted()
     {
         static::creating(function ($model) {
-            $model->created_by = auth()->id();
-            $model->team_id = auth()->user()->current_team_id;
+            if (!$model->created_by) {
+                $model->created_by = auth()->id();
+            }
+            if (!$model->team_id) {
+                $model->team_id = auth()->user()->current_team_id;
+            }
         });
     }
 
@@ -72,22 +78,22 @@ class Lecturer extends Model implements HasMedia
                           ->usingLanguage('de');
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function team(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);
     }
 
-    public function courses(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
     }
 
-    public function libraryItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function libraryItems(): HasMany
     {
         return $this->hasMany(LibraryItem::class);
     }

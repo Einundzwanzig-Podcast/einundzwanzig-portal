@@ -13,9 +13,11 @@
             <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Finde Bitcoiner in deiner Stadt und lerne
                 sie auf einem der Meetups kennen. </p>
             @php
+                $focus = '';
                 $map = $country->code . '_merc';
                 if (!\File::exists(public_path('vendor/jvector/maps/' . $country->code . '.js'))) {
                     $map = 'europe_merc';
+                    $focus = 'focusOn: {lat:'.$country->latitude.',lng:'.$country->longitude.',scale:8,animate:true},';
                 }
             @endphp
             <div
@@ -26,6 +28,7 @@
                         let markers = {{ Js::from($markers) }};
 
                         $('#map').vectorMap({
+                            {{ $focus }}
                             zoomButtons : false,
                             zoomOnScroll: true,
                             map: '{{ $map }}',

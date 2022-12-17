@@ -25,6 +25,6 @@ class Participant extends Model
 
     public function registrations()
     {
-        return $this->hasMany(\App\Models\Registration::class);
+        return $this->hasMany(Registration::class);
     }
 }

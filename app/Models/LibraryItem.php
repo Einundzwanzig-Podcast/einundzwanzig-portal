@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Image\Manipulations;
@@ -40,7 +42,9 @@ class LibraryItem extends Model implements HasMedia, Sortable
     protected static function booted()
     {
         static::creating(function ($model) {
-            $model->created_by = auth()->id();
+            if (!$model->created_by) {
+                $model->created_by = auth()->id();
+            }
         });
     }
 
@@ -68,22 +72,22 @@ class LibraryItem extends Model implements HasMedia, Sortable
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function lecturer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function lecturer(): BelongsTo
     {
         return $this->belongsTo(Lecturer::class);
     }
 
-    public function episode(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function episode(): BelongsTo
     {
         return $this->belongsTo(Episode::class);
     }
 
-    public function libraries(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function libraries(): BelongsToMany
     {
         return $this->belongsToMany(Library::class);
     }

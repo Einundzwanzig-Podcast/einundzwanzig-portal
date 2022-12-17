@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -34,7 +35,9 @@ class BitcoinEvent extends Model implements HasMedia
     protected static function booted()
     {
         static::creating(function ($model) {
-            $model->created_by = auth()->id();
+            if (!$model->created_by) {
+                $model->created_by = auth()->id();
+            }
         });
     }
 
@@ -56,12 +59,12 @@ class BitcoinEvent extends Model implements HasMedia
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function venue(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function venue(): BelongsTo
     {
         return $this->belongsTo(Venue::class);
     }

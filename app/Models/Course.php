@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -18,25 +21,25 @@ class Course extends Model implements HasMedia
 
     /**
      * The attributes that aren't mass assignable.
-     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
+        'id'          => 'integer',
         'lecturer_id' => 'integer',
     ];
 
     protected static function booted()
     {
         static::creating(function ($model) {
-            $model->created_by = auth()->id();
+            if (!$model->created_by) {
+                $model->created_by = auth()->id();
+            }
         });
     }
 
@@ -61,22 +64,22 @@ class Course extends Model implements HasMedia
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
-    public function lecturer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function lecturer(): BelongsTo
     {
         return $this->belongsTo(Lecturer::class);
     }
 
-    public function courseEvents(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function courseEvents(): HasMany
     {
         return $this->hasMany(CourseEvent::class);
     }

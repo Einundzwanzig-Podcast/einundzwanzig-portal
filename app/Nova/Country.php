@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MultiSelect;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -76,6 +77,16 @@ class Country extends Resource
 
             Text::make(__('Code'), 'code')
                 ->rules('required', 'string'),
+
+            Number::make(__('Latitude'), 'latitude')
+                  ->rules('required', 'numeric')
+                  ->step(0.000001)
+                  ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
+
+            Number::make(__('Longitude'), 'longitude')
+                  ->rules('required', 'numeric')
+                  ->step(0.000001)
+                  ->help('<a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>'),
 
             HasMany::make(__('Cities'), 'cities', City::class),
         ];

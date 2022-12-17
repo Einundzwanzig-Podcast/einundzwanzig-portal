@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -37,7 +39,9 @@ class Venue extends Model implements HasMedia
     protected static function booted()
     {
         static::creating(function ($model) {
-            $model->created_by = auth()->id();
+            if (!$model->created_by) {
+                $model->created_by = auth()->id();
+            }
         });
     }
 
@@ -70,12 +74,12 @@ class Venue extends Model implements HasMedia
                           ->usingLanguage('de');
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function city(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }
@@ -90,7 +94,7 @@ class Venue extends Model implements HasMedia
         return $this->hasManyDeepFromRelations($this->events(), (new CourseEvent())->course());
     }
 
-    public function courseEvents(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function courseEvents(): HasMany
     {
         return $this->hasMany(CourseEvent::class);
     }
