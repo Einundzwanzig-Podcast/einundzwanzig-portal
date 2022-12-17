@@ -79,6 +79,12 @@
                     </div>
                 </div>
                 <div class="w-1/2">
+                    @php
+                        $map = $country->code . '_merc';
+                        if (!\File::exists(public_path('vendor/jvector/maps/' . $country->code . '.js'))) {
+                            $map = 'europe_merc';
+                        }
+                    @endphp
                     <div
                         wire:ignore
                         class="w-full flex justify-center"
@@ -90,7 +96,7 @@
                                 $('#map').vectorMap({
                                     zoomButtons : false,
                                     zoomOnScroll: true,
-                                    map: '{{ $country->code }}_merc',
+                                    map: '{{ $map }}',
                                     backgroundColor: 'transparent',
                                     markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
                                     onMarkerClick: function(event, index) {

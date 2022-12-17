@@ -12,6 +12,12 @@
             </h1>
             <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Finde Bitcoiner in deiner Stadt und lerne
                 sie auf einem der Meetups kennen. </p>
+            @php
+                $map = $country->code . '_merc';
+                if (!\File::exists(public_path('vendor/jvector/maps/' . $map . '.js'))) {
+                    $map = 'europe-merc';
+                }
+            @endphp
             <div
                 wire:ignore
                 class="w-full flex justify-center"
@@ -22,7 +28,7 @@
                         $('#map').vectorMap({
                             zoomButtons : false,
                             zoomOnScroll: true,
-                            map: '{{ $country->code }}_merc',
+                            map: '{{ $map }}',
                             backgroundColor: 'transparent',
                             markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
                             onMarkerClick: function(event, index) {
