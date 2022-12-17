@@ -23,6 +23,12 @@ Route::middleware('auth:sanctum')
          return $request->user();
      });
 
+Route::middleware([])
+    ->as('api.')
+     ->group(function () {
+         Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
+     });
+
 Route::get('/lnurl-auth-callback', function (\Illuminate\Http\Request $request) {
     if (lnurl\auth($request->k1, $request->sig, $request->key)) {
         // find User by $wallet_public_key

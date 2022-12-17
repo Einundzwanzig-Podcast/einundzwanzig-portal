@@ -89,13 +89,15 @@
                         placeholder="Land wechseln"
                         wire:model="c"
                         :clearable="false"
-                    >
-                        @foreach($countries as $country)
-                            <x-select.user-option
-                                src="{{ asset('vendor/blade-country-flags/4x3-'.$country->code.'.svg') }}"
-                                label="{{ $country->name }}" value="{{ $country->code }}"/>
-                        @endforeach
-                    </x-select>
+                        :searchable="true"
+                        :async-data="route('api.countries.index')"
+                        option-label="name"
+                        option-value="code"
+                        :template="[
+                            'name'   => 'user-option',
+                            'config' => ['src' => 'flag']
+                        ]"
+                    />
                 </div>
                 @auth
                     <div></div>
