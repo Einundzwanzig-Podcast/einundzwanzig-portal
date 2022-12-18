@@ -41,7 +41,7 @@ class LanguageController extends Controller
                            $toTranslate = Translation::query()
                                                      ->where('language_id', $language->id)
                                                      ->count();
-                           $language->name = $language->name ? __($language->name) : $language->language;
+                           $language->name = $language->name ? trans($language->name) : $language->language;
                            $language->description = $language->language === 'en' ? '100% translated' : round($translated / $toTranslate * 100).'% translated';
 
                            return $language;
