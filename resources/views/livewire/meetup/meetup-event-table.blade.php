@@ -7,10 +7,14 @@
             <div class="flex items-start">
                 <div class="w-full sm:w-1/2">
 
+                    @php
+                        $locale = \Illuminate\Support\Facades\Cookie::get('lang', 'de');
+                    @endphp
+
                     <link rel="stylesheet" type="text/css"
                           href="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.css"/>
                     <script src="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.js"></script>
-                    <script src="https://unpkg.com/js-year-calendar@latest/locales/js-year-calendar.de.js"></script>
+                    <script src="https://unpkg.com/js-year-calendar@latest/locales/js-year-calendar.{{ $locale }}.js"></script>
 
                     <style>
                         .calendar .calendar-header {
@@ -35,7 +39,6 @@
                             background: #222;
                         }
                     </style>
-
                     <div
                         wire:ignore
                         x-data="{
@@ -48,7 +51,7 @@
 
                             new Calendar(this.$refs.calendar, {
                                 style: 'background',
-                                language: 'de',
+                                language: '{{ $locale }}',
                                 startYear: {{ $year }},
                                 dataSource: events,
                                 yearChanged: function(e) {

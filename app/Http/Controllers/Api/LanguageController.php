@@ -43,9 +43,9 @@ class LanguageController extends Controller
                              return $language;
                          })
                          ->toArray();
-        foreach ($array as &$item) {
-            //$item['translated'] = __($item['name']);
-            $item['description'] = $item['language'] === 'en'
+        foreach ($array as $key => $item) {
+            $array[$key]['name'] =  empty($item['name']) ? $item['language'] : $item['name'];
+            $array[$key]['description'] = $item['language'] === 'en'
                 ? '100% translated'
                 : round($item['translatedCount'] / $item['toTranslate'] * 100).'% translated';
         }
