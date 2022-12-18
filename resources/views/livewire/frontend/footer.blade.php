@@ -39,10 +39,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/languages" target="_blank"
+                    <a href="/languages/{{ $language->language }}/translations" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
                         <i class="fa fa-thin fa-language mr-1"></i>
-                        {{ __('Translate (:lang :percent%)', ['lang' => $language->language, 'percent' => $percentTranslated]) }}
+                        {{ __('Translate (:lang :percent%)', ['lang' => $language->name ? $language->name : $language->language, 'percent' => $percentTranslated]) }}
                     </a>
                 </li>
                 {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">FAQ's</a></li>--}}
