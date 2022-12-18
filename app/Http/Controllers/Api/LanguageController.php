@@ -20,7 +20,7 @@ class LanguageController extends Controller
                        ->select('id', 'name', 'language')
                        ->orderBy('name')
                        ->with([
-                           'translations'
+                           'translations:value,language_id',
                        ])
                        ->when(
                            $request->search,
@@ -41,6 +41,7 @@ class LanguageController extends Controller
                            $toTranslate = Translation::query()
                                                      ->where('language_id', $language->id)
                                                      ->count();
+                           $language->name = $language->name ? __($language->name) : $language->language;
                            $language->description = $language->language === 'en' ? '100% translated' : round($translated / $toTranslate * 100).'% translated';
 
                            return $language;

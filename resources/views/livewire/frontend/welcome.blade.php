@@ -33,7 +33,7 @@
                         :clearable="false"
                         :searchable="true"
                         :async-data="route('api.languages.index')"
-                        option-label="language"
+                        option-label="name"
                         option-value="language"
                     />
                 </div>
