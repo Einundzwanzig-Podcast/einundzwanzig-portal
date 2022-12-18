@@ -44,10 +44,10 @@ class LanguageController extends Controller
                          })
                          ->toArray();
         foreach ($array as &$item) {
-            $item['translated'] = __($item['name']);
+            //$item['translated'] = __($item['name']);
             $item['description'] = $item['language'] === 'en'
-                ? __('100% translated')
-                : round($item['translatedCount'] / $item['toTranslate'] * 100).__('% translated');
+                ? '100% translated'
+                : round($item['translatedCount'] / $item['toTranslate'] * 100).'% translated';
         }
 
         return response()->json($array);
