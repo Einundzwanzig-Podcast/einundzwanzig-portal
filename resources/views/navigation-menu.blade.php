@@ -15,45 +15,39 @@
 
                     @if(str(request()->route()->getName())->contains('meetup.'))
                         <x-jet-nav-link href="/nova/resources/meetups" target="_blank">
-                            {{ __('Meetup eintragen') }}
+                            {{ __('Submit Meetup') }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="/nova/resources/meetup-events" target="_blank">
-                            {{ __('Meetup-Termin eintragen') }}
+                            {{ __('Register Meetup date') }}
                         </x-jet-nav-link>
                     @endif
 
                     @if(str(request()->route()->getName())->contains('school.'))
                         <x-jet-nav-link href="/nova/resources/lecturers" target="_blank">
-                            {{ __('Dozent eintragen') }}
+                            {{ __('Register lecturer') }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="/nova/resources/courses" target="_blank">
-                            {{ __('Kurs eintragen') }}
+                            {{ __('Register course') }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="/nova/resources/course-events" target="_blank">
-                            {{ __('Kurs-Termin eintragen') }}
+                            {{ __('Register course date') }}
                         </x-jet-nav-link>
                     @endif
 
                     @if(str(request()->route()->getName())->contains('library.'))
                         <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
-                            {{ __('Inhalte eintragen') }}
-                        </x-jet-nav-link>
-                    @endif
-
-                    @if(str(request()->route()->getName())->contains('bookCases.'))
-                        <x-jet-nav-link href="/nova/resources/book-cases" target="_blank">
-                            {{ __('Bücher-Schränke verwalten') }}
+                            {{ __('Submit contents') }}
                         </x-jet-nav-link>
                     @endif
 
                     @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
                         <x-jet-nav-link href="/nova/resources/bitcoin-events" target="_blank">
-                            {{ __('Veranstaltung eintragen') }}
+                            {{ __('Register event') }}
                         </x-jet-nav-link>
                     @endif
 
                     <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        {{ __('Mein Profil') }}
+                        {{ __('My profile') }}
                     </x-jet-nav-link>
                 </div>
             </div>

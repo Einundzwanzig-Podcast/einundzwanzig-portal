@@ -62,7 +62,7 @@ class Lecturer extends Resource
 
     public function subtitle()
     {
-        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+        return __('Created by: :name', ['name' => $this->createdBy->name]);
     }
 
     /**
@@ -83,7 +83,7 @@ class Lecturer extends Resource
 
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
-                  ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
+                  ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.'),
 
             Text::make('Name')
                 ->rules('required', 'string'),
@@ -98,7 +98,7 @@ class Lecturer extends Resource
 
             Markdown::make('Description')
                     ->alwaysShow()
-                    ->help('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.'),
+                    ->help('Markdown is allowed. You can paste images from the "Images" field here. Use the link icon of the images for the urls after clicking "Update and continue".'),
 
             BelongsTo::make('Team')
                      ->exceptOnForms(),

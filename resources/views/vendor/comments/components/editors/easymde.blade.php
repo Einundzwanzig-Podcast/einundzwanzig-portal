@@ -12,9 +12,9 @@
     <div wire:ignore>
         <textarea placeholder="{{ $placeholder ?? '' }}"></textarea>
     </div>
-    
+
     <div class="comments-form-editor-tip">
-        You can use <a href="https://spatie.be/markdown" target="_blank" rel="nofollow noopener noreferrer">Markdown</a>
+        {!! __('You can use <a href="https://spatie.be/markdown" target="_blank" rel="nofollow noopener noreferrer">Markdown</a>') !!}
     </div>
 </div>
 

@@ -10,7 +10,7 @@
 
             <div class="my-4">
                 <div class="border-b border-gray-200 pb-5">
-                    <h3 class="text-lg font-medium leading-6 text-gray-200">Bisher waren hier</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('So far here were') }}</h3>
                 </div>
                 <ul role="list" class="divide-y divide-gray-200">
                     @foreach($currentModal?->orangePills ?? [] as $orangePill)
@@ -18,7 +18,7 @@
                             <img class="h-10 w-10 rounded-full" src="{{ $orangePill->user->profile_photo_url }}" alt="">
                             <div class="ml-3">
                                 <p class="text-sm text-gray-200">
-                                    {{ $orangePill->user->name }} hat am {{ $orangePill->date->asDateTime() }} {{ $orangePill->amount }} Bitcoin-Bücher hinzugefügt
+                                    {{ __('On :asDateTime :name has added :amount Bitcoin books.', ['asDateTime' => $orangePill->date->asDateTime(), 'name' => $orangePill->user->name, 'amount' => $orangePill->amount]) }}
                                 </p>
                             </div>
                         </li>
@@ -32,24 +32,24 @@
                     min="1"
                     type="number"
                     wire:model.debounce="orangepill.amount"
-                    label="Anzahl der Bücher"
-                    placeholder="Anzahl der Bücher"
-                    corner-hint="Wie viele Bitcoin-Bücher hast du reingestellt?"
+                    label="{{ __('Number of books') }}"
+                    placeholder="{{ __('Number of books') }}"
+                    corner-hint="{{ __('How many bitcoin books have you put in?') }}"
                 />
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <x-datetime-picker
-                    label="Datum"
-                    placeholder="Datum"
+                    label="{{ __('Date') }}"
+                    placeholder="{{ __('Date') }}"
                     display-format="DD.MM.YYYY"
                     wire:model.defer="orangepill.date"
                     without-time
-                    corner-hint="Wann hast du Bitcoin-Bücher reingestellt?"
+                    corner-hint="{{ __('When did you put bitcoin books in?') }}"
                 />
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <x-textarea wire:model.defer="orangepill.comment" label="Kommentar" placeholder="Kommentar"
-                            corner-hint="Zum Beispiel welche Bücher du reingestellt hast."/>
+                <x-textarea wire:model.defer="orangepill.comment" label="{{ __('Comment') }}" placeholder="{{ __('Comment') }}"
+                            corner-hint="{{ __('For example, what books you put in.') }}"/>
             </div>
         </div>
     </x-slot>

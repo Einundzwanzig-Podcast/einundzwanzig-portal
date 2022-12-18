@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 
-class SetTimezoneMiddleware
+class SetTimezoneForNovaMiddleware
 {
     /**
      * Handle an incoming request.
@@ -24,16 +24,11 @@ class SetTimezoneMiddleware
             && $timezone = $request->user()->timezone
         ) {
             config([
-                'app.timezone'      => $timezone,
                 'app.user-timezone' => $timezone,
             ]);
 
             return $next($request);
         }
-        config([
-            'app.timezone'      => 'Europe/Berlin',
-            'app.user-timezone' => 'Europe/Berlin',
-        ]);
 
         return $next($request);
     }

@@ -50,7 +50,7 @@ class Venue extends Resource
 
     public function subtitle()
     {
-        return __('Stadt: :name', ['name' => $this->city->name]);
+        return __('City: :name', ['name' => $this->city->name]);
     }
 
     /**

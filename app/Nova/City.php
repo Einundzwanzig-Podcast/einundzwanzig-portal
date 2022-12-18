@@ -51,7 +51,7 @@ class City extends Resource
 
     public function subtitle()
     {
-        return __('Land: :name', ['name' => $this->country->name]);
+        return __('Country: :name', ['name' => $this->country->name]);
     }
 
     /**

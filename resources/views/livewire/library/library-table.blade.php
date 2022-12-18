@@ -8,9 +8,9 @@
             <div class="relative border-b border-gray-200 pb-5 sm:pb-0">
                 <div class="md:flex md:items-center md:justify-between">
                     @if(request()->route()->getName() === 'library.table.lecturer')
-                        <h3 class="text-2xl font-medium leading-6 text-gray-200">Dozenten-Bibliotheken</h3>
+                        <h3 class="text-2xl font-medium leading-6 text-gray-200">{{ __('Lecturer Libraries') }}</h3>
                     @else
-                        <h3 class="text-2xl font-medium leading-6 text-gray-200">Bibliotheken</h3>
+                        <h3 class="text-2xl font-medium leading-6 text-gray-200">{{ __('Libraries') }}</h3>
                     @endif
                 </div>
                 <div class="mt-4">

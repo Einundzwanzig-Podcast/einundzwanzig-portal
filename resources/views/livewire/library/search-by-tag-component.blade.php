@@ -36,14 +36,14 @@
                             class="hidden p-0 m-0 text-sm leading-3 text-left text-blue-100 align-baseline border-0 border-solid md:block md:text-blue-100 whitespace-nowrap"
                         >
                             {{ $tag->libraryItems->pluck('lecturer.name')->unique()->count() }}
-                            Ersteller
+                            {{ __('Creator') }}
                             <span
                                 class="inline-block relative top-px py-0 px-1 m-0 text-xs leading-4 align-baseline border-0 border-solid"
                             >
                               •
                             </span>
                             {{ $tag->library_items_count }}
-                            Inhalte
+                            {{ __('Contents') }}
                         </div>
                     </div>
                 </div>

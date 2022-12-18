@@ -23,7 +23,7 @@ return [
     |
     */
     'route_group_config'  => [
-        'middleware' => 'can:translate',
+        'middleware' => 'translation',
     ],
 
     /*

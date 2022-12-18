@@ -61,12 +61,12 @@ class LibraryItemTable extends DataTableComponent
                             Library::query()
                                    ->where('is_public', true)
                                    ->get()
-                                   ->prepend(new Library(['name' => 'Alle']))
+                                   ->prepend(new Library(['name' => '*']))
                                    ->pluck('name', 'name')
                                    ->toArray(),
                         )
                         ->filter(function (Builder $builder, string $value) {
-                            if ($value === 'Alle') {
+                            if ($value === '*') {
                                 return;
                             }
                             if (str($value)->contains(',')) {
@@ -87,11 +87,11 @@ class LibraryItemTable extends DataTableComponent
                                        ->toArray()
                             )
                                 ->mapWithKeys(fn($value, $key) => [$value['value'] => $value['label']])
-                                ->prepend('Alle', '')
+                                ->prepend('*', '')
                                 ->toArray()
                         )
                         ->filter(function (Builder $builder, string $value) {
-                            if ($value === 'Alle') {
+                            if ($value === '*') {
                                 return;
                             }
                             $builder->where('library_items.type', $value);
@@ -149,7 +149,7 @@ class LibraryItemTable extends DataTableComponent
 
         return LibraryItem::query()
                           ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))
-                          ->when($this->currentTab !== 'Alle', fn($query) => $query->whereHas('libraries',
+                          ->when($this->currentTab !== '*', fn($query) => $query->whereHas('libraries',
                               fn($query) => $query->where('libraries.name', $this->currentTab)))
                           ->withCount([
                               'lecturer',

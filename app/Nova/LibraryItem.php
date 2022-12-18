@@ -58,7 +58,7 @@ class LibraryItem extends Resource
 
     public function subtitle()
     {
-        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+        return __('Created by: :name', ['name' => $this->createdBy->name]);
     }
 
     /**
@@ -98,7 +98,7 @@ class LibraryItem extends Resource
 
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
-                  ->help('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.'),
+                  ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.'),
 
             Files::make(__('Downloadable File'), 'single_file')
                  ->help('Für neue Datei-Typen bitte bei den Admins melden. (Derzeit: PDF)'),
@@ -125,7 +125,7 @@ class LibraryItem extends Resource
 
             Code::make(__('Value'), 'value')
                 ->rules('nullable', 'string')
-                ->help('Hier bitte die URL zum Video einfügen, oder den Link zum Blog-Artikel, oder den Link zum Buch, oder das Markdown selbst einfügen.'),
+                ->help('Please paste the URL to the video here, or the link to the blog article, or the link to the book, or the Markdown itself.'),
 
             BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class)->searchable()->withSubtitles(),
 

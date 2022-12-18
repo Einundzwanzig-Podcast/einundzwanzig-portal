@@ -10,10 +10,10 @@ class LibraryTable extends Component
 {
     public Country $country;
 
-    public $currentTab = 'Alle';
+    public $currentTab = '*';
 
     protected $queryString = [
-        'currentTab' => ['except' => 'Alle'],
+        'currentTab' => ['except' => '*'],
     ];
 
     public function render()
@@ -30,7 +30,7 @@ class LibraryTable extends Component
                                         ->get();
         $tabs = collect([
             [
-                'name' => 'Alle',
+                'name' => '*',
             ]
         ]);
         foreach ($libraries as $library) {

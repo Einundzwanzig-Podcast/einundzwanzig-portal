@@ -52,9 +52,9 @@ class EventTable extends DataTableComponent
                       ->filter(function (Builder $builder, string $value) {
                           $builder->whereIn('course_events.id', str($value)->explode(','));
                       }),
-            TextFilter::make('Stadt')
+            TextFilter::make(__('City'))
                       ->config([
-                          'placeholder' => __('Suche Stadt'),
+                          'placeholder' => __('Search City'),
                       ])
                       ->filter(function (Builder $builder, string $value) {
                           if (str($value)->contains(',')) {
@@ -68,29 +68,29 @@ class EventTable extends DataTableComponent
                                   fn($query) => $query->where('cities.name', 'ilike', "%$value%"));
                           }
                       }),
-            TextFilter::make('Veranstaltungs-Ort', 'venue')
+            TextFilter::make(__('Venue'), 'venue')
                       ->config([
-                          'placeholder' => __('Suche Veranstaltungs-Ort'),
+                          'placeholder' => __('Search Venue'),
                       ])
                       ->filter(function (Builder $builder, string $value) {
                           $builder->whereHas('venue',
                               fn($query) => $query->where('venues.name', 'ilike', "%$value%"));
                       }),
-            TextFilter::make('Kurs')
+            TextFilter::make(__('Course'))
                       ->config([
-                          'placeholder' => __('Suche Kurs'),
+                          'placeholder' => __('Search Course'),
                       ])
                       ->filter(function (Builder $builder, string $value) {
                           $builder->whereHas('course',
                               fn($query) => $query->where('courses.name', 'ilike', "%$value%"));
                       }),
-            TextFilter::make('Kurs by ID', 'course_id')
+            TextFilter::make('Course by ID', 'course_id')
                       ->hiddenFromMenus()
                       ->filter(function (Builder $builder, string $value) {
                           $builder->whereHas('course',
                               fn($query) => $query->where('courses.id', '=', $value));
                       }),
-            MultiSelectFilter::make('Art')
+            MultiSelectFilter::make(__('Type'))
                              ->options(
                                  Category::query()
                                          ->pluck('name', 'id')
@@ -100,7 +100,7 @@ class EventTable extends DataTableComponent
                                  $builder->whereHas('course.categories',
                                      fn($query) => $query->whereIn('categories.id', $values));
                              }),
-            SelectFilter::make('Dozent')
+            SelectFilter::make(__('Lecturer'))
                         ->options(
                             Lecturer::query()
                                     ->pluck('name', 'id')
@@ -116,31 +116,31 @@ class EventTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Stadt", "venue.city.name")
+            Column::make(_('City'), "venue.city.name")
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make("Veranstaltungs-Ort", "venue.name")
+            Column::make(__('Venue'), "venue.name")
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make('Dozent', "course.lecturer.name")
+            Column::make(__('Lecturer'), "course.lecturer.name")
                   ->label(
                       fn($row, Column $column) => view('columns.events.lecturer')->withRow($row)
                   )
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make("Kurs", "course.name")
+            Column::make(__('Course'), "course.name")
                   ->sortable(),
-            Column::make("Art")
+            Column::make(__('Type'))
                   ->label(
                       fn($row, Column $column) => view('columns.events.categories')->withRow($row)
                   )
                   ->collapseOnMobile(),
-            Column::make("Von", "from")
+            Column::make(__('From'), "from")
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
                   )
                   ->sortable(),
-            Column::make("Bis", "to")
+            Column::make(__('To'), "to")
                   ->format(
                       fn($value, $row, Column $column) => $value->asDateTime()
                   )
@@ -152,7 +152,7 @@ class EventTable extends DataTableComponent
                   )
                   ->html()
                   ->sortable(),*/
-            Column::make('Aktion')
+            Column::make(__('Actions'))
                   ->label(
                       fn($row, Column $column) => view('columns.events.action')->withRow($row)
                   )

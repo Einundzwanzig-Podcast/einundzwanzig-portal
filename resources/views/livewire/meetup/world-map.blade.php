@@ -5,13 +5,14 @@
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row">
             <h1 class="mb-6 text-5xl font-extrabold leading-none tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
-                Bitcoiner <span
-                    class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">Meetups</span><br
+                {{ __('Bitcoiner') }} <span
+                    class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Meetups') }}</span><br
                     class="lg:block hidden">
-                Plebs together strong 💪
+                {{ __('Plebs together strong 💪') }}
             </h1>
-            <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Finde Bitcoiner in deiner Stadt und lerne
-                sie auf einem der Meetups kennen. </p>
+            <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">
+                {{ __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!') }}
+            </p>
         </div>
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
             <div

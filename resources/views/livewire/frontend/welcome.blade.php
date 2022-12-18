@@ -6,15 +6,15 @@
              src="https://cdn.devdojo.com/tails/images/swirl-white.svg">
         <div class="container relative z-10 px-4 mx-auto">
             <div class="w-full mb-8 sm:w-1/2 md:w-3/4 sm:pr-4 md:pr-12 sm:-mb-32 md:-mb-24 lg:-mb-36 xl:-mb-28">
-                <h2 class="tracking-widest text-amber-500 uppercase">Einundzwanzig</h2>
-                <p class="my-3 text-5xl font-bold tracking-tighter text-amber-500 lg:text-6xl">Bitcoin Portal</p>
+                <h2 class="tracking-widest text-amber-500 uppercase">{{ __('Einundzwanzig') }}</h2>
+                <p class="my-3 text-5xl font-bold tracking-tighter text-amber-500 lg:text-6xl">{{ __('Bitcoin Portal') }}</p>
                 <p class="max-w-sm text-lg text-gray-200">
-                    {{ __('Eine Bitcoin Community für alle.') }}
+                    {{ __('A Bitcoin community for all.') }}
                 </p>
-                <div class="max-w-sm text-lg text-gray-200">
+                <div class="max-w-sm text-lg text-gray-200 space-x-2 flex flex-row">
                     <x-select
-                        label="Land wechseln"
-                        placeholder="Land wechseln"
+                        label="{{ __('Change country') }}"
+                        placeholder="{{ __('Change country') }}"
                         wire:model="c"
                         :clearable="false"
                         :searchable="true"
@@ -25,6 +25,16 @@
                             'name'   => 'user-option',
                             'config' => ['src' => 'flag']
                         ]"
+                    />
+                    <x-select
+                        label="{{ __('Change language') }}"
+                        placeholder="{{ __('Change language') }}"
+                        wire:model="l"
+                        :clearable="false"
+                        :searchable="true"
+                        :async-data="route('api.languages.index')"
+                        option-label="language"
+                        option-value="language"
                     />
                 </div>
             </div>
@@ -45,9 +55,9 @@
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Plebs together strong</span>
+                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Plebs together strong') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Meetups
+                                {{ __('Meetups') }}
                             </h4>
                         </div>
                     </a>
@@ -69,9 +79,9 @@
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Education</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Education') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Kurse
+                                {{ __('Courses') }}
                             </h4>
                         </div>
                     </a>
@@ -90,9 +100,9 @@
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Content</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ _('Content') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Bibliothek
+                                {{ __('Library') }}
                             </h4>
                         </div>
                     </a>
@@ -114,9 +124,9 @@
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Worldwide</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Worldwide') }}</span>
                             <h4 class="text-2xl sm:text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Veranstaltungen
+                                {{ __('Events') }}
                             </h4>
                         </div>
                     </a>
@@ -138,9 +148,9 @@
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Reading</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Reading') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Bücher-Schränke
+                                {{ __('Bookcases') }}
                             </h4>
                         </div>
                     </a>

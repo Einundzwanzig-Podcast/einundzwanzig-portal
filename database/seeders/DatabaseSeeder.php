@@ -26,6 +26,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
+use JoeDixon\Translation\Console\Commands\SynchroniseMissingTranslationKeys;
+use JoeDixon\Translation\Console\Commands\SynchroniseTranslationsCommand;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -41,6 +44,10 @@ class DatabaseSeeder extends Seeder
             'name'       => 'super-admin',
             'guard_name' => 'web',
         ]);
+        Permission::create([
+            'name'       => 'translate',
+            'guard_name' => 'web',
+        ]);
         $user = User::create([
             'name'              => 'Admin',
             'email'             => 'admin@einundzwanzig.space',
@@ -54,6 +61,7 @@ class DatabaseSeeder extends Seeder
             'user_id'       => $user->id,
             'personal_team' => true,
         ]);
+        $user->givePermissionTo('translate');
         $user->current_team_id = $team->id;
         $user->save();
         Country::create([
@@ -360,5 +368,6 @@ Ticket presale begins on December 21, 2022 at 9:21 p.m. Be quick - there are a l
             'link'        => 'https://bconf.de/en/',
             'created_by'  => 1,
         ]);
+        Artisan::call(SynchroniseMissingTranslationKeys::class);
     }
 }

@@ -16,7 +16,7 @@
 
             <div class="flex items-center justify-end mb-4">
                 <x-button icon="arrow-left" secondary class="ml-4" href="/">
-                    {{ __('Zurück zur Webseite') }}
+                    {{ __('Back to the website') }}
                 </x-button>
             </div>
 

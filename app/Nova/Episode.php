@@ -78,7 +78,7 @@ class Episode extends Resource
 
     public function subtitle()
     {
-        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+        return __('Created by: :name', ['name' => $this->createdBy->name]);
     }
 
     /**

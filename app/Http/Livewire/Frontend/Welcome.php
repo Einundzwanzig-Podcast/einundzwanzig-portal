@@ -3,31 +3,43 @@
 namespace App\Http\Livewire\Frontend;
 
 use App\Models\Country;
+use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class Welcome extends Component
 {
     public string $c = 'de';
+    public string $l = 'de';
 
-    protected $queryString = ['c'];
+    protected $queryString = ['c', 'l'];
 
     public function rules()
     {
         return [
             'c' => 'required',
+            'l' => 'required',
         ];
+    }
+
+    public function mount()
+    {
+        $this->l = Cookie::get('lang') ?: config('app.locale');
     }
 
     public function updated($property, $value)
     {
         $this->validate();
 
-        return to_route('welcome', ['c' => $value]);
+        Cookie::queue('lang', $this->l, 60 * 24 * 365);
+
+        return to_route('welcome', ['c' => $this->c, 'l' => $this->l]);
     }
 
     public function render()
     {
+        Cookie::queue('lang', $this->l, 60 * 24 * 365);
+
         return view('livewire.frontend.welcome', [
             'countries' => Country::get(),
         ])->layout('layouts.guest', [

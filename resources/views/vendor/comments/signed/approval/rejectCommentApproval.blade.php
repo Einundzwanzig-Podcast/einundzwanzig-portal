@@ -1,6 +1,6 @@
 <x-comments::signed-layout>
 
-    Do you want to reject the comment?
+    {{ __('Do you want to reject the comment?') }}
 
     <form class="form" method="POST">
         @csrf

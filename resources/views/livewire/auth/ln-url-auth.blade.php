@@ -7,7 +7,7 @@
 
         <div class="flex items-center justify-end mb-4">
             <x-button icon="arrow-left" secondary class="ml-4" href="/">
-                {{ __('Zurück zur Webseite') }}
+                {{ __('Back to the website') }}
             </x-button>
         </div>
 
@@ -31,7 +31,7 @@
                         xs
                     >
                         <i class="fa fa-thin fa-clipboard"></i>
-                        Kopiere
+                        {{ __('Copy') }}
                     </x-button>
                 </div>
             </div>
@@ -41,18 +41,18 @@
             <div class="flex items-center justify-end mt-4">
 
                 <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
-                    {{ __('E-Mail login') }}
+                    {{ __('Email login') }}
                 </x-button>
 
                 <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmailSignup">
-                    {{ __('E-Mail Registrierung') }}
+                        {{ __('Email registration') }}
                 </x-button>
 
             </div>
         @endif
 
         <div class="pt-12">
-            <p class="text-xs">Zeus not working: <a target="_blank" href="https://github.com/ZeusLN/zeus/issues/1045">https://github.com/ZeusLN/zeus/issues/1045</a>
+            <p class="text-xs">{{ __('Zeus bug:') }} <a target="_blank" href="https://github.com/ZeusLN/zeus/issues/1045">https://github.com/ZeusLN/zeus/issues/1045</a>
             </p>
         </div>
     </div>

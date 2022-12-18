@@ -102,7 +102,7 @@
                             <button class="rounded-md inline-flex text-secondary-400 hover:text-secondary-500 focus:outline-none"
                                     x-show="notification.closeButton"
                                     x-on:click="closeNotification(notification)">
-                                <span class="sr-only">Close</span>
+                                <span class="sr-only">{{ __('Close') }}</span>
                                 <x-dynamic-component
                                         :component="WireUi::component('icon')"
                                         class="h-5 w-5"

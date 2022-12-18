@@ -29,6 +29,12 @@ Route::middleware([])
          Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
      });
 
+Route::middleware([])
+    ->as('api.')
+     ->group(function () {
+         Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
+     });
+
 Route::get('/lnurl-auth-callback', function (\Illuminate\Http\Request $request) {
     if (lnurl\auth($request->k1, $request->sig, $request->key)) {
         // find User by $wallet_public_key

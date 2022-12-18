@@ -201,5 +201,20 @@
     "You may delete any of your existing tokens if they are no longer needed.": "You may delete any of your existing tokens if they are no longer needed.",
     "You may not delete your personal team.": "You may not delete your personal team.",
     "You may not leave a team that you created.": "You may not leave a team that you created.",
-    "Your email address is unverified.": "Your email address is unverified."
+    "Your email address is unverified.": "Your email address is unverified.",
+    "Perimeter search course date :name (100km)": "Perimeter search course date :name (100km)",
+    "Unsubscribe from receive notification about :commentableName": "Unsubscribe from receive notification about :commentableName",
+    "You can use <a href=\"https://spatie.be/markdown\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Markdown</a>": "You can use <a href=\"https://spatie.be/markdown\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Markdown</a>",
+    "Github": "Github",
+    "On :asDateTime :name has added :amount Bitcoin books.": "On :asDateTime :name has added :amount Bitcoin books.",
+    "\uD83D\uDC8A Orange Pill Now": "\uD83D\uDC8A Orange Pill Now",
+    "Details": "Details",
+    "The comment has been rejected.": "The comment has been rejected.",
+    "Do you want to reject the comment?": "Do you want to reject the comment?",
+    "You have been unsubscribed.": "You have been unsubscribed.",
+    "You have been unsubscribed from every comment notification.": "You have been unsubscribed from every comment notification.",
+    "Do you want to unsubscribe from every comment notification?": "Do you want to unsubscribe from every comment notification?",
+    "Approve": "Approve",
+    "Approve2": "Approve",
+    "Do you want to unsubscribe?": "Do you want to unsubscribe?"
 }

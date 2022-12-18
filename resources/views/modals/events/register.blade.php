@@ -45,14 +45,14 @@
                             <h2 class="text-3xl font-bold tracking-tight text-white"
                                 id="join-heading">{{ __('Bis') }}: {{ $currentModal?->to->asDateTime() }}</h2>
                             <a class="block w-full rounded-md border border-transparent bg-white py-3 px-5 text-center text-base font-medium text-amber-500 shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
-                               href="{{ $currentModal?->link }}" target="_blank">Link zur Anmeldung</a>
+                               href="{{ $currentModal?->link }}" target="_blank">{{ __('Link to the registration') }}</a>
                             <div class="prose-xl prose-white">
                                 <x-markdown>
                                     {{ $currentModal?->course->description }}
                                 </x-markdown>
                             </div>
                             <a class="block w-full rounded-md border border-transparent bg-white py-3 px-5 text-center text-base font-medium text-amber-500 shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
-                               href="{{ $currentModal?->link }}" target="_blank">Link zur Anmeldung</a>
+                               href="{{ $currentModal?->link }}" target="_blank">{{ __('Link to the registration') }}</a>
                         </div>
                     </div>
                 </div>

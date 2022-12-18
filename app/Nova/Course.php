@@ -68,7 +68,7 @@ class Course extends Resource
 
     public function subtitle()
     {
-        return __('Erstellt von: :name', ['name' => $this->createdBy->name]);
+        return __('Created by: :name', ['name' => $this->createdBy->name]);
     }
 
     /**
@@ -90,7 +90,7 @@ class Course extends Resource
             // todo: english
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
-                  ->help(__('Lade hier Bilder hoch, um sie eventuell später in der Markdown Description einzufügen. Du musst vorher aber Speichern.')),
+                  ->help(__('Upload images here to insert them later in the Markdown Description. But you have to save before.')),
 
             Tags::make(__('Tags'))
                 ->type('course')
@@ -101,11 +101,11 @@ class Course extends Resource
 
             Markdown::make(__('Description'), 'description')
                     ->alwaysShow()
-                    ->help(__('Markdown ist erlaubt. Du kannst Bilder aus dem Feld "Images" hier einfügen. Benutze das Link Symbol der Bilder für die Urls, nach dem du auf "Aktualisieren und Weiterarbeiten" geklickt hast.')),
+                    ->help(__('Markdown is allowed. You can paste images from the "Images" field here. Use the link icon of the images for the urls after clicking "Update and continue".')),
 
             BelongsTo::make(__('Lecturer'), 'lecturer', Lecturer::class)
                      ->searchable()
-                     ->help(__('Wähle hier den Dozenten aus, der den Kurs hält. Wenn der Dozent nicht in der Liste ist, dann erstelle ihn zuerst unter "Dozenten".'))->withSubtitles(),
+                     ->help(__('Select here the lecturer who holds the course. If the lecturer is not in the list, create it first under "Lecturers".'))->withSubtitles(),
 
             SelectPlus::make(__('Categories'), 'categories', Category::class)
                       ->usingIndexLabel('name'),

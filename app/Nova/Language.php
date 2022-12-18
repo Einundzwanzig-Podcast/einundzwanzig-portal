@@ -65,6 +65,9 @@ class Language extends Resource
 
             Text::make(__('Name'), 'name')
                 ->rules('required', 'string'),
+
+            Text::make(__('Code'), 'language')
+                ->rules('required', 'string'),
         ];
     }
 

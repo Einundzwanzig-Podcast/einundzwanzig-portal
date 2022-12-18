@@ -18,7 +18,7 @@
 @endcomponent
 
 @if($unsubscribeUrl = $commentator->unsubscribeFromCommentNotificationsUrl($comment))
-<a href="{{ $unsubscribeUrl }}">Unsubscribe from receive notification about {{ $topLevelComment->commentable->commentableName() }}</a>
+<a href="{{ $unsubscribeUrl }}">{{ __('Unsubscribe from receive notification about :commentableName', ['commentableName' => $topLevelComment->commentable->commentableName()]) }}</a>
 @endif
 
 @endcomponent

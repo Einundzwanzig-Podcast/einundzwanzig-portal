@@ -12,6 +12,7 @@ use App\Nova\Course;
 use App\Nova\CourseEvent;
 use App\Nova\Dashboards\Main;
 use App\Nova\Episode;
+use App\Nova\Language;
 use App\Nova\Lecturer;
 use App\Nova\Library;
 use App\Nova\LibraryItem;
@@ -39,10 +40,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function boot()
     {
-        config([
-            'app.user-timezone' => 'Europe/Berlin',
-        ]);
-
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
@@ -59,6 +56,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuSection::make('Admin', [
                         MenuItem::resource(Category::class),
                         MenuItem::resource(Country::class),
+                        MenuItem::resource(Language::class),
                         MenuItem::resource(Team::class),
                         MenuItem::resource(User::class),
                         MenuItem::resource(Tag::class),

@@ -2,12 +2,30 @@
 
 namespace App\Http\Livewire\Frontend;
 
+use Illuminate\Support\Facades\Cookie;
+use JoeDixon\Translation\Language;
+use JoeDixon\Translation\Translation;
 use Livewire\Component;
 
 class Footer extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.footer');
+        $l = Cookie::get('lang', config('app.locale'));
+        $language = Language::query()
+                            ->where('language', $l)
+                            ->first();
+        $translated = $language->translations()
+                               ->whereNotNull('value')
+                               ->where('value', '<>', '')
+                               ->count();
+        $toTranslate = Translation::query()
+                                  ->where('language_id', $language->id)
+                                  ->count();
+
+        return view('livewire.frontend.footer', [
+            'percentTranslated' => $l === 'en' ? 100 : round(($translated / $toTranslate) * 100),
+            'language'          => $language,
+        ]);
     }
 }
