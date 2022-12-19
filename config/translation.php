@@ -46,7 +46,7 @@ return [
     | looking for missing translations.
     |
     */
-    'scan_paths'          => [app_path(), resource_path()],
+    'scan_paths'          => [app_path(), resource_path(), base_path('vendor')],
 
     /*
     |--------------------------------------------------------------------------
