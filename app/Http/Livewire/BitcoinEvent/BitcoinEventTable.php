@@ -28,6 +28,7 @@ class BitcoinEventTable extends Component
                                      ->with([
                                          'venue.city.country',
                                      ])
+                                     ->where('bitcoin_events.from', '>=', now())
                                      ->where(fn($query) => $query
                                          ->whereHas('venue.city.country',
                                              fn($query) => $query->where('countries.code', $this->country->code))
@@ -40,6 +41,7 @@ class BitcoinEventTable extends Component
                                          'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
                                      ]),
             'events'  => BitcoinEvent::query()
+                                     ->where('bitcoin_events.from', '>=', now())
                                      ->get()
                                      ->map(fn($event) => [
                                          'id'          => $event->id,
