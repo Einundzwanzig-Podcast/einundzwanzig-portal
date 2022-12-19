@@ -30,7 +30,7 @@ class DownloadBitcoinEventCalendar extends Controller
                               ->name($event->title)
                               ->uniqueIdentifier(str($event->title)->slug().$event->id)
                               ->address($event->venue->name.', '.$event->venue->street.', '.$event->venue->city->name.', '.$event->venue->city->country->name)
-                              ->description(str_replace(["\r", "\n"], $event->description).' Link: '.$event->link)
+                              ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
                               ->image($event->getFirstMediaUrl('logo'))
                               ->startsAt($event->from)
                               ->endsAt($event->to)
