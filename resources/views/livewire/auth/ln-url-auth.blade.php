@@ -25,7 +25,7 @@
                     x-data="{
                       textToCopy: 'lightning:{{ $this->lnurl }}',
                     }"
-                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'URL kopiert!',icon:'success'});"
+                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('URL copied!') }}',icon:'success'});"
                 >
                     <x-button
                         xs
@@ -45,14 +45,15 @@
                 </x-button>
 
                 <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmailSignup">
-                        {{ __('Email registration') }}
+                    {{ __('Email registration') }}
                 </x-button>
 
             </div>
         @endif
 
         <div class="pt-12">
-            <p class="text-xs">{{ __('Zeus bug:') }} <a target="_blank" href="https://github.com/ZeusLN/zeus/issues/1045">https://github.com/ZeusLN/zeus/issues/1045</a>
+            <p class="text-xs">{{ __('Zeus bug:') }} <a target="_blank"
+                                                        href="https://github.com/ZeusLN/zeus/issues/1045">https://github.com/ZeusLN/zeus/issues/1045</a>
             </p>
         </div>
     </div>

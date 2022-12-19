@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meetup;
+use App\Models\MeetupEvent;
 use Illuminate\Http\Request;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event;
@@ -18,14 +19,19 @@ class DownloadMeetupCalendar extends Controller
      */
     public function __invoke(Request $request)
     {
-        $meetup = Meetup::query()
-                        ->with([
-                            'meetupEvents',
-                        ])
-                        ->findOrFail($request->input('meetup'));
+        if ($request->has('meetup')) {
+            $meetup = Meetup::query()
+                            ->with([
+                                'meetupEvents',
+                            ])
+                            ->findOrFail($request->input('meetup'));
+            $events = $meetup->meetupEvents;
+        } else {
+            $events = MeetupEvent::query()->get();
+        }
 
         $entries = [];
-        foreach ($meetup->meetupEvents as $event) {
+        foreach ($events as $event) {
             $entries[] = Event::create()
                               ->name($meetup->name)
                               ->uniqueIdentifier(str($meetup->name)->slug.$event->id)

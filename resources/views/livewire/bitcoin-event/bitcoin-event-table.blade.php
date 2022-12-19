@@ -10,10 +10,10 @@
                     x-data="{
                     textToCopy: '{{ route('bitcoinEvent.ics', ['country' => $country]) }}',
                     }"
-                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'Kalendar URL kopiert!',description:'Füge den Kalender Stream-Link in eine kompatible Kalender-App ein.',icon:'success'});"
+                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
                     amber>
                     <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
-                    {{ __('Stream Calendar (WIP)') }} ({{ $events->count() }})
+                    {{ __('Calendar Stream-Url') }} ({{ $events->count() }})
                 </x-button>
             </div>
 
@@ -134,18 +134,6 @@
                         <div id="map" style="width: 100%; height: 800px"></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="w-full flex justify-end">
-                <x-button
-                    x-data="{
-                    textToCopy: '{{ route('bitcoinEvent.ics', ['country' => $country]) }}',
-                    }"
-                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'Kalendar URL kopiert!',description:'Füge den Kalender Stream-Link in eine kompatible Kalender-App ein.',icon:'success'});"
-                    amber>
-                    <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
-                    {{ __('Stream Calendar (WIP)') }} ({{ $events->count() }})
-                </x-button>
             </div>
 
             <livewire:tables.bitcoin-event-table :country="$country->code"/>

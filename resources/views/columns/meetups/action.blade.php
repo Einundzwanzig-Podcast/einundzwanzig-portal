@@ -11,10 +11,10 @@
             x-data="{
                     textToCopy: '{{ route('meetup.ics', ['country' => $country, 'meetup' => $row->id]) }}',
                     }"
-            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'Kalendar URL kopiert!',description:'Füge den Kalender Stream-Link in eine kompatible Kalender-App ein.',icon:'success'});"
+            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
             amber>
             <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
-            {{ __('Stream Calendar (WIP)') }} ({{ $row->meetup_events_count }})
+            {{ __('Calendar Stream-Url') }} ({{ $row->meetup_events_count }})
         </x-button>
     @endif
     @if($row->meetup_events_count < 1)
