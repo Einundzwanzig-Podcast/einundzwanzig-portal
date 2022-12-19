@@ -51,7 +51,6 @@ class DownloadMeetupCalendar extends Controller
         }
 
         $calendar = Calendar::create()
-                            ->name($name)
                             ->refreshInterval(5)
                             ->event($entries);
 
