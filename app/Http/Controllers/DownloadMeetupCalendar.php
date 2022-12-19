@@ -26,23 +26,28 @@ class DownloadMeetupCalendar extends Controller
                             ])
                             ->findOrFail($request->input('meetup'));
             $events = $meetup->meetupEvents;
+            $name = $meetup->name;
+            $image = $meetup->getFirstMediaUrl('logo');
         } else {
-            $events = MeetupEvent::query()->get();
+            $events = MeetupEvent::query()
+                                 ->get();
+            $name = __('Einundzwanzig Meetups');
+            $image = asset('img/einundzwanzig-horizontal.png');
         }
 
         $entries = [];
         foreach ($events as $event) {
             $entries[] = Event::create()
-                              ->name($meetup->name)
-                              ->uniqueIdentifier(str($meetup->name)->slug.$event->id)
+                              ->name($name)
+                              ->uniqueIdentifier(str($name)->slug.$event->id)
                               ->address($event->location)
                               ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
-                              ->image($meetup->getFirstMediaUrl('logo'))
+                              ->image($image)
                               ->startsAt($event->start);
         }
 
         $calendar = Calendar::create()
-                            ->name($meetup->name)
+                            ->name($name)
                             ->refreshInterval(5)
                             ->event($entries);
 
