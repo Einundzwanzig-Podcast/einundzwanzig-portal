@@ -33,8 +33,7 @@ class DownloadBitcoinEventCalendar extends Controller
                               ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
                               ->image($event->getFirstMediaUrl('logo'))
                               ->startsAt($event->from)
-                              ->endsAt($event->to)
-                              ->alertMinutesBefore(60 * 24);
+                              ->endsAt($event->to);
         }
 
         $calendar = Calendar::create()

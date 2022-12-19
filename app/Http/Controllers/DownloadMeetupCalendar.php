@@ -32,8 +32,7 @@ class DownloadMeetupCalendar extends Controller
                               ->address($event->location)
                               ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
                               ->image($meetup->getFirstMediaUrl('logo'))
-                              ->startsAt($event->start)
-                              ->alertMinutesBefore(60 * 2);
+                              ->startsAt($event->start);
         }
 
         $calendar = Calendar::create()
