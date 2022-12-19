@@ -350,6 +350,17 @@ class DatabaseSeeder extends Seeder
             'link'        => 'https://t.me/EinundzwanzigKempten',
             'created_by'  => 1,
         ]);
+        MeetupEvent::create([
+            'meetup_id'   => 1,
+            'start'       => now()
+                ->subDays(2)
+                ->startOfDay()
+                ->addHours(20),
+            'location'    => 'Einundzwanzig Kempten',
+            'description' => fake()->text(),
+            'link'        => 'https://t.me/EinundzwanzigKempten',
+            'created_by'  => 1,
+        ]);
         BitcoinEvent::create([
             'venue_id'    => 4,
             'from'        => Carbon::parse('2023-09-12')

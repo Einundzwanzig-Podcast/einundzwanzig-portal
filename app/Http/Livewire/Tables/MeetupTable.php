@@ -71,7 +71,7 @@ class MeetupTable extends DataTableComponent
         return Meetup::query()
                      ->whereHas('city.country', fn($query) => $query->where('code', $this->country))
                      ->withCount([
-                         'meetupEvents',
+                         'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
                      ])
                      ->orderBy('meetup_events_count', 'desc');
     }
