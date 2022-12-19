@@ -30,6 +30,9 @@ class DownloadMeetupCalendar extends Controller
             $image = $meetup->getFirstMediaUrl('logo');
         } else {
             $events = MeetupEvent::query()
+                                 ->with([
+                                     'meetup',
+                                 ])
                                  ->get();
             $name = __('Einundzwanzig Meetups');
             $image = asset('img/einundzwanzig-horizontal.png');
@@ -38,7 +41,7 @@ class DownloadMeetupCalendar extends Controller
         $entries = [];
         foreach ($events as $event) {
             $entries[] = Event::create()
-                              ->name($name)
+                              ->name($request->has('meetup') ? $name : $event->meetup->name)
                               ->uniqueIdentifier(str($name)->slug.$event->id)
                               ->address($event->location)
                               ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
