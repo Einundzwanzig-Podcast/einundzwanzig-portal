@@ -89,6 +89,7 @@ class BitcoinEventTable extends DataTableComponent
                            ->with([
                                'venue.city.country'
                            ])
+                           ->where('bitcoin_events.from', '>=', now())
                            ->where(fn($query) => $query
                                ->whereHas('venue.city.country',
                                    fn($query) => $query->where('code', $this->country))
