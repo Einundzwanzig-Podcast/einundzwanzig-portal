@@ -28,9 +28,9 @@ class DownloadBitcoinEventCalendar extends Controller
         foreach ($events as $event) {
             $entries[] = Event::create()
                               ->name($event->title)
-                              //->uniqueIdentifier(str($event->title)->slug().$event->id)
+                              ->uniqueIdentifier(str($event->title)->slug().$event->id)
                               ->address($event->venue->name.', '.$event->venue->street.', '.$event->venue->city->name.', '.$event->venue->city->country->name)
-                              ->description($event->description.' Link: '.$event->link)
+                              ->description(str_replace(["\r", "\n"], $event->description).' Link: '.$event->link)
                               ->image($event->getFirstMediaUrl('logo'))
                               ->startsAt($event->from)
                               ->endsAt($event->to)
