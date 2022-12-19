@@ -70,6 +70,8 @@ Route::middleware([])
      ->as('bitcoinEvent.')
      ->prefix('/{country:code}/event')
      ->group(function () {
+         Route::get('stream-calendar', \App\Http\Controllers\DownloadBitcoinEventCalendar::class)
+              ->name('ics');
          Route::get('overview', \App\Http\Livewire\BitcoinEvent\BitcoinEventTable::class)
               ->name('table.bitcoinEvent');
      });
@@ -82,6 +84,8 @@ Route::middleware([])
      ->as('meetup.')
      ->prefix('/{country:code}/meetup')
      ->group(function () {
+         Route::get('stream-calendar', \App\Http\Controllers\DownloadMeetupCalendar::class)
+              ->name('ics');
          Route::get('world', \App\Http\Livewire\Meetup\WorldMap::class)
               ->name('world');
          Route::get('overview', \App\Http\Livewire\Meetup\MeetupTable::class)

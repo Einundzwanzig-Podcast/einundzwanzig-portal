@@ -23,8 +23,8 @@
             <div class="flex justify-end w-full">
                 <div
                     x-data="{
-                  textToCopy: 'lightning:{{ $this->lnurl }}',
-                }"
+                      textToCopy: 'lightning:{{ $this->lnurl }}',
+                    }"
                     @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'URL kopiert!',icon:'success'});"
                 >
                     <x-button

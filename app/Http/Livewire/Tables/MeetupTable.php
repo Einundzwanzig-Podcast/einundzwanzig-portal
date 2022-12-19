@@ -60,7 +60,9 @@ class MeetupTable extends DataTableComponent
                   ->sortable(),
             Column::make(__('Links'),)
                   ->label(
-                      fn($row, Column $column) => view('columns.meetups.action')->withRow($row)
+                      fn($row, Column $column) => view('columns.meetups.action')
+                          ->withRow($row)
+                          ->withCountry($this->country)
                   )
                   ->collapseOnMobile(),
         ];
