@@ -65,7 +65,7 @@
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
             <div class="flex items-center justify-end space-x-2 my-6">
-                <x-button primary :href="route('bookCases.table.bookcases', ['country' => $c])">
+                <x-button primary onclick="history.back()">
                     <i class="fa fa-thin fa-arrow-left"></i>
                     Zurück zur Übersicht
                 </x-button>
