@@ -5,6 +5,7 @@ namespace App\Http\Livewire\School;
 use App\Models\Country;
 use App\Models\CourseEvent;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class EventTable extends Component
 {
@@ -48,6 +49,12 @@ class EventTable extends Component
                                          'location'    => $event->course->name,
                                          'description' => $event->venue->name,
                                      ]),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Dates'),
+                description: __('Dates for courses about Bitcoin.'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 

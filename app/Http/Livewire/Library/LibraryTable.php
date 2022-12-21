@@ -3,8 +3,8 @@
 namespace App\Http\Livewire\Library;
 
 use App\Models\Country;
-use App\Models\Podcast;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class LibraryTable extends Component
 {
@@ -41,6 +41,12 @@ class LibraryTable extends Component
 
         return view('livewire.library.library-table', [
             'libraries' => $tabs,
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Library'),
+                description: __('Here you can find all content that are available in the library.'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 }

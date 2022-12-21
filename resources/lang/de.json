@@ -609,5 +609,15 @@
     "All": "",
     "N\/A": "",
     "Add tags...": "",
-    "Add tag...": ""
+    "Add tag...": "",
+    "Search out a Bitcoin Event": "Suche nach einem Bitcoin-Ereignis",
+    "Welcome": "Willkommen",
+    "Welcome to the portal of the Einundzwanzig Community.": "Willkommen auf dem Portal der Einundzwanzig Community.",
+    "Here you can find all content that are available in the library.": "Hier findest du alle Inhalte, die in der Bibliothek verfügbar sind.",
+    "List of all meetup dates": "Liste aller Meetup-Termine",
+    "World map of meetups": "Weltkarte der Meetups",
+    "Dates for courses about Bitcoin.": "Termine für Kurse zum Thema Bitcoin.",
+    "Lecturers in the surrounding area.": "Dozenten in der Umgebung.",
+    "Venues in the surrounding area.": "Veranstaltungsorte in der Umgebung.",
+    "nova-spatie-permissions::lang.display_names\": \"": ""
 }

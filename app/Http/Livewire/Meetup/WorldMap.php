@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Meetup;
 use App\Models\Country;
 use App\Models\Meetup;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class WorldMap extends Component
 {
@@ -38,6 +39,11 @@ class WorldMap extends Component
                                       'name'   => $meetup->name,
                                       'coords' => [$meetup->city->latitude, $meetup->city->longitude],
                                   ]),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('World map of meetups'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 }

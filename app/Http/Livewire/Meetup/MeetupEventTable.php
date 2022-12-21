@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Meetup;
 use App\Models\Country;
 use App\Models\MeetupEvent;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 use WireUi\Traits\Actions;
 
 class MeetupEventTable extends Component
@@ -55,6 +56,12 @@ class MeetupEventTable extends Component
                                         'location'    => $event->location,
                                         'description' => $event->description,
                                     ]),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Meetup dates'),
+                description: __('List of all meetup dates'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\BookCase;
 use App\Models\BookCase;
 use App\Models\Country;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class BookCaseTable extends Component
 {
@@ -32,6 +33,12 @@ class BookCaseTable extends Component
             'countries' => Country::query()
                                   ->select(['code', 'name'])
                                   ->get(),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Bookcases'),
+                description: __('Search out a public bookcase'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 }

@@ -44,6 +44,8 @@ class Welcome extends Component
             'countries' => Country::get(),
         ])->layout('layouts.guest', [
             'SEOData' => new SEOData(
+                title: __('Welcome'),
+                description: __('Welcome to the portal of the Einundzwanzig Community.'),
                 image: asset('img/screenshot.png')
             )
         ]);

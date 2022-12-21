@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Meetup;
 use App\Models\Country;
 use App\Models\Meetup;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class MeetupTable extends Component
 {
@@ -39,6 +40,12 @@ class MeetupTable extends Component
                                    'name'   => $meetup->name,
                                    'coords' => [$meetup->city->latitude, $meetup->city->longitude],
                                ]),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Meetups'),
+                description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 }

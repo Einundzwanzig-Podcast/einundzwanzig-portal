@@ -5,6 +5,7 @@ namespace App\Http\Livewire\BitcoinEvent;
 use App\Models\BitcoinEvent;
 use App\Models\Country;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class BitcoinEventTable extends Component
 {
@@ -50,6 +51,12 @@ class BitcoinEventTable extends Component
                                          'location'    => $event->title,
                                          'description' => $event->description,
                                      ]),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Bitcoin Events'),
+                description: __('Search out a Bitcoin Event'),
+                image: asset('img/screenshot.png')
+            )
         ]);
     }
 
