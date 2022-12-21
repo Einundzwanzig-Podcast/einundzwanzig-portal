@@ -15,7 +15,7 @@ class Header extends Component
     public string $c = 'de';
     public string $l = 'de';
 
-    protected $queryString = ['c', 'l'];
+    protected $queryString = ['l'];
 
     public function rules()
     {
