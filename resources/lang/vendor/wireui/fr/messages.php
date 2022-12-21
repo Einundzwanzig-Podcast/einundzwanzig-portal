@@ -1,18 +1,20 @@
 <?php
 
-return [
-    'selectTime'    => 'Sélectionner l\'heure',
-    'empty_options' => 'Aucune Option',
-    'loading'       => 'Chargement...',
-    'searchHere'    => 'Cherchez ici',
-    'datePicker'    => [
-        'months'    => "['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']",
-        'days'      => "['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']",
-        'tomorrow'  => 'Demain',
-        'today'     => 'Aujourd\'hui',
-        'yesterday' => 'Hier',
-    ],
-    'errors' => [
-        'title' => 'Il y a eu {errors} erreurs durant votre soumission',
-    ],
-];
+return array (
+  'datePicker' => 
+  array (
+    'days' => '[\'Dim\', \'Lun\', \'Mar\', \'Mer\', \'Jeu\', \'Ven\', \'Sam\']',
+    'months' => '[\'Janvier\', \'Février\', \'Mars\', \'Avril\', \'Mai\', \'Juin\', \'Juillet\', \'Août\', \'Septembre\', \'Octobre\', \'Novembre\', \'Décembre\']',
+    'today' => 'Aujourd\'hui',
+    'tomorrow' => 'Demain',
+    'yesterday' => 'Hier',
+  ),
+  'empty_options' => 'Aucune Option',
+  'errors' => 
+  array (
+    'title' => 'Il y a eu {errors} erreurs durant votre soumission',
+  ),
+  'loading' => 'Chargement...',
+  'searchHere' => 'Cherchez ici',
+  'selectTime' => 'Sélectionner l\'heure',
+);

@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\Comments\Exceptions\CannotCreateComment;
-use Spatie\Comments\Models\Comment;
 use Spatie\Comments\Models\Concerns\HasComments;
-use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
-use Spatie\Comments\Support\Config;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -94,37 +90,5 @@ class BookCase extends Model implements HasMedia
     public function commentUrl(): string
     {
         return url()->route('bookCases.comment.bookcase', ['bookCase' => $this->id]);
-    }
-
-    public function comment(string $text, CanComment $commentator = null): Comment
-    {
-        // $commentator ??= auth()->user();
-
-        if (! config('comments.allow_anonymous_comments')) {
-            if (! $commentator) {
-                throw CannotCreateComment::userIsRequired();
-            }
-        }
-
-        $parentId = ($this::class === Config::getCommentModelName())
-            ? $this->getKey()
-            : null;
-
-        $comment = $this->comments()->create([
-            'commentator_id' => $commentator?->getKey() ?? null,
-            'commentator_type' => $commentator?->getMorphClass() ?? null,
-            'original_text' => $text,
-            'parent_id' => $parentId,
-        ]);
-
-        if ($comment->shouldBeAutomaticallyApproved()) {
-            Config::approveCommentAction()->execute($comment);
-
-            return $comment;
-        }
-
-        Config::sendNotificationsForPendingCommentAction()->execute($comment);
-
-        return $comment;
     }
 }

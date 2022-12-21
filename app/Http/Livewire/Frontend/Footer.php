@@ -22,6 +22,7 @@ class Footer extends Component
         $toTranslate = Translation::query()
                                   ->where('language_id', $language->id)
                                   ->count();
+        $toTranslate = $toTranslate > 0 ? $toTranslate : 1;
 
         return view('livewire.frontend.footer', [
             'percentTranslated' => $l === 'en' ? 100 : round(($translated / $toTranslate) * 100),

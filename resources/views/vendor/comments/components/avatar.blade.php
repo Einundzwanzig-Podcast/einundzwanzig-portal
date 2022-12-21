@@ -8,8 +8,8 @@
     }
 @endphp
 
-<img
+{{--<img
     class="comments-avatar"
     src="{{ isset($comment) &&  $comment->commentatorProperties() ? $comment->commentatorProperties()->avatar : $defaultAvatar }}"
     alt="avatar"
->
+>--}}

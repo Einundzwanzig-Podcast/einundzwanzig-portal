@@ -1,8 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-return [
-    'next'     => 'Напред &raquo;',
-    'previous' => '&laquo; Назад',
-];
+return array (
+  'next' => 'Напред &raquo;',
+  'previous' => '&laquo; Назад',
+);
