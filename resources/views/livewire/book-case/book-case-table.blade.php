@@ -18,12 +18,17 @@
                 <div class="w-1/2">
                     <div class="rounded" wire:ignore>
                         @if($markers[0] ?? false)
+                            <style>
+                                .gnw-map-service {
+                                    z-index: 0 !important;
+                                }
+                            </style>
                             <div>
                                 @map([
-                                'lat' => $markers[0]['lat'],
-                                'lng' => $markers[0]['lng'],
-                                'zoom' => 12,
-                                'markers' => $markers
+                                    'lat' => $markers[0]['lat'],
+                                    'lng' => $markers[0]['lng'],
+                                    'zoom' => 12,
+                                    'markers' => $markers
                                 ])
                             </div>
                         @endif

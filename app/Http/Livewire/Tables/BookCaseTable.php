@@ -137,7 +137,7 @@ class BookCaseTable extends DataTableComponent
             'date'         => $this->orangepill['date'],
         ]);
         if ($this->orangepill['comment']) {
-            $this->currentModal->comment($this->orangepill['comment']);
+            $this->currentModal->comment($this->orangepill['comment'], null);
         }
         $this->resetModal();
         $this->emit('refreshDatatable');

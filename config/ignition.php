@@ -176,7 +176,7 @@ return [
     */
 
     'remote_sites_path' => env('IGNITION_REMOTE_SITES_PATH', '/var/www/html'),
-    'local_sites_path' => env('IGNITION_LOCAL_SITES_PATH', '/home/fsociety/Code/side/einundzwanzig-bitcoin-school'),
+    'local_sites_path' => env('IGNITION_LOCAL_SITES_PATH', '/home/fsociety/Code/side/einundzwanzig-portal'),
 
     /*
     |--------------------------------------------------------------------------

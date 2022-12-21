@@ -24,7 +24,7 @@ return [
      * You can allow guests to post comments. They will not be able to use
      * reactions.
      */
-    'allow_anonymous_comments' => false,
+    'allow_anonymous_comments' => true,
 
     /*
      * A comment transformer is a class that will transform the comment text
@@ -82,7 +82,7 @@ return [
          * When somebody creates a comment, a notification will be sent to other persons
          * that commented on the same thing.
          */
-        'enabled' => true,
+        'enabled' => false,
 
         'notifications' => [
             'pending_comment' => PendingCommentNotification::class,

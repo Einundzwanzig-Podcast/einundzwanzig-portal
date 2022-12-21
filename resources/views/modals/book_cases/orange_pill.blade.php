@@ -41,10 +41,12 @@
                 <x-datetime-picker
                     label="{{ __('Date') }}"
                     placeholder="{{ __('Date') }}"
-                    display-format="DD.MM.YYYY"
                     wire:model.defer="orangepill.date"
-                    without-time
+                    timezone="UTC"
+                    user-timezone="{{ config('app.user-timezone') }}"
                     corner-hint="{{ __('When did you put bitcoin books in?') }}"
+                    without-time
+                    display-format="DD.MM.YYYY"
                 />
             </div>
             <div class="col-span-6 sm:col-span-4">
