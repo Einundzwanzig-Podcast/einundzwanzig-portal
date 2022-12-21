@@ -24,7 +24,7 @@ return [
      * You can allow guests to post comments. They will not be able to use
      * reactions.
      */
-    'allow_anonymous_comments' => true,
+    'allow_anonymous_comments' => false,
 
     /*
      * A comment transformer is a class that will transform the comment text
