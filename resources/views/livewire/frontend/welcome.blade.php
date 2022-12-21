@@ -155,9 +155,9 @@
                         </div>
                     </a>
                 </div>
-                {{--<div
+                <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-4 sm:row-start-5 md:row-start-3 xl:row-start-2">
-                    <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
+                    <a target="_blank" href="https://www.plebrap.space/"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
@@ -165,17 +165,17 @@
                                 class="absolute bottom-0 left-0 z-10 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-30"></div>
                             <img
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                                src="{{ asset('img/aprycot-media-bitcoin-21-lektionen-01.webp') }}" alt="">
+                                src="{{ asset('img/pleb_rap.png') }}" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                         <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">Reading</span>
+                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Plebs together strong') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                Bücher-Schränke
+                                PlebRap
                             </h4>
                         </div>
                     </a>
-                </div>--}}
+                </div>
             </div>
         </div>
     </section>
