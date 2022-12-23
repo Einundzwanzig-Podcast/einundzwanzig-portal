@@ -45,6 +45,13 @@
                         {{ __('Translate (:lang :percent%)', ['lang' => $language->name ? $language->name : $language->language, 'percent' => $percentTranslated]) }}
                     </a>
                 </li>
+                <li>
+                    <a data-productlift-sidebar="c7a0077f-a870-4023-b202-9395b17d6870"
+                       class="px-4 text-gray-500 hover:text-white cursor-pointer">
+                        <i class="fa fa-thin fa-code mr-1"></i>
+                        {{ __('Changelog') }}
+                    </a>
+                </li>
                 {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">FAQ's</a></li>--}}
                 {{--                <li><a href="#_" class="px-4 text-gray-500 hover:text-white">Terms</a></li>--}}
             </ul>

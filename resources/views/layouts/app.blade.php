@@ -98,5 +98,7 @@
 </div>
 @stack('modals')
 @livewireScripts
+<!-- ProductLift SDK - Include it only once -->
+<script defer src="https://bitcoin.productlift.dev/widgets_sdk"></script>
 </body>
 </html>
