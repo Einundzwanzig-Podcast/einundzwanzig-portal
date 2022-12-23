@@ -45,7 +45,8 @@
                                 src="{{ asset('img/meetup_saarland.jpg') }}" alt="">
                         </div>
                         <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                                <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
+                                 width="64" height="64"/>
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
@@ -69,11 +70,12 @@
                                 src="{{ asset('img/vhs_kurs.jpg') }}" alt="">
                         </div>
                         <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
+                                 width="64" height="64"/>
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Education') }}</span>
+                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Education') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 {{ __('Courses') }}
                             </h4>
@@ -94,7 +96,7 @@
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ _('Content') }}</span>
+                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ _('Content') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 {{ __('Library') }}
                             </h4>
@@ -114,11 +116,12 @@
                                 src="{{ asset('img/20220915_007_industryday.webp') }}" alt="">
                         </div>
                         <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
+                                 width="64" height="64"/>
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Worldwide') }}</span>
+                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Worldwide') }}</span>
                             <h4 class="text-2xl sm:text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 {{ __('Events') }}
                             </h4>
@@ -138,11 +141,12 @@
                                 src="{{ asset('img/aprycot-media-bitcoin-21-lektionen-01.webp') }}" alt="">
                         </div>
                         <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}" width="64" height="64"/>
+                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
+                                 width="64" height="64"/>
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
-                            class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Reading') }}</span>
+                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Reading') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 {{ __('Bookcases') }}
                             </h4>
@@ -165,7 +169,7 @@
                         <span
                             class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Plebs together strong') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
-                                PlebRap
+                                {{ __('PlebArt') }}
                             </h4>
                         </div>
                     </a>
