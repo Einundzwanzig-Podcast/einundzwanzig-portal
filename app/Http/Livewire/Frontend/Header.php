@@ -58,8 +58,16 @@ class Header extends Component
                                ->select(['latitude', 'longitude'])
                                ->get(),
             'countries' => Country::query()
-                                  ->select(['code', 'name'])
-                                  ->get(),
+                                  ->select('id', 'name', 'code')
+                                  ->orderBy('name')
+                                  ->get()
+                                  ->map(function (Country $country) {
+                                      $country->name = config('countries.emoji_flags')[str($country->code)
+                                              ->upper()
+                                              ->toString()].' '.$country->name;
+
+                                      return $country;
+                                  }),
         ]);
     }
 }

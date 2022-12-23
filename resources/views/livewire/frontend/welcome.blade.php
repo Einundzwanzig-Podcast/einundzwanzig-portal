@@ -12,19 +12,13 @@
                     {{ __('A Bitcoin community for all.') }}
                 </p>
                 <div class="max-w-sm text-lg text-gray-200 space-x-2 flex flex-row">
-                    <x-select
+                    <x-native-select
                         label="{{ __('Change country') }}"
                         placeholder="{{ __('Change country') }}"
                         wire:model="c"
-                        :clearable="false"
-                        :searchable="true"
-                        :async-data="route('api.countries.index')"
                         option-label="name"
                         option-value="code"
-                        :template="[
-                            'name'   => 'user-option',
-                            'config' => ['src' => 'flag']
-                        ]"
+                        :options="$countries"
                     />
                     <x-select
                         label="{{ __('Change language') }}"

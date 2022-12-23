@@ -12,7 +12,7 @@ class Welcome extends Component
     public string $c = 'de';
     public string $l = 'de';
 
-    protected $queryString = ['l'];
+    protected $queryString = ['c','l'];
 
     public function rules()
     {
@@ -30,10 +30,20 @@ class Welcome extends Component
     public function updated($property, $value)
     {
         $this->validate();
+        if ($property === 'c') {
+            $c = $value;
+        } else {
+            $c = $this->c;
+        }
+        if ($property === 'l') {
+            $l = $value;
+        } else {
+            $l = $this->l;
+        }
 
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
 
-        return to_route('welcome', ['c' => $this->c, 'l' => $this->l]);
+        return to_route('welcome', ['c' => $c, 'l' => $l]);
     }
 
     public function render()
@@ -41,7 +51,17 @@ class Welcome extends Component
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
 
         return view('livewire.frontend.welcome', [
-            'countries' => Country::get(),
+            'countries' => Country::query()
+                                  ->select('id', 'name', 'code')
+                                  ->orderBy('name')
+                                  ->get()
+                                  ->map(function (Country $country) {
+                                      $country->name = config('countries.emoji_flags')[str($country->code)
+                                              ->upper()
+                                              ->toString()].' '.$country->name;
+
+                                      return $country;
+                                  }),
         ])->layout('layouts.guest', [
             'SEOData' => new SEOData(
                 title: __('Welcome'),
