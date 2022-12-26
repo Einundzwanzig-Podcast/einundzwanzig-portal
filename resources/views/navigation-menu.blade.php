@@ -11,44 +11,68 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex sm:items-center">
 
                     @if(str(request()->route()->getName())->contains('meetup.'))
-                        <x-jet-nav-link href="/nova/resources/meetups" target="_blank">
-                            {{ __('Submit Meetup') }}
-                        </x-jet-nav-link>
-                        <x-jet-nav-link href="/nova/resources/meetup-events" target="_blank">
-                            {{ __('Register Meetup date') }}
-                        </x-jet-nav-link>
+                        <div>
+                            <x-button xs amber href="/nova/resources/meetups" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Submit Meetup') }}
+                            </x-button>
+                        </div>
+                        <div>
+                            <x-button xs amber href="/nova/resources/meetup-events" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Register Meetup date') }}
+                            </x-button>
+                        </div>
                     @endif
 
                     @if(str(request()->route()->getName())->contains('school.'))
-                        <x-jet-nav-link href="/nova/resources/lecturers" target="_blank">
-                            {{ __('Register lecturer') }}
-                        </x-jet-nav-link>
-                        <x-jet-nav-link href="/nova/resources/courses" target="_blank">
-                            {{ __('Register course') }}
-                        </x-jet-nav-link>
-                        <x-jet-nav-link href="/nova/resources/course-events" target="_blank">
-                            {{ __('Register course date') }}
-                        </x-jet-nav-link>
+                        <div>
+                            <x-button xs amber href="/nova/resources/lecturers" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Register lecturer') }}
+                            </x-button>
+                        </div>
+                        <div>
+                            <x-button xs amber href="/nova/resources/courses" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Register course') }}
+                            </x-button>
+                        </div>
+                        <div>
+                            <x-button xs amber href="/nova/resources/course-events" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Register course date') }}
+                            </x-button>
+                        </div>
                     @endif
 
                     @if(str(request()->route()->getName())->contains('library.'))
-                        <x-jet-nav-link href="/nova/resources/library-items" target="_blank">
-                            {{ __('Submit contents') }}
-                        </x-jet-nav-link>
+                        <div>
+                            <x-button xs amber href="/nova/resources/library-items" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Submit contents') }}
+                            </x-button>
+                        </div>
                     @endif
 
                     @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
-                        <x-jet-nav-link href="/nova/resources/bitcoin-events" target="_blank">
-                            {{ __('Register event') }}
-                        </x-jet-nav-link>
+                        <div>
+                            <x-button xs amber href="/nova/resources/bitcoin-events" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Register event') }}
+                            </x-button>
+                        </div>
                     @endif
 
-                    <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        {{ __('My profile') }}
-                    </x-jet-nav-link>
+                    <div>
+                        <x-button xs amber href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                            <i class="fa fa-thin fa-user"></i>
+                            {{ __('My profile') }}
+                        </x-button>
+                    </div>
                 </div>
             </div>
 
