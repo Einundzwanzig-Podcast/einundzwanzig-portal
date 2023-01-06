@@ -44,10 +44,6 @@
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/meetup_saarland.jpg') }}" alt="">
                         </div>
-                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
-                                 width="64" height="64"/>
-                        </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
                                 class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Plebs together strong') }}</span>
@@ -68,10 +64,6 @@
                             <img
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/vhs_kurs.jpg') }}" alt="">
-                        </div>
-                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
-                                 width="64" height="64"/>
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
@@ -115,10 +107,6 @@
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/20220915_007_industryday.webp') }}" alt="">
                         </div>
-                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
-                                 width="64" height="64"/>
-                        </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
                                 class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Worldwide') }}</span>
@@ -139,10 +127,6 @@
                             <img
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
                                 src="{{ asset('img/aprycot-media-bitcoin-21-lektionen-01.webp') }}" alt="">
-                        </div>
-                        <div class="absolute top-1 right-1 z-10 flex flex-col items-end justify-end w-full px-4 py-4">
-                            <img class="rounded" src="{{ asset('vendor/blade-country-flags/4x3-'.$c.'.svg') }}"
-                                 width="64" height="64"/>
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
