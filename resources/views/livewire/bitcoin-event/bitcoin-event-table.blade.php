@@ -30,6 +30,9 @@
                     <script src="https://unpkg.com/js-year-calendar@latest/locales/js-year-calendar.{{ $locale }}.js"></script>
 
                     <style>
+                        .calendar {
+                            max-height: 280px;
+                        }
                         .calendar .calendar-header {
                             background-color: #F7931A;
                             color: white;
@@ -107,7 +110,8 @@
                                 $('#map').vectorMap({
                                     zoomButtons : false,
                                     zoomOnScroll: true,
-                                    map: 'europe_merc',
+                                    map: 'world_mill',
+                                    height: 300,
                                     backgroundColor: 'transparent',
                                     markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
                                     onMarkerClick: function(event, index) {
@@ -131,7 +135,7 @@
                             }
                         }"
                     >
-                        <div id="map" style="width: 100%; height: 800px"></div>
+                        <div id="map" style="width: 100%; height: 300px"></div>
                     </div>
                 </div>
             </div>
