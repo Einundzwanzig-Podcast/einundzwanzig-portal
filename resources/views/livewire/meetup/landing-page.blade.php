@@ -82,23 +82,6 @@
                                         yearChanged: function(e) {
                                             @this.set('year', e.currentYear);
                                         },
-                                        clickDay: function(e) {
-                                            if(e.events.length > 0) {
-                                                var content = '';
-                                                var ids = [];
-
-                                                for(var i in e.events) {
-                                                    ids.push(e.events[i].id);
-                                                    content += '<div class=\'event-tooltip-content\'>'
-                                                    + '<div class=\'event-name\'>' + e.events[i].location + '</div>'
-                                                    + '<div class=\'event-location\'>' + e.events[i].description + '</div>'
-                                                    + '</div>';
-                                                }
-                                                console.log(content);
-
-                                                $wire.call('popover', content, ids.join(','));
-                                            }
-                                        },
                                     });
                                 },
                             }"
