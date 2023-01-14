@@ -23,7 +23,7 @@
                         <div class="flex flex-1 flex-col p-8">
                             <img class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
                                  src="{{ $pleb->profile_photo_url }}" alt="{{ $pleb->name }}">
-                            <h3 class="mt-6 text-sm font-medium text-gray-900 truncate">{{ $pleb->public_key }}</h3>
+                            <h3 class="mt-6 text-sm font-medium text-gray-900 truncate">{{ $pleb->name }}</h3>
                             <dl class="mt-1 flex flex-grow flex-col justify-between">
                                 <dd class="text-sm text-gray-500">{{ $pleb->orange_pills_count }} {{ __('Bookcases') }} {{ __('Orange pilled') }}</dd>
                                 <dd class="mt-3">
