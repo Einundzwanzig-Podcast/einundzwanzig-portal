@@ -13,7 +13,10 @@
                     <div class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
                         {{ __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!') }}
 
-                        <x-button primary lg class="whitespace-nowrap">
+                        <x-button
+                            target="_blank"
+                            :href="$meetup->link"
+                            primary lg class="whitespace-nowrap">
                             <i class="fa fa-thin fa-external-link mr-2"></i>
                             {{ __('Link') }}
                         </x-button>
@@ -101,6 +104,13 @@
                             }"
             >
                 <div x-ref="calendar"></div>
+            </div>
+
+            <div class="p-4 w-full flex justify-end">
+                <x-button :href="route('welcome')" primary lg class="whitespace-nowrap">
+                    <i class="fa fa-thin fa-arrow-left mr-2"></i>
+                    {{ __('Back') }}
+                </x-button>
             </div>
         </div>
     </section>

@@ -1,7 +1,7 @@
 <div class="py-6 bg-gray-900 w-full">
     <div class="px-10 mx-auto max-w-7xl">
         <div class="flex flex-col items-center md:flex-row md:justify-between">
-            <a href="#_">
+            <a href="/">
                 <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}"
                      class="text-white fill-current" alt="">
             </a>
