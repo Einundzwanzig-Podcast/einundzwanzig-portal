@@ -14,6 +14,26 @@
                 <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
                     {{ __('Search out a public bookcase') }}
                 </p>
+
+                <div class="w-1/2">
+                    <div class="rounded" wire:ignore>
+                        @if($markers[0] ?? false)
+                            <style>
+                                .gnw-map-service {
+                                    z-index: 0 !important;
+                                }
+                            </style>
+                            <div>
+                                @map([
+                                    'lat' => $markers[0]['lat'],
+                                    'lng' => $markers[0]['lng'],
+                                    'zoom' => 12,
+                                    'markers' => $markers
+                                ])
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
 
             <livewire:tables.book-case-table :country="$country->code"/>

@@ -7,8 +7,10 @@
             <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_minus.webp') }}" alt="">
         @endif
         <div class="flex items-center space-x-1">
-            <x-button class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap" wire:click="viewHistoryModal({{ $row->id }})">{{ __('💊 Orange Pill Now') }}</x-button>
-            <x-button class="whitespace-nowrap" :href="route('bookCases.comment.bookcase', ['bookCase' => $row->id, 'country' => $country])">{{ __('Details') }}</x-button>
+            <x-button class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap"
+                      wire:click="viewHistoryModal({{ $row->id }})">{{ __('💊 Orange Pill Now') }}</x-button>
+            <x-button class="whitespace-nowrap"
+                      :href="route('bookCases.comment.bookcase', ['bookCase' => $row->id, 'country' => $country])">{{ __('Details') }}</x-button>
         </div>
     @else
         <div>

@@ -19,7 +19,7 @@
         <div>
             <x-button amber wire:click="proximitySearchForBookCases({{ $row->id }})" class="text-21gray">
                 <i class="fa fa-thin fa-book mr-2"></i>
-                {{ __('Perimeter search bookcase :name (5km)', ['name' => $row->name]) }}
+                {{ __('Perimeter search bookcase :name (25km)', ['name' => $row->name]) }}
             </x-button>
         </div>
     @endif
