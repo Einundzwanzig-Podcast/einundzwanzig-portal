@@ -16,7 +16,7 @@
                 </p>
             </div>
 
-            <livewire:tables.book-case-table :c="$country->code"/>
+            <livewire:tables.book-case-table :country="$country->code"/>
         </div>
     </section>
     {{-- FOOTER --}}

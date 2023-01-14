@@ -14,7 +14,7 @@ class BookCaseTable extends DataTableComponent
 {
     use Actions;
 
-    public ?string $country = null;
+    public string $country;
 
     public bool $viewingModal = false;
     public $currentModal;
