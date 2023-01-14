@@ -23,7 +23,7 @@
             <p class="order-last text-sm leading-tight text-gray-500 md:order-first">
                 {{ __('Built with ❤️ by our team.') }}
             </p>
-            <ul class="flex flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
+            <ul class="flex flex-col sm:flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
                 <li>
                     <a href="https://github.com/affektde/einundzwanzig-bitcoin-school" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
