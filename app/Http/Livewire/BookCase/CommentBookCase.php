@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\BookCase;
 
 use App\Models\BookCase;
+use App\Models\Country;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -10,6 +11,7 @@ use Livewire\WithFileUploads;
 class CommentBookCase extends Component
 {
     use WithFileUploads;
+    public Country $country;
 
     public $photo;
 

@@ -61,6 +61,9 @@ Route::middleware([])
 
          Route::get('/book-case/{bookCase}', \App\Http\Livewire\BookCase\CommentBookCase::class)
               ->name('comment.bookcase');
+
+         Route::get('/high-score-table', \App\Http\Livewire\BookCase\HighscoreTable::class)
+              ->name('highScoreTable');
      });
 
 /*

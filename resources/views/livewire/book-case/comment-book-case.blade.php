@@ -1,66 +1,4 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
-    <script src="{{ asset('earth/miniature.earth.js') }}"></script>
-    <style>
-        .earth-container::after {
-            content: "";
-            position: absolute;
-            height: 22%;
-            bottom: 4%;
-            left: 13%;
-            right: 13%;
-        }
-    </style>
-    {{-- HEADER --}}
-    <div>
-        <section class="w-full">
-            <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
-                <div
-                    class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
-                    <div class="relative flex flex-col md:flex-row">
-                        <a href="{{ route('school.table.city', ['country' => $c]) }}"
-                           class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
-                            <img src="{{ asset('img/einundzwanzig-horizontal-inverted.svg') }}">
-                        </a>
-                        <nav
-                            class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
-                            <a href="{{ route('school.table.city', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('school.table.city') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Städte</a>
-                            <a href="{{ route('school.table.lecturer', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('school.table.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten</a>
-                            <a href="{{ route('school.table.venue', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('school.table.venue') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Veranstaltungs-Orte</a>
-                            <a href="{{ route('school.table.course', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('school.table.course') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Kurse</a>
-                            <a href="{{ route('school.table.event', ['country' => $c, '#table']) }}"
-                               class="{{ request()->routeIs('school.table.event') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Termine</a>
-                            <a href="{{ route('library.table.libraryItems', ['country' => $c]) }}"
-                               class="{{ request()->routeIs('library.table.libraryItems') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bibliothek</a>
-                            <a href="{{ route('bookCases.table.bookcases', ['country' => $c]) }}"
-                               class="{{ request()->routeIs('bookCases.table.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Bücher-Schränke</a>
-                            @if(auth()->user()?->is_lecturer)
-                                <a href="{{ route('library.table.lecturer', ['country' => $c]) }}"
-                                   class="{{ request()->routeIs('library.table.lecturer') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">Dozenten-Bibliothek</a>
-                            @endif
-                        </nav>
-                    </div>
-                    @auth
-                        <div></div>
-                    @else
-                        <div class="inline-flex items-center ml-5 my-2 text-lg space-x-6 lg:justify-end">
-                            <a href="{{ route('auth.ln') }}"
-                               class="text-xs sm:text-base font-medium leading-6 text-gray-400 hover:text-gray-300 whitespace-no-wrap transition duration-150 ease-in-out">
-                                Login
-                            </a>
-                            <a href="{{ route('auth.ln') }}"
-                               class="text-xs sm:text-base inline-flex items-center justify-center px-4 py-2 font-medium leading-6 text-gray-200 hover:text-white whitespace-no-wrap bg-gray-800 border border-transparent rounded shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
-                                Registrieren
-                            </a>
-                        </div>
-                    @endauth
-                </div>
-            </div>
-        </section>
-    </div>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
@@ -240,19 +178,19 @@
 
                 <div class="rounded" wire:ignore>
                     @map([
-                    'lat' => $bookCase->latitude,
-                    'lng' => $bookCase->longitude,
-                    'zoom' => 24,
-                    'markers' => [
-                    [
-                    'title' => $bookCase->title,
-                    'lat' => $bookCase->latitude,
-                    'lng' => $bookCase->longitude,
-                    'url' => 'https://gonoware.com',
-                    'icon' => asset('img/btc-logo-6219386_1280.png'),
-                    'icon_size' => [42, 42],
-                    ],
-                    ],
+                        'lat' => $bookCase->latitude,
+                        'lng' => $bookCase->longitude,
+                        'zoom' => 24,
+                        'markers' => [
+                            [
+                                'title' => $bookCase->title,
+                                'lat' => $bookCase->latitude,
+                                'lng' => $bookCase->longitude,
+                                'url' => 'https://gonoware.com',
+                                'icon' => asset('img/btc-logo-6219386_1280.png'),
+                                'icon_size' => [42, 42],
+                            ],
+                        ],
                     ])
                 </div>
 

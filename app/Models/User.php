@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use QCod\Gamify\Gamify;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 use Spatie\Permission\Traits\HasRoles;
@@ -24,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment
     use TwoFactorAuthenticatable;
     use HasRoles;
     use InteractsWithComments;
+    use Gamify;
 
     protected $guarded = [];
 
@@ -53,4 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function orangePills()
+    {
+        return $this->hasMany(OrangePill::class);
+    }
 }

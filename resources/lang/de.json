@@ -619,5 +619,7 @@
     "Dates for courses about Bitcoin.": "Termine für Kurse zum Thema Bitcoin.",
     "Lecturers in the surrounding area.": "Dozenten in der Umgebung.",
     "Venues in the surrounding area.": "Veranstaltungsorte in der Umgebung.",
-    "nova-spatie-permissions::lang.display_names\": \"": ""
+    "nova-spatie-permissions::lang.display_names\": \"": "",
+    "PlebArt": "",
+    "Highscore Table": "Highscore-Tabelle"
 }
