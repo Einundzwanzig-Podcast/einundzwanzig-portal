@@ -19,13 +19,13 @@
             <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
                 @foreach($plebs as $pleb)
-                    <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-amber-200 text-center shadow">
+                    <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-amber-500 text-center shadow-2xl">
                         <div class="flex flex-1 flex-col p-8">
                             <img class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
                                  src="{{ $pleb->profile_photo_url }}" alt="{{ $pleb->name }}">
                             <h3 class="mt-6 text-sm font-medium text-gray-900 truncate">{{ $pleb->name }}</h3>
                             <dl class="mt-1 flex flex-grow flex-col justify-between">
-                                <dd class="text-sm text-gray-500">{{ $pleb->orange_pills_count }} {{ __('Bookcases') }} {{ __('Orange pilled') }}</dd>
+                                <dd class="text-sm text-gray-800">{{ $pleb->orange_pills_count }} {{ __('Bookcases') }} {{ __('Orange pilled') }}</dd>
                                 <dd class="mt-3">
                                     <span class="rounded-full bg-21gray px-2 py-1 text-xs font-medium text-gray-200">{{ __('Points') }}: {{ $pleb->getPoints() }}</span>
                                 </dd>
