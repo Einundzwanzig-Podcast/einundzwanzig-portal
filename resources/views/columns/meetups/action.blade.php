@@ -25,4 +25,11 @@
             {{ __('Show dates') }} ({{ $row->meetup_events_count }})
         </x-button>
     @endif
+    <x-button
+        primary
+        :href="route('meetup.landing', ['country' => $country, 'meetup' => $row->slug])"
+    >
+        <i class="fa fa-thin fa-browser mr-2"></i>
+        {{ __('Show landing page') }}
+    </x-button>
 </div>

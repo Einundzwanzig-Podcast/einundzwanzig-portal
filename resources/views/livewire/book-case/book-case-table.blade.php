@@ -11,11 +11,11 @@
                             class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Bookcases') }}</span>
                     </h1>
                 </div>
-                <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
-                    {{ __('Search out a public bookcase') }}
-                </p>
 
                 <div class="w-1/2">
+                    <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
+                        {{ __('Search out a public bookcase') }}
+                    </p>
                     <div class="rounded" wire:ignore>
                         @if($markers[0] ?? false)
                             <style>

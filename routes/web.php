@@ -92,6 +92,8 @@ Route::middleware([])
               ->name('table.meetup');
          Route::get('/meetup-events', \App\Http\Livewire\Meetup\MeetupEventTable::class)
               ->name('table.meetupEvent');
+         Route::get('/{meetup:slug}', \App\Http\Livewire\Meetup\LandingPage::class)
+              ->name('landing');
      });
 
 /*

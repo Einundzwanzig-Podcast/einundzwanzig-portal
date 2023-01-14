@@ -10,18 +10,20 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Meetup extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use HasSlug;
 
     /**
      * The attributes that aren't mass assignable.
      * @var array
      */
     protected $guarded = [];
-
     /**
      * The attributes that should be cast to native types.
      * @var array
@@ -38,6 +40,14 @@ class Meetup extends Model implements HasMedia
                 $model->created_by = auth()->id();
             }
         });
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+                          ->generateSlugsFrom(['name'])
+                          ->saveSlugsTo('slug')
+                          ->usingLanguage('de');
     }
 
     public function registerMediaConversions(Media $media = null): void
