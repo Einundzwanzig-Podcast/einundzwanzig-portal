@@ -9,6 +9,7 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class BookCaseTable extends Component
 {
+    public ?Country $country = null;
     public string $c = 'de';
     public array $table = [];
 

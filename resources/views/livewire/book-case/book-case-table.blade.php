@@ -1,6 +1,6 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     {{-- HEADER --}}
-    <livewire:frontend.header/>
+    <livewire:frontend.header :c="$country->code"/>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10" id="table">
@@ -10,33 +10,13 @@
                         Bitcoin <span
                             class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Bookcases') }}</span>
                     </h1>
-                    <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">
-                        {{ __('Search out a public bookcase') }}
-                    </p>
                 </div>
-
-                <div class="w-1/2">
-                    <div class="rounded" wire:ignore>
-                        @if($markers[0] ?? false)
-                            <style>
-                                .gnw-map-service {
-                                    z-index: 0 !important;
-                                }
-                            </style>
-                            <div>
-                                @map([
-                                    'lat' => $markers[0]['lat'],
-                                    'lng' => $markers[0]['lng'],
-                                    'zoom' => 12,
-                                    'markers' => $markers
-                                ])
-                            </div>
-                        @endif
-                    </div>
-                </div>
+                <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
+                    {{ __('Search out a public bookcase') }}
+                </p>
             </div>
 
-            <livewire:tables.book-case-table :country="$c"/>
+            <livewire:tables.book-case-table :c="$country->code"/>
         </div>
     </section>
     {{-- FOOTER --}}
