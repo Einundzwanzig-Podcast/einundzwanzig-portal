@@ -4,13 +4,14 @@ namespace App\Http\Livewire\BookCase;
 
 use App\Models\BookCase;
 use App\Models\Country;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class CommentBookCase extends Component
 {
     use WithFileUploads;
+
     public Country $country;
 
     public $photo;
@@ -21,7 +22,14 @@ class CommentBookCase extends Component
 
     public function render()
     {
-        return view('livewire.book-case.comment-book-case');
+        return view('livewire.book-case.comment-book-case')
+            ->layout('layouts.app', [
+                'SEOData' => new SEOData(
+                    title: $this->bookCase->title,
+                    description: $this->bookCase->address,
+                    image: $this->bookCase->getFirstMediaUrl('images') ?? asset('img/bookcase.jpg'),
+                )
+            ]);
     }
 
     public function save()
