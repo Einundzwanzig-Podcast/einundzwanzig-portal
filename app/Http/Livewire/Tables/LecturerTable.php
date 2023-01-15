@@ -17,6 +17,7 @@ class LecturerTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setDefaultSort('courses_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -62,7 +63,9 @@ class LecturerTable extends DataTableComponent
                   ->collapseOnMobile(),
             Column::make('')
                   ->label(
-                      fn($row, Column $column) => view('columns.lectures.action')->withRow($row)->withCountry($this->country)
+                      fn($row, Column $column) => view('columns.lectures.action')
+                          ->withRow($row)
+                          ->withCountry($this->country)
                   ),
 
         ];
@@ -73,13 +76,15 @@ class LecturerTable extends DataTableComponent
         return Lecturer::query()
                        ->withCount([
                            'courses',
+                           'coursesEvents',
                            'libraryItems',
                        ]);
     }
 
     public function lecturerSearch($id, $event = true)
     {
-        $lecturer = Lecturer::query()->find($id);
+        $lecturer = Lecturer::query()
+                            ->find($id);
 
         if ($event) {
             return to_route('school.table.event', [

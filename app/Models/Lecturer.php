@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -91,6 +92,11 @@ class Lecturer extends Model implements HasMedia
     public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
+    }
+
+    public function coursesEvents(): HasManyThrough
+    {
+        return $this->hasManyThrough(CourseEvent::class, Course::class);
     }
 
     public function libraryItems(): HasMany
