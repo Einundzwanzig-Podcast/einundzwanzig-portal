@@ -6,6 +6,7 @@ use App\Models\Country;
 use App\Models\CourseEvent;
 use App\Models\Lecturer;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class LecturerLandingPage extends Component
 {
@@ -37,7 +38,14 @@ class LecturerLandingPage extends Component
                                              'location'    => $event->course->name,
                                              'description' => $event->venue->name,
                                          ]),
-        ]);
+        ])
+            ->layout('layouts.guest', [
+                'SEOData' => new SEOData(
+                    title: $this->lecturer->name,
+                    description: $this->lecturer->intro ?? __('This lecturer has not yet written an introduction.'),
+                    image: asset($this->lecturer->getFirstMediaUrl('avatar')),
+                )
+            ]);
     }
 
     public function showEvent($id)

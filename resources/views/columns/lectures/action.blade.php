@@ -24,7 +24,7 @@
         </x-button>
     @endif
     <x-button
-        :href="route('school.landingPage.lecturer', ['country' => $country, 'lecturer' => $row->id])"
+        :href="route('school.landingPage.lecturer', ['country' => $country, 'lecturer' => $row->slug])"
         amber>
         <i class="fa fa-thin fa-browser mr-2"></i>
         {{ __('Show landing page') }}
