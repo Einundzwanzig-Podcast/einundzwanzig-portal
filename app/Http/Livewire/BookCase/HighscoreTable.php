@@ -17,10 +17,13 @@ class HighscoreTable extends Component
     {
         return view('livewire.book-case.highscore-table', [
             'plebs' => User::query()
+                           ->with([
+                               'reputations',
+                           ])
                            ->withCount([
                                'orangePills',
                            ])
-                           ->orderByDesc('orange_pills_count')
+                           ->orderByDesc('reputation')
                            ->get(),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
