@@ -10,6 +10,8 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class HighscoreTable extends Component
 {
     public Country $country;
+    public bool $viewingModal = false;
+    public ?User $modal = null;
 
     public function render()
     {
@@ -27,5 +29,18 @@ class HighscoreTable extends Component
                 image: asset('img/highscore_table_screenshot.png'),
             )
         ]);
+    }
+
+    public function openModal($id)
+    {
+        $this->modal = User::query()
+                           ->with([
+                               'orangePills',
+                               'reputations',
+                           ])
+                           ->where('id', $id)
+                           ->first();
+
+        $this->viewingModal = true;
     }
 }

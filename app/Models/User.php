@@ -60,4 +60,9 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment
     {
         return $this->hasMany(OrangePill::class);
     }
+
+    public function reputations()
+    {
+        return $this->morphMany('QCod\Gamify\Reputation', 'subject');
+    }
 }

@@ -19,7 +19,9 @@
             <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
                 @foreach($plebs as $pleb)
-                    <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-amber-500 text-center shadow-2xl">
+                    <li
+                        wire:click="openModal({{ $pleb->id }})"
+                        class="cursor-pointer col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-amber-500 text-center shadow-2xl">
                         <div class="flex flex-1 flex-col p-8">
                             <img class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
                                  src="{{ $pleb->profile_photo_url }}" alt="{{ $pleb->name }}">
@@ -59,6 +61,65 @@
 
 
             </ul>
+
+            <x-jet-dialog-modal wire:model="viewingModal" maxWidth="screen" bg="bg-21gray">
+                <x-slot name="title">
+                    @if($modal)
+                        <div class="text-gray-200">
+                            {{ $modal->name }}
+                        </div>
+                    @endif
+                </x-slot>
+
+                <x-slot name="content">
+                    @if($modal)
+                        <div class="space-y-4 mt-16 flex flex-col justify-center min-h-[600px]">
+
+                            <div>
+                                <div class="mt-6 flow-root">
+                                    <ul role="list" class="-my-5 divide-y divide-gray-200">
+                                        <li class="py-5">
+                                            <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                                <h3 class="text-sm font-semibold text-gray-200">
+                                                    <div class="">
+                                                        <!-- Extend touch target to entire panel -->
+                                                        <span class="absolute inset-0" aria-hidden="true"></span>
+                                                        {{ $modal->name }} {{ __('has') }} {{ $modal->reputations->where('name', 'LoggedIn')->sum('point') }} {{ __('logins') }}
+                                                    </div>
+                                                </h3>
+                                                <p class="mt-1 text-sm text-gray-200 line-clamp-2">{{ __('You get a point when you log in.') }}</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <ul role="list"
+                                class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                                @foreach($modal->orangePills as $orangePill)
+                                    <li class="relative">
+                                        <div
+                                            class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                            <img src="{{ $orangePill->bookCase->getFirstMediaUrl('images') }}" alt=""
+                                                 class="pointer-events-none object-cover group-hover:opacity-75">
+                                        </div>
+                                        <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-200">
+                                            210 {{ __('points') }}</p>
+                                        <p class="pointer-events-none block text-sm font-medium text-gray-200">{{ $orangePill->date->asDate() }}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+                    @endif
+                </x-slot>
+
+                <x-slot name="footer">
+                    <x-jet-secondary-button wire:click="resetModal" wire:loading.attr="disabled">
+                        @lang('Close')
+                    </x-jet-secondary-button>
+                </x-slot>
+            </x-jet-dialog-modal>
 
         </div>
     </section>
