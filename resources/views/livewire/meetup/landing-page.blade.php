@@ -10,7 +10,7 @@
                             class="lg:block hidden">
                         {{ __('Plebs together strong 💪') }}
                     </h1>
-                    <div class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
+                    <div class="px-0 mb-6 text-lg text-gray-200 md:text-xl">
                         <x-markdown>
                             {!! $meetup->intro !!}
                         </x-markdown>

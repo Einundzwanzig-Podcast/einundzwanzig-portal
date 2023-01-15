@@ -10,7 +10,7 @@
                             class="lg:block hidden">
                         {{ $lecturer->subtitle }}
                     </h1>
-                    <div class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
+                    <div class="px-0 mb-6 text-lg text-gray-200 md:text-xl">
                         {{ $lecturer->intro }}
                     </div>
                 </div>
