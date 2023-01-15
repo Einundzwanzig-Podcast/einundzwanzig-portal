@@ -48,7 +48,7 @@
                                href="{{ $currentModal?->link }}" target="_blank">{{ __('Link to the registration') }}</a>
                             <div class="prose-xl prose-white">
                                 <x-markdown>
-                                    {{ $currentModal?->course->description }}
+                                    {!! $currentModal?->course->description !!}
                                 </x-markdown>
                             </div>
                             <a class="block w-full rounded-md border border-transparent bg-white py-3 px-5 text-center text-base font-medium text-amber-500 shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"

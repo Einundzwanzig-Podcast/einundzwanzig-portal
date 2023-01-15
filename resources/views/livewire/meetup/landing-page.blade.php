@@ -11,16 +11,18 @@
                         {{ __('Plebs together strong 💪') }}
                     </h1>
                     <div class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
-                        {{ __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!') }}
-
-                        <x-button
-                            target="_blank"
-                            :href="$meetup->link"
-                            primary lg class="whitespace-nowrap">
-                            <i class="fa fa-thin fa-external-link mr-2"></i>
-                            {{ __('Link') }}
-                        </x-button>
+                        <x-markdown>
+                            {!! $meetup->intro !!}
+                        </x-markdown>
                     </div>
+
+                    <x-button
+                        target="_blank"
+                        :href="$meetup->link"
+                        primary lg class="mt-4 whitespace-nowrap">
+                        <i class="fa fa-thin fa-external-link mr-2"></i>
+                        {{ __('Link') }}
+                    </x-button>
                 </div>
 
                 <div class="p-4">

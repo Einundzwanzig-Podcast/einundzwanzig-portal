@@ -7,6 +7,7 @@ use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -74,6 +75,9 @@ class Meetup extends Resource
                 ->rules('required', 'string'),
 
             BelongsTo::make(__('City'), 'city', City::class)->searchable()->withSubtitles(),
+
+            Markdown::make(__('Intro'), 'intro')
+                    ->help(__('This is the introduction text that is shown on the landing page.')),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
