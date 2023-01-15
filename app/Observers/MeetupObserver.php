@@ -21,7 +21,7 @@ class MeetupObserver
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
 
-            $text = sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig",
+            $text = sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $meetup->name,
                 url()->route('meetup.landing', ['country' => 'de', 'meetup' => $meetup])
             );

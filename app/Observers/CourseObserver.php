@@ -21,10 +21,10 @@ class CourseObserver
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
 
-            $text = sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig",
+            $text = sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
                 $course->lecturer->name,
                 $course->name,
-                str($course->description)->limit(100),
+                str($course->description)->limit(80),
                 url()->route('school.landingPage.lecturer',
                     ['country' => 'de', 'lecturer' => $course->lecturer]),
             );

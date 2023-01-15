@@ -21,7 +21,7 @@ class OrangePillObserver
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
 
-            $text = sprintf("In einem der weltweiten Bücherschränke wurde ein Bitcoin-Buch reingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Education #Einundzwanzig",
+            $text = sprintf("In einem der weltweiten Bücherschränke wurde ein Bitcoin-Buch reingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Education #Einundzwanzig #gesundesgeld",
                 $orangePill->bookCase->title,
                 $orangePill->bookCase->address,
                 url()->route('bookCases.comment.bookcase', ['country' => 'de', 'bookCase' => $orangePill->bookCase]),
