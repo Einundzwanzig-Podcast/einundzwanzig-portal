@@ -67,11 +67,13 @@
     </x-slot>
 
     <x-slot name="footer">
-        <x-jet-secondary-button wire:click="resetModal" wire:loading.attr="disabled">
-            @lang('Close')
-        </x-jet-secondary-button>
-        <x-jet-secondary-button wire:click="submit" wire:loading.attr="disabled">
-            💊 @lang('Orange Pill Now')
-        </x-jet-secondary-button>
+        <div class="space-x-4">
+            <x-jet-secondary-button wire:click="resetModal" wire:loading.attr="disabled">
+                @lang('Close')
+            </x-jet-secondary-button>
+            <x-jet-secondary-button wire:click="submit" wire:loading.attr="disabled">
+                💊 <span class="text-amber-500">@lang('Orange Pill Now')</span>
+            </x-jet-secondary-button>
+        </div>
     </x-slot>
 </x-jet-dialog-modal>
