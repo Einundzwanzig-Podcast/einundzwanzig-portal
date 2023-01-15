@@ -40,6 +40,7 @@ class CourseTable extends DataTableComponent
             MultiSelectFilter::make('Tag')
                              ->options(
                                  Tag::query()
+                                    ->withType('course')
                                     ->get()
                                     ->mapWithKeys(fn($item, $key) => [$item->name => $item->name])
                                     ->toArray()
