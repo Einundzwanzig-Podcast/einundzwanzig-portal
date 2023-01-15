@@ -3,7 +3,7 @@
     <section class="w-full mb-12 mt-8">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row">
             <div class="flex flex-col sm:flex-row">
-                <div class="flex flex-col">
+                <div class="sm:w-10/12 flex flex-col">
                     <h1 class="mb-6 text-5xl font-extrabold leading-none tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                         <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200">{{ $meetup->name }}</span><br
@@ -25,7 +25,7 @@
                     </x-button>
                 </div>
 
-                <div class="p-4">
+                <div class="sm:w-2/12 p-4">
                     <img class="max-h-64" src="{{ $meetup->getFirstMediaUrl('logo') }}" alt="Logo">
                 </div>
             </div>
