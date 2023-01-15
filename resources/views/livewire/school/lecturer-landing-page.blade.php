@@ -43,9 +43,9 @@
                         <img class="mx-auto h-32 w-32 object-contain flex-shrink-0 rounded"
                              src="{{ $courseEvent->venue->getFirstMediaUrl('images') }}"
                              alt="{{ $courseEvent->course->name }}">
-                        <h3 class="mt-6 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->from->asDate() }}</h3>
-                        <h3 class="mt-6 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->venue->city->name }}</h3>
-                        <h3 class="mt-6 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->venue->name }}</h3>
+                        <h3 class="mt-1 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->from->asDate() }}</h3>
+                        <h3 class="mt-1 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->venue->city->name }}</h3>
+                        <h3 class="mt-1 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->venue->name }}</h3>
                         <dl class="mt-1 flex flex-grow flex-col justify-between">
                             <div x-data="{ active: 2 }" class="mx-auto max-w-3xl w-full space-y-4">
                                 <div x-data="{
