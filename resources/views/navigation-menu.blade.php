@@ -68,7 +68,8 @@
                     @endif
 
                     <div>
-                        <x-button xs amber href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                        <x-button xs amber href="{{ route('profile.show') }}"
+                                  :active="request()->routeIs('profile.show')">
                             <i class="fa fa-thin fa-user"></i>
                             {{ __('My profile') }}
                         </x-button>
@@ -210,9 +211,38 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
+            @if(str(request()->route()->getName())->contains('meetup.'))
+                <x-jet-responsive-nav-link href="/nova/resources/meetups" :active="false">
+                    {{ __('Submit Meetup') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="/nova/resources/meetup-events" :active="false">
+                    {{ __('Register Meetup date') }}
+                </x-jet-responsive-nav-link>
+            @endif
+
+            @if(str(request()->route()->getName())->contains('school.'))
+                <x-jet-responsive-nav-link href="/nova/resources/lecturers" :active="false">
+                    {{ __('Register lecturer') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="/nova/resources/courses" :active="false">
+                    {{ __('Register course') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="/nova/resources/course-events" :active="false">
+                    {{ __('Register course date') }}
+                </x-jet-responsive-nav-link>
+            @endif
+
+            @if(str(request()->route()->getName())->contains('library.'))
+                <x-jet-responsive-nav-link href="/nova/resources/library-items" :active="false">
+                    {{ __('Submit contents') }}
+                </x-jet-responsive-nav-link>
+            @endif
+
+            @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
+                <x-jet-responsive-nav-link href="/nova/resources/bitcoin-events" :active="false">
+                    {{ __('Register event') }}
+                </x-jet-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
