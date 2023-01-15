@@ -98,16 +98,19 @@
                                 class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                                 @foreach($modal->orangePills as $orangePill)
                                     <li class="relative">
-                                        <div
-                                            class="group aspect-w-10 aspect-h-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-                                            <img
-                                                src="{{ $orangePill->bookCase->getFirstMediaUrl('images') ? $orangePill->bookCase->getFirstMediaUrl('images') : asset('img/empty_book_case.webp') }}"
-                                                alt="book_case"
-                                                class="pointer-events-none object-cover group-hover:opacity-75">
-                                        </div>
-                                        <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-200">
-                                            210 {{ __('points') }}</p>
-                                        <p class="pointer-events-none block text-sm font-medium text-gray-200">{{ $orangePill->date->asDate() }}</p>
+                                        <a target="_blank"
+                                           href="{{ route('bookCases.comment.bookcase', ['country' => $country, 'bookCase' => $orangePill->bookCase]) }}">
+                                            <div
+                                                class="group aspect-w-10 aspect-h-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                                <img
+                                                    src="{{ $orangePill->bookCase->getFirstMediaUrl('images') ? $orangePill->bookCase->getFirstMediaUrl('images') : asset('img/empty_book_case.webp') }}"
+                                                    alt="book_case"
+                                                    class="pointer-events-none object-cover group-hover:opacity-75">
+                                            </div>
+                                            <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-200">
+                                                210 {{ __('points') }}</p>
+                                            <p class="pointer-events-none block text-sm font-medium text-gray-200">{{ $orangePill->date->asDate() }}</p>
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>
