@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Gamify\Points\LoggedIn;
 use App\Models\LoginKey;
 use App\Models\User;
 use App\Notifications\ModelCreatedNotification;

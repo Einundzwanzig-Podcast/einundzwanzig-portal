@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Gamify\Points\BookCaseOrangePilled;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,6 +27,13 @@ class OrangePill extends Model
         'book_case_id' => 'integer',
         'date'         => 'datetime',
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->user->givePoint(new BookCaseOrangePilled($model));
+        });
+    }
 
     public function user(): BelongsTo
     {

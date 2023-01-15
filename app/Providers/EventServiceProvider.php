@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Listeners\AddLoginReputation;
 use App\Observers\EpisodeObserver;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -14,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
+        Login::class => [
+            AddLoginReputation::class,
+        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
