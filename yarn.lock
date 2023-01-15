@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@alpinejs/collapse@^3.10.5":
+  version "3.10.5"
+  resolved "https://registry.yarnpkg.com/@alpinejs/collapse/-/collapse-3.10.5.tgz#97adf33161e8af475edb93556b27e5b7eb949198"
+  integrity sha512-ucpZNm+K9GBlmCR2WK5ket67xvwUH/KDzXc5bJSsxAAucrQuhdXuZN5a9kuqBfrm3x9t/bV6CGXEqNkrZ2/LRA==
+
 "@esbuild/android-arm@0.15.16":
   version "0.15.16"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.15.16.tgz#0642926178b15e3d1545efae6eee05c4f3451d15"

@@ -12,6 +12,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 use Spatie\LaravelOptions\Options;
 
 class LibraryItemTable extends DataTableComponent
@@ -43,6 +44,11 @@ class LibraryItemTable extends DataTableComponent
     public function filters(): array
     {
         return [
+            TextFilter::make(__('By lecturer'), 'lecturer_id')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->where('library_items.lecturer_id', '=', $value);
+                      }),
             MultiSelectFilter::make('Tag')
                              ->options(
                                  Tag::query()

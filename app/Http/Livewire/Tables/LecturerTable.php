@@ -62,7 +62,7 @@ class LecturerTable extends DataTableComponent
                   ->collapseOnMobile(),
             Column::make('')
                   ->label(
-                      fn($row, Column $column) => view('columns.lectures.action')->withRow($row)
+                      fn($row, Column $column) => view('columns.lectures.action')->withRow($row)->withCountry($this->country)
                   ),
 
         ];
@@ -77,18 +77,30 @@ class LecturerTable extends DataTableComponent
                        ]);
     }
 
-    public function lecturerSearch($id)
+    public function lecturerSearch($id, $event = true)
     {
         $lecturer = Lecturer::query()->find($id);
 
-        return to_route('school.table.event', [
-            '#table',
-            'country' => $this->country,
-            'table'   => [
-                'filters' => [
-                    'dozent' => $lecturer->id,
-                ],
-            ]
-        ]);
+        if ($event) {
+            return to_route('school.table.event', [
+                '#table',
+                'country' => $this->country,
+                'table'   => [
+                    'filters' => [
+                        'dozent' => $lecturer->id,
+                    ],
+                ]
+            ]);
+        } else {
+            return to_route('library.table.libraryItems', [
+                '#table',
+                'country' => $this->country,
+                'table'   => [
+                    'filters' => [
+                        'lecturer_id' => $lecturer->id,
+                    ],
+                ]
+            ]);
+        }
     }
 }

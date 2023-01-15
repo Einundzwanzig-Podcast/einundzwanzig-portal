@@ -30,6 +30,9 @@ Route::middleware([])
 
          Route::get('/event', \App\Http\Livewire\School\EventTable::class)
               ->name('table.event');
+
+         Route::get('/{lecturer}', \App\Http\Livewire\School\LecturerLandingPage::class)
+              ->name('landingPage.lecturer');
      });
 
 /*

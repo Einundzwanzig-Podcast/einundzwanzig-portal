@@ -186,6 +186,19 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 1,
             'name'        => 'Hands on Bitcoin',
             'created_by'  => 1,
+            'description'  => '
+Klimakiller Bitcoin! Bitcoin hat keinen Nutzen! Bitcoin wird nur von Kriminellen genutzt!
+
+Diese oder ähnliche Aussprüche kennen Sie bestimmt? Dann lassen Sie uns Bitcoin doch einmal genauer anschauen! In meinem Kurs nehme ich Sie mit auf einen Weg der bei der Geschichte unseres Geldes beginnt. Lassen Sie uns schauen wie unser Geld entsteht und welche Aufgaben dabei Geschäftsbanken und Zentralbanken haben. Welche Rolle spielt eigentlich das Jahr 1971 und welche Auswirkungen hatte dies auf unser Geld wie wir es heute verwenden. Was hat die Banken- und Finanzkrise 2008/ 2009 mit Bitcoin und Neuseeland mit unserer Inflation zu tun?
+
+Was ist eigentlich dieses Bitcoin? Wer hat es erfunden und warum? Lassen Sie uns schauen, was eine Blockchain überhaupt ist und wie sie funktioniert- warum ist es wichtig, dass hierfür Energie eingesetzt wird. Was ist eigentlich dieses Proof of Work von dem immer geschrieben wird und warum ist er so wichtig? Und ist Bitcoin vielleicht sogar ein Treiber im Ausbau der erneuerbaren Energien bei? Sie haben schonmal von Minern gehört und vielleicht sogar von Nodes? Doch welche Rolle spielen Sie und wie sehen diese eigentlich aus- auch das können Sie in diesem Kurs herausfinden.
+
+Bitcoin wird nur von Kriminellen genutzt? Lassen Sie uns gemeinsam schauen wie eine Bitcoin Transaktion funktioniert und was eine sog. „Wallet“ ist. Welche Unterschiede gibt es beim Verwahren von Bitcoin und wie können diese sicher vererbt werden. Dabei werden wir auch Begriffe wie PrivateKey, PublicKey und Seed kennenlernen und wie diese zusammenspielen. Und nein- sie müssen für diesen Kurs kein Informatikstudium besitzen!
+
+Bitcoin ist interdisziplinär! Und wer anfängt sich damit zu beschäftigen wird schnell feststellen, dass es mehrere hundert Stunden benötigt, um Bitcoin zu verstehen.
+
+Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema herangeführt. Sie erhalten dabei Kenntnis von den Grundbegriffen, der Funktion und der Verwendung von Bitcoin.
+',
         ]);
         $course->syncTagsWithType(['Hardware Wallet'], 'course');
         $course->categories()
@@ -194,6 +207,19 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 1,
             'name'        => 'Bitcoin <> Crypto',
             'created_by'  => 1,
+            'description'  => '
+Klimakiller Bitcoin! Bitcoin hat keinen Nutzen! Bitcoin wird nur von Kriminellen genutzt!
+
+Diese oder ähnliche Aussprüche kennen Sie bestimmt? Dann lassen Sie uns Bitcoin doch einmal genauer anschauen! In meinem Kurs nehme ich Sie mit auf einen Weg der bei der Geschichte unseres Geldes beginnt. Lassen Sie uns schauen wie unser Geld entsteht und welche Aufgaben dabei Geschäftsbanken und Zentralbanken haben. Welche Rolle spielt eigentlich das Jahr 1971 und welche Auswirkungen hatte dies auf unser Geld wie wir es heute verwenden. Was hat die Banken- und Finanzkrise 2008/ 2009 mit Bitcoin und Neuseeland mit unserer Inflation zu tun?
+
+Was ist eigentlich dieses Bitcoin? Wer hat es erfunden und warum? Lassen Sie uns schauen, was eine Blockchain überhaupt ist und wie sie funktioniert- warum ist es wichtig, dass hierfür Energie eingesetzt wird. Was ist eigentlich dieses Proof of Work von dem immer geschrieben wird und warum ist er so wichtig? Und ist Bitcoin vielleicht sogar ein Treiber im Ausbau der erneuerbaren Energien bei? Sie haben schonmal von Minern gehört und vielleicht sogar von Nodes? Doch welche Rolle spielen Sie und wie sehen diese eigentlich aus- auch das können Sie in diesem Kurs herausfinden.
+
+Bitcoin wird nur von Kriminellen genutzt? Lassen Sie uns gemeinsam schauen wie eine Bitcoin Transaktion funktioniert und was eine sog. „Wallet“ ist. Welche Unterschiede gibt es beim Verwahren von Bitcoin und wie können diese sicher vererbt werden. Dabei werden wir auch Begriffe wie PrivateKey, PublicKey und Seed kennenlernen und wie diese zusammenspielen. Und nein- sie müssen für diesen Kurs kein Informatikstudium besitzen!
+
+Bitcoin ist interdisziplinär! Und wer anfängt sich damit zu beschäftigen wird schnell feststellen, dass es mehrere hundert Stunden benötigt, um Bitcoin zu verstehen.
+
+Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema herangeführt. Sie erhalten dabei Kenntnis von den Grundbegriffen, der Funktion und der Verwendung von Bitcoin.
+',
         ]);
         $course->syncTagsWithType(['Lightning'], 'course');
         $course->categories()
@@ -202,6 +228,19 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 2,
             'name'        => 'Bitcoin Lightning Network',
             'created_by'  => 1,
+            'description'  => '
+Klimakiller Bitcoin! Bitcoin hat keinen Nutzen! Bitcoin wird nur von Kriminellen genutzt!
+
+Diese oder ähnliche Aussprüche kennen Sie bestimmt? Dann lassen Sie uns Bitcoin doch einmal genauer anschauen! In meinem Kurs nehme ich Sie mit auf einen Weg der bei der Geschichte unseres Geldes beginnt. Lassen Sie uns schauen wie unser Geld entsteht und welche Aufgaben dabei Geschäftsbanken und Zentralbanken haben. Welche Rolle spielt eigentlich das Jahr 1971 und welche Auswirkungen hatte dies auf unser Geld wie wir es heute verwenden. Was hat die Banken- und Finanzkrise 2008/ 2009 mit Bitcoin und Neuseeland mit unserer Inflation zu tun?
+
+Was ist eigentlich dieses Bitcoin? Wer hat es erfunden und warum? Lassen Sie uns schauen, was eine Blockchain überhaupt ist und wie sie funktioniert- warum ist es wichtig, dass hierfür Energie eingesetzt wird. Was ist eigentlich dieses Proof of Work von dem immer geschrieben wird und warum ist er so wichtig? Und ist Bitcoin vielleicht sogar ein Treiber im Ausbau der erneuerbaren Energien bei? Sie haben schonmal von Minern gehört und vielleicht sogar von Nodes? Doch welche Rolle spielen Sie und wie sehen diese eigentlich aus- auch das können Sie in diesem Kurs herausfinden.
+
+Bitcoin wird nur von Kriminellen genutzt? Lassen Sie uns gemeinsam schauen wie eine Bitcoin Transaktion funktioniert und was eine sog. „Wallet“ ist. Welche Unterschiede gibt es beim Verwahren von Bitcoin und wie können diese sicher vererbt werden. Dabei werden wir auch Begriffe wie PrivateKey, PublicKey und Seed kennenlernen und wie diese zusammenspielen. Und nein- sie müssen für diesen Kurs kein Informatikstudium besitzen!
+
+Bitcoin ist interdisziplinär! Und wer anfängt sich damit zu beschäftigen wird schnell feststellen, dass es mehrere hundert Stunden benötigt, um Bitcoin zu verstehen.
+
+Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema herangeführt. Sie erhalten dabei Kenntnis von den Grundbegriffen, der Funktion und der Verwendung von Bitcoin.
+',
         ]);
         $course->syncTagsWithType(['Für Unternehmen'], 'course');
         $course->categories()
@@ -279,6 +318,7 @@ class DatabaseSeeder extends Seeder
             'value'         => 'https://www.youtube.com/watch?v=Oztd2Sja4k0',
             'created_by'    => 1,
         ]);
+        $libraryItem->setStatus('published');
         $libraryItem->syncTagsWithType(['Bitcoin'], 'library_item');
         $library->libraryItems()
                 ->attach($libraryItem);
@@ -295,6 +335,7 @@ class DatabaseSeeder extends Seeder
             'value'         => 'https://aprycot.media/blog/liebe-krypto-und-fiat-bros/',
             'created_by'    => 1,
         ]);
+        $libraryItem->setStatus('published');
         $libraryItem->syncTagsWithType(['Bitcoin'], 'library_item');
         $library->libraryItems()
                 ->attach($libraryItem);
@@ -311,6 +352,7 @@ class DatabaseSeeder extends Seeder
             'value'         => 'https://www.youtube.com/watch?v=C7ynm0Zkwfk',
             'created_by'    => 1,
         ]);
+        $libraryItem->setStatus('published');
         $libraryItem->syncTagsWithType(['Proof of Work'], 'library_item');
         $library->libraryItems()
                 ->attach($libraryItem);
@@ -328,6 +370,7 @@ class DatabaseSeeder extends Seeder
             'value'         => null,
             'created_by'    => 1,
         ]);
+        $libraryItem->setStatus('published');
         $libraryItem->syncTagsWithType(['Präsentationen'], 'library_item');
         $nonPublicLibrary->libraryItems()
                          ->attach($libraryItem);

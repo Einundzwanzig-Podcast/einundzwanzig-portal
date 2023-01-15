@@ -88,6 +88,12 @@ class Lecturer extends Resource
             Text::make('Name')
                 ->rules('required', 'string'),
 
+            Markdown::make(__('Subtitle'), 'subtitle')
+                    ->help(__('This is the subtitle on the landing page.')),
+
+            Markdown::make(__('Intro'), 'intro')
+                    ->help(__('This is the introduction text that is shown on the landing page.')),
+
             Text::make('Slug')
                 ->rules('required', 'string', 'unique:lecturers,slug')
                 ->exceptOnForms(),
@@ -108,7 +114,8 @@ class Lecturer extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable()->withSubtitles(),
+                     ->searchable()
+                     ->withSubtitles(),
 
         ];
     }
