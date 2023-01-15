@@ -6,9 +6,11 @@ use App\Listeners\AddLoginReputation;
 use App\Models\Course;
 use App\Models\CourseEvent;
 use App\Models\Meetup;
+use App\Models\MeetupEvent;
 use App\Models\OrangePill;
 use App\Observers\CourseEventObserver;
 use App\Observers\CourseObserver;
+use App\Observers\MeetupEventObserver;
 use App\Observers\MeetupObserver;
 use App\Observers\OrangePillObserver;
 use Illuminate\Auth\Events\Login;
@@ -38,6 +40,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Meetup::observe(MeetupObserver::class);
+        MeetupEvent::observe(MeetupEventObserver::class);
         OrangePill::observe(OrangePillObserver::class);
         CourseEvent::observe(CourseEventObserver::class);
         Course::observe(CourseObserver::class);
