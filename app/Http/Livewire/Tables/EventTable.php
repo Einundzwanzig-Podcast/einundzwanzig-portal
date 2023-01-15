@@ -164,10 +164,11 @@ class EventTable extends DataTableComponent
     {
         return CourseEvent::query()
                           ->withCount([
-                        'registrations',
-                    ])
+                              'registrations',
+                          ])
+                          ->where('from', '>=', now())
                           ->whereHas('venue.city.country',
-                        fn($query) => $query->where('countries.code', $this->country));
+                              fn($query) => $query->where('countries.code', $this->country));
     }
 
     public function viewHistoryModal($modelId): void

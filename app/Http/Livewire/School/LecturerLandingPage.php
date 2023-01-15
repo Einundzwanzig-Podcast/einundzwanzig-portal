@@ -22,14 +22,18 @@ class LecturerLandingPage extends Component
     {
         return view('livewire.school.lecturer-landing-page', [
             'courseEvents' => CourseEvent::query()
+                                         ->where('from', '>=', now())
                                          ->whereHas('course', function ($query) {
                                              $query->where('lecturer_id', $this->lecturer->id);
                                          })
+                                         ->orderBy('from')
                                          ->get(),
             'events'       => CourseEvent::query()
+                                         ->where('from', '>=', now())
                                          ->whereHas('course', function ($query) {
                                              $query->where('lecturer_id', $this->lecturer->id);
                                          })
+                                         ->orderBy('from')
                                          ->get()
                                          ->map(fn($event) => [
                                              'id'          => $event->id,

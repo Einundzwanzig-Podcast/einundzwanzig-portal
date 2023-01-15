@@ -26,29 +26,31 @@ class EventTable extends Component
     {
         return view('livewire.school.event-table', [
             'markers' => CourseEvent::query()
-                                     ->with([
-                                         'course',
-                                         'venue.city.country',
-                                     ])
-                                     ->where(fn($query) => $query
-                                         ->whereHas('venue.city.country',
-                                             fn($query) => $query->where('countries.code', $this->country->code))
-                                     )
-                                     ->get()
-                                     ->map(fn($event) => [
-                                         'id'     => $event->id,
-                                         'name'   => $event->course->name,
-                                         'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
-                                     ]),
+                                    ->with([
+                                        'course',
+                                        'venue.city.country',
+                                    ])
+                                    ->where('from', '>=', now())
+                                    ->where(fn($query) => $query
+                                        ->whereHas('venue.city.country',
+                                            fn($query) => $query->where('countries.code', $this->country->code))
+                                    )
+                                    ->get()
+                                    ->map(fn($event) => [
+                                        'id'     => $event->id,
+                                        'name'   => $event->course->name,
+                                        'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
+                                    ]),
             'events'  => CourseEvent::query()
-                                     ->get()
-                                     ->map(fn($event) => [
-                                         'id'          => $event->id,
-                                         'startDate'   => $event->from,
-                                         'endDate'     => $event->to,
-                                         'location'    => $event->course->name,
-                                         'description' => $event->venue->name,
-                                     ]),
+                                    ->where('from', '>=', now())
+                                    ->get()
+                                    ->map(fn($event) => [
+                                        'id'          => $event->id,
+                                        'startDate'   => $event->from,
+                                        'endDate'     => $event->to,
+                                        'location'    => $event->course->name,
+                                        'description' => $event->venue->name,
+                                    ]),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: __('Dates'),
