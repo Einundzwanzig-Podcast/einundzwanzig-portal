@@ -14,6 +14,7 @@ Route::get('/auth/twitter', function () {
     return Socialite::driver('twitter')
                     ->scopes([
                         'tweet.write',
+                        'offline.access',
                     ])
                     ->redirect();
 })
@@ -25,11 +26,12 @@ Route::get('/auth/twitter/callback', function () {
     $twitterAccount = \App\Models\TwitterAccount::updateOrCreate([
         'twitter_id' => $twitterUser->id,
     ], [
-        'twitter_id' => $twitterUser->id,
-        'nickname'   => $twitterUser->nickname,
-        'token'      => $twitterUser->token,
-        'expires_in' => $twitterUser->expiresIn,
-        'data'       => [],
+        'twitter_id'    => $twitterUser->id,
+        'refresh_token' => $twitterUser->refreshToken,
+        'nickname'      => $twitterUser->nickname,
+        'token'         => $twitterUser->token,
+        'expires_in'    => $twitterUser->expiresIn,
+        'data'          => [],
     ]);
 
     echo 'Twitter account updated. We can now tweet on: '.$twitterUser->name;

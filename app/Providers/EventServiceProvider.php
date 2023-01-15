@@ -3,7 +3,14 @@
 namespace App\Providers;
 
 use App\Listeners\AddLoginReputation;
-use App\Observers\EpisodeObserver;
+use App\Models\Course;
+use App\Models\CourseEvent;
+use App\Models\Meetup;
+use App\Models\OrangePill;
+use App\Observers\CourseEventObserver;
+use App\Observers\CourseObserver;
+use App\Observers\MeetupObserver;
+use App\Observers\OrangePillObserver;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -16,7 +23,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Login::class => [
+        Login::class      => [
             AddLoginReputation::class,
         ],
         Registered::class => [
@@ -30,7 +37,10 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Meetup::observe(MeetupObserver::class);
+        OrangePill::observe(OrangePillObserver::class);
+        CourseEvent::observe(CourseEventObserver::class);
+        Course::observe(CourseObserver::class);
     }
 
     /**
