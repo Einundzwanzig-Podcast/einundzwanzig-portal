@@ -16,8 +16,6 @@ class LecturerLandingPage extends Component
     public ?int $year = null;
     public ?int $activeEvent = null;
 
-    protected $queryString = ['year'];
-
     public function render()
     {
         return view('livewire.school.lecturer-landing-page', [

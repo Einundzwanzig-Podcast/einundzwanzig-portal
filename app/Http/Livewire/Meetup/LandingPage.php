@@ -15,8 +15,6 @@ class LandingPage extends Component
 
     public ?int $year = null;
 
-    protected $queryString = ['year'];
-
     public function render()
     {
         return view('livewire.meetup.landing-page', [
