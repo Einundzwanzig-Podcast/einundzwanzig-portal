@@ -44,7 +44,7 @@ class CityTable extends DataTableComponent
         $columns = collect([
             Column::make("Stadt Name", "name")
                   ->sortable()
-                  ->searchable(),
+                  ->searchable(fn($builder, $term) => $builder->where('cities.name', 'ilike', '%'.$term.'%')),
         ]);
         if ($this->type === 'school') {
             $columns = $columns->merge([
