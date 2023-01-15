@@ -21,7 +21,7 @@ class MeetupEventObserver
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
 
-            $text = sprintf("%s hat eine neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+            $text = sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $meetupEvent->meetup->name,
                 $meetupEvent->start->asDate(),
                 $meetupEvent->location,
