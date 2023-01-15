@@ -639,5 +639,7 @@
     "This lecturer has not yet written an introduction.": "Dieser Dozent hat noch keine Einführung geschrieben.",
     "If your city is not listed, please create it first.": "Wenn deine Stadt nicht aufgeführt ist, erstelle sie bitte zuerst.",
     "You get a point when you log in.": "Du bekommst einen Punkt, wenn du dich einloggst.",
-    "has": "hat"
+    "has": "hat",
+    "logins": "",
+    "points": ""
 }

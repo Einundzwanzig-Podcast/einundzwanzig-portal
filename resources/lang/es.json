@@ -622,5 +622,17 @@
     "Back": "",
     "By lecturer": "",
     "All courses of this lecturer": "",
-    "Here you can see all events of this lecturer.": ""
+    "Here you can see all events of this lecturer.": "",
+    "This lecturer has not yet written an introduction.": "",
+    "Subtitle": "",
+    "This is the subtitle on the landing page.": "",
+    "Intro": "",
+    "This is the introduction text that is shown on the landing page.": "",
+    "If your city is not listed, please create it first.": "",
+    "has": "",
+    "logins": "",
+    "You get a point when you log in.": "",
+    "points": "",
+    "All courses of :name": "",
+    "Here you can see all events of :name.": ""
 }

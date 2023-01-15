@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Tables;
 use App\Models\BookCase;
 use App\Models\OrangePill;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\WithFileUploads;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
@@ -12,9 +13,12 @@ use WireUi\Traits\Actions;
 
 class BookCaseTable extends DataTableComponent
 {
+    use WithFileUploads;
     use Actions;
 
     public string $country;
+
+    public $photo;
 
     public bool $viewingModal = false;
     public $currentModal;
@@ -29,7 +33,7 @@ class BookCaseTable extends DataTableComponent
     {
         $this->setPrimaryKey('id')
              ->setAdditionalSelects(['id', 'homepage'])
-            ->setDefaultSort('orange_pills_count', 'desc')
+             ->setDefaultSort('orange_pills_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -97,7 +101,9 @@ class BookCaseTable extends DataTableComponent
                   )
                   ->html(),
             Column::make('Orange-Pilled', 'orange_pilled')
-                  ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')->withRow($row)->withCountry($this->country))
+                  ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')
+                      ->withRow($row)
+                      ->withCountry($this->country))
         ];
     }
 
@@ -130,6 +136,7 @@ class BookCaseTable extends DataTableComponent
         $this->validate([
             'orangepill.amount' => 'required|numeric',
             'orangepill.date'   => 'required|date',
+            'photo'             => 'image|max:4096', // 4MB Max
         ]);
         $orangePill = OrangePill::create([
             'user_id'      => auth()->id(),
@@ -137,6 +144,14 @@ class BookCaseTable extends DataTableComponent
             'amount'       => $this->orangepill['amount'],
             'date'         => $this->orangepill['date'],
         ]);
+        $orangePill
+            ->addMedia($this->photo)
+            ->preservingOriginal()
+            ->toMediaCollection('images');
+        $orangePill->load(['media']);
+        $this->currentModal
+            ->addMedia($this->photo)
+            ->toMediaCollection('images');
         if ($this->orangepill['comment']) {
             $this->currentModal->comment($this->orangepill['comment'], null);
         }

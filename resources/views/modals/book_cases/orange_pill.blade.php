@@ -28,6 +28,16 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
+                <form wire:submit.prevent="save">
+                    <label class="my-2 text-gray-200 text-xl">{{ __('Photo') }}</label>
+                    <div class="text-sm text-gray-500">
+                        <input type="file" wire:model="photo">
+                        @error('photo') <span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
                 <x-input
                     min="1"
                     type="number"
