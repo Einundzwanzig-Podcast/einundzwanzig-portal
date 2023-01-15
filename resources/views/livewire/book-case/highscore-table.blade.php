@@ -103,7 +103,7 @@
                                             <div
                                                 class="group aspect-w-10 aspect-h-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                                                 <img
-                                                    src="{{ $orangePill->getFirstMediaUrl('images') ? ($orangePill->bookCase->getFirstMediaUrl('images') ? $orangePill->bookCase->getFirstMediaUrl('images') : asset('img/empty_book_case.webp')) : asset('img/empty_book_case.webp') }}"
+                                                    src="{{ $orangePill->getFirstMediaUrl('images') ? $orangePill->getFirstMediaUrl('images') : ($orangePill->bookCase->getFirstMediaUrl('images') ? $orangePill->bookCase->getFirstMediaUrl('images') : asset('img/empty_book_case.webp')) }}"
                                                     alt="book_case"
                                                     class="pointer-events-none object-cover group-hover:opacity-75">
                                             </div>
