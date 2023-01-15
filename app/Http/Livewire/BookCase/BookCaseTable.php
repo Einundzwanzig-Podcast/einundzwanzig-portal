@@ -26,7 +26,7 @@ class BookCaseTable extends Component
                               'title'     => $b->title,
                               'lat'       => $b->latitude,
                               'lng'       => $b->longitude,
-                              'url'       => 'https://gonoware.com',
+                              'url'       => route('bookCases.comment.bookcase', ['country' => $this->country, 'bookCase' => $b]),
                               'icon'      => asset('img/btc-logo-6219386_1280.png'),
                               'icon_size' => [42, 42],
                           ])
