@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
@@ -8,6 +9,33 @@ Route::get('/', \App\Http\Livewire\Frontend\Welcome::class)
 Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
      ->name('auth.ln')
      ->middleware('guest');
+
+Route::get('/auth/twitter', function () {
+    return Socialite::driver('twitter')
+                    ->scopes([
+                        'tweet.write',
+                    ])
+                    ->redirect();
+})
+     ->name('auth.twitter.redirect');
+
+Route::get('/auth/twitter/callback', function () {
+    $twitterUser = Socialite::driver('twitter')
+                            ->user();
+    $twitterAccount = \App\Models\TwitterAccount::updateOrCreate([
+        'twitter_id' => $twitterUser->id,
+    ], [
+        'twitter_id' => $twitterUser->id,
+        'nickname'   => $twitterUser->nickname,
+        'token'      => $twitterUser->token,
+        'expires_in' => $twitterUser->expiresIn,
+        'data'       => [],
+    ]);
+
+    echo 'Twitter account updated. We can now tweet on: '.$twitterUser->name;
+    die;
+})
+     ->name('auth.twitter');
 
 /*
  * School

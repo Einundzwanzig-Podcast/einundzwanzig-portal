@@ -136,7 +136,7 @@ class BookCaseTable extends DataTableComponent
         $this->validate([
             'orangepill.amount' => 'required|numeric',
             'orangepill.date'   => 'required|date',
-            'photo'             => 'image|max:4096', // 4MB Max
+            'photo'             => 'image|max:8192', // 8MB Max
         ]);
         $orangePill = OrangePill::create([
             'user_id'      => auth()->id(),
