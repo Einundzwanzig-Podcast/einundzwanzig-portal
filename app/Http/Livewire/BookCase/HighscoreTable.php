@@ -43,4 +43,10 @@ class HighscoreTable extends Component
 
         $this->viewingModal = true;
     }
+
+    public function resetModal()
+    {
+        $this->modal = null;
+        $this->viewingModal = false;
+    }
 }
