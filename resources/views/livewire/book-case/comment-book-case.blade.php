@@ -147,6 +147,14 @@
                                                     <button x-bind="focusableWhenVisible" class="px-4 py-2 text-sm">
                                                         #{{ $loop->iteration }} Bild
                                                     </button>
+
+                                                    @if(auth()->user()->hasRole('super-admin'))
+                                                        <x-button wire:click="deletePhoto({{ $image->id }})" xs
+                                                                  x-bind="focusableWhenVisible"
+                                                                  class="px-4 py-2 text-sm">
+                                                            Löschen
+                                                        </x-button>
+                                                    @endif
                                                 </li>
                                             @endforeach
 

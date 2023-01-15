@@ -7,6 +7,7 @@ use App\Models\Country;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CommentBookCase extends Component
 {
@@ -41,6 +42,14 @@ class CommentBookCase extends Component
         $this->bookCase
             ->addMedia($this->photo)
             ->toMediaCollection('images');
+
+        return to_route('bookCases.comment.bookcase', ['bookCase' => $this->bookCase->id]);
+    }
+
+    public function deletePhoto($id)
+    {
+        Media::find($id)
+             ->delete();
 
         return to_route('bookCases.comment.bookcase', ['bookCase' => $this->bookCase->id]);
     }
