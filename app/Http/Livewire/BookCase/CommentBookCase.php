@@ -43,7 +43,7 @@ class CommentBookCase extends Component
             ->addMedia($this->photo)
             ->toMediaCollection('images');
 
-        return to_route('bookCases.comment.bookcase', ['bookCase' => $this->bookCase->id]);
+        return to_route('bookCases.comment.bookcase', ['country' => $this->country, 'bookCase' => $this->bookCase->id]);
     }
 
     public function deletePhoto($id)
@@ -51,7 +51,7 @@ class CommentBookCase extends Component
         Media::find($id)
              ->delete();
 
-        return to_route('bookCases.comment.bookcase', ['bookCase' => $this->bookCase->id]);
+        return to_route('bookCases.comment.bookcase', ['country' => $this->country, 'bookCase' => $this->bookCase->id]);
     }
 
     protected function url_to_absolute($url)
