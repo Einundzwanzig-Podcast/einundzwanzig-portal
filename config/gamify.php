@@ -27,10 +27,21 @@ return [
 
     // All the levels for badge
     'badge_levels'                 => [
-        'No-Coiner'        => 0,
-        'Orange Pilled'    => 1,
-        'Cyber Hornet'     => 21000, // 210.000
-        'Satoshi Nakamoto' => 21000000, // 21.000.000
+        'No-Coiner 😱'                     => 0,
+        'Shitcoiner 💩'                    => 0,
+        'Trader 🎢'                        => 0,
+        'Im Rabbit hole 🐰🕳'               => 0,
+        'DCA 🗓'                           => 0,
+        'Not your keys, not your coins 🗝' => 0,
+        'Wale 🐋'                          => 0,
+        'Running a Node 📡'                => 0,
+        'Lightning-User ⚡️'               => 0,
+        'Miner ⛏️'                        => 0,
+        'Solo-Miner 🎲'                    => 0,
+        'Orange Pilled 💊'                 => 1,
+        'Cyber Hornet 🐝'                  => 21000, // 210.000
+        'Toxic Maximalist 🧪'              => 21000, // 210.000
+        'Satoshi Nakamoto 🧠'              => 21000000, // 21.000.000
     ],
 
     // Default level

@@ -7,23 +7,27 @@
             </a>
 
             <div class="flex flex-row justify-center mb-4 -ml-4 -mr-4">
-                <a href="#"
-                   class="p-4 text-gray-700 hover:text-gray-400">
-
+                <a
+                    target="_blank"
+                    href="https://einundzwanzig.space/kontakt/"
+                    class="p-4 text-gray-700 hover:text-gray-400">
+                    Kontakt
                 </a>
-                <a href="#" class="p-4 text-gray-700 hover:text-gray-400">
-
+                <a
+                    target="_blank" href="https://einundzwanzig.space/datenschutz/"
+                    class="p-4 text-gray-700 hover:text-gray-400">
+                    Datenschutz
                 </a>
                 <a href="#" class="p-4 text-gray-700 hover:text-gray-400">
 
                 </a>
             </div>
         </div>
-        <div class="flex flex-col justify-between text-center md:flex-row">
+        <div class="flex flex-col space-y-6 sm:space-y-0 justify-between text-center md:flex-row">
             <p class="order-last text-sm leading-tight text-gray-500 md:order-first">
                 {{ __('Built with ❤️ by our team.') }}
             </p>
-            <ul class="flex flex-col sm:flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
+            <ul class="flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
                 <li>
                     <a href="https://github.com/affektde/einundzwanzig-bitcoin-school" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
