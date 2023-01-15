@@ -126,7 +126,7 @@
                                 class="absolute bottom-0 left-0 z-10 w-full h-full opacity-30 bg-gradient-to-b from-transparent to-gray-900"></div>
                             <img
                                 class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                                src="{{ asset('img/aprycot-media-bitcoin-21-lektionen-01.webp') }}" alt="">
+                                src="{{ asset('img/bookcase.jpg') }}" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <span
