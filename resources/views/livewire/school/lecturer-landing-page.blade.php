@@ -41,7 +41,7 @@
                 <li id="courseEventId_{{ $courseEvent->id }}" class="{{ $activeClass }} col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg text-center shadow-2xl">
                     <div class="flex flex-1 flex-col p-8">
                         <img class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded"
-                             src="{{ $courseEvent->course->getFirstMediaUrl('logo') }}"
+                             src="{{ $courseEvent->venue->getFirstMediaUrl('images') }}"
                              alt="{{ $courseEvent->course->name }}">
                         <h3 class="mt-6 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->from->asDate() }}</h3>
                         <h3 class="mt-6 text-xl font-medium text-gray-900 truncate">{{ $courseEvent->venue->city->name }}</h3>
