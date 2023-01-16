@@ -41,7 +41,10 @@ Route::middleware([])
                                       ->map(fn($meetup) => [
                                           'name'   => $meetup->name,
                                           'url' => $meetup->telegram_link ?? $meetup->webpage ?? $meetup->twitter_username,
+                                          'top' => $meetup->github_data['top'] ?? null,
+                                          'left' => $meetup->github_data['top'] ?? null,
                                           'country' => str($meetup->city->country->code)->upper(),
+                                          'state' => $meetup->github_data['state'] ?? null,
                                           'city' => $meetup->city->name,
                                           'longitude' => $meetup->city->longitude,
                                           'latitude' => $meetup->city->latitude,
