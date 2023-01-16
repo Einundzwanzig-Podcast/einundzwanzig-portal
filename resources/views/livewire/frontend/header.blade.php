@@ -2,7 +2,7 @@
     <section class="w-full">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
             <div
-                class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl">
+                class="relative sm:sticky sm:top-0 bg-21gray z-10 flex flex-col flex-wrap items-center justify-between py-7 mx-auto md:flex-row max-w-screen-2xl space-y-4">
                 <div class="relative flex flex-col md:flex-row">
                     <a href="{{ route('welcome', ['c' => $c, 'l' => $l]) }}"
                        class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
@@ -62,6 +62,10 @@
                             <a href="{{ route('bookCases.highScoreTable', ['country' => $c]) }}"
                                class="{{ request()->routeIs('bookCases.highScoreTable') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
                                 {{ __('Highscore Table') }}
+                            </a>
+                            <a href="https://openbookcase.de/" target="_blank"
+                               class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
+                                {{ __('Submit new book case') }}
                             </a>
                         @endif
                         @if(str(request()->route()->getName())->contains('meetup.'))
