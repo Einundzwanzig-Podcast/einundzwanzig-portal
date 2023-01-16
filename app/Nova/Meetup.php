@@ -70,8 +70,14 @@ class Meetup extends Resource
                 ->creationRules('unique:meetups,name')
                 ->updateRules('unique:meetups,name,{{resourceId}}'),
 
-            Text::make('Link')
-                ->rules('required', 'string'),
+            Text::make(__('Telegram-Link'), 'telegram_link')
+                ->rules('url', 'nullable'),
+
+            Text::make(__('Website'), 'webpage')
+                ->rules('url', 'nullable'),
+
+            Text::make(__('Twitter Username'), 'twitter_username')
+                ->rules('string', 'nullable'),
 
             BelongsTo::make(__('City'), 'city', City::class)
                      ->searchable()

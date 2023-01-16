@@ -53,12 +53,7 @@ class MeetupTable extends DataTableComponent
                   )
                   ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
-            Column::make(__('Link'), 'link')
-                  ->format(
-                      fn($value, $row, Column $column) => view('columns.meetups.link')->withRow($row)
-                  )
-                  ->sortable(),
-            Column::make(__('Links'),)
+            Column::make(__('Links'))
                   ->label(
                       fn($row, Column $column) => view('columns.meetups.action')
                           ->withRow($row)

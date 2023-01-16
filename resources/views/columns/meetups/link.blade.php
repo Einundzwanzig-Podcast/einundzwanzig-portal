@@ -1,5 +1,5 @@
 <div>
-    <a href="{{ $row->link }}" target="_blank">
+    <a href="{{ $row->telegram_link }}" target="_blank">
         <x-badge class="whitespace-nowrap">
             <i class="fa fa-thin fa-external-link mr-2"></i>
             {{ __('Open') }}

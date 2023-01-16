@@ -1,6 +1,7 @@
 <div>
     @if($row->meetup_events_count > 0)
         <x-button
+            xs
             amber
             wire:click="meetupEventSearch({{ $row->id }})">
             <i class="fa fa-thin fa-calendar mr-2"></i>
@@ -8,6 +9,7 @@
         </x-button>
 
         <x-button
+            xs
             x-data="{
                     textToCopy: '{{ route('meetup.ics', ['country' => $country, 'meetup' => $row->id]) }}',
                     }"
@@ -19,6 +21,7 @@
     @endif
     @if($row->meetup_events_count < 1)
         <x-button
+            xs
             outlined
             wire:click="meetupEventSearch({{ $row->id }})">
             <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
@@ -26,10 +29,44 @@
         </x-button>
     @endif
     <x-button
-        primary
+        black
+        xs
         :href="route('meetup.landing', ['country' => $country, 'meetup' => $row->slug])"
     >
         <i class="fa fa-thin fa-browser mr-2"></i>
         {{ __('Show landing page') }}
     </x-button>
+    @if($row->telegram_link)
+        <x-button
+            xs
+            secondary
+            target="_blank"
+            :href="$row->telegram_link"
+        >
+            <i class="fa fa-thin fa-external-link mr-2"></i>
+            {{ __('Telegram-Link') }}
+        </x-button>
+    @endif
+    @if($row->webpage)
+        <x-button
+            xs
+            secondary
+            target="_blank"
+            :href="$row->webpage"
+        >
+            <i class="fa fa-thin fa-external-link mr-2"></i>
+            {{ __('Website') }}
+        </x-button>
+    @endif
+    @if($row->twitter_username)
+        <x-button
+            xs
+            secondary
+            target="_blank"
+            :href="$row->twitter_username"
+        >
+            <i class="fa fa-brand fa-twitter mr-2"></i>
+            {{ __('Twitter') }}
+        </x-button>
+    @endif
 </div>

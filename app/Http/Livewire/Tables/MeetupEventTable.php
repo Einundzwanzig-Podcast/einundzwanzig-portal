@@ -71,10 +71,9 @@ class MeetupEventTable extends DataTableComponent
                   ->sortable()
                   ->collapseOnMobile(),
             Column::make(__('Link'), 'link')
-                  ->format(
-                      fn($value, $row, Column $column) => view('columns.meetup_events.link')->withRow($row)
-                  )
-                  ->sortable(),
+                  ->label(
+                      fn($row, Column $column) => view('columns.meetup_events.link')->withRow($row)->withCountry($this->country)
+                  ),
         ];
     }
 
