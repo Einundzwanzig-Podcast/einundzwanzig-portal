@@ -40,7 +40,7 @@ Route::middleware([])
                                       ->get()
                                       ->map(fn($meetup) => [
                                           'name'             => $meetup->name,
-                                          'url'              => $meetup->telegram_link ?? $meetup->webpage ?? $meetup->twitter_username,
+                                          'url'              => $meetup->telegram_link ?? $meetup->webpage,
                                           'top'              => $meetup->github_data['top'] ?? null,
                                           'left'             => $meetup->github_data['top'] ?? null,
                                           'country'          => str($meetup->city->country->code)->upper(),
@@ -48,8 +48,8 @@ Route::middleware([])
                                           'city'             => $meetup->city->name,
                                           'longitude'        => $meetup->city->longitude,
                                           'latitude'         => $meetup->city->latitude,
-                                          'twitter_username' => $meetup->city->twitter_username,
-                                          'website'          => $meetup->city->webpage,
+                                          'twitter_username' => $meetup->twitter_username,
+                                          'website'          => $meetup->webpage,
                                       ]);
          });
      });
