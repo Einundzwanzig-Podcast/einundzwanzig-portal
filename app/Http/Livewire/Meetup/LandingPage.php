@@ -15,30 +15,37 @@ class LandingPage extends Component
 
     public ?int $year = null;
 
+    public function mount()
+    {
+        $this->meetup->load([
+            'media',
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.meetup.landing-page', [
-            'events'  => MeetupEvent::query()
-                                    ->with([
-                                        'meetup.city.country',
-                                    ])
-                                    ->where('meetup_events.meetup_id', $this->meetup->id)
-                                    ->where('meetup_events.start', '>=', now())
-                                    ->get()
-                                    ->map(fn($event) => [
-                                        'id'          => $event->id,
-                                        'startDate'   => $event->start,
-                                        'endDate'     => $event->start->addHours(1),
-                                        'location'    => $event->location,
-                                        'description' => $event->description,
-                                    ]),
+            'events' => MeetupEvent::query()
+                                   ->with([
+                                       'meetup.city.country',
+                                   ])
+                                   ->where('meetup_events.meetup_id', $this->meetup->id)
+                                   ->where('meetup_events.start', '>=', now())
+                                   ->get()
+                                   ->map(fn($event) => [
+                                       'id'          => $event->id,
+                                       'startDate'   => $event->start,
+                                       'endDate'     => $event->start->addHours(1),
+                                       'location'    => $event->location,
+                                       'description' => $event->description,
+                                   ]),
         ])
             ->layout('layouts.guest', [
-            'SEOData' => new SEOData(
-                title: $this->meetup->name,
-                description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
-                image: asset($this->meetup->getFirstMediaUrl('logo')),
-            )
-        ]);
+                'SEOData' => new SEOData(
+                    title: $this->meetup->name,
+                    description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
+                    image: asset($this->meetup->getFirstMediaUrl('logo')),
+                )
+            ]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\TwitterTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -66,6 +65,7 @@ class Meetup extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('logo')
+             ->singleFile()
              ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
     }
 
