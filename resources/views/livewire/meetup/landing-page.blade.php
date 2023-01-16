@@ -29,10 +29,9 @@
                     <img class="max-h-64" src="{{ $meetup->getFirstMediaUrl('logo') }}" alt="Logo">
                 </div>
             </div>
-
         </div>
 
-        <div class="w-full">
+        <div class="w-full mt-8">
 
             @php
                 $locale = \Illuminate\Support\Facades\Cookie::get('lang', 'de');
