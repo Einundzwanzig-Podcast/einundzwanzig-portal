@@ -113,7 +113,7 @@ class LibraryItemTable extends DataTableComponent
                            fn($row) => $row->getFirstMediaUrl('main', 'thumb')
                        )
                        ->attributes(fn($row) => [
-                           'class' => 'rounded h-16',
+                           'class' => 'rounded w-16 h-16 object-cover',
                            'alt'   => $row->name.' Avatar',
                        ])
                        ->collapseOnMobile(),
