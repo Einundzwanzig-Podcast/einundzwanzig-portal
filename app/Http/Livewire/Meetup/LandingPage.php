@@ -54,7 +54,7 @@ class LandingPage extends Component
                 'SEOData' => new SEOData(
                     title: $this->meetup->name,
                     description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
-                    image: asset($this->meetup->getFirstMediaUrl('logo')),
+                    image: $this->meetup->getFirstMediaUrl('logo'),
                 )
             ]);
     }
