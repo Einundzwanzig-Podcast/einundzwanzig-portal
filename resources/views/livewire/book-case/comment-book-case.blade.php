@@ -148,7 +148,7 @@
                                                         #{{ $loop->iteration }} Bild
                                                     </button>
 
-                                                    @if(auth()->user()->hasRole('super-admin') || app()->environment('local'))
+                                                    @if(auth()->user()?->hasRole('super-admin') || app()->environment('local'))
                                                         <x-button wire:click="deletePhoto({{ $image->id }})" xs
                                                                   x-bind="focusableWhenVisible"
                                                                   class="px-4 py-2 text-sm">
