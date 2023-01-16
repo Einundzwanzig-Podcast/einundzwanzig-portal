@@ -108,16 +108,12 @@ class LibraryItemTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            ImageColumn::make('Bild')
-                       ->location(
-                           fn($row) => $row->getFirstMediaUrl('main', 'thumb')
-                       )
-                       ->attributes(fn($row) => [
-                           'class' => 'rounded w-16 h-16 object-cover',
-                           'alt'   => $row->name.' Avatar',
-                       ])
-                       ->collapseOnMobile(),
-            Column::make('Ersteller', "lecturer.name")
+            Column::make(__('Image'))
+                  ->label(
+                      fn($row, Column $column) => view('columns.library_items.image')->withRow($row)
+                  )
+                  ->collapseOnMobile(),
+            Column::make(__('Creator'), "lecturer.name")
                   ->label(
                       fn($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
                   )
