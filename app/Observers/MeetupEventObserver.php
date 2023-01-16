@@ -21,8 +21,13 @@ class MeetupEventObserver
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
 
+            $meetupName = $meetupEvent->meetup->name;
+            if ($meetupEvent->meetup->twitter_username) {
+                $meetupName .= ' @'.$meetupEvent->meetup->twitter_username;
+            }
+
             $text = sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
-                $meetupEvent->meetup->name,
+                $meetupName,
                 $meetupEvent->start->asDateTime(),
                 $meetupEvent->location,
                 url()->route('meetup.landing',
