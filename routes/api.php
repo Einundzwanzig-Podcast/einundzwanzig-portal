@@ -24,15 +24,29 @@ Route::middleware('auth:sanctum')
      });
 
 Route::middleware([])
-    ->as('api.')
+     ->as('api.')
      ->group(function () {
          Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
      });
 
 Route::middleware([])
-    ->as('api.')
+     ->as('api.')
      ->group(function () {
          Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
+         Route::get('meetups', function () {
+             return \App\Models\Meetup::with([
+                 'city',
+             ])
+                                      ->get()
+                                      ->map(fn($meetup) => [
+                                          'name'   => $meetup->name,
+                                          'url' => $meetup->telegram_link ?? $meetup->webpage ?? $meetup->twitter_username,
+                                          'country' => str($meetup->city->country->code)->upper(),
+                                          'city' => $meetup->city->name,
+                                          'longitude' => $meetup->city->longitude,
+                                          'latitude' => $meetup->city->latitude,
+                                      ]);
+         });
      });
 
 Route::get('/lnurl-auth-callback', function (\Illuminate\Http\Request $request) {
