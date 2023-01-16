@@ -6,7 +6,7 @@
         </x-button>
     @endif
     @if($row->type === 'downloadable_file')
-        <x-button amber href="{{ $row->getFirstMediaUrl('single_file') }}" target="_blank">
+        <x-button amber :href="$row->getFirstMediaUrl('single_file')" target="_blank">
             <i class="fa fa-thin fa-download mr-2"></i>
             {{ __('Download') }}
         </x-button>
