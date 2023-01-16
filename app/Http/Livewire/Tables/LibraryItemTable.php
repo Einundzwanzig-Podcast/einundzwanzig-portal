@@ -136,11 +136,13 @@ class LibraryItemTable extends DataTableComponent
                                  .'</span>';
                       })
                   ->html()
-                  ->sortable(),
+                  ->sortable()
+                  ->collapseOnMobile(),
             Column::make("Tags")
                   ->label(
                       fn($row, Column $column) => view('columns.library_items.tags')->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make('')
                   ->label(
                       fn($row, Column $column) => view('columns.library_items.action')->withRow($row)
