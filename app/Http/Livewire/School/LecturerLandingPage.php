@@ -45,7 +45,7 @@ class LecturerLandingPage extends Component
                 'SEOData' => new SEOData(
                     title: $this->lecturer->name,
                     description: $this->lecturer->intro ?? __('This lecturer has not yet written an introduction.'),
-                    image: asset($this->lecturer->getFirstMediaUrl('avatar')),
+                    image: $this->lecturer->getFirstMediaUrl('avatar'),
                 )
             ]);
     }
