@@ -3,13 +3,17 @@
 namespace App\Providers;
 
 use App\Listeners\AddLoginReputation;
+use App\Models\BitcoinEvent;
 use App\Models\Course;
 use App\Models\CourseEvent;
+use App\Models\LibraryItem;
 use App\Models\Meetup;
 use App\Models\MeetupEvent;
 use App\Models\OrangePill;
+use App\Observers\BitcoinEventObserver;
 use App\Observers\CourseEventObserver;
 use App\Observers\CourseObserver;
+use App\Observers\LibraryItemObserver;
 use App\Observers\MeetupEventObserver;
 use App\Observers\MeetupObserver;
 use App\Observers\OrangePillObserver;
@@ -44,6 +48,8 @@ class EventServiceProvider extends ServiceProvider
         OrangePill::observe(OrangePillObserver::class);
         CourseEvent::observe(CourseEventObserver::class);
         Course::observe(CourseObserver::class);
+        BitcoinEvent::observe(BitcoinEventObserver::class);
+        LibraryItem::observe(LibraryItemObserver::class);
     }
 
     /**

@@ -44,6 +44,11 @@ class LibraryItemTable extends DataTableComponent
     public function filters(): array
     {
         return [
+            TextFilter::make(__('By id'), 'id')
+                      ->hiddenFromMenus()
+                      ->filter(function (Builder $builder, string $value) {
+                          $builder->where('library_items.id', '=', $value);
+                      }),
             TextFilter::make(__('By lecturer'), 'lecturer_id')
                       ->hiddenFromMenus()
                       ->filter(function (Builder $builder, string $value) {
