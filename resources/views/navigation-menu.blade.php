@@ -13,6 +13,15 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex sm:items-center">
 
+                    @if(str(request()->route()->getName())->contains('bookCases.'))
+                        <div>
+                            <x-button xs amber href="/nova/resources/cities" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('New City') }}
+                            </x-button>
+                        </div>
+                    @endif
+
                     @if(str(request()->route()->getName())->contains('meetup.'))
                         <div>
                             <x-button xs amber href="/nova/resources/meetups" target="_blank">
