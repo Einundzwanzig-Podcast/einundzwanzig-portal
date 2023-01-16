@@ -67,7 +67,7 @@
                     @php
                         $activeClass = $activeEvent === $meetupEvent->id ? 'bg-gradient-to-r from-amber-800 via-amber-600 to-amber-500' : 'bg-amber-500';
                     @endphp
-                    <li id="courseEventId_{{ $meetupEvent->id }}" class="{{ $activeClass }} col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg text-center shadow-2xl">
+                    <li id="meetupEventId_{{ $meetupEvent->id }}" class="{{ $activeClass }} col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg text-center shadow-2xl">
                         <div class="flex flex-1 flex-col p-8">
                             {{--<img class="mx-auto h-32 w-32 object-contain flex-shrink-0 rounded"
                                  src="{{ $meetupEvent->meetup->getFirstMediaUrl('logo') }}"
