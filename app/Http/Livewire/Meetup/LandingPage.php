@@ -32,6 +32,7 @@ class LandingPage extends Component
                                          ])
                                          ->where('meetup_events.meetup_id', $this->meetup->id)
                                          ->where('meetup_events.start', '>=', now())
+                                         ->orderBy('start')
                                          ->get(),
             'events'       => MeetupEvent::query()
                                          ->with([
@@ -39,6 +40,7 @@ class LandingPage extends Component
                                          ])
                                          ->where('meetup_events.meetup_id', $this->meetup->id)
                                          ->where('meetup_events.start', '>=', now())
+                                         ->orderBy('start')
                                          ->get()
                                          ->map(fn($event) => [
                                              'id'          => $event->id,
