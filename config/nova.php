@@ -9,6 +9,11 @@ use Laravel\Nova\Http\Middleware\HandleInertiaRequests;
 
 return [
 
+    'routes' => [
+        'login' => '/auth/ln',
+        'register' => '/auth/ln',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Nova License Key
@@ -164,18 +169,18 @@ return [
     |
     */
 
-     'brand' => [
-         'logo' => resource_path('/img/einundzwanzig-horizontal-inverted.svg'),
+    'brand' => [
+        'logo' => resource_path('/img/einundzwanzig-horizontal-inverted.svg'),
 
-         'colors' => [
-             "400" => "247, 147, 26, 0.5", // rgba(247, 147, 26, 1)
-             "500" => "247, 147, 26, 0.75",
-             "600" => "247, 147, 26, 1",
+        'colors' => [
+            "400" => "247, 147, 26, 0.5", // rgba(247, 147, 26, 1)
+            "500" => "247, 147, 26, 0.75",
+            "600" => "247, 147, 26, 1",
 
-              // rgba(0, 180, 207, 1)
-             // rgba(21, 21, 21, 1)
-         ]
-     ],
+            // rgba(0, 180, 207, 1)
+            // rgba(21, 21, 21, 1)
+        ]
+    ],
 
     /*
     |--------------------------------------------------------------------------
