@@ -23,7 +23,7 @@ class MeetupEventObserver
 
             $text = sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $meetupEvent->meetup->name,
-                $meetupEvent->start->asDate(),
+                $meetupEvent->start->asDateTime(),
                 $meetupEvent->location,
                 url()->route('meetup.landing',
                     ['country' => 'de', 'meetup' => $meetupEvent->meetup]),
