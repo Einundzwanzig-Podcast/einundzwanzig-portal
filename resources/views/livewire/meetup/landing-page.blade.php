@@ -174,7 +174,7 @@
                                         clickDay: function(e) {
                                             if(e.events.length > 0) {
                                                 $wire.call('showEvent', e.events[0].id);
-                                                document.getElementById('courseEventId_'+e.events[0].id).scrollIntoView();
+                                                document.getElementById('meetupEventId_'+e.events[0].id).scrollIntoView();
                                             }
                                         },
                                     });
