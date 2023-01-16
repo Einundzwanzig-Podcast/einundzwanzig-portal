@@ -624,7 +624,7 @@
     "Highscore Table": "Highscore-Tabelle",
     "Hall of fame of our honorable plebs": "Hall of fame unserer Plebs",
     "Perimeter search bookcase :name (25km)": "",
-    "Show landing page": "",
+    "Show landing page": "Landing-Page anzeigen",
     "Orange pilled": "",
     "Points": "",
     "Changelog": "",
@@ -641,5 +641,5 @@
     "You get a point when you log in.": "Du bekommst einen Punkt, wenn du dich einloggst.",
     "has": "hat",
     "logins": "",
-    "points": ""
+    "points": "Punkte"
 }
