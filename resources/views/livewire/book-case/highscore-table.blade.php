@@ -110,6 +110,8 @@
                                             <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-200">
                                                 210 {{ __('points') }}</p>
                                             <p class="pointer-events-none block text-sm font-medium text-gray-200">{{ $orangePill->date->asDate() }}</p>
+                                            <p class="pointer-events-none block text-sm font-medium text-gray-200">{{ $orangePill->bookCase->title }}</p>
+                                            <p class="pointer-events-none block text-sm font-medium text-gray-200">{{ $orangePill->bookCase->address }}</p>
                                         </a>
                                     </li>
                                 @endforeach
