@@ -81,8 +81,11 @@ class MeetupTable extends DataTableComponent
 
     public function meetupEventSearch($id)
     {
+        $meetup = Meetup::with(['city.country'])
+                        ->find($id);
+
         return to_route('meetup.table.meetupEvent', [
-            'country' => $this->country,
+            'country' => $this->country ?? $meetup->city->country->code,
             'table'   => [
                 'filters' => ['bymeetupid' => $id],
             ]
