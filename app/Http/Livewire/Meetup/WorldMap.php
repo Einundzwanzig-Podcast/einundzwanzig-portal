@@ -17,13 +17,9 @@ class WorldMap extends Component
         $meetup = Meetup::with(['city.country'])
                         ->find($id);
 
-        return to_route('meetup.table.meetup', [
+        return to_route('meetup.landing', [
             'country' => $meetup->city->country->code,
-            'table'   => [
-                'filters' => [
-                    'byid' => $id,
-                ],
-            ]
+            'meetup'   => $meetup,
         ]);
     }
 

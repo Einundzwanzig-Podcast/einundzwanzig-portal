@@ -13,13 +13,12 @@ class MeetupTable extends Component
 
     public function filterByMarker($id)
     {
-        return to_route('meetup.table.meetup', [
-            'country' => $this->country->code,
-            'table'   => [
-                'filters' => [
-                    'byid' => $id,
-                ],
-            ]
+        $meetup = Meetup::with(['city.country'])
+                        ->find($id);
+
+        return to_route('meetup.landing', [
+            'country' => $meetup->city->country->code,
+            'meetup'   => $meetup,
         ]);
     }
 
