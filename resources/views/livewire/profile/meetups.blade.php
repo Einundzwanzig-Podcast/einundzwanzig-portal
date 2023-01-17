@@ -41,7 +41,21 @@
 
                     <div>
                         <x-input wire:model="search" placeholder="{{ __('Search') }}"
-                                 hint="{{ __('please limit your search here') }}"/>
+                                 hint="{{ __('please limit your search here') }}">
+                            <x-slot name="append">
+                                <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
+                                    <x-button
+                                        wire:click="$set('search', '')"
+                                        class="h-full rounded-r-md"
+                                        black
+                                        flat
+                                        squared
+                                    >
+                                        <i class="fa-thin fa-xmark"></i>
+                                    </x-button>
+                                </div>
+                            </x-slot>
+                        </x-input>
                     </div>
 
                     <div class="mt-6 flow-root">
