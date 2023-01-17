@@ -52,7 +52,7 @@
         @endif
 
         <div class="pt-12">
-            {{ __('Kompatible Wallets:') }}
+            {{ __('Copy the LNURL and paste it under "Send" or scan the QR code with "Send". LNURL-auth enabled wallets:') }}
         </div>
         <div class="pt-2">
             <td

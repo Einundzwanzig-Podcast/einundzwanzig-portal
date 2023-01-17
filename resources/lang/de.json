@@ -657,5 +657,6 @@
     "please limit your search here": "bitte begrenze deine Suche hier",
     "Deselect": "Abwählen",
     "Your current Meetup groups": "Deine aktuellen Meetup-Gruppen",
-    "Thanks, continue here": "Danke, weiter geht es hier"
+    "Thanks, continue here": "Danke, weiter geht es hier",
+    "Copy the LNURL and paste it under \"Send\" or scan the QR code with \"Send\". LNURL-auth enabled wallets:": "Kopiere die LNURL und füge sie unter \"Senden\" ein oder scanne den QR-Code mit \"Senden\". LNURL-auth fähige Wallets:"
 }
