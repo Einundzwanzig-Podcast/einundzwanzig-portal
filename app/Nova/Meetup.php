@@ -33,6 +33,7 @@ class Meetup extends Resource
     public static $search = [
         'id',
         'name',
+        'city.name',
     ];
 
     public static function afterCreate(NovaRequest $request, Model $model)
