@@ -3,9 +3,12 @@
 namespace App\Observers;
 
 use App\Models\BitcoinEvent;
+use App\Traits\TwitterTrait;
 
 class BitcoinEventObserver
 {
+    use TwitterTrait;
+
     /**
      * Handle the BitcoinEvent "created" event.
      *

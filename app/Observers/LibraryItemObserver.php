@@ -3,9 +3,12 @@
 namespace App\Observers;
 
 use App\Models\LibraryItem;
+use App\Traits\TwitterTrait;
 
 class LibraryItemObserver
 {
+    use TwitterTrait;
+
     /**
      * Handle the LibraryItem "created" event.
      *
