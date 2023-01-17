@@ -10,7 +10,7 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class MeetupTable extends DataTableComponent
 {
-    public string $country;
+    public ?string $country = null;
 
     protected $model = Meetup::class;
 
@@ -69,7 +69,8 @@ class MeetupTable extends DataTableComponent
     public function builder(): Builder
     {
         return Meetup::query()
-                     ->whereHas('city.country', fn($query) => $query->where('code', $this->country))
+                     ->when($this->country, fn($query, $country) => $query->whereHas('city.country',
+                         fn($query) => $query->where('code', $this->country)))
                      ->withCount([
                          'users',
                          'meetupEvents' => fn($query) => $query->where('start', '>=', now()),

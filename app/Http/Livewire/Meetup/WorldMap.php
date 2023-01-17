@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Meetup;
 
 use App\Models\Country;
 use App\Models\Meetup;
+use App\Models\MeetupEvent;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 

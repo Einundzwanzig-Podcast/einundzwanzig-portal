@@ -21,7 +21,7 @@
         xs
         black
         x-data="{
-                    textToCopy: '{{ route('meetup.ics', ['country' => $country, 'meetup' => $row->id]) }}',
+                    textToCopy: '{{ route('meetup.ics', ['country' => $country ?? $row->city->country->code, 'meetup' => $row->id]) }}',
                     }"
         @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
     >
@@ -31,7 +31,7 @@
     <x-button
         black
         xs
-        :href="route('meetup.landing', ['country' => $country, 'meetup' => $row->slug])"
+        :href="route('meetup.landing', ['country' => $country ?? $row->city->country->code, 'meetup' => $row->slug])"
     >
         <i class="fa fa-thin fa-browser mr-2"></i>
         {{ __('Show landing page') }}
