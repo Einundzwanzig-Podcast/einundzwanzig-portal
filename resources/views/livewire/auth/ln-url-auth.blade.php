@@ -119,11 +119,7 @@
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >LNbits</a
-                >, <a
-                    target="_blank" href="https://lntxbot.com"
-                      rel="nofollow"
-                      class="leading-6 text-blue-400 bg-transparent cursor-pointer"
-                      style="text-decoration: none; list-style: outside;">@lntxbot</a>,
+                >,
                 <a
                     target="_blank"
                     href="https://ln.tips"
