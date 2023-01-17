@@ -14,7 +14,6 @@
                 <div class="max-w-sm text-lg text-gray-200 space-x-2 flex flex-row">
                     <x-native-select
                         label="{{ __('Change country') }}"
-                        placeholder="{{ __('Change country') }}"
                         wire:model="c"
                         option-label="name"
                         option-value="code"
@@ -22,7 +21,6 @@
                     />
                     <x-select
                         label="{{ __('Change language') }}"
-                        placeholder="{{ __('Change language') }}"
                         wire:model="l"
                         :clearable="false"
                         :searchable="true"
