@@ -83,6 +83,7 @@ class Meetup extends Resource
                 ->rules('url', 'nullable'),
 
             Text::make(__('Twitter Username'), 'twitter_username')
+                ->help(__('Without @'))
                 ->rules('string', 'nullable'),
 
             BelongsTo::make(__('City'), 'city', City::class)
