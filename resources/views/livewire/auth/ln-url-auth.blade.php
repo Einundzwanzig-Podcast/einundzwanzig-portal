@@ -60,20 +60,24 @@
                 style="list-style: outside;"
             >
                 <a
+                    target="_blank"
                     href="https://github.com/getAlby/lightning-browser-extension"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >Alby</a
                 >,
                 <a
+                    target="_blank"
                     href="https://github.com/alexbosworth/balanceofsatoshis"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >Balance of Satoshis</a
                 >,
-                <a href="https://blixtwallet.github.io" class="leading-6 text-blue-400 bg-transparent cursor-pointer"
+                <a
+                    target="_blank" href="https://blixtwallet.github.io" class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                    style="text-decoration: none; list-style: outside;">Blixt</a>,
                 <a
+                    target="_blank"
                     href="https://breez.technology"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
@@ -81,6 +85,7 @@
                 >Breez</a
                 >,
                 <a
+                    target="_blank"
                     href="https://bluewallet.io"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
@@ -88,6 +93,7 @@
                 >BlueWallet</a
                 >,
                 <a
+                    target="_blank"
                     href="https://coinos.io"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
@@ -95,36 +101,43 @@
                 >coinos</a
                 >,
                 <a
+                    target="_blank"
                     href="https://geyser.fund"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >Geyser</a
-                >, <a href="https://lifpay.me"
+                >, <a
+                    target="_blank" href="https://lifpay.me"
                       rel="nofollow"
                       class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                       style="text-decoration: none; list-style: outside;">LifPay</a>,
                 <a
+                    target="_blank"
                     href="https://lnbits.com"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >LNbits</a
-                >, <a href="https://lntxbot.com"
+                >, <a
+                    target="_blank" href="https://lntxbot.com"
                       rel="nofollow"
                       class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                       style="text-decoration: none; list-style: outside;">@lntxbot</a>,
                 <a
+                    target="_blank"
                     href="https://ln.tips"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >LightningTipBot</a
-                >, <a href="https://phoenix.acinq.co"
+                >, <a
+                    target="_blank" href="https://phoenix.acinq.co"
                       rel="nofollow"
                       class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                       style="text-decoration: none; list-style: outside;">Phoenix</a>,
                 <a
+                    target="_blank"
                     href="https://seedauth.etleneum.com/"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
@@ -132,20 +145,24 @@
                 >SeedAuth</a
                 >,
                 <a
+                    target="_blank"
                     href="https://github.com/pseudozach/seedauthextension"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >SeedAuthExtension</a
                 >,
-                <a href="https://lightning-wallet.com"
+                <a
+                    target="_blank"href="https://lightning-wallet.com"
                    rel="nofollow"
                    class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                    style="text-decoration: none; list-style: outside;">SimpleBitcoinWallet</a>,
-                <a href="https://sparrowwallet.com/"
+                <a
+                    target="_blank" href="https://sparrowwallet.com/"
                    rel="nofollow"
                    class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                    style="text-decoration: none; list-style: outside;">Sparrow Wallet</a>,
                 <a
+                    target="_blank"
                     href="https://www.thunderhub.io"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
@@ -153,12 +170,14 @@
                 >ThunderHub</a
                 >,
                 <a
+                    target="_blank"
                     href="https://zaphq.io/"
                     rel="nofollow"
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >Zap Desktop</a
-                >, <a href="https://zeusln.app"
+                >, <a
+                    target="_blank" href="https://zeusln.app"
                       rel="nofollow"
                       class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                       style="text-decoration: none; list-style: outside;">Zeus</a>
