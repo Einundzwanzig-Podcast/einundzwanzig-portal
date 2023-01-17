@@ -72,8 +72,8 @@
                             {{--<img class="mx-auto h-32 w-32 object-contain flex-shrink-0 rounded"
                                  src="{{ $meetupEvent->meetup->getFirstMediaUrl('logo') }}"
                                  alt="{{ $meetupEvent->meetup->name }}">--}}
-                            <h3 class="mt-1 text-xl font-medium text-gray-900 truncate">{{ $meetupEvent->start->asDate() }}</h3>
-                            <h3 class="mt-1 text-xl font-medium text-gray-900 truncate">{{ $meetupEvent->location }}</h3>
+                            <h3 class="mt-1 text-xl font-medium text-gray-900">{{ $meetupEvent->start->asDateTime() }}</h3>
+                            <h3 class="mt-1 text-xl font-medium text-gray-900">{{ $meetupEvent->location }}</h3>
                             <dl class="mt-1 flex flex-grow flex-col justify-between">
                                 <div x-data="{ active: 2 }" class="mx-auto max-w-3xl w-full space-y-4">
                                     <div x-data="{

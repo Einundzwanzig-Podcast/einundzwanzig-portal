@@ -63,7 +63,8 @@ class Meetup extends Resource
               ->sortable(),
 
             Images::make(__('Logo'), 'logo')
-                  ->conversionOnIndexView('thumb'),
+                  ->conversionOnIndexView('thumb')
+                  ->showStatistics(),
 
             Text::make('Name')
                 ->rules('required', 'string')
