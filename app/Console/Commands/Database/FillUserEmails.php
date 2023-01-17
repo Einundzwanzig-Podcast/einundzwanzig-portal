@@ -30,7 +30,7 @@ class FillUserEmails extends Command
         foreach ($users as $user) {
             // set email
             if (!$user->email) {
-                $user->email = str($user->public_key)->substr(-6).'@portal.einundzwanzig.space';
+                $user->email = str($user->public_key)->substr(-12).'@portal.einundzwanzig.space';
                 $user->save();
             }
         }
