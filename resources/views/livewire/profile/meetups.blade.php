@@ -34,7 +34,20 @@
         </div>
     </section>
 
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2">
+
+        <div class="p-4">
+            <p class="px-0 mb-6 text-lg text-gray-200 md:text-xl">
+                {{ __('Your current Meetup groups') }}
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                @foreach($myMeetupNames as $id => $myMeetupName)
+                    <x-badge class="cursor-pointer" wire:click="signUpForMeetup({{ $id }})" lg outline white
+                             label="{{ $myMeetupName }}"/>
+                @endforeach
+            </div>
+        </div>
+
         <div class="">
             <div class="px-10 pt-6 mx-auto max-w-7xl">
                 <div class="bg-21gray p-6 rounded">
@@ -105,18 +118,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="p-4">
-            <p class="px-0 mb-6 text-lg text-gray-200 md:text-xl">
-                {{ __('Your current Meetup groups') }}
-            </p>
-            <div class="grid grid-cols-4 gap-2">
-                @foreach($myMeetupNames as $id => $myMeetupName)
-                    <x-badge class="cursor-pointer" wire:click="signUpForMeetup({{ $id }})" lg outline white
-                             label="{{ $myMeetupName }}"/>
-                @endforeach
             </div>
         </div>
     </div>
