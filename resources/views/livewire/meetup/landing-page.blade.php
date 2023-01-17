@@ -119,6 +119,13 @@
                 @endforeach
             </ul>
 
+            <div class="p-4 w-full flex justify-end">
+                <x-button onclick="history.back()" primary lg class="whitespace-nowrap">
+                    <i class="fa fa-thin fa-arrow-left mr-2"></i>
+                    {{ __('Back') }}
+                </x-button>
+            </div>
+
             <div class="w-full mt-8">
 
                 @php
@@ -185,7 +192,7 @@
                 </div>
 
                 <div class="p-4 w-full flex justify-end">
-                    <x-button :href="route('welcome')" primary lg class="whitespace-nowrap">
+                    <x-button onclick="history.back()" primary lg class="whitespace-nowrap">
                         <i class="fa fa-thin fa-arrow-left mr-2"></i>
                         {{ __('Back') }}
                     </x-button>
