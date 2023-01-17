@@ -29,8 +29,8 @@ class Meetup extends Model implements HasMedia
      * @var array
      */
     protected $casts = [
-        'id'      => 'integer',
-        'city_id' => 'integer',
+        'id'          => 'integer',
+        'city_id'     => 'integer',
         'github_data' => 'json',
     ];
 
@@ -73,6 +73,11 @@ class Meetup extends Model implements HasMedia
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 
     public function city(): BelongsTo

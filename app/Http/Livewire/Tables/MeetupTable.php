@@ -53,6 +53,9 @@ class MeetupTable extends DataTableComponent
                   )
                   ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
+            Column::make(__('Plebs'))
+                  ->label(fn($row, Column $column) => $row->users_count)
+                  ->collapseOnMobile(),
             Column::make(__('Links'))
                   ->label(
                       fn($row, Column $column) => view('columns.meetups.action')
@@ -68,7 +71,9 @@ class MeetupTable extends DataTableComponent
         return Meetup::query()
                      ->whereHas('city.country', fn($query) => $query->where('code', $this->country))
                      ->withCount([
+                         'users',
                          'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
+
                      ])
                      ->orderBy('meetup_events_count', 'desc');
     }
