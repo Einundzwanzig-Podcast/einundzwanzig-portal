@@ -75,7 +75,7 @@
                     @if($modal)
                         <div class="space-y-4 mt-16 flex flex-col justify-center min-h-[600px]">
 
-                            <div>
+                            <div class="bg-amber-800 p-4 rounded">
                                 <div class="mt-6 flow-root">
                                     <ul role="list" class="-my-5 divide-y divide-gray-200">
                                         <li class="py-5">

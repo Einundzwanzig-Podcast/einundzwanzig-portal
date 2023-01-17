@@ -39,36 +39,36 @@
                     wire:ignore
                     class="w-full flex justify-center"
                     x-data="{
-                    init() {
-                        let markers = {{ Js::from($markers) }};
+                        init() {
+                            let markers = {{ Js::from($markers) }};
 
-                        $('#map').vectorMap({
-                            {{ $focus }}
-                            zoomButtons : false,
-                            zoomOnScroll: true,
-                            map: '{{ $map }}',
-                            backgroundColor: 'transparent',
-                            markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
-                            onMarkerClick: function(event, index) {
-                                $wire.call('filterByMarker', markers[index].id)
-                            },
-                            markerStyle: {
-                                initial: {
-                                    image: '{{ asset('img/btc.png') }}',
+                            $('#map').vectorMap({
+                                {{ $focus }}
+                                zoomButtons : false,
+                                zoomOnScroll: true,
+                                map: '{{ $map }}',
+                                backgroundColor: 'transparent',
+                                markers: markers.map(function(h){ return {name: h.name, latLng: h.coords} }),
+                                onMarkerClick: function(event, index) {
+                                    $wire.call('filterByMarker', markers[index].id)
+                                },
+                                markerStyle: {
+                                    initial: {
+                                        image: '{{ asset('img/btc.png') }}',
+                                    }
+                                },
+                                regionStyle: {
+                                    initial: {
+                                        fill: '#151515'
+                                    },
+                                    hover: {
+                                        'fill-opacity': 1,
+                                        cursor: 'default'
+                                    },
                                 }
-                            },
-                            regionStyle: {
-                                initial: {
-                                    fill: '#151515'
-                                },
-                                hover: {
-                                    'fill-opacity': 1,
-                                    cursor: 'default'
-                                },
-                            }
-                        });
-                    }
-                }"
+                            });
+                        }
+                    }"
                 >
                     <div id="map" style="width: 100%;" class="h-[200px] sm:h-[400px] my-4 sm:my-0"></div>
                 </div>
