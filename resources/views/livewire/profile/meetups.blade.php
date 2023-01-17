@@ -34,15 +34,15 @@
         </div>
     </section>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2">
 
-        <div class="p-4">
+        <div class="p-4 w-full">
             <p class="px-0 mb-6 text-lg text-gray-200 md:text-xl">
                 {{ __('Your current Meetup groups') }}
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+            <div class="grid grid-cols-1 gap-2">
                 @foreach($myMeetupNames as $id => $myMeetupName)
-                    <x-badge lg outline white
+                    <x-badge class="whitespace-nowrap" lg outline white
                              label="{{ $myMeetupName }}"/>
                 @endforeach
             </div>
