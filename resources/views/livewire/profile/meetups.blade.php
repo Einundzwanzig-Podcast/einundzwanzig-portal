@@ -42,7 +42,7 @@
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
                 @foreach($myMeetupNames as $id => $myMeetupName)
-                    <x-badge class="cursor-pointer" wire:click="signUpForMeetup({{ $id }})" lg outline white
+                    <x-badge lg outline white
                              label="{{ $myMeetupName }}"/>
                 @endforeach
             </div>
