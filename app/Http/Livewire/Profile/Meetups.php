@@ -25,6 +25,10 @@ class Meetups extends Component
 
     public function mount()
     {
+        if (!auth()->user()) {
+            return to_route('auth.ln');
+        }
+
         $this->meetups = Meetup::query()
                                ->where('name', 'ilike', '%'.$this->search.'%')
                                ->orderBy('name')
