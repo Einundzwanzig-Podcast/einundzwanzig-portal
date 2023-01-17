@@ -644,5 +644,18 @@
     "points": "Punkte",
     "Submit new book case": "Bücherschrank einreichen",
     "Share url copied!": "Link kopiert!",
-    "Share link": "Link zum Teilen"
+    "Share link": "Link zum Teilen",
+    "Telegram-Link": "",
+    "Website": "",
+    "Twitter Username": "",
+    "Select one or more meetup groups so that you can get access to these groups in the backend.": "Suche dir eine oder mehrere Meetup-Gruppen aus, um Zugriff auf diese Gruppen im Backend zu erhalten.",
+    "choice": "Auswahl",
+    "By id": "nach ID",
+    "Twitter": "",
+    "New City": "Neue Stadt",
+    "My meetups": "Meine Meetups",
+    "please limit your search here": "bitte begrenze deine Suche hier",
+    "Deselect": "Abwählen",
+    "Your current Meetup groups": "Deine aktuellen Meetup-Gruppen",
+    "Thanks, continue here": "Danke, weiter geht es hier"
 }

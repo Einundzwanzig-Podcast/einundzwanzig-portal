@@ -109,7 +109,8 @@ return [
         DispatchServingNovaEvent::class,
         BootTools::class,
         \Itsmejoshua\Novaspatiepermissions\ForgetCachedPermissions::class,
-        'verified'
+        'verified',
+        'needMeetup',
     ],
 
     'api_middleware' => [

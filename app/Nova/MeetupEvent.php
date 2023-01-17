@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -47,6 +48,18 @@ class MeetupEvent extends Resource
                             ->toString()));
     }
 
+    public static function relatableMeetups(NovaRequest $request, $query, Field $field)
+    {
+        if ($field instanceof BelongsTo) {
+            $query->whereIn('meetups.id', $request->user()
+                                                  ->meetups()
+                                                  ->pluck('id')
+                                                  ->toArray());
+        }
+
+        return $query;
+    }
+
     public function subtitle()
     {
         return __('Created by: :name', ['name' => $this->createdBy->name]);
@@ -79,14 +92,16 @@ class MeetupEvent extends Resource
                 ->rules('required', 'string'),
 
             BelongsTo::make('Meetup')
-                     ->searchable()->withSubtitles(),
+                     ->searchable()
+                     ->withSubtitles(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable()->withSubtitles(),
+                     ->searchable()
+                     ->withSubtitles(),
 
         ];
     }

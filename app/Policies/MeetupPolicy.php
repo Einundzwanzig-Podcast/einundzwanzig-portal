@@ -57,7 +57,7 @@ class MeetupPolicy extends BasePolicy
      */
     public function update(User $user, Meetup $meetup)
     {
-        return true || $meetup->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
+        return $user->meetups->contains($meetup) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -70,7 +70,7 @@ class MeetupPolicy extends BasePolicy
      */
     public function delete(User $user, Meetup $meetup)
     {
-        return false;
+        return $meetup->created_by === $user->id;
     }
 
     /**

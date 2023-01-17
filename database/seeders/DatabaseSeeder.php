@@ -27,7 +27,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use JoeDixon\Translation\Console\Commands\SynchroniseMissingTranslationKeys;
-use JoeDixon\Translation\Console\Commands\SynchroniseTranslationsCommand;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -186,7 +185,7 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 1,
             'name'        => 'Hands on Bitcoin',
             'created_by'  => 1,
-            'description'  => '
+            'description' => '
 Klimakiller Bitcoin! Bitcoin hat keinen Nutzen! Bitcoin wird nur von Kriminellen genutzt!
 
 Diese oder ähnliche Aussprüche kennen Sie bestimmt? Dann lassen Sie uns Bitcoin doch einmal genauer anschauen! In meinem Kurs nehme ich Sie mit auf einen Weg der bei der Geschichte unseres Geldes beginnt. Lassen Sie uns schauen wie unser Geld entsteht und welche Aufgaben dabei Geschäftsbanken und Zentralbanken haben. Welche Rolle spielt eigentlich das Jahr 1971 und welche Auswirkungen hatte dies auf unser Geld wie wir es heute verwenden. Was hat die Banken- und Finanzkrise 2008/ 2009 mit Bitcoin und Neuseeland mit unserer Inflation zu tun?
@@ -207,7 +206,7 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'lecturer_id' => 1,
             'name'        => 'Bitcoin <> Crypto',
             'created_by'  => 1,
-            'description'  => '
+            'description' => '
 Klimakiller Bitcoin! Bitcoin hat keinen Nutzen! Bitcoin wird nur von Kriminellen genutzt!
 
 Diese oder ähnliche Aussprüche kennen Sie bestimmt? Dann lassen Sie uns Bitcoin doch einmal genauer anschauen! In meinem Kurs nehme ich Sie mit auf einen Weg der bei der Geschichte unseres Geldes beginnt. Lassen Sie uns schauen wie unser Geld entsteht und welche Aufgaben dabei Geschäftsbanken und Zentralbanken haben. Welche Rolle spielt eigentlich das Jahr 1971 und welche Auswirkungen hatte dies auf unser Geld wie wir es heute verwenden. Was hat die Banken- und Finanzkrise 2008/ 2009 mit Bitcoin und Neuseeland mit unserer Inflation zu tun?
@@ -228,7 +227,7 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'lecturer_id' => 2,
             'name'        => 'Bitcoin Lightning Network',
             'created_by'  => 1,
-            'description'  => '
+            'description' => '
 Klimakiller Bitcoin! Bitcoin hat keinen Nutzen! Bitcoin wird nur von Kriminellen genutzt!
 
 Diese oder ähnliche Aussprüche kennen Sie bestimmt? Dann lassen Sie uns Bitcoin doch einmal genauer anschauen! In meinem Kurs nehme ich Sie mit auf einen Weg der bei der Geschichte unseres Geldes beginnt. Lassen Sie uns schauen wie unser Geld entsteht und welche Aufgaben dabei Geschäftsbanken und Zentralbanken haben. Welche Rolle spielt eigentlich das Jahr 1971 und welche Auswirkungen hatte dies auf unser Geld wie wir es heute verwenden. Was hat die Banken- und Finanzkrise 2008/ 2009 mit Bitcoin und Neuseeland mit unserer Inflation zu tun?
@@ -378,8 +377,8 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
         Artisan::call(SyncOpenBooks::class);
         Meetup::create([
             'city_id'    => 1,
-            'name'       => 'Einundzwanzig Kempten',
-            'link'       => 'https://t.me/EinundzwanzigKempten',
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
         ]);
         MeetupEvent::create([
@@ -403,6 +402,60 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'description' => fake()->text(),
             'link'        => 'https://t.me/EinundzwanzigKempten',
             'created_by'  => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 2,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 3,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
+        ]);
+        Meetup::create([
+            'city_id'    => 1,
+            'name'       => 'Einundzwanzig ' . str()->random(5),
+            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'created_by' => 1,
         ]);
         BitcoinEvent::create([
             'venue_id'    => 4,

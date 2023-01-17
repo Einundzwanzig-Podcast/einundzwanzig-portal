@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CustomEnsureEmailVerified;
+use App\Http\Middleware\NeedMeetupMiddleware;
 use App\Http\Middleware\SetTimezoneForNovaMiddleware;
 use App\Http\Middleware\SetTimezoneMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -84,5 +85,6 @@ class Kernel extends HttpKernel
         'signed'           => \App\Http\Middleware\ValidateSignature::class,
         'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified'         => CustomEnsureEmailVerified::class,
+        'needMeetup'       => NeedMeetupMiddleware::class,
     ];
 }

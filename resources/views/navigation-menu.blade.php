@@ -83,6 +83,14 @@
                             {{ __('My profile') }}
                         </x-button>
                     </div>
+
+                    <div>
+                        <x-button xs amber href="{{ route('profile.meetups') }}"
+                                  :active="request()->routeIs('profile.meetups')">
+                            <i class="fa fa-thin fa-users"></i>
+                            {{ __('My meetups') }}
+                        </x-button>
+                    </div>
                 </div>
             </div>
 

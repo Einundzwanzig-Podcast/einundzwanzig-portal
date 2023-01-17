@@ -53,7 +53,7 @@ class MeetupEventPolicy extends BasePolicy
      */
     public function update(User $user, MeetupEvent $meetupEvent)
     {
-        return $meetupEvent->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
+        return $user->meetups->contains($meetupEvent->meetup) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
@@ -65,7 +65,7 @@ class MeetupEventPolicy extends BasePolicy
      */
     public function delete(User $user, MeetupEvent $meetupEvent)
     {
-        return false;
+        return false && $meetupEvent->created_by === $user->id;
     }
 
     /**
