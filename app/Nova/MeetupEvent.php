@@ -32,6 +32,7 @@ class MeetupEvent extends Resource
      */
     public static $search = [
         'id',
+        'meetup.name',
     ];
 
     public static function label()
