@@ -1,4 +1,4 @@
-<div>
+<div class="flex flex-col space-y-1">
     <x-button
         black
         xs
@@ -10,7 +10,7 @@
     @if($row->meetup->telegram_link)
         <x-button
             xs
-            secondary
+            black
             target="_blank"
             :href="$row->meetup->telegram_link"
         >
@@ -21,7 +21,7 @@
     @if($row->meetup->webpage)
         <x-button
             xs
-            secondary
+            black
             target="_blank"
             :href="$row->meetup->webpage"
         >
@@ -32,7 +32,7 @@
     @if($row->meetup->twitter_username)
         <x-button
             xs
-            secondary
+            black
             target="_blank"
             :href="$row->meetup->twitter_username"
         >
