@@ -653,9 +653,11 @@
     "Thanks, continue here": "",
     "Copy the LNURL and paste it under \"Send\" or scan the QR code with \"Send\". LNURL-auth enabled wallets:": "",
     "Without @": "",
-  "Scan this code or copy + paste it to your lightning wallet. Or click to login with your browser's wallet.": "",
     "Lightning Address": "",
     "Node Id": "",
     "LNURL": "",
-    "Missing lightning address": ""
+    "Missing lightning address": "",
+    "Plebs": "",
+    "Click to connect": "",
+    "Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.": ""
 }

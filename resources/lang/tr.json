@@ -620,5 +620,18 @@
     "choice": "",
     "Select one or more meetup groups so that you can get access to these groups in the backend.": "",
     "New City": "",
-    "My meetups": ""
+    "My meetups": "",
+    "Plebs": "",
+    "Without @": "",
+    "Click to connect": "",
+    "Scan this code or copy + paste it to your lightning wallet. Or click to login with your browser\\'s wallet.": "",
+    "Missing lightning address": "",
+    "Thanks, continue here": "",
+    "Your current Meetup groups": "",
+    "please limit your search here": "",
+    "Deselect": "",
+    "Lightning Address": "",
+    "LNURL": "",
+    "Node Id": "",
+    "Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.": ""
 }

@@ -47,7 +47,7 @@ class LanguageController extends Controller
             $array[$key]['name'] =  empty($item['name']) ? $item['language'] : $item['name'];
             $array[$key]['description'] = $item['language'] === 'en'
                 ? '100% translated'
-                : round($item['translatedCount'] / $item['toTranslate'] * 100).'% translated';
+                : round($item['translatedCount'] ?? 1 / $item['toTranslate'] * 100).'% translated';
         }
 
         return response()->json($array);

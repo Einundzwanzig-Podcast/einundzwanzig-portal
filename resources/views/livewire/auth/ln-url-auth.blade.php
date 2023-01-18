@@ -72,7 +72,7 @@
         @endif
 
         <div class="pt-12">
-            {{ __('Scan this code or copy + paste it to your lightning wallet. Or click to login with your browser\'s wallet.') }}
+            {{ __('Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.') }}
         </div>
         <div class="pt-2">
             <td
