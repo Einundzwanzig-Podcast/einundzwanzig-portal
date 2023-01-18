@@ -67,7 +67,7 @@ class Meetup extends Model implements HasMedia
     {
         $this->addMediaCollection('logo')
              ->singleFile()
-             ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
+             ->useFallbackUrl(asset('img/einundzwanzig.png'));
     }
 
     public function createdBy(): BelongsTo

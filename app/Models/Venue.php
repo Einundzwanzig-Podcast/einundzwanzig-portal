@@ -60,7 +60,7 @@ class Venue extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('images')
-             ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
+             ->useFallbackUrl(asset('img/einundzwanzig.png'));
     }
 
     /**

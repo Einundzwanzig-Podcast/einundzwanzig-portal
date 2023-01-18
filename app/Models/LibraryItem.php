@@ -62,12 +62,12 @@ class LibraryItem extends Model implements HasMedia, Sortable
     {
         $this->addMediaCollection('main')
              ->singleFile()
-             ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
+             ->useFallbackUrl(asset('img/einundzwanzig.png'));
         $this->addMediaCollection('single_file')
              ->acceptsMimeTypes(['application/pdf'])
              ->singleFile();
         $this->addMediaCollection('images')
-             ->useFallbackUrl(asset('img/einundzwanzig-cover-lesestunde.png'));
+             ->useFallbackUrl(asset('img/einundzwanzig.png'));
     }
 
     public function createdBy(): BelongsTo
