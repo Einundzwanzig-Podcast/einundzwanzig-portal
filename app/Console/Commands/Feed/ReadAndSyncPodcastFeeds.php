@@ -42,7 +42,7 @@ class ReadAndSyncPodcastFeeds extends Command
         foreach ($feedIds as $feedId) {
             $podcast = $client->podcasts->byFeedId($feedId)
                                         ->json();
-            $einundzwanzigPodcast = Podcast::query()
+            $importPodcast = Podcast::query()
                                            ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
                                                'title'         => $podcast->feed->title,
                                                'link'          => $podcast->feed->link,
@@ -56,7 +56,7 @@ class ReadAndSyncPodcastFeeds extends Command
             foreach ($episodes->items as $item) {
                 Episode::query()
                        ->updateOrCreate(['guid' => $item->guid], [
-                           'podcast_id' => $einundzwanzigPodcast->id,
+                           'podcast_id' => $importPodcast->id,
                            'data'       => $item,
                            'created_by' => 1,
                            'created_at' => Carbon::parse($item->datePublished),

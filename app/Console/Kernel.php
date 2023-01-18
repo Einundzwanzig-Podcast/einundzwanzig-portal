@@ -10,6 +10,11 @@ use Laravel\Nova\Trix\PruneStaleAttachments;
 
 class Kernel extends ConsoleKernel
 {
+    protected $commands = [
+        SyncOpenBooks::class,
+        ReadAndSyncPodcastFeeds::class
+    ];
+
     /**
      * Define the application's command schedule.
      *
@@ -21,9 +26,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(new PruneStaleAttachments)
                  ->daily();
-        $schedule->call('books:sync')
+        $schedule->call(SyncOpenBooks::class)
                  ->dailyAt('23:00');
-        $schedule->call('feed:sync')
+        $schedule->call(ReadAndSyncPodcastFeeds::class)
                  ->dailyAt('23:30');
     }
 
