@@ -53,6 +53,7 @@
                                             accent="#f7931a"
                                             to="{{ $pleb->lightning_address ?? $pleb->lnurl ?? $pleb->node_id }}"
                                             image="{{ $pleb->profile_photo_url }}"
+                                            amounts="21,210,2100,21000,210000"
                                         />
                                     </div>
                                 @endif
