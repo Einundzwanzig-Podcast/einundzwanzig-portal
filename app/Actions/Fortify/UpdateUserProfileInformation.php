@@ -23,7 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name'              => ['required', 'string', 'max:255'],
             'lightning_address' => ['nullable', 'string'],
             'lnurl'             => ['nullable', 'string'],
-            'node_id'           => ['nullable', 'string'],
+            'node_id'           => ['nullable', 'string', 'max:66'],
             'timezone'          => ['required', 'string'],
             'email'             => [
                 'nullable', 'email', 'max:255', Rule::unique('users')
