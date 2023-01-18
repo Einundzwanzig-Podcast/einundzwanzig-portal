@@ -23,7 +23,7 @@
                         let markers = {{ Js::from($allMarkers) }};
 
                         $('#mapworld').vectorMap({
-                            zoomButtons : false,
+                            zoomButtons : true,
                             zoomOnScroll: true,
                             map: 'world_mill',
                             backgroundColor: 'transparent',

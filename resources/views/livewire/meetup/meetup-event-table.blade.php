@@ -114,7 +114,7 @@
 
                                 $('#map').vectorMap({
                                     {{ $focus }}
-                                    zoomButtons : false,
+                                    zoomButtons : true,
                                     zoomOnScroll: true,
                                     height: 300,
                                     map: '{{ $map }}',

@@ -44,7 +44,7 @@
 
                             $('#map').vectorMap({
                                 {{ $focus }}
-                                zoomButtons : false,
+                                zoomButtons : true,
                                 zoomOnScroll: true,
                                 map: '{{ $map }}',
                                 backgroundColor: 'transparent',

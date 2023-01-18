@@ -92,7 +92,7 @@
                                 console.log(markers);
 
                                 $('#map').vectorMap({
-                                    zoomButtons : false,
+                                    zoomButtons : true,
                                     zoomOnScroll: true,
                                     map: '{{ $country->code }}_merc',
                                     backgroundColor: 'transparent',

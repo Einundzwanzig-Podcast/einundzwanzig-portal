@@ -108,7 +108,7 @@
                                 console.log(markers);
 
                                 $('#map').vectorMap({
-                                    zoomButtons : false,
+                                    zoomButtons : true,
                                     zoomOnScroll: true,
                                     map: 'world_mill',
                                     height: 300,
