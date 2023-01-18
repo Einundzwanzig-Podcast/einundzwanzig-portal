@@ -23,7 +23,7 @@ class LibraryItemObserver
 
         $libraryItemName = $libraryItem->name;
         if ($libraryItem->lecturer->twitter_username) {
-            $libraryItemName .= ' @'.$libraryItem->lecturer->twitter_username;
+            $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
         }
 
         if (config('feeds.services.twitterAccountId')) {
