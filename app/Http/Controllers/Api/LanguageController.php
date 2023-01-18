@@ -33,10 +33,10 @@ class LanguageController extends Controller
                          ->get()
                          ->map(function ($language) {
                              $language->translatedCount = Translation::query()
-                                                                ->where('language_id', $language['id'])
-                                                                ->whereNotNull('value')
-                                                                ->where('value', '<>', '')
-                                                                ->count();
+                                                                     ->where('language_id', $language['id'])
+                                                                     ->whereNotNull('value')
+                                                                     ->where('value', '<>', '')
+                                                                     ->count();
                              $language->toTranslate = Translation::query()
                                                                  ->where('language_id', $language['id'])
                                                                  ->count();
@@ -44,10 +44,13 @@ class LanguageController extends Controller
                          })
                          ->toArray();
         foreach ($array as $key => $item) {
-            $array[$key]['name'] =  empty($item['name']) ? $item['language'] : $item['name'];
+            $translated = $item['translatedCount'] > 0 ? $item['translatedCount'] : 1;
+            $itemToTranslate = $item['toTranslate'] > 0 ? $item['toTranslate'] : 1;
+
+            $array[$key]['name'] = empty($item['name']) ? $item['language'] : $item['name'];
             $array[$key]['description'] = $item['language'] === 'en'
                 ? '100% translated'
-                : round($item['translatedCount'] ?? 1 / $item['toTranslate'] * 100).'% translated';
+                : round($translated / $itemToTranslate * 100).'% translated';
         }
 
         return response()->json($array);
