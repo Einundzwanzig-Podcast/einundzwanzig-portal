@@ -41,7 +41,7 @@
                                 </template>
 
                                 <template x-if="notification.img">
-                                    <img class="h-10 w-10 object-cover rounded-full" :src="notification.img" />
+                                    <img class="h-10 w-10 object-contain rounded" :src="notification.img" />
                                 </template>
                             </div>
                         </template>

@@ -25,9 +25,4 @@ class LaravelEcho extends Component
                  'timeout'     => 60000,
              ]);
     }
-
-    public function render()
-    {
-        return view('livewire.laravel-echo');
-    }
 }
