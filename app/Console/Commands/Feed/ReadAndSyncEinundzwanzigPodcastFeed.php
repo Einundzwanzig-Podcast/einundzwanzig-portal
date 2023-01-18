@@ -35,20 +35,21 @@ class ReadAndSyncEinundzwanzigPodcastFeed extends Command
                                     ->json();
         $einundzwanzigPodcast = Podcast::query()
                                        ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
-                                           'title'    => $podcast->feed->title,
-                                           'link'     => $podcast->feed->link,
+                                           'title'         => $podcast->feed->title,
+                                           'link'          => $podcast->feed->link,
                                            'language_code' => $podcast->feed->language,
-                                           'data'     => $podcast->feed,
-                                           'created_by'  => 1,
+                                           'data'          => $podcast->feed,
+                                           'created_by'    => 1,
                                        ]);
-        $episodes = $client->episodes->byFeedUrl('https://einundzwanzig.space/feed.xml')
+        $episodes = $client->episodes->withParameters(['max' => 1000])
+                                     ->byFeedId(185230)
                                      ->json();
         foreach ($episodes->items as $item) {
             Episode::query()
                    ->updateOrCreate(['guid' => $item->guid], [
                        'podcast_id' => $einundzwanzigPodcast->id,
                        'data'       => $item,
-                       'created_by'  => 1,
+                       'created_by' => 1,
                    ]);
         }
 
