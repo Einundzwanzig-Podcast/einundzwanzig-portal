@@ -104,7 +104,6 @@ class Lecturer extends Resource
                     ->help(__('This is the introduction text that is shown on the landing page.')),
 
             Text::make('Slug')
-                ->hide()
                 ->hideFromIndex()
                 ->rules('required', 'string', 'unique:lecturers,slug'),
 
