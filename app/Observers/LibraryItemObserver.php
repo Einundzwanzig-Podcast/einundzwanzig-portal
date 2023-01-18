@@ -21,13 +21,18 @@ class LibraryItemObserver
         // todo: we can change this later
         $libraryItem->setStatus('published');
 
+        $libraryItemName = $libraryItem->name;
+        if ($libraryItem->lecturer->twitter_username) {
+            $libraryItemName .= ' @'.$libraryItem->lecturer->twitter_username;
+        }
+
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
 
             // http://localhost/de/library/library-item?l=de&table[filters][id]=2
 
             $text = sprintf("Es gibt was Neues zum Anschauen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
-                $libraryItem->name,
+                $libraryItemName,
                 url()->route('library.table.libraryItems',
                     ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]),
             );
