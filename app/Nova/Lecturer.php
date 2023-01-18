@@ -105,7 +105,7 @@ class Lecturer extends Resource
 
             Text::make('Slug')
                 ->hideFromIndex()
-                ->rules('required', 'string', 'unique:lecturers,slug'),
+                ->rules('required', 'string', 'unique:lecturers,slug,{{resourceId}}'),
 
             Boolean::make('Active')
                    ->rules('required')
