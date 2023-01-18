@@ -27,6 +27,7 @@ class Episode extends Resource
     public static $search = [
         'id',
     ];
+    public static $orderBy = ['data->datePublished' => 'desc'];
 
     public static function afterUpdate(NovaRequest $request, Model $model)
     {
@@ -62,11 +63,6 @@ class Episode extends Resource
         }
     }
 
-    public function title()
-    {
-        return $this->data['title'];
-    }
-
     public static function afterCreate(NovaRequest $request, Model $model)
     {
         \App\Models\User::find(1)
@@ -74,6 +70,20 @@ class Episode extends Resource
                             ->after('/nova-api/')
                             ->before('?')
                             ->toString()));
+    }
+
+    protected static function applyOrderings($query, array $orderings)
+    {
+        if (empty($orderings) && property_exists(static::class, 'orderBy')) {
+            $orderings = static::$orderBy;
+        }
+
+        return parent::applyOrderings($query, $orderings);
+    }
+
+    public function title()
+    {
+        return $this->data['title'];
     }
 
     public function subtitle()
