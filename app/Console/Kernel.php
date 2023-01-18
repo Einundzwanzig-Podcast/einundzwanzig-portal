@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\Feed\ReadAndSyncEinundzwanzigPodcastFeed;
+use App\Console\Commands\Feed\ReadAndSyncPodcastFeeds;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
                  ->daily();
         $schedule->call(SyncOpenBooks::class)
                  ->dailyAt('23:00');
-        $schedule->call(ReadAndSyncEinundzwanzigPodcastFeed::class)
+        $schedule->call(ReadAndSyncPodcastFeeds::class)
                  ->dailyAt('23:30');
     }
 

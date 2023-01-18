@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Console\Commands\Database\CreateTags;
-use App\Console\Commands\Feed\ReadAndSyncEinundzwanzigPodcastFeed;
+use App\Console\Commands\Feed\ReadAndSyncPodcastFeeds;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use App\Models\BitcoinEvent;
 use App\Models\Category;
@@ -373,7 +373,7 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
         $libraryItem->syncTagsWithType(['Präsentationen'], 'library_item');
         $nonPublicLibrary->libraryItems()
                          ->attach($libraryItem);
-        Artisan::call(ReadAndSyncEinundzwanzigPodcastFeed::class);
+        Artisan::call(ReadAndSyncPodcastFeeds::class);
         Artisan::call(SyncOpenBooks::class);
         Meetup::create([
             'city_id'    => 1,
