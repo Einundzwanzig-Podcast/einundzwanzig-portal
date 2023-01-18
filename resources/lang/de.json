@@ -663,5 +663,6 @@
     "Scan this code or copy + paste it to your lightning wallet. Or click to login with your browser's wallet.": "Scanne diesen Code oder copy + paste ihn in deine Lightning-Wallet ein. Oder klicke, um dich mit der Wallet deines Browsers anzumelden.",
     "Lightning Address": "Lightning-Adresse",
     "Node Id": "",
-    "LNURL": ""
+    "LNURL": "",
+    "Missing lightning address": "Es fehlt die Lightning-Adresse"
 }

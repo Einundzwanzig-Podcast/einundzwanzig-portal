@@ -656,5 +656,6 @@
   "Scan this code or copy + paste it to your lightning wallet. Or click to login with your browser's wallet.": "",
     "Lightning Address": "",
     "Node Id": "",
-    "LNURL": ""
+    "LNURL": "",
+    "Missing lightning address": ""
 }
