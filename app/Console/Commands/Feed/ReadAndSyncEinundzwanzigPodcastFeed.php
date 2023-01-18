@@ -5,6 +5,7 @@ namespace App\Console\Commands\Feed;
 use App\Models\Episode;
 use App\Models\Podcast;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 
 class ReadAndSyncEinundzwanzigPodcastFeed extends Command
 {
@@ -50,6 +51,7 @@ class ReadAndSyncEinundzwanzigPodcastFeed extends Command
                        'podcast_id' => $einundzwanzigPodcast->id,
                        'data'       => $item,
                        'created_by' => 1,
+                       'created_at' => Carbon::parse($item->datePublished),
                    ]);
         }
 

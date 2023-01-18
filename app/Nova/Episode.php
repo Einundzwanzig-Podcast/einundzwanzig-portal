@@ -27,7 +27,7 @@ class Episode extends Resource
     public static $search = [
         'id',
     ];
-    public static $orderBy = ['data->datePublished' => 'desc'];
+    public static $orderBy = ['created_at' => 'desc'];
 
     public static function afterUpdate(NovaRequest $request, Model $model)
     {
