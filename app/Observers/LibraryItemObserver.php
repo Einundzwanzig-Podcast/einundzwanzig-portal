@@ -26,7 +26,7 @@ class LibraryItemObserver
 
             // http://localhost/de/library/library-item?l=de&table[filters][id]=2
 
-            $text = sprintf("Es gibt was Neues zum Anschauen oder Hören:\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
+            $text = sprintf("Es gibt was Neues zum Anschauen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
                 $libraryItem->name,
                 url()->route('library.table.libraryItems',
                     ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]),
