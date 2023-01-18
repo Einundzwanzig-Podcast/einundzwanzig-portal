@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\PlebLoggedInEvent;
 use App\Gamify\Points\LoggedIn;
 
 class AddLoginReputation
@@ -25,5 +26,6 @@ class AddLoginReputation
     public function handle($event)
     {
         $event->user->givePoint(new LoggedIn($event->user));
+        event(new PlebLoggedInEvent($event->user->name));
     }
 }
