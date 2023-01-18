@@ -26,6 +26,12 @@
                                 <div class="flex w-0 flex-1">
                                     @if($pleb->lightning_address || $pleb->lnurl || $pleb->node_id)
                                         <div x-on:click="show = !show"
+                                             x-transition:enter="transition ease-out duration-300"
+                                             x-transition:enter-start="opacity-0"
+                                             x-transition:enter-end="opacity-100"
+                                             x-transition:leave="transition ease-in duration-300"
+                                             x-transition:leave-start="opacity-100"
+                                             x-transition:leave-end="opacity-0 scale-90"
                                              class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-xl font-bold text-gray-800 hover:text-gray-900">
                                             <i class="fa-thin fa-bolt-lightning"></i>
                                             <span class="ml-3" x-text="show ? 'Schließen' : 'Donate'"></span>

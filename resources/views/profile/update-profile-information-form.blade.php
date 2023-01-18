@@ -63,7 +63,7 @@
 
         <!-- lightning_address -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('lightning_address') }}"/>
+            <x-jet-label for="lightning_address" value="{{ __('Lightning Address') }}"/>
             <x-jet-input id="lightning_address" type="text" class="mt-1 block w-full" wire:model.defer="state.lightning_address"
                          autocomplete="lightning_address"/>
             <x-jet-input-error for="lightning_address" class="mt-2"/>
@@ -71,7 +71,7 @@
 
         <!-- lnurl -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('lnurl') }}"/>
+            <x-jet-label for="lnurl" value="{{ __('LNURL') }}"/>
             <x-jet-input id="lnurl" type="text" class="mt-1 block w-full" wire:model.defer="state.lnurl"
                          autocomplete="lnurl"/>
             <x-jet-input-error for="lnurl" class="mt-2"/>
@@ -79,7 +79,7 @@
 
         <!-- node_id -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('node_id') }}"/>
+            <x-jet-label for="node_id" value="{{ __('Node Id') }}"/>
             <x-jet-input id="node_id" type="text" class="mt-1 block w-full" wire:model.defer="state.node_id"
                          autocomplete="node_id"/>
             <x-jet-input-error for="node_id" class="mt-2"/>
