@@ -88,6 +88,13 @@ class Lecturer extends Resource
             Text::make('Name')
                 ->rules('required', 'string'),
 
+            Text::make('Twitter username', 'twitter_username')
+                ->help(__('Without @'))
+                ->rules('nullable', 'string'),
+
+            Text::make('Website', 'website')
+                ->rules('nullable', 'url'),
+
             Markdown::make(__('Subtitle'), 'subtitle')
                     ->help(__('This is the subtitle on the landing page.')),
 

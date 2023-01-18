@@ -35,6 +35,7 @@ class Episode extends Resource
             $lecturer = \App\Models\Lecturer::updateOrCreate(['name' => $model->podcast->title], [
                 'team_id' => 1,
                 'active'  => true,
+                'website' => $model->podcast->link,
             ]);
             $lecturer->addMediaFromUrl($model->podcast->data['image'])
                      ->toMediaCollection('avatar');
