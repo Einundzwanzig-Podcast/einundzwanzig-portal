@@ -17,12 +17,43 @@
             </div>
 
             <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-
                 @foreach($plebs as $pleb)
-                    <li
-                        wire:click="openModal({{ $pleb->id }})"
-                        class="cursor-pointer col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-amber-500 text-center shadow-2xl">
-                        <div class="flex flex-1 flex-col p-8">
+                    <li x-data="{show: false}"
+                        wire:key="pleb_{{ $pleb->id }}"
+                        class="cursor-pointer col-span-1 flex flex-col rounded-lg bg-amber-500 text-center shadow-2xl">
+                        <div>
+                            <div class="-mt-px flex ">
+                                <div class="flex w-0 flex-1">
+                                    @if($pleb->lightning_address || $pleb->lnurl || $pleb->node_id)
+                                        <div x-on:click="show = !show"
+                                             class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-xl font-bold text-gray-800 hover:text-gray-900">
+                                            <i class="fa-thin fa-bolt-lightning"></i>
+                                            <span class="ml-3" x-text="show ? 'Schließen' : 'Donate'"></span>
+                                        </div>
+                                    @else
+                                        <a href="{{ route('profile.show') }}"
+                                           class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-xl font-bold text-gray-800 hover:text-gray-900">
+                                            <i class="fa-thin fa-bolt-slash"></i>
+                                            <span class="ml-3">{{ __('Missing lightning address') }}</span>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                            <div x-show="show">
+                                @if($pleb->lightning_address || $pleb->lnurl || $pleb->node_id)
+                                    <div wire:ignore>
+                                        <lightning-widget
+                                            name="{{ $pleb->name }}"
+                                            accent="#f7931a"
+                                            to="{{ $pleb->lightning_address ?? $pleb->lnurl ?? $pleb->node_id }}"
+                                            image="{{ $pleb->profile_photo_url }}"
+                                        />
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex flex-1 flex-col p-8" x-show="!show"
+                             wire:click="openModal({{ $pleb->id }})">
                             <img class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
                                  src="{{ $pleb->profile_photo_url }}" alt="{{ $pleb->name }}">
                             <h3 class="mt-6 text-sm font-medium text-gray-900 truncate">{{ $pleb->name }}</h3>
@@ -33,34 +64,17 @@
                                 </dd>
                             </dl>
                         </div>
-                        {{--<div>
-                            <div class="-mt-px flex divide-x divide-gray-200">
-                                <div class="flex w-0 flex-1">
-                                    <a href="mailto:janecooper@example.com" class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
-                                        <!-- Heroicon name: mini/envelope -->
-                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                                            <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                                        </svg>
-                                        <span class="ml-3">Email</span>
-                                    </a>
-                                </div>
-                                <div class="-ml-px flex w-0 flex-1">
-                                    <a href="tel:+1-202-555-0170" class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
-                                        <!-- Heroicon name: mini/phone -->
-                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
-                                        </svg>
-                                        <span class="ml-3">Call</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>--}}
                     </li>
                 @endforeach
-
+                <script src="https://embed.twentyuno.net/js/app.js"></script>
 
             </ul>
+
+            <style>
+                .card {
+                    border-radius: 0px !important;
+                }
+            </style>
 
             <x-jet-dialog-modal wire:model="viewingModal" maxWidth="screen" bg="bg-21gray">
                 <x-slot name="title">

@@ -20,13 +20,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update($user, array $input)
     {
         Validator::make($input, [
-            'name'     => ['required', 'string', 'max:255'],
-            'timezone' => ['required', 'string'],
-            'email'    => [
+            'name'              => ['required', 'string', 'max:255'],
+            'lightning_address' => ['nullable', 'string'],
+            'lnurl'             => ['nullable', 'string'],
+            'node_id'           => ['nullable', 'string'],
+            'timezone'          => ['required', 'string'],
+            'email'             => [
                 'nullable', 'email', 'max:255', Rule::unique('users')
                                                     ->ignore($user->id)
             ],
-            'photo'    => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'photo'             => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])
                  ->validateWithBag('updateProfileInformation');
 
@@ -39,9 +42,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name'     => $input['name'],
-                'email'    => $input['email'],
-                'timezone' => $input['timezone'],
+                'name'              => $input['name'],
+                'lightning_address' => $input['lightning_address'],
+                'lnurl'             => $input['lnurl'],
+                'node_id'           => $input['node_id'],
+                'email'             => $input['email'],
+                'timezone'          => $input['timezone'],
             ])
                  ->save();
         }
@@ -59,6 +65,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         $user->forceFill([
             'name'              => $input['name'],
+            'lightning_address' => $input['lightning_address'],
+            'lnurl'             => $input['lnurl'],
+            'node_id'           => $input['node_id'],
             'email'             => $input['email'],
             'timezone'          => $input['timezone'],
             'email_verified_at' => null,
