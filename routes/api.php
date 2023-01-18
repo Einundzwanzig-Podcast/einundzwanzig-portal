@@ -46,8 +46,8 @@ Route::middleware([])
                                           'country'          => str($meetup->city->country->code)->upper(),
                                           'state'            => $meetup->github_data['state'] ?? null,
                                           'city'             => $meetup->city->name,
-                                          'longitude'        => $meetup->city->longitude,
-                                          'latitude'         => $meetup->city->latitude,
+                                          'longitude'        => (float)$meetup->city->longitude,
+                                          'latitude'         => (float)$meetup->city->latitude,
                                           'twitter_username' => $meetup->twitter_username,
                                           'website'          => $meetup->webpage,
                                       ]);
