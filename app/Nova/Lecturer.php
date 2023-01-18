@@ -90,9 +90,11 @@ class Lecturer extends Resource
 
             Text::make('Twitter username', 'twitter_username')
                 ->help(__('Without @'))
+                ->hideFromIndex()
                 ->rules('nullable', 'string'),
 
             Text::make('Website', 'website')
+                ->hideFromIndex()
                 ->rules('nullable', 'url'),
 
             Markdown::make(__('Subtitle'), 'subtitle')
@@ -102,6 +104,7 @@ class Lecturer extends Resource
                     ->help(__('This is the introduction text that is shown on the landing page.')),
 
             Text::make('Slug')
+                ->hideFromIndex()
                 ->rules('required', 'string', 'unique:lecturers,slug')
                 ->exceptOnForms(),
 
