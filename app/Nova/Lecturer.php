@@ -115,7 +115,7 @@ class Lecturer extends Resource
                     ->help('Markdown is allowed. You can paste images from the "Images" field here. Use the link icon of the images for the urls after clicking "Update and continue".'),
 
             BelongsTo::make('Team')
-                     ->exceptOnForms(),
+                     ->onlyOnDetail(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
