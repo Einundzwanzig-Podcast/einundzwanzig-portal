@@ -26,6 +26,6 @@ class AddLoginReputation
     public function handle($event)
     {
         $event->user->givePoint(new LoggedIn($event->user));
-        event(new PlebLoggedInEvent($event->user->name));
+        event(new PlebLoggedInEvent($event->user->name, $event->user->profile_photo_url));
     }
 }

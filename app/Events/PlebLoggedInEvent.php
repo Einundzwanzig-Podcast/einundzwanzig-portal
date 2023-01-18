@@ -16,7 +16,7 @@ class PlebLoggedInEvent implements ShouldBroadcast
      * Create a new event instance.
      * @return void
      */
-    public function __construct(public string $name)
+    public function __construct(public string $name, public string $img)
     {
         //
     }
