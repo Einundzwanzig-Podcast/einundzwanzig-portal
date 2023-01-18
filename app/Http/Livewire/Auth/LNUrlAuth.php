@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Auth;
 
-use App\Gamify\Points\LoggedIn;
 use App\Models\LoginKey;
 use App\Models\User;
 use App\Notifications\ModelCreatedNotification;
@@ -32,8 +31,11 @@ class LNUrlAuth extends Component
         $this->k1 = bin2hex(str()->random(32));
         $this->url = url('/api/lnurl-auth-callback?tag=login&k1='.$this->k1.'&action=login');
         $this->lnurl = lnurl\encodeUrl($this->url);
-        $this->qrCode = QrCode::size(300)
-                              ->generate($this->lnurl);
+        $this->qrCode = base64_encode(QrCode::format('png')
+                              ->size(300)
+                              ->merge('/public/android-chrome-192x192.png', .3)
+                              ->errorCorrection('H')
+                              ->generate($this->lnurl));
     }
 
     public function checkAuth()
