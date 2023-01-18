@@ -43,7 +43,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
-            $comments = $request->user()->can('CommentPolicy.viewAny') ? [
+            $comments = $request->user()
+                                ->hasRole('super-admin') || $request->user()
+                                                                    ->can('CommentPolicy.viewAny') ? [
                 MenuSection::make('Comments', [
                     MenuItem::resource(Comment::class),
                 ])
@@ -51,7 +53,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                            ->collapsable(),
             ] : [];
 
-            $adminItems = $request->user()->can('NovaAdminPolicy.viewAny') ?
+            $adminItems = $request->user()
+                                  ->hasRole('super-admin') || $request->user()
+                                                                      ->can('NovaAdminPolicy.viewAny') ?
                 [
                     MenuSection::make('Admin', [
                         MenuItem::resource(Category::class),
@@ -67,7 +71,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ]
                 : [];
 
-            $permissions = $request->user()->can('PermissionPolicy.viewAny') ? [
+            $permissions = $request->user()
+                                   ->hasRole('super-admin') || $request->user()
+                                                                       ->can('PermissionPolicy.viewAny') ? [
                 MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
                     MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
                     MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
