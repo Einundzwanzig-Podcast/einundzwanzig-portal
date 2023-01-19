@@ -75,12 +75,12 @@ class MeetupTable extends DataTableComponent
                          'users',
                          'city.country',
                          'meetupEvents',
-                     ])
-                     ->withCount([
-                         'users',
-                         'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
-                     ])
-                     ->when($this->country, fn($query) => $query->orderBy('meetup_events_count', 'desc'));
+                     ]);
+//                     ->withCount([
+//                         'users',
+//                         'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
+//                     ])
+//->when($this->country, fn($query) => $query->orderBy('meetup_events_count', 'desc'));
     }
 
     public function meetupEventSearch($id)
