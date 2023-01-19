@@ -21,8 +21,6 @@
                         lg
                         wire:click="toggleChat">
                         <i class="fa-thin fa-comments"></i>
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                         Chat
                     </x-button>
                 </div>
