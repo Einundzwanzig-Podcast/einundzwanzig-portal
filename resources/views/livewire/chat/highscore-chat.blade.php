@@ -10,7 +10,9 @@
                      x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
                      x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
                      class="pointer-events-auto w-screen max-w-md"
-                     x-description="Slide-over panel, show/hide based on slide-over state.">
+                     x-description="Slide-over panel, show/hide based on slide-over state."
+                     x-trap.noscroll="open"
+                >
                     <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                         <div class="bg-amber-700 py-6 px-4 sm:px-6">
                             <div class="flex items-center justify-between">

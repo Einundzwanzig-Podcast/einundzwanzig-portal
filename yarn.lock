@@ -7,6 +7,13 @@
   resolved "https://registry.yarnpkg.com/@alpinejs/collapse/-/collapse-3.11.1.tgz#391b393f646f1c43787fcc7351d365a7ac0ae538"
   integrity sha512-H5GQ4rEWN5Z5vKf4U+FtUdcRDdHSa+p4cAesiB+I2njfOxw0EDuobugiP1Pf3DpmyIk8iJx7feLmxeboqxbpRA==
 
+"@alpinejs/focus@^3.11.1":
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/@alpinejs/focus/-/focus-3.11.1.tgz#8f18bf6099814e9dd45e1c8645bc1d971484e471"
+  integrity sha512-5gbkgwLlxFfYomCt4cHda5DxBwIdBagmA1AXiOuUytix7AHPtspJBjAULLglz4D82Xdz7bWyau4vZfLr/PhbXQ==
+  dependencies:
+    focus-trap "^6.6.1"
+
 "@alpinejs/intersect@^3.11.1":
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/@alpinejs/intersect/-/intersect-3.11.1.tgz#858e0aa5689c459fbd22442bbe06c65b00fa4786"
@@ -396,6 +403,13 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
+focus-trap@^6.6.1:
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-6.9.4.tgz#436da1a1d935c48b97da63cd8f361c6f3aa16444"
+  integrity sha512-v2NTsZe2FF59Y+sDykKY+XjqZ0cPfhq/hikWVL88BqLivnNiEffAsac6rP6H45ff9wG9LL5ToiDqrLEP9GX9mw==
+  dependencies:
+    tabbable "^5.3.3"
+
 fraction.js@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
@@ -700,6 +714,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+tabbable@^5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.3.3.tgz#aac0ff88c73b22d6c3c5a50b1586310006b47fbf"
+  integrity sha512-QD9qKY3StfbZqWOPLp0++pOrAVb/HbUi5xCc8cUo4XjP19808oaMiDzn0leBY5mCespIBM0CIZePzZjgzR83kA==
 
 tailwindcss@^3.1.0:
   version "3.2.4"
