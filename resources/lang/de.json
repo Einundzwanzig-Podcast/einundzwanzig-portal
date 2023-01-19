@@ -671,6 +671,6 @@
     "Parent": "Übergeordnet",
     "PlebChat": "",
     "Close panel": "Schließe Panel",
-    "This chat is limited by 100 messages.": "Dieser Chat ist auf 100 Nachrichten begrenzt. Die ältesten Nachrichten werden gelöscht und die Nachrichten werden nicht gespeichert.",
+    "This chat is limited by 100 messages.": "Dieser Chat ist auf 100 Nachrichten begrenzt. Die ältesten Nachrichten werden gelöscht und die Nachrichten werden nicht gespeichert. (nur im RAM des Servers)",
     "Send": "Senden"
 }
