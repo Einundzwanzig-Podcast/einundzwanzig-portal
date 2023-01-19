@@ -49,7 +49,7 @@ class HighscoreChat extends Component
         $newMessages = collect($this->messages)
             ->push([
                 'fromId'   => auth()->id(),
-                'fromName' => str(auth()->user()->name)->initials(),
+                'fromName' => str(auth()->user()->name)->limit(2),
                 'userImg'  => str(auth()->user()->profile_photo_url)->replace('background=EBF4FF', 'background=F7931A'),
                 'message'  => $this->myNewMessage,
                 'time'     => now()->asDateTime(),
