@@ -17,6 +17,7 @@ class MeetupTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setAdditionalSelects(['id'])
              ->setDefaultSort('users_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
