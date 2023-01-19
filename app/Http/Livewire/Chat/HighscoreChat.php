@@ -39,8 +39,10 @@ class HighscoreChat extends Component
 
     public function chatMessageSent()
     {
-        $this->messages = cache()->get('highscore_chat_messages', []);
-        $this->dispatchBrowserEvent('chat-updated');
+        if (auth()->check()) {
+            $this->messages = cache()->get('highscore_chat_messages', []);
+            $this->dispatchBrowserEvent('chat-updated');
+        }
     }
 
     public function sendMessage()
