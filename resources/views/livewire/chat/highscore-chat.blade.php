@@ -1,4 +1,4 @@
-<div x-data="{ open: @entangle('open') }" x-show="open" class="relative z-50"
+<div x-cloak x-data="{ open: @entangle('open') }" x-show="open" class="relative z-50"
      aria-labelledby="slide-over-title" x-ref="dialog" aria-modal="true">
 
     <div class="fixed inset-0 overflow-hidden">
