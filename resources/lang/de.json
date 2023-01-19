@@ -665,5 +665,7 @@
     "Missing lightning address": "Lightning-Adresse fehlt",
     "Plebs": "",
     "Click to connect": "Direkt verbinden",
-    "Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.": "Scanne diesen QR-Code oder kopiere ihn in deine Lightning-Wallet. Oder klicke, um dich mit deiner Wallet einzuloggen."
+    "Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.": "Scanne diesen QR-Code oder kopiere ihn in deine Lightning-Wallet. Oder klicke, um dich mit deiner Wallet einzuloggen.",
+    "Entries": "Einträge",
+    "Payment Required": "Zahlung erforderlich",
 }

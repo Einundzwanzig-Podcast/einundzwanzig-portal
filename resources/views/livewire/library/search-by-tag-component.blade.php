@@ -43,7 +43,7 @@
                               •
                             </span>
                             {{ $tag->library_items_count }}
-                            {{ __('Contents') }}
+                            {{ __('Entries') }}
                         </div>
                     </div>
                 </div>
