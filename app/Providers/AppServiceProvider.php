@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Episode;
 use App\Observers\EpisodeObserver;
 use App\Support\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Model::preventLazyLoading();
+
         Stringable::macro('initials', function () {
             $words = preg_split("/\s+/", $this);
             $initials = "";

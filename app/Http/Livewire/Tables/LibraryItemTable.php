@@ -9,7 +9,6 @@ use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
@@ -18,8 +17,8 @@ use Spatie\LaravelOptions\Options;
 class LibraryItemTable extends DataTableComponent
 {
     public string $currentTab;
-    protected $model = LibraryItem::class;
     public string $tableName = 'library_items';
+    protected $model = LibraryItem::class;
 
     public function configure(): void
     {
@@ -159,6 +158,10 @@ class LibraryItemTable extends DataTableComponent
                               ->getName() !== 'library.table.lecturer';
 
         return LibraryItem::query()
+                          ->with([
+                              'lecturer',
+                              'tags',
+                          ])
                           ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))
                           ->when($this->currentTab !== '*', fn($query) => $query->whereHas('libraries',
                               fn($query) => $query->where('libraries.name', $this->currentTab)))

@@ -27,8 +27,8 @@ class BookCaseTable extends DataTableComponent
         'date'    => null,
         'comment' => '',
     ];
-    protected $model = BookCase::class;
     public string $tableName = 'bookcases';
+    protected $model = BookCase::class;
 
     public function configure(): void
     {
@@ -121,6 +121,9 @@ class BookCaseTable extends DataTableComponent
     public function builder(): Builder
     {
         return BookCase::query()
+                       ->with([
+                           'orangePills',
+                       ])
                        ->withCount([
                            'orangePills',
                        ]);

@@ -12,9 +12,8 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 class CourseTable extends DataTableComponent
 {
     public string $country;
-
-    protected $model = Course::class;
     public string $tableName = 'courses';
+    protected $model = Course::class;
 
     public function configure(): void
     {
@@ -89,6 +88,10 @@ class CourseTable extends DataTableComponent
     public function builder(): Builder
     {
         return Course::query()
+                     ->with([
+                         'lecturer',
+                         'tags',
+                     ])
                      ->withCount([
                          'courseEvents',
                      ])

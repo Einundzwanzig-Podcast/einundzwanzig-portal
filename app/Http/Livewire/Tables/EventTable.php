@@ -17,8 +17,8 @@ class EventTable extends DataTableComponent
     public string $country;
     public bool $viewingModal = false;
     public $currentModal;
-    protected $model = CourseEvent::class;
     public string $tableName = 'events';
+    protected $model = CourseEvent::class;
 
     public function configure(): void
     {
@@ -26,7 +26,7 @@ class EventTable extends DataTableComponent
             ->setPrimaryKey('id')
             ->setDefaultSort('from', 'asc')
             ->setAdditionalSelects([
-                'id',
+                'course_events.id',
                 'course_id',
                 'venue_id',
             ])
@@ -165,8 +165,9 @@ class EventTable extends DataTableComponent
     public function builder(): Builder
     {
         return CourseEvent::query()
-                          ->withCount([
-                              'registrations',
+                          ->with([
+                              'course.lecturer',
+                              'course.categories',
                           ])
                           ->where('from', '>=', now())
                           ->whereHas('venue.city.country',

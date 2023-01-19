@@ -42,6 +42,10 @@ class EventTable extends Component
                                         'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
                                     ]),
             'events'  => CourseEvent::query()
+                                    ->with([
+                                        'course',
+                                        'venue.city.country',
+                                    ])
                                     ->where('from', '>=', now())
                                     ->get()
                                     ->map(fn($event) => [
