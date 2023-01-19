@@ -31,7 +31,8 @@ class SearchByTagComponent extends Component
                          ])
                          ->where('type', 'library_item')
                          ->whereHas('libraryItems.libraries', fn($query) => $query->where('is_public', $shouldBePublic))
-                         ->ordered()
+                         ->orderByDesc('library_items_count')
+                         ->orderBy('tags.id')
                          ->get(),
         ]);
     }
