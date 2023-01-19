@@ -2,7 +2,7 @@
     class="flex overflow-auto relative flex-wrap gap-x-5 gap-y-6 justify-center p-0 mx-auto mt-8 mb-3 w-full font-normal leading-6 text-white align-baseline border-0 border-solid md:mx-auto md:mb-0 md:max-w-screen-md"
     style="max-width: 1350px; font-size: 128%; background-position: 0px center; max-height: 500px; list-style: outside;"
 >
-    @foreach($tags->sortBy('name') as $tag)
+    @foreach($tags as $tag)
         <div
             class="flex flex-1 justify-center p-0 m-0 leading-6 text-center align-baseline border-0 border-solid"
             style="font-size: 128%; background-position: 0px center; list-style: outside;"
