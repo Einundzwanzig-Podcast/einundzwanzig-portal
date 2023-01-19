@@ -26,12 +26,6 @@ class Library extends Resource
      * @var string
      */
     public static $title = 'name';
-
-    public static function label()
-    {
-        return __('Library');
-    }
-
     /**
      * The columns that should be searched.
      * @var array
@@ -40,6 +34,15 @@ class Library extends Resource
         'id',
         'name',
     ];
+
+    public static $with = [
+        'createdBy',
+    ];
+
+    public static function label()
+    {
+        return __('Library');
+    }
 
     public static function afterCreate(NovaRequest $request, Model $model)
     {
@@ -68,6 +71,10 @@ class Library extends Resource
             ID::make()
               ->sortable(),
 
+            BelongsTo::make(__('Parent'), 'parent', __CLASS__)
+                     ->searchable()
+                     ->nullable(),
+
             Text::make('Name')
                 ->rules('required', 'string'),
 
@@ -86,7 +93,8 @@ class Library extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable()->withSubtitles(),
+                     ->searchable()
+                     ->withSubtitles(),
 
         ];
     }

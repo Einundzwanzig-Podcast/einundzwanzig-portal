@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Library extends Model
 {
@@ -43,5 +44,10 @@ class Library extends Model
     public function libraryItems(): BelongsToMany
     {
         return $this->belongsToMany(LibraryItem::class);
+    }
+
+    public function parent() : BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id');
     }
 }

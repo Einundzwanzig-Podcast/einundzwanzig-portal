@@ -26,6 +26,7 @@ class LibraryTable extends Component
         }
 
         $libraries = \App\Models\Library::query()
+                                        ->whereNull('parent_id')
                                         ->where('is_public', $shouldBePublic)
                                         ->get();
         $tabs = collect([

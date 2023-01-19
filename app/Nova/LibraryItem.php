@@ -42,6 +42,11 @@ class LibraryItem extends Resource
         'name',
     ];
 
+    public static $with = [
+        'lecturer',
+        'tags',
+    ];
+
     public static function label()
     {
         return __('Library Item');

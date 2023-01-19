@@ -153,8 +153,14 @@ class LibraryItemTable extends DataTableComponent
     public function builder(): Builder
     {
         $shouldBePublic = request()
-                              ->route()
-                              ->getName() !== 'library.table.lecturer';
+                              ?->route()
+                              ?->getName() !== 'library.table.lecturer';
+
+        if ($this->currentTab !== '*') {
+            $parentLibrary = Library::query()
+                                    ->where('name', $this->currentTab)
+                                    ->first();
+        }
 
         return LibraryItem::query()
                           ->with([
@@ -162,8 +168,16 @@ class LibraryItemTable extends DataTableComponent
                               'tags',
                           ])
                           ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))
-                          ->when($this->currentTab !== '*', fn($query) => $query->whereHas('libraries',
-                              fn($query) => $query->where('libraries.name', $this->currentTab)))
+                          ->when($this->currentTab !== '*', fn($query) => $query
+                              ->whereHas('libraries',
+                                  fn($query) => $query
+                                      ->where('libraries.name', $this->currentTab)
+                              )
+                              ->orWhereHas('libraries',
+                                  fn($query) => $query
+                                      ->where('libraries.parent_id', $parentLibrary->id)
+                              )
+                          )
                           ->withCount([
                               'lecturer',
                           ])

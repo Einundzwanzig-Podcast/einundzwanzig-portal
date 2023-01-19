@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //Model::preventLazyLoading();
+        Model::preventLazyLoading(app()->environment('local'));
 
         Stringable::macro('initials', function () {
             $words = preg_split("/\s+/", $this);
