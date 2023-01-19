@@ -48,7 +48,7 @@ class HighscoreChat extends Component
     public function sendMessage()
     {
         $this->validate();
-        $newMessages = collect($this->messages)
+        $newMessages = collect(cache()->get('highscore_chat_messages', []))
             ->push([
                 'fromId'   => auth()->id(),
                 'fromName' => str(auth()->user()->name)->limit(2),
@@ -56,6 +56,7 @@ class HighscoreChat extends Component
                 'message'  => $this->myNewMessage,
                 'time'     => now()->asDateTime(),
             ])
+            ->take(-21)
             ->toArray();
         cache()->set('highscore_chat_messages', $newMessages);
         event(new ChatMessageSentEvent());

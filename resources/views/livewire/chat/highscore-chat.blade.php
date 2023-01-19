@@ -33,7 +33,7 @@
                             </div>
                             <div class="mt-1">
                                 <p class="text-sm text-gray-900">
-                                    {{ __('This chat is limited by 100 messages.') }}
+                                    {{ __('This chat is limited by 21 messages.') }}
                                 </p>
                             </div>
                         </div>
