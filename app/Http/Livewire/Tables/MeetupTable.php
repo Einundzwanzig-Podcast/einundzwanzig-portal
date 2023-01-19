@@ -52,8 +52,7 @@ class MeetupTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetups.name')->withRow($row)
                   )
-                  ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
-                  ->sortable(),
+                  ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%')),
             Column::make(__('Plebs'))
                   ->label(fn($row, Column $column) => $row->users_count)
                   ->collapseOnMobile(),
