@@ -82,17 +82,17 @@ class MeetupTable extends DataTableComponent
                          'users',
                          'meetupEvents' => fn($query) => $query->where('start', '>=',
                              now()),
-                     ])
-                     ->when(!$this->country, fn($query) => $query->orderBy(
-                         MeetupUser::select('meetup_id')
-                                    ->whereColumn('meetup_id', 'meetups.id')
-                     ))
-                     ->when($this->country, fn($query) => $query->orderBy(
-                         MeetupEvent::select('start')
-                                    ->whereColumn('meetup_id', 'meetups.id')
-                                    ->where('start', '>=', now())
-                                    ->orderBy('start')
-                     ));
+                     ]);
+//                     ->when(!$this->country, fn($query) => $query->orderBy(
+//                         MeetupUser::select('meetup_id')
+//                                    ->whereColumn('meetup_id', 'meetups.id')
+//                     ))
+//                     ->when($this->country, fn($query) => $query->orderBy(
+//                         MeetupEvent::select('start')
+//                                    ->whereColumn('meetup_id', 'meetups.id')
+//                                    ->where('start', '>=', now())
+//                                    ->orderBy('start')
+//                     ));
     }
 
     public function meetupEventSearch($id)
