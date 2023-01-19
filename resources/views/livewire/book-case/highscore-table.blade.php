@@ -4,8 +4,8 @@
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
-            <div class="flex items-start">
-                <div class="w-1/2">
+            <div class="flex flex-col sm:flex-row items-start">
+                <div class="w-full sm:w-1/2">
                     <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                         Orange-Pill <span
                             class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Highscore Table') }}</span>
@@ -14,7 +14,7 @@
                         {{ __('Hall of fame of our honorable plebs') }}
                     </p>
                 </div>
-                <div class="w-1/2">
+                <div class="w-full sm:w-1/2">
                     <x-button
                         class="relative"
                         primary
