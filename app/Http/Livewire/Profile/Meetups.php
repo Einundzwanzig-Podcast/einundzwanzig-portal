@@ -30,6 +30,9 @@ class Meetups extends Component
         }
 
         $this->meetups = Meetup::query()
+                               ->with([
+                                   'city',
+                               ])
                                ->where('name', 'ilike', '%'.$this->search.'%')
                                ->orderBy('name')
                                ->limit(10)

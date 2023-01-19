@@ -36,6 +36,11 @@ class Meetup extends Resource
         'city.name',
     ];
 
+    public static $with = [
+        'city',
+        'createdBy',
+    ];
+
     public static function afterCreate(NovaRequest $request, Model $model)
     {
         auth()

@@ -18,7 +18,6 @@ class VenueTable extends DataTableComponent
     {
         $this->setPrimaryKey('id')
              ->setAdditionalSelects(['id'])
-             ->setDefaultSort('course_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -70,7 +69,9 @@ class VenueTable extends DataTableComponent
                     ->withCount([
                         'courseEvents',
                     ])
-                    ->whereHas('city.country', fn($query) => $query->where('code', $this->country));
+                    ->whereHas('city.country', fn($query) => $query->where('code', $this->country))
+                    ->orderByDesc('course_events_count')
+                    ->orderBy('venues.id');
     }
 
     public function venueSearch($id)

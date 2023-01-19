@@ -21,7 +21,6 @@ class CityTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-            ->setDefaultSort('course_events_count', 'desc')
              ->setAdditionalSelects(['id'])
              ->setThAttributes(function (Column $column) {
                  return [
@@ -79,7 +78,9 @@ class CityTable extends DataTableComponent
                        'venues',
                        'courseEvents',
                    ])
-                   ->whereHas('country', fn($query) => $query->where('code', $this->country));
+                   ->whereHas('country', fn($query) => $query->where('code', $this->country))
+                   ->orderByDesc('course_events_count')
+                   ->orderBy('cities.id');
     }
 
     public function proximitySearch($id)
@@ -116,7 +117,7 @@ class CityTable extends DataTableComponent
         return to_route('bookCases.table.bookcases', [
             '#table',
             'country' => $this->country,
-            'table' => [
+            'table'   => [
                 'filters' => [
                     'byids' => $ids->implode(',')
                 ],

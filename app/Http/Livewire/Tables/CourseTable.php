@@ -95,7 +95,9 @@ class CourseTable extends DataTableComponent
                          'courseEvents',
                      ])
                      ->whereHas('courseEvents.venue.city.country',
-                         fn($query) => $query->where('countries.code', $this->country));
+                         fn($query) => $query->where('countries.code', $this->country))
+                     ->orderByDesc('course_events_count')
+                     ->orderBy('courses.id');
     }
 
     public function courseSearch($id)

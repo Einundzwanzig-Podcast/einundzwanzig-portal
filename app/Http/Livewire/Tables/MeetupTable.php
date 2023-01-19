@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\Meetup;
-use App\Models\MeetupEvent;
-use App\Models\MeetupUser;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -18,7 +16,7 @@ class MeetupTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             //->setDebugEnabled()
+             ->setDebugEnabled()
              ->setAdditionalSelects(['id', 'slug'])
              ->setThAttributes(function (Column $column) {
                  return [
@@ -82,17 +80,11 @@ class MeetupTable extends DataTableComponent
                          'users',
                          'meetupEvents' => fn($query) => $query->where('start', '>=',
                              now()),
-                     ]);
-//                     ->when(!$this->country, fn($query) => $query->orderBy(
-//                         MeetupUser::select('meetup_id')
-//                                    ->whereColumn('meetup_id', 'meetups.id')
-//                     ))
-//                     ->when($this->country, fn($query) => $query->orderBy(
-//                         MeetupEvent::select('start')
-//                                    ->whereColumn('meetup_id', 'meetups.id')
-//                                    ->where('start', '>=', now())
-//                                    ->orderBy('start')
-//                     ));
+                     ])
+                     ->when(!$this->country, fn($query) => $query->orderByDesc('users_count')
+                                                                 ->orderBy('meetups.id'))
+                     ->when($this->country, fn($query) => $query->orderByDesc('meetup_events_count')
+                                                                ->orderBy('meetups.id'));
     }
 
     public function meetupEventSearch($id)

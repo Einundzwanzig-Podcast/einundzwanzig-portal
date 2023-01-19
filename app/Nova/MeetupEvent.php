@@ -35,6 +35,11 @@ class MeetupEvent extends Resource
         'meetup.name',
     ];
 
+    public static $with = [
+        'meetup',
+        'createdBy',
+    ];
+
     public static function label()
     {
         return __('Meetup Event');
