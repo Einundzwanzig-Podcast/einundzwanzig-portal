@@ -19,6 +19,7 @@ class BitcoinEventTable extends DataTableComponent
         $this->setPrimaryKey('id')
              ->setDefaultSort('from', 'asc')
              ->setAdditionalSelects([
+                 'id',
                  'bitcoin_events.id',
                  'bitcoin_events.venue_id'
              ])

@@ -17,6 +17,7 @@ class LecturerTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setAdditionalSelects(['id'])
              ->setDefaultSort('courses_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [

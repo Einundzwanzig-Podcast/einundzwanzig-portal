@@ -17,6 +17,7 @@ class VenueTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setAdditionalSelects(['id'])
              ->setDefaultSort('course_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [

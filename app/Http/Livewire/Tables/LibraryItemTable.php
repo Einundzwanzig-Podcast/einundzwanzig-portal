@@ -24,6 +24,7 @@ class LibraryItemTable extends DataTableComponent
     {
         $this
             ->setPrimaryKey('id')
+            ->setAdditionalSelects(['id'])
             ->setDefaultSort('order_column', 'asc')
             ->setThAttributes(function (Column $column) {
                 return [
