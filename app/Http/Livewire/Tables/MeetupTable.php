@@ -16,7 +16,6 @@ class MeetupTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setDebugEnabled()
              ->setAdditionalSelects(['id', 'slug'])
              ->setThAttributes(function (Column $column) {
                  return [
