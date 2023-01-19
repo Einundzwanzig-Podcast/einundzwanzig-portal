@@ -13,16 +13,18 @@ class LaravelEcho extends Component
 
     public function plebLoggedIn($data)
     {
-        $this->notification()
-             ->confirm([
-                 'img'         => $data['img'],
-                 'title'       => 'Pleb alert!',
-                 'description' => $data['name'].' logged in',
-                 'icon'        => 'bell',
-                 'acceptLabel' => '',
-                 'rejectLabel' => '',
-                 'iconColor'   => 'primary',
-                 'timeout'     => 60000,
-             ]);
+        if (auth()->check()) {
+            $this->notification()
+                 ->confirm([
+                     'img'         => $data['img'],
+                     'title'       => 'Pleb alert!',
+                     'description' => $data['name'].' logged in',
+                     'icon'        => 'bell',
+                     'acceptLabel' => '',
+                     'rejectLabel' => '',
+                     'iconColor'   => 'primary',
+                     'timeout'     => 60000,
+                 ]);
+        }
     }
 }
