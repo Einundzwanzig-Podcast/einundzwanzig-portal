@@ -69,13 +69,13 @@ class MeetupTable extends DataTableComponent
     public function builder(): Builder
     {
         return Meetup::query()
+                     ->when($this->country, fn($query, $country) => $query->whereHas('city.country',
+                         fn($query) => $query->where('code', $this->country)))
                      ->with([
                          'users',
                          'city.country',
                          'meetupEvents',
                      ])
-                     ->when($this->country, fn($query, $country) => $query->whereHas('city.country',
-                         fn($query) => $query->where('code', $this->country)))
                      ->withCount([
                          'users',
                          'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
