@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\Meetup;
+use App\Models\MeetupEvent;
+use App\Models\MeetupUser;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -16,8 +18,8 @@ class MeetupTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+             ->setDebugEnabled()
              ->setAdditionalSelects(['id', 'slug'])
-             ->setDefaultSort('meetup_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -32,12 +34,6 @@ class MeetupTable extends DataTableComponent
              })
              ->setColumnSelectStatus(false)
              ->setPerPage(10);
-
-        if ($this->country) {
-            $this->setDefaultSort('meetup_events_count', 'desc');
-        } else {
-            $this->setDefaultSort('users_count', 'desc');
-        }
     }
 
     public function filters(): array
@@ -87,8 +83,16 @@ class MeetupTable extends DataTableComponent
                          'meetupEvents' => fn($query) => $query->where('start', '>=',
                              now()),
                      ])
-                     ->when($this->country,
-                         fn($query) => $query->orderBy('meetup_events_count', 'desc'));
+                     ->when(!$this->country, fn($query) => $query->orderBy(
+                         MeetupUser::select('meetup_id')
+                                    ->whereColumn('meetup_id', 'meetups.id')
+                     ))
+                     ->when($this->country, fn($query) => $query->orderBy(
+                         MeetupEvent::select('start')
+                                    ->whereColumn('meetup_id', 'meetups.id')
+                                    ->where('start', '>=', now())
+                                    ->orderBy('start')
+                     ));
     }
 
     public function meetupEventSearch($id)
