@@ -92,7 +92,7 @@
                                                         <form wire:submit.prevent="sendMessage">
                                                             <div class="relative w-full">
                                                                 <input
-                                                                    wire:model="myNewMessage"
+                                                                    wire:model.defer="myNewMessage"
                                                                     type="text"
                                                                     class="flex w-full border rounded-xl focus:outline-none focus:border-amber-300 pl-4 h-10"
                                                                 />
