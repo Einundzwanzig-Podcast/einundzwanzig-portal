@@ -34,7 +34,7 @@ class LibraryItemObserver
             $text = sprintf("Es gibt was Neues zum Anschauen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
                 $libraryItemName,
                 url()->route('library.table.libraryItems',
-                    ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]),
+                    ['country' => 'de', 'library_items' => ['filters' => ['id' => $libraryItem->id]]]),
             );
 
             $this->postTweet($text);
