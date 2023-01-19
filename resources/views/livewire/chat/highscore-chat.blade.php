@@ -1,7 +1,7 @@
 <div x-cloak x-data="{ open: @entangle('open') }" x-show="open" class="relative z-50"
      aria-labelledby="slide-over-title" x-ref="dialog" aria-modal="true">
 
-    <div class="fixed inset-0 overflow-hidden">
+    <div class="fixed inset-0 overflow-hidden backdrop-blur-sm">
         <div class="absolute inset-0 overflow-hidden">
             <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
 
