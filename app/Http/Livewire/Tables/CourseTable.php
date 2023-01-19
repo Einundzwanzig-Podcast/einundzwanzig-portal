@@ -14,6 +14,7 @@ class CourseTable extends DataTableComponent
     public string $country;
 
     protected $model = Course::class;
+    public string $tableName = 'courses';
 
     public function configure(): void
     {

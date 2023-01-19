@@ -19,6 +19,7 @@ class LibraryItemTable extends DataTableComponent
 {
     public string $currentTab;
     protected $model = LibraryItem::class;
+    public string $tableName = 'library_items';
 
     public function configure(): void
     {

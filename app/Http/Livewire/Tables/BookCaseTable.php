@@ -28,6 +28,7 @@ class BookCaseTable extends DataTableComponent
         'comment' => '',
     ];
     protected $model = BookCase::class;
+    public string $tableName = 'bookcases';
 
     public function configure(): void
     {

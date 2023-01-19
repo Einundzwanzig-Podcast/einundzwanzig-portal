@@ -10,9 +10,11 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class BitcoinEventTable extends DataTableComponent
 {
+
     public string $country;
 
     protected $model = BitcoinEvent::class;
+    public string $tableName = 'bitcoin_events';
 
     public function configure(): void
     {

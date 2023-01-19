@@ -17,6 +17,7 @@ class CityTable extends DataTableComponent
     public string $type;
 
     protected $model = City::class;
+    public string $tableName = 'cities';
 
     public function configure(): void
     {
