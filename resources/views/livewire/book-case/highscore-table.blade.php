@@ -15,14 +15,16 @@
                     </p>
                 </div>
                 <div class="w-full sm:w-1/2">
-                    <x-button
-                        class="relative"
-                        primary
-                        lg
-                        wire:click="toggleChat">
-                        <i class="fa-thin fa-comments"></i>
-                        Chat
-                    </x-button>
+                    @if(auth()->check())
+                        <x-button
+                            class="relative"
+                            primary
+                            lg
+                            wire:click="toggleChat">
+                            <i class="fa-thin fa-comments"></i>
+                            Chat
+                        </x-button>
+                    @endif
                 </div>
             </div>
 
