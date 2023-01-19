@@ -32,6 +32,12 @@ class MeetupTable extends DataTableComponent
              })
              ->setColumnSelectStatus(false)
              ->setPerPage(10);
+
+        if ($this->country) {
+            $this->setDefaultSort('meetup_events_count', 'desc');
+        } else {
+            $this->setDefaultSort('users_count', 'desc');
+        }
     }
 
     public function filters(): array
@@ -69,18 +75,20 @@ class MeetupTable extends DataTableComponent
     public function builder(): Builder
     {
         return Meetup::query()
-                     ->when($this->country, fn($query, $country) => $query->whereHas('city.country',
-                         fn($query) => $query->where('code', $this->country)))
                      ->with([
                          'users',
                          'city.country',
                          'meetupEvents',
                      ])
+                     ->when($this->country,
+                         fn($query, $country) => $query->whereRelation('city.country', 'code', $this->country))
                      ->withCount([
                          'users',
-                         'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
+                         'meetupEvents' => fn($query) => $query->where('start', '>=',
+                             now()),
                      ])
-                     ->when($this->country, fn($query) => $query->orderBy('meetup_events_count', 'desc'));
+                     ->when($this->country,
+                         fn($query) => $query->orderBy('meetup_events_count', 'desc'));
     }
 
     public function meetupEventSearch($id)
