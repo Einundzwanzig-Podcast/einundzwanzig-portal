@@ -47,6 +47,7 @@ class VenueTable extends DataTableComponent
                        ])
                        ->collapseOnMobile(),
             Column::make("Name", "name")
+                  ->searchable(fn($query, $term) => $query->where('name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
             Column::make("Street", "street")
                   ->sortable()
@@ -81,8 +82,8 @@ class VenueTable extends DataTableComponent
 
         return to_route('school.table.event', [
             '#table',
-            'country' => $this->country,
-            'table'   => [
+            'country'       => $this->country,
+            'course_events' => [
                 'filters' => [
                     'venue' => $venue->name,
                 ],

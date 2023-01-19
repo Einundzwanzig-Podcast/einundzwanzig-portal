@@ -47,6 +47,7 @@ class LecturerTable extends DataTableComponent
                        ])
                        ->collapseOnMobile(),
             Column::make("Name", "name")
+                  ->searchable(fn($query, $term) => $query->where('name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
             BooleanColumn::make("Aktiv", 'active')
                          ->sortable()
@@ -88,8 +89,8 @@ class LecturerTable extends DataTableComponent
         if ($event) {
             return to_route('school.table.event', [
                 '#table',
-                'country' => $this->country,
-                'table'   => [
+                'country'       => $this->country,
+                'course_events' => [
                     'filters' => [
                         'dozent' => $lecturer->id,
                     ],
@@ -98,8 +99,8 @@ class LecturerTable extends DataTableComponent
         } else {
             return to_route('library.table.libraryItems', [
                 '#table',
-                'country' => $this->country,
-                'table'   => [
+                'country'       => $this->country,
+                'library_items' => [
                     'filters' => [
                         'lecturer_id' => $lecturer->id,
                     ],

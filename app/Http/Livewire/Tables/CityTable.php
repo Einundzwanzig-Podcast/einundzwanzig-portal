@@ -92,7 +92,7 @@ class CityTable extends DataTableComponent
         return to_route('school.table.event', [
             '#table',
             'country' => $this->country,
-            'table'   => [
+            'course_events'   => [
                 'filters' => [
                     'stadt' => $query->pluck('name')
                                      ->push($city->name)
@@ -117,7 +117,7 @@ class CityTable extends DataTableComponent
         return to_route('bookCases.table.bookcases', [
             '#table',
             'country' => $this->country,
-            'table'   => [
+            'bookcases'   => [
                 'filters' => [
                     'byids' => $ids->implode(',')
                 ],

@@ -43,6 +43,11 @@ class BitcoinEventTable extends Component
                                      ]),
             'events'  => BitcoinEvent::query()
                                      ->where('bitcoin_events.from', '>=', now())
+                                     ->where(fn($query) => $query
+                                         ->whereHas('venue.city.country',
+                                             fn($query) => $query->where('countries.code', $this->country->code))
+                                         ->orWhere('show_worldwide', true)
+                                     )
                                      ->get()
                                      ->map(fn($event) => [
                                          'id'          => $event->id,
@@ -64,9 +69,9 @@ class BitcoinEventTable extends Component
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
             '#table',
-            'country' => $this->country->code,
-            'year'    => $this->year,
-            'table'   => [
+            'country'        => $this->country->code,
+            'year'           => $this->year,
+            'bitcoin_events' => [
                 'filters' => [
                     'byid' => $id,
                 ],
@@ -78,9 +83,9 @@ class BitcoinEventTable extends Component
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
             '#table',
-            'country' => $this->country->code,
-            'year'    => $this->year,
-            'table'   => [
+            'country'        => $this->country->code,
+            'year'           => $this->year,
+            'bitcoin_events' => [
                 'filters' => [
                     'byid' => $ids,
                 ]

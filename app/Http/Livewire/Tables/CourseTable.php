@@ -61,6 +61,7 @@ class CourseTable extends DataTableComponent
                   ->sortable()
                   ->collapseOnMobile(),
             Column::make("Name", "name")
+                  ->searchable(fn(Builder $query, string $term) => $query->where('name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
             Column::make("Tags")
                   ->label(
@@ -104,8 +105,8 @@ class CourseTable extends DataTableComponent
     {
         return to_route('school.table.event', [
             '#table',
-            'country' => $this->country,
-            'table'   => [
+            'country'       => $this->country,
+            'course_events' => [
                 'filters' => [
                     'course_id' => $id,
                 ],

@@ -17,7 +17,7 @@ class EventTable extends DataTableComponent
     public string $country;
     public bool $viewingModal = false;
     public $currentModal;
-    public string $tableName = 'events';
+    public string $tableName = 'course_events';
 
     public function configure(): void
     {

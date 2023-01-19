@@ -8,10 +8,10 @@ use Livewire\Component;
 class SearchByTagComponent extends Component
 {
     public string $country = 'de';
-    public ?array $table = [];
+    public ?array $courses = [];
 
     protected $queryString = [
-        'table',
+        'courses',
     ];
 
     public function render()

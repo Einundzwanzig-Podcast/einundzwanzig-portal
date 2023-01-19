@@ -69,9 +69,9 @@ class MeetupEventTable extends Component
     {
         return to_route('meetup.table.meetupEvent', [
             '#table',
-            'country' => $this->country->code,
-            'year'    => $this->year,
-            'table'   => [
+            'country'       => $this->country->code,
+            'year'          => $this->year,
+            'meetup_events' => [
                 'filters' => [
                     'byid' => $id,
                 ],
@@ -85,7 +85,8 @@ class MeetupEventTable extends Component
         return to_route('meetup.table.meetupEvent', [
             '#table',
             'year'    => $this->year,
-            'country' => $this->country->code, 'table' => [
+            'country' => $this->country->code,
+            'meetup_events'   => [
                 'filters' => [
                     'byid' => $ids,
                 ]

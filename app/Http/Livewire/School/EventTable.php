@@ -70,7 +70,7 @@ class EventTable extends Component
             '#table',
             'country' => $this->country->code,
             'year'    => $this->year,
-            'table'   => [
+            'course_events'   => [
                 'filters' => [
                     'byid' => $id,
                 ],
@@ -84,7 +84,7 @@ class EventTable extends Component
             '#table',
             'country' => $this->country->code,
             'year'    => $this->year,
-            'table'   => [
+            'course_events'   => [
                 'filters' => [
                     'byid' => $ids,
                 ]

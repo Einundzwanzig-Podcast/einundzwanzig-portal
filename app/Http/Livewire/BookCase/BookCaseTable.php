@@ -11,9 +11,9 @@ class BookCaseTable extends Component
 {
     public ?Country $country = null;
     public string $c = 'de';
-    public array $table = [];
+    public array $bookcases = [];
 
-    protected $queryString = ['table'];
+    protected $queryString = ['bookcases'];
 
     public function render()
     {

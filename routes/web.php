@@ -64,7 +64,7 @@ Route::middleware([
          Route::get('/venue', \App\Http\Livewire\School\VenueTable::class)
               ->name('table.venue');
 
-         Route::get('/course', \App\Http\Livewire\School\CouseTable::class)
+         Route::get('/course', \App\Http\Livewire\School\CourseTable::class)
               ->name('table.course');
 
          Route::get('/event', \App\Http\Livewire\School\EventTable::class)

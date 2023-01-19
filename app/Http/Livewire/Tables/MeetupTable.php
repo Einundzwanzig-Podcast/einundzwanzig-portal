@@ -93,7 +93,7 @@ class MeetupTable extends DataTableComponent
 
         return to_route('meetup.table.meetupEvent', [
             'country' => $this->country ?? $meetup->city->country->code,
-            'table'   => [
+            'meetup_events'   => [
                 'filters' => ['bymeetupid' => $id],
             ]
         ]);
