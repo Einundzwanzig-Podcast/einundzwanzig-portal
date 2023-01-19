@@ -17,7 +17,7 @@ class MeetupTable extends DataTableComponent
     {
         $this->setPrimaryKey('id')
              ->setAdditionalSelects(['id', 'slug'])
-             ->setDefaultSort('slug', 'asc')
+             ->setDefaultSort('meetup_events_count', 'desc')
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -75,12 +75,12 @@ class MeetupTable extends DataTableComponent
                          'users',
                          'city.country',
                          'meetupEvents',
-                     ]);
-//                     ->withCount([
-//                         'users',
-//                         'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
-//                     ])
-//->when($this->country, fn($query) => $query->orderBy('meetup_events_count', 'desc'));
+                     ])
+                     ->withCount([
+                         'users',
+                         'meetupEvents' => fn($query) => $query->where('start', '>=', now()),
+                     ])
+                     ->when($this->country, fn($query) => $query->orderBy('meetup_events_count', 'desc'));
     }
 
     public function meetupEventSearch($id)
