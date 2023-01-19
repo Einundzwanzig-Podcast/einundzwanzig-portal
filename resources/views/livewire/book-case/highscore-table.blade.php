@@ -14,6 +14,18 @@
                         {{ __('Hall of fame of our honorable plebs') }}
                     </p>
                 </div>
+                <div class="w-1/2">
+                    <x-button
+                        class="relative"
+                        primary
+                        lg
+                        wire:click="toggleChat">
+                        <i class="fa-thin fa-comments"></i>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        Chat
+                    </x-button>
+                </div>
             </div>
 
             <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

@@ -667,5 +667,10 @@
     "Click to connect": "Direkt verbinden",
     "Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.": "Scanne diesen QR-Code oder kopiere ihn in deine Lightning-Wallet. Oder klicke, um dich mit deiner Wallet einzuloggen.",
     "Entries": "Einträge",
-    "Payment Required": "Zahlung erforderlich"
+    "Payment Required": "Zahlung erforderlich",
+    "Parent": "Übergeordnet",
+    "PlebChat": "",
+    "Close panel": "Schließe Panel",
+    "This chat is limited by 100 messages.": "Dieser Chat ist auf 100 Nachrichten begrenzt. Die ältesten Nachrichten werden gelöscht und die Nachrichten werden nicht gespeichert.",
+    "Send": "Senden"
 }

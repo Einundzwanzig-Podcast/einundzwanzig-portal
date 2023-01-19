@@ -9,7 +9,7 @@ class LaravelEcho extends Component
 {
     use Actions;
 
-    protected $listeners = ['echo:login,.App\Events\PlebLoggedInEvent' => 'plebLoggedIn'];
+    protected $listeners = ['echo:plebchannel,.App\Events\PlebLoggedInEvent' => 'plebLoggedIn'];
 
     public function plebLoggedIn($data)
     {

@@ -661,5 +661,10 @@
     "Node Id": "",
     "Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.": "",
     "Entries": "",
-    "Payment Required": ""
+    "Payment Required": "",
+    "Parent": "",
+    "PlebChat": "",
+    "Close panel": "",
+    "This chat is limited by 100 messages.": "",
+    "Send": ""
 }

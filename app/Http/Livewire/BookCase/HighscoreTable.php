@@ -34,6 +34,11 @@ class HighscoreTable extends Component
         ]);
     }
 
+    public function toggleChat()
+    {
+        $this->emit('toggleHighscoreChat');
+    }
+
     public function openModal($id)
     {
         $this->modal = User::query()

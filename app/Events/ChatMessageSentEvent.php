@@ -8,7 +8,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PlebLoggedInEvent implements ShouldBroadcast
+class ChatMessageSentEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -16,7 +16,7 @@ class PlebLoggedInEvent implements ShouldBroadcast
      * Create a new event instance.
      * @return void
      */
-    public function __construct(public string $name, public string $img)
+    public function __construct()
     {
         //
     }
