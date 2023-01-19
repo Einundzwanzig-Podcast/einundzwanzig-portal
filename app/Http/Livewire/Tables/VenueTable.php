@@ -12,7 +12,6 @@ class VenueTable extends DataTableComponent
 {
     public string $country;
 
-    protected $model = Venue::class;
     public string $tableName = 'venues';
 
     public function configure(): void

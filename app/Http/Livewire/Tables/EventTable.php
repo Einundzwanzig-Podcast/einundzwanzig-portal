@@ -18,7 +18,6 @@ class EventTable extends DataTableComponent
     public bool $viewingModal = false;
     public $currentModal;
     public string $tableName = 'events';
-    protected $model = CourseEvent::class;
 
     public function configure(): void
     {

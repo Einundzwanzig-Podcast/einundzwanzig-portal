@@ -12,7 +12,6 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 class LecturerTable extends DataTableComponent
 {
     public string $country;
-    protected $model = Lecturer::class;
     public string $tableName = 'lecturers';
 
     public function configure(): void

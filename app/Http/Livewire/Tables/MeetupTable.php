@@ -12,7 +12,6 @@ class MeetupTable extends DataTableComponent
 {
     public ?string $country = null;
     public string $tableName = 'meetups';
-    protected $model = Meetup::class;
 
     public function configure(): void
     {
