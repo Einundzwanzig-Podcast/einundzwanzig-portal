@@ -78,7 +78,7 @@
                                 <span class="ml-2">{{ $libraryItem->main_image_caption ?? $libraryItem->name }}</span>
                             </figcaption>
                         </figure>
-                        <div class="hidden sm:block my-4">
+                        <div class="hidden md:block my-4">
                             <livewire:comments :model="$libraryItem" newest-first/>
                         </div>
                     </div>
