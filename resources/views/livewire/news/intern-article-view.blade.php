@@ -1,5 +1,5 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
-    <div class="overflow-hidden bg-21gray">
+    <div class="bg-21gray">
         <div class="relative mx-auto max-w-7xl py-16 px-6 lg:px-8">
             <div class="absolute top-0 bottom-0 left-3/4 hidden w-screen bg-21gray lg:block"></div>
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
