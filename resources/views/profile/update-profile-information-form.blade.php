@@ -61,6 +61,8 @@
             <x-jet-input-error for="name" class="mt-2"/>
         </div>
 
+        <p class="text-xs">{{ __('Only one working address is required. But you can also fill in all fields if you have suitable data.') }}</p>
+
         <!-- lightning_address -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="lightning_address" value="{{ __('Lightning Address') }}"/>
