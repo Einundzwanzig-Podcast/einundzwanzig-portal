@@ -121,7 +121,7 @@ class LibraryItem extends Resource
                 ->type('library_item')
                 ->withLinkToTagResource(Tag::class),
 
-            Texta::make('Name')
+            Text::make('Name')
                 ->rules('required', 'string'),
 
             Text::make(__('Subtitle'), 'subtitle')
