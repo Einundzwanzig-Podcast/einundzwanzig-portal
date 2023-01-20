@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('welcome') }}">
-                        <img class="block h-9 w-auto" src="{{ asset('img/btc-logo-6219386_1280.png') }}" alt="">
+                        <img class="block h-9 w-auto" src="{{ asset('apple-touch-icon.png') }}" alt="">
                     </a>
                 </div>
 
