@@ -1,6 +1,6 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     <div class="bg-21gray">
-        <div class="mx-auto max-w-7xl py-4 px-6 lg:px-8 overflow-hidden">
+        <div class="mx-auto max-w-screen-2xl py-4 px-6 lg:px-8 overflow-hidden">
             <div class="flex items-center justify-end">
                 @if($libraryItem->type === 'markdown_article')
                     <x-button lg :href="route('article.overview')">
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="relative mx-auto max-w-7xl py-4 px-6 lg:px-8 overflow-hidden">
+        <div class="relative mx-auto max-w-screen-2xl py-4 px-6 lg:px-8 overflow-hidden">
             <div class="absolute top-0 bottom-0 left-3/4 hidden w-screen bg-21gray lg:block"></div>
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
                 <div>
@@ -54,7 +54,7 @@
                                 <span class="ml-2">{{ $libraryItem->main_image_caption ?? $libraryItem->name }}</span>
                             </figcaption>
                         </figure>
-                        <div class="my-4">
+                        <div class="hidden sm:block my-4">
                             <livewire:comments :model="$libraryItem" newest-first/>
                         </div>
                     </div>
