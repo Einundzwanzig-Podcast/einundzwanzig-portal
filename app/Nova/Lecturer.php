@@ -102,10 +102,6 @@ class Lecturer extends Resource
             Markdown::make(__('Intro'), 'intro')
                     ->help(__('This is the introduction text that is shown on the landing page.')),
 
-            Text::make('Slug')
-                ->hideFromIndex()
-                ->rules('required', 'string', 'unique:lecturers,slug,{{resourceId}}'),
-
             Boolean::make('Active')
                    ->rules('required')
                    ->default(true),
