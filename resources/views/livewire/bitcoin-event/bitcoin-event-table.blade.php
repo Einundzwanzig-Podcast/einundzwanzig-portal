@@ -25,9 +25,9 @@
                     @endphp
 
                     <link rel="stylesheet" type="text/css"
-                          href="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.css"/>
-                    <script src="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.js"></script>
-                    <script src="https://unpkg.com/js-year-calendar@latest/locales/js-year-calendar.{{ $locale }}.js"></script>
+                          href="{{ asset('dist/js-year-calendar.min.css') }}"/>
+                    <script src="{{ asset('dist/js-year-calendar.min.js') }}"></script>
+                    <script src="{{ asset('dist/locales/js-year-calendar.'.$locale.'.js') }}"></script>
 
                     <style>
                         .calendar {
