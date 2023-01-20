@@ -34,7 +34,7 @@ class SyncGithubMeetups extends Command
             $dbMeetup = Meetup::where('name', $meetup['name'])
                               ->first();
             if ($dbMeetup) {
-                $this->info('Update: '.$meetup['name']);
+                //$this->info('Update: '.$meetup['name']);
                 $dbMeetup->update([
                     'github_data' => $meetup,
                 ]);
