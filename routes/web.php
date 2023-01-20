@@ -18,6 +18,10 @@ Route::middleware([])
      ->name('article.view');
 
 Route::middleware([])
+     ->get('/library-item/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
+     ->name('libraryItem.view');
+
+Route::middleware([])
      ->get('/my-meetups', \App\Http\Livewire\Profile\Meetups::class)
      ->name('profile.meetups');
 

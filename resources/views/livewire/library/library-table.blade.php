@@ -49,7 +49,7 @@
                         <div wire:key="library_item_{{ $libraryItem->id }}"
                              class="flex flex-col overflow-hidden rounded-lg shadow-[#F7931A] shadow-sm">
                             <div class="flex-shrink-0">
-                                <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
+                                <a href="{{ route('libraryItem.view', ['libraryItem' => $libraryItem]) }}">
                                     <img class="h-48 w-full object-contain"
                                          src="{{ $libraryItem->getFirstMediaUrl('main') }}"
                                          alt="{{ $libraryItem->name }}">
@@ -61,10 +61,10 @@
                                     <div
                                         class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
                                     </p>
-                                    <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}"
+                                    <a href="{{ route('libraryItem.view', ['libraryItem' => $libraryItem]) }}"
                                        class="mt-2 block">
                                         <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>
-                                        <p class="mt-3 text-base text-gray-300">{{ $libraryItem->excerpt }}</p>
+                                        <p class="mt-3 text-base text-gray-300 line-clamp-3">{{ $libraryItem->excerpt }}</p>
                                     </a>
                                 </div>
                                 <div class="mt-6 flex items-center">

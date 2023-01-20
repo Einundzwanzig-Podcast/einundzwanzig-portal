@@ -63,14 +63,15 @@
                     <div
                         class="prose prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <div class="flex flex-col space-y-1">
-                            @if(str($libraryItem->value)->contains('http'))
+                            @if($libraryItem->type !== 'markdown_article' && str($libraryItem->value)->contains('http'))
                                 <x-button lg amber :href="$libraryItem->value" target="_blank">
                                     <i class="fa fa-thin fa-book-open mr-2"></i>
                                     {{ __('Open') }}
                                 </x-button>
                             @endif
                             @if($libraryItem->type === 'downloadable_file')
-                                <x-button lg amber :href="$libraryItem->getFirstMediaUrl('single_file')" target="_blank">
+                                <x-button lg amber :href="$libraryItem->getFirstMediaUrl('single_file')"
+                                          target="_blank">
                                     <i class="fa fa-thin fa-download mr-2"></i>
                                     {{ __('Download') }}
                                 </x-button>

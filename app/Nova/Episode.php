@@ -54,6 +54,8 @@ class Episode extends Resource
                                      'type'          => 'podcast_episode',
                                      'language_code' => $model->podcast->language_code,
                                      'value'         => null,
+                                     'excerpt'       => $model->data['description'],
+                                     'subtitle'      => $model->data['description'],
                                  ]);
             $libraryItem->syncTagsWithType(is_array($request->tags) ? $request->tags : str($request->tags)->explode('-----'),
                 'library_item');
