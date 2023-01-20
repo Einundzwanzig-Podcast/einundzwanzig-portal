@@ -84,7 +84,7 @@
                             @if($libraryItem->type !== 'markdown_article')
                                 <x-button
                                     x-data="{
-                                        textToCopy: '{{ url()->route('library.table.libraryItems', ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]) }}',
+                                        textToCopy: '{{ url()->route('article.view', ['libraryItem' => $libraryItem]) }}',
                                     }"
                                     @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
                                     lg black>
@@ -94,7 +94,7 @@
                             @else
                                 <x-button
                                     x-data="{
-                                        textToCopy: '{{ url()->route('library.table.libraryItems', ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]) }}',
+                                        textToCopy: '{{ url()->route('article.view', ['libraryItem' => $libraryItem]) }}',
                                     }"
                                     @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
                                     xs black>
