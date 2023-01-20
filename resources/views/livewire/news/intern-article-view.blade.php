@@ -54,6 +54,9 @@
                                 <span class="ml-2">{{ $libraryItem->main_image_caption ?? $libraryItem->name }}</span>
                             </figcaption>
                         </figure>
+                        <div class="my-4">
+                            <livewire:comments :model="$libraryItem" newest-first/>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-8 lg:mt-0">
