@@ -74,6 +74,7 @@
             <x-jet-label for="lnurl" value="{{ __('LNURL') }}"/>
             <x-jet-input id="lnurl" type="text" class="mt-1 block w-full" wire:model.defer="state.lnurl"
                          autocomplete="lnurl"/>
+            <p class="text-xs">{{ __('starts with: lnurl1dp68gurn8gh....') }}</p>
             <x-jet-input-error for="lnurl" class="mt-2"/>
         </div>
 
