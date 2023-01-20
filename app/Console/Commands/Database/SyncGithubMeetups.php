@@ -39,7 +39,7 @@ class SyncGithubMeetups extends Command
                     'github_data' => $meetup,
                 ]);
             } else {
-                $this->info('Missing: '.$meetup['name']);
+                $this->info('Missing: '.$meetup['name'] . ' Url: ' . $meetup['url']);
             }
         }
 
