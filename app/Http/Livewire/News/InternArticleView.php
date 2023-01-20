@@ -18,7 +18,7 @@ class InternArticleView extends Component
                 title: $this->libraryItem->name,
                 description: $this->libraryItem->excerpt ?? __('Here we post important news that is relevant for everyone.'),
                 author: $this->libraryItem->lecturer->name,
-                image: asset('img/einundzwanzig-wallpaper-benrath.png'),
+                image: $this->libraryItem->getFirstMedia('main') ? $this->libraryItem->getFirstMediaUrl('main') : asset('img/einundzwanzig-wallpaper-benrath.png'),
                 published_time: Carbon::parse($this->libraryItem->created_at),
                 type: 'article',
             )
