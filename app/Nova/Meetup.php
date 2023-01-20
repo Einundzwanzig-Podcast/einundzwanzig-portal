@@ -34,6 +34,11 @@ class Meetup extends Resource
         'id',
         'name',
         'city.name',
+        'webpage',
+        'webpage',
+        'telegram_link',
+        'twitter_username',
+        'matrix_group',
     ];
 
     public static $with = [
