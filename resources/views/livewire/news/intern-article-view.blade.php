@@ -70,7 +70,7 @@
                                 </x-button>
                             @endif
                             @if($libraryItem->type === 'downloadable_file')
-                                <x-button lg amber :href="$row->getFirstMediaUrl('single_file')" target="_blank">
+                                <x-button lg amber :href="$libraryItem->getFirstMediaUrl('single_file')" target="_blank">
                                     <i class="fa fa-thin fa-download mr-2"></i>
                                     {{ __('Download') }}
                                 </x-button>
