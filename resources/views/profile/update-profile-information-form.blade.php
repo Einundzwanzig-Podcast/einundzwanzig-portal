@@ -64,8 +64,10 @@
         <!-- lightning_address -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="lightning_address" value="{{ __('Lightning Address') }}"/>
-            <x-jet-input id="lightning_address" type="text" class="mt-1 block w-full" wire:model.defer="state.lightning_address"
+            <x-jet-input id="lightning_address" type="text" class="mt-1 block w-full"
+                         wire:model.defer="state.lightning_address"
                          autocomplete="lightning_address"/>
+            <p class="text-xs">{{ __('for example xy@getalby.com') }}</p>
             <x-jet-input-error for="lightning_address" class="mt-2"/>
         </div>
 
