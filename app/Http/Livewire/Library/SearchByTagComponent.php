@@ -8,10 +8,10 @@ use Livewire\Component;
 class SearchByTagComponent extends Component
 {
     public string $country = 'de';
-    public ?array $library_items = [];
+    public array $filters = [];
 
     protected $queryString = [
-        'library_items',
+        'filters'    => ['except' => ''],
     ];
 
     public function render()

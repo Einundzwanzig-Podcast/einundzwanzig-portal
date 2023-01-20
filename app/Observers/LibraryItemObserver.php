@@ -37,8 +37,8 @@ class LibraryItemObserver
             if ($libraryItem->type !== 'markdown_article') {
                 $text = sprintf("Es gibt was Neues zum Anschauen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
                     $libraryItemName,
-                    url()->route('library.table.libraryItems',
-                        ['country' => 'de', 'library_items' => ['filters' => ['id' => $libraryItem->id]]]),
+                    url()->route('article.view',
+                        ['libraryItem' => $libraryItem->slug]),
                 );
             } else {
                 $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",

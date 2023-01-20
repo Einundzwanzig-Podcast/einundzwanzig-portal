@@ -3,17 +3,20 @@
 namespace App\Http\Livewire\Library;
 
 use App\Models\Country;
+use App\Models\LibraryItem;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class LibraryTable extends Component
 {
     public Country $country;
+    public array $filters = [];
 
     public $currentTab = '*';
 
     protected $queryString = [
         'currentTab' => ['except' => '*'],
+        'filters'    => ['except' => ''],
     ];
 
     public function render()
@@ -42,7 +45,17 @@ class LibraryTable extends Component
         }
 
         return view('livewire.library.library-table', [
-            'libraries' => $tabs,
+            'libraries'    => $tabs,
+            'libraryItems' => LibraryItem::query()
+                                         ->with([
+                                             'lecturer',
+                                             'tags',
+                                         ])
+                                         ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
+                                             fn($query) => $query->whereIn('tags.id', $this->filters)))
+                                         ->whereHas('libraries',
+                                             fn($query) => $query->where('libraries.is_public', $shouldBePublic))
+                                         ->get(),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: __('Library'),

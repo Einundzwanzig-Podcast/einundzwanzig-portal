@@ -11,13 +11,6 @@ class InternArticleView extends Component
 {
     public LibraryItem $libraryItem;
 
-    public function mount()
-    {
-        if (!$this->libraryItem->createdBy->hasRole('news-editor')) {
-            abort(403, 'This article is not available for viewing.');
-        }
-    }
-
     public function render()
     {
         return view('livewire.news.intern-article-view')->layout('layouts.app', [

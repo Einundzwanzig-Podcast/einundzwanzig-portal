@@ -2,10 +2,17 @@
     <div class="bg-21gray">
         <div class="mx-auto max-w-7xl py-4 px-6 lg:px-8 overflow-hidden">
             <div class="flex items-center justify-end">
-                <x-button lg :href="route('article.overview')">
-                    <i class="fa-thin fa-arrow-left"></i>
-                    {{ __('Back to overview') }}
-                </x-button>
+                @if($libraryItem->type === 'markdown_article')
+                    <x-button lg :href="route('article.overview')">
+                        <i class="fa-thin fa-arrow-left"></i>
+                        {{ __('Back to overview') }}
+                    </x-button>
+                @else
+                    <x-button lg :href="route('library.table.libraryItems', ['country' => 'de'])">
+                        <i class="fa-thin fa-arrow-left"></i>
+                        {{ __('Back to overview') }}
+                    </x-button>
+                @endif
             </div>
         </div>
 
@@ -55,9 +62,53 @@
                     </div>
                     <div
                         class="prose prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
-                        <x-markdown>
-                            {!! $libraryItem->value !!}
-                        </x-markdown>
+                        <div class="flex flex-col space-y-1">
+                            @if(str($libraryItem->value)->contains('http'))
+                                <x-button lg amber :href="$libraryItem->value" target="_blank">
+                                    <i class="fa fa-thin fa-book-open mr-2"></i>
+                                    {{ __('Open') }}
+                                </x-button>
+                            @endif
+                            @if($libraryItem->type === 'downloadable_file')
+                                <x-button lg amber :href="$row->getFirstMediaUrl('single_file')" target="_blank">
+                                    <i class="fa fa-thin fa-download mr-2"></i>
+                                    {{ __('Download') }}
+                                </x-button>
+                            @endif
+                            @if($libraryItem->type === 'podcast_episode')
+                                <x-button lg amber :href="$libraryItem->episode->data['enclosureUrl']" target="_blank">
+                                    <i class="fa fa-thin fa-headphones mr-2"></i>
+                                    {{ __('Listen') }}
+                                </x-button>
+                            @endif
+                            @if($libraryItem->type !== 'markdown_article')
+                                <x-button
+                                    x-data="{
+                                        textToCopy: '{{ url()->route('library.table.libraryItems', ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]) }}',
+                                    }"
+                                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
+                                    lg black>
+                                    <i class="fa fa-thin fa-copy mr-2"></i>
+                                    {{ __('Share link') }}
+                                </x-button>
+                            @else
+                                <x-button
+                                    x-data="{
+                                        textToCopy: '{{ url()->route('library.table.libraryItems', ['country' => 'de', 'table' => ['filters' => ['id' => $libraryItem->id]]]) }}',
+                                    }"
+                                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
+                                    xs black>
+                                    <i class="fa fa-thin fa-copy mr-2"></i>
+                                    {{ __('Share link') }}
+                                </x-button>
+                            @endif
+                        </div>
+
+                        @if($libraryItem->type === 'markdown_article')
+                            <x-markdown>
+                                {!! $libraryItem->value !!}
+                            </x-markdown>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -8,12 +8,12 @@
             style="font-size: 128%; background-position: 0px center; list-style: outside;"
         >
             @php
-                $isActive = collect($library_items)->pluck('tag')->collapse()->contains($tag->name);
+                $isActive = in_array($tag->id, $filters['tag'] ?? [], false);
                 $activeClass = $isActive ? 'text-amber-500 bg-amber-500' : 'bg-blue-50 text-white hover:text-amber-500';
             @endphp
             <a
                 class="{{ $activeClass }} flex relative flex-col flex-shrink-0 justify-between py-1 px-3 w-full h-20 border-0 border-solid duration-300 ease-in-out cursor-pointer bg-opacity-[0.07]"
-                href="{{ route(request()->route()->getName(), ['country' => $country, 'library_items' => ['filters' => ['tag' => [$tag->id]]]]) }}"
+                href="{{ route(request()->route()->getName(), ['country' => $country, 'filters' => ['tag' => [$tag->id]]]) }}"
             >
                 <div
                     class="flex flex-1 items-center p-0 m-0 text-center align-baseline border-0 border-solid"

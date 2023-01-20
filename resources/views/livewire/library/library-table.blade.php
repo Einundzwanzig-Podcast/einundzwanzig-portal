@@ -43,7 +43,58 @@
             <livewire:library.search-by-tag-component/>
             <div class="my-12">
 
-                <livewire:tables.library-item-table :currentTab="$currentTab"/>
+                <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+
+                    @foreach($libraryItems as $libraryItem)
+                        <div wire:key="library_item_{{ $libraryItem->id }}"
+                             class="flex flex-col overflow-hidden rounded-lg shadow-[#F7931A] shadow-sm">
+                            <div class="flex-shrink-0">
+                                <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
+                                    <img class="h-48 w-full object-cover"
+                                         src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80"
+                                         alt="{{ $libraryItem->name }}">
+                                </a>
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-21gray p-6">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-amber-600">
+                                    <div
+                                        class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
+                                    </p>
+                                    <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}"
+                                       class="mt-2 block">
+                                        <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>
+                                        <p class="mt-3 text-base text-gray-300">{{ $libraryItem->excerpt }}</p>
+                                    </a>
+                                </div>
+                                <div class="mt-6 flex items-center">
+                                    <div class="flex-shrink-0">
+                                        <div>
+                                            <span class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
+                                            <img class="h-10 w-10 rounded-full"
+                                                 src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
+                                                 alt="{{ $libraryItem->lecturer->name }}">
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-200">
+                                        <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
+                                        </p>
+                                        <div class="flex space-x-1 text-sm text-gray-400">
+                                            <time datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
+                                            @if($libraryItem->read_time)
+                                                <span aria-hidden="true">&middot;</span>
+                                                <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+
             </div>
         </div>
     </section>
