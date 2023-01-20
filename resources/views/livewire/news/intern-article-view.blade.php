@@ -76,7 +76,7 @@
                                 </x-button>
                             @endif
                             @if($libraryItem->type === 'podcast_episode')
-                                <x-button lg amber :href="$libraryItem->episode->data['enclosureUrl']" target="_blank">
+                                <x-button lg amber :href="$libraryItem->episode->data['link']" target="_blank">
                                     <i class="fa fa-thin fa-headphones mr-2"></i>
                                     {{ __('Listen') }}
                                 </x-button>

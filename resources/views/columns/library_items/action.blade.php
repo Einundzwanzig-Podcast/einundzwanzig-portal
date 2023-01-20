@@ -12,7 +12,7 @@
         </x-button>
     @endif
     @if($row->type === 'podcast_episode')
-        <x-button xs amber :href="$row->episode->data['enclosureUrl']" target="_blank">
+        <x-button xs amber :href="$row->episode->data['link']" target="_blank">
             <i class="fa fa-thin fa-headphones mr-2"></i>
             {{ __('Listen') }}
         </x-button>
