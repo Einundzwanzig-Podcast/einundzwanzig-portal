@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -112,7 +113,8 @@ class LibraryItem extends Resource
                   ->options(
                       config('languages.languages')
                   )
-                  ->rules('required', 'string')->searchable(),
+                  ->rules('required', 'string')
+                  ->searchable(),
 
             Tags::make('Tags')
                 ->type('library_item')
@@ -120,6 +122,19 @@ class LibraryItem extends Resource
 
             Text::make('Name')
                 ->rules('required', 'string'),
+
+            Text::make(__('Subtitle'), 'subtitle')
+                ->rules('nullable', 'string'),
+
+            Text::make(__('Excerpt'), 'excerpt')
+                ->rules('nullable', 'string')->help(__('This is the excerpt that is shown in the overview.')),
+
+            Text::make(__('Main image caption'), 'main_image_caption')
+                ->rules('nullable', 'string'),
+
+            Number::make(__('Time to read'), 'read_time')
+                ->rules('nullable', 'numeric')
+                ->help(__('How many minutes to read?')),
 
             Select::make(__('Type'), 'type')
                   ->options(
@@ -132,7 +147,9 @@ class LibraryItem extends Resource
                 ->rules('nullable', 'string')
                 ->help('Please paste the URL to the video here, or the link to the blog article, or the link to the book, or the Markdown itself.'),
 
-            BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class)->searchable()->withSubtitles(),
+            BelongsTo::make(__('Lecturer/Content Creator'), 'lecturer', Lecturer::class)
+                     ->searchable()
+                     ->withSubtitles(),
 
             BelongsTo::make(__('Episode'), 'episode', Episode::class)
                      ->nullable()
@@ -145,7 +162,8 @@ class LibraryItem extends Resource
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable()->withSubtitles(),
+                     ->searchable()
+                     ->withSubtitles(),
 
         ];
     }

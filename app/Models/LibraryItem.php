@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Cookie;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Image\Manipulations;
@@ -12,6 +13,8 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\ModelStatus\HasStatuses;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
 
 class LibraryItem extends Model implements HasMedia, Sortable
@@ -20,6 +23,7 @@ class LibraryItem extends Model implements HasMedia, Sortable
     use HasTags;
     use SortableTrait;
     use HasStatuses;
+    use HasSlug;
 
     /**
      * The attributes that aren't mass assignable.
@@ -36,6 +40,14 @@ class LibraryItem extends Model implements HasMedia, Sortable
         'lecturer_id' => 'integer',
         'library_id'  => 'integer',
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+                          ->generateSlugsFrom(['name'])
+                          ->saveSlugsTo('slug')
+                          ->usingLanguage(Cookie::get('lang', config('app.locale')));
+    }
 
     protected static function booted()
     {

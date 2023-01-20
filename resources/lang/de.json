@@ -672,5 +672,15 @@
     "PlebChat": "",
     "Close panel": "Schließe Panel",
     "This chat is limited by 21 messages.": "Dieser Chat ist auf 21 Nachrichten begrenzt. Die ältesten Nachrichten werden gelöscht und die Nachrichten werden nicht gespeichert. (nur im RAM des Servers)",
-    "Send": "Senden"
+    "Send": "Senden",
+    "Excerpt": "",
+    "This is the excerpt that is shown in the overview.": "",
+    "Main image caption": "",
+    "Time to read": "",
+    "How many minutes to read?": "",
+    "Read": "",
+    "News": "",
+    "Dezentral News": "",
+    "min read": "",
+    "Here we post important news that is relevant for everyone.": ""
 }

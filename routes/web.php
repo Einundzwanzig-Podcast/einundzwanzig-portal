@@ -10,6 +10,14 @@ Route::middleware([
      ->name('welcome');
 
 Route::middleware([])
+     ->get('/news', \App\Http\Livewire\News\ArticleOverview::class)
+     ->name('article.overview');
+
+Route::middleware([])
+     ->get('/news/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
+     ->name('article.view');
+
+Route::middleware([])
      ->get('/my-meetups', \App\Http\Livewire\Profile\Meetups::class)
      ->name('profile.meetups');
 
