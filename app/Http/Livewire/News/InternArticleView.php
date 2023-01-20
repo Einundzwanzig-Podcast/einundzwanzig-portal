@@ -13,6 +13,12 @@ class InternArticleView extends Component
 
     public function render()
     {
+        if ($this->libraryItem->type === 'markdown_article') {
+            $description = $this->libraryItem->excerpt ?? __('An entry in the library of Einundzwanzig.');
+        } else {
+            $description = $this->libraryItem->excerpt ?? __('Here we post important news that is relevant for everyone.');
+        }
+
         return view('livewire.news.intern-article-view')->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: $this->libraryItem->name,
