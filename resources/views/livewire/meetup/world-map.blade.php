@@ -54,7 +54,7 @@
         </div>
     </section>
 
-    <div class="w-full">
+    <div class="w-full py-24">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
             <livewire:tables.meetup-table :country="null"/>
         </div>
