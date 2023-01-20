@@ -87,6 +87,9 @@ class Meetup extends Resource
             Text::make(__('Website'), 'webpage')
                 ->rules('url', 'nullable')->hideFromIndex(),
 
+            Text::make(__('Matrix Group'), 'matrix_group')
+                ->rules('url', 'nullable')->hideFromIndex(),
+
             Text::make(__('Twitter Username'), 'twitter_username')
                 ->help(__('Without @'))
                 ->rules('string', 'nullable')->hideFromIndex(),
