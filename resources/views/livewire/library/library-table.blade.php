@@ -71,7 +71,7 @@
                                     <div class="flex-shrink-0">
                                         <div>
                                             <span class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
-                                            <img class="h-10 w-10 rounded-full"
+                                            <img class="h-10 w-10 rounded"
                                                  src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
                                                  alt="{{ $libraryItem->lecturer->name }}">
                                         </div>
