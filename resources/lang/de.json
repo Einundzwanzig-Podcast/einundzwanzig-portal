@@ -673,14 +673,14 @@
     "Close panel": "Schließe Panel",
     "This chat is limited by 21 messages.": "Dieser Chat ist auf 21 Nachrichten begrenzt. Die ältesten Nachrichten werden gelöscht und die Nachrichten werden nicht gespeichert. (nur im RAM des Servers)",
     "Send": "Senden",
-    "Excerpt": "",
-    "This is the excerpt that is shown in the overview.": "",
-    "Main image caption": "",
-    "Time to read": "",
-    "How many minutes to read?": "",
-    "Read": "",
+    "Excerpt": "Auszug",
+    "This is the excerpt that is shown in the overview.": "Dies ist der Auszug, der in der Übersicht angezeigt wird.",
+    "Main image caption": "Hauptbildunterschrift",
+    "Time to read": "Zeit zum Lesen",
+    "How many minutes to read?": "Wie viele Minuten zum Lesen?",
+    "Read": "Lesedauer",
     "News": "",
     "Dezentral News": "",
-    "min read": "",
-    "Here we post important news that is relevant for everyone.": ""
+    "min read": "Minuten Lesedauer",
+    "Here we post important news that is relevant for everyone.": "Hier posten wir wichtige News, die für alle relevant sind."
 }
