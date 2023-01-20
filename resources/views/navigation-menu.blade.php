@@ -58,7 +58,7 @@
                         </div>
                     @endif
 
-                    @if(str(request()->route()->getName())->contains('library.'))
+                    @if(str(request()->route()->getName())->contains(['library.', 'article.']))
                         <div>
                             <x-button xs amber href="/nova/resources/library-items" target="_blank">
                                 <i class="fa fa-thin fa-plus"></i>
