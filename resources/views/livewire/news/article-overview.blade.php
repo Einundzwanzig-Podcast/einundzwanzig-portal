@@ -15,7 +15,7 @@
                          class="flex flex-col overflow-hidden rounded-lg shadow-[#F7931A] shadow-sm">
                         <div class="flex-shrink-0">
                             <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
-                                <img class="h-48 w-full object-cover"
+                                <img class="h-48 w-full object-contain"
                                      src="{{ $libraryItem->getFirstMediaUrl('main') }}"
                                      alt="{{ $libraryItem->name }}">
                             </a>
