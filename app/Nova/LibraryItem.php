@@ -101,12 +101,12 @@ class LibraryItem extends Resource
                        ->exceptOnForms(),
 
             Images::make(__('Main picture'), 'main')
-                  ->conversionOnIndexView('thumb'),
+                  ->conversionOnIndexView('thumb')->showStatistics(),
 
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.')
-                  ->hideFromIndex(),
+                  ->hideFromIndex()->showStatistics(),
 
             Files::make(__('Downloadable File'), 'single_file')
                  ->help('Für neue Datei-Typen bitte bei den Admins melden. (Derzeit: PDF)'),
