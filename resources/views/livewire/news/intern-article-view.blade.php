@@ -64,7 +64,7 @@
                         <p class="text-lg text-gray-200">{{ $libraryItem->subtitle }}</p>
                     </div>
                     <div
-                        class="prose prose-2xl prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
+                        class="prose md:prose-2xl prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <div class="flex flex-col space-y-1">
                             @if($libraryItem->type !== 'markdown_article' && str($libraryItem->value)->contains('http'))
                                 <x-button lg amber :href="$libraryItem->value" target="_blank">
