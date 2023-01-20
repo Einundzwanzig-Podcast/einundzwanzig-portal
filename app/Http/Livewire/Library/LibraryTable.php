@@ -72,6 +72,7 @@ class LibraryTable extends Component
                                              fn($query) => $query->whereIn('tags.id', $this->filters)))
                                          ->whereHas('libraries',
                                              fn($query) => $query->where('libraries.is_public', $shouldBePublic))
+                                         ->orderByDesc('library_items.created_at')
                                          ->get(),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
