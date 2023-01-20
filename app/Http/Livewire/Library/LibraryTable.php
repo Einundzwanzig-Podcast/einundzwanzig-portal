@@ -51,6 +51,8 @@ class LibraryTable extends Component
                                              'lecturer',
                                              'tags',
                                          ])
+                                         ->when($this->currentTab !== '*', fn($query) => $query->whereHas('libraries',
+                                             fn($query) => $query->where('libraries.name', $this->currentTab)))
                                          ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
                                              fn($query) => $query->whereIn('tags.id', $this->filters)))
                                          ->whereHas('libraries',
