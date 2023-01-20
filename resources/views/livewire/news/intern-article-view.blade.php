@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="relative mx-auto max-w-7xl py-16 px-6 lg:px-8 overflow-hidden">
+        <div class="relative mx-auto max-w-7xl py-4 px-6 lg:px-8 overflow-hidden">
             <div class="absolute top-0 bottom-0 left-3/4 hidden w-screen bg-21gray lg:block"></div>
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
                 <div>
@@ -61,7 +61,7 @@
                         <p class="text-lg text-gray-200">{{ $libraryItem->subtitle }}</p>
                     </div>
                     <div
-                        class="prose prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
+                        class="prose prose-2xl prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <div class="flex flex-col space-y-1">
                             @if($libraryItem->type !== 'markdown_article' && str($libraryItem->value)->contains('http'))
                                 <x-button lg amber :href="$libraryItem->value" target="_blank">
