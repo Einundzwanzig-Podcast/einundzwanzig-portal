@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Library;
 
 use App\Models\Country;
+use App\Models\Library;
 use App\Models\LibraryItem;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
@@ -44,6 +45,12 @@ class LibraryTable extends Component
             ]);
         }
 
+        if ($this->currentTab !== '*') {
+            $parentLibrary = Library::query()
+                                    ->where('name', $this->currentTab)
+                                    ->first();
+        }
+
         return view('livewire.library.library-table', [
             'libraries'    => $tabs,
             'libraryItems' => LibraryItem::query()
@@ -51,8 +58,16 @@ class LibraryTable extends Component
                                              'lecturer',
                                              'tags',
                                          ])
-                                         ->when($this->currentTab !== '*', fn($query) => $query->whereHas('libraries',
-                                             fn($query) => $query->where('libraries.name', $this->currentTab)))
+                                         ->when($this->currentTab !== '*', fn($query) => $query
+                                             ->whereHas('libraries',
+                                                 fn($query) => $query
+                                                     ->where('libraries.name', $this->currentTab)
+                                             )
+                                             ->orWhereHas('libraries',
+                                                 fn($query) => $query
+                                                     ->where('libraries.parent_id', $parentLibrary->id)
+                                             )
+                                         )
                                          ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
                                              fn($query) => $query->whereIn('tags.id', $this->filters)))
                                          ->whereHas('libraries',
