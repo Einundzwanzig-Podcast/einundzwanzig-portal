@@ -16,6 +16,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Spatie\LaravelOptions\Options;
 use Spatie\TagsField\Tags;
@@ -120,13 +121,13 @@ class LibraryItem extends Resource
                 ->type('library_item')
                 ->withLinkToTagResource(Tag::class),
 
-            Text::make('Name')
+            Texta::make('Name')
                 ->rules('required', 'string'),
 
             Text::make(__('Subtitle'), 'subtitle')
                 ->rules('nullable', 'string'),
 
-            Text::make(__('Excerpt'), 'excerpt')
+            Textarea::make(__('Excerpt'), 'excerpt')
                 ->rules('nullable', 'string')->help(__('This is the excerpt that is shown in the overview.')),
 
             Text::make(__('Main image caption'), 'main_image_caption')
