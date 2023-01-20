@@ -34,6 +34,15 @@
                             {{ __('Website') }}
                         </x-button>
                     @endif
+                    @if($meetup->matrix_group)
+                        <x-button
+                            target="_blank"
+                            :href="$meetup->matrix_group"
+                            primary lg class="mt-4 whitespace-nowrap">
+                            <i class="fa fa-thin fa-people-group mr-2"></i>
+                            {{ __('Matrix-Group') }}
+                        </x-button>
+                    @endif
                     @if($meetup->twitter_username)
                         <x-button
                             target="_blank"
