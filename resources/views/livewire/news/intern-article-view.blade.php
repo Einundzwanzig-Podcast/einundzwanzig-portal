@@ -24,6 +24,30 @@
                     <h3 class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-100 sm:text-4xl">{{ $libraryItem->name }}</h3>
                 </div>
             </div>
+            <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
+                <div class="mt-6 flex items-center">
+                    <div class="flex-shrink-0">
+                        <div>
+                            <span class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
+                            <img class="h-10 w-10 rounded"
+                                 src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
+                                 alt="{{ $libraryItem->lecturer->name }}">
+                        </div>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-200">
+                        <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
+                        </p>
+                        <div class="flex space-x-1 text-sm text-gray-500">
+                            <time datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
+                            @if($libraryItem->read_time)
+                                <span aria-hidden="true">&middot;</span>
+                                <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
                 <div class="relative lg:col-start-2 lg:row-start-1">
                     <svg class="absolute top-0 right-0 -mt-20 -mr-20 hidden lg:block" width="404" height="384"
