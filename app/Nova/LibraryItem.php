@@ -105,7 +105,8 @@ class LibraryItem extends Resource
 
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
-                  ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.'),
+                  ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.')
+                  ->hideFromIndex(),
 
             Files::make(__('Downloadable File'), 'single_file')
                  ->help('Für neue Datei-Typen bitte bei den Admins melden. (Derzeit: PDF)'),
@@ -115,7 +116,8 @@ class LibraryItem extends Resource
                       config('languages.languages')
                   )
                   ->rules('required', 'string')
-                  ->searchable(),
+                  ->searchable()
+                  ->hideFromIndex(),
 
             Tags::make('Tags')
                 ->type('library_item')
@@ -125,17 +127,21 @@ class LibraryItem extends Resource
                 ->rules('required', 'string'),
 
             Text::make(__('Subtitle'), 'subtitle')
-                ->rules('nullable', 'string'),
+                ->rules('nullable', 'string')
+                ->hideFromIndex(),
 
             Textarea::make(__('Excerpt'), 'excerpt')
-                ->rules('nullable', 'string')->help(__('This is the excerpt that is shown in the overview.')),
+                    ->rules('nullable', 'string')
+                    ->help(__('This is the excerpt that is shown in the overview.')),
 
             Text::make(__('Main image caption'), 'main_image_caption')
-                ->rules('nullable', 'string'),
+                ->rules('nullable', 'string')
+                ->hideFromIndex(),
 
             Number::make(__('Time to read'), 'read_time')
-                ->rules('nullable', 'numeric')
-                ->help(__('How many minutes to read?')),
+                  ->rules('nullable', 'numeric')
+                  ->help(__('How many minutes to read?'))
+                  ->hideFromIndex(),
 
             Select::make(__('Type'), 'type')
                   ->options(
