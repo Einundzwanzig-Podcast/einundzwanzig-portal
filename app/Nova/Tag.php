@@ -17,6 +17,7 @@ class Tag extends Resource
 
     public static $search = [
         'name',
+        'type',
     ];
 
     public static function afterCreate(NovaRequest $request, Model $model)
