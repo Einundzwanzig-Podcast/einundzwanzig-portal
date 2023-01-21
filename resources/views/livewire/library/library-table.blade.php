@@ -17,6 +17,8 @@
                     @else
                         <h3 class="text-2xl font-medium leading-6 text-gray-200">{{ __('Libraries') }}</h3>
                     @endif
+                    <x-button wire:click="resetFiltering({{ $isLecturerPage }})"
+                              xs>{{ __('Reset filtering and search') }}</x-button>
                 </div>
                 <div class="mt-4">
                     <!-- Dropdown menu on small screens -->
@@ -37,14 +39,12 @@
                                 @php
                                     $currentLibraryClass = $currentTab === $library['name'] ? 'border-amber-500 text-amber-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300';
                                 @endphp
-                                @if(!request()->isXmlHttpRequest())
-                                    @if(str(request()->route()->getName())->contains(['.lecturer']))
-                                        <a href="{{ route('library.table.lecturer', ['country' => $country, 'currentTab' => $library['name']]) }}"
-                                           class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
-                                    @else
-                                        <a href="{{ route('library.table.libraryItems', ['country' => $country, 'currentTab' => $library['name']]) }}"
-                                           class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
-                                    @endif
+                                @if($isLecturerPage)
+                                    <a href="{{ route('library.table.lecturer', ['country' => $country, 'currentTab' => $library['name']]) }}"
+                                       class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
+                                @else
+                                    <a href="{{ route('library.table.libraryItems', ['country' => $country, 'currentTab' => $library['name']]) }}"
+                                       class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
                                 @endif
                             @endforeach
                         </nav>

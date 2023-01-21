@@ -15,6 +15,7 @@ class LibraryTable extends Component
     public Country $country;
     public array $filters = [];
     public Collection $libraryItems;
+    public bool $isLecturerPage = false;
 
     public string $search = '';
 
@@ -23,19 +24,22 @@ class LibraryTable extends Component
     protected $queryString = [
         'currentTab' => ['except' => '*'],
         'filters'    => ['except' => ''],
-        'search'    => ['except' => ''],
+        'search'     => ['except' => ''],
     ];
 
     public function mount()
     {
+        if (str(request()
+            ->route()
+            ->getName())->contains(['.lecturer'])) {
+            $this->isLecturerPage = true;
+        }
         $this->loadLibraryItems($this->search);
     }
 
     public function loadLibraryItems($term = null)
     {
-        $shouldBePublic = request()
-                              ->route()
-                              ->getName() !== 'library.table.lecturer';
+        $shouldBePublic = !$this->isLecturerPage;
         if (!$shouldBePublic && !auth()->user()->is_lecturer) {
             abort(403);
         }
@@ -61,8 +65,9 @@ class LibraryTable extends Component
                                          ->when($term, fn($query) => $query
                                              ->where('name', 'ilike', '%'.$term.'%')
                                              ->orWhere(fn($query) => $query
-                                                 ->when(count($searchTags) > 0, fn($query) => $query->whereHas('tags',
-                                                     fn($query) => $query->whereIn('tags.id', $searchTags)))
+                                                 ->when(count($searchTags) > 0 && count($this->filters) < 1,
+                                                     fn($query) => $query->whereHas('tags',
+                                                         fn($query) => $query->whereIn('tags.id', $searchTags)))
                                              )
                                          )
                                          ->when($this->currentTab !== '*', fn($query) => $query
@@ -88,11 +93,18 @@ class LibraryTable extends Component
         $this->loadLibraryItems($value);
     }
 
+    public function resetFiltering($isLecturerPage = false)
+    {
+        if ($isLecturerPage) {
+            return to_route('library.table.lecturer', ['country' => $this->country, 'currentTab' => '*']);
+        } else {
+            return to_route('library.table.libraryItems', ['country' => $this->country, 'currentTab' => '*']);
+        }
+    }
+
     public function render()
     {
-        $shouldBePublic = request()
-                              ->route()
-                              ->getName() !== 'library.table.lecturer';
+        $shouldBePublic = !$this->isLecturerPage;
         $libraries = \App\Models\Library::query()
                                         ->whereNull('parent_id')
                                         ->where('is_public', $shouldBePublic)
