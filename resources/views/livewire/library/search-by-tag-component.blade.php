@@ -13,25 +13,11 @@
                     <x-badge squared amber>
                         <i class="fa fa-thin fa-{{ $tag->icon }}"></i>
                         {{ $tag->name }}
-                        {{ $tag->libraryItems->pluck('lecturer.name')->unique()->count() }}
-                        {{ __('Creator') }}
-                        <span
-                            class="inline-block relative top-px py-0 px-1 m-0 text-xs leading-4 align-baseline border-0 border-solid"
-                        >•</span>
-                        {{ $tag->library_items_count }}
-                        {{ __('Entries') }}
                     </x-badge>
                 @else
                     <x-badge squared gray>
                         <i class="fa fa-thin fa-{{ $tag->icon }}"></i>
                         {{ $tag->name }}
-                        {{ $tag->libraryItems->pluck('lecturer.name')->unique()->count() }}
-                        {{ __('Creator') }}
-                        <span
-                            class="inline-block relative top-px py-0 px-1 m-0 text-xs leading-4 align-baseline border-0 border-solid"
-                        >•</span>
-                        {{ $tag->library_items_count }}
-                        {{ __('Entries') }}
                     </x-badge>
                 @endif
             </a>
