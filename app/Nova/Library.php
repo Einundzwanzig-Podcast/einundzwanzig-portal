@@ -71,9 +71,9 @@ class Library extends Resource
             ID::make()
               ->sortable(),
 
-            BelongsTo::make(__('Parent'), 'parent', __CLASS__)
+            /*BelongsTo::make(__('Parent'), 'parent', __CLASS__)
                      ->searchable()
-                     ->nullable(),
+                     ->nullable(),*/
 
             Text::make('Name')
                 ->rules('required', 'string'),
