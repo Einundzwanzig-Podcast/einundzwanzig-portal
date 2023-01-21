@@ -3,7 +3,21 @@
     <livewire:frontend.header :country="$country"/>
     <div class="max-w-screen-2xl mx-auto">
         <div class="w-full mb-6 sm:my-6">
-            <x-input class="sm:min-w-[900px]" placeholder="Suche..." wire:model.debounce="search"/>
+            <x-input class="sm:min-w-[900px]" placeholder="Suche..." wire:model.debounce="search">
+                <x-slot name="append">
+                    <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
+                        <x-button
+                            wire:click="resetFiltering({{ $isLecturerPage }})"
+                            class="h-full rounded-r-md"
+                            black
+                            flat
+                            squared
+                        >
+                            <i class="fa-thin fa-xmark"></i>
+                        </x-button>
+                    </div>
+                </x-slot>
+            </x-input>
         </div>
     </div>
     {{-- MAIN --}}
