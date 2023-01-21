@@ -128,7 +128,7 @@
         </div>
     </section>
     <section class="h-auto">
-        <div class="px-10 py-6 mx-auto max-w-7xl">
+        <div class="px-10 py-2 sm:py-6 mx-auto max-w-7xl">
             <div class="w-full mx-auto text-left md:text-center">
 
                 @if(str(request()->route()->getName())->contains('school.'))

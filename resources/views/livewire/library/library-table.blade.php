@@ -1,6 +1,11 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     {{-- HEADER --}}
     <livewire:frontend.header :country="$country"/>
+    <div class="max-w-screen-2xl mx-auto">
+        <div class="w-full mb-6 sm:my-6">
+            <x-input class="sm:min-w-[900px]" placeholder="Suche..." wire:model.debounce="search"/>
+        </div>
+    </div>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10" id="table">
@@ -32,8 +37,15 @@
                                 @php
                                     $currentLibraryClass = $currentTab === $library['name'] ? 'border-amber-500 text-amber-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300';
                                 @endphp
-                                <a href="{{ route(request()->route()->getName(), ['country' => $country, 'currentTab' => $library['name']]) }}"
-                                   class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
+                                @if(!request()->isXmlHttpRequest())
+                                    @if(str(request()->route()->getName())->contains(['.lecturer']))
+                                        <a href="{{ route('library.table.lecturer', ['country' => $country, 'currentTab' => $library['name']]) }}"
+                                           class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
+                                    @else
+                                        <a href="{{ route('library.table.libraryItems', ['country' => $country, 'currentTab' => $library['name']]) }}"
+                                           class="{{ $currentLibraryClass }} whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm">{{ $library['name'] }}</a>
+                                    @endif
+                                @endif
                             @endforeach
                         </nav>
                     </div>
@@ -43,7 +55,8 @@
             <livewire:library.search-by-tag-component/>
             <div class="my-12">
 
-                <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+                <div wire:loading.class="opacity-25"
+                     class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 
                     @foreach($libraryItems as $libraryItem)
                         <div wire:key="library_item_{{ $libraryItem->id }}"
@@ -70,7 +83,8 @@
                                 <div class="mt-6 flex items-center">
                                     <div class="flex-shrink-0">
                                         <div>
-                                            <span class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
+                                            <span
+                                                class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
                                             <img class="h-10 w-10 rounded"
                                                  src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
                                                  alt="{{ $libraryItem->lecturer->name }}">
@@ -81,7 +95,8 @@
                                         <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
                                         </p>
                                         <div class="flex space-x-1 text-sm text-gray-400">
-                                            <time datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
+                                            <time
+                                                datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
                                             @if($libraryItem->read_time)
                                                 <span aria-hidden="true">&middot;</span>
                                                 <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>

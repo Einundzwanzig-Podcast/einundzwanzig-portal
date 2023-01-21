@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Library;
 use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
@@ -12,15 +14,24 @@ class LibraryTable extends Component
 {
     public Country $country;
     public array $filters = [];
+    public Collection $libraryItems;
+
+    public string $search = '';
 
     public $currentTab = '*';
 
     protected $queryString = [
         'currentTab' => ['except' => '*'],
         'filters'    => ['except' => ''],
+        'search'    => ['except' => ''],
     ];
 
-    public function render()
+    public function mount()
+    {
+        $this->loadLibraryItems($this->search);
+    }
+
+    public function loadLibraryItems($term = null)
     {
         $shouldBePublic = request()
                               ->route()
@@ -29,6 +40,59 @@ class LibraryTable extends Component
             abort(403);
         }
 
+        if ($this->currentTab !== '*') {
+            $parentLibrary = Library::query()
+                                    ->where('name', $this->currentTab)
+                                    ->first();
+        }
+
+        $searchTags = [];
+        if ($term) {
+            $searchTags = Tag::where('name', 'ilike', '%'.$term.'%')
+                             ->pluck('id')
+                             ->toArray();
+        }
+
+        $this->libraryItems = LibraryItem::query()
+                                         ->with([
+                                             'lecturer',
+                                             'tags',
+                                         ])
+                                         ->when($term, fn($query) => $query
+                                             ->where('name', 'ilike', '%'.$term.'%')
+                                             ->orWhere(fn($query) => $query
+                                                 ->when(count($searchTags) > 0, fn($query) => $query->whereHas('tags',
+                                                     fn($query) => $query->whereIn('tags.id', $searchTags)))
+                                             )
+                                         )
+                                         ->when($this->currentTab !== '*', fn($query) => $query
+                                             ->whereHas('libraries',
+                                                 fn($query) => $query
+                                                     ->where('libraries.name', $this->currentTab)
+                                             )
+                                             ->orWhereHas('libraries',
+                                                 fn($query) => $query
+                                                     ->where('libraries.parent_id', $parentLibrary->id)
+                                             )
+                                         )
+                                         ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
+                                             fn($query) => $query->whereIn('tags.id', $this->filters)))
+                                         ->whereHas('libraries',
+                                             fn($query) => $query->where('libraries.is_public', $shouldBePublic))
+                                         ->orderByDesc('library_items.created_at')
+                                         ->get();
+    }
+
+    public function updatedSearch($value)
+    {
+        $this->loadLibraryItems($value);
+    }
+
+    public function render()
+    {
+        $shouldBePublic = request()
+                              ->route()
+                              ->getName() !== 'library.table.lecturer';
         $libraries = \App\Models\Library::query()
                                         ->whereNull('parent_id')
                                         ->where('is_public', $shouldBePublic)
@@ -45,35 +109,8 @@ class LibraryTable extends Component
             ]);
         }
 
-        if ($this->currentTab !== '*') {
-            $parentLibrary = Library::query()
-                                    ->where('name', $this->currentTab)
-                                    ->first();
-        }
-
         return view('livewire.library.library-table', [
-            'libraries'    => $tabs,
-            'libraryItems' => LibraryItem::query()
-                                         ->with([
-                                             'lecturer',
-                                             'tags',
-                                         ])
-                                         ->when($this->currentTab !== '*', fn($query) => $query
-                                             ->whereHas('libraries',
-                                                 fn($query) => $query
-                                                     ->where('libraries.name', $this->currentTab)
-                                             )
-                                             ->orWhereHas('libraries',
-                                                 fn($query) => $query
-                                                     ->where('libraries.parent_id', $parentLibrary->id)
-                                             )
-                                         )
-                                         ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
-                                             fn($query) => $query->whereIn('tags.id', $this->filters)))
-                                         ->whereHas('libraries',
-                                             fn($query) => $query->where('libraries.is_public', $shouldBePublic))
-                                         ->orderByDesc('library_items.created_at')
-                                         ->get(),
+            'libraries' => $tabs,
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: __('Library'),
