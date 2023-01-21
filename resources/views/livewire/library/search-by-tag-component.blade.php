@@ -1,5 +1,5 @@
 <div
-    class="flex overflow-auto relative flex-wrap gap-x-5 gap-y-1 justify-center p-0 mx-auto mt-2 mb-2 w-full font-normal text-white align-baseline border-0 border-solid md:mx-auto md:mb-0 md:max-w-screen-md"
+    class="flex overflow-auto relative flex-wrap gap-x-5 gap-y-1 justify-center p-0 mx-auto mt-2 mb-2 w-full font-normal text-white align-baseline border-0 border-solid md:mx-auto md:mb-0 md:max-w-screen-2xl"
 >
     @foreach($tags as $tag)
         <div
