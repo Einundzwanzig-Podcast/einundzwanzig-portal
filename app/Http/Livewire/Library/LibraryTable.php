@@ -78,6 +78,8 @@ class LibraryTable extends Component
                                              ->orWhereHas('libraries',
                                                  fn($query) => $query
                                                      ->where('libraries.parent_id', $parentLibrary->id)
+                                                     ->when($term,
+                                                         fn($query) => $query->where('name', 'ilike', '%'.$term.'%'))
                                              )
                                          )
                                          ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
