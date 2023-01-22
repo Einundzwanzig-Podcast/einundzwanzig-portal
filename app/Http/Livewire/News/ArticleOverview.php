@@ -20,6 +20,7 @@ class ArticleOverview extends Component
                                          ->where('type', 'markdown_article')
                                          ->whereHas('createdBy.roles',
                                              fn($query) => $query->where('roles.name', 'news-editor'))
+                                         ->orderByDesc('created_at')
                                          ->get(),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(

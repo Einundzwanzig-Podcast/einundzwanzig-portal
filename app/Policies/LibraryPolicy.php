@@ -14,6 +14,7 @@ class LibraryPolicy extends BasePolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -26,6 +27,7 @@ class LibraryPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Library  $library
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Library $library)
@@ -37,11 +39,14 @@ class LibraryPolicy extends BasePolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {
-        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
+        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__)
+               && Library::query()
+                         ->count() < 8;
     }
 
     /**
@@ -49,6 +54,7 @@ class LibraryPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Library  $library
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Library $library)
@@ -61,6 +67,7 @@ class LibraryPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Library  $library
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Library $library)
@@ -73,6 +80,7 @@ class LibraryPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Library  $library
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Library $library)
@@ -85,6 +93,7 @@ class LibraryPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Library  $library
+     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Library $library)
