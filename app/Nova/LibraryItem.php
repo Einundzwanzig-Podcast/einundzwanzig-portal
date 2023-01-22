@@ -43,6 +43,7 @@ class LibraryItem extends Resource
     public static $search = [
         'id',
         'name',
+        'type',
     ];
 
     public static $with = [
