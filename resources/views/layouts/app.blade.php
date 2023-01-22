@@ -35,6 +35,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     <x-comments::styles/>
+    <x-embed-styles />
     @livewireStyles
     @mapstyles
     <style>

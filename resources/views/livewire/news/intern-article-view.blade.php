@@ -91,10 +91,17 @@
                         class="prose md:prose-xl prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <div class="flex flex-col space-y-1">
                             @if($libraryItem->type !== 'markdown_article' && str($libraryItem->value)->contains('http'))
-                                <x-button lg amber :href="$libraryItem->value" target="_blank">
-                                    <i class="fa fa-thin fa-book-open mr-2"></i>
-                                    {{ __('Open') }}
-                                </x-button>
+                                @if($libraryItem->type === 'youtube_video')
+                                    <x-button lg amber :href="$libraryItem->value" target="_blank">
+                                        <i class="fa fa-brand fa-youtube mr-2"></i>
+                                        {{ __('Open on Youtube') }}
+                                    </x-button>
+                                @else
+                                    <x-button lg amber :href="$libraryItem->value" target="_blank">
+                                        <i class="fa fa-thin fa-book-open mr-2"></i>
+                                        {{ __('Open') }}
+                                    </x-button>
+                                @endif
                             @endif
                             @if($libraryItem->type === 'downloadable_file')
                                 <x-button lg amber :href="$libraryItem->getFirstMediaUrl('single_file')"
@@ -131,6 +138,12 @@
                                 </x-button>
                             @endif
                         </div>
+
+                        @if($libraryItem->type === 'youtube_video')
+                            <div class="my-12">
+                                <x-embed :url="$libraryItem->value" />
+                            </div>
+                        @endif
 
                         @if($libraryItem->type === 'markdown_article')
                             <x-markdown>

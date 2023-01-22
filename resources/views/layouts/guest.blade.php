@@ -32,6 +32,7 @@
     @mapscripts
     <wireui:scripts/>
     <x-comments::scripts/>
+    <x-embed-styles />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles

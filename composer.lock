@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5052a8175f0211390b03e5afcaaea869",
+    "content-hash": "5c7a3f14cc5db305af3ba03901284623",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -163,6 +163,78 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.8"
             },
             "time": "2022-12-07T17:46:57+00:00"
+        },
+        {
+            "name": "bensampo/laravel-embed",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BenSampo/laravel-embed.git",
+                "reference": "d94dfe948f9edfc0a541067712918630a607a438"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BenSampo/laravel-embed/zipball/d94dfe948f9edfc0a541067712918630a607a438",
+                "reference": "d94dfe948f9edfc0a541067712918630a607a438",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3.1|^7.0",
+                "illuminate/contracts": "^7.25|^8.0|^9.0",
+                "illuminate/support": "^7.25|^8.0|^9.0",
+                "php": "^7.4.0|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^7.25|^8.75.0|^9.0",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.5.23|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "BenSampo\\Embed\\EmbedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BenSampo\\Embed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Sampson",
+                    "homepage": "https://sampo.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Painless responsive embeds for videos, slideshows and more.",
+            "homepage": "https://github.com/bensampo/laravel-embed",
+            "keywords": [
+                "bensampo",
+                "embed",
+                "laravel",
+                "package"
+            ],
+            "support": {
+                "issues": "https://github.com/BenSampo/laravel-embed/issues",
+                "source": "https://github.com/BenSampo/laravel-embed/tree/v1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bensampo",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-10T09:10:51+00:00"
         },
         {
             "name": "bitwasp/bech32",
