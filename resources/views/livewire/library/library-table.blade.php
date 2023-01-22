@@ -91,7 +91,7 @@
                                     <a href="{{ route('libraryItem.view', ['libraryItem' => $libraryItem]) }}"
                                        class="mt-2 block">
                                         <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>
-                                        <p class="mt-3 text-base text-gray-300 line-clamp-8">{{ strip_tags($libraryItem->excerpt) }}</p>
+                                        <p class="mt-3 text-base text-gray-300 line-clamp-6">{{ strip_tags($libraryItem->excerpt) }}</p>
                                     </a>
                                 </div>
                                 <div class="mt-6 flex items-center">
