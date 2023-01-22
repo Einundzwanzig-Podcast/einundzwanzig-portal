@@ -692,5 +692,6 @@
     "Only one working address is required. But you can also fill in all fields if you have suitable data.": "Nur eine funktionierende Adresse ist erforderlich. Aber du kannst auch alle Felder ausfüllen, wenn du passende Daten hast.",
     "Reset filtering and search": "Suche und Filter zurücksetzen",
     "Library items without libraries": "Einträge ohne Bibliothek",
-    "Library items without tags": "Einträge ohne Tags"
+    "Library items without tags": "Einträge ohne Tags",
+    "Filter": ""
 }

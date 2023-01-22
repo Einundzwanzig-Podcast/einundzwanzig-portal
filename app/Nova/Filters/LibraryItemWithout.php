@@ -7,6 +7,11 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class LibraryItemWithout extends BooleanFilter
 {
+    public function name()
+    {
+        return __('Filter');
+    }
+
     /**
      * Apply the filter to the given query.
      *
