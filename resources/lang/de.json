@@ -690,5 +690,7 @@
     "starts with: lnurl1dp68gurn8gh....": "startet mit: lnurl1dp68gurn8gh....",
     "for example xy@getalby.com": "zum Beispiel xy@getalby.com",
     "Only one working address is required. But you can also fill in all fields if you have suitable data.": "Nur eine funktionierende Adresse ist erforderlich. Aber du kannst auch alle Felder ausfüllen, wenn du passende Daten hast.",
-    "Reset filtering and search": "Suche und Filter zurücksetzen"
+    "Reset filtering and search": "Suche und Filter zurücksetzen",
+    "Library items without libraries": "Einträge ohne Bibliothek",
+    "Library items without tags": "Einträge ohne Tags"
 }

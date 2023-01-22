@@ -5,7 +5,7 @@ namespace App\Nova\Filters;
 use Laravel\Nova\Filters\BooleanFilter;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class LibraryItemWithoutLibrary extends BooleanFilter
+class LibraryItemWithout extends BooleanFilter
 {
     /**
      * Apply the filter to the given query.
@@ -18,7 +18,9 @@ class LibraryItemWithoutLibrary extends BooleanFilter
      */
     public function apply(NovaRequest $request, $query, $value)
     {
-        return $query->when($value['without'], fn($query) => $query->whereDoesntHave('libraries'));
+        return $query
+            ->when($value['libraries'], fn($query) => $query->whereDoesntHave('libraries'))
+            ->when($value['tags'], fn($query) => $query->whereDoesntHave('tags'));
     }
 
     /**
@@ -31,7 +33,8 @@ class LibraryItemWithoutLibrary extends BooleanFilter
     public function options(NovaRequest $request)
     {
         return [
-            'Library-Item without Library' => 'without',
+            __('Library items without libraries') => 'libraries',
+            __('Library items without tags') => 'tags',
         ];
     }
 }
