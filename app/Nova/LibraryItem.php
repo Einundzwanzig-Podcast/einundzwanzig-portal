@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Enums\LibraryItemType;
 use App\Notifications\ModelCreatedNotification;
+use App\Nova\Actions\AttachLibraryItemToLibrary;
 use App\Nova\Actions\SetStatusAction;
 use App\Nova\Filters\LibraryItemWithoutLibrary;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
@@ -225,6 +226,7 @@ class LibraryItem extends Resource
     public function actions(Request $request)
     {
         return [
+            new AttachLibraryItemToLibrary(),
             new SetStatusAction(),
         ];
     }
