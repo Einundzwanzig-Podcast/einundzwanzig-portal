@@ -5,6 +5,7 @@ namespace App\Nova;
 use App\Enums\LibraryItemType;
 use App\Notifications\ModelCreatedNotification;
 use App\Nova\Actions\SetStatusAction;
+use App\Nova\Filters\LibraryItemWithoutLibrary;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Database\Eloquent\Model;
@@ -196,7 +197,9 @@ class LibraryItem extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new LibraryItemWithoutLibrary()
+        ];
     }
 
     /**
