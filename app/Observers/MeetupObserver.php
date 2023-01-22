@@ -28,7 +28,7 @@ class MeetupObserver
 
             $text = sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $meetupName,
-                url()->route('meetup.landing', ['country' => 'de', 'meetup' => $meetup])
+                url()->route('meetup.landing', ['country' => $meetup->city->country->code, 'meetup' => $meetup])
             );
 
             $this->postTweet($text);
