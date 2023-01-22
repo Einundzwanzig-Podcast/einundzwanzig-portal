@@ -79,7 +79,9 @@
                             </figcaption>
                         </figure>
                         <div class="hidden md:block my-4">
-                            <livewire:comments :model="$libraryItem" newest-first/>
+                            @if(auth()->check())
+                                <livewire:comments :model="$libraryItem" newest-first/>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -141,7 +143,7 @@
 
                         @if($libraryItem->type === 'youtube_video')
                             <div class="my-12">
-                                <x-embed :url="$libraryItem->value" />
+                                <x-embed :url="$libraryItem->value"/>
                             </div>
                         @endif
 
