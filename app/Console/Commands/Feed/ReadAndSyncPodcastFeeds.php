@@ -44,6 +44,7 @@ class ReadAndSyncPodcastFeeds extends Command
             4909387, // Was Bitcoin bringt - mit Niko Jilch
             1000839, // Bitcoin Audible
             1769616, // Einemillionsatoshi - der Bitcoin Podcast für Frauen
+            5784083, // Der Bitcoin Effekt - Dein Business Podcast
         ];
 
         foreach ($feedIds as $feedId) {
