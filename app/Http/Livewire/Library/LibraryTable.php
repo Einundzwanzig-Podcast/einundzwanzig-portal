@@ -6,7 +6,7 @@ use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
@@ -14,10 +14,11 @@ class LibraryTable extends Component
 {
     public Country $country;
     public array $filters = [];
-    public Collection $libraryItems;
     public bool $isLecturerPage = false;
 
     public string $search = '';
+
+    public $perPage = 9;
 
     public $currentTab = '*';
 
@@ -27,6 +28,11 @@ class LibraryTable extends Component
         'search'     => ['except' => ''],
     ];
 
+    public function loadMore()
+    {
+        $this->perPage += 9;
+    }
+
     public function mount()
     {
         if (str(request()
@@ -34,59 +40,6 @@ class LibraryTable extends Component
             ->getName())->contains(['.lecturer'])) {
             $this->isLecturerPage = true;
         }
-        $this->loadLibraryItems($this->search);
-    }
-
-    public function loadLibraryItems($term = null)
-    {
-        $shouldBePublic = !$this->isLecturerPage;
-        if (!$shouldBePublic && !auth()->user()?->is_lecturer) {
-            abort(403);
-        }
-
-        if ($this->currentTab !== '*') {
-            $parentLibrary = Library::query()
-                                    ->where('name', $this->currentTab)
-                                    ->first();
-        }
-
-        $searchTags = [];
-        if ($term) {
-            $searchTags = Tag::where('name', 'ilike', '%'.$term.'%')
-                             ->pluck('id')
-                             ->toArray();
-        }
-
-        $this->libraryItems = LibraryItem::query()
-                                         ->with([
-                                             'lecturer',
-                                             'tags',
-                                         ])
-                                         ->when($term, fn($query) => $query
-                                             ->where('name', 'ilike', '%'.$term.'%')
-                                             ->orWhere(fn($query) => $query
-                                                 ->when(count($searchTags) > 0 && count($this->filters) < 1,
-                                                     fn($query) => $query->whereHas('tags',
-                                                         fn($query) => $query->whereIn('tags.id', $searchTags)))
-                                             )
-                                         )
-                                         ->when($this->currentTab !== '*', fn($query) => $query
-                                             ->whereHas('libraries',
-                                                 fn($query) => $query
-                                                     ->where('libraries.name', $this->currentTab)
-                                             )
-                                         )
-                                         ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
-                                             fn($query) => $query->whereIn('tags.id', $this->filters)))
-                                         ->whereHas('libraries',
-                                             fn($query) => $query->where('libraries.is_public', $shouldBePublic))
-                                         ->orderByDesc('library_items.created_at')
-                                         ->get();
-    }
-
-    public function updatedSearch($value)
-    {
-        $this->loadLibraryItems($value);
     }
 
     public function resetFiltering($isLecturerPage = false)
@@ -117,8 +70,45 @@ class LibraryTable extends Component
             ]);
         }
 
+        if ($this->currentTab !== '*') {
+            $parentLibrary = Library::query()
+                                    ->where('name', $this->currentTab)
+                                    ->first();
+        }
+        $searchTags = [];
+        if ($this->search) {
+            $searchTags = Tag::where('name', 'ilike', '%'.$this->search.'%')
+                             ->pluck('id')
+                             ->toArray();
+        }
+
         return view('livewire.library.library-table', [
             'libraries' => $tabs,
+            'libraryItems' => LibraryItem::query()
+                                         ->with([
+                                             'lecturer',
+                                             'tags',
+                                         ])
+                                         ->when($this->search, fn($query) => $query
+                                             ->where('name', 'ilike', '%'.$this->search.'%')
+                                             ->orWhere(fn($query) => $query
+                                                 ->when(count($searchTags) > 0 && count($this->filters) < 1,
+                                                     fn($query) => $query->whereHas('tags',
+                                                         fn($query) => $query->whereIn('tags.id', $searchTags)))
+                                             )
+                                         )
+                                         ->when($this->currentTab !== '*', fn($query) => $query
+                                             ->whereHas('libraries',
+                                                 fn($query) => $query
+                                                     ->where('libraries.name', $this->currentTab)
+                                             )
+                                         )
+                                         ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
+                                             fn($query) => $query->whereIn('tags.id', $this->filters)))
+                                         ->whereHas('libraries',
+                                             fn($query) => $query->where('libraries.is_public', $shouldBePublic))
+                                         ->orderByDesc('library_items.created_at')
+                                         ->paginate($this->perPage),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: __('Library'),

@@ -122,6 +122,28 @@
                         </div>
                     @endforeach
 
+                        <div
+                            x-data="{
+                                observe () {
+                                    let observer = new IntersectionObserver((entries) => {
+                                        entries.forEach(entry => {
+                                            if (entry.isIntersecting) {
+                                                @this.call('loadMore')
+                                            }
+                                        })
+                                    }, {
+                                        root: null
+                                    })
+                                    observer.observe(this.$el)
+                                }
+                            }"
+                            x-init="observe"
+                        ></div>
+
+                    @if($libraryItems->hasMorePages())
+                        <x-button outline wire:click.prevent="loadMore">{{ __('load more...') }}</x-button>
+                    @endif
+
                 </div>
 
             </div>
