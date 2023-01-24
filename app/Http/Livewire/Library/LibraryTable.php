@@ -40,7 +40,7 @@ class LibraryTable extends Component
     public function loadLibraryItems($term = null)
     {
         $shouldBePublic = !$this->isLecturerPage;
-        if (!$shouldBePublic && !auth()->user()->is_lecturer) {
+        if (!$shouldBePublic && !auth()->user()?->is_lecturer) {
             abort(403);
         }
 
