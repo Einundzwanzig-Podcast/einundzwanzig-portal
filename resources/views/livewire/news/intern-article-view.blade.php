@@ -87,7 +87,7 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-200">{{ strip_tags($libraryItem->subtitle) }}</p>
+                        <p class="text-lg text-gray-200 prose md:prose-lg prose-invert">{!! $libraryItem->subtitle !!}</p>
                     </div>
                     <div
                         class="prose md:prose-lg prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
