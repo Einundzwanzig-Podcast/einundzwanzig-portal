@@ -153,7 +153,7 @@
                             </x-markdown>
                         @endif
 
-                        <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4">
+                        <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4 mt-4">
                             @if($libraryItem->lecturer->lightning_address || $libraryItem->lecturer->lnurl || $libraryItem->lecturer->node_id)
                                 <h1>value-4-value</h1>
                                 <div wire:ignore>
