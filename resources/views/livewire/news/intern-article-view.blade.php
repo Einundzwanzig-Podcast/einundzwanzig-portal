@@ -80,7 +80,7 @@
                         </figure>
                         <div class="hidden md:block my-4">
                             @if(auth()->check())
-                                <livewire:comments :model="$libraryItem" newest-first/>
+                                <livewire:comments :model="$libraryItem" newest-first hide-notification-options/>
                             @endif
                         </div>
                     </div>
