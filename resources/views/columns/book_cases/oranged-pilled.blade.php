@@ -1,11 +1,15 @@
 <div class="flex flex-col space-y-1" wire:key="bookcase_action_{{ $row->id }}">
     @auth
-        @if($row->orange_pills_count > 0)
-            <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_plus.webp') }}" alt="">
-        @endif
-        @if($row->orange_pills_count < 1)
-            <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_minus.webp') }}" alt="">
-        @endif
+        <div>
+            @if($row->orange_pills_count > 0)
+                <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_plus.webp') }}" alt="">
+            @endif
+        </div>
+        <div>
+            @if($row->orange_pills_count < 1)
+                <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_minus.webp') }}" alt="">
+            @endif
+        </div>
         <div class="flex items-center space-x-1">
             <x-button class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap"
                       wire:click="viewHistoryModal({{ $row->id }})">{{ __('💊 Orange Pill Now') }}</x-button>

@@ -39,7 +39,15 @@ class SyncGithubMeetups extends Command
                     'github_data' => $meetup,
                 ]);
             } else {
-                $this->info('Missing: '.$meetup['name'] . ' Url: ' . $meetup['url']);
+                $this->info('Missing: '.$meetup['name'].' Url: '.$meetup['url']);
+                if (app()->environment('local')) {
+                    Meetup::create([
+                        'name'        => $meetup['name'],
+                        'city_id'     => 1,
+                        'created_by'  => 1,
+                        'github_data' => $meetup,
+                    ]);
+                }
             }
         }
 
