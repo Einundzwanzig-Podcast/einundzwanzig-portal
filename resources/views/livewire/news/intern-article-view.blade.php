@@ -148,7 +148,7 @@
                         @endif
 
                         @if($libraryItem->type === 'markdown_article')
-                            <x-markdown>
+                            <x-markdown class="leading-normal">
                                 {!! $libraryItem->value !!}
                             </x-markdown>
                         @endif
