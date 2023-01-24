@@ -43,6 +43,7 @@ class ReadAndSyncPodcastFeeds extends Command
             185578, // Blocktrainer Bitcoin Podcast
             4909387, // Was Bitcoin bringt - mit Niko Jilch
             1000839, // Bitcoin Audible
+            1769616, // Einemillionsatoshi - der Bitcoin Podcast für Frauen
         ];
 
         foreach ($feedIds as $feedId) {
