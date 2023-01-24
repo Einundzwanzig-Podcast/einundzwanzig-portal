@@ -87,7 +87,11 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <div class="prose md:prose-lg prose-invert">{!! $libraryItem->subtitle !!}</div>
+                        <div class="prose md:prose-lg prose-invert">
+                            <x-markdown class="leading-normal">
+                                {!! $libraryItem->subtitle !!}
+                            </x-markdown>
+                        </div>
                     </div>
                     <div
                         class="prose md:prose-lg prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
