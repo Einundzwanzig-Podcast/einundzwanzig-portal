@@ -99,6 +99,10 @@ module.exports = {
                     'Inconsolata',
                     ...defaultTheme.fontFamily.mono
                 ],
+                article: [
+                    'Nunito',
+                    ...defaultTheme.fontFamily.sans
+                ],
             },
         },
     },

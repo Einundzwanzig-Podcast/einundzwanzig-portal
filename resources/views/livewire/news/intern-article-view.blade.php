@@ -1,5 +1,6 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
-    <div class="bg-21gray">
+    @googlefonts('article')
+    <div class="bg-21gray font-article">
         <div class="mx-auto max-w-screen-2xl py-4 px-6 lg:px-8 overflow-hidden">
             <div class="flex items-center justify-end">
                 @if($libraryItem->type === 'markdown_article')
