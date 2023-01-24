@@ -100,7 +100,7 @@ module.exports = {
                     ...defaultTheme.fontFamily.mono
                 ],
                 article: [
-                    'Nunito',
+                    'Karla',
                     ...defaultTheme.fontFamily.sans
                 ],
             },
