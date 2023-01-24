@@ -696,5 +696,6 @@
     "Filter": "",
     "no location set": "kein Ort gesetzt",
     "Open on Youtube": "Auf Youtube öffnen",
-    "You do not have permission to view the page.": "Du hast keine Berechtigung, die Seite anzuzeigen."
+    "You do not have permission to view the page.": "Du hast keine Berechtigung, die Seite anzuzeigen.",
+    "Please contact the admins for new file types, otherwise pack the files in a ZIP! (Currently: PDF, ZIP)": "Bitte kontaktiere die Administratoren für neue Dateitypen, ansonsten packe die Dateien in ein ZIP! (Derzeit: PDF, ZIP)"
 }

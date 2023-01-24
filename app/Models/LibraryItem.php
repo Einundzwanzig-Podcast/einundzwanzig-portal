@@ -78,7 +78,7 @@ class LibraryItem extends Model implements HasMedia, Sortable
              ->singleFile()
              ->useFallbackUrl(asset('img/einundzwanzig.png'));
         $this->addMediaCollection('single_file')
-             ->acceptsMimeTypes(['application/pdf'])
+             ->acceptsMimeTypes(['application/pdf', 'application/zip', 'application/octet-stream', 'application/x-zip-compressed', 'multipart/x-zip'])
              ->singleFile();
         $this->addMediaCollection('images')
              ->useFallbackUrl(asset('img/einundzwanzig.png'));
