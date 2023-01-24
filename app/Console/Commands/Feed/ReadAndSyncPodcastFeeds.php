@@ -43,6 +43,7 @@ class ReadAndSyncPodcastFeeds extends Command
             185578, // Blocktrainer Bitcoin Podcast
             4909387, // Was Bitcoin bringt - mit Niko Jilch
             1000839, // Bitcoin Audible
+            5603181, // Bitcoin Audible.DE - Die besten Bitcoin-Artikel, vorgelesen in deutscher Sprache!
             1769616, // Einemillionsatoshi - der Bitcoin Podcast für Frauen
             5784083, // Der Bitcoin Effekt - Dein Business Podcast
         ];
