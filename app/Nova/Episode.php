@@ -39,12 +39,9 @@ class Episode extends Resource
             ]);
             $lecturer->addMediaFromUrl($model->podcast->data['image'])
                      ->toMediaCollection('avatar');
-            $library = \App\Models\Library::updateOrCreate(
+            $library = \App\Models\Library::firstOrCreate(
                 [
-                    'name' => $model->podcast->title
-                ],
-                [
-                    'language_codes' => [$model->podcast->language_code],
+                    'name' => 'Podcasts'
                 ]);
             $libraryItem = $model->libraryItem()
                                  ->firstOrCreate([
