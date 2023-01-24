@@ -152,6 +152,23 @@
                                 {!! $libraryItem->value !!}
                             </x-markdown>
                         @endif
+
+                        <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4">
+                            @if($libraryItem->lecturer->lightning_address || $libraryItem->lecturer->lnurl || $libraryItem->lecturer->node_id)
+                                <h1>value-4-value</h1>
+                                <div wire:ignore>
+                                    <lightning-widget
+                                        name="{{ $libraryItem->lecturer->name }}"
+                                        accent="#f7931a"
+                                        to="{{ $libraryItem->lecturer->lightning_address ?? $libraryItem->lecturer->lnurl ?? $libraryItem->lecturer->node_id }}"
+                                        image="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
+                                        amounts="21,210,2100,21000"
+                                    />
+                                </div>
+                            @endif
+                        </div>
+
+                        <script src="https://embed.twentyuno.net/js/app.js"></script>
                     </div>
                 </div>
             </div>
