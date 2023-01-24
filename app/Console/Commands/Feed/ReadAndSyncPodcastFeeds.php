@@ -37,19 +37,24 @@ class ReadAndSyncPodcastFeeds extends Command
             4627128, // Nodesignal - Deine Bitcoin-Frequenz
             4426306, // Pleb's Taverne
             4409506, // Sound Money Bitcoin Podcast
+            620690, // Mises Karma
+            4409505, // Münzweg - der Bitcoin-Podcast
+            4645280, // Dezentralschweiz Podcast 🇨🇭
+            185578, // Blocktrainer Bitcoin Podcast
+            4909387, // Was Bitcoin bringt - mit Niko Jilch
         ];
 
         foreach ($feedIds as $feedId) {
             $podcast = $client->podcasts->byFeedId($feedId)
                                         ->json();
             $importPodcast = Podcast::query()
-                                           ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
-                                               'title'         => $podcast->feed->title,
-                                               'link'          => $podcast->feed->link,
-                                               'language_code' => $podcast->feed->language,
-                                               'data'          => $podcast->feed,
-                                               'created_by'    => 1,
-                                           ]);
+                                    ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
+                                        'title'         => $podcast->feed->title,
+                                        'link'          => $podcast->feed->link,
+                                        'language_code' => $podcast->feed->language,
+                                        'data'          => $podcast->feed,
+                                        'created_by'    => 1,
+                                    ]);
             $episodes = $client->episodes->withParameters(['max' => 10000])
                                          ->byFeedId($feedId)
                                          ->json();
