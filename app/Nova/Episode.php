@@ -61,6 +61,9 @@ class Episode extends Resource
             if ($model->data['image']) {
                 $libraryItem->addMediaFromUrl($model->data['image'])
                             ->toMediaCollection('main');
+            } else {
+                $libraryItem->addMediaFromUrl($model->podcast->data['image'])
+                            ->toMediaCollection('main');
             }
             $library->libraryItems()
                     ->attach($libraryItem);
