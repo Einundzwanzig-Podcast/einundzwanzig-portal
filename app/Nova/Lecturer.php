@@ -89,17 +89,21 @@ class Lecturer extends Resource
                 ->rules('required', 'string'),
 
             Text::make(__('Lightning Address'), 'lightning_address')
+                ->hideFromIndex()
                 ->help(__('for example xy@getalby.com'))
                 ->rules('nullable', 'string'),
 
             Text::make(__('LNURL'), 'lnurl')
+                ->hideFromIndex()
                 ->help(__('starts with: lnurl1dp68gurn8gh....'))
                 ->rules('nullable', 'string'),
 
             Text::make(__('Node Id'), 'node_id')
+                ->hideFromIndex()
                 ->rules('nullable', 'string'),
 
             Text::make('Twitter username', 'twitter_username')
+                ->hideFromIndex()
                 ->help(__('Without @'))
                 ->rules('nullable', 'string'),
 
