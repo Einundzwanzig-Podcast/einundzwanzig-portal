@@ -37,8 +37,10 @@ class Episode extends Resource
                 'active'  => true,
                 'website' => $model->podcast->link,
             ]);
-            $lecturer->addMediaFromUrl($model->podcast->data['image'])
-                     ->toMediaCollection('avatar');
+            if ($model->podcast->data['image']) {
+                $lecturer->addMediaFromUrl($model->podcast->data['image'])
+                         ->toMediaCollection('avatar');
+            }
             $library = \App\Models\Library::firstOrCreate(
                 [
                     'name' => 'Podcasts'
@@ -56,8 +58,10 @@ class Episode extends Resource
                                  ]);
             $libraryItem->syncTagsWithType(is_array($request->tags) ? $request->tags : str($request->tags)->explode('-----'),
                 'library_item');
-            $libraryItem->addMediaFromUrl($model->data['image'])
-                        ->toMediaCollection('main');
+            if ($model->data['image']) {
+                $libraryItem->addMediaFromUrl($model->data['image'])
+                            ->toMediaCollection('main');
+            }
             $library->libraryItems()
                     ->attach($libraryItem);
         }
