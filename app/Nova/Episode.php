@@ -26,6 +26,7 @@ class Episode extends Resource
      */
     public static $search = [
         'id',
+        'podcast.title',
     ];
     public static $orderBy = ['created_at' => 'desc'];
 
