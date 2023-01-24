@@ -19,38 +19,42 @@ class LibraryItemObserver
     public function created(LibraryItem $libraryItem)
     {
         // todo: we can change this later
-        $libraryItem->setStatus('published');
+        try {
+            $libraryItem->setStatus('published');
 
-        $libraryItemName = $libraryItem->name;
-        if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
-            $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
-        }
-        if ($libraryItem->lecturer->twitter_username && $libraryItem->type === 'markdown_article') {
-            $libraryItemName .= ' von '.$libraryItem->lecturer->name;
-        }
-
-        if (config('feeds.services.twitterAccountId')) {
-            $this->setNewAccessToken(1);
-
-            // http://localhost/de/library/library-item?l=de&table[filters][id]=2
-
-            if ($libraryItem->type !== 'markdown_article') {
-                $text = sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
-                    $libraryItemName,
-                    url()->route('article.view',
-                        ['libraryItem' => $libraryItem->slug]),
-                );
-
-                $this->postTweet($text);
-            } else {
-                $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
-                    $libraryItemName,
-                    url()->route('article.view',
-                        ['libraryItem' => $libraryItem->slug]),
-                );
-
-                //$this->postTweet($text);
+            $libraryItemName = $libraryItem->name;
+            if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
+                $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
             }
+            if ($libraryItem->lecturer->twitter_username && $libraryItem->type === 'markdown_article') {
+                $libraryItemName .= ' von '.$libraryItem->lecturer->name;
+            }
+
+            if (config('feeds.services.twitterAccountId')) {
+                $this->setNewAccessToken(1);
+
+                // http://localhost/de/library/library-item?l=de&table[filters][id]=2
+
+                if ($libraryItem->type !== 'markdown_article') {
+                    $text = sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
+                        $libraryItemName,
+                        url()->route('article.view',
+                            ['libraryItem' => $libraryItem->slug]),
+                    );
+
+                    $this->postTweet($text);
+                } else {
+                    $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
+                        $libraryItemName,
+                        url()->route('article.view',
+                            ['libraryItem' => $libraryItem->slug]),
+                    );
+
+                    //$this->postTweet($text);
+                }
+            }
+        } catch (\Exception $e) {
+            // todo: log this
         }
     }
 
