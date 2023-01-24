@@ -36,13 +36,17 @@ class LibraryItemObserver
                 // http://localhost/de/library/library-item?l=de&table[filters][id]=2
 
                 if ($libraryItem->type !== 'markdown_article') {
-                    $text = sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
-                        $libraryItemName,
-                        url()->route('article.view',
-                            ['libraryItem' => $libraryItem->slug]),
-                    );
 
-                    $this->postTweet($text);
+                    if ($libraryItem->doesntHave('libraries', fn($query) => $query->where('is_public', false))
+                                    ->exists()) {
+                        $text = sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
+                            $libraryItemName,
+                            url()->route('article.view',
+                                ['libraryItem' => $libraryItem->slug]),
+                        );
+                        $this->postTweet($text);
+                    }
+
                 } else {
                     $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
                         $libraryItemName,
