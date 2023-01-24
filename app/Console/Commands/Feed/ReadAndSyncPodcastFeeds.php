@@ -42,6 +42,7 @@ class ReadAndSyncPodcastFeeds extends Command
             4645280, // Dezentralschweiz Podcast 🇨🇭
             185578, // Blocktrainer Bitcoin Podcast
             4909387, // Was Bitcoin bringt - mit Niko Jilch
+            1000839, // Bitcoin Audible
         ];
 
         foreach ($feedIds as $feedId) {
