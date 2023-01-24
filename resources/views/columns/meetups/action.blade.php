@@ -25,10 +25,8 @@
         <x-button
             xs
             black
-            x-data="{
-            textToCopy: '{{ route('meetup.ics', ['country' => $country ?? $row->city->country->code, 'meetup' => $row->id]) }}',
-        }"
-            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+            x-data="{}"
+            @click.prevent="window.navigator.clipboard.writeText('{{ $ics }}');window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
         >
             <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
             {{ __('Calendar Stream-Url') }} ({{ $row->meetup_events_count }})

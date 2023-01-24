@@ -59,6 +59,8 @@ class MeetupTable extends DataTableComponent
                   ->label(
                       fn($row, Column $column) => view('columns.meetups.action')
                           ->withRow($row)
+                          ->withIcs(route('meetup.ics',
+                              ['country' => $this->country ?? $row->city->country->code, 'meetup' => $row->id]))
                           ->withCountry($this->country)
                   )
                   ->collapseOnMobile(),
@@ -92,8 +94,8 @@ class MeetupTable extends DataTableComponent
                         ->find($id);
 
         return to_route('meetup.table.meetupEvent', [
-            'country' => $this->country ?? $meetup->city->country->code,
-            'meetup_events'   => [
+            'country'       => $this->country ?? $meetup->city->country->code,
+            'meetup_events' => [
                 'filters' => ['bymeetupid' => $id],
             ]
         ]);
