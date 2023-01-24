@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-1">
+<div class="flex flex-col space-y-1" wire:key="meetup_events_action_{{ $row->id }}">
     <x-button
         black
         xs

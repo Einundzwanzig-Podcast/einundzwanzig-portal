@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-1">
+<div class="flex flex-col space-y-1" wire:key="cities_action_{{ $row->id }}">
     @if($type === 'school')
         <div>
             @if($row->course_events_count > 0)

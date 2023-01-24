@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-1">
+<div class="flex flex-col space-y-1" wire:key="library_items_action_{{ $row->id }}">
     @if(str($row->value)->contains('http'))
         <x-button xs amber :href="$row->value" target="_blank">
             <i class="fa fa-thin fa-book-open mr-2"></i>

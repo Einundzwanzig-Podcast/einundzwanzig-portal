@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-1">
+<div class="flex flex-col space-y-1" wire:key="bookcase_action_{{ $row->id }}">
     @auth
         @if($row->orange_pills_count > 0)
             <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_plus.webp') }}" alt="">

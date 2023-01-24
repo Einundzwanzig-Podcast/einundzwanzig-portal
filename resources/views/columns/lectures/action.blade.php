@@ -1,4 +1,4 @@
-<div>
+<div wire:key="lecturers_action_{{ $row->id }}">
     @if($row->courses_count > 0)
         <x-button amber wire:click="lecturerSearch({{ $row->id }})">
             <i class="fa fa-thin fa-calendar mr-2"></i>
