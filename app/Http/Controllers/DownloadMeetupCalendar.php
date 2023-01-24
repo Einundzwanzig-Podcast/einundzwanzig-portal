@@ -40,7 +40,7 @@ class DownloadMeetupCalendar extends Controller
         foreach ($events as $event) {
             $entries[] = Event::create($event->meetup->name)
                               ->uniqueIdentifier(str($event->meetup->name)->slug().$event->id)
-                              ->address($event->location)
+                              ->address($event->location ?? __('no location set'))
                               ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
                               ->image($image)
                               ->startsAt($event->start);

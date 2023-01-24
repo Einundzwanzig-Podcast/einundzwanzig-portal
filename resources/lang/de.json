@@ -693,5 +693,7 @@
     "Reset filtering and search": "Suche und Filter zurücksetzen",
     "Library items without libraries": "Einträge ohne Bibliothek",
     "Library items without tags": "Einträge ohne Tags",
-    "Filter": ""
+    "Filter": "",
+    "no location set": "kein Ort gesetzt",
+    "Open on Youtube": "Auf Youtube öffnen"
 }
