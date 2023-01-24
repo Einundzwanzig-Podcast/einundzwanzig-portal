@@ -90,7 +90,7 @@
                         <p class="text-lg text-gray-200">{{ strip_tags($libraryItem->subtitle) }}</p>
                     </div>
                     <div
-                        class="prose md:prose-xl prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
+                        class="prose md:prose-lg prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <div class="flex flex-col space-y-1">
                             @if($libraryItem->type !== 'markdown_article' && str($libraryItem->value)->contains('http'))
                                 @if($libraryItem->type === 'youtube_video')
