@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-1">
+<div class="flex flex-col space-y-1" wire:key="meetup_action_{{ $row->id }}">
     @if($row->meetup_events_count > 0)
         <x-button
             xs
@@ -21,8 +21,8 @@
         xs
         black
         x-data="{
-                    textToCopy: '{{ route('meetup.ics', ['country' => $country ?? $row->city->country->code, 'meetup' => $row->id]) }}',
-                    }"
+            textToCopy: '{{ route('meetup.ics', ['country' => $country ?? $row->city->country->code, 'meetup' => $row->id]) }}',
+        }"
         @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
     >
         <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
