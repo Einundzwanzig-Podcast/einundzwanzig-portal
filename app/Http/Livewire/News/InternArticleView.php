@@ -22,7 +22,7 @@ class InternArticleView extends Component
         return view('livewire.news.intern-article-view')->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: $this->libraryItem->name,
-                description: $this->libraryItem->excerpt ?? __('Here we post important news that is relevant for everyone.'),
+                description: strip_tags($this->libraryItem->excerpt) ?? __('Here we post important news that is relevant for everyone.'),
                 author: $this->libraryItem->lecturer->name,
                 image: $this->libraryItem->getFirstMedia('main') ? $this->libraryItem->getFirstMediaUrl('main') : asset('img/einundzwanzig-wallpaper-benrath.png'),
                 published_time: Carbon::parse($this->libraryItem->created_at),
