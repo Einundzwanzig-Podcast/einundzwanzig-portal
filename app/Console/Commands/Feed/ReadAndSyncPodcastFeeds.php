@@ -46,6 +46,7 @@ class ReadAndSyncPodcastFeeds extends Command
             5603181, // Bitcoin Audible.DE - Die besten Bitcoin-Artikel, vorgelesen in deutscher Sprache!
             1769616, // Einemillionsatoshi - der Bitcoin Podcast für Frauen
             5784083, // Der Bitcoin Effekt - Dein Business Podcast
+            5932490, // Satoshis Coffeeshop
         ];
 
         foreach ($feedIds as $feedId) {
