@@ -61,7 +61,7 @@ class ReadAndSyncPodcastFeeds extends Command
         foreach ($feedIds as $feedId) {
             $podcast = $client->podcasts->byFeedId($feedId)
                                         ->json();
-            info('Importing: '.$podcast->feed->title);
+            $this->info('Importing: '.$podcast->feed->title);
             $importPodcast = Podcast::query()
                                     ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
                                         'title'         => $podcast->feed->title,
