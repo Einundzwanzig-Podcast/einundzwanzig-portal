@@ -57,7 +57,7 @@ class EpisodePolicy extends BasePolicy
      */
     public function update(User $user, Episode $episode)
     {
-        return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
+        return $episode->data['link'] && $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
