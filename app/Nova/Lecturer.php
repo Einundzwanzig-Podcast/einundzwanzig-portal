@@ -103,7 +103,6 @@ class Lecturer extends Resource
                 ->rules('nullable', 'string'),
 
             Text::make('Twitter username', 'twitter_username')
-                ->hideFromIndex()
                 ->help(__('Without @'))
                 ->rules('nullable', 'string'),
 
