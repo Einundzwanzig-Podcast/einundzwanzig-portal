@@ -33,41 +33,43 @@ class Episode extends Resource
     public static function afterUpdate(NovaRequest $request, Model $model)
     {
         if ($request->tags) {
-            $lecturer = \App\Models\Lecturer::updateOrCreate(['name' => $model->podcast->title], [
-                'team_id' => 1,
-                'active'  => true,
-                'website' => $model->podcast->link,
-            ]);
-            if ($model->podcast->data['image']) {
-                $lecturer->addMediaFromUrl($model->podcast->data['image'])
-                         ->toMediaCollection('avatar');
-            }
-            $library = \App\Models\Library::firstOrCreate(
-                [
-                    'name' => 'Podcasts'
+            if ($model->data['link']) {
+                $lecturer = \App\Models\Lecturer::updateOrCreate(['name' => $model->podcast->title], [
+                    'team_id' => 1,
+                    'active'  => true,
+                    'website' => $model->podcast->link,
                 ]);
-            $libraryItem = $model->libraryItem()
-                                 ->firstOrCreate([
-                                     'lecturer_id'   => $lecturer->id,
-                                     'episode_id'    => $model->id,
-                                     'name'          => $model->data['title'],
-                                     'type'          => 'podcast_episode',
-                                     'language_code' => $model->podcast->language_code,
-                                     'value'         => null,
-                                     'excerpt'       => $model->data['description'],
-                                     'subtitle'      => $model->data['description'],
-                                 ]);
-            $libraryItem->syncTagsWithType(is_array($request->tags) ? $request->tags : str($request->tags)->explode('-----'),
-                'library_item');
-            if ($model->data['image']) {
-                $libraryItem->addMediaFromUrl($model->data['image'])
-                            ->toMediaCollection('main');
-            } else {
-                $libraryItem->addMediaFromUrl($model->podcast->data['image'])
-                            ->toMediaCollection('main');
+                if ($model->podcast->data['image']) {
+                    $lecturer->addMediaFromUrl($model->podcast->data['image'])
+                             ->toMediaCollection('avatar');
+                }
+                $library = \App\Models\Library::firstOrCreate(
+                    [
+                        'name' => 'Podcasts'
+                    ]);
+                $libraryItem = $model->libraryItem()
+                                     ->firstOrCreate([
+                                         'lecturer_id'   => $lecturer->id,
+                                         'episode_id'    => $model->id,
+                                         'name'          => $model->data['title'],
+                                         'type'          => 'podcast_episode',
+                                         'language_code' => $model->podcast->language_code,
+                                         'value'         => null,
+                                         'excerpt'       => $model->data['description'],
+                                         'subtitle'      => $model->data['description'],
+                                     ]);
+                $libraryItem->syncTagsWithType(is_array($request->tags) ? $request->tags : str($request->tags)->explode('-----'),
+                    'library_item');
+                if ($model->data['image']) {
+                    $libraryItem->addMediaFromUrl($model->data['image'])
+                                ->toMediaCollection('main');
+                } else {
+                    $libraryItem->addMediaFromUrl($model->podcast->data['image'])
+                                ->toMediaCollection('main');
+                }
+                $library->libraryItems()
+                        ->attach($libraryItem);
             }
-            $library->libraryItems()
-                    ->attach($libraryItem);
         }
     }
 
