@@ -95,6 +95,7 @@ class MeetupEvent extends Resource
                 ->hideFromIndex(),
 
             Text::make('Link')
+                ->hideFromIndex()
                 ->rules('required', 'string'),
 
             BelongsTo::make('Meetup')
