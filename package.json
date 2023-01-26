@@ -17,7 +17,6 @@
         "autoprefixer": "^10.4.7",
         "laravel-echo": "^1.15.0",
         "laravel-vite-plugin": "^0.7.0",
-        "lodash": "^4.17.19",
         "postcss": "^8.4.14",
         "pusher-js": "^7.1.1-beta",
         "tailwindcss": "^3.1.0",

@@ -1,9 +1,6 @@
-import _    from 'lodash'
 import Echo from 'laravel-echo'
 
 import Pusher from 'pusher-js'
-
-window._ = _
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
