@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Spatie\Translatable\Facades\Translatable;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,5 +46,9 @@ class AppServiceProvider extends ServiceProvider
         Str::macro('initials', function (string $string) {
             return (string) (new Stringable($string))->initials();
         });
+
+        Translatable::fallback(
+            fallbackAny: true,
+        );
     }
 }
