@@ -11,6 +11,17 @@ class InternArticleView extends Component
 {
     public LibraryItem $libraryItem;
 
+    public function mount()
+    {
+        $this->libraryItem->load([
+            'libraries',
+        ]);
+        if ($this->libraryItem->libraries->where('is_public', false)
+                                         ->count() > 0) {
+            abort(403, __('Sorry! You are not authorized to perform this action.'));
+        }
+    }
+
     public function render()
     {
         if ($this->libraryItem->type === 'markdown_article') {
