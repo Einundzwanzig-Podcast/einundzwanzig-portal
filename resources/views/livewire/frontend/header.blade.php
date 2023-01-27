@@ -110,6 +110,7 @@
                         option-value="language"
                     />
                 </div>
+
                 @auth
                     <div></div>
                 @else
@@ -128,16 +129,16 @@
         </div>
     </section>
     <section class="h-auto">
-        <div class="px-10 py-2 sm:py-6 mx-auto max-w-7xl">
+        <div class="px-10 py-2 mx-auto max-w-7xl">
             <div class="w-full mx-auto text-left md:text-center">
 
                 @if(str(request()->route()->getName())->contains('school.'))
                     <div>
-                        <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
+                        <h1 class="mb-2 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                             Bitcoin <span
                                 class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Courses') }}</span>
                         </h1>
-                        <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">
+                        <p class="px-0 mb-2 text-lg text-gray-600 md:text-xl lg:px-24">
                             {{ __('Choose your city, search for courses in the surrounding area and select a topic that suits you.') }}
                         </p>
                     </div>
@@ -145,11 +146,11 @@
 
                 @if(str(request()->route()->getName())->contains('library.'))
                     <div>
-                        <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
+                        <h1 class="mb-2 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                             Bitcoin <span
                                 class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Content') }}</span>
                         </h1>
-                        <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">
+                        <p class="px-0 mb-2 text-lg text-gray-600 md:text-xl lg:px-24">
                             {{ __('Choose a topic that is right for you.') }}
                         </p>
                     </div>

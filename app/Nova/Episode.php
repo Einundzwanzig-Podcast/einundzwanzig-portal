@@ -53,7 +53,9 @@ class Episode extends Resource
                                          'episode_id'    => $model->id,
                                          'name'          => $model->data['title'],
                                          'type'          => 'podcast_episode',
-                                         'language_code' => $model->podcast->language_code,
+                                         'language_code' => str($model->podcast->language_code)
+                                             ->before('-')
+                                             ->toString(),
                                          'value'         => null,
                                          'excerpt'       => $model->data['description'],
                                          'subtitle'      => $model->data['description'],

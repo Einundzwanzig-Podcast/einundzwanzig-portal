@@ -6,7 +6,6 @@ use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
 use App\Models\Tag;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
@@ -83,7 +82,7 @@ class LibraryTable extends Component
         }
 
         return view('livewire.library.library-table', [
-            'libraries' => $tabs,
+            'libraries'    => $tabs,
             'libraryItems' => LibraryItem::query()
                                          ->with([
                                              'lecturer',
@@ -103,8 +102,10 @@ class LibraryTable extends Component
                                                      ->where('libraries.name', $this->currentTab)
                                              )
                                          )
-                                         ->when(count($this->filters) > 0, fn($query) => $query->whereHas('tags',
-                                             fn($query) => $query->whereIn('tags.id', $this->filters)))
+                                         ->when(isset($this->filters['tag']), fn($query) => $query->whereHas('tags',
+                                             fn($query) => $query->whereIn('tags.id', $this->filters['tag'])))
+                                         ->when(isset($this->filters['language']),
+                                             fn($query) => $query->whereIn('language_code', $this->filters['language']))
                                          ->whereHas('libraries',
                                              fn($query) => $query->where('libraries.is_public', $shouldBePublic))
                                          ->orderByDesc('library_items.created_at')
