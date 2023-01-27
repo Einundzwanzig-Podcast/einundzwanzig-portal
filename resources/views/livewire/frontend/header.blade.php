@@ -141,7 +141,7 @@
         <div class="px-10 py-2 mx-auto max-w-7xl">
             <div class="w-full mx-auto text-left md:text-center">
 
-                @if(str(request()->route()->getName())->contains('school.'))
+                @if(str(request()->route()->getName())->contains('school.') && !str(request()->route()->getName())->contains('landingPage.'))
                     <div>
                         <h1 class="mb-2 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                             Bitcoin <span
