@@ -11,7 +11,7 @@
                 <p class="max-w-sm text-lg text-gray-200">
                     {{ __('A Bitcoin community for all.') }}
                 </p>
-                <div class="max-w-sm text-lg text-gray-200 space-x-2 flex flex-row">
+                <div class="max-w-sm text-lg text-gray-200 space-y-2 sm:space-y-0 sm:space-x-2 flex flex-col sm:flex-row items-start sm:items-end">
                     <x-native-select
                         label="{{ __('Change country') }}"
                         wire:model="c"
@@ -28,6 +28,12 @@
                         option-label="name"
                         option-value="language"
                     />
+                    <div class="py-2 sm:py-0">
+                        <x-button secondary href="{{ route('auth.ln') }}">
+                            <i class="fa-thin fa-sign-in"></i>
+                            {{ __('Login') }}
+                        </x-button>
+                    </div>
                 </div>
             </div>
             <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">

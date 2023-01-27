@@ -1,22 +1,8 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     @googlefonts('article')
+    {{-- HEADER --}}
+    <livewire:frontend.header :country="null"/>
     <div class="bg-21gray font-article">
-        <div class="mx-auto max-w-screen-2xl py-4 px-6 lg:px-8 overflow-hidden">
-            <div class="flex items-center justify-end">
-                @if($libraryItem->type === 'markdown_article')
-                    <x-button lg :href="route('article.overview')">
-                        <i class="fa-thin fa-arrow-left"></i>
-                        {{ __('Back to overview') }}
-                    </x-button>
-                @else
-                    <x-button lg :href="route('library.table.libraryItems', ['country' => 'de'])">
-                        <i class="fa-thin fa-arrow-left"></i>
-                        {{ __('Back to overview') }}
-                    </x-button>
-                @endif
-            </div>
-        </div>
-
         <div class="relative mx-auto max-w-screen-2xl py-4 px-6 lg:px-8 overflow-hidden">
             <div class="absolute top-0 bottom-0 left-3/4 hidden w-screen bg-21gray lg:block"></div>
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">

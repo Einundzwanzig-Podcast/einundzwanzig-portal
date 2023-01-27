@@ -1,13 +1,8 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
+    <livewire:frontend.header :country="$country"/>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
-            <div class="flex items-center justify-end space-x-2 my-6">
-                <x-button primary onclick="history.back()">
-                    <i class="fa fa-thin fa-arrow-left"></i>
-                    Zurück zur Übersicht
-                </x-button>
-            </div>
 
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 

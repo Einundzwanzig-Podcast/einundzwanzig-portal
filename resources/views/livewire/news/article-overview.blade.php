@@ -1,4 +1,5 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
+    <livewire:frontend.header :country="null"/>
     <div class="relative bg-21gray px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
         <div class="absolute inset-0">
             <div class="h-1/3 bg-21gray sm:h-2/3"></div>

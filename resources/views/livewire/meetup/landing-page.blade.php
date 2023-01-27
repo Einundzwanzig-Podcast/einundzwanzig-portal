@@ -1,4 +1,5 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
+    <livewire:frontend.header :country="null"/>
     {{-- MAIN --}}
     <section class="w-full mb-12 mt-8">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row">
@@ -128,13 +129,6 @@
                 @endforeach
             </ul>
 
-            <div class="p-4 w-full flex justify-end">
-                <x-button :href="route('meetup.table.meetup', ['country' => $meetup->city->country->code])" primary lg class="whitespace-nowrap">
-                    <i class="fa fa-thin fa-arrow-left mr-2"></i>
-                    {{ __('Back') }}
-                </x-button>
-            </div>
-
             <div class="w-full mt-8">
 
                 @php
@@ -198,13 +192,6 @@
                             }"
                 >
                     <div x-ref="calendar"></div>
-                </div>
-
-                <div class="p-4 w-full flex justify-end">
-                    <x-button :href="route('meetup.table.meetup', ['country' => $meetup->city->country->code])" primary lg class="whitespace-nowrap">
-                        <i class="fa fa-thin fa-arrow-left mr-2"></i>
-                        {{ __('Back') }}
-                    </x-button>
                 </div>
 
             </div>
