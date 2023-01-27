@@ -22,6 +22,10 @@ Route::middleware([])
      ->name('libraryItem.view');
 
 Route::middleware([])
+     ->get('/lecturer-material/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
+     ->name('lecturerMaterial.view');
+
+Route::middleware([])
      ->get('/my-meetups', \App\Http\Livewire\Profile\Meetups::class)
      ->name('profile.meetups');
 

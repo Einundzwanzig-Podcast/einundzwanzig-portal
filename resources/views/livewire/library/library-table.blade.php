@@ -73,10 +73,13 @@
                      class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 
                     @foreach($libraryItems as $libraryItem)
+                        @php
+                            $link = $isLecturerPage ? route('lecturerMaterial.view', ['libraryItem' => $libraryItem]) : route('libraryItem.view', ['libraryItem' => $libraryItem]);
+                        @endphp
                         <div wire:key="library_item_{{ $libraryItem->id }}"
                              class="flex flex-col overflow-hidden rounded-lg shadow-[#F7931A] shadow-sm">
                             <div class="flex-shrink-0">
-                                <a href="{{ route('libraryItem.view', ['libraryItem' => $libraryItem]) }}">
+                                <a href="{{ $link }}">
                                     <img class="h-48 w-full object-contain"
                                          src="{{ $libraryItem->getFirstMediaUrl('main') }}"
                                          alt="{{ $libraryItem->name }}">
@@ -88,7 +91,7 @@
                                     <div
                                         class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
                                     </p>
-                                    <a href="{{ route('libraryItem.view', ['libraryItem' => $libraryItem]) }}"
+                                    <a href="{{ $link }}"
                                        class="mt-2 block">
                                         <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>
                                         <p class="mt-3 text-base text-gray-300 line-clamp-6">{{ strip_tags($libraryItem->excerpt) }}</p>

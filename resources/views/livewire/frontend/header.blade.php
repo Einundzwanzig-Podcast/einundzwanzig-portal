@@ -27,6 +27,11 @@
                                    class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
                                     {{ __('Back to the overview') }}
                                 </a>
+                            @elseif(str(request()->route()->getName())->contains('lecturerMaterial.view'))
+                                <a href="{{ route('library.table.lecturer', ['country' => $country]) }}"
+                                   class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
+                                    {{ __('Back to the overview') }}
+                                </a>
                             @endif
 
                             @if(str(request()->route()->getName())->contains('school.'))
