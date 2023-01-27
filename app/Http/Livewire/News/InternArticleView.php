@@ -17,7 +17,7 @@ class InternArticleView extends Component
             'libraries',
         ]);
         if ($this->libraryItem->libraries->where('is_public', false)
-                                         ->count() > 0) {
+                                         ->count() > 0 && !auth()->check()) {
             abort(403, __('Sorry! You are not authorized to perform this action.'));
         }
     }
