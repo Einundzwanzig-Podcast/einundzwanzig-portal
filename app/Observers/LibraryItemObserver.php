@@ -26,7 +26,7 @@ class LibraryItemObserver
             if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
                 $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
             }
-            if ($libraryItem->lecturer->twitter_username && $libraryItem->type === 'markdown_article') {
+            if (!$libraryItem->lecturer->twitter_username) {
                 $libraryItemName .= ' von '.$libraryItem->lecturer->name;
             }
 
@@ -37,7 +37,8 @@ class LibraryItemObserver
 
                 if ($libraryItem->type !== 'markdown_article') {
 
-                    if ($libraryItem->whereDoesntHave('libraries', fn($query) => $query->where('libraries.is_public', false))
+                    if ($libraryItem->whereDoesntHave('libraries',
+                        fn($query) => $query->where('libraries.is_public', false))
                                     ->exists()) {
                         $text = sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
                             $libraryItemName,
