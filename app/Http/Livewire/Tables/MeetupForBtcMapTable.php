@@ -46,6 +46,7 @@ class MeetupForBtcMapTable extends DataTableComponent
         return Meetup::query()
                      ->with([
                          'city.country',
-                     ]);
+                     ])
+                     ->orderBy('cities.population');
     }
 }
