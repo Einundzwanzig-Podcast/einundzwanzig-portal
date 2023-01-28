@@ -186,9 +186,7 @@ Route::middleware([
          * Meetup OSM
          * */
          Route::get('/meetup-osm/table', \App\Http\Livewire\Meetup\PrepareForBtcMapTable::class)
-              ->name('osm.meetups')
-              ->can('NovaAdminPolicy.viewAny');
+              ->name('osm.meetups');
          Route::get('/meetup-osm/item/{meetup}', \App\Http\Livewire\Meetup\PrepareForBtcMapItem::class)
-              ->name('osm.meetups.item')
-              ->can('NovaAdminPolicy.viewAny');
+              ->name('osm.meetups.item');
      });

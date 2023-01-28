@@ -6,17 +6,29 @@ use App\Models\Meetup;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use WireUi\Traits\Actions;
 
 class PrepareForBtcMapItem extends Component
 {
+    use Actions;
+
     public Meetup $meetup;
 
-    public $wikipediaSearchResults;
+    public $population;
+    public $population_date;
     public $osmSearchResults;
     public $osmSearchResultsState;
     public $osmSearchResultsCountry;
 
     public $selectedItem;
+
+    public function rules()
+    {
+        return [
+            'population'      => 'required|numeric',
+            'population_date' => 'required|string',
+        ];
+    }
 
     public function mount()
     {
@@ -40,14 +52,21 @@ class PrepareForBtcMapItem extends Component
 
         if ($this->meetup->city->osm_relation) {
             $this->selectedItem = $this->meetup->city->osm_relation;
-
-            $wikipediaUrl = 'https://query.wikidata.org/sparql?query=SELECT%20%3Fpopulation%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Amwapi%20%7B%0A%20%20%20%20%20%20bd%3AserviceParam%20mwapi%3Asearch%20%22'.urlencode($this->meetup->city->name).'%22%20.%20%20%20%20%0A%20%20%20%20%20%20bd%3AserviceParam%20mwapi%3Alanguage%20%22en%22%20.%20%20%20%20%0A%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Aapi%20%22EntitySearch%22%20.%0A%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Aendpoint%20%22www.wikidata.org%22%20.%0A%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Alimit%201%20.%0A%20%20%20%20%20%20%3Fitem%20wikibase%3AapiOutputItem%20mwapi%3Aitem%20.%0A%20%20%7D%0A%20%20%3Fitem%20wdt%3AP1082%20%3Fpopulation%0A%7D';
-            $response = Http::acceptJson()
-                            ->get(
-                                $wikipediaUrl
-                            );
-            $this->wikipediaSearchResults = $response->json();
         }
+    }
+
+    public function updatedPopulation($value)
+    {
+        $this->meetup->city->population = $value;
+        $this->meetup->city->save();
+        $this->notification()->success('Population updated', 'Success');
+    }
+
+    public function updatedPopulationDate($value)
+    {
+        $this->meetup->city->population_date = $value;
+        $this->meetup->city->save();
+        $this->notification()->success('Population date updated', 'Success');
     }
 
     public function selectItem($index, bool $isState = false, $isCountry = false)

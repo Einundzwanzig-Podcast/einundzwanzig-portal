@@ -103,12 +103,10 @@
         </div>
         <h1>Wikipedia Search Results</h1>
         <div class="flex space-x-2">
-            @foreach($wikipediaSearchResults['results']['bindings'] ?? [] as $pop)
-                <div wire:key="pop_{{ $loop->index }}" class="cursor-pointer underline font-bold"
-                     wire:click="takePop({{ $pop['population']['value'] }})">
-                    population: {{ number_format($pop['population']['value']) }}
-                </div>
-            @endforeach
+            <a target="_blank" class="underline text-amber-500"
+               href="https://de.wikipedia.org/wiki/{{ urlencode($meetup->city->name) }}">Wikipedia: {{ $meetup->city->name }}</a>
+            <x-input wire:model.debounce="population" label="population"/>
+            <x-input wire:model.debounce="population_date" label="population_date"/>
         </div>
         <h1>DB population</h1>
         <code>
