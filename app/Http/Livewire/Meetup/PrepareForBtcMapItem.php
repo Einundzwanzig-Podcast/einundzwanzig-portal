@@ -14,6 +14,7 @@ class PrepareForBtcMapItem extends Component
     public $wikipediaSearchResults;
     public $osmSearchResults;
     public $osmSearchResultsState;
+    public $osmSearchResultsCountry;
 
     public $selectedItem;
 
@@ -31,6 +32,12 @@ class PrepareForBtcMapItem extends Component
                         );
         $this->osmSearchResultsState = $response->json();
 
+        $response = Http::acceptJson()
+                        ->get(
+                            'https://nominatim.openstreetmap.org/search?country='.$this->meetup->city->name.'&format=json&polygon_geojson=1'
+                        );
+        $this->osmSearchResultsCountry = $response->json();
+
         if ($this->meetup->city->osm_relation) {
             $this->selectedItem = $this->meetup->city->osm_relation;
 
@@ -43,10 +50,12 @@ class PrepareForBtcMapItem extends Component
         }
     }
 
-    public function selectItem($index, bool $isState = false)
+    public function selectItem($index, bool $isState = false, $isCountry = false)
     {
         if ($isState) {
             $this->selectedItem = $this->osmSearchResultsState[$index];
+        } elseif ($isCountry) {
+            $this->selectedItem = $this->osmSearchResultsCountry[$index];
         } else {
             $this->selectedItem = $this->osmSearchResults[$index];
         }

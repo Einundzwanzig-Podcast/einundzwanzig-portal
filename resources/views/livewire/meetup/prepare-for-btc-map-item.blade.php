@@ -2,14 +2,15 @@
 
     <div class="max-w-none text-white flex flex-col space-y-4">
         <a href="{{ route('osm.meetups') }}">Zurück</a>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-3 gap-2">
             <div>
                 <h1>Search city: {{ $meetup->city->name }}</h1>
                 <h1>OSM API Response</h1>
                 <div class="flex flex-col space-y-2">
                     @foreach($osmSearchResults as $item)
                         <code class="w-full">
-                            <div wire:key="osmItemCity_{{ $loop->index }}" class="cursor-pointer underline" wire:click="selectItem({{ $loop->index }})">
+                            <div wire:key="osmItemCity_{{ $loop->index }}" class="cursor-pointer underline"
+                                 wire:click="selectItem({{ $loop->index }})">
                                 {{ $item['display_name'] }}
                             </div>
                         </code>
@@ -22,7 +23,22 @@
                 <div class="flex flex-col space-y-2">
                     @foreach($osmSearchResultsState as $item)
                         <code class="w-full">
-                            <div wire:key="osmItemState_{{ $loop->index }}" class="cursor-pointer underline" wire:click="selectItem({{ $loop->index }}, true)">
+                            <div wire:key="osmItemState_{{ $loop->index }}" class="cursor-pointer underline"
+                                 wire:click="selectItem({{ $loop->index }}, true)">
+                                {{ $item['display_name'] }}
+                            </div>
+                        </code>
+                    @endforeach
+                </div>
+            </div>
+            <div>
+                <h1>Search country: {{ $meetup->city->name }}</h1>
+                <h1>OSM API Response</h1>
+                <div class="flex flex-col space-y-2">
+                    @foreach($osmSearchResultsCountry as $item)
+                        <code class="w-full">
+                            <div wire:key="osmItemCountry_{{ $loop->index }}" class="cursor-pointer underline"
+                                 wire:click="selectItem({{ $loop->index }}, false, true)">
                                 {{ $item['display_name'] }}
                             </div>
                         </code>
@@ -88,7 +104,8 @@
         <h1>Wikipedia Search Results</h1>
         <div class="flex space-x-2">
             @foreach($wikipediaSearchResults['results']['bindings'] ?? [] as $pop)
-                <div wire:key="pop_{{ $loop->index }}" class="cursor-pointer underline font-bold" wire:click="takePop({{ $pop['population']['value'] }})">
+                <div wire:key="pop_{{ $loop->index }}" class="cursor-pointer underline font-bold"
+                     wire:click="takePop({{ $pop['population']['value'] }})">
                     population: {{ number_format($pop['population']['value']) }}
                 </div>
             @endforeach
