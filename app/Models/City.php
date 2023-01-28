@@ -28,8 +28,10 @@ class City extends Model
      * @var array
      */
     protected $casts = [
-        'id'         => 'integer',
-        'country_id' => 'integer',
+        'id'                 => 'integer',
+        'country_id'         => 'integer',
+        'osm_relation'       => 'json',
+        'simplified_geojson' => 'json',
     ];
 
     protected static function booted()

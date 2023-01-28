@@ -691,5 +691,6 @@
     "no location set": "no hay ubicación establecida",
     "Open on Youtube": "Abrir en Youtube",
     "You do not have permission to view the page.": "No tienes permiso para ver la página.",
-    "Please contact the admins for new file types, otherwise pack the files in a ZIP! (Currently: PDF, ZIP)": "Si deseas nuevos tipos de archivo, pónte en contacto con los administradores; de lo contrario, envíe los archivos en un ZIP. (Actualmente: PDF, ZIP)"
+    "Please contact the admins for new file types, otherwise pack the files in a ZIP! (Currently: PDF, ZIP)": "Si deseas nuevos tipos de archivo, pónte en contacto con los administradores; de lo contrario, envíe los archivos en un ZIP. (Actualmente: PDF, ZIP)",
+    "load more...": ""
 }

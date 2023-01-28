@@ -29,6 +29,7 @@
     <script src="{{ asset('vendor/jvector/maps/pl.js') }}"></script>
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     <script src="{{ asset('dist/smoothscroll.js') }}"></script>
+    @mapstyles
     @mapscripts
     <wireui:scripts/>
     <x-comments::scripts/>
@@ -37,7 +38,6 @@
     <x-comments::styles/>
     <x-embed-styles />
     @livewireStyles
-    @mapstyles
     <style>
       .comments {
         --comments-color-background: rgb(34, 34, 34);

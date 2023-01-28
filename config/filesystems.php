@@ -36,6 +36,12 @@ return [
             'throw' => false,
         ],
 
+        'geo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/geo'),
+            'throw' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

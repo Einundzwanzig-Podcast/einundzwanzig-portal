@@ -125,6 +125,13 @@ class DatabaseSeeder extends Seeder
             'longitude'  => 8.65639,
             'created_by' => 1,
         ]);
+        City::create([
+            'country_id' => 1,
+            'name'       => 'Hessen',
+            'latitude'   => 50.526501,
+            'longitude'  => 9.004440,
+            'created_by' => 1,
+        ]);
         Venue::create([
             'city_id'    => 1,
             'name'       => 'The Blue Studio Coworking (Füssen)',
@@ -376,9 +383,9 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
         Artisan::call(ReadAndSyncPodcastFeeds::class);
         Artisan::call(SyncOpenBooks::class);
         Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
+            'city_id'    => 6,
+            'name'       => 'Einundzwanzig Hessen',
+            'telegram_link'       => 'https://t.me/EinundzwanzigHessen',
             'created_by' => 1,
         ]);
         MeetupEvent::create([

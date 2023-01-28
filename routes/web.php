@@ -175,8 +175,20 @@ Route::middleware([
     'needMeetup',
 ])
      ->group(function () {
+         /*
+         * Dashboard
+         * */
          Route::get('/dashboard', function () {
              return view('dashboard');
          })
               ->name('dashboard');
+         /*
+         * Meetup OSM
+         * */
+         Route::get('/meetup-osm/table', \App\Http\Livewire\Meetup\PrepareForBtcMapTable::class)
+              ->name('osm.meetups')
+              ->can('NovaAdminPolicy.viewAny');
+         Route::get('/meetup-osm/item/{meetup}', \App\Http\Livewire\Meetup\PrepareForBtcMapItem::class)
+              ->name('osm.meetups.item')
+              ->can('NovaAdminPolicy.viewAny');
      });
