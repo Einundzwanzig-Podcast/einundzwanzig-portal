@@ -59,10 +59,12 @@ class PrepareForBtcMapItem extends Component
 
     public function updatedPopulation($value)
     {
-        $this->meetup->city->population = str($value)
+        $value = str($value)
             ->replace('.', '')
             ->replace(',', '.')
             ->toInteger();
+        $this->meetup->city->population = $value;
+        $this->population = $value;
         $this->meetup->city->save();
         $this->notification()
              ->success('Population updated', 'Success');
