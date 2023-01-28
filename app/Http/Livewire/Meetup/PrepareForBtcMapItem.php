@@ -138,7 +138,7 @@ class PrepareForBtcMapItem extends Component
     public function takePop($value)
     {
         $this->meetup->city->population = $value;
-        $this->meetup->city->population_date = date('Y');
+        $this->meetup->city->population_date = '2021-12-31';
         $this->meetup->city->save();
 
         return to_route('osm.meetups.item', ['meetup' => $this->meetup]);
