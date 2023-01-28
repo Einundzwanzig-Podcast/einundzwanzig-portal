@@ -68,7 +68,7 @@
                 <h1>Simplified geojson</h1>
                 <pre
                     class="overflow-x-auto py-4">{{ json_encode($meetup->city->simplified_geojson, JSON_THROW_ON_ERROR) }}</pre>
-                <div
+                <div wire:ignore
                     class="my-4"
                     x-data="{
                         init() {
