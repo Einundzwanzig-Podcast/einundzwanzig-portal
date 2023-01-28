@@ -25,7 +25,7 @@ class PrepareForBtcMapItem extends Component
     public function rules()
     {
         return [
-            'population'      => 'required|numeric',
+            'population'      => 'required',
             'population_date' => 'required|string',
         ];
     }
@@ -59,7 +59,10 @@ class PrepareForBtcMapItem extends Component
 
     public function updatedPopulation($value)
     {
-        $this->meetup->city->population = $value;
+        $this->meetup->city->population = str($value)
+            ->replace('.', '')
+            ->replace(',', '.')
+            ->toInteger();
         $this->meetup->city->save();
         $this->notification()
              ->success('Population updated', 'Success');
