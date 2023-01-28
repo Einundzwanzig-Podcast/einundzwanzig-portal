@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Meetup;
 
 use App\Models\Meetup;
-use App\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -54,20 +53,24 @@ class PrepareForBtcMapItem extends Component
         if ($this->meetup->city->osm_relation) {
             $this->selectedItem = $this->meetup->city->osm_relation;
         }
+        $this->population = $this->meetup->city->population;
+        $this->population_date = $this->meetup->city->population_date;
     }
 
     public function updatedPopulation($value)
     {
         $this->meetup->city->population = $value;
         $this->meetup->city->save();
-        $this->notification()->success('Population updated', 'Success');
+        $this->notification()
+             ->success('Population updated', 'Success');
     }
 
     public function updatedPopulationDate($value)
     {
         $this->meetup->city->population_date = $value;
         $this->meetup->city->save();
-        $this->notification()->success('Population date updated', 'Success');
+        $this->notification()
+             ->success('Population date updated', 'Success');
     }
 
     public function selectItem($index, bool $isState = false, $isCountry = false)
