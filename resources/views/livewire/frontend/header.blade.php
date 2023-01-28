@@ -113,23 +113,25 @@
                     </div>
                 </div>
                 <div class="flex space-x-2 justify-end w-full items-end">
-                    <x-native-select
-                        label="{{ __('Change country') }}"
-                        wire:model="c"
-                        option-label="name"
-                        option-value="code"
-                        :options="$countries"
-                    />
-                    <x-select
-                        label="{{ __('Change language') }}"
-                        placeholder="{{ __('Change language') }}"
-                        wire:model="l"
-                        :clearable="false"
-                        :searchable="true"
-                        :async-data="route('api.languages.index')"
-                        option-label="name"
-                        option-value="language"
-                    />
+                    @if(!str(request()->route()->getName())->contains('.view'))
+                        <x-native-select
+                            label="{{ __('Change country') }}"
+                            wire:model="c"
+                            option-label="name"
+                            option-value="code"
+                            :options="$countries"
+                        />
+                        <x-select
+                            label="{{ __('Change language') }}"
+                            placeholder="{{ __('Change language') }}"
+                            wire:model="l"
+                            :clearable="false"
+                            :searchable="true"
+                            :async-data="route('api.languages.index')"
+                            option-label="name"
+                            option-value="language"
+                        />
+                    @endif
                     @auth
                         <div></div>
                     @else
