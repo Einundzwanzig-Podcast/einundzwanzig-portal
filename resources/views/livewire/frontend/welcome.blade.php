@@ -51,8 +51,6 @@
                                 src="{{ asset('img/einundzwanzig-wallpaper-benrath.png') }}" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                            <span
-                                class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-amber-500 rounded-md">{{ __('Plebs together strong') }}</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
                                 {{ __('News') }}
                             </h4>
