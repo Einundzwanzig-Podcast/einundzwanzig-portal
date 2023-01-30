@@ -36,8 +36,8 @@
         @if($row->type !== 'markdown_article')
             <x-button
                 x-data="{
-            textToCopy: '{{ url()->route('library.table.libraryItems', ['country' => 'de', 'table' => ['filters' => ['id' => $row->id]]]) }}',
-        }"
+                    textToCopy: '{{ url()->route('library.table.libraryItems', ['country' => 'de', 'table' => ['filters' => ['id' => $row->id]]]) }}',
+                }"
                 @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
                 xs black>
                 <i class="fa fa-thin fa-copy mr-2"></i>

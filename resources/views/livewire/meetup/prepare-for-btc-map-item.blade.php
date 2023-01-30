@@ -1,5 +1,4 @@
 <div class="p-6 w-full" wire:loading.class="opacity-50">
-
     <div class="max-w-none text-white flex flex-col space-y-4">
         <a href="{{ route('osm.meetups') }}">Zurück</a>
         <div class="grid grid-cols-3 gap-2">
