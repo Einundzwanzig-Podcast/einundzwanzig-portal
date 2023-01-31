@@ -135,7 +135,7 @@
                                                     class="flex w-1/3 shrink-0 snap-start flex-col items-center justify-center p-2"
                                                     role="option">
                                                     <a href="{{ $image->getUrl() }}" target="_blank">
-                                                        <img class="mt-2 w-full" src="{{ $image->getUrl() }}"
+                                                        <img class="mt-2 w-full" src="{{ $image->getUrl('preview') }}"
                                                              alt="placeholder image">
                                                     </a>
 
