@@ -26,7 +26,7 @@ class ArticleOverview extends Component
             'SEOData' => new SEOData(
                 title: __('News'),
                 description: __('Here we post important news that is relevant for everyone.'),
-                image: asset('img/einundzwanzig-wallpaper-benrath.png'),
+                image: asset('img/einundzwanzig-news-colored.png'),
             )
         ]);
     }
