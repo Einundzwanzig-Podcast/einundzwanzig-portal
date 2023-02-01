@@ -7,7 +7,7 @@
         <div class="relative mx-auto max-w-7xl">
             <div class="flex flex-row justify-center items-center space-x-2">
                 <div>
-                    <img class="h-48 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
+                    <img class="h-32 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                 </div>
             </div>
             <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
