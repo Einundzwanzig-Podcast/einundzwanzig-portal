@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="flex space-x-2 justify-end w-full items-end">
-                    @if(!str(request()->route()->getName())->contains('.view'))
+                    @if(!str(request()->route()->getName())->contains(['.view', 'landing']))
                         <x-native-select
                             label="{{ __('Change country') }}"
                             wire:model="c"
