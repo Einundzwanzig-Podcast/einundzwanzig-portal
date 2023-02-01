@@ -1,13 +1,13 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     <livewire:frontend.header :country="null"/>
-    <div class="relative bg-21gray px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
+    <div class="relative bg-21gray px-6 pt-2 pb-20 lg:px-8 lg:pt-2 lg:pb-2">
         <div class="absolute inset-0">
             <div class="h-1/3 bg-21gray sm:h-2/3"></div>
         </div>
         <div class="relative mx-auto max-w-7xl">
             <div class="flex flex-row justify-center items-center space-x-2">
                 <div>
-                    <img class="h-96" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
+                    <img class="h-48 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                 </div>
             </div>
             <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
