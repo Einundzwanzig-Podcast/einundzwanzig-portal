@@ -10,7 +10,7 @@
                     <img class="h-32 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                 </div>
             </div>
-            <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+            <div class="mx-auto mt-2 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 
                 @foreach($libraryItems as $libraryItem)
                     <div wire:key="library_item_{{ $libraryItem->id }}"
