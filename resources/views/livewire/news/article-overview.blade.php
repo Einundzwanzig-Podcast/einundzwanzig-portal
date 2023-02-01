@@ -5,9 +5,10 @@
             <div class="h-1/3 bg-21gray sm:h-2/3"></div>
         </div>
         <div class="relative mx-auto max-w-7xl">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">{{ __('Dezentral News') }}</h2>
-                <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">{{ '' }}</p>
+            <div class="flex flex-row justify-center items-center space-x-2">
+                <div>
+                    <img class="h-96 w-96" src="{{ asset('img/einundzwanzig-news.svg') }}" alt="">
+                </div>
             </div>
             <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 

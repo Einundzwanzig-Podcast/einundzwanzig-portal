@@ -47,8 +47,8 @@
                             <div
                                 class="absolute bottom-0 left-0 z-10 w-full h-full opacity-30 bg-gradient-to-b from-transparent to-gray-900"></div>
                             <img
-                                class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                                src="{{ asset('img/einundzwanzig-wallpaper-benrath.png') }}" alt="">
+                                class="bg-white absolute inset-0 object-contain object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110"
+                                src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">
