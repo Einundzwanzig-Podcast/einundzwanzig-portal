@@ -28,9 +28,9 @@
     <script src="{{ asset('vendor/jvector/maps/pt.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/pl.js') }}"></script>
     <script src="{{ asset('dist/smoothscroll.js') }}"></script>
-    <script defer src="assets/fontawesome/brands.min.js"></script>
-    <script defer src="assets/fontawesome/thin.min.js"></script>
-    <script defer src="assets/fontawesome/fontawesome.min.js"></script>
+    <script defer src="/assets/fontawesome/brands.min.js"></script>
+    <script defer src="/assets/fontawesome/thin.min.js"></script>
+    <script defer src="/assets/fontawesome/fontawesome.min.js"></script>
     @mapscripts
     <wireui:scripts/>
     <x-comments::scripts/>
