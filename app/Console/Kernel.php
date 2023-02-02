@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Database\CleanupLoginKeys;
 use App\Console\Commands\Feed\ReadAndSyncPodcastFeeds;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use Illuminate\Console\Scheduling\Schedule;
@@ -24,12 +25,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+
         $schedule->call(new PruneStaleAttachments)
                  ->daily();
         $schedule->command(SyncOpenBooks::class)
                  ->dailyAt('04:00');
         $schedule->command(ReadAndSyncPodcastFeeds::class)
                  ->dailyAt('04:30');
+        $schedule->command(CleanupLoginKeys::class)
+                 ->everyFifteenMinutes();
     }
 
     /**
