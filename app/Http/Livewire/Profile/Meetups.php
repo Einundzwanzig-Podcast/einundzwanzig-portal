@@ -52,6 +52,11 @@ class Meetups extends Component
         }
     }
 
+    public function next()
+    {
+        return redirect()->intended();
+    }
+
     public function updatedSearch($value)
     {
         $this->meetups = Meetup::query()

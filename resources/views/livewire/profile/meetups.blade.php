@@ -26,7 +26,7 @@
         <div class="px-10 pt-6 mx-auto max-w-7xl">
             <div class="w-full mx-auto text-left md:text-center">
                 <p class="px-0 mb-6 text-lg text-gray-200 md:text-xl lg:px-24">
-                    <x-button href="/" primary lg>
+                    <x-button wire:click="next" primary lg>
                         {{ __('Thanks, continue here') }}
                     </x-button>
                 </p>

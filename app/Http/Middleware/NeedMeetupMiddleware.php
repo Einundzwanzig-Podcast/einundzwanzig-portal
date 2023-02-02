@@ -22,7 +22,7 @@ class NeedMeetupMiddleware
         if ($request->user()) {
             $request->user()->load('meetups');
             if ($request->user()->meetups->count() < 1) {
-                return redirect()->route('profile.meetups')->with('redirectToThis', $request->route()?->getName());
+                return redirect()->setIntendedUrl($request->url())->route('profile.meetups');
             }
         }
 

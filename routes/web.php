@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
-Route::middleware([
-    'needMeetup',
-])
+Route::middleware([])
      ->get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
 
@@ -65,9 +63,7 @@ Route::get('/auth/twitter/callback', function () {
 /*
  * School
  * */
-Route::middleware([
-    'needMeetup',
-])
+Route::middleware([])
      ->as('school.')
      ->prefix('/{country:code}/school')
      ->group(function () {
@@ -93,9 +89,7 @@ Route::middleware([
 /*
  * Library
  * */
-Route::middleware([
-    'needMeetup',
-])
+Route::middleware([])
      ->as('library.')
      ->prefix('/{country:code}/library')
      ->group(function () {
@@ -109,9 +103,7 @@ Route::middleware([
 /*
  * Books
  * */
-Route::middleware([
-    'needMeetup',
-])
+Route::middleware([])
      ->as('bookCases.')
      ->prefix('/{country:code}/book-cases')
      ->group(function () {
@@ -131,9 +123,7 @@ Route::middleware([
 /*
  * Events
  * */
-Route::middleware([
-    'needMeetup',
-])
+Route::middleware([])
      ->as('bitcoinEvent.')
      ->prefix('/{country:code}/event')
      ->group(function () {
@@ -147,9 +137,7 @@ Route::middleware([
 /*
  * Meetups
  * */
-Route::middleware([
-    'needMeetup',
-])
+Route::middleware([])
      ->as('meetup.')
      ->prefix('/{country:code}/meetup')
      ->group(function () {
@@ -172,7 +160,6 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'needMeetup',
 ])
      ->group(function () {
          /*
