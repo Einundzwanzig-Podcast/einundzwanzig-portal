@@ -41,6 +41,7 @@ class CommentBookCase extends Component
 
         $this->bookCase
             ->addMedia($this->photo)
+            ->usingFileName(md5($this->photo->getClientOriginalName()) . '.' . $this->photo->getClientOriginalExtension())
             ->toMediaCollection('images');
 
         return to_route('bookCases.comment.bookcase', ['country' => $this->country, 'bookCase' => $this->bookCase->id]);

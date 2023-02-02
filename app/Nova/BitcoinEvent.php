@@ -66,7 +66,9 @@ class BitcoinEvent extends Resource
               ->sortable(),
 
             Images::make(__('Logo'), 'logo')
-                  ->conversionOnIndexView('thumb'),
+                  ->showStatistics()
+                  ->conversionOnIndexView('thumb')
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Boolean::make(__('Show worldwide'), 'show_worldwide')
                    ->help(__('If checked, the event will be shown everywhere.')),
@@ -85,21 +87,24 @@ class BitcoinEvent extends Resource
                 ->rules('required', 'string'),
 
             Markdown::make(__('Description'), 'description')
-                ->rules('required', 'string')
-                ->hideFromIndex(),
+                    ->rules('required', 'string')
+                    ->hideFromIndex(),
 
             Text::make('Link')
                 ->rules('required', 'string'),
 
             BelongsTo::make(__('Venue'), 'venue', Venue::class)
-                     ->searchable()->showCreateRelationButton()->withSubtitles(),
+                     ->searchable()
+                     ->showCreateRelationButton()
+                     ->withSubtitles(),
 
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()
                                         ->hasRole('super-admin');
                      })
-                     ->searchable()->withSubtitles(),
+                     ->searchable()
+                     ->withSubtitles(),
 
         ];
     }

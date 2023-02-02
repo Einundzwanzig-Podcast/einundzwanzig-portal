@@ -151,10 +151,12 @@ class BookCaseTable extends DataTableComponent
         $orangePill
             ->addMedia($this->photo)
             ->preservingOriginal()
+            ->usingFileName(md5($this->photo->getClientOriginalName()).'.'.$this->photo->getClientOriginalExtension())
             ->toMediaCollection('images');
         $orangePill->load(['media']);
         $this->currentModal
             ->addMedia($this->photo)
+            ->usingFileName(md5($this->photo->getClientOriginalName()).'.'.$this->photo->getClientOriginalExtension())
             ->toMediaCollection('images');
         if ($this->orangepill['comment']) {
             $this->currentModal->comment($this->orangepill['comment'], null);

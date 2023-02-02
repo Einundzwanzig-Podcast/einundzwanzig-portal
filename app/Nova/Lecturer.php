@@ -79,11 +79,15 @@ class Lecturer extends Resource
               ->sortable(),
 
             Images::make('Avatar', 'avatar')
-                  ->conversionOnIndexView('thumb'),
+                  ->showStatistics()
+                  ->conversionOnIndexView('thumb')
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Images::make(__('Images'), 'images')
+                  ->showStatistics()
                   ->conversionOnIndexView('thumb')
-                  ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.'),
+                  ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.')
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Text::make('Name')
                 ->rules('required', 'string'),

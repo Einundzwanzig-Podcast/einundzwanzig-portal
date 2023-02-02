@@ -105,16 +105,20 @@ class LibraryItem extends Resource
 
             Images::make(__('Main picture'), 'main')
                   ->conversionOnIndexView('thumb')
-                  ->showStatistics(),
+                  ->showStatistics()
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.')
                   ->hideFromIndex()
-                  ->showStatistics(),
+                  ->showStatistics()
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Files::make(__('Downloadable File'), 'single_file')
-                 ->help(__('Please contact the admins for new file types, otherwise pack the files in a ZIP! (Currently: PDF, ZIP)')),
+                 ->showStatistics()
+                 ->help(__('Please contact the admins for new file types, otherwise pack the files in a ZIP! (Currently: PDF, ZIP)'))
+                 ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Select::make(__('Language Code'), 'language_code')
                   ->options(

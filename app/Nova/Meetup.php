@@ -79,7 +79,8 @@ class Meetup extends Resource
 
             Images::make(__('Logo'), 'logo')
                   ->conversionOnIndexView('thumb')
-                  ->showStatistics(),
+                  ->showStatistics()
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Text::make('Name')
                 ->rules('required', 'string')

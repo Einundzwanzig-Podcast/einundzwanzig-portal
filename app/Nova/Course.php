@@ -85,12 +85,16 @@ class Course extends Resource
               ->sortable(),
 
             Images::make(__('Main picture'), 'logo')
-                  ->conversionOnIndexView('thumb'),
+                  ->showStatistics()
+                  ->conversionOnIndexView('thumb')
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             // todo: english
             Images::make(__('Images'), 'images')
+                  ->showStatistics()
                   ->conversionOnIndexView('thumb')
-                  ->help(__('Upload images here to insert them later in the Markdown Description. But you have to save before.')),
+                  ->help(__('Upload images here to insert them later in the Markdown Description. But you have to save before.'))
+                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Tags::make(__('Tags'))
                 ->type('course')
