@@ -23,6 +23,7 @@ class HighscoreTable extends Component
                            ->withCount([
                                'orangePills',
                            ])
+                           ->where('reputation', '>', 0)
                            ->orderByDesc('reputation')
                            ->get(),
         ])->layout('layouts.app', [
