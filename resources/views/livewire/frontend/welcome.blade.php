@@ -3,7 +3,7 @@
         <img class="absolute h-43 left-0 z-0 w-3/4 transform -translate-y-1/2 opacity-70 top-1/2"
              src="{{ asset('img/gradient-blob.svg') }}">
         <img class="absolute left-0 z-0 object-cover object-center w-full h-full opacity-50 top-24"
-             src="https://cdn.devdojo.com/tails/images/swirl-white.svg">
+             src="{{ asset('img/swirl-white.svg') }}">
         <div class="container relative z-10 px-4 mx-auto">
             <div class="w-full mb-8 sm:w-1/2 md:w-3/4 sm:pr-4 md:pr-12 sm:-mb-32 md:-mb-24 lg:-mb-36 xl:-mb-28">
                 <h2 class="tracking-widest text-amber-500 uppercase">{{ __('Einundzwanzig') }}</h2>
