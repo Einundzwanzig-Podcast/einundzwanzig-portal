@@ -57,13 +57,21 @@
                                     @endif
                                 </div>
                             </div>
+                            @php
+                                $address = match(true) {
+                                  $pleb->lightning_address !== '' => $pleb->lightning_address,
+                                  $pleb->lnurl !== '' => $pleb->lnurl,
+                                  $pleb->node_id !== '' => $pleb->node_id,
+                                  default => null,
+                                };
+                            @endphp
                             <div x-show="show">
-                                @if($pleb->lightning_address || $pleb->lnurl || $pleb->node_id)
+                                @if($address)
                                     <div wire:ignore>
                                         <lightning-widget
                                             name="{{ $pleb->name }}"
                                             accent="#f7931a"
-                                            to="{{ $pleb->lightning_address ?? $pleb->lnurl ?? $pleb->node_id }}"
+                                            to="{{ $address }}"
                                             image="{{ $pleb->profile_photo_url }}"
                                             amounts="21,210,2100,21000"
                                         />

@@ -34,9 +34,10 @@ Route::middleware([])
      ->group(function () {
          Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
          Route::get('meetups', function () {
-             return \App\Models\Meetup::with([
-                 'city',
-             ])
+             return \App\Models\Meetup::query()
+                                      ->with([
+                                          'city',
+                                      ])
                                       ->get()
                                       ->map(fn($meetup) => [
                                           'name'             => $meetup->name,
@@ -46,8 +47,8 @@ Route::middleware([])
                                           'country'          => str($meetup->city->country->code)->upper(),
                                           'state'            => $meetup->github_data['state'] ?? null,
                                           'city'             => $meetup->city->name,
-                                          'longitude'        => (float)$meetup->city->longitude,
-                                          'latitude'         => (float)$meetup->city->latitude,
+                                          'longitude'        => (float) $meetup->city->longitude,
+                                          'latitude'         => (float) $meetup->city->latitude,
                                           'twitter_username' => $meetup->twitter_username,
                                           'website'          => $meetup->webpage,
                                       ]);
@@ -57,7 +58,7 @@ Route::middleware([])
 Route::get('/lnurl-auth-callback', function (\Illuminate\Http\Request $request) {
     if (lnurl\auth($request->k1, $request->sig, $request->key)) {
         // find User by $wallet_public_key
-        $user = User::where('public_key', $request->key)
+        $user = User::query()->whereBlind('public_key', 'public_key_index', $request->key)
                     ->first();
         if (!$user) {
             // create User

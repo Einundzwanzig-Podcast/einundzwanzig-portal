@@ -13,10 +13,15 @@ use Laravel\Sanctum\HasApiTokens;
 use QCod\Gamify\Gamify;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
+use Spatie\LaravelCipherSweet\Concerns\UsesCipherSweet;
+use Spatie\LaravelCipherSweet\Contracts\CipherSweetEncrypted;
 use Spatie\Permission\Traits\HasRoles;
+use ParagonIE\CipherSweet\EncryptedRow;
+use ParagonIE\CipherSweet\BlindIndex;
 
-class User extends Authenticatable implements MustVerifyEmail, CanComment
+class User extends Authenticatable implements MustVerifyEmail, CanComment, CipherSweetEncrypted
 {
+    use UsesCipherSweet;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -55,6 +60,21 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function configureCipherSweet(EncryptedRow $encryptedRow): void
+    {
+        $encryptedRow
+            ->addField('public_key')
+            ->addField('lightning_address')
+            ->addField('lnurl')
+            ->addField('node_id')
+            ->addField('email')
+            ->addBlindIndex('public_key', new BlindIndex('public_key_index'))
+            ->addBlindIndex('lightning_address', new BlindIndex('lightning_address_index'))
+            ->addBlindIndex('lnurl', new BlindIndex('lnurl_index'))
+            ->addBlindIndex('node_id', new BlindIndex('node_id_index'))
+            ->addBlindIndex('email', new BlindIndex('email_index'));
+    }
 
     public function orangePills()
     {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de6fecaf71d0b9f0abef4ce825043f92",
+    "content-hash": "1c4001e831e2129cc09124c228198ef2",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -5401,6 +5401,67 @@
             "time": "2023-01-19T13:22:14+00:00"
         },
         {
+            "name": "paragonie/ciphersweet",
+            "version": "v4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/ciphersweet.git",
+                "reference": "7459af64c412453ffa8813518c44292a9742c326"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/ciphersweet/zipball/7459af64c412453ffa8813518c44292a9742c326",
+                "reference": "7459af64c412453ffa8813518c44292a9742c326",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-openssl": "*",
+                "paragonie/constant_time_encoding": "^2",
+                "paragonie/sodium_compat": ">= 1.17 <2",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\CipherSweet\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                }
+            ],
+            "description": "Searchable field-level encryption library for relational databases",
+            "keywords": [
+                "FIPS 140-2",
+                "SQL encryption",
+                "crm",
+                "cryptography",
+                "database encryption",
+                "encrypt",
+                "encryption",
+                "field-level encryption",
+                "libsodium",
+                "queryable encryption",
+                "searchable encryption"
+            ],
+            "support": {
+                "issues": "https://github.com/paragonie/ciphersweet/issues",
+                "source": "https://github.com/paragonie/ciphersweet/tree/v4.2.0"
+            },
+            "time": "2023-01-15T19:02:28+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.6.3",
             "source": {
@@ -8258,6 +8319,78 @@
                 "source": "https://github.com/spatie/image-optimizer/tree/1.6.2"
             },
             "time": "2021-12-21T10:08:05+00:00"
+        },
+        {
+            "name": "spatie/laravel-ciphersweet",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-ciphersweet.git",
+                "reference": "cc336648b94f88e9d0fd4be11c14e61e2f5882e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-ciphersweet/zipball/cc336648b94f88e9d0fd4be11c14e61e2f5882e0",
+                "reference": "cc336648b94f88e9d0fd4be11c14e61e2f5882e0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.19|^10.0",
+                "paragonie/ciphersweet": "^4.0.1",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.12.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "nunomaduro/collision": "^6.0",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^7.0|^8.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\LaravelCipherSweet\\LaravelCipherSweetServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelCipherSweet": "Spatie\\LaravelCipherSweet\\Facades\\LaravelCipherSweet"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelCipherSweet\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rias Van der Veken",
+                    "email": "rias@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Use ciphersweet in your Laravel project",
+            "homepage": "https://github.com/spatie/laravel-ciphersweet",
+            "keywords": [
+                "laravel",
+                "laravel-ciphersweet",
+                "spatie"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/laravel-ciphersweet/tree/1.0.4"
+            },
+            "time": "2023-01-26T12:33:48+00:00"
         },
         {
             "name": "spatie/laravel-comments",
