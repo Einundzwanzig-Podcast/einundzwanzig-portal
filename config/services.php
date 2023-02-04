@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'horizon' => [
+        'secret' => env('HORIZON_SECRET'),
+    ],
+
     'mailgun' => [
         'domain'   => env('MAILGUN_DOMAIN'),
         'secret'   => env('MAILGUN_SECRET'),
