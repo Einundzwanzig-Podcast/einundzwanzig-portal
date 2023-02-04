@@ -11,7 +11,7 @@ return [
     'allow_reputation_duplicate'   => true,
 
     // Broadcast on private channel
-    'broadcast_on_private_channel' => true,
+    'broadcast_on_private_channel' => false,
 
     // Channel name prefix, user id will be suffixed
     'channel_name'                 => 'user.reputation.',
