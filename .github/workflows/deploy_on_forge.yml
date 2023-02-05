@@ -1,0 +1,19 @@
+name: 'Deploy on push'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  forge-deploy:
+    name: 'Laravel Forge Deploy'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      # Trigger Laravel Forge Deploy
+      - name: Deploy
+        uses: jbrooksuk/laravel-forge-action@v1.0.2
+        with:
+          trigger_url: ${{ secrets.TRIGGER_URL }}
