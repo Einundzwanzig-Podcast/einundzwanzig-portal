@@ -30,9 +30,10 @@ class Meetup extends Model implements HasMedia
      * @var array
      */
     protected $casts = [
-        'id'          => 'integer',
-        'city_id'     => 'integer',
-        'github_data' => 'json',
+        'id'                 => 'integer',
+        'city_id'            => 'integer',
+        'github_data'        => 'json',
+        'simplified_geojson' => 'array',
     ];
 
     protected static function booted()

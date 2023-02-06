@@ -16,7 +16,7 @@
         <x-button
             xs
             amber
-            :href="route('osm.meetups.item', ['meetup' => $row])"
+            :href="route('osm.meetups.item', ['meetup' => $row, 'search' => $row->city->name])"
         >
             Open OSM Item
         </x-button>

@@ -18,6 +18,7 @@ class MeetupForBtcMapTable extends DataTableComponent
                 'simplified_geojson',
                 'population',
                 'population_date',
+                'city_id',
             ])
             ->setPerPageAccepted([
                 100000,

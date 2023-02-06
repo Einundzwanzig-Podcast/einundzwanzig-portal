@@ -20,21 +20,21 @@ docker run --rm \
 
 ```vendor/bin/sail up -d```
 
+### Migrate and seed the database
+
+```./vendor/bin/sail artisan migrate:fresh --seed```
+
 #### Install node dependencies
 
 ```vendor/bin/sail yarn install```
 
-#### Start compiling watcher
+#### Start just in time compiler
 
 ```vendor/bin/sail yarn dev```
 
-#### Compile assets
-
-```vendor/bin/sail yarn build```
-
 #### Update dependencies
 
-```vendor/bin/sail yarn install```
+```vendor/bin/sail yarn```
 
 ## Contributing
 
