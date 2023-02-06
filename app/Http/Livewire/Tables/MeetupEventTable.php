@@ -17,9 +17,8 @@ class MeetupEventTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['id'])
+             ->setAdditionalSelects(['meetup_events.id','meetup_events.meetup_id'])
              ->setDefaultSort('start', 'asc')
-             ->setAdditionalSelects(['meetup_events.meetup_id'])
              ->setThAttributes(function (Column $column) {
                  return [
                      'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',

@@ -141,16 +141,25 @@ Route::middleware([])
      ->as('meetup.')
      ->prefix('/{country:code}/meetup')
      ->group(function () {
+
          Route::get('stream-calendar', \App\Http\Controllers\DownloadMeetupCalendar::class)
               ->name('ics');
+
          Route::get('world', \App\Http\Livewire\Meetup\WorldMap::class)
               ->name('world');
+
          Route::get('overview', \App\Http\Livewire\Meetup\MeetupTable::class)
               ->name('table.meetup');
+
+         Route::get('/meetup-events/l/{meetupEvent}', \App\Http\Livewire\Meetup\LandingPageEvent::class)
+              ->name('event.landing');
+
          Route::get('/meetup-events', \App\Http\Livewire\Meetup\MeetupEventTable::class)
               ->name('table.meetupEvent');
+
          Route::get('/{meetup:slug}', \App\Http\Livewire\Meetup\LandingPage::class)
               ->name('landing');
+
      });
 
 /*

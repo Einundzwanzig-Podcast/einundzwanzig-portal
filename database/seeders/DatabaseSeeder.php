@@ -273,10 +273,10 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'venue_id'   => 2,
             'link'       => 'https://einundzwanzig.space',
             'from'       => now()
-                ->addDays(3)
+                ->addDays(31)
                 ->startOfDay(),
             'to'         => now()
-                ->addDays(3)
+                ->addDays(31)
                 ->startOfDay()
                 ->addHour(),
             'created_by' => 1,
@@ -387,11 +387,12 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'name'       => 'Einundzwanzig Hessen',
             'telegram_link'       => 'https://t.me/EinundzwanzigHessen',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         MeetupEvent::create([
             'meetup_id'   => 1,
             'start'       => now()
-                ->addDays(2)
+                ->addDays(31)
                 ->startOfDay()
                 ->addHours(20),
             'location'    => 'Einundzwanzig Kempten',
@@ -415,54 +416,63 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 3,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         Meetup::create([
             'city_id'    => 1,
             'name'       => 'Einundzwanzig ' . str()->random(5),
             'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
             'created_by' => 1,
+            'intro' => fake()->text(80),
         ]);
         BitcoinEvent::create([
             'venue_id'    => 4,

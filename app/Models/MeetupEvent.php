@@ -21,9 +21,11 @@ class MeetupEvent extends Model
      * @var array
      */
     protected $casts = [
-        'id'        => 'integer',
-        'meetup_id' => 'integer',
-        'start'     => 'datetime',
+        'id'              => 'integer',
+        'meetup_id'       => 'integer',
+        'start'           => 'datetime',
+        'attendees'       => 'array',
+        'might_attendees' => 'array',
     ];
 
     protected static function booted()

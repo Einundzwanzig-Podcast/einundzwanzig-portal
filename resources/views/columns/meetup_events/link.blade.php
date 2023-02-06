@@ -1,9 +1,9 @@
 <div class="flex flex-col space-y-1">
     <div>
         <x-button
-            black
+            primary
             xs
-            :href="route('meetup.landing', ['country' => $country, 'meetup' => $row->meetup->slug])"
+            :href="route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $row->id])"
         >
             <i class="fa fa-thin fa-browser mr-2"></i>
             {{ __('Show landing page') }}

@@ -12,8 +12,8 @@
                         <nav
                             class="flex flex-wrap items-center mb-5 text-lg md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-800">
 
-                            @if(!str(request()->route()->getName())->contains('.view'))
-                                <a href="{{ route('welcome', ['c' => $c]) }}"
+                            @if(str(request()->route()->getName())->contains('event.landing'))
+                                <a href="{{ route('meetup.table.meetupEvent', ['country' => $country]) }}"
                                    class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
                                     {{ __('Back to the overview') }}
                                 </a>
@@ -29,6 +29,11 @@
                                 </a>
                             @elseif(str(request()->route()->getName())->contains('lecturerMaterial.view'))
                                 <a href="{{ route('library.table.lecturer', ['country' => $country]) }}"
+                                   class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
+                                    {{ __('Back to the overview') }}
+                                </a>
+                            @elseif(!str(request()->route()->getName())->contains('.view'))
+                                <a href="{{ route('welcome', ['c' => $c]) }}"
                                    class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
                                     {{ __('Back to the overview') }}
                                 </a>
