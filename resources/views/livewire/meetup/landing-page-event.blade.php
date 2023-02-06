@@ -154,7 +154,7 @@
                                         <x-button
                                             lg primary wire:click="cannotCome">
                                             <i class="fa fa-thin fa-face-frown mr-2"></i>
-                                            {{ __('Unfortunately I can\'t come') }}
+                                            {{ __('Unfortunately I cannot come') }}
                                         </x-button>
                                     @endif
                                 </div>
