@@ -60,8 +60,8 @@ class PrepareForBtcMapItem extends Component
             'OSMBoundaries' => 'bool',
             'polygonsOSMfr' => 'bool',
 
-            'population'      => 'required|numeric',
-            'population_date' => 'required|string',
+            'population'      => 'nullable|numeric',
+            'population_date' => 'nullable|string',
 
             'polygonsOSMfrX' => 'numeric|max:1',
             'polygonsOSMfrY' => 'numeric|max:1',
