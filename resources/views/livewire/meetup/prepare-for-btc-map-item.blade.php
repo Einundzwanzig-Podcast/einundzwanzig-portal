@@ -6,7 +6,8 @@
             <div class="rounded-lg bg-white shadow dark:bg-gray-800">
                 <div class="grid grid-cols-1 lg:grid-cols-2">
                     <div class="px-4 py-5 lg:p-6">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Search for an area
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+                            {{ $meetup->name }}
                         </h3>
                         <div class="mt-2 text-sm text-gray-500">
 
@@ -277,7 +278,8 @@
                                 @endphp
                                 <h3 class="text-lg font-medium leading-6 text-blue-500">
                                     Simplified GeoJSON
-                                    [{{ count($model->simplified_geojson['coordinates'] ?? [], COUNT_RECURSIVE) }} points]
+                                    [{{ count($model->simplified_geojson['coordinates'] ?? [], COUNT_RECURSIVE) }}
+                                    points]
                                 </h3>
                                 <div class="mt-2 text-sm text-gray-500">
                                     <div class="flex w-full flex-col space-y-2">
