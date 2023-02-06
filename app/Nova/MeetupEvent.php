@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -90,7 +91,7 @@ class MeetupEvent extends Resource
 
             Text::make(__('Location'), 'location'),
 
-            Text::make(__('Description'), 'description')
+            Markdown::make(__('Description'), 'description')
                 ->rules('required', 'string')
                 ->hideFromIndex(),
 
