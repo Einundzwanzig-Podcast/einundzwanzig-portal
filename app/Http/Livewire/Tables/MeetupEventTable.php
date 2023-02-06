@@ -17,7 +17,7 @@ class MeetupEventTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['meetup_events.id','meetup_events.meetup_id'])
+             ->setAdditionalSelects(['meetup_events.id', 'meetup_events.meetup_id'])
              ->setDefaultSort('start', 'asc')
              ->setThAttributes(function (Column $column) {
                  return [
@@ -56,7 +56,9 @@ class MeetupEventTable extends DataTableComponent
         return [
             Column::make(__('Meetup'), 'meetup.name')
                   ->format(
-                      fn($value, $row, Column $column) => view('columns.meetup_events.name')->withRow($row)
+                      fn($value, $row, Column $column) => view('columns.meetup_events.name')
+                          ->withRow($row)
+                          ->withCountry($this->country)
                   )
                   ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
@@ -72,7 +74,9 @@ class MeetupEventTable extends DataTableComponent
                   ->collapseOnMobile(),
             Column::make(__('Link'), 'link')
                   ->label(
-                      fn($row, Column $column) => view('columns.meetup_events.link')->withRow($row)->withCountry($this->country)
+                      fn($row, Column $column) => view('columns.meetup_events.link')
+                          ->withRow($row)
+                          ->withCountry($this->country)
                   ),
         ];
     }
