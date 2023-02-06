@@ -6,7 +6,14 @@
 
 ```cp .env.example .env```
 
-```composer install```
+```
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+```
 *(you need a valid Laravel Nova license)*
 
 #### Start docker development containers
