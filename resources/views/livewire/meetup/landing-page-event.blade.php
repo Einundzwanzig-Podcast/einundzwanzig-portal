@@ -6,7 +6,7 @@
 
             <div class="relative py-4 sm:py-4">
                 <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
-                    <div class="relative sm:py-16 lg:py-0">
+                    <div class="relative sm:py-4 lg:py-0">
                         <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
                             <div class="absolute inset-y-0 right-1/2 w-full rounded-r-3xl lg:right-72"></div>
                             <svg class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404"
@@ -21,7 +21,7 @@
                                 <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"/>
                             </svg>
                         </div>
-                        <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:px-0 lg:py-20">
+                        <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:px-0 lg:py-12">
                             <!-- Testimonial card-->
                             <div class="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
                                 <img class="absolute inset-0 h-full w-full object-contain"
@@ -41,6 +41,11 @@
                                     </blockquote>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            @if(auth()->check())
+                                <livewire:comments :model="$meetupEvent" newest-first hide-notification-options/>
+                            @endif
                         </div>
                     </div>
 
@@ -167,6 +172,10 @@
                                         </x-button>
                                     @endif
                                 </div>
+                            </div>
+
+                            <div class="mt-6">
+
                             </div>
                         </div>
                     </div>

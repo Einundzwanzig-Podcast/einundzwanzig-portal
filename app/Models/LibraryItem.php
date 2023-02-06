@@ -105,9 +105,9 @@ class LibraryItem extends Model implements HasMedia, Sortable
     }
 
     /*
- * This string will be used in notifications on what a new comment
- * was made.
- */
+     * This string will be used in notifications on what a new comment
+     * was made.
+     */
     public function commentableName(): string
     {
         return __('Library Item');
