@@ -7,6 +7,7 @@ use App\Models\Meetup;
 use App\Models\MeetupEvent;
 use App\Rules\UniqueAttendeeName;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class LandingPageEvent extends Component
 {
@@ -147,6 +148,12 @@ class LandingPageEvent extends Component
 
     public function render()
     {
-        return view('livewire.meetup.landing-page-event');
+        return view('livewire.meetup.landing-page-event')->layout('layouts.guest', [
+            'SEOData' => new SEOData(
+                title: $this->meetupEvent->start->asDateTime().' - '.$this->meetup->name,
+                description: __('Here you can confirm your participation and find more information about the Meetup.').' - '.$this->meetupEvent->description,
+                image: $this->meetup->getFirstMediaUrl('logo'),
+            )
+        ]);
     }
 }
