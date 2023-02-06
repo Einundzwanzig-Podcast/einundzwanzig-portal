@@ -31,12 +31,12 @@
                                     class="absolute inset-0 bg-gradient-to-t from-amber-600 via-amber-600 opacity-80"></div>
                                 <div class="relative px-8">
                                     <blockquote class="mt-8">
-                                        <div class="relative text-lg font-medium text-white md:flex-grow">
+                                        <div class="relative text-lg font-medium text-gray-900 md:flex-grow">
                                             <p class="relative">{{ $meetup->intro }}</p>
                                         </div>
 
                                         <footer class="mt-4">
-                                            <p class="text-base font-semibold text-amber-200">{{ $meetup->users->count() }} {{ __('Plebs') }}</p>
+                                            <p class="text-base font-semibold text-gray-900">{{ $meetup->users->count() }} {{ __('Plebs') }}</p>
                                         </footer>
                                     </blockquote>
                                 </div>
