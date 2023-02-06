@@ -286,6 +286,9 @@ class PrepareForBtcMapItem extends Component
         $this->model->population = str($value)
             ->replace(['.', ','], '')
             ->toInteger();
+        if (!$this->model->population_date) {
+            $this->model->population_date = '2021-12-31';
+        }
         $this->model->save();
 
         $this->notification()
