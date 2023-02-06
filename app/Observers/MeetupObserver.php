@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Meetup;
 use App\Traits\TwitterTrait;
+use Illuminate\Support\Facades\Log;
 
 class MeetupObserver
 {
@@ -18,20 +19,24 @@ class MeetupObserver
      */
     public function created(Meetup $meetup)
     {
-        if (config('feeds.services.twitterAccountId')) {
-            $this->setNewAccessToken(1);
+        try {
+            if (config('feeds.services.twitterAccountId')) {
+                $this->setNewAccessToken(1);
 
-            $meetupName = $meetup->name;
-            if ($meetup->twitter_username) {
-                $meetupName .= ' @'.$meetup->twitter_username;
+                $meetupName = $meetup->name;
+                if ($meetup->twitter_username) {
+                    $meetupName .= ' @'.$meetup->twitter_username;
+                }
+
+                $text = sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+                    $meetupName,
+                    url()->route('meetup.landing', ['country' => $meetup->city->country->code, 'meetup' => $meetup])
+                );
+
+                $this->postTweet($text);
             }
-
-            $text = sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
-                $meetupName,
-                url()->route('meetup.landing', ['country' => $meetup->city->country->code, 'meetup' => $meetup])
-            );
-
-            $this->postTweet($text);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
         }
     }
 
