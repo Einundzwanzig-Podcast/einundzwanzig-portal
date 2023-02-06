@@ -24,12 +24,11 @@
                         <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:px-0 lg:py-20">
                             <!-- Testimonial card-->
                             <div class="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
-                                <img class="absolute inset-0 h-full w-full object-cover"
+                                <img class="absolute inset-0 h-full w-full object-contain"
                                      src="{{ $meetup->getFirstMediaUrl('logo', 'preview') }}"
                                      alt="">
-                                <div class="absolute inset-0 bg-amber-500 mix-blend-multiply"></div>
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-amber-600 via-amber-600 opacity-90"></div>
+                                    class="absolute inset-0 bg-gradient-to-t from-amber-600 via-amber-600 opacity-80"></div>
                                 <div class="relative px-8">
                                     <blockquote class="mt-8">
                                         <div class="relative text-lg font-medium text-white md:flex-grow">
