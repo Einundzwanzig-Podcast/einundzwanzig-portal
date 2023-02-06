@@ -6,7 +6,7 @@
             :href="route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $row->id])"
         >
             <i class="fa fa-thin fa-browser mr-2"></i>
-            {{ __('Show landing page') }}
+            {{ __('Link to participate') }}
         </x-button>
     </div>
     <div>
