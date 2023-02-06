@@ -73,7 +73,7 @@ class PrepareForBtcMapItem extends Component
     {
         $this->model = $this->meetup->city;
         $this->population = $this->model->population;
-        $this->population_date = $this->model->population_date;
+        $this->population_date = $this->model->population_date ?? '2021-12-31';
         $this->getSearchResults();
         if ($this->osm_id) {
             $this->selectedItemOSMPolygons = collect($this->osmSearchResults)
@@ -283,9 +283,9 @@ class PrepareForBtcMapItem extends Component
 
     public function updatedPopulation($value)
     {
-        $this->model->population = (int) str($value)
+        $this->model->population = str($value)
             ->replace(['.', ','], '')
-            ->toString();
+            ->toInteger();
         $this->model->save();
 
         $this->notification()
