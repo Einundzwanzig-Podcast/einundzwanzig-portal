@@ -28,8 +28,7 @@
     <script src="{{ asset('vendor/jvector/maps/pt.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/pl.js') }}"></script>
     <script src="{{ asset('dist/smoothscroll.js') }}"></script>
-    <script defer src="/assets/fontawesome/all.min.js"></script>
-    <script defer src="/assets/fontawesome/fontawesome.min.js"></script>
+    <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     @mapscripts
     <wireui:scripts/>
     <x-comments::scripts/>
