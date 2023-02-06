@@ -202,7 +202,7 @@
                                 Mapshaper simplification of <span class="text-[#FFA500]">OSM GeoJSON
                                     [{{ count($selectedItemOSMPolygons['geojson']['coordinates'], COUNT_RECURSIVE) }}
                                     points]</span> to
-                                {{ count($model->simplified_geojson['coordinates'], COUNT_RECURSIVE) }} points
+                                {{ count($model->simplified_geojson['coordinates'] ?? [], COUNT_RECURSIVE) }} points
                             </h3>
                         </div>
                         <div class="mt-2 text-sm text-gray-500 dark:text-gray-200">
@@ -252,7 +252,7 @@
                                 @endphp
                                 <h3 class="text-lg font-medium leading-6 text-[#FFA500]">
                                     OSM GeoJSON
-                                    [{{ count($selectedItemOSMPolygons['geojson']['coordinates'], COUNT_RECURSIVE) }}
+                                    [{{ count($selectedItemOSMPolygons['geojson']['coordinates'] ?? [], COUNT_RECURSIVE) }}
                                     points]
                                 </h3>
                                 <div class="mt-2 text-sm text-gray-500">
@@ -277,7 +277,7 @@
                                 @endphp
                                 <h3 class="text-lg font-medium leading-6 text-blue-500">
                                     Simplified GeoJSON
-                                    [{{ count($model->simplified_geojson['coordinates'], COUNT_RECURSIVE) }} points]
+                                    [{{ count($model->simplified_geojson['coordinates'] ?? [], COUNT_RECURSIVE) }} points]
                                 </h3>
                                 <div class="mt-2 text-sm text-gray-500">
                                     <div class="flex w-full flex-col space-y-2">
