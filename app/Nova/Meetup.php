@@ -88,17 +88,25 @@ class Meetup extends Resource
                 ->updateRules('unique:meetups,name,{{resourceId}}'),
 
             Text::make(__('Telegram-Link'), 'telegram_link')
-                ->rules('url', 'nullable')->hideFromIndex(),
+                ->rules('nullable', 'url')
+                ->nullable()
+                ->hideFromIndex(),
 
             Text::make(__('Website'), 'webpage')
-                ->rules('url', 'nullable')->hideFromIndex(),
+                ->rules('nullable', 'url')
+                ->nullable()
+                ->hideFromIndex(),
 
             Text::make(__('Matrix Group'), 'matrix_group')
-                ->rules('url', 'nullable')->hideFromIndex(),
+                ->rules('nullable', 'url')
+                ->nullable()
+                ->hideFromIndex(),
 
             Text::make(__('Twitter Username'), 'twitter_username')
                 ->help(__('Without @'))
-                ->rules('string', 'nullable')->hideFromIndex(),
+                ->rules('nullable', 'string')
+                ->nullable()
+                ->hideFromIndex(),
 
             BelongsTo::make(__('City'), 'city', City::class)
                      ->searchable()
