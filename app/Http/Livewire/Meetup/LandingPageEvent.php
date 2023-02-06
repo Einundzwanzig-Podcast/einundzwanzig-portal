@@ -30,7 +30,7 @@ class LandingPageEvent extends Component
 
     public function mount()
     {
-        $this->meetupEvent->load('meetup.users:id');
+        $this->meetupEvent->load('meetup.users:id,public_key');
         $this->meetup = $this->meetupEvent->meetup;
         $this->checkShowUp();
     }
