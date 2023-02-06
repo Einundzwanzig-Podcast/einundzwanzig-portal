@@ -117,10 +117,10 @@
                         <div>
                             <div class="-mt-px flex divide-x divide-gray-200">
                                 <div class="-ml-px flex w-0 flex-1">
-                                    <a target="_blank" href="{{ $meetupEvent->link }}"
+                                    <a target="_blank" href="{{ route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $meetupEvent]) }}"
                                        class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
                                         <i class="text-gray-100 text-2xl fa-thin fa-right-to-bracket"></i>
-                                        <span class="ml-3 text-gray-100 text-2xl">{{ __('Link') }}</span>
+                                        <span class="ml-3 text-gray-100 text-2xl">{{ __('Link to participate') }}</span>
                                     </a>
                                 </div>
                             </div>
