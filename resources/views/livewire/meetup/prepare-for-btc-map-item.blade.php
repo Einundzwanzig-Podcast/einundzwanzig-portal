@@ -194,7 +194,7 @@
             </div>
 
             {{-- GeoJSON simplification --}}
-            @if ($selectedItemOSMPolygons)
+            @if ($model && $selectedItemOSMPolygons)
                 <div class="rounded-lg bg-white shadow dark:bg-gray-800">
                     <div class="px-4 py-5 lg:p-6">
                         <div class="flex items-center space-x-4">
