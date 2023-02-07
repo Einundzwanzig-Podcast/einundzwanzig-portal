@@ -17,7 +17,7 @@ class MeetupEventTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['meetup_events.id', 'meetup_events.meetup_id'])
+             ->setAdditionalSelects(['meetup_events.id', 'meetup_events.meetup_id', 'attendees', 'might_attendees'])
              ->setDefaultSort('start', 'asc')
              ->setThAttributes(function (Column $column) {
                  return [
@@ -79,11 +79,18 @@ class MeetupEventTable extends DataTableComponent
                   )
                   ->sortable()
                   ->collapseOnMobile(),
+            Column::make(__('Confirmations'))
+                  ->label(
+                      fn($row, Column $column) => view('columns.meetup_events.confirmations')
+                          ->withRow($row)
+                  )
+                  ->collapseOnMobile(),
             Column::make(__('Link'))
                   ->label(
                       fn($row, Column $column) => view('columns.meetup_events.link')
                           ->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
         ];
 
         $adminColumns = auth()->check() ? [
@@ -91,7 +98,8 @@ class MeetupEventTable extends DataTableComponent
                   ->label(
                       fn($row, Column $column) => view('columns.meetup_events.manage')
                           ->withRow($row)
-                  ),
+                  )
+                  ->collapseOnMobile(),
         ] : [];
 
         return array_merge($columns, $adminColumns);
