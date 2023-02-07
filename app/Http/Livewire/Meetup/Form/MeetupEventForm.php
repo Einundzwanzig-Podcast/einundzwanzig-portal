@@ -53,6 +53,7 @@ class MeetupEventForm extends Component
 
     public function updatedMeetupEventStart($value)
     {
+        $this->validate();
         if ($this->recurring) {
             $this->updatedRecurring(true);
         }
@@ -60,6 +61,7 @@ class MeetupEventForm extends Component
 
     public function updatedRecurring($value)
     {
+        $this->validate();
         if ($value && $this->meetupEvent->start) {
             $this->series = [];
             for ($i = 0; $i < $this->repetitions; $i++) {
@@ -73,6 +75,7 @@ class MeetupEventForm extends Component
 
     public function updatedRepetitions($value)
     {
+        $this->validate();
         if ($this->recurring) {
             $this->updatedRecurring(true);
         }
