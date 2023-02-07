@@ -1,6 +1,7 @@
 <div class="flex flex-col space-y-1">
     <div>
         <x-button
+            class="whitespace-nowrap"
             primary
             xs
             :href="route('meetup.event.landing', ['country' => $row->meetup->city->country, 'meetupEvent' => $row->id])"
