@@ -1,11 +1,23 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware([])
      ->get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
+
+Route::get('auth/auth47', \App\Http\Livewire\Auth\Auth47Component::class)
+     ->name('auth.auth47');
+
+Route::post('auth/auth47-callback', function (Request $request) {
+    $auth47Version = $request->auth47_response;
+    $challenge = $request->challenge;
+    $signature = $request->signature;
+    $nym = $request->nym;
+})
+     ->name('auth.auth47.callback');
 
 Route::middleware([])
      ->get('/news', \App\Http\Livewire\News\ArticleOverview::class)
