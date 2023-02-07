@@ -3,7 +3,7 @@
         <x-button
             primary
             xs
-            :href="route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $row->id])"
+            :href="route('meetup.event.landing', ['country' => $row->meetup->city->country, 'meetupEvent' => $row->id])"
         >
             <i class="fa fa-thin fa-browser mr-2"></i>
             {{ __('Link to participate') }}

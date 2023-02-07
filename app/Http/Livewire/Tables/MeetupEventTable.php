@@ -76,7 +76,6 @@ class MeetupEventTable extends DataTableComponent
                   ->label(
                       fn($row, Column $column) => view('columns.meetup_events.link')
                           ->withRow($row)
-                          ->withCountry($this->country)
                   ),
         ];
     }
@@ -87,7 +86,7 @@ class MeetupEventTable extends DataTableComponent
                           ->where('meetup_events.start', '>=', now())
                           ->whereHas('meetup.city.country', fn($query) => $query->where('code', $this->country))
                           ->with([
-                              'meetup',
+                              'meetup.city.country',
                           ]);
     }
 }

@@ -51,7 +51,6 @@ class MeetupTable extends DataTableComponent
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetups.name')
                           ->withRow($row)
-                          ->withCountry($this->country)
                   )
                   ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%')),
             Column::make(__('Plebs'))
