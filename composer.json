@@ -96,6 +96,8 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan vendor:publish --tag='wireui.resources'",
+            "@php artisan vendor:publish --tag='wireui.lang'",
             "@php artisan nova:publish"
         ],
         "post-root-package-install": [

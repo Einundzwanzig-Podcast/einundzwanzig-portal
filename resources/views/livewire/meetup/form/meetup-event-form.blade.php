@@ -2,8 +2,21 @@
 
     <div class="pb-5 flex flex-row justify-between">
         <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Meetup Event') }}</h3>
-        <div>
-            <x-button :href="route('meetup.table.meetupEvent', ['country' => $country])">{{ __('Back') }}</x-button>
+        <div class="flex flex-row space-x-2 items-center">
+            <div>
+                @if($meetupEvent->id)
+                    <x-button negative wire:click="deleteMe">
+                        <i class="fa fa-thin fa-trash"></i>
+                        {{ __('Delete') }}
+                    </x-button>
+                @endif
+            </div>
+            <div>
+                <x-button :href="route('meetup.table.meetupEvent', ['country' => $country])">
+                    <i class="fa fa-thin fa-arrow-left"></i>
+                    {{ __('Back') }}
+                </x-button>
+            </div>
         </div>
     </div>
 

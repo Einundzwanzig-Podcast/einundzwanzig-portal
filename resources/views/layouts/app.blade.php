@@ -31,7 +31,7 @@
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     @mapstyles
     @mapscripts
-    <wireui:scripts/>
+    @wireUiScripts
     <x-comments::scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
@@ -79,12 +79,13 @@
     </style>
 </head>
 <body class="font-sans antialiased bg-21gray dark">
+<x-notifications z-index="z-50" blur="md" align="center"/>
+<x-dialog z-index="z-50" blur="md" align="center" />
 @if(auth()->user())
     {{-- HIGHSCORE-CHAT --}}
     <livewire:chat.highscore-chat/>
 @endif
 <livewire:laravel-echo/>
-<x-notifications z-index="z-50" blur="md" align="center"/>
 <x-jet-banner/>
 <div class="min-h-screen">
     @auth

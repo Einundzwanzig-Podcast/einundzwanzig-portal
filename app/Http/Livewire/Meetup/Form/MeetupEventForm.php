@@ -74,6 +74,33 @@ class MeetupEventForm extends Component
         }
     }
 
+    public function deleteMe()
+    {
+        $this->dialog()
+             ->confirm(
+                 [
+                     'title'       => __('Delete event'),
+                     'description' => __('Are you sure you want to delete this event? This action cannot be undone.'),
+                     'icon'        => 'warning',
+                     'accept'      => [
+                         'label'  => __('Yes, delete'),
+                         'method' => 'deleteEvent',
+                     ],
+                     'reject'      => [
+                         'label'  => __('No, cancel'),
+                         'method' => 'cancel',
+                     ],
+                 ]
+             );
+    }
+
+    public function deleteEvent()
+    {
+        $this->meetupEvent->delete();
+
+        return to_route('meetup.table.meetupEvent', ['country' => $this->country]);
+    }
+
     public function submit()
     {
         $this->validate();
