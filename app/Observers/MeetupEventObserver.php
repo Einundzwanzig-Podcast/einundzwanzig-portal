@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\MeetupEvent;
 use App\Traits\TwitterTrait;
+use Illuminate\Support\Facades\Log;
 
 class MeetupEventObserver
 {
@@ -18,23 +19,27 @@ class MeetupEventObserver
      */
     public function created(MeetupEvent $meetupEvent)
     {
-        if (config('feeds.services.twitterAccountId')) {
-            $this->setNewAccessToken(1);
+        try {
+            if (config('feeds.services.twitterAccountId')) {
+                $this->setNewAccessToken(1);
 
-            $meetupName = $meetupEvent->meetup->name;
-            if ($meetupEvent->meetup->twitter_username) {
-                $meetupName .= ' @'.$meetupEvent->meetup->twitter_username;
+                $meetupName = $meetupEvent->meetup->name;
+                if ($meetupEvent->meetup->twitter_username) {
+                    $meetupName .= ' @'.$meetupEvent->meetup->twitter_username;
+                }
+
+                $text = sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+                    $meetupName,
+                    $meetupEvent->start->asDateTime(),
+                    $meetupEvent->location,
+                    url()->route('meetup.event.landing',
+                        ['country' => 'de', 'meetup' => $meetupEvent->id]),
+                );
+
+                $this->postTweet($text);
             }
-
-            $text = sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
-                $meetupName,
-                $meetupEvent->start->asDateTime(),
-                $meetupEvent->location,
-                url()->route('meetup.event.landing',
-                    ['country' => 'de', 'meetup' => $meetupEvent->id]),
-            );
-
-            $this->postTweet($text);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
         }
     }
 

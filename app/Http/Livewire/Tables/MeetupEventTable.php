@@ -32,7 +32,14 @@ class MeetupEventTable extends DataTableComponent
                  ];
              })
              ->setColumnSelectStatus(false)
-             ->setPerPage(10);
+             ->setPerPage(10)
+             ->setConfigurableAreas([
+                 'toolbar-left-end' => [
+                     'columns.meetup_events.areas.toolbar-left-end', [
+                         'country' => $this->country,
+                     ],
+                 ],
+             ]);
     }
 
     public function filters(): array
@@ -53,7 +60,7 @@ class MeetupEventTable extends DataTableComponent
 
     public function columns(): array
     {
-        return [
+        $columns = [
             Column::make(__('Meetup'), 'meetup.name')
                   ->format(
                       fn($value, $row, Column $column) => view('columns.meetup_events.name')
@@ -72,12 +79,22 @@ class MeetupEventTable extends DataTableComponent
                   )
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make(__('Link'), 'link')
+            Column::make(__('Link'))
                   ->label(
                       fn($row, Column $column) => view('columns.meetup_events.link')
                           ->withRow($row)
                   ),
         ];
+
+        $adminColumns = auth()->check() ? [
+            Column::make(__('Actions'))
+                  ->label(
+                      fn($row, Column $column) => view('columns.meetup_events.manage')
+                          ->withRow($row)
+                  ),
+        ] : [];
+
+        return array_merge($columns, $adminColumns);
     }
 
     public function builder(): Builder

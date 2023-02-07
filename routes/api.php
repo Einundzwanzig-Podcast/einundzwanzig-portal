@@ -24,14 +24,10 @@ Route::middleware('auth:sanctum')
      });
 
 Route::middleware([])
-     ->as('api.')
+    ->as('api.')
      ->group(function () {
          Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
-     });
-
-Route::middleware([])
-     ->as('api.')
-     ->group(function () {
+         Route::resource('meetup', \App\Http\Controllers\Api\MeetupController::class);
          Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
          Route::get('meetups', function () {
              return \App\Models\Meetup::query()

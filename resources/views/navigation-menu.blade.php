@@ -30,7 +30,7 @@
                             </x-button>
                         </div>
                         <div>
-                            <x-button xs amber href="/nova/resources/meetup-events" target="_blank">
+                            <x-button xs amber :href="route('meetup.event.form', ['country' => $country ?? 'de'])">
                                 <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Register Meetup date') }}
                             </x-button>

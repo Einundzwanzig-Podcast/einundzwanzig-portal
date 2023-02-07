@@ -151,6 +151,10 @@ Route::middleware([])
          Route::get('overview', \App\Http\Livewire\Meetup\MeetupTable::class)
               ->name('table.meetup');
 
+         Route::get('/meetup-events/form/{meetupEvent?}', \App\Http\Livewire\Meetup\Form\MeetupEventForm::class)
+              ->name('event.form')
+              ->middleware('needMeetup');
+
          Route::get('/meetup-events/l/{meetupEvent}', \App\Http\Livewire\Meetup\LandingPageEvent::class)
               ->name('event.landing');
 

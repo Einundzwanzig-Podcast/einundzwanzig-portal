@@ -18,6 +18,17 @@ class Carbon extends CarbonImmutable
                     ->format('H:i');
     }
 
+    public function asDayNameAndMonthName(): string
+    {
+        $dt = $this->timezone(config('app.user-timezone'))->locale('de');
+        return sprintf("%s, %s. week of %s [%s]",
+            $dt->dayName,
+            $dt->weekNumberInMonth,
+            $dt->monthName,
+            $dt->timezoneAbbreviatedName
+        );
+    }
+
     public function asDateTime(): string
     {
         $dt = $this->timezone(config('app.user-timezone'))->locale('de');

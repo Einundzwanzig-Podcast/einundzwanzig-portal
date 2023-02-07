@@ -711,5 +711,12 @@
     "Unfortunately I cannot come": "Leider kann ich doch nicht kommen",
     "Link to participate": "Link zur Teilnahme",
     "Copied!": "Kopiert!",
-    "For example, a link to a location on Google Maps or a link to a website. (not your Telegram group link)": "Zum Beispiel ein Link zu einer Location auf Google Maps oder ein Link zu einer Website. (nicht dein Telegram-Gruppen-Link)"
+    "For example, a link to a location on Google Maps or a link to a website. (not your Telegram group link)": "Zum Beispiel ein Link zu einer Location auf Google Maps oder ein Link zu einer Website. (nicht dein Telegram-Gruppen-Link)",
+    "There is already an event on this date. Please choose another date or delete the existing events.": "Es gibt bereits einen Termin an diesem Datum. Bitte wähle ein anderes Datum oder lösche die bestehenden Termine.",
+    "Event saved successfully.": "Termin erfolgreich gespeichert.",
+    "no authorization": "keine Berechtigung",
+    "Recurring appointment": "Wiederkehrender Termin",
+    "The recurring appointments are created in the database as new entries. Please be careful with this function, otherwise you will have to change or delete all the appointments you have created manually if you make an error.": "Die Termine werden in der Datenbank als neue Einträge angelegt. Bitte sei vorsichtig mit dieser Funktion, sonst musst du alle Termine, ändern oder löschen, wenn du einen Fehler machst.",
+    "Number of repetitions": "Anzahl der Wiederholungen",
+    "Recurring appointments": "Wiederkehrende Termine"
 }

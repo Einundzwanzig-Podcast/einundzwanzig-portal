@@ -681,5 +681,12 @@
     "Unfortunately I cannot come": "",
     "Link to participate": "",
     "Copied!": "",
-    "For example, a link to a location on Google Maps or a link to a website. (not your Telegram group link)": ""
+    "For example, a link to a location on Google Maps or a link to a website. (not your Telegram group link)": "",
+    "There is already an event on this date. Please choose another date or delete the existing events.": "",
+    "Event saved successfully.": "",
+    "no authorization": "",
+    "Recurring appointment": "",
+    "The recurring appointments are created in the database as new entries. Please be careful with this function, otherwise you will have to change or delete all the appointments you have created manually if you make an error.": "",
+    "Number of repetitions": "",
+    "Recurring appointments": ""
 }

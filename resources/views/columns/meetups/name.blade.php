@@ -5,5 +5,4 @@
             {{ $row->name }}
         </div>
     </div>
-
 </a>
