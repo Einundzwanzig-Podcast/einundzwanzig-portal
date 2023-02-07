@@ -82,6 +82,10 @@
                                    class="{{ request()->routeIs('bookCases.table.bookcases') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
                                     {{ __('Bookcases') }}
                                 </a>
+                                <a href="{{ route('bookCases.heatmap', ['country' => $c]) }}"
+                                   class="{{ request()->routeIs('bookCases.heatmap') ? 'text-amber-500 underline' : 'text-gray-400' }} mr-5 font-medium leading-6 hover:text-gray-300">
+                                    {{ __('Heatmap') }}
+                                </a>
                                 <a href="https://openbookcase.de/" target="_blank"
                                    class="text-gray-400 mr-5 font-medium leading-6 hover:text-gray-300">
                                     {{ __('Submit new book case') }}

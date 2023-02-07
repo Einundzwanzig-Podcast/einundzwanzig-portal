@@ -31,6 +31,8 @@
     <script src="https://kit.fontawesome.com/03bc14bd1e.js" crossorigin="anonymous"></script>
     @mapstyles
     @mapscripts
+    <script src="{{ asset('dist/leaflet-heat.js') }}"></script>
+    <script src="{{ asset('dist/leaflet-providers.js') }}"></script>
     @wireUiScripts
     <x-comments::scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])

@@ -23,6 +23,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "leaflet.heat": "^0.2.0",
         "mapshaper": "^0.6.24"
     }
 }

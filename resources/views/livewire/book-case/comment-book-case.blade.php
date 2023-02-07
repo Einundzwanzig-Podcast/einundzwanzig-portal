@@ -181,19 +181,19 @@
 
                 <div class="rounded" wire:ignore>
                     @map([
-                    'lat' => $bookCase->latitude,
-                    'lng' => $bookCase->longitude,
-                    'zoom' => 24,
-                    'markers' => [
-                    [
-                    'title' => $bookCase->title,
-                    'lat' => $bookCase->latitude,
-                    'lng' => $bookCase->longitude,
-                    'url' => 'https://gonoware.com',
-                    'icon' => asset('img/btc-logo-6219386_1280.png'),
-                    'icon_size' => [42, 42],
-                    ],
-                    ],
+                        'lat' => $bookCase->latitude,
+                        'lng' => $bookCase->longitude,
+                        'zoom' => 24,
+                        'markers' => [
+                            [
+                                'title' => $bookCase->title,
+                                'lat' => $bookCase->latitude,
+                                'lng' => $bookCase->longitude,
+                                'url' => 'https://gonoware.com',
+                                'icon' => asset('img/btc-logo-6219386_1280.png'),
+                                'icon_size' => [42, 42],
+                            ],
+                        ],
                     ])
                 </div>
 

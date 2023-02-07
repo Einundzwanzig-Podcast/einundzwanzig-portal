@@ -718,5 +718,11 @@
     "Recurring appointment": "Wiederkehrender Termin",
     "The recurring appointments are created in the database as new entries. Please be careful with this function, otherwise you will have to change or delete all the appointments you have created manually if you make an error.": "Die Termine werden in der Datenbank als neue Einträge angelegt. Bitte sei vorsichtig mit dieser Funktion, sonst musst du alle Termine, ändern oder löschen, wenn du einen Fehler machst.",
     "Number of repetitions": "Anzahl der Wiederholungen",
-    "Recurring appointments": "Wiederkehrende Termine"
+    "Recurring appointments": "Wiederkehrende Termine",
+    "Delete event": "Lösche Termin",
+    "Are you sure you want to delete this event? This action cannot be undone.": "Bitte bestätige, dass du diesen Termin löschen möchtest. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "Yes, delete": "Ja, löschen",
+    "No, cancel": "Nein, abbrechen",
+    "Orange Pill Heatmap": "",
+    "Heatmap": ""
 }
