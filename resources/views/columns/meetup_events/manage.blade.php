@@ -2,7 +2,7 @@
     <div>
         @if(auth()->user()->can('update', $row))
             <x-button
-                primary
+                black
                 xs
                 :href="route('meetup.event.form', ['country' => $row->meetup->city->country, 'meetupEvent' => $row])"
             >
