@@ -44,6 +44,10 @@ class MeetupEventForm extends Component
                         ->addHours(17),
                 ]
             );
+        } elseif (!auth()
+            ->user()
+            ->can('update', $this->meetupEvent)) {
+            abort(403);
         }
     }
 
