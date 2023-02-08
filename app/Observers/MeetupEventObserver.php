@@ -33,7 +33,7 @@ class MeetupEventObserver
                     $meetupEvent->start->asDateTime(),
                     $meetupEvent->location,
                     url()->route('meetup.event.landing',
-                        ['country' => 'de', 'meetup' => $meetupEvent->id]),
+                        ['country' => 'de', 'meetupEvent' => $meetupEvent->id]),
                 );
 
                 $this->postTweet($text);
