@@ -5,6 +5,7 @@ namespace App\Http\Livewire\BookCase;
 use App\Models\BookCase;
 use App\Models\Country;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class WorldMap extends Component
 {
@@ -32,6 +33,12 @@ class WorldMap extends Component
                                      'op'  => $bookCase->orange_pills_count,
                                  ])
                                  ->toArray(),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('World Map of Bookcases'),
+                description: __('On this map you can see bookcases that have been orange pilled. You can also click on a marker to go to the search result.'),
+                image: asset('img/world_map_bookcases.png')
+            )
         ]);
     }
 }
