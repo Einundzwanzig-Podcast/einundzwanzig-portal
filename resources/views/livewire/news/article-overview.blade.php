@@ -14,8 +14,8 @@
 
                 @foreach($libraryItems as $libraryItem)
                     <div wire:key="library_item_{{ $libraryItem->id }}"
-                         class="flex flex-col overflow-hidden rounded-lg shadow-[#F7931A] shadow-sm">
-                        <div class="flex-shrink-0">
+                         class="flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
+                        <div class="flex-shrink-0 pt-6">
                             <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
                                 <img class="h-48 w-full object-contain"
                                      src="{{ $libraryItem->getFirstMediaUrl('main') }}"
