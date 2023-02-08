@@ -59,4 +59,6 @@
 
         </div>
     </section>
+    {{-- FOOTER --}}
+    <livewire:frontend.footer/>
 </div>
