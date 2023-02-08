@@ -65,7 +65,6 @@
     </section>
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
     <script>
         document.addEventListener('livewire:load', function () {
             const canvas = document.getElementById('canvas');
