@@ -125,6 +125,9 @@ Route::middleware([])
          Route::get('/heatmap', \App\Http\Livewire\BookCase\Heatmap::class)
               ->name('heatmap');
 
+         Route::get('/world-map', \App\Http\Livewire\BookCase\WorldMap::class)
+              ->name('world');
+
          Route::get('/overview', \App\Http\Livewire\BookCase\BookCaseTable::class)
               ->name('table.bookcases');
 
