@@ -45,7 +45,7 @@
 
                         var map = new L.Map($refs.map, {
                             center: new L.LatLng(51.1642,10.4541194),
-                            zoom: 4,
+                            zoom: 6,
                             maxZoom: 8,
                             layers: [baseLayer, heatmapLayer]
                         });
