@@ -13,15 +13,17 @@
                     data: @js($heatmap_data),
                     init() {
 
-                        const map = L.map($refs.map).setView([51.1642,10.4541194], 6);
+                        const map = L.map($refs.map', {
+                            minZoom: 0,
+                            maxZoom: 8
+                        }).setView([51.1642,10.4541194], 6);
 
                         L.tileLayer.provider('Stamen.Toner').addTo(map);
 
                         var heat = L.heatLayer(this.data, {
-                            maxZoom: 10,
                             blur: 5,
                             minOpacity: 0.2,
-                            radius: 30,
+                            radius: 25,
                             gradient: {0.4: '#FABE75', 0.65: '#F9A949', 1: '#F7931A'}
                         }).addTo(map);
                     }
