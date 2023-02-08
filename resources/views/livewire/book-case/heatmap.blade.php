@@ -100,7 +100,7 @@
                 document.getElementById('matrix').style.background = "url(" + canvas.toDataURL() + ")";
             }
 
-            setInterval(matrix, 50);
+            setInterval(matrix, 75);
         });
     </script>
 </div>
