@@ -12,17 +12,45 @@
                 x-data="{
                     data: @js($heatmap_data),
                     init() {
-                        const map = L.map($refs.map,{maxZoom:8}).setView([51.1642,10.4541194], 6);
+                        var testData = {
+                          max: 8,
+                          data: this.data,
+                        };
 
-                        L.tileLayer.provider('Stamen.Toner').addTo(map);
+                        var baseLayer = L.tileLayer(
+                            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+                                attribution: '...',
+                                maxZoom: 18
+                            }
+                        );
 
-                        var heat = L.heatLayer(this.data, {
-                            blur: 5,
-                            minOpacity: 0.2,
-                            radius: 25,
-                            gradient: {0.4: '#FABE75', 0.65: '#F9A949', 1: '#F7931A'}
-                        }).addTo(map);
+                        var cfg = {
+                            'radius': 25,
+                            'maxOpacity': .6,
+                            // scales the radius based on map zoom
+                            'scaleRadius': false,
+                            // if set to false the heatmap uses the global maximum for colorization
+                            // if activated: uses the data maximum within the current map boundaries
+                            //   (there will always be a red spot with useLocalExtremas true)
+                            'useLocalExtrema': true,
+                            // which field name in your data represents the latitude - default 'lat'
+                            latField: 'lat',
+                            // which field name in your data represents the longitude - default 'lng'
+                            lngField: 'lng',
+                            // which field name in your data represents the data value - default 'value'
+                            valueField: 'count'
+                        };
 
+                        var heatmapLayer = new HeatmapOverlay(cfg);
+
+                        var map = new L.Map($refs.map, {
+                            center: new L.LatLng(51.1642,10.4541194),
+                            zoom: 4,
+                            maxZoom: 10,
+                            layers: [baseLayer, heatmapLayer]
+                        });
+
+                        heatmapLayer.setData(testData);
                     }
                 }"
             >
