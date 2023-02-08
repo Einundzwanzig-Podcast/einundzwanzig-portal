@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')
      });
 
 Route::middleware([])
-    ->as('api.')
+     ->as('api.')
      ->group(function () {
          Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
          Route::resource('meetup', \App\Http\Controllers\Api\MeetupController::class);
@@ -49,12 +49,39 @@ Route::middleware([])
                                           'website'          => $meetup->webpage,
                                       ]);
          });
+         Route::get('btc-meetups', function () {
+             return \App\Models\Meetup::query()
+                                      ->with([
+                                          'city.country',
+                                      ])
+                                      ->whereHas('city', fn($query) => $query->whereNotNull('cities.simplified_geojson'))
+                                      ->get()
+                                      ->map(fn($meetup) => [
+                                          'id'   => $meetup->slug,
+                                          'tags' => [
+                                              'type'                   => 'community',
+                                              'name'                   => $meetup->name,
+                                              'continent'              => $meetup->city->country->europe,
+                                              'icon:square'            => $meetup->getFirstMediaUrl('logo'),
+                                              'contact:email'          => null,
+                                              'contact:twitter'        => 'https://twitter.com/'.$meetup->twitter_username,
+                                              'contact:website'        => $meetup->webpage,
+                                              'tips:lightning_address' => null,
+                                              'organization'           => 'einundzwanzig',
+                                              'language'               => $meetup->city->country->language_codes[0],
+                                              'geo_json'               => $meetup->city->simplified_geojson,
+                                              'population'             => $meetup->city->population,
+                                              'population:date'        => $meetup->city->population_date,
+                                          ],
+                                      ]);
+         });
      });
 
 Route::get('/lnurl-auth-callback', function (\Illuminate\Http\Request $request) {
     if (lnurl\auth($request->k1, $request->sig, $request->key)) {
         // find User by $wallet_public_key
-        $user = User::query()->whereBlind('public_key', 'public_key_index', $request->key)
+        $user = User::query()
+                    ->whereBlind('public_key', 'public_key_index', $request->key)
                     ->first();
         if (!$user) {
             // create User
