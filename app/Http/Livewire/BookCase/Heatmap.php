@@ -19,7 +19,7 @@ class Heatmap extends Component
         ]);
 
         return view('livewire.book-case.heatmap', [
-            'heatmap_data' => $data,
+            'heatmap_data' => $data->toArray(),
         ]);
     }
 }

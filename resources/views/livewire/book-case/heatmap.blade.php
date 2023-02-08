@@ -1,10 +1,10 @@
-<div class="bg-21gray flex flex-col h-screen justify-between">
+<div class="bg-21gray h-screen justify-between">
     <livewire:frontend.header :country="$country"/>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
 
-            <h1 class="font-bold dark:text-white">
+            <h1 class="text-xl font-bold py-4 text-gray-200">
                 {{ __('Orange Pill Heatmap') }}
             </h1>
 
@@ -13,7 +13,7 @@
                     data: @js($heatmap_data),
                     init() {
 
-                        const map = L.map($refs.map).setView([50.5, 30.5], 8);
+                        const map = L.map($refs.map).setView([51.1642,10.4541194], 6);
 
                         L.tileLayer.provider('Stamen.Toner').addTo(map);
 
