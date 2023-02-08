@@ -12,7 +12,7 @@ class Heatmap extends Component
     public function render()
     {
         $data = BookCase::query()
-                        //->whereHas('orangePills')
+                        ->whereHas('orangePills')
                         ->get()->map(fn($bookCase) => [
             'lat' => $bookCase->latitude,
             'lng' => $bookCase->longitude,
