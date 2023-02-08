@@ -56,7 +56,11 @@ Route::middleware([])
                                       ])
                                       ->where('community', '=', 'einundzwanzig')
                                       ->whereHas('city',
-                                          fn($query) => $query->whereNotNull('cities.simplified_geojson'))
+                                          fn($query) => $query
+                                              ->whereNotNull('cities.simplified_geojson')
+                                              ->whereNotNull('cities.population')
+                                              ->whereNotNull('cities.population_date')
+                                      )
                                       ->get()
                                       ->map(fn($meetup) => [
                                           'id'   => $meetup->slug,
