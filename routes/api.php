@@ -63,7 +63,7 @@ Route::middleware([])
                                           'tags' => [
                                               'type'                   => 'community',
                                               'name'                   => $meetup->name,
-                                              'continent'              => $meetup->city->country->europe,
+                                              'continent'              => 'europe',
                                               'icon:square'            => $meetup->getFirstMediaUrl('logo'),
                                               'contact:email'          => null,
                                               'contact:twitter'        => 'https://twitter.com/'.$meetup->twitter_username,
