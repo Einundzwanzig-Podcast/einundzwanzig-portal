@@ -29,7 +29,7 @@ class WorldMap extends Component
                                                  ]
                                              ]
                                          ]),
-                                     'op'  => $bookCase->count_orange_pills,
+                                     'op'  => $bookCase->orange_pills_count,
                                  ])
                                  ->toArray(),
         ]);
