@@ -15,6 +15,8 @@ class Header extends Component
     public string $c = 'de';
     public string $l = 'de';
 
+    public $bgColor = 'bg-21gray';
+
     protected $queryString = ['l'];
 
     public function rules()

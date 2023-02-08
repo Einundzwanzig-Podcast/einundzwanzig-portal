@@ -1,5 +1,5 @@
-<div class="bg-21gray h-screen justify-between">
-    <livewire:frontend.header :country="$country"/>
+<div class="bg-black h-screen justify-between">
+    <livewire:frontend.header :country="$country" bgColor="bg-black"/>
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
