@@ -18,9 +18,10 @@
                         L.tileLayer.provider('Stamen.Toner').addTo(map);
 
                         var heat = L.heatLayer(this.data, {
+                            maxZoom: 10,
                             blur: 5,
                             minOpacity: 0.2,
-                            radius: 25,
+                            radius: 30,
                             gradient: {0.4: '#FABE75', 0.65: '#F9A949', 1: '#F7931A'}
                         }).addTo(map);
                     }
