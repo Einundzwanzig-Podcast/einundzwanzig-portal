@@ -49,7 +49,7 @@ Route::middleware([])
                                           'website'          => $meetup->webpage,
                                       ]);
          });
-         Route::get('btc-meetups', function () {
+         Route::get('btc-map-communities', function () {
              return \App\Models\Meetup::query()
                                       ->with([
                                           'city.country',
