@@ -50,36 +50,38 @@ Route::middleware([])
                                       ]);
          });
          Route::get('btc-map-communities', function () {
-             return \App\Models\Meetup::query()
-                                      ->with([
-                                          'city.country',
-                                      ])
-                                      ->where('community', '=', 'einundzwanzig')
-                                      ->whereHas('city',
-                                          fn($query) => $query
-                                              ->whereNotNull('cities.simplified_geojson')
-                                              ->whereNotNull('cities.population')
-                                              ->whereNotNull('cities.population_date')
-                                      )
-                                      ->get()
-                                      ->map(fn($meetup) => [
-                                          'id'   => $meetup->slug,
-                                          'tags' => [
-                                              'type'                   => 'community',
-                                              'name'                   => $meetup->name,
-                                              'continent'              => 'europe',
-                                              'icon:square'            => $meetup->getFirstMediaUrl('logo'),
-                                              'contact:email'          => null,
-                                              'contact:twitter'        => 'https://twitter.com/'.$meetup->twitter_username,
-                                              'contact:website'        => $meetup->webpage,
-                                              'tips:lightning_address' => null,
-                                              'organization'           => 'einundzwanzig',
-                                              'language'               => $meetup->city->country->language_codes[0],
-                                              'geo_json'               => $meetup->city->simplified_geojson,
-                                              'population'             => $meetup->city->population,
-                                              'population:date'        => $meetup->city->population_date,
-                                          ],
-                                      ]);
+             return response()->json(\App\Models\Meetup::query()
+                                                       ->with([
+                                                           'city.country',
+                                                       ])
+//                                                       ->where('community', '=', 'einundzwanzig')
+//                                                       ->whereHas('city',
+//                                                           fn($query) => $query
+//                                                               ->whereNotNull('cities.simplified_geojson')
+//                                                               ->whereNotNull('cities.population')
+//                                                               ->whereNotNull('cities.population_date')
+//                                                       )
+                                                       ->get()
+                                                       ->map(fn($meetup) => [
+                                                           'id'   => $meetup->slug,
+                                                           'tags' => [
+                                                               'type'                   => 'community',
+                                                               'name'                   => $meetup->name,
+                                                               'continent'              => 'europe',
+                                                               'icon:square'            => $meetup->getFirstMediaUrl('logo'),
+                                                               'contact:email'          => null,
+                                                               'contact:twitter'        => 'https://twitter.com/'.$meetup->twitter_username,
+                                                               'contact:website'        => $meetup->webpage,
+                                                               'tips:lightning_address' => null,
+                                                               'organization'           => 'einundzwanzig',
+                                                               'language'               => $meetup->city->country->language_codes[0],
+                                                               'geo_json'               => $meetup->city->simplified_geojson,
+                                                               'population'             => $meetup->city->population,
+                                                               'population:date'        => $meetup->city->population_date,
+                                                           ],
+                                                       ])
+                                                       ->toArray(), 200,
+                 ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_SLASHES);
          });
      });
 
