@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -81,6 +82,18 @@ class Meetup extends Resource
                   ->conversionOnIndexView('thumb')
                   ->showStatistics()
                   ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
+
+            Select::make(__('Community'), 'community')
+                  ->options(
+                      [
+                          'einundzwanzig'       => 'Einundzwanzig',
+                          'bitcoin'             => 'Bitcoin',
+                          'satoshis_coffeeshop' => 'Satoshis Coffeeshop',
+                      ]
+                  )
+                  ->rules('required', 'string')
+                  ->help(__('This is the community that the meetup belongs to. If a community is not listed, please contact the administrator.'))
+                  ->hideFromIndex(),
 
             Text::make('Name')
                 ->rules('required', 'string')
