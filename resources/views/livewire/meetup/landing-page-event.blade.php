@@ -60,7 +60,7 @@
                                 <p class="font-bold text-xl">
                                     {{ __('Where') }}: {{ $meetupEvent->location }}
                                 </p>
-                                <div class="prose prose-white leading-normal">
+                                <div class="prose prose-invert leading-normal">
                                     <x-markdown>
                                         {!! $meetupEvent->description !!}
                                     </x-markdown>
