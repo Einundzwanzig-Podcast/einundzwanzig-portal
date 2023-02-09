@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
@@ -138,6 +139,8 @@ class Lecturer extends Resource
                      })
                      ->searchable()
                      ->withSubtitles(),
+
+            HasMany::make(__('Library Items'), 'libraryItems', LibraryItem::class),
 
         ];
     }
