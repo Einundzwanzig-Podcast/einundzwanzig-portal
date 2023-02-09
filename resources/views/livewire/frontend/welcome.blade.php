@@ -1,4 +1,4 @@
-<div class="bg-21gray flex flex-col justify-between">
+<div class="min-h-screen bg-21gray flex flex-col justify-between">
     <section class="relative px-10 pt-16 pb-24 sm:py-16 sm:overflow-hidden">
         <img class="absolute h-43 left-0 z-0 w-3/4 transform -translate-y-1/2 opacity-70 top-1/2"
              src="{{ asset('img/gradient-blob.svg') }}">
