@@ -60,7 +60,7 @@
                                 <p class="font-bold text-xl">
                                     {{ __('Where') }}: {{ $meetupEvent->location }}
                                 </p>
-                                <div class="prose-xl prose-white">
+                                <div class="prose prose-white">
                                     <x-markdown>
                                         {!! $meetupEvent->description !!}
                                     </x-markdown>
