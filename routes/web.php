@@ -183,6 +183,7 @@ Route::middleware([])
          Route::get('/meetup-events/form/{meetupEvent?}', \App\Http\Livewire\Meetup\Form\MeetupEventForm::class)
               ->name('event.form')
               ->middleware([
+                  'auth',
                   'needMeetup',
               ]);
 
