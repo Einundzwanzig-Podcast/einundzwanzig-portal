@@ -49,6 +49,11 @@ class LibraryItemObserver
                     }
 
                 } else {
+
+                    if (!$libraryItem->approved) {
+                        return;
+                    }
+
                     $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
                         $libraryItemName,
                         url()->route('article.view',
