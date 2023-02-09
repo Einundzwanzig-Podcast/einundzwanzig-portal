@@ -16,7 +16,18 @@
         <div class="space-y-8 divide-y divide-gray-700 sm:space-y-5">
             <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
 
-                <x-input.group :for="md5('libraryItem.lecturer_id')" :label="__('Author')">
+                <x-input.group :for="md5('libraryItem.lecturer_id')">
+                    <x-slot name="label">
+                        <div class="flex flex-row space-x-4 items-center">
+                            <div>
+                                {{ __('Author') }}
+                            </div>
+                            <x-button xs href="/nova/resources/lecturers/new" target="_blank">
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Create new author') }}
+                            </x-button>
+                        </div>
+                    </x-slot>
                     <x-select
                         :clearable="false"
                         wire:model="libraryItem.lecturer_id"
