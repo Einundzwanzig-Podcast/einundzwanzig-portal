@@ -1,5 +1,5 @@
 <div class="bg-21gray flex flex-col justify-between">
-    <section class="relative px-10 pt-16 pb-24 sm:py-16 sm:overflow-hidden mb:64 sm:mb-24">
+    <section class="relative px-10 pt-16 pb-24 sm:py-16 sm:overflow-hidden">
         <img class="absolute h-43 left-0 z-0 w-3/4 transform -translate-y-1/2 opacity-70 top-1/2"
              src="{{ asset('img/gradient-blob.svg') }}">
         <img class="absolute left-0 z-0 object-cover object-center w-full h-full opacity-50 top-24"
@@ -173,7 +173,7 @@
         </div>
     </section>
     {{-- FOOTER --}}
-    <div class="fixed bottom-0 w-full">
+    <div class="bottom-0 w-full">
         <livewire:frontend.footer/>
     </div>
 </div>
