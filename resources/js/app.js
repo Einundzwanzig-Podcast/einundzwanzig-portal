@@ -1,8 +1,5 @@
 import './bootstrap'
 
-// Import the plugin styles
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-
 import Alpine    from 'alpinejs'
 import collapse  from '@alpinejs/collapse'
 import intersect from '@alpinejs/intersect'
