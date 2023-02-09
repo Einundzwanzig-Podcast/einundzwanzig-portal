@@ -23,6 +23,17 @@ Route::middleware([])
      ->get('/news', \App\Http\Livewire\News\ArticleOverview::class)
      ->name('article.overview');
 
+/*
+ * News
+ * */
+Route::middleware([])
+     ->as('news.')
+     ->prefix('/news')
+     ->group(function () {
+         Route::get('/form/{libraryItem?}', \App\Http\Livewire\News\Form\NewsArticleForm::class)
+              ->name('form');
+     });
+
 Route::middleware([])
      ->get('/news/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
      ->name('article.view');

@@ -13,8 +13,6 @@
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
-          media="screen"/>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/world-mill.js') }}"></script>
@@ -38,6 +36,9 @@
     <x-comments::scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
+          media="screen"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
     <x-comments::styles/>
     <x-embed-styles />
     @livewireStyles
@@ -111,5 +112,6 @@
 @livewireScripts
 <!-- ProductLift SDK - Include it only once -->
 <script defer src="https://bitcoin.productlift.dev/widgets_sdk"></script>
+<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 </body>
 </html>

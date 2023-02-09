@@ -24,6 +24,10 @@ docker run --rm \
 
 ```./vendor/bin/sail artisan migrate:fresh --seed```
 
+### Laravel storage link
+
+```./vendor/bin/sail artisan storage:link```
+
 #### Install node dependencies
 
 ```vendor/bin/sail yarn install```

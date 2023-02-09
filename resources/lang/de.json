@@ -583,7 +583,7 @@
     "Changes": "",
     "Exception": "",
     "Action Happened At": "",
-    "Action": "",
+    "Action": "Aktion",
     "CSV (.csv)": "",
     "Excel (.xlsx)": "",
     "Filename": "",
@@ -634,8 +634,8 @@
     "Here you can see all events of :name.": "Hier siehst du alle Kurs-Termine von :name.",
     "This is the introduction text that is shown on the landing page.": "Das ist der Einführungstext, der auf der Landing-Page angezeigt wird.",
     "This is the subtitle on the landing page.": "Das ist der Untertitel auf der Landing-Page des Dozenten.",
-    "Subtitle": "Untertitel auf der Landing-Page",
-    "Intro": "Intro auf der Landing-Page",
+    "Subtitle": "Untertitel",
+    "Intro": "Intro",
     "This lecturer has not yet written an introduction.": "Dieser Dozent hat noch keine Einführung geschrieben.",
     "If your city is not listed, please create it first.": "Wenn deine Stadt nicht aufgeführt ist, erstelle sie bitte zuerst.",
     "You get a point when you log in.": "Du bekommst einen Punkt, wenn du dich einloggst.",
@@ -731,5 +731,11 @@
     "On this map you can see bookcases that have been orange pilled. You can also click on a marker to go to the search result.": "Auf dieser Karte kannst du sehen, wo sich georangepillte Bücher befinden. Du kannst auch auf einen Marker klicken, um zum Suchergebnis zu gelangen.",
     "Community": "Community",
     "This is the community that the meetup belongs to. If a community is not listed, please contact the administrator.": "Dies ist die Community, der das Meetup angehört. Wenn eine Community nicht aufgeführt ist, kontaktiere bitte den Administrator.",
-    "World Map": "Weltkarte"
+    "World Map": "Weltkarte",
+    "Submit news articles": "Artikel einreichen",
+    "News Article": "News-Artikel",
+    "Author": "Autor",
+    "Ex: Photo by Timothy Vollmer\/ CC BY": "Zum Beispiel: Foto von Timothy Vollmer\/ CC BY",
+    "Article as Markdown": "Artikel als Markdown",
+    "For images in Markdown, please use eg. Imgur or another provider.": "Für Bilder in Markdown, benutze bitte z.B. Imgur oder einen anderen Anbieter."
 }

@@ -9,6 +9,14 @@
                 <div>
                     <img class="h-32 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                 </div>
+                <div>
+                    <x-button
+                        :href="route('news.form')"
+                        primary>
+                        <i class="fa fa-thin fa-plus"></i>
+                        {{ __('Submit news articles') }}
+                    </x-button>
+                </div>
             </div>
             <div class="mx-auto mt-2 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 
