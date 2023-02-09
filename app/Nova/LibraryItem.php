@@ -32,6 +32,8 @@ class LibraryItem extends Resource
      */
     public static $model = \App\Models\LibraryItem::class;
 
+    public static $perPageViaRelationship = 50;
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      * @var string
