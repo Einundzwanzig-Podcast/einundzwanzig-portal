@@ -735,5 +735,12 @@
     "Article as Markdown": "",
     "For images in Markdown, please use eg. Imgur or another provider.": "",
     "Library Items": "",
-    "Create new author": ""
+    "Create new author": "",
+    "Remember that you are currently not logged in.": "",
+    "Your participation will only be saved for one week in the current browser session.": "",
+    "You cannot withdraw your participation after one week.": "",
+    "Log in so that you can edit your participation at any time.": "",
+    ":amount selected": "",
+    "Attach files by dragging & dropping, selecting or pasting them.": "",
+    "Uploading files... (:current\/:total)": ""
 }

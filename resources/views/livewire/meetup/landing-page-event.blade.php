@@ -191,14 +191,14 @@
                                                 </svg>
                                             </div>
                                             <div class="ml-3">
-                                                <h3 class="text-sm font-medium text-red-800">There were 2 errors with
-                                                    your submission</h3>
+                                                <h3 class="text-sm font-medium text-red-800">
+                                                    {{ __('Remember that you are currently not logged in.') }}
+                                                </h3>
                                                 <div class="mt-2 text-sm text-red-700">
                                                     <ul role="list" class="list-disc space-y-1 pl-5">
-                                                        <li>Your password must be at least 8 characters</li>
-                                                        <li>Your password must include at least one pro wrestling
-                                                            finishing move
-                                                        </li>
+                                                        <li>{{ __('Your participation will only be saved for one week in the current browser session.') }}</li>
+                                                        <li>{{ __('You cannot withdraw your participation after one week.') }}</li>
+                                                        <li>{{ __('Log in so that you can edit your participation at any time.') }}</li>
                                                     </ul>
                                                 </div>
                                             </div>

@@ -350,9 +350,9 @@
     "Bitcoin Portal": "",
     "A Bitcoin community for all.": "Eine Bitcoin Community für alle.",
     "Plebs together strong": "",
-    "Education": "",
+    "Education": "Weiterbildung",
     "Worldwide": "",
-    "Reading": "",
+    "Reading": "Lesen",
     "School": "Schule",
     "Find Bitcoin courses in your city": "Finde Bitcoin Kurs in deiner Stadt",
     "👇 Find a course 👇": "👇 Finde Kurse 👇",
@@ -738,5 +738,12 @@
     "Ex: Photo by Timothy Vollmer\/ CC BY": "Zum Beispiel: Foto von Timothy Vollmer\/ CC BY",
     "Article as Markdown": "Artikel als Markdown",
     "For images in Markdown, please use eg. Imgur or another provider.": "Für Bilder in Markdown, benutze bitte z.B. Imgur oder einen anderen Anbieter.",
-    "Create new author": "Erstelle neuen Autor"
+    "Create new author": "Erstelle neuen Autor",
+    "Remember that you are currently not logged in.": "Denke daran, dass du derzeit nicht angemeldet bist.",
+    "Your participation will only be saved for one week in the current browser session.": "Deine Teilnahme wird nur für eine Woche in der aktuellen Browser-Sitzung gespeichert.",
+    "You cannot withdraw your participation after one week.": "Du kannst deine Teilnahme nach einer Woche nicht mehr zurückziehen.",
+    "Log in so that you can edit your participation at any time.": "Logge dich ein, damit du deine Teilnahme jederzeit bearbeiten kannst.",
+    ":amount selected": ":amount ausgewählt",
+    "Attach files by dragging & dropping, selecting or pasting them.": "Anhänge per Drag & Drop, Auswahl oder Einfügen hinzufügen.",
+    "Uploading files... (:current\/:total)": "Laade Dateien hoch... (:current\/:total)"
 }
