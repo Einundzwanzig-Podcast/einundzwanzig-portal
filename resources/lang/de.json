@@ -535,11 +535,11 @@
     "Nova User": "",
     "Stop Impersonating": "",
     ":name's Avatar": "",
-    "Something went wrong.": "",
-    "Yes": "",
-    "No": "",
-    "Show All Fields": "",
-    "End": "",
+    "Something went wrong.": "Etwas ist schief gelaufen.",
+    "Yes": "Ja",
+    "No": "Nein",
+    "Show All Fields": "Zeige alle Felder",
+    "End": "Ende",
     "Min": "",
     "Max": "",
     "Sorry! You are not authorized to perform this action.": "",
@@ -745,5 +745,9 @@
     "Log in so that you can edit your participation at any time.": "Logge dich ein, damit du deine Teilnahme jederzeit bearbeiten kannst.",
     ":amount selected": ":amount ausgewählt",
     "Attach files by dragging & dropping, selecting or pasting them.": "Anhänge per Drag & Drop, Auswahl oder Einfügen hinzufügen.",
-    "Uploading files... (:current\/:total)": "Laade Dateien hoch... (:current\/:total)"
+    "Uploading files... (:current\/:total)": "Laade Dateien hoch... (:current\/:total)",
+    "You have not confirmed your participation.": "Du hast deine Teilnahme noch nicht bestätigt.",
+    "Are you sure you want to cancel your participation?": "Bitte bestätige, dass du deine Teilnahme zurückziehen möchtest.",
+    "Confirmation": "Bestätigung",
+    "You confirm your participation.": "Du bestätigst deine Teilnahme."
 }

@@ -32,7 +32,7 @@
     <script src="{{ asset('dist/heatmap.min.js') }}"></script>
     <script src="{{ asset('dist/leaflet-heatmap.js') }}"></script>
     <script src="{{ asset('dist/leaflet-providers.js') }}"></script>
-    @wireUiScripts
+    <wireui:scripts />
     <x-comments::scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->

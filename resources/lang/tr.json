@@ -716,5 +716,9 @@
     "Log in so that you can edit your participation at any time.": "",
     ":amount selected": "",
     "Attach files by dragging & dropping, selecting or pasting them.": "",
-    "Uploading files... (:current\/:total)": ""
+    "Uploading files... (:current\/:total)": "",
+    "You have not confirmed your participation.": "",
+    "Are you sure you want to cancel your participation?": "",
+    "Confirmation": "",
+    "You confirm your participation.": ""
 }

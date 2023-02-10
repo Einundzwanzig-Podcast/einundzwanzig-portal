@@ -152,26 +152,54 @@
                             <div class="mt-10 flex flex-row space-x-2 items-center">
                                 <div>
                                     @if(!$willShowUp && !$perhapsShowUp)
-                                        <x-button
-                                            lg primary wire:click="attend">
-                                            <i class="fa fa-thin fa-check mr-2"></i>
-                                            {{ __('I will show up') }}
-                                        </x-button>
+                                        <div x-data="{}">
+                                            <x-button
+                                                lg primary
+                                                x-on:click="$wireui.confirmDialog({
+                                                    id: 'attend-event',
+                                                    icon: 'question',
+                                                    accept: {label: '{{ __('Yes') }}',
+                                                    execute: () => $wire.attend()},
+                                                    reject: {label: '{{ __('No, cancel') }}',
+                                                    execute: () => window.$wireui.notify({'title': '{{ __('You have not confirmed your participation.') }}','icon': 'warning'})}})"
+                                            >
+                                                <i class="fa fa-thin fa-check mr-2"></i>
+                                                {{ __('I will show up') }}
+                                            </x-button>
+                                        </div>
                                     @else
-                                        <x-button
-                                            lg primary wire:click="cannotCome">
-                                            <i class="fa fa-thin fa-face-frown mr-2"></i>
-                                            {{ __('Unfortunately I cannot come') }}
-                                        </x-button>
+                                        <div x-data="{}">
+                                            <x-button
+                                                x-on:click="$wireui.confirmDialog({
+                                                    icon: 'question',
+                                                    title: '{{ __('Are you sure you want to cancel your participation?') }}',
+                                                    accept: {label: '{{ __('Yes') }}',
+                                                    execute: () => $wire.cannotCome()},
+                                                    reject: {label: '{{ __('No, cancel') }}',
+                                            }})"
+                                                lg primary>
+                                                <i class="fa fa-thin fa-face-frown mr-2"></i>
+                                                {{ __('Unfortunately I cannot come') }}
+                                            </x-button>
+                                        </div>
                                     @endif
                                 </div>
                                 <div>
                                     @if(!$perhapsShowUp && !$willShowUp)
-                                        <x-button
-                                            lg wire:click="mightAttend">
-                                            <i class="fa fa-thin fa-question mr-2"></i>
-                                            {{ __('Might attend') }}
-                                        </x-button>
+                                        <div x-data="{}">
+                                            <x-button
+                                                x-on:click="$wireui.confirmDialog({
+                                                    id: 'attend-event',
+                                                    icon: 'question',
+                                                    accept: {label: '{{ __('Yes') }}',
+                                                    execute: () => $wire.mightAttend()},
+                                                    reject: {label: '{{ __('No, cancel') }}',
+                                                    execute: () => window.$wireui.notify({'title': '{{ __('You have not confirmed your participation.') }}','icon': 'warning'})}})"
+                                                lg>
+                                                <i class="fa fa-thin fa-question mr-2"></i>
+                                                {{ __('Might attend') }}
+                                            </x-button>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
@@ -220,6 +248,45 @@
         </div>
 
     </section>
+    @push('modals')
+        <x-dialog id="attend-event" title="{{ __('Confirmation') }}"
+                  description="{{ __('You confirm your participation.') }}">
+            @auth
+            @else
+                <div class="rounded-md bg-transparent p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <!-- Heroicon name: mini/x-circle -->
+                            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-red-500">
+                                {{ __('Remember that you are currently not logged in.') }}
+                            </h3>
+                            <div class="mt-2 text-sm text-red-700">
+                                <ul role="list" class="list-disc space-y-1 pl-5">
+                                    <li>{{ __('Your participation will only be saved for one week in the current browser session.') }}</li>
+                                    <li>{{ __('You cannot withdraw your participation after one week.') }}</li>
+                                    <li>{{ __('Log in so that you can edit your participation at any time.') }}</li>
+                                </ul>
+                                <div class="w-full flex justify-end">
+                                    <x-button xs secondary :href="route('auth.ln')">
+                                        <i class="fa fa-thin fa-sign-in"></i>
+                                        {{ __('Login') }}
+                                    </x-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endauth
+        </x-dialog>
+    @endpush
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
 </div>
