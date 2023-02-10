@@ -35,6 +35,14 @@
                                 <i class="fa-thin fa-sign-in"></i>
                                 {{ __('Login') }}
                             </x-button>
+                        @else
+                            <form method="POST" action="{{ route('logout') }}" class="inline">
+                                @csrf
+                                <x-button secondary type="submit">
+                                    <i class="fa-thin fa-sign-out"></i>
+                                    {{ __('Logout') }}
+                                </x-button>
+                            </form>
                         @endif
                     </div>
                 </div>

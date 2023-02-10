@@ -146,7 +146,13 @@
                         />
                     @endif
                     @auth
-                        <div></div>
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <x-button secondary type="submit">
+                                <i class="fa-thin fa-sign-out"></i>
+                                {{ __('Logout') }}
+                            </x-button>
+                        </form>
                     @else
                         <x-button href="{{ route('auth.ln') }}">
                             <i class="fa-thin fa-sign-in"></i>
