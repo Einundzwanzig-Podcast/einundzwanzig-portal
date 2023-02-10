@@ -200,6 +200,12 @@
                                                         <li>{{ __('You cannot withdraw your participation after one week.') }}</li>
                                                         <li>{{ __('Log in so that you can edit your participation at any time.') }}</li>
                                                     </ul>
+                                                    <div class="w-full flex justify-end">
+                                                        <x-button xs secondary :href="route('auth.ln')">
+                                                            <i class="fa fa-thin fa-sign-in"></i>
+                                                            {{ __('Login') }}
+                                                        </x-button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
