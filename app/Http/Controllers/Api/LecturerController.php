@@ -22,7 +22,7 @@ class LecturerController extends Controller
                      ->when(
                          $request->search,
                          fn(Builder $query) => $query
-                             ->where('name', 'like', "%{$request->search}%")
+                             ->where('name', 'ilike', "%{$request->search}%")
                      )
                      ->when(
                          $request->exists('selected'),
