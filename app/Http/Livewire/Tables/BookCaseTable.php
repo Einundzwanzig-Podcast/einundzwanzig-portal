@@ -81,7 +81,8 @@ class BookCaseTable extends DataTableComponent
                           $row,
                           Column $column
                       ) => $row->orangePills->sum('amount')
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make("Letzter Input")
                   ->label(
                       fn(
@@ -90,7 +91,8 @@ class BookCaseTable extends DataTableComponent
                       ) => $row->orangePills()
                                ->latest()
                                ->first()?->date->asDate()
-                  ),
+                  )
+                  ->collapseOnMobile(),
             Column::make("Link")
                   ->label(
                       fn(
@@ -98,11 +100,13 @@ class BookCaseTable extends DataTableComponent
                           Column $column
                       ) => $row->homepage ? '<a target="_blank" class="underline text-amber-500" href="'.$this->url_to_absolute($row->homepage).'">Link</a>' : null
                   )
-                  ->html(),
+                  ->html()
+                  ->collapseOnMobile(),
             Column::make('Orange-Pilled', 'orange_pilled')
                   ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')
                       ->withRow($row)
                       ->withCountry($this->country))
+                  ->collapseOnMobile(),
         ];
     }
 
