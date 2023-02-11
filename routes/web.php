@@ -26,11 +26,26 @@ Route::middleware([])
 /*
  * News
  * */
-Route::middleware([])
+Route::middleware([
+    'auth'
+])
      ->as('news.')
      ->prefix('/news')
      ->group(function () {
          Route::get('/form/{libraryItem?}', \App\Http\Livewire\News\Form\NewsArticleForm::class)
+              ->name('form');
+     });
+
+/*
+ * Cities
+ * */
+Route::middleware([
+    'auth'
+])
+     ->as('city.')
+     ->prefix('/city')
+     ->group(function () {
+         Route::get('/form/{city?}', \App\Http\Livewire\City\Form\CityForm::class)
               ->name('form');
      });
 

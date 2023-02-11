@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Livewire\City\Form;
+
+use App\Models\City;
+use Livewire\Component;
+
+class CityForm extends Component
+{
+    public ?City $city = null;
+
+    public string $fromUrl = '';
+
+    protected $queryString = [
+        'fromUrl' => [
+            'except' => null,
+        ],
+    ];
+
+    public function rules()
+    {
+        return [
+            'city.country_id' => 'required',
+            'city.name'       => 'required|string',
+            'city.longitude'  => 'required',
+            'city.latitude'   => 'required',
+        ];
+    }
+
+    public function mount()
+    {
+        if (!$this->city) {
+            $this->city = new City();
+        }
+    }
+
+    public function save()
+    {
+        $this->validate();
+        $this->city->save();
+
+        return redirect($this->fromUrl);
+    }
+
+    public function render()
+    {
+        return view('livewire.city.form.city-form');
+    }
+}
