@@ -18,6 +18,11 @@ class ArticleOverview extends Component
                                              'tags',
                                          ])
                                          ->where('type', 'markdown_article')
+                                         ->when(app()->environment('production'),
+                                             fn($query) => $query
+                                                 ->whereHas('createdBy.roles',
+                                                     fn($query) => $query->where('roles.name', 'news-editor'))
+                                         )
                                          ->where('approved', true)
                                          ->orderByDesc('created_at')
                                          ->get(),
