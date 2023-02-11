@@ -38,12 +38,12 @@ class ArticleOverview extends Component
                                                  if (auth()->user() && auth()
                                                          ->user()
                                                          ->hasRole('news-editor')) {
-                                                 } else {
-                                                     $query
-                                                         ->whereHas('createdBy.roles',
-                                                             fn($query) => $query->where('roles.name', 'news-editor'))
-                                                         ->where('approved', true);
+                                                     return;
                                                  }
+                                                 $query
+                                                     ->whereHas('createdBy.roles',
+                                                         fn($query) => $query->where('roles.name', 'news-editor'))
+                                                     ->where('approved', true);
                                              }
                                          )
                                          ->orderByDesc('created_at')
