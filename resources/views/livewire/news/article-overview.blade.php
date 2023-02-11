@@ -68,20 +68,35 @@
                                             @endif
                                         </div>
                                         <div
-                                            class="flex flex-wrap space-x-1 text-sm text-gray-500 justify-end items-end">
+                                            class="flex space-x-1 text-sm text-gray-500 justify-end items-end">
                                             @if($libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
                                                 <div>
                                                     @if($libraryItem->approved)
-                                                        <x-badge green>{{ __('approved') }}</x-badge>
-                                                        @if(auth()->user()?->hasRole('news-editor') && !$libraryItem->tweet)
+                                                        <div>
+                                                            <x-badge green>{{ __('approved') }}</x-badge>
+                                                        </div>
+                                                    @else
+                                                        <div>
+                                                            <x-badge negative>{{ __('not approved') }}</x-badge>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    @if($libraryItem->approved && auth()->user()?->hasRole('news-editor') && !$libraryItem->tweet)
+                                                        <div x-data="{}">
                                                             <x-button xs
-                                                                      wire:click="tweet({{ $libraryItem->id }})">
+                                                                      x-on:click="$wireui.confirmDialog({
+                                                                            icon: 'question',
+                                                                            title: '{{ __('Are you sure you want to tweet this article?')}}',
+                                                                            accept: {label: '{{ __('Yes') }}',
+                                                                            execute: () => $wire.tweet({{ $libraryItem->id }})},
+                                                                            reject: {label: '{{ __('No, cancel') }}'},
+                                                                            })"
+                                                            >
                                                                 <i class="fa fa-brand fa-twitter"></i>
                                                                 {{ __('Tweet') }}
                                                             </x-button>
-                                                        @endif
-                                                    @else
-                                                        <x-badge negative>{{ __('not approved') }}</x-badge>
+                                                        </div>
                                                     @endif
                                                 </div>
                                                 <div>

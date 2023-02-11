@@ -757,5 +757,6 @@
     "Article not approved yet": "Artikel noch nicht genehmigt",
     "Article tweeted": "Artikel getwittert",
     "Error tweeting article": "Fehler beim Twittern des Artikels",
-    "Tweet": "Tweet"
+    "Tweet": "Tweet",
+    "Are you sure you want to tweet this article?": "Bitte bestätige, dass du diesen Artikel tweeten möchtest."
 }
