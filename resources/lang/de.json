@@ -750,5 +750,8 @@
     "Are you sure you want to cancel your participation?": "Bitte bestätige, dass du deine Teilnahme zurückziehen möchtest.",
     "Confirmation": "Bestätigung",
     "You confirm your participation.": "Du bestätigst deine Teilnahme.",
-    "Current picture": "Derzeitiges Bild"
+    "Current picture": "Derzeitiges Bild",
+    "Article approved": "Artikel genehmigt",
+    "approved": "genehmigt",
+    "not approved": "nicht genehmigt"
 }
