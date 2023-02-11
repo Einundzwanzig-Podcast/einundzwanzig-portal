@@ -21,7 +21,7 @@ class NewsArticleForm extends Component
     public function rules()
     {
         return [
-            'image' => ['mimes:jpeg,png,jpg,gif', 'max:10240', Rule::requiredIf(!$this->libraryItem->id)],
+            'image' => [Rule::requiredIf(!$this->libraryItem->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
             'libraryItem.lecturer_id'        => 'required',
             'libraryItem.name'               => 'required',
