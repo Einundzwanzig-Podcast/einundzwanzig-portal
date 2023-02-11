@@ -4,7 +4,7 @@
         <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('City') }}</h3>
         <div class="flex flex-row space-x-2 items-center">
             <div>
-                <x-button :href="route('welcome')">
+                <x-button :href="$fromUrl">
                     <i class="fa fa-thin fa-arrow-left"></i>
                     {{ __('Back') }}
                 </x-button>
