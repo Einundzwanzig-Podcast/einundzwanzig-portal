@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\News\Form;
 
 use App\Models\LibraryItem;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -20,7 +21,7 @@ class NewsArticleForm extends Component
     public function rules()
     {
         return [
-            'image' => 'required|mimes:jpeg,png,jpg,gif|max:10240',
+            'image' => ['mimes:jpeg,png,jpg,gif', 'max:10240', Rule::requiredIf(!$this->libraryItem->id)],
 
             'libraryItem.lecturer_id'        => 'required',
             'libraryItem.name'               => 'required',
