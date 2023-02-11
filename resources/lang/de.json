@@ -753,5 +753,9 @@
     "Current picture": "Derzeitiges Bild",
     "Article approved": "Artikel genehmigt",
     "approved": "genehmigt",
-    "not approved": "nicht genehmigt"
+    "not approved": "nicht genehmigt",
+    "Article not approved yet": "Artikel noch nicht genehmigt",
+    "Article tweeted": "Artikel getwittert",
+    "Error tweeting article": "Fehler beim Twittern des Artikels",
+    "Tweet": "Tweet"
 }

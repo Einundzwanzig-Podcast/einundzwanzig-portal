@@ -712,5 +712,9 @@
     "Add tag...": "",
     "Article approved": "",
     "approved": "",
-    "not approved": ""
+    "not approved": "",
+    "Article not approved yet": "",
+    "Article tweeted": "",
+    "Error tweeting article": "",
+    "Tweet": ""
 }

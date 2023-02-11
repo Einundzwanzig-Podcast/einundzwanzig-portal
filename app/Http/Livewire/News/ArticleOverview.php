@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\News;
 
 use App\Models\LibraryItem;
+use App\Traits\TwitterTrait;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use WireUi\Traits\Actions;
@@ -10,6 +11,56 @@ use WireUi\Traits\Actions;
 class ArticleOverview extends Component
 {
     use Actions;
+    use TwitterTrait;
+
+    public function tweet($id)
+    {
+        $libraryItem = LibraryItem::query()
+                                  ->with([
+                                      'lecturer',
+                                  ])
+                                  ->find($id);
+        $libraryItem->setStatus('published');
+        $libraryItemName = $libraryItem->name;
+        if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
+            $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
+        }
+        if (!$libraryItem->lecturer->twitter_username) {
+            $libraryItemName .= ' von '.$libraryItem->lecturer->name;
+        }
+
+        try {
+            if (config('feeds.services.twitterAccountId')) {
+                $this->setNewAccessToken(1);
+
+                if (!$libraryItem->approved) {
+                    $this->notification()
+                         ->error(__('Article not approved yet'));
+
+                    return;
+                }
+
+                $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
+                    $libraryItemName,
+                    url()->route('article.view',
+                        ['libraryItem' => $libraryItem->slug]),
+                );
+
+                $this->postTweet($text);
+
+                $libraryItem->tweet = true;
+                $libraryItem->save();
+
+                $this->notification()
+                     ->success(__('Article tweeted'));
+
+                $this->emit('$refresh');
+            }
+        } catch (\Exception $e) {
+            $this->notification()
+                 ->error(__('Error tweeting article', $e->getMessage()));
+        }
+    }
 
     public function approve($id)
     {
@@ -20,7 +71,7 @@ class ArticleOverview extends Component
         $this->notification()
              ->success(__('Article approved'));
 
-        $this->emit('$reload');
+        $this->emit('$refresh');
     }
 
     public function render()

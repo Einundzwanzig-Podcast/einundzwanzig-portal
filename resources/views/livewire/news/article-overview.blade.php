@@ -45,7 +45,7 @@
                                         <p class="mt-3 text-base text-gray-300 line-clamp-6">{{ strip_tags($libraryItem->excerpt) }}</p>
                                     </a>
                                 </div>
-                                <div class="mt-6 flex items-center">
+                                <div class="mt-6 flex items-center w-full">
                                     <div class="flex-shrink-0">
                                         <div>
                                             <span
@@ -67,11 +67,19 @@
                                                 <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
                                             @endif
                                         </div>
-                                        <div class="flex space-x-1 text-sm text-gray-500 justify-end items-end">
+                                        <div
+                                            class="flex flex-wrap space-x-1 text-sm text-gray-500 justify-end items-end">
                                             @if($libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
                                                 <div>
                                                     @if($libraryItem->approved)
                                                         <x-badge green>{{ __('approved') }}</x-badge>
+                                                        @if(auth()->user()?->hasRole('news-editor') && !$libraryItem->tweet)
+                                                            <x-button xs
+                                                                      wire:click="tweet({{ $libraryItem->id }})">
+                                                                <i class="fa fa-brand fa-twitter"></i>
+                                                                {{ __('Tweet') }}
+                                                            </x-button>
+                                                        @endif
                                                     @else
                                                         <x-badge negative>{{ __('not approved') }}</x-badge>
                                                     @endif
