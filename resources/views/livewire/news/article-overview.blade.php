@@ -64,6 +64,14 @@
                                             <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
                                         @endif
                                     </div>
+                                    <div class="flex space-x-1 text-sm text-gray-500 justify-end">
+                                        @if($libraryItem->created_by == auth()->id())
+                                            <x-button :href="route('news.form', ['libraryItem' => $libraryItem])">
+                                                <i class="fa fa-thin fa-edit"></i>
+                                                {{ __('Edit') }}
+                                            </x-button>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>

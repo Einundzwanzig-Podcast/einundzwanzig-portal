@@ -52,6 +52,10 @@
                                 <div class="text-gray-200">{{ __('Preview') }}:</div>
                                 <img class="h-48 object-contain" src="{{ $image->temporaryUrl() }}">
                             @endif
+                            @if ($libraryItem->getFirstMediaUrl('main'))
+                                <div class="text-gray-200">{{ __('Current picture') }}:</div>
+                                <img class="h-48 object-contain" src="{{ $libraryItem->getFirstMediaUrl('main') }}">
+                            @endif
                         </div>
                         <input class="text-gray-200" type="file" wire:model="image">
                         @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
