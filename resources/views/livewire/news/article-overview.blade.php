@@ -23,82 +23,84 @@
             <div class="mx-auto mt-2 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 
                 @foreach($libraryItems as $libraryItem)
-                    <div wire:key="library_item_{{ $libraryItem->id }}"
-                         class="flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
-                        <div class="flex-shrink-0 pt-6">
-                            <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
-                                <img class="h-48 w-full object-contain"
-                                     src="{{ $libraryItem->getFirstMediaUrl('main') }}"
-                                     alt="{{ $libraryItem->name }}">
-                            </a>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-between bg-21gray p-6">
-                            <div class="flex-1">
-                                <p class="text-sm font-medium text-amber-600">
-                                <div
-                                    class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
-                                </p>
-                                <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}"
-                                   class="mt-2 block">
-                                    <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>
-                                    <p class="mt-3 text-base text-gray-300 line-clamp-6">{{ strip_tags($libraryItem->excerpt) }}</p>
+                    @if($libraryItem->approved || $libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
+                        <div wire:key="library_item_{{ $libraryItem->id }}"
+                             class="flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
+                            <div class="flex-shrink-0 pt-6">
+                                <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
+                                    <img class="h-48 w-full object-contain"
+                                         src="{{ $libraryItem->getFirstMediaUrl('main') }}"
+                                         alt="{{ $libraryItem->name }}">
                                 </a>
                             </div>
-                            <div class="mt-6 flex items-center">
-                                <div class="flex-shrink-0">
-                                    <div>
-                                        <span class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
-                                        <img class="h-10 w-10 object-cover rounded"
-                                             src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
-                                             alt="{{ $libraryItem->lecturer->name }}">
+                            <div class="flex flex-1 flex-col justify-between bg-21gray p-6">
+                                <div class="flex-1">
+                                    <div class="text-sm font-medium text-amber-600">
+                                        <div
+                                            class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
                                     </div>
+                                    <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}"
+                                       class="mt-2 block">
+                                        <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>
+                                        <p class="mt-3 text-base text-gray-300 line-clamp-6">{{ strip_tags($libraryItem->excerpt) }}</p>
+                                    </a>
                                 </div>
-                                <div class="ml-3">
-                                    <p class="text-sm font-medium text-gray-200">
-                                    <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
-                                    </p>
-                                    <div class="flex space-x-1 text-sm text-gray-500">
-                                        <time datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
-                                        @if($libraryItem->read_time)
-                                            <span aria-hidden="true">&middot;</span>
-                                            <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
-                                        @endif
+                                <div class="mt-6 flex items-center">
+                                    <div class="flex-shrink-0">
+                                        <div>
+                                            <span
+                                                class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
+                                            <img class="h-10 w-10 object-cover rounded"
+                                                 src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
+                                                 alt="{{ $libraryItem->lecturer->name }}">
+                                        </div>
                                     </div>
-                                    <div class="flex space-x-1 text-sm text-gray-500 justify-end items-end">
-                                        @if($libraryItem->created_by == auth()->id() || auth()->user()?->hasRole('news-editor'))
-                                            <div>
-                                                @if(auth()->user()?->hasRole('news-editor'))
+                                    <div class="ml-3">
+                                        <div class="text-sm font-medium text-gray-200">
+                                            <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
+                                        </div>
+                                        <div class="flex space-x-1 text-sm text-gray-500">
+                                            <time
+                                                datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
+                                            @if($libraryItem->read_time)
+                                                <span aria-hidden="true">&middot;</span>
+                                                <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="flex space-x-1 text-sm text-gray-500 justify-end items-end">
+                                            @if($libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
+                                                <div>
                                                     @if($libraryItem->approved)
                                                         <x-badge green>{{ __('approved') }}</x-badge>
                                                     @else
                                                         <x-badge negative>{{ __('not approved') }}</x-badge>
                                                     @endif
-                                                @endif
-                                            </div>
-                                            <div>
-                                                @if(!$libraryItem->approved && auth()->user()?->hasRole('news-editor'))
-                                                    <x-button
-                                                        xs
-                                                        wire:click="approve({{ $libraryItem->id }})"
-                                                    >
-                                                        <i class="fa fa-thin fa-check"></i>
-                                                        {{ __('Approve') }}
+                                                </div>
+                                                <div>
+                                                    @if(!$libraryItem->approved && auth()->user()?->hasRole('news-editor'))
+                                                        <x-button
+                                                            xs
+                                                            wire:click="approve({{ $libraryItem->id }})"
+                                                        >
+                                                            <i class="fa fa-thin fa-check"></i>
+                                                            {{ __('Approve') }}
+                                                        </x-button>
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    <x-button xs
+                                                              :href="route('news.form', ['libraryItem' => $libraryItem])">
+                                                        <i class="fa fa-thin fa-edit"></i>
+                                                        {{ __('Edit') }}
                                                     </x-button>
-                                                @endif
-                                            </div>
-                                            <div>
-                                                <x-button xs
-                                                          :href="route('news.form', ['libraryItem' => $libraryItem])">
-                                                    <i class="fa fa-thin fa-edit"></i>
-                                                    {{ __('Edit') }}
-                                                </x-button>
-                                            </div>
-                                        @endif
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
 
             </div>
