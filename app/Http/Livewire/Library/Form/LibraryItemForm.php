@@ -6,6 +6,7 @@ use App\Enums\LibraryItemType;
 use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
+use App\Models\Tag;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -21,6 +22,7 @@ class LibraryItemForm extends Component
     public $library;
     public $image;
     public $file;
+    public array $selectedTags = [];
 
     public bool $lecturer = false;
     public ?string $fromUrl = '';
@@ -36,6 +38,8 @@ class LibraryItemForm extends Component
             'image' => [Rule::requiredIf(!$this->libraryItem->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
             'library' => 'required',
+
+            'selectedTags' => 'array|min:1',
 
             'libraryItem.lecturer_id'        => 'required',
             'libraryItem.name'               => 'required',
@@ -66,9 +70,14 @@ class LibraryItemForm extends Component
             ]);
             if ($this->lecturer) {
                 $this->library = Library::query()
-                       ->firstWhere('name', '=', 'Dozentenmaterial')?->id;
+                                        ->firstWhere('name', '=', 'Dozentenmaterial')?->id;
             }
         } else {
+            $this->selectedTags = $this->libraryItem->tags()
+                                                    ->where('type', 'library_item')
+                                                    ->get()
+                                                    ->map(fn($tag) => $tag->name)
+                                                    ->toArray();
             $this->library = $this->libraryItem->libraries()
                                                ->first()
                 ->id;
@@ -84,6 +93,11 @@ class LibraryItemForm extends Component
         $this->libraryItem->save();
         $this->libraryItem->setStatus('published');
 
+        $this->libraryItem->syncTagsWithType(
+            $this->selectedTags,
+            'library_item'
+        );
+
         if ($this->image) {
             $this->libraryItem->addMedia($this->image)
                               ->toMediaCollection('main');
@@ -98,6 +112,18 @@ class LibraryItemForm extends Component
                           ->syncWithoutDetaching([(int) $this->library]);
 
         return to_route('library.table.libraryItems', ['country' => $this->country]);
+    }
+
+    public function selectTag($name)
+    {
+        $selectedTags = collect($this->selectedTags);
+        if ($selectedTags->contains($name)) {
+            $selectedTags = $selectedTags->filter(fn($tag) => $tag !== $name);
+        } else {
+            $selectedTags->push($name);
+        }
+        $this->selectedTags = $selectedTags->values()
+                                           ->toArray();
     }
 
     public function render()
@@ -117,6 +143,9 @@ class LibraryItemForm extends Component
                                       'name' => $library->name,
                                   ])
                                   ->toArray(),
+            'tags'      => Tag::query()
+                              ->where('type', 'library_item')
+                              ->get(),
         ]);
     }
 }

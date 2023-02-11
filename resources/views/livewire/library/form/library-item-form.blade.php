@@ -71,7 +71,28 @@
                     />
                 </x-input.group>
 
-                @if($libraryItem->lecturer_id && $libraryItem->type && $library)
+                <x-input.group :for="md5('selectedTags')" :label="__('Tags')">
+                    <div class="py-2 flex flex-wrap items-center space-x-1">
+                        @foreach($tags as $tag)
+                            <div class="cursor-pointer" wire:key="tag{{ $loop->index }}"
+                                 wire:click="selectTag('{{ $tag->name }}')">
+                                @if(collect($selectedTags)->contains($tag->name))
+                                    <x-badge
+                                        amber>
+                                        {{ $tag->name }}
+                                    </x-badge>
+                                @else
+                                    <x-badge
+                                        black>
+                                        {{ $tag->name }}
+                                    </x-badge>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </x-input.group>
+
+                @if($libraryItem->lecturer_id && $libraryItem->type && $library && count($selectedTags) > 0)
                     <x-input.group :for=" md5('image')" :label="__('Main picture')">
                         <div class="py-4">
                             @if ($image)
