@@ -64,12 +64,35 @@
                                             <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
                                         @endif
                                     </div>
-                                    <div class="flex space-x-1 text-sm text-gray-500 justify-end">
+                                    <div class="flex space-x-1 text-sm text-gray-500 justify-end items-end">
                                         @if($libraryItem->created_by == auth()->id() || auth()->user()?->hasRole('news-editor'))
-                                            <x-button xs :href="route('news.form', ['libraryItem' => $libraryItem])">
-                                                <i class="fa fa-thin fa-edit"></i>
-                                                {{ __('Edit') }}
-                                            </x-button>
+                                            <div>
+                                                @if(auth()->user()?->hasRole('news-editor'))
+                                                    @if($libraryItem->approved)
+                                                        <x-badge green>{{ __('approved') }}</x-badge>
+                                                    @else
+                                                        <x-badge negative>{{ __('not approved') }}</x-badge>
+                                                    @endif
+                                                @endif
+                                            </div>
+                                            <div>
+                                                @if(!$libraryItem->approved && auth()->user()?->hasRole('news-editor'))
+                                                    <x-button
+                                                        xs
+                                                        wire:click="approve({{ $libraryItem->id }})"
+                                                    >
+                                                        <i class="fa fa-thin fa-check"></i>
+                                                        {{ __('Approve') }}
+                                                    </x-button>
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <x-button xs
+                                                          :href="route('news.form', ['libraryItem' => $libraryItem])">
+                                                    <i class="fa fa-thin fa-edit"></i>
+                                                    {{ __('Edit') }}
+                                                </x-button>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
