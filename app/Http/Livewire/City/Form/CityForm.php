@@ -32,6 +32,9 @@ class CityForm extends Component
         if (!$this->city) {
             $this->city = new City();
         }
+        if (!$this->fromUrl) {
+            $this->fromUrl = url()->previous();
+        }
     }
 
     public function save()
@@ -39,7 +42,7 @@ class CityForm extends Component
         $this->validate();
         $this->city->save();
 
-        return redirect($this->fromUrl);
+        return redirect($this->fromUrl ?? url()->route('welcome'));
     }
 
     public function render()

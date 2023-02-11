@@ -159,9 +159,10 @@
                                                     id: 'attend-event',
                                                     icon: 'question',
                                                     accept: {label: '{{ __('Yes') }}',
-                                                    execute: () => $wire.attend()},
+                                                        execute: () => $wire.attend()},
                                                     reject: {label: '{{ __('No, cancel') }}',
-                                                    execute: () => window.$wireui.notify({'title': '{{ __('You have not confirmed your participation.') }}','icon': 'warning'})}})"
+                                                        execute: () => window.$wireui.notify({'title': '{{ __('You have not confirmed your participation.') }}','icon': 'warning'})}
+                                                })"
                                             >
                                                 <i class="fa fa-thin fa-check mr-2"></i>
                                                 {{ __('I will show up') }}

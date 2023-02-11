@@ -188,6 +188,19 @@
                         <p class="px-0 mb-2 text-lg text-gray-600 md:text-xl lg:px-24">
                             {{ __('Choose a topic that is right for you.') }}
                         </p>
+                        @auth
+                            @if(str(request()->route()->getName())->contains('lecturer'))
+                                <x-button :href="route('library.libraryItem.form', ['country' => $c, 'lecturer' => true, 'fromUrl' => url()->route('library.table.libraryItems', ['country' => $country])])">
+                                    <i class="fa fa-thin fa-plus"></i>
+                                    {{ __('Submit contents') }}
+                                </x-button>
+                            @else
+                                <x-button :href="route('library.libraryItem.form', ['country' => $c, 'fromUrl' => url()->route('library.table.libraryItems', ['country' => $country])])">
+                                    <i class="fa fa-thin fa-plus"></i>
+                                    {{ __('Submit contents') }}
+                                </x-button>
+                            @endif
+                        @endauth
                     </div>
                 @endif
 

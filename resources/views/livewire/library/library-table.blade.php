@@ -108,9 +108,9 @@
                                         </div>
                                     </div>
                                     <div class="ml-3">
-                                        <p class="text-sm font-medium text-gray-200">
-                                        <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
-                                        </p>
+                                        <div class="text-sm font-medium text-gray-200">
+                                            <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
+                                        </div>
                                         <div class="flex space-x-1 text-sm text-gray-400">
                                             <time
                                                 datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
@@ -119,14 +119,24 @@
                                                 <span>{{ $libraryItem->read_time }} {{ __('min read') }}</span>
                                             @endif
                                         </div>
+                                        <div
+                                            class="flex space-x-1 text-sm text-gray-500 justify-end items-end">
+                                            <div>
+                                                <x-button xs
+                                                          :href="route('library.libraryItem.form', ['country' => $country, 'libraryItem' => $libraryItem])">
+                                                    <i class="fa fa-thin fa-edit"></i>
+                                                    {{ __('Edit') }}
+                                                </x-button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
 
-                        <div
-                            x-data="{
+                    <div
+                        x-data="{
                                 observe () {
                                     let observer = new IntersectionObserver((entries) => {
                                         entries.forEach(entry => {
@@ -140,8 +150,8 @@
                                     observer.observe(this.$el)
                                 }
                             }"
-                            x-init="observe"
-                        ></div>
+                        x-init="observe"
+                    ></div>
 
                     @if($libraryItems->hasMorePages())
                         <x-button outline wire:click.prevent="loadMore">{{ __('load more...') }}</x-button>

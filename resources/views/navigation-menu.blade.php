@@ -49,15 +49,6 @@
                         </div>
                     @endif
 
-                    @if(str(request()->route()->getName())->contains(['library.', 'article.']))
-                        <div>
-                            <x-button xs amber href="/nova/resources/library-items" target="_blank">
-                                <i class="fa fa-thin fa-plus"></i>
-                                {{ __('Submit contents') }}
-                            </x-button>
-                        </div>
-                    @endif
-
                     @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
                         <div>
                             <x-button xs amber href="/nova/resources/bitcoin-events" target="_blank">
@@ -237,12 +228,6 @@
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="/nova/resources/course-events" :active="false">
                     {{ __('Register course date') }}
-                </x-jet-responsive-nav-link>
-            @endif
-
-            @if(str(request()->route()->getName())->contains('library.'))
-                <x-jet-responsive-nav-link href="/nova/resources/library-items" :active="false">
-                    {{ __('Submit contents') }}
                 </x-jet-responsive-nav-link>
             @endif
 

@@ -1,10 +1,10 @@
 <div class="container p-4 mx-auto bg-21gray my-2">
 
     <div class="pb-5 flex flex-row justify-between">
-        <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('News Article') }}</h3>
+        <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Library Item') }}</h3>
         <div class="flex flex-row space-x-2 items-center">
             <div>
-                <x-button :href="route('article.overview', ['country' => null])">
+                <x-button :href="$fromUrl">
                     <i class="fa fa-thin fa-arrow-left"></i>
                     {{ __('Back') }}
                 </x-button>
@@ -22,10 +22,14 @@
                             <div>
                                 {{ __('Author') }}
                             </div>
-                            <x-button xs href="/nova/resources/lecturers/new" target="_blank">
-                                <i class="fa fa-thin fa-plus"></i>
-                                {{ __('Create new author') }}
-                            </x-button>
+                            <div x-data="{currentUrl: window.location.href}">
+                                <a x-bind:href="'/content-creator/form/?fromUrl='+currentUrl">
+                                    <x-button xs>
+                                        <i class="fa fa-thin fa-plus"></i>
+                                        {{ __('Create new author') }}
+                                    </x-button>
+                                </a>
+                            </div>
                         </div>
                     </x-slot>
                     <x-select
@@ -45,8 +49,30 @@
                     />
                 </x-input.group>
 
-                @if($libraryItem->lecturer_id)
-                    <x-input.group :for="md5('image')" :label="__('Main picture')">
+                <x-input.group :for="md5('libraryItem.type')" label="{{ __('Type') }}">
+                    <x-select
+                        :clearable="false"
+                        wire:model="libraryItem.type"
+                        :options="$types"
+                        option-label="label"
+                        option-value="value"
+                    />
+                </x-input.group>
+
+                <x-input.group :for="md5('library')" label="{{ __('Library') }}">
+                    <x-select
+                        :disabled="$lecturer"
+                        hint="{{ __('Please classify by type of your entry.') }}"
+                        :clearable="false"
+                        wire:model="library"
+                        :options="$libraries"
+                        option-label="name"
+                        option-value="id"
+                    />
+                </x-input.group>
+
+                @if($libraryItem->lecturer_id && $libraryItem->type && $library)
+                    <x-input.group :for=" md5('image')" :label="__('Main picture')">
                         <div class="py-4">
                             @if ($image)
                                 <div class="text-gray-200">{{ __('Preview') }}:</div>
@@ -84,20 +110,34 @@
 
                     <x-input.group :for="md5('libraryItem.language_code')" :label="__('Language Code')">
                         <x-select
-                            :clearable="false"
+                            placeholder="{{ __('Choose language') }}"
                             wire:model="libraryItem.language_code"
-                            :options="collect(config('languages.languages'))->map(fn($value, $key) => ['id' => $key, 'name' => $value])->toArray()"
+                            :clearable="false"
+                            :searchable="true"
+                            :async-data="route('api.languages.index')"
                             option-label="name"
-                            option-value="id"
+                            option-value="language"
                         />
                     </x-input.group>
 
-                    <x-input.group :for="md5('libraryItem.value')" :label="__('Article as Markdown')">
-                        <div
-                            class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
-                        <x-input.simple-mde wire:model.defer="libraryItem.value"/>
-                        @error('libraryItem.value') <span class="text-red-500 py-2">{{ $message }}</span> @enderror
-                    </x-input.group>
+                    @if($libraryItem->type === App\Enums\LibraryItemType::MarkdownArticleExtern())
+                        <x-input.group :for="md5('libraryItem.value')" :label="__('Article as Markdown')">
+                            <div
+                                class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
+                            <x-input.simple-mde wire:model.defer="libraryItem.value"/>
+                            @error('libraryItem.value') <span class="text-red-500 py-2">{{ $message }}</span> @enderror
+                        </x-input.group>
+                    @elseif($libraryItem->type !== App\Enums\LibraryItemType::DownloadableFile())
+                        <x-input.group :for="md5('libraryItem.value')" :label="__('Link')">
+                            <x-input type="url" autocomplete="off" wire:model.debounce="libraryItem.value"
+                                     :placeholder="__('Link')"/>
+                        </x-input.group>
+                    @elseif($libraryItem->type === App\Enums\LibraryItemType::DownloadableFile())
+                        <x-input.group :for="md5('file')" :label="__('File')">
+                            <input class="text-gray-200" type="file" wire:model="file">
+                            @error('file') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </x-input.group>
+                    @endif
 
                     <x-input.group :for="md5('libraryItem.read_time')" :label="__('Time to read')">
                         <x-inputs.number min="1" autocomplete="off" wire:model.debounce="libraryItem.read_time"

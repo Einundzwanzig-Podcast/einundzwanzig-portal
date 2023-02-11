@@ -36,6 +36,20 @@ Route::middleware([
               ->name('form');
      });
 
+
+/*
+ * Content Creator
+ * */
+Route::middleware([
+    'auth'
+])
+     ->as('contentCreator.')
+     ->prefix('/content-creator')
+     ->group(function () {
+         Route::get('/form/{lecturer?}', \App\Http\Livewire\ContentCreator\Form\ContentCreatorForm::class)
+              ->name('form');
+     });
+
 /*
  * Cities
  * */
@@ -131,6 +145,9 @@ Route::middleware([])
      ->as('library.')
      ->prefix('/{country:code}/library')
      ->group(function () {
+         Route::get('/library-item/form/{libraryItem?}', \App\Http\Livewire\Library\Form\LibraryItemForm::class)
+              ->name('libraryItem.form')->middleware(['auth']);
+
          Route::get('/library-item', \App\Http\Livewire\Library\LibraryTable::class)
               ->name('table.libraryItems');
 
