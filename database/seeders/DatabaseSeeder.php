@@ -84,6 +84,11 @@ class DatabaseSeeder extends Seeder
             'language_codes' => ['fr'],
         ]);
         Country::create([
+            'name'           => 'Sweden',
+            'code'           => 'se',
+            'language_codes' => ['sv'],
+        ]);
+        Country::create([
             'name'           => 'Serbia',
             'code'           => 'rs',
             'language_codes' => ['rs'],
