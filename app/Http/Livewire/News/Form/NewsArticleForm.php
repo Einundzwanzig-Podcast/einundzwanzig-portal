@@ -67,8 +67,10 @@ class NewsArticleForm extends Component
         $this->validate();
         $this->libraryItem->save();
 
-        $this->libraryItem->addMedia($this->image)
-                          ->toMediaCollection('main');
+        if ($this->image) {
+            $this->libraryItem->addMedia($this->image)
+                              ->toMediaCollection('main');
+        }
 
         return to_route('article.overview', ['country' => null]);
     }
