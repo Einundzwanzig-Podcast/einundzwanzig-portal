@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="flex space-x-1 text-sm text-gray-500 justify-end">
                                         @if($libraryItem->created_by == auth()->id() || auth()->user()->hasRole('news-editor'))
-                                            <x-button :href="route('news.form', ['libraryItem' => $libraryItem])">
+                                            <x-button xs :href="route('news.form', ['libraryItem' => $libraryItem])">
                                                 <i class="fa fa-thin fa-edit"></i>
                                                 {{ __('Edit') }}
                                             </x-button>
