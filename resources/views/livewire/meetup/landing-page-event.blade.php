@@ -172,12 +172,12 @@
                                         <div x-data="{}">
                                             <x-button
                                                 x-on:click="$wireui.confirmDialog({
-                                                    icon: 'question',
-                                                    title: '{{ __('Are you sure you want to cancel your participation?') }}',
-                                                    accept: {label: '{{ __('Yes') }}',
-                                                    execute: () => $wire.cannotCome()},
-                                                    reject: {label: '{{ __('No, cancel') }}',
-                                            }})"
+                                                        icon: 'question',
+                                                        title: '{{ __('Are you sure you want to cancel your participation?') }}',
+                                                        accept: {label: '{{ __('Yes') }}',
+                                                        execute: () => $wire.cannotCome()},
+                                                        reject: {label: '{{ __('No, cancel') }}',
+                                                }})"
                                                 lg primary>
                                                 <i class="fa fa-thin fa-face-frown mr-2"></i>
                                                 {{ __('Unfortunately I cannot come') }}
