@@ -43,6 +43,7 @@ class NewsArticleForm extends Component
                 'type'          => 'markdown_article',
                 'value'         => '',
                 'read_time'     => 1,
+                'news'          => true,
                 'language_code' => 'de',
                 'approved'      => auth()
                     ->user()

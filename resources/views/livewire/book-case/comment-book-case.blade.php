@@ -143,7 +143,7 @@
                                                         #{{ $loop->iteration }} Bild
                                                     </button>
 
-                                                    @if($bookCase->created_by === auth()->id())
+                                                    @if(auth()->user()?->hasRole('super-admin') || app()->environment('local'))
                                                         <div x-data="{}">
                                                             <x-button
                                                                 x-on:click="$wireui.confirmDialog({
