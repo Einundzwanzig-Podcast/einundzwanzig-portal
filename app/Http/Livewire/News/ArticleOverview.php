@@ -20,6 +20,12 @@ class ArticleOverview extends Component
                                       'lecturer',
                                   ])
                                   ->find($id);
+        if ($libraryItem->tweet) {
+            $this->notification()
+                 ->error(__('Article already tweeted'));
+
+            return;
+        }
         $libraryItem->setStatus('published');
         $libraryItemName = $libraryItem->name;
         if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
