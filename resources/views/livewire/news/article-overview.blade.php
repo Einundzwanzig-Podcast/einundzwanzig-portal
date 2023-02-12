@@ -81,7 +81,7 @@
                                                         </div>
                                                     @endif
                                                 </div>
-                                                <div>
+                                                {{--<div>
                                                     @if($libraryItem->approved && auth()->user()?->hasRole('news-editor') && !$libraryItem->tweet)
                                                         <div x-data="{}">
                                                             <x-button xs
@@ -98,7 +98,7 @@
                                                             </x-button>
                                                         </div>
                                                     @endif
-                                                </div>
+                                                </div>--}}
                                                 <div>
                                                     @if(!$libraryItem->approved && auth()->user()?->hasRole('news-editor'))
                                                         <x-button
