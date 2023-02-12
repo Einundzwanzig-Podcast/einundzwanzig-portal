@@ -40,12 +40,14 @@ class ImportGithubMeetups extends Command
                 ], ['name' => $meetup['country']])->id,
                 'longitude'  => $meetup['longitude'],
                 'latitude'   => $meetup['latitude'],
+                'created_by' => 1,
             ]);
             $meetup = Meetup::updateOrCreate(
                 ['name' => $meetup['name']],
                 [
-                    'city_id' => $city->id,
-                    'link'    => $meetup['url'],
+                    'city_id'    => $city->id,
+                    'webpage'       => $meetup['url'],
+                    'created_by' => 1,
                 ]);
         }
 
