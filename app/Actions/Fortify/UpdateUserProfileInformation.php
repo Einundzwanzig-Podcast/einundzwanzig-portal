@@ -29,7 +29,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'nullable', 'email', 'max:255', Rule::unique('users')
                                                     ->ignore($user->id)
             ],
-            'photo'             => ['nullable', 'mimes:jpg,jpeg,png,gif', 'max:1024'],
+            'photo'             => ['nullable', 'mimes:jpg,jpeg,png,gif', 'max:10240'],
         ])
                  ->validateWithBag('updateProfileInformation');
 
