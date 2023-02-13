@@ -760,8 +760,10 @@
     "Tweet": "Tweet",
     "Are you sure you want to tweet this article?": "Bitte bestätige, dass du diesen Artikel tweeten möchtest.",
     "Markdown Article Extern": "selbst erstellter Markdown Artikel",
-    "twitter_username": "",
     "Please classify by type of your entry.": "Bitte klassifiziere deinen Eintrag nach Art.",
     "Choose language": "Wähle Sprache",
-    "File": "Datei"
+    "File": "Datei",
+    "Article already tweeted": "Artikel bereits getwittert",
+    "Is this a news article?": "Dieser Artikel ist ein News-Artikel",
+    "Are your sure?": "Bist du dir sicher?"
 }

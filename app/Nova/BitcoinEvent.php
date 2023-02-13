@@ -91,7 +91,8 @@ class BitcoinEvent extends Resource
                     ->hideFromIndex(),
 
             Text::make('Link')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             BelongsTo::make(__('Venue'), 'venue', Venue::class)
                      ->searchable()

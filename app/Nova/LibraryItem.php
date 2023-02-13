@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -160,6 +161,10 @@ class LibraryItem extends Resource
                              ->toArray()
                   )
                   ->rules('required', 'string'),
+
+            Boolean::make(__('News Article'), 'news')->help(__('Is this a news article?')),
+
+            Boolean::make(__('Approve'), 'approved')->help(__('Article approved')),
 
             Code::make(__('Value'), 'value')
                 ->rules('nullable', 'string')
