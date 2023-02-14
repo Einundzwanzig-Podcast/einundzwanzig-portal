@@ -40,6 +40,7 @@ class Meetup extends Resource
         'telegram_link',
         'twitter_username',
         'matrix_group',
+        'nostr',
     ];
 
     public static $with = [
@@ -112,6 +113,11 @@ class Meetup extends Resource
 
             Text::make(__('Matrix Group'), 'matrix_group')
                 ->rules('nullable', 'url')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Text::make(__('Nostr public key'), 'nostr')
+                ->rules('nullable')
                 ->nullable()
                 ->hideFromIndex(),
 
