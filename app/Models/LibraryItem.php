@@ -151,7 +151,7 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
                        ->title($this->name)
                        ->summary($this->excerpt)
                        ->updated($this->updated_at)
-                       ->link($this->link)
+                       ->link(url()->route('article.view', ['libraryItem' => $this]))
                        ->image($this->getFirstMediaUrl('main'))
                        ->authorName($this->lecturer->name);
     }
