@@ -54,6 +54,7 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
                    ])
                    ->where('news', true)
                    ->where('approved', true)
+                   ->orderByDesc('created_at')
                    ->get();
     }
 
@@ -148,7 +149,7 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
     public function toFeedItem(): FeedItem
     {
         return FeedItem::create()
-                       ->id('news/'. $this->slug)
+                       ->id('news/'.$this->slug)
                        ->title($this->name)
                        ->enclosure($this->getFirstMediaUrl('main'))
                        ->enclosureLength($this->getFirstMedia('main')->size)
