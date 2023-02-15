@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Console\Commands\Database\CreateTags;
+use App\Console\Commands\Database\ImportGithubMeetups;
 use App\Console\Commands\Feed\ReadAndSyncPodcastFeeds;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use App\Models\BitcoinEvent;
@@ -387,13 +388,7 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
                          ->attach($libraryItem);
         Artisan::call(ReadAndSyncPodcastFeeds::class);
         Artisan::call(SyncOpenBooks::class);
-        Meetup::create([
-            'city_id'    => 6,
-            'name'       => 'Einundzwanzig Hessen',
-            'telegram_link'       => 'https://t.me/EinundzwanzigHessen',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
+        Artisan::call(ImportGithubMeetups::class);
         MeetupEvent::create([
             'meetup_id'   => 1,
             'start'       => now()
@@ -415,69 +410,6 @@ Deshalb werden Sie von mir in diesem Kurs leicht verständlich an das Thema hera
             'description' => fake()->text(),
             'link'        => 'https://t.me/EinundzwanzigKempten',
             'created_by'  => 1,
-        ]);
-        Meetup::create([
-            'city_id'    => 2,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 3,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
-        ]);
-        Meetup::create([
-            'city_id'    => 1,
-            'name'       => 'Einundzwanzig ' . str()->random(5),
-            'telegram_link'       => 'https://t.me/EinundzwanzigKempten',
-            'created_by' => 1,
-            'intro' => fake()->text(80),
         ]);
         BitcoinEvent::create([
             'venue_id'    => 4,

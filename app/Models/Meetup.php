@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -90,5 +91,26 @@ class Meetup extends Model implements HasMedia
     public function meetupEvents(): HasMany
     {
         return $this->hasMany(MeetupEvent::class);
+    }
+
+    protected function logoSquare(): Attribute
+    {
+        $getPath = $this->getFirstMediaPath('logo');
+        if ($getPath !== '') {
+            $path = $this->getFirstMediaPath('logo');
+        } else {
+            $path = 'fallback/einundzwanzig.png';
+        }
+
+        return Attribute::make(
+            get: fn() => url()->route('img',
+                [
+                    'path' => $path,
+                    'w'    => 900,
+                    'h'    => 900,
+                    'fit'  => 'crop',
+                    'fm'   => 'webp'
+                ]),
+        );
     }
 }

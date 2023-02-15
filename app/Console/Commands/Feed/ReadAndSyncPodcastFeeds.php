@@ -82,6 +82,9 @@ class ReadAndSyncPodcastFeeds extends Command
                            'created_at' => Carbon::parse($item->datePublished),
                        ]);
             }
+            if (app()->environment('local')) {
+                break;
+            }
         }
 
         return Command::SUCCESS;

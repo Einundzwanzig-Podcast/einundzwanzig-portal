@@ -46,8 +46,9 @@ class ImportGithubMeetups extends Command
                 ['name' => $meetup['name']],
                 [
                     'city_id'    => $city->id,
-                    'webpage'       => $meetup['url'],
+                    'webpage'    => $meetup['url'],
                     'created_by' => 1,
+                    'community'  => 'einundzwanzig'
                 ]);
         }
 

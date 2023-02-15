@@ -8,6 +8,9 @@ Route::middleware([])
      ->get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
 
+Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
+     ->where('path', '.*')->name('img');
+
 Route::get('auth/auth47', \App\Http\Livewire\Auth\Auth47Component::class)
      ->name('auth.auth47');
 
@@ -146,7 +149,8 @@ Route::middleware([])
      ->prefix('/{country:code}/library')
      ->group(function () {
          Route::get('/library-item/form/{libraryItem?}', \App\Http\Livewire\Library\Form\LibraryItemForm::class)
-              ->name('libraryItem.form')->middleware(['auth']);
+              ->name('libraryItem.form')
+              ->middleware(['auth']);
 
          Route::get('/library-item', \App\Http\Livewire\Library\LibraryTable::class)
               ->name('table.libraryItems');
