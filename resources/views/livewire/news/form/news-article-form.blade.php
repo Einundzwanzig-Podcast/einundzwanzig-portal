@@ -35,6 +35,7 @@
                         :async-data="[
                             'api' => route('api.lecturers.index'),
                             'method' => 'GET', // default is GET
+                            'params' => ['user_id' => auth()->id()], // default is []
                         ]"
                         :template="[
                             'name'   => 'user-option',
