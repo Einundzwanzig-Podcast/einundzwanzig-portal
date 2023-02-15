@@ -33,6 +33,7 @@ class NewsArticleForm extends Component
             'libraryItem.main_image_caption' => 'required',
             'libraryItem.read_time'          => 'required',
             'libraryItem.approved'           => 'boolean',
+            'libraryItem.news'               => 'boolean',
         ];
     }
 

@@ -49,6 +49,7 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
     {
         return self::query()
                    ->with([
+                       'media',
                        'lecturer',
                    ])
                    ->where('news', true)
@@ -146,13 +147,16 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
 
     public function toFeedItem(): FeedItem
     {
+
         return FeedItem::create()
                        ->id($this->id)
                        ->title($this->name)
+                       ->enclosure($this->getFirstMediaUrl('main'))
+                       ->enclosureLength($this->getFirstMedia('main')->size)
+                       ->enclosureType($this->getFirstMedia('main')->mime_type)
                        ->summary($this->excerpt)
                        ->updated($this->updated_at)
                        ->link(url()->route('article.view', ['libraryItem' => $this]))
-                       ->image($this->getFirstMediaUrl('main'))
                        ->authorName($this->lecturer->name);
     }
 }
