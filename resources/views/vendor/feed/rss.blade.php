@@ -26,6 +26,9 @@
                 <author>{!! \Spatie\Feed\Helpers\Cdata::out($item->authorName.(empty($item->authorEmail)?'':' <'.$item->authorEmail.'>')) !!}</author>
                 <guid isPermaLink="true">{{ url($item->id) }}</guid>
                 <pubDate>{{ $item->timestamp() }}</pubDate>
+                <content:encoded>
+                    {!! $item->content !!}
+                </content:encoded>
                 @if($item->__isset('enclosure'))
                     <enclosure url="{{ url($item->enclosure) }}" length="{{ url($item->enclosureLength) }}" type="{{ $item->enclosureType }}"/>
                     <media:content url="{{ url($item->enclosure) }}" medium="image" type="{{ $item->enclosureType }}"/>

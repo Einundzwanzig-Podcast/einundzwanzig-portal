@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\CustomFeedItem;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,7 +11,6 @@ use Spatie\Comments\Models\Concerns\HasComments;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Feed\Feedable;
-use Spatie\Feed\FeedItem;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -146,18 +146,19 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
         }
     }
 
-    public function toFeedItem(): FeedItem
+    public function toFeedItem(): CustomFeedItem
     {
-        return FeedItem::create()
-                       ->id('news/'.$this->slug)
-                       ->title($this->name)
-                       ->enclosure($this->getFirstMediaUrl('main'))
-                       ->enclosureLength($this->getFirstMedia('main')->size)
-                       ->enclosureType($this->getFirstMedia('main')->mime_type)
-                       ->summary($this->excerpt)
-                       ->updated($this->updated_at)
-                       ->image($this->getFirstMediaUrl('main'))
-                       ->link(url()->route('article.view', ['libraryItem' => $this]))
-                       ->authorName($this->lecturer->name);
+        return CustomFeedItem::create()
+                             ->id('news/'.$this->slug)
+                             ->title($this->name)
+                             ->content($this->value)
+                             ->enclosure($this->getFirstMediaUrl('main'))
+                             ->enclosureLength($this->getFirstMedia('main')->size)
+                             ->enclosureType($this->getFirstMedia('main')->mime_type)
+                             ->summary($this->excerpt)
+                             ->updated($this->updated_at)
+                             ->image($this->getFirstMediaUrl('main'))
+                             ->link(url()->route('article.view', ['libraryItem' => $this]))
+                             ->authorName($this->lecturer->name);
     }
 }
