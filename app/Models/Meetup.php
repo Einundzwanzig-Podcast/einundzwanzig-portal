@@ -95,9 +95,9 @@ class Meetup extends Model implements HasMedia
 
     protected function logoSquare(): Attribute
     {
-        $getPath = $this->getFirstMediaPath('logo');
-        if ($getPath !== '') {
-            $path = $this->getFirstMediaPath('logo');
+        $media = $this->getFirstMedia('logo');
+        if ($media) {
+            $path = str($media->getPath())->after('public/');
         } else {
             $path = 'fallback/einundzwanzig.png';
         }
