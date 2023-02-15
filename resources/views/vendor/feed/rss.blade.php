@@ -27,7 +27,7 @@
                 <guid isPermaLink="true">{{ url($item->id) }}</guid>
                 <pubDate>{{ $item->timestamp() }}</pubDate>
                 <content:encoded>
-                    {!! $item->content !!}
+                    {{ app(Spatie\LaravelMarkdown\MarkdownRenderer::class)->toHtml($item->content) }}
                 </content:encoded>
                 @if($item->__isset('enclosure'))
                     <enclosure url="{{ url($item->enclosure) }}" length="{{ url($item->enclosureLength) }}" type="{{ $item->enclosureType }}"/>
