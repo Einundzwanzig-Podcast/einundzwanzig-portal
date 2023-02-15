@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Cookie;
 use Spatie\Comments\Models\Concerns\HasComments;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -18,7 +20,7 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
 
-class LibraryItem extends Model implements HasMedia, Sortable
+class LibraryItem extends Model implements HasMedia, Sortable, Feedable
 {
     use InteractsWithMedia;
     use HasTags;
@@ -42,6 +44,17 @@ class LibraryItem extends Model implements HasMedia, Sortable
         'lecturer_id' => 'integer',
         'library_id'  => 'integer',
     ];
+
+    public static function getFeedItems()
+    {
+        return self::query()
+                   ->with([
+                       'lecturer',
+                   ])
+                   ->where('news', true)
+                   ->where('approved', true)
+                   ->get();
+    }
 
     protected static function booted()
     {
@@ -78,7 +91,10 @@ class LibraryItem extends Model implements HasMedia, Sortable
              ->singleFile()
              ->useFallbackUrl(asset('img/einundzwanzig.png'));
         $this->addMediaCollection('single_file')
-             ->acceptsMimeTypes(['application/pdf', 'application/zip', 'application/octet-stream', 'application/x-zip-compressed', 'multipart/x-zip'])
+             ->acceptsMimeTypes([
+                 'application/pdf', 'application/zip', 'application/octet-stream', 'application/x-zip-compressed',
+                 'multipart/x-zip'
+             ])
              ->singleFile();
         $this->addMediaCollection('images')
              ->useFallbackUrl(asset('img/einundzwanzig.png'));
@@ -99,24 +115,26 @@ class LibraryItem extends Model implements HasMedia, Sortable
         return $this->belongsTo(Episode::class);
     }
 
+    /*
+     * This string will be used in notifications on what a new comment
+     * was made.
+     */
+
     public function libraries(): BelongsToMany
     {
         return $this->belongsToMany(Library::class);
     }
 
     /*
-     * This string will be used in notifications on what a new comment
-     * was made.
+     * This URL will be used in notifications to let the user know
+     * where the comment itself can be read.
      */
+
     public function commentableName(): string
     {
         return __('Library Item');
     }
 
-    /*
-     * This URL will be used in notifications to let the user know
-     * where the comment itself can be read.
-     */
     public function commentUrl(): string
     {
         if ($this->type === 'markdown_article') {
@@ -124,5 +142,17 @@ class LibraryItem extends Model implements HasMedia, Sortable
         } else {
             return url()->route('libraryItem.view', ['libraryItem' => $this]);
         }
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+                       ->id($this->id)
+                       ->title($this->name)
+                       ->summary($this->excerpt)
+                       ->updated($this->updated_at)
+                       ->link($this->link)
+                       ->image($this->getFirstMediaUrl('main'))
+                       ->authorName($this->lecturer->name);
     }
 }

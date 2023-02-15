@@ -39,7 +39,6 @@ Route::middleware([
               ->name('form');
      });
 
-
 /*
  * Content Creator
  * */
@@ -258,3 +257,5 @@ Route::middleware([
          Route::get('/meetup-osm/item/{meetup}', \App\Http\Livewire\Meetup\PrepareForBtcMapItem::class)
               ->name('osm.meetups.item');
      });
+
+Route::feeds();

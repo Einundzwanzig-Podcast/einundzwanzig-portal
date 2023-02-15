@@ -1,4 +1,7 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
+    @push('feeds')
+        <x-feed-links />
+    @endpush
     <livewire:frontend.header :country="null"/>
     <div class="relative bg-21gray px-6 pt-2 pb-20 lg:px-8 lg:pt-2 lg:pb-2">
         <div class="absolute inset-0">
