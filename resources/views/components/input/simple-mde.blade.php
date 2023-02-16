@@ -7,6 +7,7 @@
                 element: this.$refs.editor,
                 lineNumbers: true,
                 uploadImage: false,
+                spellChecker: false,
 {{--                imageMaxSize: 1024 * 1024 * 10,--}}
 {{--                imageUploadFunction: (file, onSuccess, onError) => {--}}
 {{--                    @this.upload('images', file, (uploadedFilename) => {--}}
