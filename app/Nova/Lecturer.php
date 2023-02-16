@@ -107,8 +107,11 @@ class Lecturer extends Resource
                 ->hideFromIndex()
                 ->rules('nullable', 'string'),
 
-            Text::make('Twitter username', 'twitter_username')
+            Text::make(__('Twitter Username'), 'twitter_username')
                 ->help(__('Without @'))
+                ->rules('nullable', 'string'),
+
+            Text::make(__('Nostr public key'), 'nostr')
                 ->rules('nullable', 'string'),
 
             Text::make('Website', 'website')
