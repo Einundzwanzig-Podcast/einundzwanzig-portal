@@ -766,5 +766,6 @@
     "Article already tweeted": "Artikel bereits getwittert",
     "Is this a news article?": "Dieser Artikel ist ein News-Artikel",
     "Are your sure?": "Bist du dir sicher?",
-    "Nostr public key": ""
+    "Nostr public key": "",
+    "Amount": ""
 }
