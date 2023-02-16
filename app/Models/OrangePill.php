@@ -38,6 +38,9 @@ class OrangePill extends Model implements HasMedia
         static::creating(function ($model) {
             $model->user->givePoint(new BookCaseOrangePilled($model));
         });
+        static::deleted(function ($model) {
+            $model->user->undoPoint(new BookCaseOrangePilled($model));
+        });
     }
 
     public function registerMediaConversions(Media $media = null): void
