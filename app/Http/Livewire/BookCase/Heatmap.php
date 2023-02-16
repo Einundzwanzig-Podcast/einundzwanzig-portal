@@ -13,11 +13,13 @@ class Heatmap extends Component
     public function render()
     {
         $data = BookCase::query()
+                        ->active()
                         ->whereHas('orangePills')
-                        ->get()->map(fn($bookCase) => [
-            'lat' => $bookCase->latitude,
-            'lng' => $bookCase->longitude,
-        ]);
+                        ->get()
+                        ->map(fn($bookCase) => [
+                            'lat' => $bookCase->latitude,
+                            'lng' => $bookCase->longitude,
+                        ]);
 
         return view('livewire.book-case.heatmap', [
             'heatmap_data' => $data->toArray(),

@@ -32,7 +32,7 @@ class SyncOpenBooks extends Command
         try {
 
             foreach ($response->json()['cases'] as $case) {
-                BookCase::withoutGlobalScopes()->updateOrCreate(
+                BookCase::updateOrCreate(
                     [
                         'id' => $case['id'],
                     ],

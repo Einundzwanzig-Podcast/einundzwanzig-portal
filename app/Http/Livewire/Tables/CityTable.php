@@ -113,7 +113,7 @@ class CityTable extends DataTableComponent
     {
         $city = City::query()
                     ->find($id);
-        $query = BookCase::radius($city->latitude, $city->longitude, 25);
+        $query = BookCase::active()->radius($city->latitude, $city->longitude, 25);
         $ids = $query->pluck('id');
         if ($ids->isEmpty()) {
             $this->notification()

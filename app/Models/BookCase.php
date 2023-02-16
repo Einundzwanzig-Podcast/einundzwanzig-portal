@@ -41,12 +41,16 @@ class BookCase extends Model implements HasMedia
 
     protected static function booted()
     {
-        static::addGlobalScope(new ActiveBookCases);
         static::creating(function ($model) {
             if (!$model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('deactivated', false);
     }
 
     public function registerMediaConversions(Media $media = null): void

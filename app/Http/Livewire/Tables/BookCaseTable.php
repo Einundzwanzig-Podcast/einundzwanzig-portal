@@ -123,6 +123,7 @@ class BookCaseTable extends DataTableComponent
     public function builder(): Builder
     {
         return BookCase::query()
+                       ->active()
                        ->with([
                            'orangePills',
                        ])

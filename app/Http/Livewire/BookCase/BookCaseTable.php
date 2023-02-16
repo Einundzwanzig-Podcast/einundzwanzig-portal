@@ -31,7 +31,7 @@ class BookCaseTable extends Component
                               'icon_size' => [42, 42],
                           ])
                           ->toArray(),
-            'bookCases' => BookCase::get(),
+            'bookCases' => BookCase::query()->active()->get(),
             'countries' => Country::query()
                                   ->select(['code', 'name'])
                                   ->get(),

@@ -17,6 +17,7 @@ class WorldMap extends Component
             'mapData' => BookCase::query()
                                  ->select(['id', 'latitude', 'longitude'])
                                  ->withCount('orangePills')
+                                 ->active()
                                  ->get()
                                  ->map(fn($bookCase) => [
                                      'lat' => $bookCase->latitude,
