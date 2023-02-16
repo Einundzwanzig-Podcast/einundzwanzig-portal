@@ -64,7 +64,7 @@ class SyncOpenBooks extends Command
         }
 
         BookCase::query()
-                ->whereNotIn('id', $ids)
+                ->whereNotIn('id', $ids->toArray())
                 ->update(['deactivated' => true]);
     }
 }
