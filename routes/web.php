@@ -165,6 +165,10 @@ Route::middleware([])
      ->as('bookCases.')
      ->prefix('/{country:code}/book-cases')
      ->group(function () {
+         Route::get('/book-case/form/{bookCase}/{orangePill?}', \App\Http\Livewire\BookCase\Form\OrangePillForm::class)
+              ->name('form')
+              ->middleware(['auth']);
+
          Route::get('/city', \App\Http\Livewire\BookCase\CityTable::class)
               ->name('table.city');
 

@@ -10,9 +10,16 @@
                 <img class="aspect-auto max-h-12" src="{{ asset('img/social_credit_minus.webp') }}" alt="">
             @endif
         </div>
-        <div class="flex items-center space-x-1">
-            <x-button class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap"
-                      wire:click="viewHistoryModal({{ $row->id }})">{{ __('💊 Orange Pill Now') }}</x-button>
+        <div class="flex items-center space-x-1"
+             x-data="{currentUrl: window.location.href}">
+            <a
+                x-bind:href="'/{{ $country }}/book-cases/book-case/form/{{ $row->id }}/?fromUrl='+currentUrl">
+                <x-button
+                    class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap"
+                >
+                    {{ __('💊 Orange Pill Now') }}
+                </x-button>
+            </a>
             <x-button class="whitespace-nowrap"
                       :href="route('bookCases.comment.bookcase', ['bookCase' => $row->id, 'country' => $country])">{{ __('Details') }}</x-button>
         </div>

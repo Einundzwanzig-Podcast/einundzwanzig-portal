@@ -21,14 +21,10 @@ class WorldMap extends Component
                                  ->map(fn($bookCase) => [
                                      'lat' => $bookCase->latitude,
                                      'lng' => $bookCase->longitude,
-                                     'url' => url()->route('bookCases.table.bookcases',
+                                     'url' => url()->route('bookCases.comment.bookcase',
                                          [
-                                             'country'   => $this->country,
-                                             'bookcases' => [
-                                                 'filters' => [
-                                                     'byids' => $bookCase->id,
-                                                 ]
-                                             ]
+                                             'country'  => $this->country,
+                                             'bookCase' => $bookCase,
                                          ]),
                                      'op'  => $bookCase->orange_pills_count,
                                  ])

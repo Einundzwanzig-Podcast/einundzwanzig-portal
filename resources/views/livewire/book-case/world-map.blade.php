@@ -33,11 +33,11 @@
                             if(element.op > 0) {
                                 const marker = L.circleMarker([element.lat, element.lng], {color: '#f7931a', radius: 8});
                                 marker.url = element.url;
-                                marker.addTo(map).on('click', e => window.open(e.target.url, '_blank'));
+                                marker.addTo(map).on('click', e => window.open(e.target.url, '_self'));
                             } else {
                                 const marker = L.circleMarker([element.lat, element.lng], {color: '#111827', radius: 8});
                                 marker.url = element.url;
-                                marker.addTo(map).on('click', e => window.open(e.target.url, '_blank'));
+                                marker.addTo(map).on('click', e => window.open(e.target.url, '_self'));
                             }
                         });
 

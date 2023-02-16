@@ -21,6 +21,8 @@ class CommentBookCase extends Component
 
     public BookCase $bookCase;
 
+
+
     public function render()
     {
         return view('livewire.book-case.comment-book-case')
