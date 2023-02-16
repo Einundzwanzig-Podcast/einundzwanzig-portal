@@ -44,6 +44,8 @@ class OrangePillForm extends Component
                 'date'         => now(),
                 'amount'       => 1,
             ]);
+        } elseif ($this->orangePill->user_id !== auth()->id()) {
+            abort(403);
         }
     }
 
