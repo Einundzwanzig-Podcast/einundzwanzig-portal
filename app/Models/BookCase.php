@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Akuechler\Geoly;
+use App\Models\Scopes\ActiveBookCases;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -40,6 +41,7 @@ class BookCase extends Model implements HasMedia
 
     protected static function booted()
     {
+        static::addGlobalScope(new ActiveBookCases);
         static::creating(function ($model) {
             if (!$model->created_by) {
                 $model->created_by = auth()->id();
