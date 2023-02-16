@@ -29,10 +29,10 @@ class SyncOpenBooks extends Command
         $response = Http::post('https://openbookcase.de/api/listarea/83.08995477111446/-200.56640625000003/-38.13455657705413/221.30859375000003');
 
         $ids = collect($response->json()['cases'])->pluck('id');
+        try {
 
-        foreach ($response->json()['cases'] as $case) {
-            try {
-                BookCase::updateOrCreate(
+            foreach ($response->json()['cases'] as $case) {
+                BookCase::withoutGlobalScopes()->updateOrCreate(
                     [
                         'id' => $case['id'],
                     ],
@@ -56,15 +56,15 @@ class SyncOpenBooks extends Command
                         'created_by'  => 1,
                     ]
                 );
-            } catch (\Exception $e) {
-                $this->error($e->getMessage());
             }
-
-            return Command::SUCCESS;
+        } catch (\Exception $e) {
+            dd($case);
         }
 
         BookCase::query()
                 ->whereNotIn('id', $ids->toArray())
                 ->update(['deactivated' => true]);
+
+        return Command::SUCCESS;
     }
 }
