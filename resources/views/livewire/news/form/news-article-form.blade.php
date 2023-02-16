@@ -2,7 +2,23 @@
 
     <div class="pb-5 flex flex-row justify-between">
         <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('News Article') }}</h3>
-        <div class="flex flex-row space-x-2 items-center">
+        <div class="flex flex-row space-x-2 items-center justify-between">
+            <div x-data="{}">
+                @if($libraryItem->created_by === auth()->id())
+                    <x-button
+                        x-on:click="$wireui.confirmDialog({
+                            icon: 'question',
+                            title: '{{ __('Are your sure?') }}',
+                            accept: {label: '{{ __('Yes') }}',
+                            execute: () => $wire.delete()},
+                            reject: {label: '{{ __('No, cancel') }}',
+                    }})"
+                        negative>
+                        <i class="fa fa-thin fa-trash"></i>
+                        {{ __('Delete') }}
+                    </x-button>
+                @endif
+            </div>
             <div>
                 <x-button :href="route('article.overview', ['country' => null])">
                     <i class="fa fa-thin fa-arrow-left"></i>

@@ -77,6 +77,13 @@ class NewsArticleForm extends Component
         return to_route('article.overview', ['country' => null]);
     }
 
+    public function delete()
+    {
+        $this->libraryItem->delete();
+
+        return to_route('article.overview', ['country' => null]);
+    }
+
     public function render()
     {
         return view('livewire.news.form.news-article-form');
