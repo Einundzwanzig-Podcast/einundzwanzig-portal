@@ -19,8 +19,8 @@ class LecturerController extends Controller
         return Lecturer::query()
                        ->select('id', 'name',)
                        ->orderBy('name')
-                       ->when($request->has('user_id'),
-                           fn(Builder $query) => $query->where('created_by', $request->user_id))
+//                       ->when($request->has('user_id'),
+//                           fn(Builder $query) => $query->where('created_by', $request->user_id))
                        ->when(
                            $request->search,
                            fn(Builder $query) => $query
