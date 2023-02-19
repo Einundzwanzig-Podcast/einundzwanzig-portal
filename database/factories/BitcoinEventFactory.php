@@ -27,8 +27,8 @@ class BitcoinEventFactory extends Factory
             'from' => $this->faker->dateTime(),
             'to' => $this->faker->dateTime(),
             'title' => $this->faker->sentence(4),
-            'description' => $this->faker->text,
-            'link' => $this->faker->word,
+            'description' => $this->faker->text(),
+            'link' => $this->faker->word(),
         ];
     }
 }

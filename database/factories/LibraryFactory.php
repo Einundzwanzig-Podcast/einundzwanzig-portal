@@ -22,8 +22,8 @@ class LibraryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'language_code' => $this->faker->word,
+            'name' => $this->faker->name(),
+            'language_code' => $this->faker->word(),
         ];
     }
 }

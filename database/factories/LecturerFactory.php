@@ -24,9 +24,9 @@ class LecturerFactory extends Factory
     {
         return [
             'team_id' => Team::factory(),
-            'name' => $this->faker->name,
-            'slug' => $this->faker->slug,
-            'active' => $this->faker->boolean,
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'active' => $this->faker->boolean(),
         ];
     }
 }

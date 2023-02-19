@@ -27,8 +27,8 @@ class LibraryItemsFactory extends Factory
             'lecturer_id' => Lecturer::factory(),
             'library_id' => Library::factory(),
             'order_column' => $this->faker->randomNumber(),
-            'type' => $this->faker->word,
-            'value' => $this->faker->text,
+            'type' => $this->faker->word(),
+            'value' => $this->faker->text(),
         ];
     }
 }

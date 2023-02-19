@@ -23,7 +23,7 @@ class PodcastFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
-            'link' => $this->faker->word,
+            'link' => $this->faker->word(),
             'data' => '{}',
         ];
     }

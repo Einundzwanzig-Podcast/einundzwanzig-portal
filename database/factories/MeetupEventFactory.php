@@ -27,9 +27,9 @@ class MeetupEventFactory extends Factory
             'date' => $this->faker->date(),
             'start' => $this->faker->time(),
             'end' => $this->faker->time(),
-            'location' => $this->faker->word,
-            'description' => $this->faker->text,
-            'link' => $this->faker->word,
+            'location' => $this->faker->word(),
+            'description' => $this->faker->text(),
+            'link' => $this->faker->word(),
         ];
     }
 }

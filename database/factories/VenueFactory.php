@@ -24,9 +24,9 @@ class VenueFactory extends Factory
     {
         return [
             'city_id' => City::factory(),
-            'name' => $this->faker->name,
-            'slug' => $this->faker->slug,
-            'street' => $this->faker->streetName,
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'street' => $this->faker->streetName(),
         ];
     }
 }
