@@ -11,9 +11,6 @@ class LibraryItemObserver
 
     /**
      * Handle the LibraryItem "created" event.
-     *
-     * @param  \App\Models\LibraryItem  $libraryItem
-     * @return void
      */
     public function created(LibraryItem $libraryItem): void
     {
@@ -54,9 +51,6 @@ class LibraryItemObserver
 
     /**
      * Handle the LibraryItem "updated" event.
-     *
-     * @param  \App\Models\LibraryItem  $libraryItem
-     * @return void
      */
     public function updated(LibraryItem $libraryItem): void
     {
@@ -65,9 +59,6 @@ class LibraryItemObserver
 
     /**
      * Handle the LibraryItem "deleted" event.
-     *
-     * @param  \App\Models\LibraryItem  $libraryItem
-     * @return void
      */
     public function deleted(LibraryItem $libraryItem): void
     {
@@ -76,9 +67,6 @@ class LibraryItemObserver
 
     /**
      * Handle the LibraryItem "restored" event.
-     *
-     * @param  \App\Models\LibraryItem  $libraryItem
-     * @return void
      */
     public function restored(LibraryItem $libraryItem): void
     {
@@ -87,9 +75,6 @@ class LibraryItemObserver
 
     /**
      * Handle the LibraryItem "force deleted" event.
-     *
-     * @param  \App\Models\LibraryItem  $libraryItem
-     * @return void
      */
     public function forceDeleted(LibraryItem $libraryItem): void
     {

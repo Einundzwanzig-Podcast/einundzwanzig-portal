@@ -44,7 +44,6 @@ class LecturerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,7 +54,6 @@ class LecturerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
     public function show(Lecturer $lecturer)
@@ -66,8 +64,6 @@ class LecturerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Lecturer $lecturer)
@@ -78,7 +74,6 @@ class LecturerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Lecturer $lecturer)
