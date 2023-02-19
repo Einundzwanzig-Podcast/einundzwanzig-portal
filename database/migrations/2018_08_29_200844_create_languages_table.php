@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use JoeDixon\Translation\Language;
 
-class CreateLanguagesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -44,4 +44,4 @@ class CreateLanguagesTable extends Migration
         Schema::connection(config('translation.database.connection'))
             ->dropIfExists(config('translation.database.languages_table'));
     }
-}
+};
