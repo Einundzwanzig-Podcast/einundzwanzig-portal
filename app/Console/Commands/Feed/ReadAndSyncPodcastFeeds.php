@@ -28,7 +28,7 @@ class ReadAndSyncPodcastFeeds extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $client = new \PodcastIndex\Client([
             'app' => 'Einundzwanzig School',

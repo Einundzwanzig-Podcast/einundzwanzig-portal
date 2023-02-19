@@ -15,7 +15,7 @@ class LibraryItemObserver
      * @param  \App\Models\LibraryItem  $libraryItem
      * @return void
      */
-    public function created(LibraryItem $libraryItem)
+    public function created(LibraryItem $libraryItem): void
     {
         // todo: we can change this later
         try {
@@ -58,7 +58,7 @@ class LibraryItemObserver
      * @param  \App\Models\LibraryItem  $libraryItem
      * @return void
      */
-    public function updated(LibraryItem $libraryItem)
+    public function updated(LibraryItem $libraryItem): void
     {
         //
     }
@@ -69,7 +69,7 @@ class LibraryItemObserver
      * @param  \App\Models\LibraryItem  $libraryItem
      * @return void
      */
-    public function deleted(LibraryItem $libraryItem)
+    public function deleted(LibraryItem $libraryItem): void
     {
         //
     }
@@ -80,7 +80,7 @@ class LibraryItemObserver
      * @param  \App\Models\LibraryItem  $libraryItem
      * @return void
      */
-    public function restored(LibraryItem $libraryItem)
+    public function restored(LibraryItem $libraryItem): void
     {
         //
     }
@@ -91,7 +91,7 @@ class LibraryItemObserver
      * @param  \App\Models\LibraryItem  $libraryItem
      * @return void
      */
-    public function forceDeleted(LibraryItem $libraryItem)
+    public function forceDeleted(LibraryItem $libraryItem): void
     {
         //
     }

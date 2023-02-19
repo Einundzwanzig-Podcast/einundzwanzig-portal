@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Models\BitcoinEvent;
 use Illuminate\Http\Request;
 use Spatie\IcalendarGenerator\Components\Calendar;
@@ -15,7 +16,7 @@ class DownloadBitcoinEventCalendar extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): Response
     {
         $events = BitcoinEvent::query()
                               ->with([

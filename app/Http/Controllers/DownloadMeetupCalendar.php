@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Models\Meetup;
 use App\Models\MeetupEvent;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class DownloadMeetupCalendar extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): Response
     {
         if ($request->has('meetup')) {
             $meetup = Meetup::query()

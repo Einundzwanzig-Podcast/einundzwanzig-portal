@@ -16,7 +16,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Country $country)
+    public function view(User $user, Country $country): bool
     {
         return true;
     }
@@ -39,7 +39,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -51,7 +51,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Country $country)
+    public function update(User $user, Country $country): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Country $country)
+    public function delete(User $user, Country $country): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -75,7 +75,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Country $country)
+    public function restore(User $user, Country $country): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -87,7 +87,7 @@ class CountryPolicy extends BasePolicy
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Country $country)
+    public function forceDelete(User $user, Country $country): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }

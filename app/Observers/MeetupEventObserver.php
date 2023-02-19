@@ -16,7 +16,7 @@ class MeetupEventObserver
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return void
      */
-    public function created(MeetupEvent $meetupEvent)
+    public function created(MeetupEvent $meetupEvent): void
     {
         try {
             if (config('feeds.services.twitterAccountId')) {
@@ -48,7 +48,7 @@ class MeetupEventObserver
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return void
      */
-    public function updated(MeetupEvent $meetupEvent)
+    public function updated(MeetupEvent $meetupEvent): void
     {
         //
     }
@@ -59,7 +59,7 @@ class MeetupEventObserver
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return void
      */
-    public function deleted(MeetupEvent $meetupEvent)
+    public function deleted(MeetupEvent $meetupEvent): void
     {
         //
     }
@@ -70,7 +70,7 @@ class MeetupEventObserver
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return void
      */
-    public function restored(MeetupEvent $meetupEvent)
+    public function restored(MeetupEvent $meetupEvent): void
     {
         //
     }
@@ -81,7 +81,7 @@ class MeetupEventObserver
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return void
      */
-    public function forceDeleted(MeetupEvent $meetupEvent)
+    public function forceDeleted(MeetupEvent $meetupEvent): void
     {
         //
     }

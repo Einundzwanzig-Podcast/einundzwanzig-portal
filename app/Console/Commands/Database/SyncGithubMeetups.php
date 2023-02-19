@@ -27,7 +27,7 @@ class SyncGithubMeetups extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $response = Http::get('https://raw.githubusercontent.com/Einundzwanzig-Podcast/einundzwanzig.space/master/content/meetups.json');
 

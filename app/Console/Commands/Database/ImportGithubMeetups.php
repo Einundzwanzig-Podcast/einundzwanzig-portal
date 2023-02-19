@@ -28,7 +28,7 @@ class ImportGithubMeetups extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $meetups = json_decode(file_get_contents(config_path('meetups/github.json')), true, 512, JSON_THROW_ON_ERROR);
 

@@ -27,7 +27,7 @@ class SetReputation extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         foreach (User::query()
                      ->with(['orangePills'])

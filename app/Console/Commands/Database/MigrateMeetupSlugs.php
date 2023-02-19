@@ -26,7 +26,7 @@ class MigrateMeetupSlugs extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         foreach (Meetup::all() as $item) {
             $item->slug = str($item->name)->slug('-', 'de');

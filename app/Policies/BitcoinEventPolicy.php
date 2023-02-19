@@ -16,7 +16,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, BitcoinEvent $bitcoinEvent)
+    public function view(User $user, BitcoinEvent $bitcoinEvent): bool
     {
         return true;
     }
@@ -39,7 +39,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return true;
     }
@@ -51,7 +51,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, BitcoinEvent $bitcoinEvent)
+    public function update(User $user, BitcoinEvent $bitcoinEvent): bool
     {
         return $bitcoinEvent->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, BitcoinEvent $bitcoinEvent)
+    public function delete(User $user, BitcoinEvent $bitcoinEvent): bool
     {
         //
     }
@@ -75,7 +75,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, BitcoinEvent $bitcoinEvent)
+    public function restore(User $user, BitcoinEvent $bitcoinEvent): bool
     {
         //
     }
@@ -87,7 +87,7 @@ class BitcoinEventPolicy extends BasePolicy
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, BitcoinEvent $bitcoinEvent)
+    public function forceDelete(User $user, BitcoinEvent $bitcoinEvent): bool
     {
         //
     }

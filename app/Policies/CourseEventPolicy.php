@@ -16,7 +16,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\CourseEvent  $courseEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, CourseEvent $courseEvent)
+    public function view(User $user, CourseEvent $courseEvent): bool
     {
         return $user->is_lecturer;
     }
@@ -39,7 +39,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->is_lecturer;
     }
@@ -51,7 +51,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\CourseEvent  $courseEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, CourseEvent $courseEvent)
+    public function update(User $user, CourseEvent $courseEvent): bool
     {
         return $user->belongsToTeam($courseEvent->course->lecturer->team) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\CourseEvent  $courseEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, CourseEvent $courseEvent)
+    public function delete(User $user, CourseEvent $courseEvent): bool
     {
         //
     }
@@ -75,7 +75,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\CourseEvent  $courseEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, CourseEvent $courseEvent)
+    public function restore(User $user, CourseEvent $courseEvent): bool
     {
         //
     }
@@ -87,7 +87,7 @@ class CourseEventPolicy extends BasePolicy
      * @param  \App\Models\CourseEvent  $courseEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, CourseEvent $courseEvent)
+    public function forceDelete(User $user, CourseEvent $courseEvent): bool
     {
         //
     }

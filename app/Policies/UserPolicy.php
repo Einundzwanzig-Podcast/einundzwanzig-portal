@@ -15,7 +15,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -27,7 +27,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, User $model)
+    public function view(User $user, User $model): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -38,7 +38,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -50,7 +50,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, User $model)
+    public function update(User $user, User $model): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -62,7 +62,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user, User $model): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -74,7 +74,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, User $model)
+    public function restore(User $user, User $model): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -86,7 +86,7 @@ class UserPolicy extends BasePolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user, User $model): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
