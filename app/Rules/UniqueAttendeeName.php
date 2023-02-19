@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use Closure;
 use App\Models\MeetupEvent;
 use Illuminate\Contracts\Validation\InvokableRule;
 
@@ -17,7 +18,7 @@ class UniqueAttendeeName implements InvokableRule
         //
     }
 
-    public function __invoke($attribute, $value, $fail)
+    public function __invoke(string $attribute, mixed $value, Closure $fail)
     {
         $this->meetupEvent->refresh();
         $attendees = collect($this->meetupEvent->attendees);
