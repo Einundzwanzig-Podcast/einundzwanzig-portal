@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateTranslationsTable extends Migration
         Schema::connection(config('translation.database.connection'))
             ->dropIfExists(config('translation.database.translations_table'));
     }
-}
+};
