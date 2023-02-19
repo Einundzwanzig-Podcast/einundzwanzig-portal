@@ -25,9 +25,8 @@ class PlebLoggedInEvent implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn(): array
+    public function broadcastOn(): \Illuminate\Broadcasting\Channel|array
     {
         return new Channel('plebchannel');
     }
