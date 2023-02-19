@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\BookCase;
-use App\Models\OrangePill;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

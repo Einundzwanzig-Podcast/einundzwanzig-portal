@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\CourseEvent;
 use App\Models\Participant;
-use App\Models\Registration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RegistrationFactory extends Factory

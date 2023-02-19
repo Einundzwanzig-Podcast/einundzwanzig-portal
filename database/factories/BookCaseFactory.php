@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\BookCase;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BookCaseFactory extends Factory

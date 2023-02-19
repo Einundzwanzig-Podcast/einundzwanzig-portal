@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\BitcoinEvent;
 use App\Models\Venue;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

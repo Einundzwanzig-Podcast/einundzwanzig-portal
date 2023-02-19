@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Course;
 use App\Models\Lecturer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
