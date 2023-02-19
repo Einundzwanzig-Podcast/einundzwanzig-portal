@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -17,11 +16,14 @@ class CourseEvent extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = \App\Models\CourseEvent::class;
+
     /**
      * The columns that should be searched.
+     *
      * @var array
      */
     public static $search = [
@@ -57,7 +59,6 @@ class CourseEvent extends Resource
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function fields(Request $request)
@@ -72,12 +73,12 @@ class CourseEvent extends Resource
             DateTime::make(__('From'), 'from')
                     ->step(CarbonInterval::minutes(15))
                     ->rules('required')
-                    ->displayUsing(fn($value) => $value->asDateTime()),
+                    ->displayUsing(fn ($value) => $value->asDateTime()),
 
             DateTime::make(__('To'), 'to')
                     ->step(CarbonInterval::minutes(15))
                     ->rules('required')
-                    ->displayUsing(fn($value) => $value->asDateTime()),
+                    ->displayUsing(fn ($value) => $value->asDateTime()),
 
             BelongsTo::make(__('Course'), 'course', Course::class)
                      ->searchable()->showCreateRelationButton()->withSubtitles(),
@@ -99,7 +100,6 @@ class CourseEvent extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function cards(Request $request)
@@ -111,7 +111,6 @@ class CourseEvent extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function filters(Request $request)
@@ -123,7 +122,6 @@ class CourseEvent extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function lenses(Request $request)
@@ -135,7 +133,6 @@ class CourseEvent extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function actions(Request $request)

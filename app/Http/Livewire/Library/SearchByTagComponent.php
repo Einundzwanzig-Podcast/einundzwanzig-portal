@@ -9,6 +9,7 @@ use Livewire\Component;
 class SearchByTagComponent extends Component
 {
     public string $country = 'de';
+
     public array $filters = [];
 
     protected $queryString = [
@@ -26,12 +27,12 @@ class SearchByTagComponent extends Component
                                       ->pluck('language_code')
                                       ->unique()
                                       ->sort()
-                                      ->map(fn($item) => str($item)
+                                      ->map(fn ($item) => str($item)
                                           ->before('_')
                                           ->toString())
                                       ->values()
                                       ->toArray(),
-            'tags'      => Tag::query()
+            'tags' => Tag::query()
                               ->with([
                                   'libraryItems.libraries',
                                   'libraryItems.lecturer',
@@ -41,7 +42,7 @@ class SearchByTagComponent extends Component
                               ])
                               ->where('type', 'library_item')
                               ->whereHas('libraryItems.libraries',
-                                  fn($query) => $query->where('is_public', $shouldBePublic))
+                                  fn ($query) => $query->where('is_public', $shouldBePublic))
                               ->orderByDesc('library_items_count')
                               ->orderBy('tags.id')
                               ->get(),

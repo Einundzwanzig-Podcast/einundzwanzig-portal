@@ -16,7 +16,7 @@ class Heatmap extends Component
                         ->active()
                         ->whereHas('orangePills')
                         ->get()
-                        ->map(fn($bookCase) => [
+                        ->map(fn ($bookCase) => [
                             'lat' => $bookCase->latitude,
                             'lng' => $bookCase->longitude,
                         ]);
@@ -28,7 +28,7 @@ class Heatmap extends Component
                 title: __('Heatmap of Bookcases'),
                 description: __('On this map you can see the success and spread of the Bitcoin books.'),
                 image: asset('img/heatmap_bookcases.png'),
-            )
+            ),
         ]);
     }
 }

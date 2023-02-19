@@ -20,7 +20,7 @@ class MeetupEventTable extends Component
 
     public function mount()
     {
-        if (!$this->year) {
+        if (! $this->year) {
             $this->year = now()->year;
         }
     }
@@ -34,26 +34,26 @@ class MeetupEventTable extends Component
                                     ])
                                     ->where('meetup_events.start', '>=', now())
                                     ->whereHas('meetup.city.country',
-                                        fn($query) => $query->where('countries.code', $this->country->code))
+                                        fn ($query) => $query->where('countries.code', $this->country->code))
                                     ->get()
-                                    ->map(fn($event) => [
-                                        'id'     => $event->id,
-                                        'name'   => $event->meetup->name.': '.$event->location,
+                                    ->map(fn ($event) => [
+                                        'id' => $event->id,
+                                        'name' => $event->meetup->name.': '.$event->location,
                                         'coords' => [$event->meetup->city->latitude, $event->meetup->city->longitude],
                                     ]),
-            'events'  => MeetupEvent::query()
+            'events' => MeetupEvent::query()
                                     ->with([
                                         'meetup.city.country',
                                     ])
                                     ->where('meetup_events.start', '>=', now())
                                     ->whereHas('meetup.city.country',
-                                        fn($query) => $query->where('countries.code', $this->country->code))
+                                        fn ($query) => $query->where('countries.code', $this->country->code))
                                     ->get()
-                                    ->map(fn($event) => [
-                                        'id'          => $event->id,
-                                        'startDate'   => $event->start,
-                                        'endDate'     => $event->start->addHours(1),
-                                        'location'    => $event->location,
+                                    ->map(fn ($event) => [
+                                        'id' => $event->id,
+                                        'startDate' => $event->start,
+                                        'endDate' => $event->start->addHours(1),
+                                        'location' => $event->location,
                                         'description' => $event->description,
                                     ]),
         ])->layout('layouts.app', [
@@ -61,7 +61,7 @@ class MeetupEventTable extends Component
                 title: __('Meetup dates'),
                 description: __('List of all meetup dates'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 
@@ -69,28 +69,27 @@ class MeetupEventTable extends Component
     {
         return to_route('meetup.table.meetupEvent', [
             '#table',
-            'country'       => $this->country->code,
-            'year'          => $this->year,
+            'country' => $this->country->code,
+            'year' => $this->year,
             'meetup_events' => [
                 'filters' => [
                     'byid' => $id,
                 ],
-            ]
+            ],
         ]);
     }
-
 
     public function popover($content, $ids)
     {
         return to_route('meetup.table.meetupEvent', [
             '#table',
-            'year'    => $this->year,
+            'year' => $this->year,
             'country' => $this->country->code,
-            'meetup_events'   => [
+            'meetup_events' => [
                 'filters' => [
                     'byid' => $ids,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

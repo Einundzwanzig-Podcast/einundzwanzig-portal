@@ -21,18 +21,18 @@ class CityForm extends Component
     {
         return [
             'city.country_id' => 'required',
-            'city.name'       => 'required|string',
-            'city.longitude'  => 'required',
-            'city.latitude'   => 'required',
+            'city.name' => 'required|string',
+            'city.longitude' => 'required',
+            'city.latitude' => 'required',
         ];
     }
 
     public function mount()
     {
-        if (!$this->city) {
+        if (! $this->city) {
             $this->city = new City();
         }
-        if (!$this->fromUrl) {
+        if (! $this->fromUrl) {
             $this->fromUrl = url()->previous();
         }
     }

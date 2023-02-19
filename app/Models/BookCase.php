@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Akuechler\Geoly;
-use App\Models\Scopes\ActiveBookCases;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,26 +22,28 @@ class BookCase extends Model implements HasMedia
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'          => 'integer',
-        'lat'         => 'double',
-        'lon'         => 'array',
-        'digital'     => 'boolean',
+        'id' => 'integer',
+        'lat' => 'double',
+        'lon' => 'array',
+        'digital' => 'boolean',
         'deactivated' => 'boolean',
     ];
 
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->created_by) {
+            if (! $model->created_by) {
                 $model->created_by = auth()->id();
             }
         });

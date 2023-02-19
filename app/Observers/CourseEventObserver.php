@@ -13,7 +13,6 @@ class CourseEventObserver
      * Handle the CourseEvent "created" event.
      *
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return void
      */
     public function created(CourseEvent $courseEvent)
@@ -37,7 +36,6 @@ class CourseEventObserver
      * Handle the CourseEvent "updated" event.
      *
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return void
      */
     public function updated(CourseEvent $courseEvent)
@@ -49,7 +47,6 @@ class CourseEventObserver
      * Handle the CourseEvent "deleted" event.
      *
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return void
      */
     public function deleted(CourseEvent $courseEvent)
@@ -61,7 +58,6 @@ class CourseEventObserver
      * Handle the CourseEvent "restored" event.
      *
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return void
      */
     public function restored(CourseEvent $courseEvent)
@@ -73,7 +69,6 @@ class CourseEventObserver
      * Handle the CourseEvent "force deleted" event.
      *
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return void
      */
     public function forceDeleted(CourseEvent $courseEvent)

@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Lecturer;
 use App\Models\Library;
 use App\Models\LibraryItems;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LibraryItemsFactory extends Factory
 {

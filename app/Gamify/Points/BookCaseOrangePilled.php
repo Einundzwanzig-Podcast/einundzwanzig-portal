@@ -12,6 +12,7 @@ class BookCaseOrangePilled extends PointType
 
     /**
      * Number of points
+     *
      * @var int
      */
     public $points = 210;
@@ -28,6 +29,7 @@ class BookCaseOrangePilled extends PointType
 
     /**
      * User who will be receive points
+     *
      * @return mixed
      */
     public function payee()

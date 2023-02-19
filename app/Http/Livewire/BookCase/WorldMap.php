@@ -19,15 +19,15 @@ class WorldMap extends Component
                                  ->withCount('orangePills')
                                  ->active()
                                  ->get()
-                                 ->map(fn($bookCase) => [
+                                 ->map(fn ($bookCase) => [
                                      'lat' => $bookCase->latitude,
                                      'lng' => $bookCase->longitude,
                                      'url' => url()->route('bookCases.comment.bookcase',
                                          [
-                                             'country'  => $this->country,
+                                             'country' => $this->country,
                                              'bookCase' => $bookCase,
                                          ]),
-                                     'op'  => $bookCase->orange_pills_count,
+                                     'op' => $bookCase->orange_pills_count,
                                  ])
                                  ->toArray(),
         ])->layout('layouts.app', [
@@ -35,7 +35,7 @@ class WorldMap extends Component
                 title: __('World Map of Bookcases'),
                 description: __('On this map you can see bookcases that have been orange pilled. You can also click on a marker to go to the search result.'),
                 image: asset('img/world_map_bookcases.png')
-            )
+            ),
         ]);
     }
 }

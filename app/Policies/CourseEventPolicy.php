@@ -26,7 +26,6 @@ class CourseEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, CourseEvent $courseEvent)
@@ -50,7 +49,6 @@ class CourseEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, CourseEvent $courseEvent)
@@ -63,7 +61,6 @@ class CourseEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, CourseEvent $courseEvent)
@@ -76,7 +73,6 @@ class CourseEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, CourseEvent $courseEvent)
@@ -89,7 +85,6 @@ class CourseEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, CourseEvent $courseEvent)

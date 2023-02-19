@@ -10,6 +10,7 @@ class HighscoreChat extends Component
     public bool $open = false;
 
     public array $messages = [];
+
     public string $myNewMessage = '';
 
     public function rules()
@@ -22,7 +23,7 @@ class HighscoreChat extends Component
     public function getListeners()
     {
         return [
-            'toggleHighscoreChat'                               => 'toggle',
+            'toggleHighscoreChat' => 'toggle',
             'echo:plebchannel,.App\Events\ChatMessageSentEvent' => 'chatMessageSent',
         ];
     }
@@ -34,7 +35,7 @@ class HighscoreChat extends Component
 
     public function toggle()
     {
-        $this->open = !$this->open;
+        $this->open = ! $this->open;
     }
 
     public function chatMessageSent()
@@ -50,11 +51,11 @@ class HighscoreChat extends Component
         $this->validate();
         $newMessages = collect(cache()->get('highscore_chat_messages', []))
             ->push([
-                'fromId'   => auth()->id(),
+                'fromId' => auth()->id(),
                 'fromName' => str(auth()->user()->name)->limit(2),
-                'userImg'  => str(auth()->user()->profile_photo_url)->replace('background=EBF4FF', 'background=F7931A'),
-                'message'  => $this->myNewMessage,
-                'time'     => now()->asDateTime(),
+                'userImg' => str(auth()->user()->profile_photo_url)->replace('background=EBF4FF', 'background=F7931A'),
+                'message' => $this->myNewMessage,
+                'time' => now()->asDateTime(),
             ])
             ->take(-21)
             ->toArray();

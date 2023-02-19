@@ -10,9 +10,10 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class Welcome extends Component
 {
     public string $c = 'de';
+
     public string $l = 'de';
 
-    protected $queryString = ['c','l'];
+    protected $queryString = ['c', 'l'];
 
     public function rules()
     {
@@ -67,7 +68,7 @@ class Welcome extends Component
                 title: __('Welcome'),
                 description: __('Welcome to the portal of the Einundzwanzig Community.'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

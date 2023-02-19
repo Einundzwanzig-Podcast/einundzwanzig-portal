@@ -23,24 +23,27 @@ class Meetup extends Model implements HasMedia
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
+
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'                 => 'integer',
-        'city_id'            => 'integer',
-        'github_data'        => 'json',
+        'id' => 'integer',
+        'city_id' => 'integer',
+        'github_data' => 'json',
         'simplified_geojson' => 'array',
     ];
 
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->created_by) {
+            if (! $model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
@@ -103,13 +106,13 @@ class Meetup extends Model implements HasMedia
         }
 
         return Attribute::make(
-            get: fn() => url()->route('img',
+            get: fn () => url()->route('img',
                 [
                     'path' => $path,
-                    'w'    => 900,
-                    'h'    => 900,
-                    'fit'  => 'crop',
-                    'fm'   => 'webp'
+                    'w' => 900,
+                    'h' => 900,
+                    'fit' => 'crop',
+                    'fm' => 'webp',
                 ]),
         );
     }

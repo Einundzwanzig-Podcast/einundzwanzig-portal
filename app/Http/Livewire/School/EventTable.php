@@ -17,7 +17,7 @@ class EventTable extends Component
 
     public function mount()
     {
-        if (!$this->year) {
+        if (! $this->year) {
             $this->year = now()->year;
         }
     }
@@ -31,28 +31,28 @@ class EventTable extends Component
                                         'venue.city.country',
                                     ])
                                     ->where('from', '>=', now())
-                                    ->where(fn($query) => $query
+                                    ->where(fn ($query) => $query
                                         ->whereHas('venue.city.country',
-                                            fn($query) => $query->where('countries.code', $this->country->code))
+                                            fn ($query) => $query->where('countries.code', $this->country->code))
                                     )
                                     ->get()
-                                    ->map(fn($event) => [
-                                        'id'     => $event->id,
-                                        'name'   => $event->course->name,
+                                    ->map(fn ($event) => [
+                                        'id' => $event->id,
+                                        'name' => $event->course->name,
                                         'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
                                     ]),
-            'events'  => CourseEvent::query()
+            'events' => CourseEvent::query()
                                     ->with([
                                         'course',
                                         'venue.city.country',
                                     ])
                                     ->where('from', '>=', now())
                                     ->get()
-                                    ->map(fn($event) => [
-                                        'id'          => $event->id,
-                                        'startDate'   => $event->from,
-                                        'endDate'     => $event->to,
-                                        'location'    => $event->course->name,
+                                    ->map(fn ($event) => [
+                                        'id' => $event->id,
+                                        'startDate' => $event->from,
+                                        'endDate' => $event->to,
+                                        'location' => $event->course->name,
                                         'description' => $event->venue->name,
                                     ]),
         ])->layout('layouts.app', [
@@ -60,7 +60,7 @@ class EventTable extends Component
                 title: __('Dates'),
                 description: __('Dates for courses about Bitcoin.'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 
@@ -69,12 +69,12 @@ class EventTable extends Component
         return to_route('school.table.event', [
             '#table',
             'country' => $this->country->code,
-            'year'    => $this->year,
-            'course_events'   => [
+            'year' => $this->year,
+            'course_events' => [
                 'filters' => [
                     'byid' => $id,
                 ],
-            ]
+            ],
         ]);
     }
 
@@ -83,12 +83,12 @@ class EventTable extends Component
         return to_route('school.table.event', [
             '#table',
             'country' => $this->country->code,
-            'year'    => $this->year,
-            'course_events'   => [
+            'year' => $this->year,
+            'course_events' => [
                 'filters' => [
                     'byid' => $ids,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

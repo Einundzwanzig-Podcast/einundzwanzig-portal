@@ -31,7 +31,7 @@ class ArticleOverview extends Component
         if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
             $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
         }
-        if (!$libraryItem->lecturer->twitter_username) {
+        if (! $libraryItem->lecturer->twitter_username) {
             $libraryItemName .= ' von '.$libraryItem->lecturer->name;
         }
 
@@ -39,7 +39,7 @@ class ArticleOverview extends Component
             if (config('feeds.services.twitterAccountId')) {
                 $this->setNewAccessToken(1);
 
-                if (!$libraryItem->approved) {
+                if (! $libraryItem->approved) {
                     $this->notification()
                          ->error(__('Article not approved yet'));
 
@@ -98,7 +98,7 @@ class ArticleOverview extends Component
                 title: __('News'),
                 description: __('Here we post important news that is relevant for everyone.'),
                 image: asset('img/einundzwanzig-news-colored.png'),
-            )
+            ),
         ]);
     }
 }

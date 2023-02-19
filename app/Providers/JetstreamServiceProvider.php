@@ -20,6 +20,7 @@ class JetstreamServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     *
      * @return void
      */
     public function register()
@@ -29,6 +30,7 @@ class JetstreamServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     *
      * @return void
      */
     public function boot()
@@ -50,7 +52,6 @@ class JetstreamServiceProvider extends ServiceProvider
 
             if ($user &&
                 Hash::check($request->password, $user->password)) {
-
                 return $user;
             }
         });
@@ -58,6 +59,7 @@ class JetstreamServiceProvider extends ServiceProvider
 
     /**
      * Configure the roles and permissions that are available within the application.
+     *
      * @return void
      */
     protected function configurePermissions()

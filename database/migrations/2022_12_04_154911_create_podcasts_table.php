@@ -8,6 +8,7 @@ class CreatePodcastsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
      * @return void
      */
     public function up(): void
@@ -29,6 +30,7 @@ class CreatePodcastsTable extends Migration
 
     /**
      * Reverse the migrations.
+     *
      * @return void
      */
     public function down(): void

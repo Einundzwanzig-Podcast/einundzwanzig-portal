@@ -18,19 +18,21 @@ class OrangePill extends Model implements HasMedia
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'           => 'integer',
-        'user_id'      => 'integer',
+        'id' => 'integer',
+        'user_id' => 'integer',
         'book_case_id' => 'integer',
-        'date'         => 'datetime',
+        'date' => 'datetime',
     ];
 
     protected static function booted()

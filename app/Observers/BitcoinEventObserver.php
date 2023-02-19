@@ -13,7 +13,6 @@ class BitcoinEventObserver
      * Handle the BitcoinEvent "created" event.
      *
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return void
      */
     public function created(BitcoinEvent $bitcoinEvent)
@@ -37,7 +36,6 @@ class BitcoinEventObserver
      * Handle the BitcoinEvent "updated" event.
      *
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return void
      */
     public function updated(BitcoinEvent $bitcoinEvent)
@@ -49,7 +47,6 @@ class BitcoinEventObserver
      * Handle the BitcoinEvent "deleted" event.
      *
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return void
      */
     public function deleted(BitcoinEvent $bitcoinEvent)
@@ -61,7 +58,6 @@ class BitcoinEventObserver
      * Handle the BitcoinEvent "restored" event.
      *
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return void
      */
     public function restored(BitcoinEvent $bitcoinEvent)
@@ -73,7 +69,6 @@ class BitcoinEventObserver
      * Handle the BitcoinEvent "force deleted" event.
      *
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return void
      */
     public function forceDeleted(BitcoinEvent $bitcoinEvent)

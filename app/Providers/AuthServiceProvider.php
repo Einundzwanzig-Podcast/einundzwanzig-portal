@@ -14,16 +14,18 @@ class AuthServiceProvider extends ServiceProvider
 {
     /**
      * The policy mappings for the application.
+     *
      * @var array
      */
     protected $policies = [
-        Team::class       => TeamPolicy::class,
-        Role::class       => RolePolicy::class,
+        Team::class => TeamPolicy::class,
+        Role::class => RolePolicy::class,
         Permission::class => PermissionPolicy::class,
     ];
 
     /**
      * Register any authentication / authorization services.
+     *
      * @return void
      */
     public function boot()

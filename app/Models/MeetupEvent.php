@@ -14,26 +14,28 @@ class MeetupEvent extends Model
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'              => 'integer',
-        'meetup_id'       => 'integer',
-        'start'           => 'datetime',
-        'attendees'       => 'array',
+        'id' => 'integer',
+        'meetup_id' => 'integer',
+        'start' => 'datetime',
+        'attendees' => 'array',
         'might_attendees' => 'array',
     ];
 
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->created_by) {
+            if (! $model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
@@ -64,6 +66,6 @@ class MeetupEvent extends Model
      */
     public function commentUrl(): string
     {
-        return url()->route('meetup.event.landing', ['country' => $this->meetup->city->country,'meetupEvent' => $this]);
+        return url()->route('meetup.event.landing', ['country' => $this->meetup->city->country, 'meetupEvent' => $this]);
     }
 }

@@ -8,6 +8,7 @@ class CreateLibrariesTable extends Migration
 {
     /**
      * Run the migrations.
+     *
      * @return void
      */
     public function up(): void
@@ -25,6 +26,7 @@ class CreateLibrariesTable extends Migration
 
     /**
      * Reverse the migrations.
+     *
      * @return void
      */
     public function down(): void

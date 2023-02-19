@@ -12,10 +12,15 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class LandingPageEvent extends Component
 {
     public MeetupEvent $meetupEvent;
+
     public Country $country;
+
     public ?Meetup $meetup = null;
+
     public bool $willShowUp = false;
+
     public bool $perhapsShowUp = false;
+
     public string $name = '';
 
     public function rules()
@@ -23,7 +28,7 @@ class LandingPageEvent extends Component
         return [
             'name' => [
                 'required',
-                new UniqueAttendeeName($this->meetupEvent)
+                new UniqueAttendeeName($this->meetupEvent),
             ],
         ];
     }
@@ -40,33 +45,33 @@ class LandingPageEvent extends Component
         $attendees = collect($this->meetupEvent->attendees);
         $mightAttendees = collect($this->meetupEvent->might_attendees);
 
-        if (auth()->check() && $attendees->contains(fn($value) => str($value)->contains('id_'.auth()->id()))) {
-            $this->name = str($attendees->filter(fn($value) => str($value)->contains('id_'.auth()->id()))
+        if (auth()->check() && $attendees->contains(fn ($value) => str($value)->contains('id_'.auth()->id()))) {
+            $this->name = str($attendees->filter(fn ($value) => str($value)->contains('id_'.auth()->id()))
                                         ->first())
                 ->after('|')
                 ->toString();
             $this->willShowUp = true;
         }
 
-        if (!auth()->check() && $attendees->contains(fn($value) => str($value)->contains('anon_'.session()->getId()))) {
-            $this->name = str($attendees->filter(fn($value) => str($value)->contains('anon_'.session()->getId()))
+        if (! auth()->check() && $attendees->contains(fn ($value) => str($value)->contains('anon_'.session()->getId()))) {
+            $this->name = str($attendees->filter(fn ($value) => str($value)->contains('anon_'.session()->getId()))
                                         ->first())
                 ->after('|')
                 ->toString();
             $this->willShowUp = true;
         }
 
-        if (auth()->check() && $mightAttendees->contains(fn($value) => str($value)->contains('id_'.auth()->id()))) {
-            $this->name = str($mightAttendees->filter(fn($value) => str($value)->contains('id_'.auth()->id()))
+        if (auth()->check() && $mightAttendees->contains(fn ($value) => str($value)->contains('id_'.auth()->id()))) {
+            $this->name = str($mightAttendees->filter(fn ($value) => str($value)->contains('id_'.auth()->id()))
                                              ->first())
                 ->after('|')
                 ->toString();
             $this->perhapsShowUp = true;
         }
 
-        if (!auth()->check() && $mightAttendees->contains(fn($value
+        if (! auth()->check() && $mightAttendees->contains(fn ($value
             ) => str($value)->contains('anon_'.session()->getId()))) {
-            $this->name = str($mightAttendees->filter(fn($value) => str($value)->contains('anon_'.session()->getId()))
+            $this->name = str($mightAttendees->filter(fn ($value) => str($value)->contains('anon_'.session()->getId()))
                                              ->first())
                 ->after('|')
                 ->toString();
@@ -79,29 +84,29 @@ class LandingPageEvent extends Component
         $attendees = collect($this->meetupEvent->attendees);
         $mightAttendees = collect($this->meetupEvent->might_attendees);
 
-        if (auth()->check() && $attendees->contains(fn($value) => str($value)->contains('id_'.auth()->id()))) {
-            $attendees = $attendees->filter(fn($value) => !str($value)->contains('id_'.auth()->id()));
+        if (auth()->check() && $attendees->contains(fn ($value) => str($value)->contains('id_'.auth()->id()))) {
+            $attendees = $attendees->filter(fn ($value) => ! str($value)->contains('id_'.auth()->id()));
             $this->willShowUp = false;
         }
 
-        if (!auth()->check() && $attendees->contains(fn($value) => str($value)->contains('anon_'.session()->getId()))) {
-            $attendees = $attendees->filter(fn($value) => !str($value)->contains('anon_'.session()->getId()));
+        if (! auth()->check() && $attendees->contains(fn ($value) => str($value)->contains('anon_'.session()->getId()))) {
+            $attendees = $attendees->filter(fn ($value) => ! str($value)->contains('anon_'.session()->getId()));
             $this->willShowUp = false;
         }
 
-        if (auth()->check() && $mightAttendees->contains(fn($value) => str($value)->contains('id_'.auth()->id()))) {
-            $mightAttendees = $mightAttendees->filter(fn($value) => !str($value)->contains('id_'.auth()->id()));
+        if (auth()->check() && $mightAttendees->contains(fn ($value) => str($value)->contains('id_'.auth()->id()))) {
+            $mightAttendees = $mightAttendees->filter(fn ($value) => ! str($value)->contains('id_'.auth()->id()));
             $this->perhapsShowUp = false;
         }
 
-        if (!auth()->check() && $mightAttendees->contains(fn($value
+        if (! auth()->check() && $mightAttendees->contains(fn ($value
             ) => str($value)->contains('anon_'.session()->getId()))) {
-            $mightAttendees = $mightAttendees->filter(fn($value) => !str($value)->contains('anon_'.session()->getId()));
+            $mightAttendees = $mightAttendees->filter(fn ($value) => ! str($value)->contains('anon_'.session()->getId()));
             $this->perhapsShowUp = false;
         }
 
         $this->meetupEvent->update([
-            'attendees'       => $attendees->toArray(),
+            'attendees' => $attendees->toArray(),
             'might_attendees' => $mightAttendees->toArray(),
         ]);
     }
@@ -111,12 +116,12 @@ class LandingPageEvent extends Component
         $this->validate();
         $attendees = collect($this->meetupEvent->attendees);
 
-        if (auth()->check() && !$attendees->contains('id_'.auth()->id().'|'.$this->name)) {
+        if (auth()->check() && ! $attendees->contains('id_'.auth()->id().'|'.$this->name)) {
             $attendees->push('id_'.auth()->id().'|'.$this->name);
             $this->willShowUp = true;
         }
 
-        if (!auth()->check() && !$attendees->contains('anon_'.session()->getId().'|'.$this->name)) {
+        if (! auth()->check() && ! $attendees->contains('anon_'.session()->getId().'|'.$this->name)) {
             $attendees->push('anon_'.session()->getId().'|'.$this->name);
             $this->willShowUp = true;
         }
@@ -131,12 +136,12 @@ class LandingPageEvent extends Component
         $this->validate();
         $mightAttendees = collect($this->meetupEvent->might_attendees);
 
-        if (auth()->check() && !$mightAttendees->contains('id_'.auth()->id().'|'.$this->name)) {
+        if (auth()->check() && ! $mightAttendees->contains('id_'.auth()->id().'|'.$this->name)) {
             $mightAttendees->push('id_'.auth()->id().'|'.$this->name);
             $this->perhapsShowUp = true;
         }
 
-        if (!auth()->check() && !$mightAttendees->contains('anon_'.session()->getId().'|'.$this->name)) {
+        if (! auth()->check() && ! $mightAttendees->contains('anon_'.session()->getId().'|'.$this->name)) {
             $mightAttendees->push('anon_'.session()->getId().'|'.$this->name);
             $this->perhapsShowUp = true;
         }
@@ -153,7 +158,7 @@ class LandingPageEvent extends Component
                 title: $this->meetupEvent->start->asDateTime().' - '.$this->meetup->name,
                 description: __('Here you can confirm your participation and find more information about the Meetup.').' - '.$this->meetupEvent->description,
                 image: $this->meetup->getFirstMediaUrl('logo'),
-            )
+            ),
         ]);
     }
 }

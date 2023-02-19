@@ -17,7 +17,7 @@ class VenueTable extends Component
                 title: __('Venues'),
                 description: __('Venues in the surrounding area.'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

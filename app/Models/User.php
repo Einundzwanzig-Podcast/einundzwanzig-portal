@@ -10,14 +10,14 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use ParagonIE\CipherSweet\BlindIndex;
+use ParagonIE\CipherSweet\EncryptedRow;
 use QCod\Gamify\Gamify;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 use Spatie\LaravelCipherSweet\Concerns\UsesCipherSweet;
 use Spatie\LaravelCipherSweet\Contracts\CipherSweetEncrypted;
 use Spatie\Permission\Traits\HasRoles;
-use ParagonIE\CipherSweet\EncryptedRow;
-use ParagonIE\CipherSweet\BlindIndex;
 
 class User extends Authenticatable implements MustVerifyEmail, CanComment, CipherSweetEncrypted
 {
@@ -36,6 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     /**
      * The attributes that should be hidden for serialization.
+     *
      * @var array
      */
     protected $hidden = [
@@ -47,6 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     /**
      * The attributes that should be cast.
+     *
      * @var array
      */
     protected $casts = [
@@ -55,6 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     /**
      * The accessors to append to the model's array form.
+     *
      * @var array
      */
     protected $appends = [

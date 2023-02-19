@@ -14,7 +14,6 @@ class MeetupObserver
      * Handle the Meetup "created" event.
      *
      * @param  \App\Models\Meetup  $meetup
-     *
      * @return void
      */
     public function created(Meetup $meetup)
@@ -44,7 +43,6 @@ class MeetupObserver
      * Handle the Meetup "updated" event.
      *
      * @param  \App\Models\Meetup  $meetup
-     *
      * @return void
      */
     public function updated(Meetup $meetup)
@@ -56,7 +54,6 @@ class MeetupObserver
      * Handle the Meetup "deleted" event.
      *
      * @param  \App\Models\Meetup  $meetup
-     *
      * @return void
      */
     public function deleted(Meetup $meetup)
@@ -68,7 +65,6 @@ class MeetupObserver
      * Handle the Meetup "restored" event.
      *
      * @param  \App\Models\Meetup  $meetup
-     *
      * @return void
      */
     public function restored(Meetup $meetup)
@@ -80,7 +76,6 @@ class MeetupObserver
      * Handle the Meetup "force deleted" event.
      *
      * @param  \App\Models\Meetup  $meetup
-     *
      * @return void
      */
     public function forceDeleted(Meetup $meetup)

@@ -1,6 +1,6 @@
 <?php
 
-return array (
-  'failed' => '',
-  'throttle' => '',
-);
+return [
+    'failed' => '',
+    'throttle' => '',
+];

@@ -53,7 +53,7 @@ class PodcastPolicy extends BasePolicy
      */
     public function update(User $user, Podcast $podcast)
     {
-        return !$podcast->locked;
+        return ! $podcast->locked;
     }
 
     /**
@@ -65,7 +65,7 @@ class PodcastPolicy extends BasePolicy
      */
     public function delete(User $user, Podcast $podcast)
     {
-        return !$podcast->locked;
+        return ! $podcast->locked;
     }
 
     /**
@@ -77,7 +77,7 @@ class PodcastPolicy extends BasePolicy
      */
     public function restore(User $user, Podcast $podcast)
     {
-        return !$podcast->locked;
+        return ! $podcast->locked;
     }
 
     /**
@@ -89,6 +89,6 @@ class PodcastPolicy extends BasePolicy
      */
     public function forceDelete(User $user, Podcast $podcast)
     {
-        return !$podcast->locked;
+        return ! $podcast->locked;
     }
 }

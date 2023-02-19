@@ -9,6 +9,7 @@ class AddLoginReputation
 {
     /**
      * Create the event listener.
+     *
      * @return void
      */
     public function __construct()
@@ -20,7 +21,6 @@ class AddLoginReputation
      * Handle the event.
      *
      * @param  object  $event
-     *
      * @return void
      */
     public function handle($event)

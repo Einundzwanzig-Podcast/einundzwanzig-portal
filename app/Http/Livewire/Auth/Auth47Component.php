@@ -8,6 +8,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class Auth47Component extends Component
 {
     public ?string $k1 = null;
+
     protected ?string $url = null;
 
     public function mount()

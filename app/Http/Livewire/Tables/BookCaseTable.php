@@ -3,9 +3,7 @@
 namespace App\Http\Livewire\Tables;
 
 use App\Models\BookCase;
-use App\Models\OrangePill;
 use Illuminate\Database\Eloquent\Builder;
-use Livewire\WithFileUploads;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
@@ -16,6 +14,7 @@ class BookCaseTable extends DataTableComponent
     use Actions;
 
     public string $country;
+
     public string $tableName = 'bookcases';
 
     public function configure(): void
@@ -24,21 +23,19 @@ class BookCaseTable extends DataTableComponent
              ->setAdditionalSelects(['id', 'homepage'])
              ->setThAttributes(function (Column $column) {
                  return [
-                     'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                     'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                      'default' => false,
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
-
                  return [
-                     'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                     'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
                  ];
              })
              ->setColumnSelectStatus(false)
              ->setPerPage(10);
     }
-
 
     public function filters(): array
     {
@@ -54,27 +51,27 @@ class BookCaseTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Name", "title")
+            Column::make('Name', 'title')
                   ->sortable()
                   ->searchable(
                       function (Builder $query, $searchTerm) {
                           $query->where('title', 'ilike', '%'.$searchTerm.'%');
                       }
                   ),
-            Column::make("Adresse", "address")
+            Column::make('Adresse', 'address')
                   ->sortable()
                   ->searchable(),
-            Column::make("Bitcoin-Bücher")
+            Column::make('Bitcoin-Bücher')
                   ->label(
-                      fn(
+                      fn (
                           $row,
                           Column $column
                       ) => $row->orangePills->sum('amount')
                   )
                   ->collapseOnMobile(),
-            Column::make("Letzter Input")
+            Column::make('Letzter Input')
                   ->label(
-                      fn(
+                      fn (
                           $row,
                           Column $column
                       ) => $row->orangePills()
@@ -82,9 +79,9 @@ class BookCaseTable extends DataTableComponent
                                ->first()?->date->asDate()
                   )
                   ->collapseOnMobile(),
-            Column::make("Link")
+            Column::make('Link')
                   ->label(
-                      fn(
+                      fn (
                           $row,
                           Column $column
                       ) => $row->homepage ? '<a target="_blank" class="underline text-amber-500" href="'.$this->url_to_absolute($row->homepage).'">Link</a>' : null
@@ -92,7 +89,7 @@ class BookCaseTable extends DataTableComponent
                   ->html()
                   ->collapseOnMobile(),
             Column::make('Orange-Pilled', 'orange_pilled')
-                  ->label(fn($row, Column $column) => view('columns.book_cases.oranged-pilled')
+                  ->label(fn ($row, Column $column) => view('columns.book_cases.oranged-pilled')
                       ->withRow($row)
                       ->withCountry($this->country))
                   ->collapseOnMobile(),
@@ -104,7 +101,7 @@ class BookCaseTable extends DataTableComponent
         if (str($url)->contains('http')) {
             return $url;
         }
-        if (!str($url)->contains('http')) {
+        if (! str($url)->contains('http')) {
             return str($url)->prepend('https://');
         }
     }

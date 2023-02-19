@@ -12,6 +12,7 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 class CourseTable extends DataTableComponent
 {
     public string $country;
+
     public string $tableName = 'courses';
 
     public function configure(): void
@@ -20,13 +21,13 @@ class CourseTable extends DataTableComponent
              ->setAdditionalSelects(['id'])
              ->setThAttributes(function (Column $column) {
                  return [
-                     'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                     'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                      'default' => false,
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                  return [
-                     'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                     'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
                  ];
              })
@@ -42,7 +43,7 @@ class CourseTable extends DataTableComponent
                                  Tag::query()
                                     ->withType('course')
                                     ->get()
-                                    ->mapWithKeys(fn($item, $key) => [$item->name => $item->name])
+                                    ->mapWithKeys(fn ($item, $key) => [$item->name => $item->name])
                                     ->toArray()
                              )
                              ->filter(function (Builder $builder, array $values) {
@@ -54,33 +55,33 @@ class CourseTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Dozent', "lecturer.name")
+            Column::make('Dozent', 'lecturer.name')
                   ->label(
-                      fn($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
+                      fn ($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
                   )
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make("Name", "name")
-                  ->searchable(fn(Builder $query, string $term) => $query->where('name', 'ilike', '%'.$term.'%'))
+            Column::make('Name', 'name')
+                  ->searchable(fn (Builder $query, string $term) => $query->where('name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
-            Column::make("Tags")
+            Column::make('Tags')
                   ->label(
-                      fn($row, Column $column) => view('columns.courses.tags')->withRow($row)
+                      fn ($row, Column $column) => view('columns.courses.tags')->withRow($row)
                   )
                   ->collapseOnMobile(),
-            Column::make("Termine")
+            Column::make('Termine')
                   ->label(
-                      fn($row, Column $column) => '<strong>'.$row->course_events_count.'</strong>'
+                      fn ($row, Column $column) => '<strong>'.$row->course_events_count.'</strong>'
                   )
                   ->html()
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make("Erstellt am", "created_at")
+            Column::make('Erstellt am', 'created_at')
                   ->sortable()
                   ->collapseOnMobile(),
             Column::make('')
                   ->label(
-                      fn($row, Column $column) => view('columns.courses.action')->withRow($row)
+                      fn ($row, Column $column) => view('columns.courses.action')->withRow($row)
                   ),
         ];
     }
@@ -96,7 +97,7 @@ class CourseTable extends DataTableComponent
                          'courseEvents',
                      ])
                      ->whereHas('courseEvents.venue.city.country',
-                         fn($query) => $query->where('countries.code', $this->country))
+                         fn ($query) => $query->where('countries.code', $this->country))
                      ->orderByDesc('course_events_count')
                      ->orderBy('courses.id');
     }
@@ -105,12 +106,12 @@ class CourseTable extends DataTableComponent
     {
         return to_route('school.table.event', [
             '#table',
-            'country'       => $this->country,
+            'country' => $this->country,
             'course_events' => [
                 'filters' => [
                     'course_id' => $id,
                 ],
-            ]
+            ],
         ]);
     }
 }

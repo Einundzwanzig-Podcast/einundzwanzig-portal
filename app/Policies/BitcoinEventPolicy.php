@@ -14,7 +14,6 @@ class BitcoinEventPolicy extends BasePolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -27,7 +26,6 @@ class BitcoinEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, BitcoinEvent $bitcoinEvent)
@@ -39,7 +37,6 @@ class BitcoinEventPolicy extends BasePolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
@@ -52,7 +49,6 @@ class BitcoinEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, BitcoinEvent $bitcoinEvent)
@@ -65,7 +61,6 @@ class BitcoinEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, BitcoinEvent $bitcoinEvent)
@@ -78,7 +73,6 @@ class BitcoinEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, BitcoinEvent $bitcoinEvent)
@@ -91,7 +85,6 @@ class BitcoinEventPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, BitcoinEvent $bitcoinEvent)

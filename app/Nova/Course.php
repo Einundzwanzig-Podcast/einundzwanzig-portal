@@ -20,17 +20,21 @@ class Course extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = \App\Models\Course::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
+     *
      * @var string
      */
     public static $title = 'name';
+
     /**
      * The columns that should be searched.
+     *
      * @var array
      */
     public static $search = [
@@ -75,7 +79,6 @@ class Course extends Resource
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function fields(Request $request)
@@ -87,14 +90,14 @@ class Course extends Resource
             Images::make(__('Main picture'), 'logo')
                   ->showStatistics()
                   ->conversionOnIndexView('thumb')
-                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
+                  ->setFileName(fn ($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             // todo: english
             Images::make(__('Images'), 'images')
                   ->showStatistics()
                   ->conversionOnIndexView('thumb')
                   ->help(__('Upload images here to insert them later in the Markdown Description. But you have to save before.'))
-                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
+                  ->setFileName(fn ($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Tags::make(__('Tags'))
                 ->type('course')
@@ -131,7 +134,6 @@ class Course extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function cards(Request $request)
@@ -143,7 +145,6 @@ class Course extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function filters(Request $request)
@@ -155,7 +156,6 @@ class Course extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function lenses(Request $request)
@@ -167,7 +167,6 @@ class Course extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function actions(Request $request)
