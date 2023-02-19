@@ -26,7 +26,7 @@ class RegistrationFactory extends Factory
         return [
             'event_id' => CourseEvent::factory(),
             'participant_id' => Participant::factory(),
-            'active' => $this->faker->boolean,
+            'active' => $this->faker->boolean(),
         ];
     }
 }

@@ -24,8 +24,8 @@ class MeetupFactory extends Factory
     {
         return [
             'city_id' => City::factory(),
-            'name' => $this->faker->name,
-            'link' => $this->faker->word,
+            'name' => $this->faker->name(),
+            'link' => $this->faker->word(),
         ];
     }
 }

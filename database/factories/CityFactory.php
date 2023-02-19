@@ -24,8 +24,8 @@ class CityFactory extends Factory
     {
         return [
             'country_id' => Country::factory(),
-            'name' => $this->faker->name,
-            'slug' => $this->faker->slug,
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
         ];
     }
 }

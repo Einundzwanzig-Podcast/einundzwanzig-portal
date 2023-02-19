@@ -24,7 +24,7 @@ class CourseFactory extends Factory
     {
         return [
             'lecturer_id' => Lecturer::factory(),
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
         ];
     }
 }
