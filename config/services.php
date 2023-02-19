@@ -2,6 +2,10 @@
 
 return [
 
+    'horizon' => [
+        'secret' => env('HORIZON_SECRET'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -13,10 +17,6 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
-
-    'horizon' => [
-        'secret' => env('HORIZON_SECRET'),
-    ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
