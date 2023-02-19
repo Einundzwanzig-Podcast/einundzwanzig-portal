@@ -13,20 +13,9 @@ use WireUi\Traits\Actions;
 
 class BookCaseTable extends DataTableComponent
 {
-    use WithFileUploads;
     use Actions;
 
     public string $country;
-
-    public $photo;
-
-    public bool $viewingModal = false;
-    public $currentModal;
-    public array $orangepill = [
-        'amount'  => 1,
-        'date'    => null,
-        'comment' => '',
-    ];
     public string $tableName = 'bookcases';
 
     public function configure(): void
@@ -132,51 +121,5 @@ class BookCaseTable extends DataTableComponent
                        ])
                        ->orderByDesc('orange_pills_count')
                        ->orderBy('book_cases.id');
-    }
-
-    public function viewHistoryModal($modelId): void
-    {
-        $this->viewingModal = true;
-        $this->currentModal = BookCase::findOrFail($modelId);
-    }
-
-    public function submit(): void
-    {
-        $this->validate([
-            'orangepill.amount' => 'required|numeric',
-            'orangepill.date'   => 'required|date',
-            'photo'             => 'image|max:8192', // 8MB Max
-        ]);
-        $orangePill = OrangePill::create([
-            'user_id'      => auth()->id(),
-            'book_case_id' => $this->currentModal->id,
-            'amount'       => $this->orangepill['amount'],
-            'date'         => $this->orangepill['date'],
-        ]);
-        $orangePill
-            ->addMedia($this->photo)
-            ->preservingOriginal()
-            ->usingFileName(md5($this->photo->getClientOriginalName()).'.'.$this->photo->getClientOriginalExtension())
-            ->toMediaCollection('images');
-        $orangePill->load(['media']);
-        $this->currentModal
-            ->addMedia($this->photo)
-            ->usingFileName(md5($this->photo->getClientOriginalName()).'.'.$this->photo->getClientOriginalExtension())
-            ->toMediaCollection('images');
-        if ($this->orangepill['comment']) {
-            $this->currentModal->comment($this->orangepill['comment'], null);
-        }
-        $this->resetModal();
-        $this->emit('refreshDatatable');
-    }
-
-    public function resetModal(): void
-    {
-        $this->reset('viewingModal', 'currentModal');
-    }
-
-    public function customView(): string
-    {
-        return 'modals.book_cases.orange_pill';
     }
 }
