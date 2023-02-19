@@ -49,7 +49,6 @@ class MeetupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -60,7 +59,6 @@ class MeetupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\meetup  $meetup
      * @return \Illuminate\Http\Response
      */
     public function show(meetup $meetup)
@@ -71,8 +69,6 @@ class MeetupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\meetup  $meetup
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, meetup $meetup)
@@ -83,7 +79,6 @@ class MeetupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\meetup  $meetup
      * @return \Illuminate\Http\Response
      */
     public function destroy(meetup $meetup)
