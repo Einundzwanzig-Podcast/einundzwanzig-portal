@@ -10,7 +10,7 @@ use Laravel\Nova\Http\Middleware\HandleInertiaRequests;
 return [
 
     'routes' => [
-        'login' => '/auth/ln',
+        'login'    => '/auth/ln',
         'register' => '/auth/ln',
     ],
 
@@ -110,7 +110,7 @@ return [
         BootTools::class,
         \Itsmejoshua\Novaspatiepermissions\ForgetCachedPermissions::class,
         'verified',
-        'needMeetup',
+        \App\Http\Middleware\NeedMeetupMiddleware::class,
     ],
 
     'api_middleware' => [
