@@ -12,7 +12,7 @@ class EventObserver
      * @param  \App\Models\CourseEvent  $event
      * @return void
      */
-    public function created(CourseEvent $event)
+    public function created(CourseEvent $event): void
     {
         //
     }
@@ -23,7 +23,7 @@ class EventObserver
      * @param  \App\Models\CourseEvent  $event
      * @return void
      */
-    public function updated(CourseEvent $event)
+    public function updated(CourseEvent $event): void
     {
         //
     }
@@ -34,7 +34,7 @@ class EventObserver
      * @param  \App\Models\CourseEvent  $event
      * @return void
      */
-    public function deleted(CourseEvent $event)
+    public function deleted(CourseEvent $event): void
     {
         //
     }
@@ -45,7 +45,7 @@ class EventObserver
      * @param  \App\Models\CourseEvent  $event
      * @return void
      */
-    public function restored(CourseEvent $event)
+    public function restored(CourseEvent $event): void
     {
         //
     }
@@ -56,7 +56,7 @@ class EventObserver
      * @param  \App\Models\CourseEvent  $event
      * @return void
      */
-    public function forceDeleted(CourseEvent $event)
+    public function forceDeleted(CourseEvent $event): void
     {
         //
     }

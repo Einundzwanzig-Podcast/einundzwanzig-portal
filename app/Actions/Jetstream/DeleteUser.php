@@ -32,7 +32,7 @@ class DeleteUser implements DeletesUsers
      * @param  mixed  $user
      * @return void
      */
-    public function delete($user)
+    public function delete($user): void
     {
         DB::transaction(function () use ($user) {
             $this->deleteTeams($user);
@@ -48,7 +48,7 @@ class DeleteUser implements DeletesUsers
      * @param  mixed  $user
      * @return void
      */
-    protected function deleteTeams($user)
+    protected function deleteTeams($user): void
     {
         $user->teams()->detach();
 

@@ -27,7 +27,7 @@ class SyncOpenBooks extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $response = Http::post('https://openbookcase.de/api/listarea/83.08995477111446/-200.56640625000003/-38.13455657705413/221.30859375000003');
 

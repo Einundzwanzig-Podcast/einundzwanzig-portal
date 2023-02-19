@@ -16,7 +16,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\OrangePill  $orangePill
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, OrangePill $orangePill)
+    public function view(User $user, OrangePill $orangePill): bool
     {
         return true;
     }
@@ -39,7 +39,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return false;
     }
@@ -51,7 +51,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\OrangePill  $orangePill
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, OrangePill $orangePill)
+    public function update(User $user, OrangePill $orangePill): bool
     {
         return $orangePill->user_id === $user->id;
     }
@@ -63,7 +63,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\OrangePill  $orangePill
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, OrangePill $orangePill)
+    public function delete(User $user, OrangePill $orangePill): bool
     {
         return false;
     }
@@ -75,7 +75,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\OrangePill  $orangePill
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, OrangePill $orangePill)
+    public function restore(User $user, OrangePill $orangePill): bool
     {
         return false;
     }
@@ -87,7 +87,7 @@ class OrangePillPolicy extends BasePolicy
      * @param  \App\Models\OrangePill  $orangePill
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, OrangePill $orangePill)
+    public function forceDelete(User $user, OrangePill $orangePill): bool
     {
         return false;
     }

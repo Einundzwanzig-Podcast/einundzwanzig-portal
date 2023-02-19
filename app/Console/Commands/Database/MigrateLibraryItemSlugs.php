@@ -26,7 +26,7 @@ class MigrateLibraryItemSlugs extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         foreach (LibraryItem::all() as $item) {
             $item->slug = str($item->name)->slug('-', 'de');

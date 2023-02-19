@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Artisan::call(CreateTags::class);
         Role::create([

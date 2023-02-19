@@ -26,7 +26,7 @@ class CreateTags extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $tags = config('tags.tags.course');
         foreach ($tags as $tag) {

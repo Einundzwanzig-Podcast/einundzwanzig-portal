@@ -16,7 +16,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Course $course)
+    public function view(User $user, Course $course): bool
     {
         return $user->is_lecturer;
     }
@@ -39,7 +39,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->is_lecturer;
     }
@@ -51,7 +51,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Course $course)
+    public function update(User $user, Course $course): bool
     {
         return $user->belongsToTeam($course->lecturer->team) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Course $course)
+    public function delete(User $user, Course $course): bool
     {
         //
     }
@@ -75,7 +75,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Course $course)
+    public function restore(User $user, Course $course): bool
     {
         //
     }
@@ -87,7 +87,7 @@ class CoursePolicy extends BasePolicy
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Course $course)
+    public function forceDelete(User $user, Course $course): bool
     {
         //
     }

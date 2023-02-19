@@ -16,7 +16,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, MeetupEvent $meetupEvent)
+    public function view(User $user, MeetupEvent $meetupEvent): bool
     {
         return true;
     }
@@ -39,7 +39,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return true;
     }
@@ -51,7 +51,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, MeetupEvent $meetupEvent)
+    public function update(User $user, MeetupEvent $meetupEvent): bool
     {
         return $user->meetups->contains($meetupEvent->meetup) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, MeetupEvent $meetupEvent)
+    public function delete(User $user, MeetupEvent $meetupEvent): bool
     {
         return false && $meetupEvent->created_by === $user->id;
     }
@@ -75,7 +75,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, MeetupEvent $meetupEvent)
+    public function restore(User $user, MeetupEvent $meetupEvent): bool
     {
         return false;
     }
@@ -87,7 +87,7 @@ class MeetupEventPolicy extends BasePolicy
      * @param  \App\Models\MeetupEvent  $meetupEvent
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, MeetupEvent $meetupEvent)
+    public function forceDelete(User $user, MeetupEvent $meetupEvent): bool
     {
         return false;
     }

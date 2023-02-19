@@ -36,7 +36,7 @@ class SetStatusAction extends Action
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function fields(NovaRequest $request)
+    public function fields(NovaRequest $request): array
     {
         return [
             Select::make('Status')

@@ -16,7 +16,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Participant $participant)
+    public function view(User $user, Participant $participant): bool
     {
         if ($participant->registrations) {
             return $participant->whereHas('registrations.event.course.lecturer',
@@ -45,7 +45,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         //
     }
@@ -57,7 +57,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Participant $participant)
+    public function update(User $user, Participant $participant): bool
     {
         //
     }
@@ -69,7 +69,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Participant $participant)
+    public function delete(User $user, Participant $participant): bool
     {
         //
     }
@@ -81,7 +81,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Participant $participant)
+    public function restore(User $user, Participant $participant): bool
     {
         //
     }
@@ -93,7 +93,7 @@ class ParticipantPolicy extends BasePolicy
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Participant $participant)
+    public function forceDelete(User $user, Participant $participant): bool
     {
         //
     }

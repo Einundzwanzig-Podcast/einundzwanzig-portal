@@ -16,7 +16,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Lecturer $lecturer)
+    public function view(User $user, Lecturer $lecturer): bool
     {
         return $user->is_lecturer;
     }
@@ -39,7 +39,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->is_lecturer;
     }
@@ -51,7 +51,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Lecturer $lecturer)
+    public function update(User $user, Lecturer $lecturer): bool
     {
         return $lecturer->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Lecturer $lecturer)
+    public function delete(User $user, Lecturer $lecturer): bool
     {
         //
     }
@@ -75,7 +75,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Lecturer $lecturer)
+    public function restore(User $user, Lecturer $lecturer): bool
     {
         //
     }
@@ -87,7 +87,7 @@ class LecturerPolicy extends BasePolicy
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Lecturer $lecturer)
+    public function forceDelete(User $user, Lecturer $lecturer): bool
     {
         //
     }

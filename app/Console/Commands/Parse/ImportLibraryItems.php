@@ -28,7 +28,7 @@ class ImportLibraryItems extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $items = [
             'https://aprycot.media/blog/weg-zum-bitcoin-standard/' => 'Auf dem Weg zu einem Bitcoin-Standard || Gigi',

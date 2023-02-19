@@ -2,6 +2,7 @@
 
 namespace App\Actions\Jetstream;
 
+use Closure;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +24,7 @@ class InviteTeamMember implements InvitesTeamMembers
      * @param  string|null  $role
      * @return void
      */
-    public function invite($user, $team, string $email, string $role = null)
+    public function invite($user, $team, string $email, string $role = null): void
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
 
@@ -47,7 +48,7 @@ class InviteTeamMember implements InvitesTeamMembers
      * @param  string|null  $role
      * @return void
      */
-    protected function validate($team, string $email, ?string $role)
+    protected function validate($team, string $email, ?string $role): void
     {
         Validator::make([
             'email' => $email,
@@ -65,7 +66,7 @@ class InviteTeamMember implements InvitesTeamMembers
      * @param  mixed  $team
      * @return array
      */
-    protected function rules($team)
+    protected function rules($team): array
     {
         return array_filter([
             'email' => ['required', 'email', Rule::unique('team_invitations')->where(function ($query) use ($team) {
@@ -84,7 +85,7 @@ class InviteTeamMember implements InvitesTeamMembers
      * @param  string  $email
      * @return \Closure
      */
-    protected function ensureUserIsNotAlreadyOnTeam($team, string $email)
+    protected function ensureUserIsNotAlreadyOnTeam($team, string $email): Closure
     {
         return function ($validator) use ($team, $email) {
             $validator->errors()->addIf(

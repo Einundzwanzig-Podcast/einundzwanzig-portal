@@ -16,7 +16,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -28,7 +28,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \Spatie\Permission\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Permission $permission)
+    public function view(User $user, Permission $permission): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -39,7 +39,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -51,7 +51,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \Spatie\Permission\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Permission $permission)
+    public function update(User $user, Permission $permission): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,7 +63,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \Spatie\Permission\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Permission $permission)
+    public function delete(User $user, Permission $permission): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -75,7 +75,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \Spatie\Permission\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Permission $permission)
+    public function restore(User $user, Permission $permission): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -87,7 +87,7 @@ class PermissionPolicy extends BasePolicy
      * @param  \Spatie\Permission\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Permission $permission)
+    public function forceDelete(User $user, Permission $permission): bool
     {
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }

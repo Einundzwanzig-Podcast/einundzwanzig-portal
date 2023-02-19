@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::connection(config('translation.database.connection'))
             ->create(config('translation.database.translations_table'), function (Blueprint $table) {
@@ -31,7 +31,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::connection(config('translation.database.connection'))
             ->dropIfExists(config('translation.database.translations_table'));
