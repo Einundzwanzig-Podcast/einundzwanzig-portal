@@ -3,14 +3,7 @@
     <div class="pb-5 flex flex-row justify-between">
         <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Meetup') }}</h3>
         <div class="flex flex-row space-x-2 items-center">
-            <div>
-                @if($meetup->id)
-                    <x-button negative wire:click="deleteMe">
-                        <i class="fa fa-thin fa-trash"></i>
-                        {{ __('Delete') }}
-                    </x-button>
-                @endif
-            </div>
+
             <div>
                 <x-button :href="route('meetup.table.meetup', ['country' => $country])">
                     <i class="fa fa-thin fa-arrow-left"></i>
