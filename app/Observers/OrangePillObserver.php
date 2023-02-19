@@ -11,12 +11,8 @@ class OrangePillObserver
 
     /**
      * Handle the OrangePill "created" event.
-     *
-     * @param  \App\Models\OrangePill  $orangePill
-     *
-     * @return void
      */
-    public function created(OrangePill $orangePill)
+    public function created(OrangePill $orangePill): void
     {
 //        if (config('feeds.services.twitterAccountId')) {
 //            $this->setNewAccessToken(1);
@@ -33,48 +29,32 @@ class OrangePillObserver
 
     /**
      * Handle the OrangePill "updated" event.
-     *
-     * @param  \App\Models\OrangePill  $orangePill
-     *
-     * @return void
      */
-    public function updated(OrangePill $orangePill)
+    public function updated(OrangePill $orangePill): void
     {
         //
     }
 
     /**
      * Handle the OrangePill "deleted" event.
-     *
-     * @param  \App\Models\OrangePill  $orangePill
-     *
-     * @return void
      */
-    public function deleted(OrangePill $orangePill)
+    public function deleted(OrangePill $orangePill): void
     {
         //
     }
 
     /**
      * Handle the OrangePill "restored" event.
-     *
-     * @param  \App\Models\OrangePill  $orangePill
-     *
-     * @return void
      */
-    public function restored(OrangePill $orangePill)
+    public function restored(OrangePill $orangePill): void
     {
         //
     }
 
     /**
      * Handle the OrangePill "force deleted" event.
-     *
-     * @param  \App\Models\OrangePill  $orangePill
-     *
-     * @return void
      */
-    public function forceDeleted(OrangePill $orangePill)
+    public function forceDeleted(OrangePill $orangePill): void
     {
         //
     }

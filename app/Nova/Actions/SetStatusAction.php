@@ -17,9 +17,6 @@ class SetStatusAction extends Action
     /**
      * Perform the action on the given models.
      *
-     * @param  \Laravel\Nova\Fields\ActionFields  $fields
-     * @param  \Illuminate\Support\Collection  $models
-     *
      * @return mixed
      */
     public function handle(ActionFields $fields, Collection $models)
@@ -33,20 +30,16 @@ class SetStatusAction extends Action
 
     /**
      * Get the fields available on the action.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     *
-     * @return array
      */
-    public function fields(NovaRequest $request)
+    public function fields(NovaRequest $request): array
     {
         return [
             Select::make('Status')
                   ->options([
-                      'draft'     => 'DRAFT',
+                      'draft' => 'DRAFT',
                       'published' => 'PUBLISHED',
                   ])
-                  ->displayUsingLabels()
+                  ->displayUsingLabels(),
         ];
     }
 }

@@ -7,24 +7,22 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Symfony\Component\HttpFoundation\Response;
 
 class CustomEnsureEmailVerified
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     *
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $redirectToRoute = null)
+    public function handle(Request $request, Closure $next, $redirectToRoute = null): Response
     {
-        if (!$request->user() ||
+        if (! $request->user() ||
             (
                 $request->user() instanceof MustVerifyEmail
-                && !$request->user()->public_key
-                && !$request->user()
+                && ! $request->user()->public_key
+                && ! $request->user()
                             ->hasVerifiedEmail()
             )
         ) {

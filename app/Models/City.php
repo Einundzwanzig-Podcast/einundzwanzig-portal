@@ -19,25 +19,27 @@ class City extends Model
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'                 => 'integer',
-        'country_id'         => 'integer',
-        'osm_relation'       => 'json',
+        'id' => 'integer',
+        'country_id' => 'integer',
+        'osm_relation' => 'json',
         'simplified_geojson' => 'json',
     ];
 
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->created_by) {
+            if (! $model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
@@ -69,12 +71,12 @@ class City extends Model
         return $this->hasMany(Venue::class);
     }
 
-    function courseEvents()
+    public function courseEvents()
     {
         return $this->hasManyThrough(CourseEvent::class, Venue::class);
     }
 
-    function meetups()
+    public function meetups()
     {
         return $this->hasMany(Meetup::class);
     }

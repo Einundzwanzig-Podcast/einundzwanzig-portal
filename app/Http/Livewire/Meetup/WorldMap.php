@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Meetup;
 
 use App\Models\Country;
 use App\Models\Meetup;
-use App\Models\MeetupEvent;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
@@ -19,7 +18,7 @@ class WorldMap extends Component
 
         return to_route('meetup.landing', [
             'country' => $meetup->city->country->code,
-            'meetup'   => $meetup,
+            'meetup' => $meetup,
         ]);
     }
 
@@ -31,16 +30,16 @@ class WorldMap extends Component
                                       'city.country',
                                   ])
                                   ->get()
-                                  ->map(fn($meetup) => [
-                                      'id'     => $meetup->id,
-                                      'name'   => $meetup->name,
+                                  ->map(fn ($meetup) => [
+                                      'id' => $meetup->id,
+                                      'name' => $meetup->name,
                                       'coords' => [$meetup->city->latitude, $meetup->city->longitude],
                                   ]),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: __('World map of meetups'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

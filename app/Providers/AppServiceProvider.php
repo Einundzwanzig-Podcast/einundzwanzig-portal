@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Episode;
-use App\Observers\EpisodeObserver;
 use App\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
@@ -16,9 +14,8 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         Date::use(
             Carbon::class
@@ -27,15 +24,14 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Model::preventLazyLoading(app()->environment('local'));
 
         Stringable::macro('initials', function () {
             $words = preg_split("/\s+/", $this);
-            $initials = "";
+            $initials = '';
 
             foreach ($words as $w) {
                 $initials .= $w[0];

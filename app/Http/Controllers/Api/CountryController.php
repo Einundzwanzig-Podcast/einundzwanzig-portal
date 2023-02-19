@@ -41,7 +41,6 @@ class CountryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -52,7 +51,6 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function show(Country $country)
@@ -63,8 +61,6 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Country $country)
@@ -75,7 +71,6 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function destroy(Country $country)

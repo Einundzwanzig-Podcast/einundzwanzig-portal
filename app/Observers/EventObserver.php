@@ -8,60 +8,40 @@ class EventObserver
 {
     /**
      * Handle the Event "created" event.
-     *
-     * @param  \App\Models\CourseEvent  $event
-     *
-     * @return void
      */
-    public function created(CourseEvent $event)
+    public function created(CourseEvent $event): void
     {
         //
     }
 
     /**
      * Handle the Event "updated" event.
-     *
-     * @param  \App\Models\CourseEvent  $event
-     *
-     * @return void
      */
-    public function updated(CourseEvent $event)
+    public function updated(CourseEvent $event): void
     {
         //
     }
 
     /**
      * Handle the Event "deleted" event.
-     *
-     * @param  \App\Models\CourseEvent  $event
-     *
-     * @return void
      */
-    public function deleted(CourseEvent $event)
+    public function deleted(CourseEvent $event): void
     {
         //
     }
 
     /**
      * Handle the Event "restored" event.
-     *
-     * @param  \App\Models\CourseEvent  $event
-     *
-     * @return void
      */
-    public function restored(CourseEvent $event)
+    public function restored(CourseEvent $event): void
     {
         //
     }
 
     /**
      * Handle the Event "force deleted" event.
-     *
-     * @param  \App\Models\CourseEvent  $event
-     *
-     * @return void
      */
-    public function forceDeleted(CourseEvent $event)
+    public function forceDeleted(CourseEvent $event): void
     {
         //
     }

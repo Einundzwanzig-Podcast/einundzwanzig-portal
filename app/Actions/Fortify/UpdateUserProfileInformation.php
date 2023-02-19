@@ -13,23 +13,20 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * Validate and update the given user's profile information.
      *
      * @param  mixed  $user
-     * @param  array  $input
-     *
-     * @return void
      */
-    public function update($user, array $input)
+    public function update($user, array $input): void
     {
         Validator::make($input, [
-            'name'              => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'lightning_address' => ['nullable', 'string'],
-            'lnurl'             => ['nullable', 'string'],
-            'node_id'           => ['nullable', 'string', 'max:66'],
-            'timezone'          => ['required', 'string'],
-            'email'             => [
+            'lnurl' => ['nullable', 'string'],
+            'node_id' => ['nullable', 'string', 'max:66'],
+            'timezone' => ['required', 'string'],
+            'email' => [
                 'nullable', 'email', 'max:255', Rule::unique('users')
-                                                    ->ignore($user->id)
+                                                    ->ignore($user->id),
             ],
-            'photo'             => ['nullable', 'mimes:jpg,jpeg,png,gif', 'max:10240'],
+            'photo' => ['nullable', 'mimes:jpg,jpeg,png,gif', 'max:10240'],
         ])
                  ->validateWithBag('updateProfileInformation');
 
@@ -42,12 +39,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name'              => $input['name'],
+                'name' => $input['name'],
                 'lightning_address' => $input['lightning_address'],
-                'lnurl'             => $input['lnurl'],
-                'node_id'           => $input['node_id'],
-                'email'             => $input['email'],
-                'timezone'          => $input['timezone'],
+                'lnurl' => $input['lnurl'],
+                'node_id' => $input['node_id'],
+                'email' => $input['email'],
+                'timezone' => $input['timezone'],
             ])
                  ->save();
         }
@@ -57,19 +54,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * Update the given verified user's profile information.
      *
      * @param  mixed  $user
-     * @param  array  $input
-     *
-     * @return void
      */
-    protected function updateVerifiedUser($user, array $input)
+    protected function updateVerifiedUser($user, array $input): void
     {
         $user->forceFill([
-            'name'              => $input['name'],
+            'name' => $input['name'],
             'lightning_address' => $input['lightning_address'],
-            'lnurl'             => $input['lnurl'],
-            'node_id'           => $input['node_id'],
-            'email'             => $input['email'],
-            'timezone'          => $input['timezone'],
+            'lnurl' => $input['lnurl'],
+            'node_id' => $input['node_id'],
+            'email' => $input['email'],
+            'timezone' => $input['timezone'],
             'email_verified_at' => null,
         ])
              ->save();

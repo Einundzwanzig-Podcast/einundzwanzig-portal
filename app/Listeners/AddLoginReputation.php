@@ -9,6 +9,7 @@ class AddLoginReputation
 {
     /**
      * Create the event listener.
+     *
      * @return void
      */
     public function __construct()
@@ -18,12 +19,8 @@ class AddLoginReputation
 
     /**
      * Handle the event.
-     *
-     * @param  object  $event
-     *
-     * @return void
      */
-    public function handle($event)
+    public function handle(object $event): void
     {
         $event->user->givePoint(new LoggedIn($event->user));
         event(new PlebLoggedInEvent($event->user->name, $event->user->profile_photo_url));

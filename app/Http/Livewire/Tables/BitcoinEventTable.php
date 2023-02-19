@@ -10,8 +10,8 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class BitcoinEventTable extends DataTableComponent
 {
-
     public string $country;
+
     public string $tableName = 'bitcoin_events';
 
     public function configure(): void
@@ -20,17 +20,17 @@ class BitcoinEventTable extends DataTableComponent
              ->setDefaultSort('from', 'asc')
              ->setAdditionalSelects([
                  'bitcoin_events.id',
-                 'bitcoin_events.venue_id'
+                 'bitcoin_events.venue_id',
              ])
              ->setThAttributes(function (Column $column) {
                  return [
-                     'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                     'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                      'default' => false,
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                  return [
-                     'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                     'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
                  ];
              })
@@ -54,29 +54,29 @@ class BitcoinEventTable extends DataTableComponent
         return [
             Column::make(__('Country'), 'venue.city.country.name')
                   ->format(
-                      fn($value, $row, Column $column) => view('columns.bitcoin_events.country')->withRow($row)
+                      fn ($value, $row, Column $column) => view('columns.bitcoin_events.country')->withRow($row)
                   )
                   ->sortable()
                   ->collapseOnMobile(),
             Column::make(__('Title'), 'title')
                   ->format(
-                      fn($value, $row, Column $column) => view('columns.bitcoin_events.title')->withRow($row)
+                      fn ($value, $row, Column $column) => view('columns.bitcoin_events.title')->withRow($row)
                   )
                   ->sortable(),
             Column::make(__('From'), 'from')
                   ->format(
-                      fn($value, $row, Column $column) => $value->asDateTime()
+                      fn ($value, $row, Column $column) => $value->asDateTime()
                   ),
             Column::make(__('To'), 'to')
                   ->format(
-                      fn($value, $row, Column $column) => $value->asDateTime()
+                      fn ($value, $row, Column $column) => $value->asDateTime()
                   )
                   ->collapseOnMobile(),
             Column::make(__('Venue'), 'venue.name')
                   ->collapseOnMobile(),
             Column::make(__('Link'), 'link')
                   ->format(
-                      fn($value, $row, Column $column) => view('columns.bitcoin_events.link')->withRow($row)
+                      fn ($value, $row, Column $column) => view('columns.bitcoin_events.link')->withRow($row)
                   )
                   ->sortable()
                   ->collapseOnMobile(),
@@ -87,12 +87,12 @@ class BitcoinEventTable extends DataTableComponent
     {
         return BitcoinEvent::query()
                            ->with([
-                               'venue.city.country'
+                               'venue.city.country',
                            ])
                            ->where('bitcoin_events.from', '>=', now())
-                           ->where(fn($query) => $query
+                           ->where(fn ($query) => $query
                                ->whereHas('venue.city.country',
-                                   fn($query) => $query->where('code', $this->country))
+                                   fn ($query) => $query->where('code', $this->country))
                                ->orWhere('show_worldwide', true)
                            );
     }

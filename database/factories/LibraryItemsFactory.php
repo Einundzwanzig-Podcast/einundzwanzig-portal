@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Lecturer;
 use App\Models\Library;
 use App\Models\LibraryItems;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LibraryItemsFactory extends Factory
 {
@@ -19,8 +18,6 @@ class LibraryItemsFactory extends Factory
 
     /**
      * Define the model's default state.
-     *
-     * @return array
      */
     public function definition(): array
     {
@@ -28,8 +25,8 @@ class LibraryItemsFactory extends Factory
             'lecturer_id' => Lecturer::factory(),
             'library_id' => Library::factory(),
             'order_column' => $this->faker->randomNumber(),
-            'type' => $this->faker->word,
-            'value' => $this->faker->text,
+            'type' => $this->faker->word(),
+            'value' => $this->faker->text(),
         ];
     }
 }

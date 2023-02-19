@@ -8,60 +8,40 @@ class EpisodeObserver
 {
     /**
      * Handle the Episode "created" event.
-     *
-     * @param  \App\Models\Episode  $episode
-     *
-     * @return void
      */
-    public function created(Episode $episode)
+    public function created(Episode $episode): void
     {
         //
     }
 
     /**
      * Handle the Episode "updated" event.
-     *
-     * @param  \App\Models\Episode  $episode
-     *
-     * @return void
      */
-    public function updated(Episode $episode)
+    public function updated(Episode $episode): void
     {
-       //
+        //
     }
 
     /**
      * Handle the Episode "deleted" event.
-     *
-     * @param  \App\Models\Episode  $episode
-     *
-     * @return void
      */
-    public function deleted(Episode $episode)
+    public function deleted(Episode $episode): void
     {
         //
     }
 
     /**
      * Handle the Episode "restored" event.
-     *
-     * @param  \App\Models\Episode  $episode
-     *
-     * @return void
      */
-    public function restored(Episode $episode)
+    public function restored(Episode $episode): void
     {
         //
     }
 
     /**
      * Handle the Episode "force deleted" event.
-     *
-     * @param  \App\Models\Episode  $episode
-     *
-     * @return void
      */
-    public function forceDeleted(Episode $episode)
+    public function forceDeleted(Episode $episode): void
     {
         //
     }

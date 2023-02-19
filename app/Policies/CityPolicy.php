@@ -13,10 +13,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -24,11 +23,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, City $city)
+    public function view(User $user, City $city): bool
     {
         return $user->is_lecturer;
     }
@@ -36,10 +33,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->is_lecturer;
     }
@@ -47,11 +43,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, City $city)
+    public function update(User $user, City $city): bool
     {
         return $city->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -59,11 +53,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, City $city)
+    public function delete(User $user, City $city): bool
     {
         //
     }
@@ -71,11 +63,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, City $city)
+    public function restore(User $user, City $city): bool
     {
         //
     }
@@ -83,11 +73,9 @@ class CityPolicy extends BasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, City $city)
+    public function forceDelete(User $user, City $city): bool
     {
         //
     }

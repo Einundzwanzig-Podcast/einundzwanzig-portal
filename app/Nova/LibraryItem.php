@@ -29,6 +29,7 @@ class LibraryItem extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = \App\Models\LibraryItem::class;
@@ -37,11 +38,14 @@ class LibraryItem extends Resource
 
     /**
      * The single value that should be used to represent the resource when being displayed.
+     *
      * @var string
      */
     public static $title = 'name';
+
     /**
      * The columns that should be searched.
+     *
      * @var array
      */
     public static $search = [
@@ -76,52 +80,48 @@ class LibraryItem extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return array
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             ID::make()
               ->sortable(),
 
-            StatusField::make('Status',)
+            StatusField::make('Status', )
                        ->icons([
-                           'clock'        => $this->status === '' || $this->status === 'draft',
+                           'clock' => $this->status === '' || $this->status === 'draft',
                            'check-circle' => $this->status === 'published',
                        ])
                        ->tooltip([
-                           'clock'        => 'Pending publication',
-                           'check-circle' => 'Published'
+                           'clock' => 'Pending publication',
+                           'check-circle' => 'Published',
                        ])
                        ->info([
-                           'clock'        => 'Pending publication.',
-                           'check-circle' => 'Published.'
+                           'clock' => 'Pending publication.',
+                           'check-circle' => 'Published.',
                        ])
                        ->color([
-                           'clock'        => 'blue-500',
-                           'check-circle' => 'green-500'
+                           'clock' => 'blue-500',
+                           'check-circle' => 'green-500',
                        ])
                        ->exceptOnForms(),
 
             Images::make(__('Main picture'), 'main')
                   ->conversionOnIndexView('thumb')
                   ->showStatistics()
-                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
+                  ->setFileName(fn ($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Images::make(__('Images'), 'images')
                   ->conversionOnIndexView('thumb')
                   ->help('Upload images here to insert them later in the Markdown Description. But you have to save before.')
                   ->hideFromIndex()
                   ->showStatistics()
-                  ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
+                  ->setFileName(fn ($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Files::make(__('Downloadable File'), 'single_file')
                  ->showStatistics()
                  ->help(__('Please contact the admins for new file types, otherwise pack the files in a ZIP! (Currently: PDF, ZIP)'))
-                 ->setFileName(fn($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
+                 ->setFileName(fn ($originalFilename, $extension, $model) => md5($originalFilename).'.'.$extension),
 
             Select::make(__('Language Code'), 'language_code')
                   ->options(
@@ -193,50 +193,34 @@ class LibraryItem extends Resource
 
     /**
      * Get the cards available for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return array
      */
-    public function cards(Request $request)
+    public function cards(Request $request): array
     {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return array
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [
-            new LibraryItemWithout()
+            new LibraryItemWithout(),
         ];
     }
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(Request $request): array
     {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return array
      */
-    public function actions(Request $request)
+    public function actions(Request $request): array
     {
         return [
             new AttachLibraryItemToLibrary(),

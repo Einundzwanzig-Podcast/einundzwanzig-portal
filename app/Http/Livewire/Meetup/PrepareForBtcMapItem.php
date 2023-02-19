@@ -20,6 +20,7 @@ class PrepareForBtcMapItem extends Component
     public string $search = '';
 
     public $population;
+
     public $population_date = '';
 
     public ?int $osm_id = null;
@@ -52,7 +53,7 @@ class PrepareForBtcMapItem extends Component
     public function rules(): array
     {
         return [
-            'search'            => 'required|string',
+            'search' => 'required|string',
             'currentPercentage' => 'required|numeric',
 
             'model.simplified_geojson' => 'nullable',
@@ -60,7 +61,7 @@ class PrepareForBtcMapItem extends Component
             'OSMBoundaries' => 'bool',
             'polygonsOSMfr' => 'bool',
 
-            'population'      => 'nullable|numeric',
+            'population' => 'nullable|numeric',
             'population_date' => 'nullable|string',
 
             'polygonsOSMfrX' => 'numeric|max:1',
@@ -84,7 +85,7 @@ class PrepareForBtcMapItem extends Component
 
     private function getSearchResults(): void
     {
-        $responses = Http::pool(fn(Pool $pool) => [
+        $responses = Http::pool(fn (Pool $pool) => [
             $pool->acceptJson()
                  ->get(
                      sprintf('https://nominatim.openstreetmap.org/search?q=%s&format=json&polygon_geojson=1&polygon_threshold=0.0003&email='.config('services.nominatim.email'),
@@ -93,7 +94,7 @@ class PrepareForBtcMapItem extends Component
         ]);
 
         $this->osmSearchResults = collect($responses[0]->json())
-            ->filter(fn($item
+            ->filter(fn ($item
             ) => (
                      $item['geojson']['type'] === 'Polygon'
                      || $item['geojson']['type'] === 'MultiPolygon'
@@ -156,7 +157,6 @@ class PrepareForBtcMapItem extends Component
 
             // emit event for AlpineJS
             $this->emit('geoJsonUpdated');
-
         } catch (\Exception $e) {
             $this->notification()
                  ->error('Error', $e->getMessage());
@@ -180,9 +180,9 @@ class PrepareForBtcMapItem extends Component
                             ->post(
                                 'https://polygons.openstreetmap.fr/?id='.$this->selectedItemOSMPolygons['osm_id'],
                                 [
-                                    'x'        => $this->polygonsOSMfrX,
-                                    'y'        => $this->polygonsOSMfrY,
-                                    'z'        => $this->polygonsOSMfrZ,
+                                    'x' => $this->polygonsOSMfrX,
+                                    'y' => $this->polygonsOSMfrY,
+                                    'z' => $this->polygonsOSMfrZ,
                                     'generate' => 'Submit+Query',
                                 ]
                             );
@@ -247,9 +247,9 @@ class PrepareForBtcMapItem extends Component
             $response = Http::acceptJson()
                             ->asForm()
                             ->post('https://osm-boundaries.com/Ajax/GetBoundary', [
-                                'db'          => 'osm20221205',
+                                'db' => 'osm20221205',
                                 'waterOrLand' => 'water',
-                                'osmId'       => '-'.$this->selectedItemOSMPolygons['osm_id'],
+                                'osmId' => '-'.$this->selectedItemOSMPolygons['osm_id'],
                             ]);
             if ($response->json()) {
                 if (count($response->json()['coordinates'], COUNT_RECURSIVE) > 100000) {
@@ -286,7 +286,7 @@ class PrepareForBtcMapItem extends Component
         $this->model->population = str($value)
             ->replace(['.', ','], '')
             ->toInteger();
-        if (!$this->model->population_date) {
+        if (! $this->model->population_date) {
             $this->model->population_date = '2021-12-31';
         }
         $this->model->save();

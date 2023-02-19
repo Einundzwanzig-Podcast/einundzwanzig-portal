@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'enum' => '',
+    'uploaded' => '',
+];

@@ -29,16 +29,16 @@ class MeetupForBtcMapTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Id", "id")
+            Column::make('Id', 'id')
                   ->sortable(),
-            Column::make("Name", "name")
+            Column::make('Name', 'name')
                   ->sortable(),
-            Column::make("City", "city.name")
+            Column::make('City', 'city.name')
                   ->sortable(),
-            Column::make("Country", "city.country.name")
+            Column::make('Country', 'city.country.name')
                   ->sortable(),
-            Column::make("Actions")
-                  ->label(fn($row, Column $column) => view('columns.meetups.osm-actions', ['row' => $row])),
+            Column::make('Actions')
+                  ->label(fn ($row, Column $column) => view('columns.meetups.osm-actions', ['row' => $row])),
         ];
     }
 

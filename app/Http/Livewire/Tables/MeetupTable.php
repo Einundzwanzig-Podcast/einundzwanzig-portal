@@ -11,6 +11,7 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 class MeetupTable extends DataTableComponent
 {
     public ?string $country = null;
+
     public string $tableName = 'meetups';
 
     public function configure(): void
@@ -19,13 +20,13 @@ class MeetupTable extends DataTableComponent
              ->setAdditionalSelects(['id', 'slug'])
              ->setThAttributes(function (Column $column) {
                  return [
-                     'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                     'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                      'default' => false,
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                  return [
-                     'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                     'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
                  ];
              })
@@ -49,16 +50,16 @@ class MeetupTable extends DataTableComponent
         return [
             Column::make(__('Name'), 'name')
                   ->format(
-                      fn($value, $row, Column $column) => view('columns.meetups.name')
+                      fn ($value, $row, Column $column) => view('columns.meetups.name')
                           ->withRow($row)
                   )
-                  ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%')),
+                  ->searchable(fn ($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%')),
             Column::make(__('Plebs'))
-                  ->label(fn($row, Column $column) => $row->users_count)
+                  ->label(fn ($row, Column $column) => $row->users_count)
                   ->collapseOnMobile(),
             Column::make(__('Links'))
                   ->label(
-                      fn($row, Column $column) => view('columns.meetups.action')
+                      fn ($row, Column $column) => view('columns.meetups.action')
                           ->withRow($row)
                           ->withIcs(route('meetup.ics',
                               ['country' => $this->country ?? $row->city->country->code, 'meetup' => $row->id]))
@@ -77,15 +78,15 @@ class MeetupTable extends DataTableComponent
                          'meetupEvents',
                      ])
                      ->when($this->country,
-                         fn($query, $country) => $query->whereRelation('city.country', 'code', $this->country))
+                         fn ($query, $country) => $query->whereRelation('city.country', 'code', $this->country))
                      ->withCount([
                          'users',
-                         'meetupEvents' => fn($query) => $query->where('start', '>=',
+                         'meetupEvents' => fn ($query) => $query->where('start', '>=',
                              now()),
                      ])
-                     ->when(!$this->country, fn($query) => $query->orderByDesc('users_count')
+                     ->when(! $this->country, fn ($query) => $query->orderByDesc('users_count')
                                                                  ->orderBy('meetups.id'))
-                     ->when($this->country, fn($query) => $query->orderByDesc('meetup_events_count')
+                     ->when($this->country, fn ($query) => $query->orderByDesc('meetup_events_count')
                                                                 ->orderBy('meetups.id'));
     }
 
@@ -95,10 +96,10 @@ class MeetupTable extends DataTableComponent
                         ->find($id);
 
         return to_route('meetup.table.meetupEvent', [
-            'country'       => $this->country ?? $meetup->city->country->code,
+            'country' => $this->country ?? $meetup->city->country->code,
             'meetup_events' => [
                 'filters' => ['bymeetupid' => $id],
-            ]
+            ],
         ]);
     }
 }

@@ -9,21 +9,22 @@ class CreateGeoJsonPolygon extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'map:polygon';
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Command description';
 
     /**
      * Execute the console command.
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $meetups = Meetup::query()
                          ->with([

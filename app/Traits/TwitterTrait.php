@@ -13,16 +13,16 @@ trait TwitterTrait
 
         $response = Http::acceptJson()
                         ->post('https://api.twitter.com/2/oauth2/token', [
-                            'grant_type'    => 'refresh_token',
+                            'grant_type' => 'refresh_token',
                             'refresh_token' => $twitterAccount->refresh_token,
-                            'client_id'     => 'a0I1Nnp4YmMzZzdtRzFod1ZWT2c6MTpjaQ',
+                            'client_id' => 'a0I1Nnp4YmMzZzdtRzFod1ZWT2c6MTpjaQ',
                         ]);
         $json = $response->json();
         \Log::info($json);
 
         TwitterAccount::find($accountId)
                       ->update([
-                          'token'         => $json['access_token'],
+                          'token' => $json['access_token'],
                           'refresh_token' => $json['refresh_token'],
                       ]);
     }

@@ -59,12 +59,11 @@ class Comment extends Resource
             Markdown::make(__('Original text'), 'original_text'),
 
             Text::make('', function (CommentModel $comment) {
-                if (!$url = $comment?->commentUrl()) {
+                if (! $url = $comment?->commentUrl()) {
                     return '';
                 }
 
-                return "<a target=\"show_comment\" href=\"{$url}\">".__('Show')."</a>";
-
+                return "<a target=\"show_comment\" href=\"{$url}\">".__('Show').'</a>';
             })
                 ->asHtml(),
 

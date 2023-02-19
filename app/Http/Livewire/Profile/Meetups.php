@@ -11,9 +11,13 @@ class Meetups extends Component
     use Actions;
 
     public $search = '';
+
     public $meetups;
+
     public $myMeetups = [];
+
     public $myMeetupNames = [];
+
     public $hasMeetups = false;
 
     public function rules()
@@ -25,7 +29,7 @@ class Meetups extends Component
 
     public function mount()
     {
-        if (!auth()->user()) {
+        if (! auth()->user()) {
             return to_route('auth.ln');
         }
 

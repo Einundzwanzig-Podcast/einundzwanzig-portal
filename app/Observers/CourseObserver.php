@@ -11,12 +11,8 @@ class CourseObserver
 
     /**
      * Handle the Course "created" event.
-     *
-     * @param  \App\Models\Course  $course
-     *
-     * @return void
      */
-    public function created(Course $course)
+    public function created(Course $course): void
     {
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
@@ -35,48 +31,32 @@ class CourseObserver
 
     /**
      * Handle the Course "updated" event.
-     *
-     * @param  \App\Models\Course  $course
-     *
-     * @return void
      */
-    public function updated(Course $course)
+    public function updated(Course $course): void
     {
         //
     }
 
     /**
      * Handle the Course "deleted" event.
-     *
-     * @param  \App\Models\Course  $course
-     *
-     * @return void
      */
-    public function deleted(Course $course)
+    public function deleted(Course $course): void
     {
         //
     }
 
     /**
      * Handle the Course "restored" event.
-     *
-     * @param  \App\Models\Course  $course
-     *
-     * @return void
      */
-    public function restored(Course $course)
+    public function restored(Course $course): void
     {
         //
     }
 
     /**
      * Handle the Course "force deleted" event.
-     *
-     * @param  \App\Models\Course  $course
-     *
-     * @return void
      */
-    public function forceDeleted(Course $course)
+    public function forceDeleted(Course $course): void
     {
         //
     }

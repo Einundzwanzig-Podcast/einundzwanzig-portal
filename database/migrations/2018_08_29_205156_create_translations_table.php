@@ -4,14 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::connection(config('translation.database.connection'))
             ->create(config('translation.database.translations_table'), function (Blueprint $table) {
@@ -28,12 +26,10 @@ class CreateTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::connection(config('translation.database.connection'))
             ->dropIfExists(config('translation.database.translations_table'));
     }
-}
+};

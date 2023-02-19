@@ -17,7 +17,7 @@ class InternArticleView extends Component
             'libraries',
         ]);
         if ($this->libraryItem->libraries->where('is_public', false)
-                                         ->count() > 0 && !auth()->check()) {
+                                         ->count() > 0 && ! auth()->check()) {
             abort(403, __('Sorry! You are not authorized to perform this action.'));
         }
     }
@@ -38,7 +38,7 @@ class InternArticleView extends Component
                 image: $this->libraryItem->getFirstMedia('main') ? $this->libraryItem->getFirstMediaUrl('main') : asset('img/einundzwanzig-wallpaper-benrath.png'),
                 published_time: Carbon::parse($this->libraryItem->created_at),
                 type: 'article',
-            )
+            ),
         ]);
     }
 }

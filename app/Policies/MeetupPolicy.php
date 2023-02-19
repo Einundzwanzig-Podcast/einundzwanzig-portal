@@ -13,11 +13,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -25,12 +23,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Meetup  $meetup
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Meetup $meetup)
+    public function view(User $user, Meetup $meetup): bool
     {
         return true;
     }
@@ -38,11 +33,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return true;
     }
@@ -50,12 +43,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Meetup  $meetup
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Meetup $meetup)
+    public function update(User $user, Meetup $meetup): bool
     {
         return $user->meetups->contains($meetup) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -63,12 +53,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Meetup  $meetup
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Meetup $meetup)
+    public function delete(User $user, Meetup $meetup): bool
     {
         return $meetup->created_by === $user->id;
     }
@@ -76,12 +63,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Meetup  $meetup
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Meetup $meetup)
+    public function restore(User $user, Meetup $meetup): bool
     {
         return false;
     }
@@ -89,12 +73,9 @@ class MeetupPolicy extends BasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Meetup  $meetup
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Meetup $meetup)
+    public function forceDelete(User $user, Meetup $meetup): bool
     {
         return false;
     }

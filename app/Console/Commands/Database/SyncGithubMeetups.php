@@ -10,21 +10,22 @@ class SyncGithubMeetups extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'meetups:github-sync';
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Command description';
 
     /**
      * Execute the console command.
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $response = Http::get('https://raw.githubusercontent.com/Einundzwanzig-Podcast/einundzwanzig.space/master/content/meetups.json');
 
@@ -42,9 +43,9 @@ class SyncGithubMeetups extends Command
                 $this->info('Missing: '.$meetup['name'].' Url: '.$meetup['url']);
                 if (app()->environment('local')) {
                     Meetup::create([
-                        'name'        => $meetup['name'],
-                        'city_id'     => 1,
-                        'created_by'  => 1,
+                        'name' => $meetup['name'],
+                        'city_id' => 1,
+                        'created_by' => 1,
                         'github_data' => $meetup,
                     ]);
                 }

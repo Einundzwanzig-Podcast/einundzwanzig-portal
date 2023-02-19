@@ -18,7 +18,7 @@ class MeetupTable extends Component
 
         return to_route('meetup.landing', [
             'country' => $meetup->city->country->code,
-            'meetup'   => $meetup,
+            'meetup' => $meetup,
         ]);
     }
 
@@ -32,11 +32,11 @@ class MeetupTable extends Component
                                    'city.country',
                                ])
                                ->whereHas('city.country',
-                                   fn($query) => $query->where('countries.code', $this->country->code))
+                                   fn ($query) => $query->where('countries.code', $this->country->code))
                                ->get()
-                               ->map(fn($meetup) => [
-                                   'id'     => $meetup->id,
-                                   'name'   => $meetup->name,
+                               ->map(fn ($meetup) => [
+                                   'id' => $meetup->id,
+                                   'name' => $meetup->name,
                                    'coords' => [$meetup->city->latitude, $meetup->city->longitude],
                                ]),
         ])->layout('layouts.app', [
@@ -44,7 +44,7 @@ class MeetupTable extends Component
                 title: __('Meetups'),
                 description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

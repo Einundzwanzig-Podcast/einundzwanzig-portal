@@ -17,7 +17,7 @@ class BitcoinEventTable extends Component
 
     public function mount()
     {
-        if (!$this->year) {
+        if (! $this->year) {
             $this->year = now()->year;
         }
     }
@@ -30,30 +30,30 @@ class BitcoinEventTable extends Component
                                          'venue.city.country',
                                      ])
                                      ->where('bitcoin_events.from', '>=', now())
-                                     ->where(fn($query) => $query
+                                     ->where(fn ($query) => $query
                                          ->whereHas('venue.city.country',
-                                             fn($query) => $query->where('countries.code', $this->country->code))
+                                             fn ($query) => $query->where('countries.code', $this->country->code))
                                          ->orWhere('show_worldwide', true)
                                      )
                                      ->get()
-                                     ->map(fn($event) => [
-                                         'id'     => $event->id,
-                                         'name'   => $event->title,
+                                     ->map(fn ($event) => [
+                                         'id' => $event->id,
+                                         'name' => $event->title,
                                          'coords' => [$event->venue->city->latitude, $event->venue->city->longitude],
                                      ]),
-            'events'  => BitcoinEvent::query()
+            'events' => BitcoinEvent::query()
                                      ->where('bitcoin_events.from', '>=', now())
-                                     ->where(fn($query) => $query
+                                     ->where(fn ($query) => $query
                                          ->whereHas('venue.city.country',
-                                             fn($query) => $query->where('countries.code', $this->country->code))
+                                             fn ($query) => $query->where('countries.code', $this->country->code))
                                          ->orWhere('show_worldwide', true)
                                      )
                                      ->get()
-                                     ->map(fn($event) => [
-                                         'id'          => $event->id,
-                                         'startDate'   => $event->from,
-                                         'endDate'     => $event->to,
-                                         'location'    => $event->title,
+                                     ->map(fn ($event) => [
+                                         'id' => $event->id,
+                                         'startDate' => $event->from,
+                                         'endDate' => $event->to,
+                                         'location' => $event->title,
                                          'description' => $event->description,
                                      ]),
         ])->layout('layouts.app', [
@@ -61,7 +61,7 @@ class BitcoinEventTable extends Component
                 title: __('Bitcoin Events'),
                 description: __('Search out a Bitcoin Event'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 
@@ -69,13 +69,13 @@ class BitcoinEventTable extends Component
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
             '#table',
-            'country'        => $this->country->code,
-            'year'           => $this->year,
+            'country' => $this->country->code,
+            'year' => $this->year,
             'bitcoin_events' => [
                 'filters' => [
                     'byid' => $id,
                 ],
-            ]
+            ],
         ]);
     }
 
@@ -83,13 +83,13 @@ class BitcoinEventTable extends Component
     {
         return to_route('bitcoinEvent.table.bitcoinEvent', [
             '#table',
-            'country'        => $this->country->code,
-            'year'           => $this->year,
+            'country' => $this->country->code,
+            'year' => $this->year,
             'bitcoin_events' => [
                 'filters' => [
                     'byid' => $ids,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

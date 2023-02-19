@@ -10,21 +10,22 @@ class RenameFileToMd5 extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'files:md5';
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Command description';
 
     /**
      * Execute the console command.
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $media = Media::query()
                       ->where('file_name', 'ilike', '%ö%')

@@ -21,8 +21,6 @@ class CommentBookCase extends Component
 
     public BookCase $bookCase;
 
-
-
     public function render()
     {
         return view('livewire.book-case.comment-book-case')
@@ -31,7 +29,7 @@ class CommentBookCase extends Component
                     title: $this->bookCase->title,
                     description: $this->bookCase->address,
                     image: $this->bookCase->getFirstMediaUrl('images') ?? asset('img/bookcase.jpg'),
-                )
+                ),
             ]);
     }
 
@@ -43,7 +41,7 @@ class CommentBookCase extends Component
 
         $this->bookCase
             ->addMedia($this->photo)
-            ->usingFileName(md5($this->photo->getClientOriginalName()) . '.' . $this->photo->getClientOriginalExtension())
+            ->usingFileName(md5($this->photo->getClientOriginalName()).'.'.$this->photo->getClientOriginalExtension())
             ->toMediaCollection('images');
 
         return to_route('bookCases.comment.bookcase', ['country' => $this->country, 'bookCase' => $this->bookCase->id]);
@@ -62,7 +60,7 @@ class CommentBookCase extends Component
         if (str($url)->contains('http')) {
             return $url;
         }
-        if (!str($url)->contains('http')) {
+        if (! str($url)->contains('http')) {
             return str($url)->prepend('https://');
         }
     }

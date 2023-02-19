@@ -11,12 +11,8 @@ class BitcoinEventObserver
 
     /**
      * Handle the BitcoinEvent "created" event.
-     *
-     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
-     * @return void
      */
-    public function created(BitcoinEvent $bitcoinEvent)
+    public function created(BitcoinEvent $bitcoinEvent): void
     {
         if (config('feeds.services.twitterAccountId')) {
             $this->setNewAccessToken(1);
@@ -35,48 +31,32 @@ class BitcoinEventObserver
 
     /**
      * Handle the BitcoinEvent "updated" event.
-     *
-     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
-     * @return void
      */
-    public function updated(BitcoinEvent $bitcoinEvent)
+    public function updated(BitcoinEvent $bitcoinEvent): void
     {
         //
     }
 
     /**
      * Handle the BitcoinEvent "deleted" event.
-     *
-     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
-     * @return void
      */
-    public function deleted(BitcoinEvent $bitcoinEvent)
+    public function deleted(BitcoinEvent $bitcoinEvent): void
     {
         //
     }
 
     /**
      * Handle the BitcoinEvent "restored" event.
-     *
-     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
-     * @return void
      */
-    public function restored(BitcoinEvent $bitcoinEvent)
+    public function restored(BitcoinEvent $bitcoinEvent): void
     {
         //
     }
 
     /**
      * Handle the BitcoinEvent "force deleted" event.
-     *
-     * @param  \App\Models\BitcoinEvent  $bitcoinEvent
-     *
-     * @return void
      */
-    public function forceDeleted(BitcoinEvent $bitcoinEvent)
+    public function forceDeleted(BitcoinEvent $bitcoinEvent): void
     {
         //
     }

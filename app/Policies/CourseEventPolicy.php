@@ -13,10 +13,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
@@ -24,12 +23,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, CourseEvent $courseEvent)
+    public function view(User $user, CourseEvent $courseEvent): bool
     {
         return $user->is_lecturer;
     }
@@ -37,10 +33,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->is_lecturer;
     }
@@ -48,12 +43,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, CourseEvent $courseEvent)
+    public function update(User $user, CourseEvent $courseEvent): bool
     {
         return $user->belongsToTeam($courseEvent->course->lecturer->team) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
@@ -61,12 +53,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, CourseEvent $courseEvent)
+    public function delete(User $user, CourseEvent $courseEvent): bool
     {
         //
     }
@@ -74,12 +63,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, CourseEvent $courseEvent)
+    public function restore(User $user, CourseEvent $courseEvent): bool
     {
         //
     }
@@ -87,12 +73,9 @@ class CourseEventPolicy extends BasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\CourseEvent  $courseEvent
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, CourseEvent $courseEvent)
+    public function forceDelete(User $user, CourseEvent $courseEvent): bool
     {
         //
     }

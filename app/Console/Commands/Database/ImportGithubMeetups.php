@@ -11,21 +11,22 @@ class ImportGithubMeetups extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'import:meetups';
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Command description';
 
     /**
      * Execute the console command.
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $meetups = json_decode(file_get_contents(config_path('meetups/github.json')), true, 512, JSON_THROW_ON_ERROR);
 
@@ -36,19 +37,19 @@ class ImportGithubMeetups extends Command
                 'country_id' => Country::firstOrCreate([
                     'code' => str($meetup['country'])
                         ->lower()
-                        ->toString()
+                        ->toString(),
                 ], ['name' => $meetup['country']])->id,
-                'longitude'  => $meetup['longitude'],
-                'latitude'   => $meetup['latitude'],
+                'longitude' => $meetup['longitude'],
+                'latitude' => $meetup['latitude'],
                 'created_by' => 1,
             ]);
             $meetup = Meetup::updateOrCreate(
                 ['name' => $meetup['name']],
                 [
-                    'city_id'    => $city->id,
-                    'webpage'    => $meetup['url'],
+                    'city_id' => $city->id,
+                    'webpage' => $meetup['url'],
                     'created_by' => 1,
-                    'community'  => 'einundzwanzig'
+                    'community' => 'einundzwanzig',
                 ]);
         }
 

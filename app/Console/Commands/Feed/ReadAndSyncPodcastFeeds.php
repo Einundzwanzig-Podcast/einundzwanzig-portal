@@ -11,25 +11,26 @@ class ReadAndSyncPodcastFeeds extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'feed:sync';
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Command description';
 
     /**
      * Execute the console command.
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $client = new \PodcastIndex\Client([
-            'app'    => 'Einundzwanzig School',
-            'key'    => config('feeds.services.podcastindex-org.key'),
+            'app' => 'Einundzwanzig School',
+            'key' => config('feeds.services.podcastindex-org.key'),
             'secret' => config('feeds.services.podcastindex-org.secret'),
         ]);
         $feedIds = [
@@ -64,11 +65,11 @@ class ReadAndSyncPodcastFeeds extends Command
             $this->info('Importing: '.$podcast->feed->title);
             $importPodcast = Podcast::query()
                                     ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
-                                        'title'         => $podcast->feed->title,
-                                        'link'          => $podcast->feed->link,
+                                        'title' => $podcast->feed->title,
+                                        'link' => $podcast->feed->link,
                                         'language_code' => $podcast->feed->language,
-                                        'data'          => $podcast->feed,
-                                        'created_by'    => 1,
+                                        'data' => $podcast->feed,
+                                        'created_by' => 1,
                                     ]);
             $episodes = $client->episodes->withParameters(['max' => 10000])
                                          ->byFeedId($feedId)
@@ -77,7 +78,7 @@ class ReadAndSyncPodcastFeeds extends Command
                 Episode::query()
                        ->updateOrCreate(['guid' => $item->guid], [
                            'podcast_id' => $importPodcast->id,
-                           'data'       => $item,
+                           'data' => $item,
                            'created_by' => 1,
                            'created_at' => Carbon::parse($item->datePublished),
                        ]);
