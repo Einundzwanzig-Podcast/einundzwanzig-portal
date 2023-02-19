@@ -1,0 +1,82 @@
+{
+    "name": "gonoware/laravel-maps",
+    "description": "Maps for your Laravel application",
+    "keywords": [
+        "maps",
+        "laravel",
+        "gonoware",
+        "osm",
+        "google",
+        "bing",
+        "yandex",
+        "mapquest",
+        "googlemaps",
+        "openstreetmap",
+        "bingmaps",
+        "yandexmaps",
+        "mapkit",
+        "mapkitjs"
+    ],
+    "homepage": "https://gitlab.com/gonoware/laravel-maps",
+    "support": {
+        "issues": "https://gitlab.com/gonoware/laravel-maps/issues",
+        "source": "https://gitlab.com/gonoware/laravel-maps"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emanuel Mutschlechner",
+            "email": "em@gonoware.com"
+        },
+        {
+            "name": "Benedikt Tuschter",
+            "email": "bt@gonoware.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.4.4",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "GoNoWare\\Maps\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "GoNoWare\\Maps\\MapsServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "build-script": [
+            "yarn install",
+            "yarn run prod"
+        ],
+        "post-install-cmd": [
+            "@build-script"
+        ],
+        "post-update-cmd": [
+            "@build-script"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

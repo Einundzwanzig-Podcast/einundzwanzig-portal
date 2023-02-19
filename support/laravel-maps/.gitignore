@@ -1,0 +1,53 @@
+/.idea
+/.vscode
+.phpunit.result.cache
+
+### Composer
+/vendor
+composer.phar
+
+### Node
+/node_modules
+/package-lock.json
+npm-debug.log*
+.npm/
+.eslintcache
+.node_repl_history
+
+*.js.LICENSE
+
+### Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+### macOS
+*.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*

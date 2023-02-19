@@ -82,8 +82,7 @@ Route::middleware([])
      ->name('profile.meetups');
 
 Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
-     ->name('auth.ln')
-     ->middleware('guest');
+     ->name('auth.ln');
 
 Route::get('/auth/twitter', function () {
     return Socialite::driver('twitter')
@@ -216,6 +215,12 @@ Route::middleware([])
 
          Route::get('overview', \App\Http\Livewire\Meetup\MeetupTable::class)
               ->name('table.meetup');
+
+         Route::get('/meetup/form/{meetup?}', \App\Http\Livewire\Meetup\Form\MeetupForm::class)
+              ->name('meetup.form')
+              ->middleware([
+                  'auth',
+              ]);
 
          Route::get('/meetup-events/form/{meetupEvent?}', \App\Http\Livewire\Meetup\Form\MeetupEventForm::class)
               ->name('event.form')

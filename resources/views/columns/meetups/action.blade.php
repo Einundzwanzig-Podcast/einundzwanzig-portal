@@ -81,4 +81,17 @@
             </x-button>
         @endif
     </div>
+    <div x-data="{currentUrl: window.location.href}">
+        @if(auth()->check() && auth()->user()->meetups->contains($row))
+            <a x-bind:href="'/{{ $country->code ?? 'de' }}/meetup/meetup/form/{{ $row->id }}?fromUrl='+currentUrl">
+                <x-button
+                    xs
+                    amber
+                >
+                    <i class="fa fa-thin fa-edit mr-2"></i>
+                    {{ __('Edit') }}
+                </x-button>
+            </a>
+        @endif
+    </div>
 </div>

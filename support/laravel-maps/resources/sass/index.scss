@@ -1,0 +1,30 @@
+.gnw-map-service {
+  position: relative;
+  height: 400px;
+
+  &__google {
+    background: rgb(229, 227, 223);
+  }
+  &__osm,
+  &__bing,
+  &__mapquest {
+    background: rgb(221, 221, 221);
+  }
+  &__yandex {
+    background: rgb(243, 241, 237);
+  }
+  &__mapkit {
+    background: rgb(248, 244, 236);
+  }
+}
+
+.gnw-map {
+  height: inherit;
+
+  // Fix Mapkit canvas
+  .mk-map-view {
+    > .syrup-canvas {
+      margin-left: -50%;
+    }
+  }
+}

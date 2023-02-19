@@ -29,7 +29,7 @@ class Meetups extends Component
 
     public function mount()
     {
-        if (! auth()->user()) {
+        if (!auth()->user()) {
             return to_route('auth.ln');
         }
 
@@ -64,6 +64,9 @@ class Meetups extends Component
     public function updatedSearch($value)
     {
         $this->meetups = Meetup::query()
+                               ->with([
+                                   'city',
+                               ])
                                ->where('name', 'ilike', '%'.$value.'%')
                                ->orderBy('name')
                                ->limit(10)

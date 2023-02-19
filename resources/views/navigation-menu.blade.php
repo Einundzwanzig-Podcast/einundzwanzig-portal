@@ -14,11 +14,13 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex sm:items-center">
 
                     @if(str(request()->route()->getName())->contains('meetup.'))
-                        <div>
-                            <x-button xs amber href="/nova/resources/meetups" target="_blank">
+                        <div x-data="{currentUrl: window.location.href}">
+                            <a x-bind:href="'/{{ $country->code ?? 'de' }}/meetup/meetup/form?fromUrl='+currentUrl">
+                            <x-button xs amber>
                                 <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Submit Meetup') }}
                             </x-button>
+                            </a>
                         </div>
                         <div>
                             <x-button xs amber :href="route('meetup.event.form', ['country' => $country ?? 'de'])">

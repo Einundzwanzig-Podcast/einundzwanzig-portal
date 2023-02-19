@@ -1,0 +1,15 @@
+* text=auto
+
+/tests export-ignore
+.editorconfig export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+
+*.jpg binary
+*.png binary
+*.gif binary
+*.ico binary
