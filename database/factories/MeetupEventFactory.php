@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Meetup;
-use App\Models\MeetupEvent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MeetupEventFactory extends Factory
