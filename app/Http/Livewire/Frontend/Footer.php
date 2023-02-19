@@ -26,7 +26,7 @@ class Footer extends Component
 
         return view('livewire.frontend.footer', [
             'percentTranslated' => $l === 'en' ? 100 : round(($translated / $toTranslate) * 100),
-            'language'          => $language,
+            'language' => $language,
         ]);
     }
 }

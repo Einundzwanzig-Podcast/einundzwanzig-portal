@@ -26,28 +26,28 @@ enum LibraryItemType: string
     public static function labels(): array
     {
         return [
-            'book'                    => __('Book'),
-            'blog_article'            => __('Article'),
-            'markdown_article'        => __('Markdown Article'),
+            'book' => __('Book'),
+            'blog_article' => __('Article'),
+            'markdown_article' => __('Markdown Article'),
             'markdown_article_extern' => __('Markdown Article Extern'),
-            'youtube_video'           => __('Youtube Video'),
-            'vimeo_video'             => __('Vimeo Video'),
-            'podcast_episode'         => __('Podcast Episode'),
-            'downloadable_file'       => __('Downloadable File'),
+            'youtube_video' => __('Youtube Video'),
+            'vimeo_video' => __('Vimeo Video'),
+            'podcast_episode' => __('Podcast Episode'),
+            'downloadable_file' => __('Downloadable File'),
         ];
     }
 
     public static function icons(): array
     {
         return [
-            'book'                    => 'book',
-            'blog_article'            => 'newspaper',
-            'markdown_article'        => 'newspaper',
+            'book' => 'book',
+            'blog_article' => 'newspaper',
+            'markdown_article' => 'newspaper',
             'markdown_article_extern' => 'newspaper',
-            'youtube_video'           => 'video',
-            'vimeo_video'             => 'video',
-            'podcast_episode'         => 'podcast',
-            'downloadable_file'       => 'download',
+            'youtube_video' => 'video',
+            'vimeo_video' => 'video',
+            'podcast_episode' => 'podcast',
+            'downloadable_file' => 'download',
         ];
     }
 }

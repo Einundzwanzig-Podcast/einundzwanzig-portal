@@ -30,7 +30,7 @@ Route::middleware([])
  * News
  * */
 Route::middleware([
-    'auth'
+    'auth',
 ])
      ->as('news.')
      ->prefix('/news')
@@ -43,7 +43,7 @@ Route::middleware([
  * Content Creator
  * */
 Route::middleware([
-    'auth'
+    'auth',
 ])
      ->as('contentCreator.')
      ->prefix('/content-creator')
@@ -56,7 +56,7 @@ Route::middleware([
  * Cities
  * */
 Route::middleware([
-    'auth'
+    'auth',
 ])
      ->as('city.')
      ->prefix('/city')
@@ -101,16 +101,16 @@ Route::get('/auth/twitter/callback', function () {
     $twitterAccount = \App\Models\TwitterAccount::updateOrCreate([
         'twitter_id' => $twitterUser->id,
     ], [
-        'twitter_id'    => $twitterUser->id,
+        'twitter_id' => $twitterUser->id,
         'refresh_token' => $twitterUser->refreshToken,
-        'nickname'      => $twitterUser->nickname,
-        'token'         => $twitterUser->token,
-        'expires_in'    => $twitterUser->expiresIn,
-        'data'          => [],
+        'nickname' => $twitterUser->nickname,
+        'token' => $twitterUser->token,
+        'expires_in' => $twitterUser->expiresIn,
+        'data' => [],
     ]);
 
     echo 'Twitter account updated. We can now tweet on: '.$twitterUser->name;
-    die;
+    exit;
 })
      ->name('auth.twitter');
 
@@ -201,7 +201,6 @@ Route::middleware([])
               ->name('table.bitcoinEvent');
      });
 
-
 /*
  * Meetups
  * */
@@ -209,7 +208,6 @@ Route::middleware([])
      ->as('meetup.')
      ->prefix('/{country:code}/meetup')
      ->group(function () {
-
          Route::get('stream-calendar', \App\Http\Controllers\DownloadMeetupCalendar::class)
               ->name('ics');
 
@@ -234,7 +232,6 @@ Route::middleware([])
 
          Route::get('/{meetup:slug}', \App\Http\Livewire\Meetup\LandingPage::class)
               ->name('landing');
-
      });
 
 /*

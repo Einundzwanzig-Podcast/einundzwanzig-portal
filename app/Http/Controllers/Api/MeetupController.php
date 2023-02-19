@@ -12,6 +12,7 @@ class MeetupController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -27,15 +28,15 @@ class MeetupController extends Controller
                      ->orderBy('name')
                      ->when(
                          $request->search,
-                         fn(Builder $query) => $query
+                         fn (Builder $query) => $query
                              ->where('name', 'like', "%{$request->search}%")
                              ->orWhereHas('city',
-                                 fn(Builder $query) => $query->where('cities.name', 'ilike', "%{$request->search}%"))
+                                 fn (Builder $query) => $query->where('cities.name', 'ilike', "%{$request->search}%"))
                      )
                      ->when(
                          $request->exists('selected'),
-                         fn(Builder $query) => $query->whereIn('id', $request->input('selected', [])),
-                         fn(Builder $query) => $query->limit(10)
+                         fn (Builder $query) => $query->whereIn('id', $request->input('selected', [])),
+                         fn (Builder $query) => $query->limit(10)
                      )
                      ->get()
                      ->map(function (Meetup $meetup) {
@@ -49,7 +50,6 @@ class MeetupController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -61,7 +61,6 @@ class MeetupController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\meetup  $meetup
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(meetup $meetup)
@@ -74,7 +73,6 @@ class MeetupController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\meetup  $meetup
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, meetup $meetup)
@@ -86,7 +84,6 @@ class MeetupController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\meetup  $meetup
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(meetup $meetup)

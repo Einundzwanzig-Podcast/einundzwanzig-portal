@@ -11,26 +11,26 @@ class LecturerController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-
         return Lecturer::query()
-                       ->select('id', 'name',)
+                       ->select('id', 'name', )
                        ->orderBy('name')
 //                       ->when($request->has('user_id'),
 //                           fn(Builder $query) => $query->where('created_by', $request->user_id))
                        ->when(
                            $request->search,
-                           fn(Builder $query) => $query
+                           fn (Builder $query) => $query
                                ->where('name', 'ilike', "%{$request->search}%")
                        )
                        ->when(
                            $request->exists('selected'),
-                           fn(Builder $query) => $query->whereIn('id',
+                           fn (Builder $query) => $query->whereIn('id',
                                $request->input('selected', [])),
-                           fn(Builder $query) => $query->limit(10)
+                           fn (Builder $query) => $query->limit(10)
                        )
                        ->get()
                        ->map(function (Lecturer $lecturer) {
@@ -45,7 +45,6 @@ class LecturerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,7 +56,6 @@ class LecturerController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Lecturer  $lecturer
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(Lecturer $lecturer)
@@ -70,7 +68,6 @@ class LecturerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Lecturer  $lecturer
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Lecturer $lecturer)
@@ -82,7 +79,6 @@ class LecturerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Lecturer  $lecturer
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Lecturer $lecturer)

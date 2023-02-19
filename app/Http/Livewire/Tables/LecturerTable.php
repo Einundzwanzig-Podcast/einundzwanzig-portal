@@ -12,6 +12,7 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 class LecturerTable extends DataTableComponent
 {
     public string $country;
+
     public string $tableName = 'lecturers';
 
     public function configure(): void
@@ -20,13 +21,13 @@ class LecturerTable extends DataTableComponent
              ->setAdditionalSelects(['id'])
              ->setThAttributes(function (Column $column) {
                  return [
-                     'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                     'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                      'default' => false,
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                  return [
-                     'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                     'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
                  ];
              })
@@ -39,32 +40,32 @@ class LecturerTable extends DataTableComponent
         return [
             ImageColumn::make('Bild')
                        ->location(
-                           fn($row) => $row->getFirstMediaUrl('avatar', 'thumb')
+                           fn ($row) => $row->getFirstMediaUrl('avatar', 'thumb')
                        )
-                       ->attributes(fn($row) => [
+                       ->attributes(fn ($row) => [
                            'class' => 'rounded h-16 w-16',
-                           'alt'   => $row->name.' Avatar',
+                           'alt' => $row->name.' Avatar',
                        ])
                        ->collapseOnMobile(),
-            Column::make("Name", "name")
-                  ->searchable(fn($query, $term) => $query->where('name', 'ilike', '%'.$term.'%'))
+            Column::make('Name', 'name')
+                  ->searchable(fn ($query, $term) => $query->where('name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
-            BooleanColumn::make("Aktiv", 'active')
+            BooleanColumn::make('Aktiv', 'active')
                          ->sortable()
                          ->collapseOnMobile(),
             Column::make('Kurse')
                   ->label(
-                      fn($row, Column $column) => $row->courses_count
+                      fn ($row, Column $column) => $row->courses_count
                   )
                   ->collapseOnMobile(),
             Column::make('Inhalte')
                   ->label(
-                      fn($row, Column $column) => $row->library_items_count
+                      fn ($row, Column $column) => $row->library_items_count
                   )
                   ->collapseOnMobile(),
             Column::make('')
                   ->label(
-                      fn($row, Column $column) => view('columns.lectures.action')
+                      fn ($row, Column $column) => view('columns.lectures.action')
                           ->withRow($row)
                           ->withCountry($this->country)
                   ),
@@ -89,22 +90,22 @@ class LecturerTable extends DataTableComponent
         if ($event) {
             return to_route('school.table.event', [
                 '#table',
-                'country'       => $this->country,
+                'country' => $this->country,
                 'course_events' => [
                     'filters' => [
                         'dozent' => $lecturer->id,
                     ],
-                ]
+                ],
             ]);
         } else {
             return to_route('library.table.libraryItems', [
                 '#table',
-                'country'       => $this->country,
+                'country' => $this->country,
                 'library_items' => [
                     'filters' => [
                         'lecturer_id' => $lecturer->id,
                     ],
-                ]
+                ],
             ]);
         }
     }

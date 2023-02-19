@@ -15,12 +15,14 @@ class Venue extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = \App\Models\Venue::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
+     *
      * @var string
      */
     public static $title = 'name';
@@ -32,6 +34,7 @@ class Venue extends Resource
 
     /**
      * The columns that should be searched.
+     *
      * @var array
      */
     public static $search = [
@@ -57,7 +60,6 @@ class Venue extends Resource
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function fields(Request $request)
@@ -94,7 +96,6 @@ class Venue extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function cards(Request $request)
@@ -106,7 +107,6 @@ class Venue extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function filters(Request $request)
@@ -118,7 +118,6 @@ class Venue extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function lenses(Request $request)
@@ -130,7 +129,6 @@ class Venue extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function actions(Request $request)

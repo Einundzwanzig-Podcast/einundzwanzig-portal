@@ -11,7 +11,7 @@ return [
     | Supported: "file", "database"
     |
     */
-    'driver'              => env('TRANSLATION_DRIVER', 'file'),
+    'driver' => env('TRANSLATION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | configuration here to configure the routes with your preferred group options.
     |
     */
-    'route_group_config'  => [
+    'route_group_config' => [
         'middleware' => 'translation',
     ],
 
@@ -46,7 +46,7 @@ return [
     | looking for missing translations.
     |
     */
-    'scan_paths'          => [app_path(), resource_path(), base_path('vendor')],
+    'scan_paths' => [app_path(), resource_path(), base_path('vendor')],
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     | Define the URL used to access the language management too.
     |
     */
-    'ui_url'              => 'languages',
+    'ui_url' => 'languages',
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return [
     | Define the settings for the database driver here.
     |
     */
-    'database'            => [
+    'database' => [
 
         'connection' => '',
 

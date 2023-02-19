@@ -11,8 +11,11 @@ use Livewire\Component;
 class Header extends Component
 {
     public ?Country $country = null;
+
     public $currentRouteName;
+
     public string $c = 'de';
+
     public string $l = 'de';
 
     public $bgColor = 'bg-21gray';
@@ -30,7 +33,7 @@ class Header extends Component
     public function mount()
     {
         $this->l = Cookie::get('lang') ?: config('app.locale');
-        if (!$this->country) {
+        if (! $this->country) {
             $this->country = Country::query()
                                     ->where('code', $this->c)
                                     ->first();
@@ -56,7 +59,7 @@ class Header extends Component
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
 
         return view('livewire.frontend.header', [
-            'cities'    => City::query()
+            'cities' => City::query()
                                ->select(['latitude', 'longitude'])
                                ->get(),
             'countries' => Country::query()

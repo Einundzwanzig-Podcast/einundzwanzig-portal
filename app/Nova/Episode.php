@@ -17,17 +17,21 @@ class Episode extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = \App\Models\Episode::class;
+
     /**
      * The columns that should be searched.
+     *
      * @var array
      */
     public static $search = [
         'id',
         'podcast.title',
     ];
+
     public static $orderBy = ['created_at' => 'desc'];
 
     public static function afterUpdate(NovaRequest $request, Model $model)
@@ -36,7 +40,7 @@ class Episode extends Resource
             if ($model->data['link']) {
                 $lecturer = \App\Models\Lecturer::updateOrCreate(['name' => $model->podcast->title], [
                     'team_id' => 1,
-                    'active'  => true,
+                    'active' => true,
                     'website' => $model->podcast->link,
                 ]);
                 if ($model->podcast->data['image']) {
@@ -45,20 +49,20 @@ class Episode extends Resource
                 }
                 $library = \App\Models\Library::firstOrCreate(
                     [
-                        'name' => 'Podcasts'
+                        'name' => 'Podcasts',
                     ]);
                 $libraryItem = $model->libraryItem()
                                      ->firstOrCreate([
-                                         'lecturer_id'   => $lecturer->id,
-                                         'episode_id'    => $model->id,
-                                         'name'          => $model->data['title'],
-                                         'type'          => 'podcast_episode',
+                                         'lecturer_id' => $lecturer->id,
+                                         'episode_id' => $model->id,
+                                         'name' => $model->data['title'],
+                                         'type' => 'podcast_episode',
                                          'language_code' => str($model->podcast->language_code)
                                              ->before('-')
                                              ->toString(),
-                                         'value'         => null,
-                                         'excerpt'       => $model->data['description'],
-                                         'subtitle'      => $model->data['description'],
+                                         'value' => null,
+                                         'excerpt' => $model->data['description'],
+                                         'subtitle' => $model->data['description'],
                                      ]);
                 $libraryItem->syncTagsWithType(is_array($request->tags) ? $request->tags : str($request->tags)->explode('-----'),
                     'library_item');
@@ -107,7 +111,6 @@ class Episode extends Resource
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function fields(Request $request)
@@ -153,7 +156,6 @@ class Episode extends Resource
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function cards(Request $request)
@@ -165,7 +167,6 @@ class Episode extends Resource
      * Get the filters available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function filters(Request $request)
@@ -177,7 +178,6 @@ class Episode extends Resource
      * Get the lenses available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function lenses(Request $request)
@@ -189,7 +189,6 @@ class Episode extends Resource
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return array
      */
     public function actions(Request $request)

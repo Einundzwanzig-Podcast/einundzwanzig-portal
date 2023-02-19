@@ -17,6 +17,7 @@ use Spatie\LaravelOptions\Options;
 class LibraryItemTable extends DataTableComponent
 {
     public string $currentTab;
+
     public string $tableName = 'library_items';
 
     public function configure(): void
@@ -27,13 +28,13 @@ class LibraryItemTable extends DataTableComponent
             ->setDefaultSort('order_column', 'asc')
             ->setThAttributes(function (Column $column) {
                 return [
-                    'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                    'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                     'default' => false,
                 ];
             })
             ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                 return [
-                    'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                    'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                     'default' => false,
                 ];
             })
@@ -88,7 +89,7 @@ class LibraryItemTable extends DataTableComponent
                                         });
                             } else {
                                 $builder->whereHas('libraries',
-                                    fn($query) => $query->where('libraries.name', 'ilike', "%$value%"));
+                                    fn ($query) => $query->where('libraries.name', 'ilike', "%$value%"));
                             }
                         }),
             SelectFilter::make('Art')
@@ -97,7 +98,7 @@ class LibraryItemTable extends DataTableComponent
                                 Options::forEnum(LibraryItemType::class)
                                        ->toArray()
                             )
-                                ->mapWithKeys(fn($value, $key) => [$value['value'] => $value['label']])
+                                ->mapWithKeys(fn ($value, $key) => [$value['value'] => $value['label']])
                                 ->prepend('*', '')
                                 ->toArray()
                         )
@@ -115,18 +116,18 @@ class LibraryItemTable extends DataTableComponent
         return [
             Column::make(__('Image'))
                   ->label(
-                      fn($row, Column $column) => view('columns.library_items.image')->withRow($row)
+                      fn ($row, Column $column) => view('columns.library_items.image')->withRow($row)
                   )
                   ->collapseOnMobile(),
-            Column::make(__('Creator'), "lecturer.name")
+            Column::make(__('Creator'), 'lecturer.name')
                   ->label(
-                      fn($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
+                      fn ($row, Column $column) => view('columns.courses.lecturer')->withRow($row)
                   )
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make("Name", "name")
+            Column::make('Name', 'name')
                   ->sortable(),
-            Column::make("Art", "type")
+            Column::make('Art', 'type')
                   ->format(
                       function ($value, $row, Column $column) {
                           return '<span class="whitespace-nowrap inline-flex items-center rounded-full bg-amber-400 px-2.5 py-0.5 text-base font-medium text-gray-900"><i class="mr-2 fa fa-thin fa-'
@@ -138,14 +139,14 @@ class LibraryItemTable extends DataTableComponent
                   ->html()
                   ->sortable()
                   ->collapseOnMobile(),
-            Column::make("Tags")
+            Column::make('Tags')
                   ->label(
-                      fn($row, Column $column) => view('columns.library_items.tags')->withRow($row)
+                      fn ($row, Column $column) => view('columns.library_items.tags')->withRow($row)
                   )
                   ->collapseOnMobile(),
             Column::make('')
                   ->label(
-                      fn($row, Column $column) => view('columns.library_items.action')->withRow($row)
+                      fn ($row, Column $column) => view('columns.library_items.action')->withRow($row)
                   ),
         ];
     }
@@ -167,14 +168,14 @@ class LibraryItemTable extends DataTableComponent
                               'lecturer',
                               'tags',
                           ])
-                          ->whereHas('libraries', fn($query) => $query->where('libraries.is_public', $shouldBePublic))
-                          ->when($this->currentTab !== '*', fn($query) => $query
+                          ->whereHas('libraries', fn ($query) => $query->where('libraries.is_public', $shouldBePublic))
+                          ->when($this->currentTab !== '*', fn ($query) => $query
                               ->whereHas('libraries',
-                                  fn($query) => $query
+                                  fn ($query) => $query
                                       ->where('libraries.name', $this->currentTab)
                               )
                               ->orWhereHas('libraries',
-                                  fn($query) => $query
+                                  fn ($query) => $query
                                       ->where('libraries.parent_id', $parentLibrary->id)
                               )
                           )

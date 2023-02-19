@@ -11,9 +11,11 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class LecturerLandingPage extends Component
 {
     public Lecturer $lecturer;
+
     public Country $country;
 
     public ?int $year = null;
+
     public ?int $activeEvent = null;
 
     public function render()
@@ -26,18 +28,18 @@ class LecturerLandingPage extends Component
                                          })
                                          ->orderBy('from')
                                          ->get(),
-            'events'       => CourseEvent::query()
+            'events' => CourseEvent::query()
                                          ->where('from', '>=', now())
                                          ->whereHas('course', function ($query) {
                                              $query->where('lecturer_id', $this->lecturer->id);
                                          })
                                          ->orderBy('from')
                                          ->get()
-                                         ->map(fn($event) => [
-                                             'id'          => $event->id,
-                                             'startDate'   => $event->from,
-                                             'endDate'     => $event->to,
-                                             'location'    => $event->course->name,
+                                         ->map(fn ($event) => [
+                                             'id' => $event->id,
+                                             'startDate' => $event->from,
+                                             'endDate' => $event->to,
+                                             'location' => $event->course->name,
                                              'description' => $event->venue->name,
                                          ]),
         ])
@@ -46,7 +48,7 @@ class LecturerLandingPage extends Component
                     title: $this->lecturer->name,
                     description: $this->lecturer->intro ?? __('This lecturer has not yet written an introduction.'),
                     image: $this->lecturer->getFirstMediaUrl('avatar'),
-                )
+                ),
             ]);
     }
 

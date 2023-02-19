@@ -24,23 +24,25 @@ class Venue extends Model implements HasMedia
 
     /**
      * The attributes that aren't mass assignable.
+     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
-        'id'      => 'integer',
+        'id' => 'integer',
         'city_id' => 'integer',
     ];
 
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->created_by) {
+            if (! $model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
@@ -70,7 +72,7 @@ class Venue extends Model implements HasMedia
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-                          ->generateSlugsFrom(['city.slug', 'name',])
+                          ->generateSlugsFrom(['city.slug', 'name'])
                           ->saveSlugsTo('slug')
                           ->usingLanguage(Cookie::get('lang', config('app.locale')));
     }

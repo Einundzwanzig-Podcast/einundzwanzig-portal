@@ -12,6 +12,7 @@ class LanguageController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
@@ -21,14 +22,14 @@ class LanguageController extends Controller
                          ->orderBy('name')
                          ->when(
                              $request->search,
-                             fn(Builder $query) => $query
+                             fn (Builder $query) => $query
                                  ->where('name', 'ilike', "%{$request->search}%")
                                  ->orWhere('language', 'ilike', "%{$request->search}%")
                          )
                          ->when(
                              $request->exists('selected'),
-                             fn(Builder $query) => $query->whereIn('language', $request->input('selected', [])),
-                             fn(Builder $query) => $query->limit(10)
+                             fn (Builder $query) => $query->whereIn('language', $request->input('selected', [])),
+                             fn (Builder $query) => $query->limit(10)
                          )
                          ->get()
                          ->map(function ($language) {
@@ -40,6 +41,7 @@ class LanguageController extends Controller
                              $language->toTranslate = Translation::query()
                                                                  ->where('language_id', $language['id'])
                                                                  ->count();
+
                              return $language;
                          })
                          ->toArray();
@@ -60,7 +62,6 @@ class LanguageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -71,8 +72,7 @@ class LanguageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  $language
-     *
+     * @param    $language
      * @return \Illuminate\Http\Response
      */
     public function show(Language $language)
@@ -84,8 +84,7 @@ class LanguageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  $language
-     *
+     * @param    $language
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Language $language)
@@ -96,8 +95,7 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $language
-     *
+     * @param    $language
      * @return \Illuminate\Http\Response
      */
     public function destroy(Language $language)

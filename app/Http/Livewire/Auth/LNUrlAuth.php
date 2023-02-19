@@ -12,8 +12,11 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class LNUrlAuth extends Component
 {
     public ?string $k1 = null;
+
     protected ?string $url = null;
+
     protected ?string $lnurl = null;
+
     protected ?string $qrCode = null;
 
     public function switchToEmailLogin()

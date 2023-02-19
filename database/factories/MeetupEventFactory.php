@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Meetup;
 use App\Models\MeetupEvent;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MeetupEventFactory extends Factory
 {

@@ -14,6 +14,7 @@ class Team extends JetstreamTeam
 
     /**
      * The attributes that should be cast.
+     *
      * @var array
      */
     protected $casts = [
@@ -22,6 +23,7 @@ class Team extends JetstreamTeam
 
     /**
      * The attributes that are mass assignable.
+     *
      * @var string[]
      */
     protected $fillable = [
@@ -31,6 +33,7 @@ class Team extends JetstreamTeam
 
     /**
      * The event map for the model.
+     *
      * @var array
      */
     protected $dispatchesEvents = [

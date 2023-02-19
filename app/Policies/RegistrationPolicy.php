@@ -14,7 +14,6 @@ class RegistrationPolicy extends BasePolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -27,13 +26,12 @@ class RegistrationPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Registration  $registration
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Registration $registration)
     {
         return $registration->whereHas('event.course.lecturer',
-            fn($q) => $q->where('team_id', $user->current_team_id))
+            fn ($q) => $q->where('team_id', $user->current_team_id))
                             ->exists();
     }
 
@@ -41,7 +39,6 @@ class RegistrationPolicy extends BasePolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
@@ -54,7 +51,6 @@ class RegistrationPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Registration  $registration
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Registration $registration)
@@ -67,7 +63,6 @@ class RegistrationPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Registration  $registration
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Registration $registration)
@@ -80,7 +75,6 @@ class RegistrationPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Registration  $registration
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Registration $registration)
@@ -93,7 +87,6 @@ class RegistrationPolicy extends BasePolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Registration  $registration
-     *
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Registration $registration)

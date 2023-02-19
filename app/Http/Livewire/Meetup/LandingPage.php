@@ -11,7 +11,9 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class LandingPage extends Component
 {
     public Meetup $meetup;
+
     public Country $country;
+
     public ?int $activeEvent = null;
 
     public ?int $year = null;
@@ -34,7 +36,7 @@ class LandingPage extends Component
                                          ->where('meetup_events.start', '>=', now())
                                          ->orderBy('start')
                                          ->get(),
-            'events'       => MeetupEvent::query()
+            'events' => MeetupEvent::query()
                                          ->with([
                                              'meetup.city.country',
                                          ])
@@ -42,11 +44,11 @@ class LandingPage extends Component
                                          ->where('meetup_events.start', '>=', now())
                                          ->orderBy('start')
                                          ->get()
-                                         ->map(fn($event) => [
-                                             'id'          => $event->id,
-                                             'startDate'   => $event->start,
-                                             'endDate'     => $event->start->addHours(1),
-                                             'location'    => $event->location,
+                                         ->map(fn ($event) => [
+                                             'id' => $event->id,
+                                             'startDate' => $event->start,
+                                             'endDate' => $event->start->addHours(1),
+                                             'location' => $event->location,
                                              'description' => $event->description,
                                          ]),
         ])
@@ -55,7 +57,7 @@ class LandingPage extends Component
                     title: $this->meetup->name,
                     description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
                     image: $this->meetup->getFirstMediaUrl('logo'),
-                )
+                ),
             ]);
     }
 

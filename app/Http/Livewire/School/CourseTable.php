@@ -17,7 +17,7 @@ class CourseTable extends Component
                 title: __('Courses'),
                 description: __('Choose your city, search for courses in the surrounding area and select a topic that suits you.'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

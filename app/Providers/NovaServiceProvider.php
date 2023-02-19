@@ -36,6 +36,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
      * Bootstrap any application services.
+     *
      * @return void
      */
     public function boot()
@@ -46,12 +47,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             $comments = $request->user()
                                 ->hasRole('super-admin') || $request->user()
                                                                     ->can('CommentPolicy.viewAny') ? [
-                MenuSection::make('Comments', [
-                    MenuItem::resource(Comment::class),
-                ])
-                           ->icon('chat')
-                           ->collapsable(),
-            ] : [];
+                                                                        MenuSection::make('Comments', [
+                                                                            MenuItem::resource(Comment::class),
+                                                                        ])
+                                                                                   ->icon('chat')
+                                                                                   ->collapsable(),
+                                                                    ] : [];
 
             $adminItems = $request->user()
                                   ->hasRole('super-admin') || $request->user()
@@ -74,14 +75,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             $permissions = $request->user()
                                    ->hasRole('super-admin') || $request->user()
                                                                        ->can('PermissionPolicy.viewAny') ? [
-                MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
-                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
-                    MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
-                        'resources/permissions'),
-                ])
-                           ->icon('key')
-                           ->collapsable(),
-            ] : [];
+                                                                           MenuSection::make(__('nova-spatie-permissions::lang.sidebar_label'), [
+                                                                               MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_roles'), 'resources/roles'),
+                                                                               MenuItem::link(__('nova-spatie-permissions::lang.sidebar_label_permissions'),
+                                                                                   'resources/permissions'),
+                                                                           ])
+                                                                                      ->icon('key')
+                                                                                      ->collapsable(),
+                                                                       ] : [];
 
             return array_merge([
                 MenuSection::dashboard(Main::class)
@@ -158,17 +159,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Nova::footer(function ($request) {
             // return MIT license and date
-            return sprintf("%s %s - %s", date('Y'), config('app.name'), __('MIT License'));
+            return sprintf('%s %s - %s', date('Y'), config('app.name'), __('MIT License'));
         });
 
         Nova::userTimezone(function (Request $request) {
-
             return $request->user()->timezone;
         });
     }
 
     /**
      * Get the tools that should be listed in the Nova sidebar.
+     *
      * @return array
      */
     public function tools()
@@ -180,6 +181,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     /**
      * Register the Nova routes.
+     *
      * @return void
      */
     protected function routes()
@@ -192,6 +194,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     /**
      * Register any application services.
+     *
      * @return void
      */
     public function register()
@@ -202,6 +205,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Register the Nova gate.
      * This gate determines who can access Nova in non-local environments.
+     *
      * @return void
      */
     protected function gate()
@@ -213,6 +217,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     /**
      * Get the dashboards that should be listed in the Nova sidebar.
+     *
      * @return array
      */
     protected function dashboards()

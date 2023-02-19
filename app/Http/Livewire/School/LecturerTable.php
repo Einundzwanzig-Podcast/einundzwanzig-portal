@@ -17,7 +17,7 @@ class LecturerTable extends Component
                 title: __('Lecturers'),
                 description: __('Lecturers in the surrounding area.'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

@@ -10,7 +10,9 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class HighscoreTable extends Component
 {
     public Country $country;
+
     public bool $viewingModal = false;
+
     public ?User $modal = null;
 
     public function render()
@@ -31,7 +33,7 @@ class HighscoreTable extends Component
                 title: __('Highscore Table'),
                 description: __('Hall of fame of our honorable plebs'),
                 image: asset('img/highscore_table_screenshot.png'),
-            )
+            ),
         ]);
     }
 

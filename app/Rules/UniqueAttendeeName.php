@@ -9,6 +9,7 @@ class UniqueAttendeeName implements InvokableRule
 {
     /**
      * Create a new rule instance.
+     *
      * @return void
      */
     public function __construct(public MeetupEvent $meetupEvent)
@@ -22,14 +23,14 @@ class UniqueAttendeeName implements InvokableRule
         $attendees = collect($this->meetupEvent->attendees);
         $mightAttendees = collect($this->meetupEvent->might_attendees);
         $isInAttendees = $attendees
-            ->contains(fn($v) => str($v)
+            ->contains(fn ($v) => str($v)
                                      ->after('|')
                                      ->lower()
                                      ->toString() === str($value)
                                      ->lower()
                                      ->toString());
         $isInMightAttendees = $mightAttendees
-            ->contains(fn($v) => str($v)
+            ->contains(fn ($v) => str($v)
                                      ->after('|')
                                      ->lower()
                                      ->toString() === str($value)

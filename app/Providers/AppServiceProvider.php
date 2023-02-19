@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Episode;
-use App\Observers\EpisodeObserver;
 use App\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
@@ -16,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     *
      * @return void
      */
     public function register()
@@ -27,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     *
      * @return void
      */
     public function boot()
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
         Stringable::macro('initials', function () {
             $words = preg_split("/\s+/", $this);
-            $initials = "";
+            $initials = '';
 
             foreach ($words as $w) {
                 $initials .= $w[0];

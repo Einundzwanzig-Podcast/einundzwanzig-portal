@@ -17,7 +17,7 @@ class CityTable extends Component
                 title: __('Bookcases'),
                 description: __('Search out a public bookcase'),
                 image: asset('img/screenshot.png')
-            )
+            ),
         ]);
     }
 }

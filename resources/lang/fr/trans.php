@@ -1,6 +1,6 @@
 <?php
 
-return array (
-  'first_match' => '',
-  'third_match' => '',
-);
+return [
+    'first_match' => '',
+    'third_match' => '',
+];

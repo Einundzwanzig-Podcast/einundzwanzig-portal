@@ -15,6 +15,7 @@ class OrangePillForm extends Component
     public Country $country;
 
     public BookCase $bookCase;
+
     public ?OrangePill $orangePill = null;
 
     public $image;
@@ -27,22 +28,22 @@ class OrangePillForm extends Component
     {
         return [
             'orangePill.book_case_id' => 'required',
-            'orangePill.user_id'      => 'required',
-            'orangePill.amount'       => 'required|numeric',
-            'orangePill.date'         => 'required|date',
-            'orangePill.comment'      => 'required|string',
-            'image'                   => 'image|max:8192', // 8MB Max
+            'orangePill.user_id' => 'required',
+            'orangePill.amount' => 'required|numeric',
+            'orangePill.date' => 'required|date',
+            'orangePill.comment' => 'required|string',
+            'image' => 'image|max:8192', // 8MB Max
         ];
     }
 
     public function mount()
     {
-        if (!$this->orangePill) {
+        if (! $this->orangePill) {
             $this->orangePill = new OrangePill([
-                'user_id'      => auth()->id(),
+                'user_id' => auth()->id(),
                 'book_case_id' => $this->bookCase->id,
-                'date'         => now(),
-                'amount'       => 1,
+                'date' => now(),
+                'amount' => 1,
             ]);
         } elseif ($this->orangePill->user_id !== auth()->id()) {
             abort(403);

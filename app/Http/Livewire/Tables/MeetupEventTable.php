@@ -21,13 +21,13 @@ class MeetupEventTable extends DataTableComponent
              ->setDefaultSort('start', 'asc')
              ->setThAttributes(function (Column $column) {
                  return [
-                     'class'   => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
+                     'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
                      'default' => false,
                  ];
              })
              ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                  return [
-                     'class'   => 'px-6 py-4 text-sm font-medium dark:text-white',
+                     'class' => 'px-6 py-4 text-sm font-medium dark:text-white',
                      'default' => false,
                  ];
              })
@@ -63,31 +63,31 @@ class MeetupEventTable extends DataTableComponent
         $columns = [
             Column::make(__('Meetup'), 'meetup.name')
                   ->format(
-                      fn($value, $row, Column $column) => view('columns.meetup_events.name')
+                      fn ($value, $row, Column $column) => view('columns.meetup_events.name')
                           ->withRow($row)
                           ->withCountry($this->country)
                   )
-                  ->searchable(fn($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
+                  ->searchable(fn ($builder, $term) => $builder->where('meetups.name', 'ilike', '%'.$term.'%'))
                   ->sortable(),
             Column::make(__('Location'), 'location')
-                  ->searchable(fn($builder, $term) => $builder->where('location', 'ilike', '%'.$term.'%'))
+                  ->searchable(fn ($builder, $term) => $builder->where('location', 'ilike', '%'.$term.'%'))
                   ->sortable()
                   ->collapseOnMobile(),
             Column::make(__('Start'), 'start')
                   ->format(
-                      fn($value, $row, Column $column) => $value->asDateTime()
+                      fn ($value, $row, Column $column) => $value->asDateTime()
                   )
                   ->sortable()
                   ->collapseOnMobile(),
             Column::make(__('Confirmations'))
                   ->label(
-                      fn($row, Column $column) => view('columns.meetup_events.confirmations')
+                      fn ($row, Column $column) => view('columns.meetup_events.confirmations')
                           ->withRow($row)
                   )
                   ->collapseOnMobile(),
             Column::make(__('Link'))
                   ->label(
-                      fn($row, Column $column) => view('columns.meetup_events.link')
+                      fn ($row, Column $column) => view('columns.meetup_events.link')
                           ->withRow($row)
                   )
                   ->collapseOnMobile(),
@@ -96,7 +96,7 @@ class MeetupEventTable extends DataTableComponent
         $adminColumns = auth()->check() ? [
             Column::make(__('Actions'))
                   ->label(
-                      fn($row, Column $column) => view('columns.meetup_events.manage')
+                      fn ($row, Column $column) => view('columns.meetup_events.manage')
                           ->withRow($row)
                   )
                   ->collapseOnMobile(),
@@ -109,7 +109,7 @@ class MeetupEventTable extends DataTableComponent
     {
         return MeetupEvent::query()
                           ->where('meetup_events.start', '>=', now())
-                          ->whereHas('meetup.city.country', fn($query) => $query->where('code', $this->country))
+                          ->whereHas('meetup.city.country', fn ($query) => $query->where('code', $this->country))
                           ->with([
                               'meetup.city.country',
                           ]);
