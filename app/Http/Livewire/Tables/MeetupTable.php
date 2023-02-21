@@ -31,7 +31,14 @@ class MeetupTable extends DataTableComponent
                  ];
              })
              ->setColumnSelectStatus(false)
-             ->setPerPage(10);
+             ->setPerPage(10)
+             ->setConfigurableAreas([
+                 'toolbar-left-end' => [
+                     'columns.meetups.areas.toolbar-left-end', [
+                         'country' => $this->country,
+                     ],
+                 ],
+             ]);
     }
 
     public function filters(): array

@@ -13,23 +13,6 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex sm:items-center">
 
-                    @if(str(request()->route()->getName())->contains('meetup.'))
-                        <div x-data="{currentUrl: window.location.href}">
-                            <a x-bind:href="'/{{ $country->code ?? 'de' }}/meetup/meetup/form?fromUrl='+currentUrl">
-                            <x-button xs amber>
-                                <i class="fa fa-thin fa-plus"></i>
-                                {{ __('Submit Meetup') }}
-                            </x-button>
-                            </a>
-                        </div>
-                        <div>
-                            <x-button xs amber :href="route('meetup.event.form', ['country' => $country ?? 'de'])">
-                                <i class="fa fa-thin fa-plus"></i>
-                                {{ __('Register Meetup date') }}
-                            </x-button>
-                        </div>
-                    @endif
-
                     @if(str(request()->route()->getName())->contains('school.'))
                         <div>
                             <x-button xs amber href="/nova/resources/lecturers" target="_blank">
@@ -65,14 +48,6 @@
                                   :active="request()->routeIs('profile.show')">
                             <i class="fa fa-thin fa-user"></i>
                             {{ __('My profile') }}
-                        </x-button>
-                    </div>
-
-                    <div>
-                        <x-button xs amber href="{{ route('profile.meetups') }}"
-                                  :active="request()->routeIs('profile.meetups')">
-                            <i class="fa fa-thin fa-users"></i>
-                            {{ __('My meetups') }}
                         </x-button>
                     </div>
                 </div>
