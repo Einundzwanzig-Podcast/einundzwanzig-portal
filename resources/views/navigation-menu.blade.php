@@ -15,12 +15,6 @@
 
                     @if(str(request()->route()->getName())->contains('school.'))
                         <div>
-                            <x-button xs amber href="/nova/resources/lecturers" target="_blank">
-                                <i class="fa fa-thin fa-plus"></i>
-                                {{ __('Register lecturer') }}
-                            </x-button>
-                        </div>
-                        <div>
                             <x-button xs amber href="/nova/resources/courses" target="_blank">
                                 <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Register course') }}

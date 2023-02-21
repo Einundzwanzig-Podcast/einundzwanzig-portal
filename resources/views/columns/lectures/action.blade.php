@@ -44,4 +44,16 @@
             {{ __('Show landing page') }}
         </x-button>
     </div>
+    <div>
+        @if($row->created_by === auth()->id())
+            <x-button
+                :href="route('contentCreator.form', ['country' => $country, 'lecturer' => $row->id])"
+                xs
+                amber
+            >
+                <i class="fa fa-thin fa-edit mr-2"></i>
+                {{ __('Edit') }}
+            </x-button>
+        @endif
+    </div>
 </div>
