@@ -30,7 +30,7 @@ class MeetupForm extends Component
     public function rules()
     {
         return [
-            'image' => [Rule::requiredIf(! $this->meetup->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
+            'image' => [Rule::requiredIf(!$this->meetup->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
             'meetup.city_id'          => 'required',
             'meetup.name'             => 'required',
@@ -66,8 +66,13 @@ class MeetupForm extends Component
 
         if ($this->image) {
             $this->meetup->addMedia($this->image)
-                              ->toMediaCollection('logo');
+                         ->toMediaCollection('logo');
         }
+
+        auth()
+            ->user()
+            ->meetups()
+            ->syncWithoutDetaching($this->meetup->id);
 
         return redirect($this->fromUrl);
     }
