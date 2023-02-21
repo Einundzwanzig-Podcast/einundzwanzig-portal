@@ -37,23 +37,15 @@ class CityForm extends Component
         }
     }
 
-    public function updatedCityLongitude($value)
-    {
-        $this->city->longitude = str($value)
-            ->replace(',', '.')
-            ->toFloat();
-    }
-
-    public function updatedCityLatitude($value)
-    {
-        $this->city->latitude = str($value)
-            ->replace(',', '.')
-            ->toFloat();
-    }
-
     public function save()
     {
         $this->validate();
+        $this->city->longitude = str($this->city->longitude)
+            ->replace(',', '.')
+            ->toFloat();
+        $this->city->latitude = str($this->city->latitude)
+            ->replace(',', '.')
+            ->toFloat();
         $this->city->save();
 
         return redirect($this->fromUrl ?? url()->route('welcome'));
