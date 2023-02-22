@@ -57,7 +57,7 @@ class CourseEventPolicy extends BasePolicy
      */
     public function delete(User $user, CourseEvent $courseEvent): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -67,7 +67,7 @@ class CourseEventPolicy extends BasePolicy
      */
     public function restore(User $user, CourseEvent $courseEvent): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -77,6 +77,6 @@ class CourseEventPolicy extends BasePolicy
      */
     public function forceDelete(User $user, CourseEvent $courseEvent): bool
     {
-        //
+        return false;
     }
 }

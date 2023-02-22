@@ -57,7 +57,7 @@ class CoursePolicy extends BasePolicy
      */
     public function delete(User $user, Course $course): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -67,7 +67,7 @@ class CoursePolicy extends BasePolicy
      */
     public function restore(User $user, Course $course): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -77,6 +77,6 @@ class CoursePolicy extends BasePolicy
      */
     public function forceDelete(User $user, Course $course): bool
     {
-        //
+        return false;
     }
 }

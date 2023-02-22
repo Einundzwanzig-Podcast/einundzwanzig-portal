@@ -57,7 +57,7 @@ class BitcoinEventPolicy extends BasePolicy
      */
     public function delete(User $user, BitcoinEvent $bitcoinEvent): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -67,7 +67,7 @@ class BitcoinEventPolicy extends BasePolicy
      */
     public function restore(User $user, BitcoinEvent $bitcoinEvent): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -77,6 +77,6 @@ class BitcoinEventPolicy extends BasePolicy
      */
     public function forceDelete(User $user, BitcoinEvent $bitcoinEvent): bool
     {
-        //
+        return false;
     }
 }

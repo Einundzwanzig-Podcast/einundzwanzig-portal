@@ -18,7 +18,7 @@ class LibraryItemWithout extends BooleanFilter
      *
      * @param  mixed  $value
      */
-    public function apply(NovaRequest $request, Builder $query, $value): Builder
+    public function apply(NovaRequest $request, $query, $value): Builder
     {
         return $query
             ->when($value['libraries'], fn ($query) => $query->whereDoesntHave('libraries'))

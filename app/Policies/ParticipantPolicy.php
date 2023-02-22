@@ -43,7 +43,7 @@ class ParticipantPolicy extends BasePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class ParticipantPolicy extends BasePolicy
      */
     public function update(User $user, Participant $participant): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -63,7 +63,7 @@ class ParticipantPolicy extends BasePolicy
      */
     public function delete(User $user, Participant $participant): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -73,7 +73,7 @@ class ParticipantPolicy extends BasePolicy
      */
     public function restore(User $user, Participant $participant): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -83,6 +83,6 @@ class ParticipantPolicy extends BasePolicy
      */
     public function forceDelete(User $user, Participant $participant): bool
     {
-        //
+        return false;
     }
 }

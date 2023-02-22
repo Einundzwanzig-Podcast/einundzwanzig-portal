@@ -57,7 +57,7 @@ class CityPolicy extends BasePolicy
      */
     public function delete(User $user, City $city): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -67,7 +67,7 @@ class CityPolicy extends BasePolicy
      */
     public function restore(User $user, City $city): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -77,6 +77,6 @@ class CityPolicy extends BasePolicy
      */
     public function forceDelete(User $user, City $city): bool
     {
-        //
+        return false;
     }
 }

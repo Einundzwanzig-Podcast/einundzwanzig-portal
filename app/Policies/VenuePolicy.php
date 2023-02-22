@@ -57,7 +57,7 @@ class VenuePolicy extends BasePolicy
      */
     public function delete(User $user, Venue $venue): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -67,7 +67,7 @@ class VenuePolicy extends BasePolicy
      */
     public function restore(User $user, Venue $venue): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -77,6 +77,6 @@ class VenuePolicy extends BasePolicy
      */
     public function forceDelete(User $user, Venue $venue): bool
     {
-        //
+        return false;
     }
 }
