@@ -97,7 +97,7 @@ class MeetupEvent extends Resource
 
             Text::make('Link')
                 ->hideFromIndex()
-                ->rules('nullable', 'string')
+                ->rules('nullable', 'url')
                 ->nullable()
                 ->help(__('For example, a link to a location on Google Maps or a link to a website. (not your Telegram group link)')),
 

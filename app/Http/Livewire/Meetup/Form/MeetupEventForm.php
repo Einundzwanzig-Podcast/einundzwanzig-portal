@@ -28,7 +28,7 @@ class MeetupEventForm extends Component
             'meetupEvent.start' => 'required',
             'meetupEvent.location' => 'string|nullable',
             'meetupEvent.description' => 'string|nullable',
-            'meetupEvent.link' => 'string|url|nullable',
+            'meetupEvent.link' => 'url|nullable',
 
             'series.*.start' => 'required',
 
