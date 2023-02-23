@@ -22,30 +22,31 @@ class ContentCreatorForm extends Component
     public function rules()
     {
         return [
-            'image' => [Rule::requiredIf(! $this->lecturer->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
+            'image' => [Rule::requiredIf(!$this->lecturer->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
-            'lecturer.name' => 'required',
-            'lecturer.active' => 'boolean',
-            'lecturer.subtitle' => 'required',
-            'lecturer.intro' => 'required',
-            'lecturer.twitter_username' => 'nullable|string',
-            'lecturer.website' => 'nullable|url',
+            'lecturer.name'              => 'required',
+            'lecturer.active'            => 'boolean',
+            'lecturer.subtitle'          => 'required',
+            'lecturer.intro'             => 'required',
+            'lecturer.nostr'             => 'nullable|string',
+            'lecturer.twitter_username'  => 'nullable|string',
+            'lecturer.website'           => 'nullable|url',
             'lecturer.lightning_address' => 'nullable|string',
-            'lecturer.lnurl' => 'nullable|string',
-            'lecturer.node_id' => 'nullable|string',
+            'lecturer.lnurl'             => 'nullable|string',
+            'lecturer.node_id'           => 'nullable|string',
         ];
     }
 
     public function mount()
     {
-        if (! $this->lecturer) {
+        if (!$this->lecturer) {
             $this->lecturer = new Lecturer([
-                'intro' => '',
-                'active' => true,
+                'intro'   => '',
+                'active'  => true,
                 'team_id' => true,
             ]);
         }
-        if (! $this->fromUrl) {
+        if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
         }
     }

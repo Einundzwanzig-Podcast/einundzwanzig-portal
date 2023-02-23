@@ -38,7 +38,7 @@
                             <div>
                                 {{ __('Author') }}
                             </div>
-                            <x-button xs href="/nova/resources/lecturers/new" target="_blank">
+                            <x-button xs href="{{ route('contentCreator.form', ['country' => 'de']) }}">
                                 <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Create new author') }}
                             </x-button>

@@ -1,6 +1,6 @@
 {
     "relays": {
-        "wss://nostr.einundzwanzig.space": {
+        "wss://nostr.easify.de": {
             "read": true,
             "write": true
         },
@@ -8,43 +8,7 @@
             "read": true,
             "write": true
         },
-        "wss://nostr.fmt.wiz.biz": {
-            "read": true,
-            "write": true
-        },
         "wss://relay.damus.io": {
-            "read": true,
-            "write": true
-        },
-        "wss://nostr-pub.wellorder.net": {
-            "read": true,
-            "write": true
-        },
-        "wss://relay.nostr.info": {
-            "read": true,
-            "write": true
-        },
-        "wss://offchain.pub": {
-            "read": true,
-            "write": true
-        },
-        "wss://nos.lol": {
-            "read": true,
-            "write": true
-        },
-        "wss://brb.io": {
-            "read": true,
-            "write": true
-        },
-        "wss://relay.snort.social": {
-            "read": true,
-            "write": true
-        },
-        "wss://relay.current.fyi": {
-            "read": true,
-            "write": true
-        },
-        "wss://nostr.relayer.se": {
             "read": true,
             "write": true
         }

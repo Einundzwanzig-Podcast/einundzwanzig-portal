@@ -49,6 +49,11 @@
                     <span class="text-gray-400 text-xs py-2">{{ __('This is the introduction text that is shown on the landing page.') }}</span>
                 </x-input.group>
 
+                <x-input.group :for="md5('lecturer.nostr')" :label="__('Nostr public key')">
+                    <x-input autocomplete="off" wire:model.debounce="lecturer.nostr"
+                             :placeholder="__('Nostr public key')" :hint="__('starts with npub...')"/>
+                </x-input.group>
+
                 <x-input.group :for="md5('lecturer.twitter_username')" :label="__('Twitter Username')">
                     <x-input autocomplete="off" wire:model.debounce="lecturer.twitter_username"
                              :placeholder="__('Twitter Username')" :hint="__('Without @')"/>
