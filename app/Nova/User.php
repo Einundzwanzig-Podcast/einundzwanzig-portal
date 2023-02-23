@@ -65,28 +65,25 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make(__('Public Key'), 'public_key')
-                ->rules('nullable', 'string')->hideFromIndex(),
-
-            Text::make(__('Email'), 'email')
-                ->rules('nullable', 'string')->hideFromIndex(),
-
-            Text::make(__('Lightning Address'), 'lightning_address')
-                ->help(__('for example xy@getalby.com'))
-                ->rules('nullable', 'string'),
-
-            Text::make(__('LNURL'), 'lnurl')
-                ->help(__('starts with: lnurl1dp68gurn8gh....'))
-                ->rules('nullable', 'string'),
-
-            Text::make(__('Node Id'), 'node_id')
-                ->rules('nullable', 'string'),
-
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Text::make(__('Public Key'), 'public_key')
+                ->rules('nullable', 'string')->hideFromIndex(),
+
+            Text::make(__('Lightning Address'), 'lightning_address')
+                ->help(__('for example xy@getalby.com'))
+                ->rules('nullable', 'string')->hideFromIndex(),
+
+            Text::make(__('LNURL'), 'lnurl')
+                ->help(__('starts with: lnurl1dp68gurn8gh....'))
+                ->rules('nullable', 'string')->hideFromIndex(),
+
+            Text::make(__('Node Id'), 'node_id')
+                ->rules('nullable', 'string')->hideFromIndex(),
 
             //            Password::make('Password')
             //                    ->onlyOnForms()
