@@ -4,6 +4,7 @@ namespace App\Http\Livewire\News;
 
 use App\Models\LibraryItem;
 use App\Traits\TwitterTrait;
+use Illuminate\Support\Facades\Process;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use WireUi\Traits\Actions;
@@ -31,7 +32,7 @@ class ArticleOverview extends Component
         if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
             $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
         }
-        if (! $libraryItem->lecturer->twitter_username) {
+        if (!$libraryItem->lecturer->twitter_username) {
             $libraryItemName .= ' von '.$libraryItem->lecturer->name;
         }
 
@@ -39,7 +40,7 @@ class ArticleOverview extends Component
             if (config('feeds.services.twitterAccountId')) {
                 $this->setNewAccessToken(1);
 
-                if (! $libraryItem->approved) {
+                if (!$libraryItem->approved) {
                     $this->notification()
                          ->error(__('Article not approved yet'));
 
@@ -65,6 +66,42 @@ class ArticleOverview extends Component
         } catch (\Exception $e) {
             $this->notification()
                  ->error(__('Error tweeting article', $e->getMessage()));
+        }
+    }
+
+    public function nostr($id)
+    {
+        $libraryItem = LibraryItem::query()
+                                  ->with([
+                                      'lecturer',
+                                  ])
+                                  ->find($id);
+        $libraryItem->setStatus('published');
+        $libraryItemName = $libraryItem->name;
+        if (!$libraryItem->lecturer->nostr) {
+            $libraryItemName .= ' von @'.$libraryItem->nostr->name;
+        } else {
+            $libraryItemName .= ' von '.$libraryItem->lecturer->name;
+        }
+        $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
+            $libraryItemName,
+            url()->route('article.view',
+                ['libraryItem' => $libraryItem->slug]),
+        );
+
+        //noscl publish "Good morning!"
+        $result = Process::run('noscl publish "'.$text.'"');
+
+        if ($result->successful()) {
+            $libraryItem->nostr = $result->output();
+            $libraryItem->save();
+            $this->notification()
+                 ->success(title: __('Published on Nostr'), description: $result->output());
+        }
+        if ($result->failed()) {
+            $this->notification()
+                 ->error(title: __('Failed'),
+                     description: 'Exit Code: '.$result->exitCode().' Reason: '.$result->errorOutput());
         }
     }
 

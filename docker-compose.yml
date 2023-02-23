@@ -7,6 +7,7 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
+                NOSTR_PRIVATE_KEY: '${NOSTR_PRIVATE_KEY}'
         image: sail-8.2/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
@@ -41,7 +42,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
+            test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
             retries: 3
             timeout: 5s
     redis:
@@ -53,7 +54,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "redis-cli", "ping"]
+            test: [ "CMD", "redis-cli", "ping" ]
             retries: 3
             timeout: 5s
     meilisearch:
@@ -65,7 +66,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
+            test: [ "CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health" ]
             retries: 3
             timeout: 5s
 networks:

@@ -1,6 +1,6 @@
 <div class="bg-21gray flex flex-col h-screen justify-between">
     @push('feeds')
-        <x-feed-links />
+        <x-feed-links/>
     @endpush
     <livewire:frontend.header :country="null"/>
     <div class="relative bg-21gray px-6 pt-2 pb-20 lg:px-8 lg:pt-2 lg:pb-2">
@@ -27,7 +27,7 @@
 
                 @foreach($libraryItems as $libraryItem)
                     @if($libraryItem->approved || $libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
-                        <div wire:key="library_item_{{ $libraryItem->id }}"
+                        <div wire:key="library_item_{{ $libraryItem->id }}" wire:loading.class="opacity-25"
                              class="flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
                             <div class="flex-shrink-0 pt-6">
                                 <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
@@ -84,24 +84,34 @@
                                                         </div>
                                                     @endif
                                                 </div>
-                                                {{--<div>
-                                                    @if($libraryItem->approved && auth()->user()?->hasRole('news-editor') && !$libraryItem->tweet)
+                                                <div>
+                                                    @if($libraryItem->approved && auth()->user()?->hasRole('news-editor') && !$libraryItem->nostr)
                                                         <div x-data="{}">
                                                             <x-button xs
+                                                                      purple
+                                                                      wire:loading.attr="disabled"
+                                                                      class="whitespace-nowrap"
                                                                       x-on:click="$wireui.confirmDialog({
-                                                                            icon: 'question',
-                                                                            title: '{{ __('Are you sure you want to tweet this article?')}}',
-                                                                            accept: {label: '{{ __('Yes') }}',
-                                                                            execute: () => $wire.tweet({{ $libraryItem->id }})},
-                                                                            reject: {label: '{{ __('No, cancel') }}'},
-                                                                            })"
+                                                                        icon: 'question',
+                                                                        title: '{{ __('Are you sure you want to publish this article on Nostr?')}}',
+                                                                        accept: {label: '{{ __('Yes') }}',
+                                                                        execute: () => $wire.nostr({{ $libraryItem->id }})},
+                                                                        reject: {label: '{{ __('No, cancel') }}'},
+                                                                    })"
                                                             >
-                                                                <i class="fa fa-brand fa-twitter"></i>
-                                                                {{ __('Tweet') }}
+                                                                <i class="fa fa-thin fa-message-plus"></i>
+                                                                {{ __('Publish on Nostr') }}
                                                             </x-button>
                                                         </div>
+                                                    @else
+                                                        <div>
+                                                            <x-badge purple>
+                                                                <i class="fa fa-thin fa-check"></i>
+                                                                {{ __('nostr') }}
+                                                            </x-badge>
+                                                        </div>
                                                     @endif
-                                                </div>--}}
+                                                </div>
                                                 <div>
                                                     @if(!$libraryItem->approved && auth()->user()?->hasRole('news-editor'))
                                                         <x-button
