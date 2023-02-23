@@ -79,7 +79,7 @@ class ArticleOverview extends Component
         $libraryItem->setStatus('published');
         $libraryItemName = $libraryItem->name;
         if (!$libraryItem->lecturer->nostr) {
-            $libraryItemName .= ' von @'.$libraryItem->nostr->name;
+            $libraryItemName .= ' von @'.$libraryItem->lecturer->nostr;
         } else {
             $libraryItemName .= ' von '.$libraryItem->lecturer->name;
         }
