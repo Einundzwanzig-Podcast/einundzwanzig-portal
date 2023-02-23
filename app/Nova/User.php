@@ -65,6 +65,12 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
+            Text::make(__('Public Key'), 'public_key')
+                ->rules('nullable', 'string')->hideFromIndex(),
+
+            Text::make(__('Email'), 'email')
+                ->rules('nullable', 'string')->hideFromIndex(),
+
             Text::make(__('Lightning Address'), 'lightning_address')
                 ->help(__('for example xy@getalby.com'))
                 ->rules('nullable', 'string'),
