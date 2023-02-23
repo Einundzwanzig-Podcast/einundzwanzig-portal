@@ -90,7 +90,7 @@ class ArticleOverview extends Component
         );
 
         //noscl publish "Good morning!"
-        $result = Process::run('noscl publish "'.$text.'"');
+        $result = Process::timeout(60 * 5)->run('noscl publish "'.$text.'"');
 
         if ($result->successful()) {
             $libraryItem->nostr = $result->output();
