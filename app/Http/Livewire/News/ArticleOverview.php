@@ -35,7 +35,7 @@ class ArticleOverview extends Component
         $result = $this->publishOnNostr($libraryItem, $text);
         if ($result['success']) {
             $this->notification()
-                 ->success(title: __('Published on Nostr'), description: $result->output());
+                 ->success(title: __('Published on Nostr'), description: $result['output']);
         } else {
             $this->notification()
                  ->error(title: __('Failed'),
