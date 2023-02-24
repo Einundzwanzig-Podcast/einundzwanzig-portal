@@ -85,7 +85,7 @@
                                                     @endif
                                                 </div>
                                                 <div>
-                                                    @if($libraryItem->approved && auth()->user()?->hasRole('news-editor') && !$libraryItem->nostr)
+                                                    @if($libraryItem->approved && auth()->user()?->hasRole('news-editor') && !$libraryItem->nostr_status)
                                                         <div x-data="{}">
                                                             <x-button xs
                                                                       purple
