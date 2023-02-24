@@ -36,7 +36,7 @@ trait NostrTrait
     {
         $from = '';
         if ($model instanceof BitcoinEvent) {
-            return sprintf("Ein neues Event wurde eingestellt:\n\n%s\n\n%s bis %s\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
+            return sprintf("Ein neues Event wurde eingestellt:\n%s\n%s bis %s\n%s\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
                 $model->title,
                 $model->from->asDateTime(),
                 $model->to->asDateTime(),
@@ -51,7 +51,7 @@ trait NostrTrait
                 $from .= $model->lecturer->name;
             }
 
-            return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
+            return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
                 $from,
                 $model->course->name,
                 str($model->course->description)->limit(80),
@@ -65,7 +65,7 @@ trait NostrTrait
                 $from .= ' @'.$model->meetup->nostr;
             }
 
-            return sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+            return sprintf("%s hat einen neuen Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $from,
                 $model->start->asDateTime(),
                 $model->location,
@@ -79,7 +79,7 @@ trait NostrTrait
                 $from .= ' @'.$model->nostr;
             }
 
-            return sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+            return sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n%s\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $from,
                 url()->route('meetup.landing', ['country' => $model->city->country->code, 'meetup' => $model])
             );
@@ -91,7 +91,7 @@ trait NostrTrait
                 $from .= $model->lecturer->name;
             }
 
-            return sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
+            return sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
                 $from,
                 $model->name,
                 str($model->description)->limit(80),
@@ -107,14 +107,14 @@ trait NostrTrait
                 $from .= ' von '.$model->lecturer->name;
             }
 
-            return sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
+            return sprintf("Es gibt was Neues zum Lesen oder Anhören:\n%s\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
                 $from,
                 url()->route('article.view',
                     ['libraryItem' => $model->slug]),
             );
         }
         if ($model instanceof OrangePill) {
-            return sprintf("Ein neues Bitcoin-Buch liegt nun in diesem öffentlichen Bücherschrank:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Education #Einundzwanzig #gesundesgeld",
+            return sprintf("Ein neues Bitcoin-Buch liegt nun in diesem öffentlichen Bücherschrank:\n%s\n%s\n%s\n\n#Bitcoin #Education #Einundzwanzig #gesundesgeld",
                 $model->bookCase->title,
                 $model->bookCase->address,
                 url()->route('bookCases.comment.bookcase', ['country' => 'de', 'bookCase' => $model->bookCase]),
