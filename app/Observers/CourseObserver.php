@@ -17,15 +17,7 @@ class CourseObserver
     public function created(Course $course): void
     {
         try {
-            $text = sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
-                $course->lecturer->name,
-                $course->name,
-                str($course->description)->limit(80),
-                url()->route('school.landingPage.lecturer',
-                    ['country' => 'de', 'lecturer' => $course->lecturer]),
-            );
-
-            $this->publishOnNostr($course, $text);
+            $this->publishOnNostr($course, $this->getText('Course'));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

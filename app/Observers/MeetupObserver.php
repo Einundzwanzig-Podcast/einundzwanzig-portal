@@ -17,15 +17,11 @@ class MeetupObserver
     public function created(Meetup $meetup): void
     {
         try {
-            $meetupName = $meetup->name;
+            $from = $meetup->name;
             if ($meetup->nostr) {
-                $meetupName .= ' @'.$meetup->nostr;
+                $from .= ' @'.$meetup->nostr;
             }
-            $text = sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
-                $meetupName,
-                url()->route('meetup.landing', ['country' => $meetup->city->country->code, 'meetup' => $meetup])
-            );
-            $this->publishOnNostr($meetup, $text);
+            $this->publishOnNostr($meetup, $this->getText('Meetup', $from));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

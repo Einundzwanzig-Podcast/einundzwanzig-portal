@@ -17,18 +17,11 @@ class MeetupEventObserver
     public function created(MeetupEvent $meetupEvent): void
     {
         try {
-            $meetupName = $meetupEvent->meetup->name;
+            $from = $meetupEvent->meetup->name;
             if ($meetupEvent->meetup->nostr) {
-                $meetupName .= ' @'.$meetupEvent->meetup->nostr;
+                $from .= ' @'.$meetupEvent->meetup->nostr;
             }
-            $text = sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
-                $meetupName,
-                $meetupEvent->start->asDateTime(),
-                $meetupEvent->location,
-                url()->route('meetup.event.landing',
-                    ['country' => 'de', 'meetupEvent' => $meetupEvent->id]),
-            );
-            $this->publishOnNostr($meetupEvent, $text);
+            $this->publishOnNostr($meetupEvent, $this->getText('MeetupEvent', $from));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

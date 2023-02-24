@@ -20,19 +20,14 @@ class LibraryItemObserver
         try {
             $libraryItem->setStatus('published');
 
-            $libraryItemName = $libraryItem->name;
-            $libraryItemName .= ' von '.$libraryItem->lecturer->name;
+            $from = $libraryItem->name;
+            $from .= ' von '.$libraryItem->lecturer->name;
 
             if ($libraryItem->type !== LibraryItemType::MarkdownArticle()) {
                 if ($libraryItem->whereDoesntHave('libraries',
                     fn($query) => $query->where('libraries.is_public', false))
                                 ->exists()) {
-                    $text = sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
-                        $libraryItemName,
-                        url()->route('article.view',
-                            ['libraryItem' => $libraryItem->slug]),
-                    );
-                    $this->publishOnNostr($libraryItem, $text);
+                    $this->publishOnNostr($libraryItem, $this->getText('LibraryItem', $from));
                 }
             }
         } catch (Exception $e) {

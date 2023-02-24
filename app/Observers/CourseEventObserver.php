@@ -17,15 +17,7 @@ class CourseEventObserver
     public function created(CourseEvent $courseEvent): void
     {
         try {
-            $text = sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
-                $courseEvent->course->lecturer->name,
-                $courseEvent->course->name,
-                str($courseEvent->course->description)->limit(80),
-                url()->route('school.landingPage.lecturer',
-                    ['country' => 'de', 'lecturer' => $courseEvent->course->lecturer]),
-            );
-
-            $this->publishOnNostr($courseEvent, $text);
+            $this->publishOnNostr($courseEvent, $this->getText('CourseEvent'));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

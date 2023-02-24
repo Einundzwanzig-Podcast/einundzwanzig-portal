@@ -17,14 +17,7 @@ class BitcoinEventObserver
     public function created(BitcoinEvent $bitcoinEvent): void
     {
         try {
-            $text = sprintf("Ein neues Event wurde eingestellt:\n\n%s\n\n%s bis %s\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
-                $bitcoinEvent->title,
-                $bitcoinEvent->from->asDateTime(),
-                $bitcoinEvent->to->asDateTime(),
-                $bitcoinEvent->venue->name,
-                $bitcoinEvent->link,
-            );
-            $this->publishOnNostr($bitcoinEvent, $text);
+            $this->publishOnNostr($bitcoinEvent, $this->getText('BitcoinEvent'));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

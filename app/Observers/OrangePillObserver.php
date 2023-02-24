@@ -17,12 +17,7 @@ class OrangePillObserver
     public function created(OrangePill $orangePill): void
     {
         try {
-            $text = sprintf("Ein neues Bitcoin-Buch liegt nun in diesem öffentlichen Bücherschrank:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Education #Einundzwanzig #gesundesgeld",
-                $orangePill->bookCase->title,
-                $orangePill->bookCase->address,
-                url()->route('bookCases.comment.bookcase', ['country' => 'de', 'bookCase' => $orangePill->bookCase]),
-            );
-            $this->publishOnNostr($orangePill, $text);
+            $this->publishOnNostr($orangePill, $this->getText('OrangePill'));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }
