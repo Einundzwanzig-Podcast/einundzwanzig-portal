@@ -31,33 +31,65 @@ class Kernel extends ConsoleKernel
         $schedule->command(CleanupLoginKeys::class)
                  ->everyFifteenMinutes();
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'LibraryItem',
-        ])
-                 ->everySixHours();
-        $schedule->command(PublishUnpublishedItems::class, [
             '--model' => 'BitcoinEvent',
         ])
-                 ->hourly();
+                 ->dailyAt('08:00');
         $schedule->command(PublishUnpublishedItems::class, [
             '--model' => 'CourseEvent',
         ])
-                 ->everyTwoHours();
+                 ->dailyAt('09:00');
         $schedule->command(PublishUnpublishedItems::class, [
             '--model' => 'MeetupEvent',
         ])
-                 ->everyThreeHours();
+                 ->dailyAt('10:00');
         $schedule->command(PublishUnpublishedItems::class, [
             '--model' => 'Meetup',
         ])
-                 ->everyFourHours();
+                 ->dailyAt('11:00');
         $schedule->command(PublishUnpublishedItems::class, [
             '--model' => 'Course',
         ])
-                 ->everySixHours();
+                 ->dailyAt('12:00');
         $schedule->command(PublishUnpublishedItems::class, [
             '--model' => 'OrangePill',
         ])
-                 ->everyFourHours();
+                 ->dailyAt('13:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'LibraryItem',
+        ])
+                 ->dailyAt('14:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'BitcoinEvent',
+        ])
+                 ->dailyAt('15:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'CourseEvent',
+        ])
+                 ->dailyAt('16:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'MeetupEvent',
+        ])
+                 ->dailyAt('17:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'Meetup',
+        ])
+                 ->dailyAt('18:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'Course',
+        ])
+                 ->dailyAt('19:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'OrangePill',
+        ])
+                 ->dailyAt('20:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'LibraryItem',
+        ])
+                 ->dailyAt('21:00');
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'BitcoinEvent',
+        ])
+                 ->dailyAt('22:00');
     }
 
     /**
