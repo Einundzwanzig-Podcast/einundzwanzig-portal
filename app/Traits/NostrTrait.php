@@ -32,8 +32,9 @@ trait NostrTrait
         ];
     }
 
-    public function getText($model, $from = null)
+    public function getText($model)
     {
+        $from = '';
         if ($model instanceof BitcoinEvent) {
             return sprintf("Ein neues Event wurde eingestellt:\n\n%s\n\n%s bis %s\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
                 $model->title,
@@ -44,8 +45,14 @@ trait NostrTrait
             );
         }
         if ($model instanceof CourseEvent) {
+            if ($model->lecturer->nostr) {
+                $from .= '@'.$model->lecturer->nostr;
+            } else {
+                $from .= $model->lecturer->name;
+            }
+
             return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
-                $model->course->lecturer->name,
+                $from,
                 $model->course->name,
                 str($model->course->description)->limit(80),
                 url()->route('school.landingPage.lecturer',
@@ -53,6 +60,11 @@ trait NostrTrait
             );
         }
         if ($model instanceof MeetupEvent) {
+            $from = $model->meetup->name;
+            if ($model->meetup->nostr) {
+                $from .= ' @'.$model->meetup->nostr;
+            }
+
             return sprintf("%s hat einen neuen Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $from,
                 $model->start->asDateTime(),
@@ -62,14 +74,25 @@ trait NostrTrait
             );
         }
         if ($model instanceof Meetup) {
+            $from = $model->name;
+            if ($model->nostr) {
+                $from .= ' @'.$model->nostr;
+            }
+
             return sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n\n%s\n\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
                 $from,
                 url()->route('meetup.landing', ['country' => $model->city->country->code, 'meetup' => $model])
             );
         }
         if ($model instanceof Course) {
+            if ($model->lecturer->nostr) {
+                $from .= '@'.$model->lecturer->nostr;
+            } else {
+                $from .= $model->lecturer->name;
+            }
+
             return sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
-                $model->lecturer->name,
+                $from,
                 $model->name,
                 str($model->description)->limit(80),
                 url()->route('school.landingPage.lecturer',
@@ -77,6 +100,13 @@ trait NostrTrait
             );
         }
         if ($model instanceof LibraryItem) {
+            $from = $model->name;
+            if ($model->lecturer->nostr) {
+                $from .= ' von @'.$model->lecturer->nostr;
+            } else {
+                $from .= ' von '.$model->lecturer->name;
+            }
+
             return sprintf("Es gibt was Neues zum Lesen oder Anhören:\n\n%s\n\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
                 $from,
                 url()->route('article.view',

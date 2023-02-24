@@ -20,6 +20,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'lightning_address' => ['nullable', 'string'],
             'lnurl' => ['nullable', 'string'],
+            'nostr' => ['nullable', 'string'],
             'node_id' => ['nullable', 'string', 'max:66'],
             'timezone' => ['required', 'string'],
             'email' => [
@@ -42,6 +43,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'name' => $input['name'],
                 'lightning_address' => $input['lightning_address'],
                 'lnurl' => $input['lnurl'],
+                'nostr' => $input['nostr'],
                 'node_id' => $input['node_id'],
                 'email' => $input['email'],
                 'timezone' => $input['timezone'],
@@ -62,6 +64,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'lightning_address' => $input['lightning_address'],
             'lnurl' => $input['lnurl'],
             'node_id' => $input['node_id'],
+            'nostr' => $input['nostr'],
             'email' => $input['email'],
             'timezone' => $input['timezone'],
             'email_verified_at' => null,

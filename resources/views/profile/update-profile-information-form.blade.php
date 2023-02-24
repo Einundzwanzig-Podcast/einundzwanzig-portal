@@ -65,6 +65,14 @@
             <p class="text-xs">{{ __('Only one working address is required. But you can also fill in all fields if you have suitable data.') }}</p>
         </div>
 
+        <!-- nostr -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="nostr" value="{{ __('Nostr public key') }}"/>
+            <x-jet-input id="nostr" type="text" class="mt-1 block w-full" wire:model.defer="state.nostr"
+                         autocomplete="nostr"/>
+            <x-jet-input-error for="nostr" class="mt-2"/>
+        </div>
+
         <!-- lightning_address -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="lightning_address" value="{{ __('Lightning Address') }}"/>

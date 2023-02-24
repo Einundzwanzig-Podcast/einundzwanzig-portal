@@ -17,11 +17,7 @@ class MeetupObserver
     public function created(Meetup $meetup): void
     {
         try {
-            $from = $meetup->name;
-            if ($meetup->nostr) {
-                $from .= ' @'.$meetup->nostr;
-            }
-            $this->publishOnNostr($meetup, $this->getText('Meetup', $from));
+            $this->publishOnNostr($meetup, $this->getText('Meetup'));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

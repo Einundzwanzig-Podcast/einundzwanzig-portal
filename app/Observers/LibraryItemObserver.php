@@ -20,14 +20,11 @@ class LibraryItemObserver
         try {
             $libraryItem->setStatus('published');
 
-            $from = $libraryItem->name;
-            $from .= ' von '.$libraryItem->lecturer->name;
-
             if ($libraryItem->type !== LibraryItemType::MarkdownArticle()) {
                 if ($libraryItem->whereDoesntHave('libraries',
                     fn($query) => $query->where('libraries.is_public', false))
                                 ->exists()) {
-                    $this->publishOnNostr($libraryItem, $this->getText('LibraryItem', $from));
+                    $this->publishOnNostr($libraryItem, $this->getText('LibraryItem'));
                 }
             }
         } catch (Exception $e) {
