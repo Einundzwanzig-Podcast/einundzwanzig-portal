@@ -17,7 +17,7 @@ class BitcoinEventObserver
     public function created(BitcoinEvent $bitcoinEvent): void
     {
         try {
-            $this->publishOnNostr($bitcoinEvent, $this->getText('BitcoinEvent'));
+            $this->publishOnNostr($bitcoinEvent, $this->getText($bitcoinEvent));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

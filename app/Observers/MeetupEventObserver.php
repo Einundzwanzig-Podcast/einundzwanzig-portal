@@ -17,7 +17,7 @@ class MeetupEventObserver
     public function created(MeetupEvent $meetupEvent): void
     {
         try {
-            $this->publishOnNostr($meetupEvent, $this->getText('MeetupEvent'));
+            $this->publishOnNostr($meetupEvent, $this->getText($meetupEvent));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

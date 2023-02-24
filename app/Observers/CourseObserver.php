@@ -17,7 +17,7 @@ class CourseObserver
     public function created(Course $course): void
     {
         try {
-            $this->publishOnNostr($course, $this->getText('Course'));
+            $this->publishOnNostr($course, $this->getText($course));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

@@ -17,7 +17,7 @@ class OrangePillObserver
     public function created(OrangePill $orangePill): void
     {
         try {
-            $this->publishOnNostr($orangePill, $this->getText('OrangePill'));
+            $this->publishOnNostr($orangePill, $this->getText($orangePill));
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

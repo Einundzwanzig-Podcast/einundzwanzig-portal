@@ -24,7 +24,7 @@ class LibraryItemObserver
                 if ($libraryItem->whereDoesntHave('libraries',
                     fn($query) => $query->where('libraries.is_public', false))
                                 ->exists()) {
-                    $this->publishOnNostr($libraryItem, $this->getText('LibraryItem'));
+                    $this->publishOnNostr($libraryItem, $this->getText($libraryItem));
                 }
             }
         } catch (Exception $e) {
