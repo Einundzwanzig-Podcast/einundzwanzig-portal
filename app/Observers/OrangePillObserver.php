@@ -3,28 +3,29 @@
 namespace App\Observers;
 
 use App\Models\OrangePill;
-use App\Traits\TwitterTrait;
+use App\Traits\NostrTrait;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class OrangePillObserver
 {
-    use TwitterTrait;
+    use NostrTrait;
 
     /**
      * Handle the OrangePill "created" event.
      */
     public function created(OrangePill $orangePill): void
     {
-//        if (config('feeds.services.twitterAccountId')) {
-//            $this->setNewAccessToken(1);
-//
-//            $text = sprintf("Ein neues Bitcoin-Buch liegt nun in diesem öffentlichen Bücherschrank:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Education #Einundzwanzig #gesundesgeld",
-//                $orangePill->bookCase->title,
-//                $orangePill->bookCase->address,
-//                url()->route('bookCases.comment.bookcase', ['country' => 'de', 'bookCase' => $orangePill->bookCase]),
-//            );
-//
-//            $this->postTweet($text);
-//        }
+        try {
+            $text = sprintf("Ein neues Bitcoin-Buch liegt nun in diesem öffentlichen Bücherschrank:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Education #Einundzwanzig #gesundesgeld",
+                $orangePill->bookCase->title,
+                $orangePill->bookCase->address,
+                url()->route('bookCases.comment.bookcase', ['country' => 'de', 'bookCase' => $orangePill->bookCase]),
+            );
+            $this->publishOnNostr($orangePill, $text);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     /**

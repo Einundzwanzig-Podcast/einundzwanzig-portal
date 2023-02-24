@@ -3,20 +3,20 @@
 namespace App\Observers;
 
 use App\Models\CourseEvent;
-use App\Traits\TwitterTrait;
+use App\Traits\NostrTrait;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class CourseEventObserver
 {
-    use TwitterTrait;
+    use NostrTrait;
 
     /**
      * Handle the CourseEvent "created" event.
      */
     public function created(CourseEvent $courseEvent): void
     {
-        if (config('feeds.services.twitterAccountId')) {
-            $this->setNewAccessToken(1);
-
+        try {
             $text = sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n\n%s\n\n%s\n\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
                 $courseEvent->course->lecturer->name,
                 $courseEvent->course->name,
@@ -25,7 +25,9 @@ class CourseEventObserver
                     ['country' => 'de', 'lecturer' => $courseEvent->course->lecturer]),
             );
 
-            $this->postTweet($text);
+            $this->publishOnNostr($courseEvent, $text);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
         }
     }
 

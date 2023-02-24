@@ -3,8 +3,7 @@
 namespace App\Http\Livewire\News;
 
 use App\Models\LibraryItem;
-use App\Traits\TwitterTrait;
-use Illuminate\Support\Facades\Process;
+use App\Traits\NostrTrait;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use WireUi\Traits\Actions;
@@ -12,62 +11,7 @@ use WireUi\Traits\Actions;
 class ArticleOverview extends Component
 {
     use Actions;
-    use TwitterTrait;
-
-    public function tweet($id)
-    {
-        $libraryItem = LibraryItem::query()
-                                  ->with([
-                                      'lecturer',
-                                  ])
-                                  ->find($id);
-        if ($libraryItem->tweet) {
-            $this->notification()
-                 ->error(__('Article already tweeted'));
-
-            return;
-        }
-        $libraryItem->setStatus('published');
-        $libraryItemName = $libraryItem->name;
-        if ($libraryItem->lecturer->twitter_username && $libraryItem->type !== 'markdown_article') {
-            $libraryItemName .= ' von @'.$libraryItem->lecturer->twitter_username;
-        }
-        if (!$libraryItem->lecturer->twitter_username) {
-            $libraryItemName .= ' von '.$libraryItem->lecturer->name;
-        }
-
-        try {
-            if (config('feeds.services.twitterAccountId')) {
-                $this->setNewAccessToken(1);
-
-                if (!$libraryItem->approved) {
-                    $this->notification()
-                         ->error(__('Article not approved yet'));
-
-                    return;
-                }
-
-                $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
-                    $libraryItemName,
-                    url()->route('article.view',
-                        ['libraryItem' => $libraryItem->slug]),
-                );
-
-                $this->postTweet($text);
-
-                $libraryItem->tweet = true;
-                $libraryItem->save();
-
-                $this->notification()
-                     ->success(__('Article tweeted'));
-
-                $this->emit('$refresh');
-            }
-        } catch (\Exception $e) {
-            $this->notification()
-                 ->error(__('Error tweeting article', $e->getMessage()));
-        }
-    }
+    use NostrTrait;
 
     public function nostr($id)
     {
@@ -88,20 +32,14 @@ class ArticleOverview extends Component
             url()->route('article.view',
                 ['libraryItem' => $libraryItem->slug]),
         );
-
-        //noscl publish "Good morning!"
-        $result = Process::timeout(60 * 5)->run('noscl publish "'.$text.'"');
-
-        if ($result->successful()) {
-            $libraryItem->nostr = $result->output();
-            $libraryItem->save();
+        $result = $this->publishOnNostr($libraryItem, $text);
+        if ($result['success']) {
             $this->notification()
                  ->success(title: __('Published on Nostr'), description: $result->output());
-        }
-        if ($result->failed()) {
+        } else {
             $this->notification()
                  ->error(title: __('Failed'),
-                     description: 'Exit Code: '.$result->exitCode().' Reason: '.$result->errorOutput());
+                     description: 'Exit Code: '.$result['exitCode'].' Reason: '.$result['errorOutput']);
         }
     }
 

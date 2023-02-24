@@ -3,20 +3,20 @@
 namespace App\Observers;
 
 use App\Models\BitcoinEvent;
-use App\Traits\TwitterTrait;
+use App\Traits\NostrTrait;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class BitcoinEventObserver
 {
-    use TwitterTrait;
+    use NostrTrait;
 
     /**
      * Handle the BitcoinEvent "created" event.
      */
     public function created(BitcoinEvent $bitcoinEvent): void
     {
-        if (config('feeds.services.twitterAccountId')) {
-            $this->setNewAccessToken(1);
-
+        try {
             $text = sprintf("Ein neues Event wurde eingestellt:\n\n%s\n\n%s bis %s\n\n%s\n\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
                 $bitcoinEvent->title,
                 $bitcoinEvent->from->asDateTime(),
@@ -24,8 +24,9 @@ class BitcoinEventObserver
                 $bitcoinEvent->venue->name,
                 $bitcoinEvent->link,
             );
-
-            $this->postTweet($text);
+            $this->publishOnNostr($bitcoinEvent, $text);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
         }
     }
 
