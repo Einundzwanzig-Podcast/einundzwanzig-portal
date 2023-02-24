@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\Database\CleanupLoginKeys;
 use App\Console\Commands\Feed\ReadAndSyncPodcastFeeds;
+use App\Console\Commands\Nostr\PublishUnpublishedItems;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -29,6 +30,34 @@ class Kernel extends ConsoleKernel
                  ->dailyAt('04:30');
         $schedule->command(CleanupLoginKeys::class)
                  ->everyFifteenMinutes();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'LibraryItem',
+        ])
+                 ->everySixHours();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'BitcoinEvent',
+        ])
+                 ->hourly();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'CourseEvent',
+        ])
+                 ->everyTwoHours();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'MeetupEvent',
+        ])
+                 ->everyThreeHours();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'Meetup',
+        ])
+                 ->everyFourHours();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'Course',
+        ])
+                 ->everySixHours();
+        $schedule->command(PublishUnpublishedItems::class, [
+            '--model' => 'OrangePill',
+        ])
+                 ->everyFourHours();
     }
 
     /**

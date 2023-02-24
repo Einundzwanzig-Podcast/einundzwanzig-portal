@@ -26,6 +26,7 @@ class PublishUnpublishedItems extends Command
      */
     public function handle(): void
     {
+        config(['app.user-timezone' => 'Europe/Berlin']);
         $modelName = $this->option('model');
         $className = '\\App\Models\\'.$modelName;
         $model = $className::query()
@@ -33,6 +34,7 @@ class PublishUnpublishedItems extends Command
                            ->when($modelName === 'BitcoinEvent', fn($q) => $q->where('from', '>', now()))
                            ->when($modelName === 'CourseEvent', fn($q) => $q->where('from', '>', now()))
                            ->when($modelName === 'MeetupEvent', fn($q) => $q->where('start', '>', now()))
+                           ->when($modelName === 'LibraryItem', fn($q) => $q->where('type', '<>', 'markdown_article'))
                            ->first();
         $this->publishOnNostr($model, $this->getText($model));
     }
