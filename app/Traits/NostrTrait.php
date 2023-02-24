@@ -4,11 +4,11 @@ namespace App\Traits;
 
 use App\Models\BitcoinEvent;
 use App\Models\Course;
+use App\Models\CourseEvent;
 use App\Models\LibraryItem;
 use App\Models\Meetup;
 use App\Models\MeetupEvent;
 use App\Models\OrangePill;
-use App\Nova\CourseEvent;
 use Illuminate\Support\Facades\Process;
 
 trait NostrTrait
