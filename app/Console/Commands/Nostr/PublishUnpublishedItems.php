@@ -35,6 +35,7 @@ class PublishUnpublishedItems extends Command
                            ->when($modelName === 'CourseEvent', fn($q) => $q->where('from', '>', now()))
                            ->when($modelName === 'MeetupEvent', fn($q) => $q->where('start', '>', now()))
                            ->when($modelName === 'LibraryItem', fn($q) => $q->where('type', '<>', 'markdown_article'))
+                           ->orderByDesc('created_at')
                            ->first();
         $this->publishOnNostr($model, $this->getText($model));
     }
