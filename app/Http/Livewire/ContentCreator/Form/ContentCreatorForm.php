@@ -26,8 +26,8 @@ class ContentCreatorForm extends Component
 
             'lecturer.name'              => 'required',
             'lecturer.active'            => 'boolean',
-            'lecturer.subtitle'          => 'required',
-            'lecturer.intro'             => 'required',
+            'lecturer.subtitle'          => 'nullable|string',
+            'lecturer.intro'             => 'nullable|string',
             'lecturer.nostr'             => 'nullable|string',
             'lecturer.twitter_username'  => 'nullable|string',
             'lecturer.website'           => 'nullable|url',
