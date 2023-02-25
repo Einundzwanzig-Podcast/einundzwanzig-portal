@@ -57,7 +57,7 @@ trait NostrTrait
             if ($model->course->lecturer->nostr) {
                 $from .= '@'.$model->course->lecturer->nostr;
             } else {
-                $from .= $model->lecturer->name;
+                $from .= $model->course->lecturer->name;
             }
 
             return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
