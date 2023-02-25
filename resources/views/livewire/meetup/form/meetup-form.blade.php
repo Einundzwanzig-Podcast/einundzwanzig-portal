@@ -55,7 +55,7 @@
                             <div>
                                 {{ __('City/Area') }}
                             </div>
-                            <x-button xs :href="route('city.form')" target="_blank">
+                            <x-button xs :href="route('city.form')">
                                 <i class="fa fa-thin fa-plus"></i>
                                 {{ __('New City') }}
                             </x-button>

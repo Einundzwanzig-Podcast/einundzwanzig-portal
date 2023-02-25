@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware([])
@@ -9,7 +8,8 @@ Route::middleware([])
      ->name('welcome');
 
 Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
-     ->where('path', '.*')->name('img');
+     ->where('path', '.*')
+     ->name('img');
 
 Route::get('auth/auth47', \App\Http\Livewire\Auth\Auth47Component::class)
      ->name('auth.auth47');
@@ -49,6 +49,32 @@ Route::middleware([
      ->prefix('/content-creator')
      ->group(function () {
          Route::get('/form/{lecturer?}', \App\Http\Livewire\ContentCreator\Form\ContentCreatorForm::class)
+              ->name('form');
+     });
+
+/*
+ * Bitcoin Event
+ * */
+Route::middleware([
+    'auth',
+])
+     ->as('bitcoinEvent.')
+     ->prefix('/bitcoin-event')
+     ->group(function () {
+         Route::get('/form/{bitcoinEvent?}', \App\Http\Livewire\BitcoinEvent\Form\BitcoinEventForm::class)
+              ->name('form');
+     });
+
+/*
+ * Venue
+ * */
+Route::middleware([
+    'auth',
+])
+     ->as('venue.')
+     ->prefix('/venue')
+     ->group(function () {
+         Route::get('/form/{venue?}', \App\Http\Livewire\Venue\Form\VenueForm::class)
               ->name('form');
      });
 
@@ -100,12 +126,12 @@ Route::get('/auth/twitter/callback', function () {
     $twitterAccount = \App\Models\TwitterAccount::updateOrCreate([
         'twitter_id' => $twitterUser->id,
     ], [
-        'twitter_id' => $twitterUser->id,
+        'twitter_id'    => $twitterUser->id,
         'refresh_token' => $twitterUser->refreshToken,
-        'nickname' => $twitterUser->nickname,
-        'token' => $twitterUser->token,
-        'expires_in' => $twitterUser->expiresIn,
-        'data' => [],
+        'nickname'      => $twitterUser->nickname,
+        'token'         => $twitterUser->token,
+        'expires_in'    => $twitterUser->expiresIn,
+        'data'          => [],
     ]);
 
     echo 'Twitter account updated. We can now tweet on: '.$twitterUser->name;

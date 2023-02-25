@@ -23,12 +23,10 @@
                                 {{ __('Author') }}
                             </div>
                             <div x-data="{currentUrl: window.location.href}">
-                                <a x-bind:href="'/content-creator/form/?fromUrl='+currentUrl">
-                                    <x-button xs>
+                                    <x-button xs :href="route('contentCreator.form')">
                                         <i class="fa fa-thin fa-plus"></i>
                                         {{ __('Create new author') }}
                                     </x-button>
-                                </a>
                             </div>
                         </div>
                     </x-slot>

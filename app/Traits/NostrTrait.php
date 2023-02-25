@@ -15,6 +15,15 @@ trait NostrTrait
 {
     public function publishOnNostr($model, $text): array
     {
+        if (app()->environment('local')) {
+            return [
+                'success'     => true,
+                'output'      => 'local',
+                'exitCode'    => 0,
+                'errorOutput' => ''
+            ];
+        }
+
         //noscl publish "Good morning!"
         $result = Process::timeout(60 * 5)
                          ->run('noscl publish "'.$text.'"');

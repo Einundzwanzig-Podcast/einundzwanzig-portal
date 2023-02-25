@@ -33,24 +33,24 @@ class LibraryItemForm extends Component
     public ?string $fromUrl = '';
 
     protected $queryString = [
-        'fromUrl' => ['except' => ''],
+        'fromUrl'  => ['except' => ''],
         'lecturer' => ['except' => false],
     ];
 
     public function rules()
     {
         return [
-            'image' => [Rule::requiredIf(! $this->libraryItem->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
+            'image' => [Rule::requiredIf(!$this->libraryItem->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
             'library' => 'required',
 
             'selectedTags' => 'array|min:1',
 
-            'libraryItem.lecturer_id' => 'required',
-            'libraryItem.name' => 'required',
-            'libraryItem.type' => 'required',
-            'libraryItem.language_code' => 'required',
-            'libraryItem.value' => [
+            'libraryItem.lecturer_id'        => 'required',
+            'libraryItem.name'               => 'required',
+            'libraryItem.type'               => 'required',
+            'libraryItem.language_code'      => 'required',
+            'libraryItem.value'              => [
                 'required',
                 Rule::when(
                     $this->libraryItem->type !== LibraryItemType::MarkdownArticle
@@ -58,19 +58,19 @@ class LibraryItemForm extends Component
                     && $this->libraryItem->type !== LibraryItemType::DownloadableFile, ['url']
                 ),
             ],
-            'libraryItem.subtitle' => 'required',
-            'libraryItem.excerpt' => 'required',
+            'libraryItem.subtitle'           => 'required',
+            'libraryItem.excerpt'            => 'required',
             'libraryItem.main_image_caption' => 'required',
-            'libraryItem.read_time' => 'required',
-            'libraryItem.approved' => 'boolean',
+            'libraryItem.read_time'          => 'required',
+            'libraryItem.approved'           => 'boolean',
         ];
     }
 
     public function mount()
     {
-        if (! $this->libraryItem) {
+        if (!$this->libraryItem) {
             $this->libraryItem = new LibraryItem([
-                'approved' => true,
+                'approved'  => true,
                 'read_time' => 1,
             ]);
             if ($this->lecturer) {
@@ -81,13 +81,13 @@ class LibraryItemForm extends Component
             $this->selectedTags = $this->libraryItem->tags()
                                                     ->where('type', 'library_item')
                                                     ->get()
-                                                    ->map(fn ($tag) => $tag->name)
+                                                    ->map(fn($tag) => $tag->name)
                                                     ->toArray();
             $this->library = $this->libraryItem->libraries()
                                                ->first()
                 ->id;
         }
-        if (! $this->fromUrl) {
+        if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
         }
     }
@@ -123,7 +123,7 @@ class LibraryItemForm extends Component
     {
         $selectedTags = collect($this->selectedTags);
         if ($selectedTags->contains($name)) {
-            $selectedTags = $selectedTags->filter(fn ($tag) => $tag !== $name);
+            $selectedTags = $selectedTags->filter(fn($tag) => $tag !== $name);
         } else {
             $selectedTags->push($name);
         }
@@ -134,21 +134,21 @@ class LibraryItemForm extends Component
     public function render()
     {
         return view('livewire.library.form.library-item-form', [
-            'types' => Options::forEnum(LibraryItemType::class)
+            'types'     => Options::forEnum(LibraryItemType::class)
                                   ->filter(
-                                      fn ($type) => $type !== LibraryItemType::PodcastEpisode
+                                      fn($type) => $type !== LibraryItemType::PodcastEpisode
                                                    && $type !== LibraryItemType::MarkdownArticle
                                   )
                                   ->toArray(),
             'libraries' => Library::query()
                                   ->where('is_public', true)
                                   ->get()
-                                  ->map(fn ($library) => [
-                                      'id' => $library->id,
+                                  ->map(fn($library) => [
+                                      'id'   => $library->id,
                                       'name' => $library->name,
                                   ])
                                   ->toArray(),
-            'tags' => Tag::query()
+            'tags'      => Tag::query()
                               ->where('type', 'library_item')
                               ->get(),
         ]);

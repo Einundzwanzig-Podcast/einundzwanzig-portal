@@ -28,15 +28,6 @@
                         </div>
                     @endif
 
-                    @if(str(request()->route()->getName())->contains('bitcoinEvent.'))
-                        <div>
-                            <x-button xs amber href="/nova/resources/bitcoin-events" target="_blank">
-                                <i class="fa fa-thin fa-plus"></i>
-                                {{ __('Register event') }}
-                            </x-button>
-                        </div>
-                    @endif
-
                     <div>
                         <x-button xs amber href="{{ route('profile.show') }}"
                                   :active="request()->routeIs('profile.show')">
