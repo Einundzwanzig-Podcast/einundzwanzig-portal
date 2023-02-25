@@ -63,7 +63,7 @@ trait NostrTrait
             return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
                 $from,
                 $model->course->name,
-                str($model->course->description)->limit(80),
+                str($model->course->description)->toString(),
                 url()->route('school.landingPage.lecturer',
                     ['country' => 'de', 'lecturer' => $model->course->lecturer]),
             );
@@ -103,7 +103,7 @@ trait NostrTrait
             return sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
                 $from,
                 $model->name,
-                str($model->description)->limit(80),
+                str($model->description)->toString(),
                 url()->route('school.landingPage.lecturer',
                     ['country' => 'de', 'lecturer' => $model->lecturer]),
             );
