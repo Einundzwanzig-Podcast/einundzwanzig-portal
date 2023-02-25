@@ -5,6 +5,7 @@ namespace App\Http\Livewire\BookCase\Form;
 use App\Models\BookCase;
 use App\Models\Country;
 use App\Models\OrangePill;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -27,12 +28,13 @@ class OrangePillForm extends Component
     public function rules()
     {
         return [
-            'orangePill.book_case_id' => 'required',
-            'orangePill.user_id' => 'required',
-            'orangePill.amount' => 'required|numeric',
-            'orangePill.date' => 'required|date',
-            'orangePill.comment' => 'required|string',
-            'image' => 'image|max:8192', // 8MB Max
+            'orangePill.book_case_id' => ['required'],
+            'orangePill.user_id' => ['required'],
+            'orangePill.amount' => ['required', 'numeric'],
+            'orangePill.date' => ['required', 'date'],
+            'orangePill.comment' => ['required', 'string'],
+
+            'image' => ['max:8192', Rule::requiredIf(!$this->orangePill->id), 'image', 'nullable'], // 8MB Max
         ];
     }
 
@@ -54,10 +56,13 @@ class OrangePillForm extends Component
     {
         $this->validate();
         $this->orangePill->save();
-        $this->orangePill
-            ->addMedia($this->image)
-            ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
-            ->toMediaCollection('images');
+
+        if ($this->image) {
+            $this->orangePill
+                ->addMedia($this->image)
+                ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
+                ->toMediaCollection('images');
+        }
 
         return redirect($this->fromUrl);
     }

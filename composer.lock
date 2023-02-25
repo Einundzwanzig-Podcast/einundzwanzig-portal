@@ -1643,24 +1643,24 @@
         },
         {
             "name": "graham-campbell/result-type",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Result-Type.git",
-                "reference": "a878d45c1914464426dc94da61c9e1d36ae262a8"
+                "reference": "672eff8cf1d6fe1ef09ca0f89c4b287d6a3eb831"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/a878d45c1914464426dc94da61c9e1d36ae262a8",
-                "reference": "a878d45c1914464426dc94da61c9e1d36ae262a8",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/672eff8cf1d6fe1ef09ca0f89c4b287d6a3eb831",
+                "reference": "672eff8cf1d6fe1ef09ca0f89c4b287d6a3eb831",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
-                "phpoption/phpoption": "^1.9"
+                "phpoption/phpoption": "^1.9.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5.28 || ^9.5.21"
+                "phpunit/phpunit": "^8.5.32 || ^9.6.3 || ^10.0.12"
             },
             "type": "library",
             "autoload": {
@@ -1689,7 +1689,7 @@
             ],
             "support": {
                 "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
-                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.1.0"
+                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.1.1"
             },
             "funding": [
                 {
@@ -1701,7 +1701,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-30T15:56:11+00:00"
+            "time": "2023-02-25T20:23:15+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2811,16 +2811,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.1.3",
+            "version": "v10.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "12256504186326a9d02b2ab3b43a4031a59b52d1"
+                "reference": "57850ab537cf0554b5b616215079c761b98168c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/12256504186326a9d02b2ab3b43a4031a59b52d1",
-                "reference": "12256504186326a9d02b2ab3b43a4031a59b52d1",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/57850ab537cf0554b5b616215079c761b98168c8",
+                "reference": "57850ab537cf0554b5b616215079c761b98168c8",
                 "shasum": ""
             },
             "require": {
@@ -3007,7 +3007,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-02-22T14:38:35+00:00"
+            "time": "2023-02-24T09:57:13+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3214,17 +3214,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.22.0",
+            "version": "4.22.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "eb105414c6dedc3fda8e9ca62bdbe99dec80cd31"
+                "reference": "3daa3889d1bc6687f71282d8079ba174bc2283fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-eb105414c6dedc3fda8e9ca62bdbe99dec80cd31-zip-668949.zip",
-                "reference": "eb105414c6dedc3fda8e9ca62bdbe99dec80cd31",
-                "shasum": "2557303a3883136630a205c5ad858a7950515333"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-3daa3889d1bc6687f71282d8079ba174bc2283fe-zip-6b73aa.zip",
+                "reference": "3daa3889d1bc6687f71282d8079ba174bc2283fe",
+                "shasum": "6ae486d53c6aa00d16ef36395e1688b0e2e93b67"
             },
             "require": {
                 "brick/money": "^0.5.0|^0.6.0|^0.7.0|^0.8.0",
@@ -3243,7 +3243,6 @@
                 "symfony/process": "^5.4|^6.0"
             },
             "require-dev": {
-                "laravel/framework": "10.x-dev",
                 "laravel/nova-dusk-suite": "8.4.x-dev|9.4.x-dev|10.4.x-dev",
                 "laravel/pint": "^1.4",
                 "laravel/scout": "^9.8",
@@ -3318,9 +3317,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.22.0"
+                "source": "https://github.com/laravel/nova/tree/v4.22.1"
             },
-            "time": "2023-02-08T20:59:46+00:00"
+            "time": "2023-02-23T23:50:42+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -5211,16 +5210,16 @@
         },
         {
             "name": "nova-kit/nova-packages-tool",
-            "version": "v1.7.0",
+            "version": "v1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nova-kit/nova-packages-tool.git",
-                "reference": "8d57d348f3779d66a36cfc6c5316e31877a9e781"
+                "reference": "1e6317f9f370ae8e778f147092b8e288171e94e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nova-kit/nova-packages-tool/zipball/8d57d348f3779d66a36cfc6c5316e31877a9e781",
-                "reference": "8d57d348f3779d66a36cfc6c5316e31877a9e781",
+                "url": "https://api.github.com/repos/nova-kit/nova-packages-tool/zipball/1e6317f9f370ae8e778f147092b8e288171e94e2",
+                "reference": "1e6317f9f370ae8e778f147092b8e288171e94e2",
                 "shasum": ""
             },
             "require": {
@@ -5228,7 +5227,8 @@
                 "php": "^7.3 || ^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^6.24 || ^7.0 || ^8.0"
+                "orchestra/testbench": "^6.24 || ^7.0 || ^8.0",
+                "phpunit/phpunit": "^9.6"
             },
             "type": "library",
             "extra": {
@@ -5255,9 +5255,9 @@
             ],
             "description": "Tool for Laravel Nova Packages Development",
             "support": {
-                "source": "https://github.com/nova-kit/nova-packages-tool/tree/v1.7.0"
+                "source": "https://github.com/nova-kit/nova-packages-tool/tree/v1.7.1"
             },
-            "time": "2023-02-08T22:02:49+00:00"
+            "time": "2023-02-23T23:53:41+00:00"
         },
         {
             "name": "nova/start",
@@ -6268,24 +6268,24 @@
         },
         {
             "name": "phpoption/phpoption",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "dc5ff11e274a90cc1c743f66c9ad700ce50db9ab"
+                "reference": "dd3a383e599f49777d8b628dadbb90cae435b87e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/dc5ff11e274a90cc1c743f66c9ad700ce50db9ab",
-                "reference": "dc5ff11e274a90cc1c743f66c9ad700ce50db9ab",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/dd3a383e599f49777d8b628dadbb90cae435b87e",
+                "reference": "dd3a383e599f49777d8b628dadbb90cae435b87e",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8",
-                "phpunit/phpunit": "^8.5.28 || ^9.5.21"
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "phpunit/phpunit": "^8.5.32 || ^9.6.3 || ^10.0.12"
             },
             "type": "library",
             "extra": {
@@ -6327,7 +6327,7 @@
             ],
             "support": {
                 "issues": "https://github.com/schmittjoh/php-option/issues",
-                "source": "https://github.com/schmittjoh/php-option/tree/1.9.0"
+                "source": "https://github.com/schmittjoh/php-option/tree/1.9.1"
             },
             "funding": [
                 {
@@ -6339,7 +6339,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-30T15:51:26+00:00"
+            "time": "2023-02-25T19:38:58+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -14617,16 +14617,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "12.18.2",
+            "version": "12.18.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "fcf3750d1fc56c86649d9b70418dbe5309303957"
+                "reference": "b7f80e78e9555895f1a94db9a3bf311c98942bff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/fcf3750d1fc56c86649d9b70418dbe5309303957",
-                "reference": "fcf3750d1fc56c86649d9b70418dbe5309303957",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/b7f80e78e9555895f1a94db9a3bf311c98942bff",
+                "reference": "b7f80e78e9555895f1a94db9a3bf311c98942bff",
                 "shasum": ""
             },
             "require": {
@@ -14679,7 +14679,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-02-22T17:19:29+00:00"
+            "time": "2023-02-23T16:22:56+00:00"
         },
         {
             "name": "laravel-lang/publisher",
@@ -15247,23 +15247,23 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.24",
+            "version": "9.2.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "2cf940ebc6355a9d430462811b5aaa308b174bed"
+                "reference": "0e2b40518197a8c0d4b08bc34dfff1c99c508954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/2cf940ebc6355a9d430462811b5aaa308b174bed",
-                "reference": "2cf940ebc6355a9d430462811b5aaa308b174bed",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/0e2b40518197a8c0d4b08bc34dfff1c99c508954",
+                "reference": "0e2b40518197a8c0d4b08bc34dfff1c99c508954",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "nikic/php-parser": "^4.14",
+                "nikic/php-parser": "^4.15",
                 "php": ">=7.3",
                 "phpunit/php-file-iterator": "^3.0.3",
                 "phpunit/php-text-template": "^2.0.2",
@@ -15312,7 +15312,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.24"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.25"
             },
             "funding": [
                 {
@@ -15320,7 +15320,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-26T08:26:55+00:00"
+            "time": "2023-02-25T05:32:00+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

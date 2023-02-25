@@ -1,3 +1,4 @@
+import './components'
 import './bootstrap'
 
 import Alpine    from 'alpinejs'

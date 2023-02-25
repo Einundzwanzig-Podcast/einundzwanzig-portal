@@ -31,9 +31,9 @@
                     @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
                 </x-input.group>
 
-                <x-input.group :for="md5('lecturer.name')" :label="__('Title')">
+                <x-input.group :for="md5('lecturer.name')" :label="__('Name')">
                     <x-input autocomplete="off" wire:model.debounce="lecturer.name"
-                             :placeholder="__('Title')"/>
+                             :placeholder="__('Name')"/>
                 </x-input.group>
 
                 <x-input.group :for="md5('lecturer.subtitle')" :label="__('Subtitle')">

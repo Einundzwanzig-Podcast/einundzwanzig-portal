@@ -24,7 +24,11 @@ class ContentCreatorForm extends Component
         return [
             'image' => [Rule::requiredIf(!$this->lecturer->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
-            'lecturer.name'              => 'required',
+            'lecturer.name'              => [
+                'required',
+                Rule::unique('lecturers', 'name')
+                    ->ignore($this->lecturer),
+            ],
             'lecturer.active'            => 'boolean',
             'lecturer.subtitle'          => 'nullable|string',
             'lecturer.intro'             => 'nullable|string',

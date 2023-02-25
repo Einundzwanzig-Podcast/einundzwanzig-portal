@@ -77,19 +77,34 @@
             background-color: #F7931A !important;
         }
 
+        .leaflet-pane {
+            z-index: 0 !important;
+        }
+
         [x-cloak] {
             display: none !important;
         }
     </style>
 </head>
 <body class="font-sans antialiased bg-21gray dark">
+<x-notifications z-index="z-[99999]" blur="md" align="center"/>
+<x-dialog z-index="z-[99999]" blur="md" align="center" />
+@if(auth()->user())
+    {{-- HIGHSCORE-CHAT --}}
+    <livewire:chat.highscore-chat/>
+@endif
 <livewire:laravel-echo/>
-<x-notifications z-index="z-50" blur="md" align="center"/>
-<x-dialog z-index="z-50" blur="md" align="center" />
-{{ $slot }}
+<x-jet-banner/>
+<div class="min-h-screen">
+    <!-- Page Content -->
+    <main>
+        {{ $slot }}
+    </main>
+</div>
 @stack('modals')
 @livewireScripts
 <!-- ProductLift SDK - Include it only once -->
 <script defer src="https://bitcoin.productlift.dev/widgets_sdk"></script>
+<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 </body>
 </html>
