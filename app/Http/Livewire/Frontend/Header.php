@@ -114,8 +114,7 @@ class Header extends Component
                                              'user',
                                              'bookCase',
                                          ])
-                                         ->where('date', '>', now())
-                                         ->orderBy('date')
+                                         ->orderByDesc('date')
                                          ->take(2)
                                          ->get(),
             'cities'        => City::query()
