@@ -8,7 +8,7 @@
         <div>
 
             <div class="text-center text-2xl text-gray-800 mt-6">
-                Now log in with a new wallet ⚡
+                {{ __('Now log in with a new wallet') }} ⚡
             </div>
 
             <div class="rounded-md bg-red-50 p-4 my-2">

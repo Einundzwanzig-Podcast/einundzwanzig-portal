@@ -570,7 +570,6 @@
     "Laravel Nova": "",
     "Laravel Nova :version": "",
     "Are you sure you want to ' + mode + ' the selected resources?": "",
-    ":name's Avatar": "",
     "ID": "",
     "Action Name": "",
     "Action Initiated By": "",
@@ -780,5 +779,8 @@
     "Caution": "Vorsicht",
     "You overwrite your user's public key and then have to log in with the wallet, which you now use to scan or log in.": "Du überschreibst deinen öffentlichen Schlüssel und musst dich dann mit der Wallet, die du jetzt zum Scannen oder Einloggen verwendest, anmelden.",
     "You are logged in as:": "Du bist angemeldet als:",
-    "Change lightning wallet\/pubkey": "Wechsel Lightning Wallet\/Public Key"
+    "Change lightning wallet\/pubkey": "Wechsel Lightning Wallet\/Public Key",
+    "Now log in with a new wallet": "Logge dich jetzt mit einer neuen Wallet ein",
+    "You overwrite your user\\'s public key and then have to log in with the wallet, which you now use to scan or log in.": "",
+    ":name\\'s Avatar": ""
 }
