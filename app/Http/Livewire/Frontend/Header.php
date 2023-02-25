@@ -98,7 +98,7 @@ class Header extends Component
                                               'lecturer',
                                           ])
                                           ->where('type', '<>', 'markdown_article')
-                                          ->orderBy('created_at')
+                                          ->orderByDesc('created_at')
                                           ->take(2)
                                           ->get(),
             'bitcoinEvents' => BitcoinEvent::query()
