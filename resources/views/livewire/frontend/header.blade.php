@@ -206,10 +206,9 @@
                                             <time datetime="2023-03-16" class="text-sm leading-6 text-gray-600">
                                                 {{ $item->meetup->users->count() }} {{ __('Participants') }}
                                             </time>
-                                            <div
-                                                class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 text-xs font-medium text-gray-600 hover:bg-gray-100">
-                                                {{ $item->meetup->city->country->name }}
-                                            </div>
+                                            <time datetime="2023-03-16" class="text-sm leading-6 text-gray-600">
+                                                {{ $item->start->asDateTime() }}
+                                            </time>
                                         </div>
                                         <h4 class="mt-2 text-sm font-semibold leading-6 text-gray-900">
                                             <a href="{{ route('meetup.event.landing', ['country' => $item->meetup->city->country, 'meetupEvent' => $item]) }}">
