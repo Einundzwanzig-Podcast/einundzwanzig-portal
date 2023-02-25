@@ -103,9 +103,17 @@ Route::middleware([])
      ->get('/lecturer-material/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
      ->name('lecturerMaterial.view');
 
-Route::middleware([])
+Route::middleware([
+    'auth',
+])
      ->get('/my-meetups', \App\Http\Livewire\Profile\Meetups::class)
      ->name('profile.meetups');
+
+Route::middleware([
+    'auth',
+])
+     ->get('/my-lightning-wallet', \App\Http\Livewire\Wallet\LightningWallet::class)
+     ->name('profile.wallet');
 
 Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
      ->name('auth.ln');

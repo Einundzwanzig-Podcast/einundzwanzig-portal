@@ -95,21 +95,32 @@ Route::middleware([])
 Route::get('/lnurl-auth-callback', function (Request $request) {
     if (lnurl\auth($request->k1, $request->sig, $request->key)) {
         // find User by $wallet_public_key
-        $user = User::query()
-                    ->whereBlind('public_key', 'public_key_index', $request->key)
-                    ->first();
+        if ($user = User::query()
+                        ->where('change', $request->k1)
+                        ->where('change_time', '>', now()->subMinutes(5))
+                        ->first()) {
+            $user->public_key = $request->key;
+            $user->change = null;
+            $user->change_time = null;
+            $user->save();
+        } else {
+            $user = User::query()
+                        ->whereBlind('public_key', 'public_key_index', $request->key)
+                        ->first();
+        }
         if (!$user) {
+            $fakeName = str()->random(10);
             // create User
             $user = User::create([
                 'public_key'  => $request->key,
                 'is_lecturer' => true,
-                'name'        => $request->key,
+                'name'        => $fakeName,
                 'email'       => str($request->key)->substr(-12).'@portal.einundzwanzig.space',
             ]);
             $user->ownedTeams()
                  ->save(Team::forceCreate([
                      'user_id'       => $user->id,
-                     'name'          => $request->key."'s Team",
+                     'name'          => $fakeName."'s Team",
                      'personal_team' => true,
                  ]));
         }

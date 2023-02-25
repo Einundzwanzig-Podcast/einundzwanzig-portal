@@ -35,6 +35,14 @@
                             {{ __('My profile') }}
                         </x-button>
                     </div>
+
+                    <div>
+                        <x-button xs amber href="{{ route('profile.wallet') }}"
+                                  :active="request()->routeIs('profile.wallet')">
+                            <i class="fa fa-thin fa-user"></i>
+                            {{ __('Change lightning wallet/pubkey') }}
+                        </x-button>
+                    </div>
                 </div>
             </div>
 

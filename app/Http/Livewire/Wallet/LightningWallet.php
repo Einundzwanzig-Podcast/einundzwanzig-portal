@@ -1,32 +1,29 @@
 <?php
 
-namespace App\Http\Livewire\Auth;
+namespace App\Http\Livewire\Wallet;
 
 use App\Models\LoginKey;
-use App\Models\User;
-use App\Notifications\ModelCreatedNotification;
 use eza\lnurl;
 use Livewire\Component;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class LNUrlAuth extends Component
+class LightningWallet extends Component
 {
     public ?string $k1 = null;
+    public ?string $url = null;
+    public ?string $lnurl = null;
+    public ?string $qrCode = null;
 
-    protected ?string $url = null;
+    public bool $confirmed = false;
 
-    protected ?string $lnurl = null;
-
-    protected ?string $qrCode = null;
-
-    public function switchToEmailLogin()
+    public function rules()
     {
-        return to_route('login');
-    }
-
-    public function switchToEmailSignup()
-    {
-        return to_route('register');
+        return [
+            'k1'     => 'required',
+            'url'    => 'required',
+            'lnurl'  => 'required',
+            'qrCode' => 'required',
+        ];
     }
 
     public function mount()
@@ -39,10 +36,19 @@ class LNUrlAuth extends Component
         }
         $this->lnurl = lnurl\encodeUrl($this->url);
         $this->qrCode = base64_encode(QrCode::format('png')
-                              ->size(300)
-                              ->merge('/public/android-chrome-192x192.png', .3)
-                              ->errorCorrection('H')
-                              ->generate($this->lnurl));
+                                            ->size(300)
+                                            ->merge('/public/android-chrome-192x192.png', .3)
+                                            ->errorCorrection('H')
+                                            ->generate($this->lnurl));
+    }
+
+    public function confirm()
+    {
+        $user = auth()->user();
+        $user->change = $this->k1;
+        $user->change_time = now();
+        $user->save();
+        $this->confirmed = true;
     }
 
     public function checkAuth()
@@ -54,20 +60,12 @@ class LNUrlAuth extends Component
         // you should also restrict this 👆🏻 by time, and find only the $k1 that were created in the last 5 minutes
 
         if ($loginKey) {
-            $user = User::find($loginKey->user_id);
-
-            \App\Models\User::find(1)
-                            ->notify(new ModelCreatedNotification($user, 'users'));
-            auth()->login($user);
-
             return to_route('welcome');
         }
-
-        return true;
     }
 
     public function render()
     {
-        return view('livewire.auth.ln-url-auth')->layout('layouts.guest');
+        return view('livewire.wallet.lightning-wallet');
     }
 }

@@ -728,5 +728,17 @@
     "Are your sure?": "",
     "Nostr public key": "",
     "Amount": "",
-    "City\/Area": ""
+    "City\/Area": "",
+    "Published on Nostr": "",
+    "Public Key": "",
+    "Bitcoin Event": "",
+    "Create venue": "",
+    "starts with npub...": "",
+    "Are you sure you want to publish this article on Nostr?": "",
+    "Publish on Nostr": "",
+    "nostr": "",
+    "Caution": "",
+    "You overwrite your user\\'s public key and then have to log in with the wallet, which you now use to scan or log in.": "",
+    "You are logged in as:": "",
+    "Change lightning wallet\/pubkey": ""
 }
