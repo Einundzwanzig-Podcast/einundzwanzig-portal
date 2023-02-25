@@ -45,8 +45,8 @@ trait NostrTrait
             );
         }
         if ($model instanceof CourseEvent) {
-            if ($model->lecturer->nostr) {
-                $from .= '@'.$model->lecturer->nostr;
+            if ($model->course->lecturer->nostr) {
+                $from .= '@'.$model->course->lecturer->nostr;
             } else {
                 $from .= $model->lecturer->name;
             }
