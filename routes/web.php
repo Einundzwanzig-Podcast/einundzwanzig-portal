@@ -112,7 +112,7 @@ Route::middleware([
 Route::middleware([
     'auth',
 ])
-     ->get('/my-lightning-wallet', \App\Http\Livewire\Wallet\LightningWallet::class)
+     ->get('/change-lightning-wallet', \App\Http\Livewire\Wallet\LightningWallet::class)
      ->name('profile.wallet');
 
 Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
