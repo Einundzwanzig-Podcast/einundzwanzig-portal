@@ -141,7 +141,6 @@ class LibraryItemForm extends Component
                                   )
                                   ->toArray(),
             'libraries' => Library::query()
-                                  ->where('is_public', true)
                                   ->get()
                                   ->map(fn($library) => [
                                       'id'   => $library->id,
