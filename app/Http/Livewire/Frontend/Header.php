@@ -23,20 +23,26 @@ class Header extends Component
 
     public string $l = 'de';
 
+    public string $timezone;
+
     public $bgColor = 'bg-21gray';
 
     protected $queryString = ['l'];
 
+    protected $listeners = ['refresh' => '$refresh'];
+
     public function rules()
     {
         return [
-            'c' => 'required',
-            'l' => 'required',
+            'c'        => 'required',
+            'l'        => 'required',
+            'timezone' => 'required',
         ];
     }
 
     public function mount()
     {
+        $this->timezone = config('app.user-timezone');
         $this->l = Cookie::get('lang') ?: config('app.locale');
         if (!$this->country) {
             $this->country = Country::query()
@@ -45,6 +51,15 @@ class Header extends Component
         }
         $this->currentRouteName = Route::currentRouteName();
         $this->c = $this->country->code;
+    }
+
+    public function updatedTimezone($value)
+    {
+        auth()
+            ->user()
+            ->update(['timezone' => $value]);
+
+        return redirect(request()->header('Referer'));
     }
 
     public function updatedC($value)

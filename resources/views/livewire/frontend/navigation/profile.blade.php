@@ -57,23 +57,6 @@
             <div class="grid grid-cols-1 gap-10 sm:gap-8 lg:grid-cols-2">
                 <h3 class="sr-only">Recent posts</h3>
 
-                <x-native-select
-                    label="{{ __('Change country') }}"
-                    wire:model="c"
-                    option-label="name"
-                    option-value="code"
-                    :options="$countries"
-                />
-                <x-select
-                    label="{{ __('Change language') }}"
-                    wire:model="l"
-                    :clearable="false"
-                    :searchable="true"
-                    :async-data="route('api.languages.index')"
-                    option-label="name"
-                    option-value="language"
-                />
-
                 {{--@foreach($orangePills as $item)
                     <article
                         class="relative isolate flex max-w-2xl flex-col gap-x-8 gap-y-6 sm:flex-row sm:items-start lg:flex-col lg:items-stretch">

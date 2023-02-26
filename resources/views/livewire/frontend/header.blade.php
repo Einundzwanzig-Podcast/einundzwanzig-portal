@@ -35,6 +35,8 @@
                 @include('livewire.frontend.navigation.profile')
             @endauth
 
+            @include('livewire.frontend.navigation.settings')
+
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             @if(!auth()->check())
