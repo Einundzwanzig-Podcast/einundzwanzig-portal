@@ -2,19 +2,8 @@
     {{-- HEADER --}}
     <livewire:frontend.header :country="$country"/>
     {{-- MAIN --}}
-    <section class="w-full mb-12">
+    <section class="w-full mb-4">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row">
-            <div class="flex flex-col">
-                <h1 class="mb-6 text-5xl font-extrabold leading-none tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
-                    {{ __('Bitcoiner') }} <span
-                        class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Meetups') }}</span><br
-                        class="lg:block hidden">
-                    {{ __('Plebs together strong 💪') }}
-                </h1>
-                <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
-                    {{ __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!') }}
-                </p>
-            </div>
             <div
                 wire:ignore
                 class="w-full flex justify-center"
@@ -54,8 +43,18 @@
         </div>
     </section>
 
-    <div class="w-full py-24">
+    <div class="w-full pb-24">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="min-w-0 flex-1">
+                    <h2 class="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight">
+                        {{ __('Meetups') }}
+                    </h2>
+                </div>
+                <div class="mt-4 flex md:mt-0 md:ml-4">
+                    {{----}}
+                </div>
+            </div>
             <livewire:tables.meetup-table :country="$country->code"/>
         </div>
     </div>

@@ -770,7 +770,7 @@
     "City\/Area": "Stadt\/Gegend",
     "Published on Nostr": "Veröffentlicht auf Nostr",
     "Public Key": "Public Key",
-    "Bitcoin Event": "",
+    "Bitcoin Event": "Bitcoin Event",
     "Create venue": "Erstelle Veranstaltungsort",
     "starts with npub...": "startet mit npub...",
     "Are you sure you want to publish this article on Nostr?": "Bitte bestätige, dass du diesen Artikel auf Nostr veröffentlichen möchtest.",
@@ -782,5 +782,8 @@
     "Change lightning wallet\/pubkey": "Wechsel Lightning Wallet\/Public Key",
     "Now log in with a new wallet": "Logge dich jetzt mit einer neuen Wallet ein",
     "You overwrite your user\\'s public key and then have to log in with the wallet, which you now use to scan or log in.": "",
-    ":name\\'s Avatar": ""
+    ":name\\'s Avatar": "",
+    "Manage": "Verwalten",
+    "Manage content creators": "Verwalte Content Creator",
+    "Lecturers\/Content Creators": "Dozenten\/Content Creator"
 }

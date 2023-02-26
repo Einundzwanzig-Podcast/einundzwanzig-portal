@@ -779,5 +779,9 @@
     "You overwrite your user\\'s public key and then have to log in with the wallet, which you now use to scan or log in.": "",
     "You are logged in as:": "",
     "Change lightning wallet\/pubkey": "",
-    "Now log in with a new wallet": ""
+    "Now log in with a new wallet": "",
+    "Manage": "",
+    "Manage content creators": "",
+    "Participants": "",
+    "Lecturers\/Content Creators": ""
 }
