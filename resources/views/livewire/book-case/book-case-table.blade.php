@@ -4,35 +4,14 @@
     {{-- MAIN --}}
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10" id="table">
-            <div class="flex items-start">
-                <div class="w-1/2">
-                    <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
-                        Bitcoin <span
-                            class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200 lg:inline">{{ __('Bookcases') }}</span>
-                    </h1>
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="min-w-0 flex-1">
+                    <h2 class="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight">
+                        {{ __('Bookcases') }}
+                    </h2>
                 </div>
-
-                <div class="w-1/2">
-                    <p class="px-0 mb-6 text-lg text-gray-600 md:text-xl">
-                        {{ __('Search out a public bookcase') }}
-                    </p>
-                    <div class="rounded" wire:ignore>
-                        @if($markers[0] ?? false)
-                            <style>
-                                .gnw-map-service {
-                                    z-index: 0 !important;
-                                }
-                            </style>
-                            <div>
-                                @map([
-                                    'lat' => $markers[0]['lat'],
-                                    'lng' => $markers[0]['lng'],
-                                    'zoom' => 12,
-                                    'markers' => $markers
-                                ])
-                            </div>
-                        @endif
-                    </div>
+                <div class="mt-4 flex md:mt-0 md:ml-4">
+                    {{----}}
                 </div>
             </div>
 
