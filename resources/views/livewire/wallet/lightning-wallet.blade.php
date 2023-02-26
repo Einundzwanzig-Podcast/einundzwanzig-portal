@@ -38,6 +38,10 @@
                         <i class="fa-thin fa-check"></i>
                         {{ __('Confirm') }}
                     </x-button>
+                    <x-button secondary href="/">
+                        <i class="fa-thin fa-times"></i>
+                        {{ __('Cancel') }}
+                    </x-button>
                 </div>
             @endif
 
