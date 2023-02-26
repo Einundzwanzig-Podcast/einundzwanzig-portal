@@ -3,6 +3,12 @@
     <livewire:frontend.header :country="$country"/>
     <div class="max-w-screen-2xl mx-auto">
         <div class="w-full mb-6 sm:my-6">
+            <div class="flex w-full justify-center mb-4">
+                <x-button primary :href="route('library.libraryItem.form', ['country' => $country])">
+                    <i class="fa-thin fa-plus"></i>
+                    {{ __('Submit contents') }}
+                </x-button>
+            </div>
             <x-input class="sm:min-w-[900px]" placeholder="Suche..." wire:model.debounce="search">
                 <x-slot name="append">
                     <div class="absolute inset-y-0 right-0 flex items-center p-0.5">

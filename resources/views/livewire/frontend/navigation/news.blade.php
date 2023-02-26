@@ -89,9 +89,6 @@
                                     {{ $item->name }}
                                 </a>
                             </h4>
-                            <p class="mt-2 text-sm leading-6 text-gray-600 truncate">
-                                {{ $item->excerpt }}
-                            </p>
                         </div>
                     </article>
                 @endforeach
