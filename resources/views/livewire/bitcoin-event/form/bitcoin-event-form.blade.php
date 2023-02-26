@@ -7,14 +7,16 @@
         <div class="pb-5 flex flex-row justify-between">
             <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Bitcoin Event') }}</h3>
             <div class="flex flex-row space-x-2 items-center">
-                <div>
-                    @if($bitcoinEvent->id)
-                        <x-button negative wire:click="deleteMe">
-                            <i class="fa fa-thin fa-trash"></i>
-                            {{ __('Delete') }}
-                        </x-button>
-                    @endif
-                </div>
+                @can('delete', $bitcoinEvent)
+                    <div>
+                        @if($bitcoinEvent->id)
+                            <x-button negative wire:click="deleteMe">
+                                <i class="fa fa-thin fa-trash"></i>
+                                {{ __('Delete') }}
+                            </x-button>
+                        @endif
+                    </div>
+                @endcan
                 <div>
                     <x-button :href="$fromUrl">
                         <i class="fa fa-thin fa-arrow-left"></i>

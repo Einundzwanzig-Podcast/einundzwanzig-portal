@@ -57,7 +57,7 @@ class BitcoinEventPolicy extends BasePolicy
      */
     public function delete(User $user, BitcoinEvent $bitcoinEvent): bool
     {
-        return false;
+        return $bitcoinEvent->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
     /**
