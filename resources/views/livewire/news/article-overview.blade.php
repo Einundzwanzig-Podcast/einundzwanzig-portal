@@ -97,7 +97,7 @@
                                                                         accept: {label: '{{ __('Yes') }}',
                                                                         execute: () => $wire.nostr({{ $libraryItem->id }})},
                                                                         reject: {label: '{{ __('No, cancel') }}'},
-                                                                    })"
+                                                                      })"
                                                             >
                                                                 <i class="fa fa-thin fa-message-plus"></i>
                                                                 {{ __('Publish on Nostr') }}

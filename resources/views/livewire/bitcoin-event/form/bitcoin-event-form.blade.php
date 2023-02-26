@@ -8,14 +8,22 @@
             <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Bitcoin Event') }}</h3>
             <div class="flex flex-row space-x-2 items-center">
                 @can('delete', $bitcoinEvent)
-                    <div>
-                        @if($bitcoinEvent->id)
-                            <x-button negative wire:click="deleteMe">
+                    @if($bitcoinEvent->id)
+                        <div x-data>
+                            <x-button
+                                x-on:click="$wireui.confirmDialog({
+                                    icon: 'warning',
+                                    title: '{{ __('Are you sure you want to delete this Bitcoin event?') }}',
+                                    accept: {label: '{{ __('Yes') }}',
+                                    execute: () => $wire.deleteMe()},
+                                    reject: {label: '{{ __('No, cancel') }}'},
+                                })"
+                                negative>
                                 <i class="fa fa-thin fa-trash"></i>
                                 {{ __('Delete') }}
                             </x-button>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                 @endcan
                 <div>
                     <x-button :href="$fromUrl">

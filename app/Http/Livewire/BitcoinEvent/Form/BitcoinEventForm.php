@@ -62,6 +62,13 @@ class BitcoinEventForm extends Component
         }
     }
 
+    public function deleteMe()
+    {
+        $this->bitcoinEvent->delete();
+
+        return redirect($this->fromUrl);
+    }
+
     public function submit()
     {
         $this->validate();
