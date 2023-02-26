@@ -53,7 +53,7 @@
         </div>
     </nav>
     <div x-description="Mobile menu, show/hide based on menu open state." class="lg:hidden" x-ref="dialog" x-show="open"
-         aria-modal="true" style="display: none;">
+         aria-modal="true" style="display: none;" x-cloak>
         <div x-description="Background backdrop, show/hide based on slide-over state." class="fixed inset-0 z-10"></div>
         <div
             class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
@@ -92,7 +92,7 @@
                             </button>
                             <div class="mt-2 space-y-2"
                                  x-description="'Product' sub-menu, show/hide based on menu state." id="disclosure-1"
-                                 x-show="open" style="display: none;">
+                                 x-show="open" style="display: none;" x-cloak>
                                 <a href="{{ route('article.overview') }}"
                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('News Article') }}</a>
                                 <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
@@ -117,7 +117,7 @@
                             </button>
                             <div class="mt-2 space-y-2"
                                  x-description="'Product' sub-menu, show/hide based on menu state." id="disclosure-1"
-                                 x-show="open" style="display: none;">
+                                 x-show="open" style="display: none;" x-cloak>
                                 <a href="{{ route('meetup.world', ['country' => $country]) }}"
                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('World map') }}</a>
                                 <a href="{{ route('meetup.table.meetup', ['country' => $country]) }}"
@@ -144,7 +144,7 @@
                             </button>
                             <div class="mt-2 space-y-2"
                                  x-description="'Product' sub-menu, show/hide based on menu state." id="disclosure-1"
-                                 x-show="open" style="display: none;">
+                                 x-show="open" style="display: none;" x-cloak>
                                 <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => $country]) }}"
                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Events') }}</a>
                             </div>
@@ -167,7 +167,7 @@
                             </button>
                             <div class="mt-2 space-y-2"
                                  x-description="'Product' sub-menu, show/hide based on menu state." id="disclosure-1"
-                                 x-show="open" style="display: none;">
+                                 x-show="open" style="display: none;" x-cloak>
                                 <a href="{{ route('school.table.city', ['country' => $country]) }}"
                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('City search') }}</a>
                                 <a href="{{ route('school.table.course', ['country' => $country]) }}"
@@ -198,7 +198,7 @@
                             </button>
                             <div class="mt-2 space-y-2"
                                  x-description="'Product' sub-menu, show/hide based on menu state." id="disclosure-1"
-                                 x-show="open" style="display: none;">
+                                 x-show="open" style="display: none;" x-cloak>
                                 <a href="{{ route('library.table.libraryItems', ['country' => $country]) }}"
                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Search') }}</a>
                                 @auth
@@ -225,7 +225,7 @@
                             </button>
                             <div class="mt-2 space-y-2"
                                  x-description="'Product' sub-menu, show/hide based on menu state." id="disclosure-1"
-                                 x-show="open" style="display: none;">
+                                 x-show="open" style="display: none;" x-cloak>
                                 <a href="{{ route('bookCases.table.city', ['country' => $country]) }}"
                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('City search') }}</a>
                                 <a href="{{ route('bookCases.table.bookcases', ['country' => $country]) }}"
@@ -258,7 +258,7 @@
                                 <div class="mt-2 space-y-2"
                                      x-description="'Product' sub-menu, show/hide based on menu state."
                                      id="disclosure-1"
-                                     x-show="open" style="display: none;">
+                                     x-show="open" style="display: none;" x-cloak>
                                     <a href="{{ route('profile.show') }}"
                                        class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('My profile') }}</a>
                                     <a href="{{ route('profile.wallet') }}"

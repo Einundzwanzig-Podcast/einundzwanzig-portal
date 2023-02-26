@@ -6,14 +6,14 @@
         <div class="pb-5 flex flex-row justify-between">
             <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Venue') }}</h3>
             <div class="flex flex-row space-x-2 items-center">
-                <div>
+                {{--<div>
                     @if($venue->id)
                         <x-button negative wire:click="deleteMe">
                             <i class="fa fa-thin fa-trash"></i>
                             {{ __('Delete') }}
                         </x-button>
                     @endif
-                </div>
+                </div>--}}
                 <div>
                     <x-button :href="$fromUrl">
                         <i class="fa fa-thin fa-arrow-left"></i>

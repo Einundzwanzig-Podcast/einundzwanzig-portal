@@ -21,7 +21,7 @@
          x-transition:leave-end="opacity-0 -translate-y-1"
          x-description="'Product' flyout menu, show/hide based on flyout menu state."
          class="absolute inset-x-0 top-0 -z-10 bg-white pt-16 shadow-lg ring-1 ring-gray-900/5"
-         x-ref="panel" @click.away="open = false">
+         x-ref="panel" @click.away="open = false" x-cloak>
         <div
             class="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 gap-x-8 py-10 px-6 lg:grid-cols-2 lg:px-8">
             <div class="grid grid-cols-2 gap-x-6 sm:gap-x-8">

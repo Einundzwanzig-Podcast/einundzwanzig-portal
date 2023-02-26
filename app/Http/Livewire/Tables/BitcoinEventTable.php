@@ -21,6 +21,7 @@ class BitcoinEventTable extends DataTableComponent
              ->setAdditionalSelects([
                  'bitcoin_events.id',
                  'bitcoin_events.venue_id',
+                 'bitcoin_events.created_by',
              ])
              ->setThAttributes(function (Column $column) {
                  return [
