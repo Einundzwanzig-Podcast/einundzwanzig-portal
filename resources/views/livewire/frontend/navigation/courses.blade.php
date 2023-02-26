@@ -89,6 +89,12 @@
                                 {{ __('Register course date') }}
                             </a>
 
+                            <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                {{ __('Manage lecturers') }}
+                            </a>
+
                         </div>
                     </div>
                 </div>
