@@ -103,7 +103,8 @@
                                                                 {{ __('Publish on Nostr') }}
                                                             </x-button>
                                                         </div>
-                                                    @else
+                                                    @endif
+                                                    @if($libraryItem->approved && $libraryItem->nostr_status)
                                                         <div>
                                                             <x-badge purple>
                                                                 <i class="fa fa-thin fa-check"></i>
