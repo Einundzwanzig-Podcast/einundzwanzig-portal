@@ -98,14 +98,13 @@
         </div>
     @endif
     @if(auth()->check() && auth()->user()->meetups->contains($row))
-        <a x-bind:href="'/{{ $country->code ?? 'de' }}/meetup/meetup/form/{{ $row->id }}?fromUrl='+currentUrl">
-            <x-button
-                xs
-                amber
-            >
-                <i class="fa fa-thin fa-edit mr-2"></i>
-                {{ __('Edit') }}
-            </x-button>
-        </a>
+        <x-button
+            :href="route('meetup.meetup.form', ['meetup' => $row->id, 'country' => $country])"
+            xs
+            amber
+        >
+            <i class="fa fa-thin fa-edit mr-2"></i>
+            {{ __('Edit') }}
+        </x-button>
     @endif
 </div>

@@ -57,6 +57,9 @@ class MeetupForm extends Component
         ) {
             abort(403);
         }
+        if (!$this->fromUrl) {
+            $this->fromUrl = url()->previous();
+        }
     }
 
     public function submit()
@@ -66,6 +69,7 @@ class MeetupForm extends Component
 
         if ($this->image) {
             $this->meetup->addMedia($this->image)
+                         ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
                          ->toMediaCollection('logo');
         }
 

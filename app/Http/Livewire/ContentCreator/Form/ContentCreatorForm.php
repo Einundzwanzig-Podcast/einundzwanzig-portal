@@ -62,10 +62,11 @@ class ContentCreatorForm extends Component
 
         if ($this->image) {
             $this->lecturer->addMedia($this->image)
+                           ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
                            ->toMediaCollection('avatar');
         }
 
-        return redirect($this->fromUrl ?? url()->route('welcome'));
+        return redirect($this->fromUrl);
     }
 
     public function render()

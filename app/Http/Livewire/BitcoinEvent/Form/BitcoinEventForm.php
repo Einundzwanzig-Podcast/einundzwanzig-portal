@@ -47,7 +47,7 @@ class BitcoinEventForm extends Component
         if (!$this->bitcoinEvent) {
             $this->bitcoinEvent = new BitcoinEvent(
                 [
-                    'description' => '',
+                    'description'    => '',
                     'show_worldwide' => true,
                 ]
             );
@@ -76,6 +76,7 @@ class BitcoinEventForm extends Component
 
         if ($this->image) {
             $this->bitcoinEvent->addMedia($this->image)
+                               ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
                                ->toMediaCollection('logo');
         }
 

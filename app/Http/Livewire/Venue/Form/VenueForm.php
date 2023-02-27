@@ -74,6 +74,7 @@ class VenueForm extends Component
         if ($this->images && count($this->images) > 0) {
             foreach ($this->images as $item) {
                 $this->venue->addMedia($item)
+                            ->usingFileName(md5($item->getClientOriginalName()).'.'.$item->getClientOriginalExtension())
                             ->toMediaCollection('images');
             }
         }

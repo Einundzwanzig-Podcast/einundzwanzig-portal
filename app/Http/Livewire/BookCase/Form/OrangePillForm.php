@@ -50,6 +50,9 @@ class OrangePillForm extends Component
         } elseif ($this->orangePill->user_id !== auth()->id()) {
             abort(403);
         }
+        if (!$this->fromUrl) {
+            $this->fromUrl = url()->previous();
+        }
     }
 
     public function save()

@@ -72,7 +72,7 @@ class LibraryItemForm extends Component
             $this->libraryItem = new LibraryItem([
                 'approved'  => true,
                 'read_time' => 1,
-                'value' => '',
+                'value'     => '',
             ]);
             if ($this->lecturer) {
                 $this->library = Library::query()
@@ -106,11 +106,13 @@ class LibraryItemForm extends Component
 
         if ($this->image) {
             $this->libraryItem->addMedia($this->image)
+                              ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
                               ->toMediaCollection('main');
         }
 
         if ($this->file) {
             $this->libraryItem->addMedia($this->file)
+                              ->usingFileName(md5($this->file->getClientOriginalName()).'.'.$this->file->getClientOriginalExtension())
                               ->toMediaCollection('single_file');
         }
 

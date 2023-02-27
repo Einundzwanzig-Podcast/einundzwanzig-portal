@@ -26,7 +26,7 @@
                                 <div>
                                     {{ __('Author') }}
                                 </div>
-                                <div x-data="{currentUrl: window.location.href}">
+                                <div>
                                     <x-button xs :href="route('contentCreator.form')">
                                         <i class="fa fa-thin fa-plus"></i>
                                         {{ __('Create new author') }}

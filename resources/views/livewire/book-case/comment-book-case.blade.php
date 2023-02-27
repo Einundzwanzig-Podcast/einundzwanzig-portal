@@ -5,26 +5,23 @@
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
 
             <div class="flex">
-                <div class="flex items-center space-x-1"
-                     x-data="{currentUrl: window.location.href}">
-                    <a
-                        x-bind:href="'/{{ $country->code }}/book-cases/book-case/form/{{ $bookCase->id }}/?fromUrl='+currentUrl">
-                        <x-button
-                            class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap"
-                        >
-                            {{ __('💊 Orange Pill Now') }}
-                        </x-button>
-                    </a>
+                <div class="flex items-center space-x-1">
+                    <x-button
+                        :href="route('bookCases.form', ['bookCase' => $bookCase->id, 'country' => $country])"
+                        class="whitespace-nowrap" primary class="text-21gray whitespace-nowrap"
+                    >
+                        {{ __('💊 Orange Pill Now') }}
+                    </x-button>
                 </div>
             </div>
 
-            <div class="p-4" x-data="{currentUrl: window.location.href}">
+            <div class="p-4">
                 <ul role="list"
                     class="mx-auto grid max-w-2xl grid-cols-2 gap-y-16 gap-x-8 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6">
 
                     @foreach($bookCase->orangePills as $orangePill)
                         @if($orangePill->user_id === auth()->id())
-                            <a x-bind:href="'/{{ $country->code }}/book-cases/book-case/form/{{ $bookCase->id }}/{{ $orangePill->id }}?fromUrl='+currentUrl"
+                            <a href="{{ route('bookCases.form', ['country' => $country, 'bookCase' => $orangePill->bookCase, 'orangePill' => $orangePill]) }}"
                                wire:key="orange_pill_{{ $loop->index }}">
                                 <li class="border border-amber-500 rounded">
                                     <img class="mx-auto h-24 w-24 object-cover rounded"

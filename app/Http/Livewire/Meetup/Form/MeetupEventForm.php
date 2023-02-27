@@ -21,6 +21,10 @@ class MeetupEventForm extends Component
 
     public array $series = [];
 
+    public ?string $fromUrl = '';
+
+    protected $queryString = ['fromUrl' => ['except' => '']];
+
     public function rules()
     {
         return [
@@ -51,6 +55,9 @@ class MeetupEventForm extends Component
             ->user()
             ->can('update', $this->meetupEvent)) {
             abort(403);
+        }
+        if (!$this->fromUrl) {
+            $this->fromUrl = url()->previous();
         }
     }
 
