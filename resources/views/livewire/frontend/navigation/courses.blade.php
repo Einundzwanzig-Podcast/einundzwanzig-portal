@@ -95,6 +95,18 @@
                                 {{ __('Manage lecturers') }}
                             </a>
 
+                            <a href="{{ route('bookCases.table.city', ['country' => $country, 'manage' => true]) }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                {{ __('Manage cities/areas') }}
+                            </a>
+
+                            <a href="{{ route('school.table.venue', ['country' => $country, 'manage' => true]) }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                {{ __('Manage venues') }}
+                            </a>
+
                         </div>
                     </div>
                 </div>

@@ -787,5 +787,10 @@
     "Manage content creators": "Verwalte Content Creators",
     "Lecturers\/Content Creators": "Dozenten\/Content Creators",
     "Manage lecturers": "Verwalte Dozenten",
-    "Settings": "Einstellungen"
+    "Settings": "Einstellungen",
+    "Are you sure you want to delete this Bitcoin event?": "Bitte bestätige, dass du dieses Bitcoin Event löschen möchtest.",
+    "Manage cities\/areas": "Verwalte Städte\/Gebiete",
+    "Manage venues": "Verwalte Veranstaltungsorte",
+    "Image deleted!": "Bild gelöscht!",
+    "Current pictures": "Derzeitige Bilder"
 }

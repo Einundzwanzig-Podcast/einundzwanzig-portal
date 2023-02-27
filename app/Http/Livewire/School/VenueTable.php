@@ -10,6 +10,10 @@ class VenueTable extends Component
 {
     public Country $country;
 
+    public bool $manage = false;
+
+    protected $queryString = ['manage' => ['except' => false]];
+
     public function render()
     {
         return view('livewire.school.venue-table')->layout('layouts.app', [

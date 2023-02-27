@@ -12,6 +12,8 @@ class VenueTable extends DataTableComponent
 {
     public string $country;
 
+    public bool $manage = false;
+
     public string $tableName = 'venues';
 
     public function configure(): void
@@ -66,7 +68,7 @@ class VenueTable extends DataTableComponent
                   ->collapseOnMobile(),
             Column::make('')
                   ->label(
-                      fn ($row, Column $column) => view('columns.venues.action')->withRow($row)
+                      fn ($row, Column $column) => view('columns.venues.action')->withRow($row)->withManage($this->manage)
                   ),
         ];
     }

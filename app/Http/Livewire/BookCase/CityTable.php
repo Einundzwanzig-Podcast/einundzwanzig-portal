@@ -10,6 +10,14 @@ class CityTable extends Component
 {
     public Country $country;
 
+    public bool $manage = false;
+
+    protected $queryString = [
+        'manage' => [
+            'except' => false,
+        ],
+    ];
+
     public function render()
     {
         return view('livewire.book-case.city-table')->layout('layouts.app', [

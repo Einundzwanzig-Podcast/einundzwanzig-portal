@@ -6,6 +6,7 @@ use App\Models\Venue;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use WireUi\Traits\Actions;
 
 class VenueForm extends Component
@@ -22,6 +23,8 @@ class VenueForm extends Component
     public ?string $fromUrl = '';
 
     protected $queryString = ['fromUrl' => ['except' => '']];
+
+    protected $listeners = ['refresh' => '$refresh'];
 
     public function rules()
     {
@@ -47,6 +50,16 @@ class VenueForm extends Component
         if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
         }
+    }
+
+    public function deleteMedia($id)
+    {
+        Media::query()
+             ->find($id)
+             ->delete();
+        $this->notification()
+             ->success(__('Image deleted!'));
+        $this->emit('refresh');
     }
 
     public function submit()

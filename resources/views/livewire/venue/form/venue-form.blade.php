@@ -39,10 +39,24 @@
                                     @endforeach
                                 </div>
                             @endif
-                            {{--@if ($venue->getFirstMediaUrl('images'))
-                                <div class="text-gray-200">{{ __('Current picture') }}:</div>
-                                <img class="h-48 object-contain" src="{{ $venue->getFirstMediaUrl('logo') }}">
-                            @endif--}}
+                            @if ($venue->getMedia('images'))
+                                <div class="text-gray-200">{{ __('Current pictures') }}:</div>
+                                <div class="grid grid-cols-4 gap-1">
+                                    @foreach($venue->getMedia('images') as $image)
+                                        <div class="space-y-2" wire:key="image_{{ $image->id }}" wire:click="deleteMedia({{ $image->id }})">
+                                            <div class="flex justify-center">
+                                                <img class="h-48 object-contain" src="{{ $image->getUrl() }}">
+                                            </div>
+                                            <div class="flex justify-center">
+                                                <x-button xs>
+                                                    <i class="fa-thin fa-trash"></i>
+                                                    {{ __('Delete') }}
+                                                </x-button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                         <input class="text-gray-200" type="file" multiple wire:model="images">
                     </x-input.group>

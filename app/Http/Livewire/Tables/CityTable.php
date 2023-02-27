@@ -17,12 +17,14 @@ class CityTable extends DataTableComponent
 
     public string $type;
 
+    public bool $manage = false;
+
     public string $tableName = 'cities';
 
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['id'])
+             ->setAdditionalSelects(['cities.id', 'cities.created_by'])
              ->setThAttributes(function (Column $column) {
                  return [
                      'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -74,6 +76,7 @@ class CityTable extends DataTableComponent
                       fn ($row, Column $column) => view('columns.cities.action')
                           ->withRow($row)
                           ->withType($this->type)
+                          ->withManage($this->manage)
                   ),
         ])
                        ->toArray();

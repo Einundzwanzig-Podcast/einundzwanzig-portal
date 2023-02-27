@@ -14,7 +14,7 @@
                     {{----}}
                 </div>
             </div>
-            <livewire:tables.venue-table :country="$country->code"/>
+            <livewire:tables.venue-table :country="$country->code" :manage="$manage"/>
         </div>
     </section>
     {{-- FOOTER --}}

@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <livewire:tables.city-table :country="$country->code" type="bookCase"/>
+            <livewire:tables.city-table :country="$country->code" type="bookCase" :manage="$manage"/>
         </div>
     </section>
     {{-- FOOTER --}}
