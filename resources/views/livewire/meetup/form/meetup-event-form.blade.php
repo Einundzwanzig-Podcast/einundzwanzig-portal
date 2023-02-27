@@ -94,16 +94,16 @@
                         @if($meetupEvent->start && $recurring)
                             <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
                                 @for($i = 0; $i < $repetitions; $i++)
-                                    <x-datetime-picker wire:key="event_{{ $i }}"
-                                                       :label="\App\Support\Carbon::parse($series[$i]['start'])->asDayNameAndMonthName()"
-                                                       :clearable="false"
-                                                       time-format="24"
-                                                       timezone="UTC"
-                                                       user-timezone="{{ config('app.user-timezone') }}"
-                                                       autocomplete="off"
-                                                       wire:model.debounce="series.{{ $i }}.start"
-                                                       display-format="DD-MM-YYYY HH:mm"
-                                                       :placeholder="__('Start')"/>
+                                    <x-datetime-picker
+                                        :label="\App\Support\Carbon::parse($series[$i]['start'])->asDayNameAndMonthName()"
+                                        :clearable="false"
+                                        time-format="24"
+                                        timezone="UTC"
+                                        user-timezone="{{ config('app.user-timezone') }}"
+                                        autocomplete="off"
+                                        wire:model.debounce="series.{{ $i }}.start"
+                                        display-format="DD-MM-YYYY HH:mm"
+                                        :placeholder="__('Start')"/>
                                 @endfor
                             </div>
                         @endif
