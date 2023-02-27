@@ -86,6 +86,7 @@ class Header extends Component
                                               'tags',
                                           ])
                                           ->where('type', 'markdown_article')
+                                          ->where('approved', true)
                                           ->where('news', true)
                                           ->orderByDesc('created_at')
                                           ->take(2)
