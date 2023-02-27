@@ -20,6 +20,10 @@ class Meetups extends Component
 
     public $hasMeetups = false;
 
+    public ?string $fromUrl = '';
+
+    protected $queryString = ['fromUrl' => ['except' => '']];
+
     public function rules()
     {
         return [
@@ -54,11 +58,14 @@ class Meetups extends Component
         if (count($this->myMeetups) > 0) {
             $this->hasMeetups = true;
         }
+        if (!$this->fromUrl) {
+            $this->fromUrl = url()->previous();
+        }
     }
 
     public function next()
     {
-        return redirect()->intended();
+        return redirect($this->fromUrl);
     }
 
     public function updatedSearch($value)

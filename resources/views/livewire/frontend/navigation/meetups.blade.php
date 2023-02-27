@@ -71,6 +71,12 @@
                                 {{ __('Manage cities/areas') }}
                             </a>
 
+                            <a href="{{ route('profile.meetups') }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-user-group flex-none text-gray-400"></i>
+                                {{ __('My meetups') }}
+                            </a>
+
                         </div>
                     </div>
                 </div>
