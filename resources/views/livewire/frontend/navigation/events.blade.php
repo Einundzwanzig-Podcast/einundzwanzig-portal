@@ -3,7 +3,7 @@
     <button type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
             @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="true"
             :aria-expanded="open.toString()">
-        {{ __('Events') }}
+        {{ __('Bitcoin Events') }}
         <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor"
              aria-hidden="true">
             <path fill-rule="evenodd"
@@ -23,7 +23,7 @@
         <div class="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 gap-x-8 py-10 px-6 lg:grid-cols-2 lg:px-8">
             <div class="grid grid-cols-2 gap-x-6 sm:gap-x-8">
                 <div>
-                    <h3 class="text-sm font-medium leading-6 text-gray-500">{{ __('Events') }}</h3>
+                    <h3 class="text-sm font-medium leading-6 text-gray-500">{{ __('Bitcoin Events') }}</h3>
                     <div class="mt-6 flow-root">
                         <div class="-my-2">
 
