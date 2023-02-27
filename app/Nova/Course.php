@@ -42,6 +42,13 @@ class Course extends Resource
         'name',
     ];
 
+    public static $with = [
+        'lecturer.team',
+        'categories',
+        'tags',
+        'createdBy',
+    ];
+
     public static function label()
     {
         return __('Course');
@@ -55,7 +62,7 @@ class Course extends Resource
     public static function relatableLecturers(NovaRequest $request, $query, Field $field)
     {
         if ($field instanceof BelongsTo) {
-            $query->where('team_id', $request->user()->current_team_id);
+            $query->where('created_by', $request->user()->id);
         }
 
         return $query;

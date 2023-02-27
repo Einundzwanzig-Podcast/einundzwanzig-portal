@@ -161,25 +161,21 @@ class DatabaseSeeder extends Seeder
             'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
             'name' => 'Markus Turm',
             'active' => true,
             'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
             'name' => 'Beppo',
             'active' => true,
             'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
             'name' => 'Helper',
             'active' => true,
             'created_by' => 1,
         ]);
         Lecturer::create([
-            'team_id' => 1,
             'name' => 'Gigi',
             'active' => true,
             'created_by' => 1,

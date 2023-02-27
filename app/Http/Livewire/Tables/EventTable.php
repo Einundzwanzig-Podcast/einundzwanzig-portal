@@ -29,6 +29,7 @@ class EventTable extends DataTableComponent
             ->setDefaultSort('from', 'asc')
             ->setAdditionalSelects([
                 'course_events.id',
+                'course_events.created_by',
                 'course_id',
                 'venue_id',
             ])

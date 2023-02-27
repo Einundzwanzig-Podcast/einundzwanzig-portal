@@ -33,7 +33,11 @@ class MeetupForm extends Component
             'image' => [Rule::requiredIf(!$this->meetup->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
             'meetup.city_id'          => 'required',
-            'meetup.name'             => 'required',
+            'meetup.name'             => [
+                'required',
+                Rule::unique('meetups', 'name')
+                    ->ignore($this->meetup),
+            ],
             'meetup.community'        => 'required',
             'meetup.telegram_link'    => 'string|nullable|required_without_all:meetup.webpage,meetup.nostr,meetup.twitter_username,meetup.matrix_group',
             'meetup.intro'            => 'string|nullable',

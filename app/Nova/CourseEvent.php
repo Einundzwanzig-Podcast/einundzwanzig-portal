@@ -31,6 +31,12 @@ class CourseEvent extends Resource
         'course.name',
     ];
 
+    public static $with = [
+        'course.lecturer.team',
+        'venue',
+        'createdBy',
+    ];
+
     public function title()
     {
         return $this->from.' - '.$this->venue->name.' - '.$this->course->name;

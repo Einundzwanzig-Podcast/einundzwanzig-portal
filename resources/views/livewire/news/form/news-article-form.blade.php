@@ -24,7 +24,7 @@
                     @endif
                 </div>
                 <div>
-                    <x-button :href="route('article.overview', ['country' => null])">
+                    <x-button :href="$fromUrl">
                         <i class="fa fa-thin fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
@@ -53,14 +53,14 @@
                             wire:model="libraryItem.lecturer_id"
                             :searchable="true"
                             :async-data="[
-                            'api' => route('api.lecturers.index'),
-                            'method' => 'GET', // default is GET
-                            'params' => ['user_id' => auth()->id()], // default is []
-                        ]"
+                                'api' => route('api.lecturers.index'),
+                                'method' => 'GET', // default is GET
+                                'params' => ['user_id' => auth()->id()], // default is []
+                            ]"
                             :template="[
-                            'name'   => 'user-option',
-                            'config' => ['src' => 'image']
-                        ]"
+                                'name'   => 'user-option',
+                                'config' => ['src' => 'image']
+                            ]"
                             option-label="name"
                             option-value="id"
                         />

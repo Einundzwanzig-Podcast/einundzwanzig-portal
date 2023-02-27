@@ -66,6 +66,21 @@ Route::middleware([
      });
 
 /*
+ * Course
+ * */
+Route::middleware([
+    'auth',
+])
+     ->as('course.')
+     ->prefix('/course')
+     ->group(function () {
+         Route::get('/form/course/{course?}', \App\Http\Livewire\School\Form\CourseForm::class)
+              ->name('form.course');
+         Route::get('/form/course-event/{courseEvent?}', \App\Http\Livewire\School\Form\CourseEventForm::class)
+              ->name('form.courseEvent');
+     });
+
+/*
  * Venue
  * */
 Route::middleware([

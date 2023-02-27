@@ -9,7 +9,7 @@
             <div class="flex flex-row space-x-2 items-center">
 
                 <div>
-                    <x-button :href="route('meetup.table.meetup', ['country' => $country])">
+                    <x-button :href="$fromUrl">
                         <i class="fa fa-thin fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>

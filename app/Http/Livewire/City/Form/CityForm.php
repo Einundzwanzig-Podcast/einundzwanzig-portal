@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\City\Form;
 
 use App\Models\City;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class CityForm extends Component
@@ -21,7 +22,11 @@ class CityForm extends Component
     {
         return [
             'city.country_id' => 'required',
-            'city.name'       => 'required|string',
+            'city.name'       => [
+                'required',
+                Rule::unique('cities', 'name')
+                    ->ignore($this->city),
+            ],
             'city.longitude'  => 'required',
             'city.latitude'   => 'required',
         ];

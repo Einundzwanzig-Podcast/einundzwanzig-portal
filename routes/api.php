@@ -29,6 +29,7 @@ Route::middleware([])
          Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
          Route::resource('meetup', \App\Http\Controllers\Api\MeetupController::class);
          Route::resource('lecturers', \App\Http\Controllers\Api\LecturerController::class);
+         Route::resource('courses', \App\Http\Controllers\Api\CourseController::class);
          Route::resource('cities', \App\Http\Controllers\Api\CityController::class);
          Route::resource('venues', \App\Http\Controllers\Api\VenueController::class);
          Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);

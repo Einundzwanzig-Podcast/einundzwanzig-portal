@@ -18,7 +18,7 @@ class CourseTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['id'])
+             ->setAdditionalSelects(['courses.id', 'courses.created_by'])
              ->setThAttributes(function (Column $column) {
                  return [
                      'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -101,7 +101,7 @@ class CourseTable extends DataTableComponent
                          'tags',
                      ])
                      ->withCount([
-                         'courseEvents',
+                         'courseEvents' => fn($query) => $query->where('course_events.from', '>', now()),
                      ])
                      ->whereHas('courseEvents.venue.city.country',
                          fn ($query) => $query->where('countries.code', $this->country))

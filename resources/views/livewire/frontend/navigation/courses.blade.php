@@ -77,13 +77,13 @@
                                 {{ __('Create venue') }}
                             </a>
 
-                            <a href="/nova/resources/courses"
+                            <a href="{{ route('course.form.course') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
                                 <i class="fa-thin fa-plus flex-none text-gray-400"></i>
                                 {{ __('Register course') }}
                             </a>
 
-                            <a href="/nova/resources/course-events"
+                            <a href="{{ route('course.form.courseEvent') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
                                 <i class="fa-thin fa-plus flex-none text-gray-400"></i>
                                 {{ __('Register course date') }}

@@ -39,7 +39,6 @@ class Episode extends Resource
         if ($request->tags) {
             if ($model->data['link']) {
                 $lecturer = \App\Models\Lecturer::updateOrCreate(['name' => $model->podcast->title], [
-                    'team_id' => 1,
                     'active' => true,
                     'website' => $model->podcast->link,
                 ]);

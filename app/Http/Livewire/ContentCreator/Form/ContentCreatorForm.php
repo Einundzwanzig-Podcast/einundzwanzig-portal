@@ -47,7 +47,6 @@ class ContentCreatorForm extends Component
             $this->lecturer = new Lecturer([
                 'intro'   => '',
                 'active'  => true,
-                'team_id' => true,
             ]);
         }
         if (!$this->fromUrl) {
