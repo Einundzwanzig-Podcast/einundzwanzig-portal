@@ -55,6 +55,12 @@ class CourseForm extends Component
                 ->can('update', $this->course)
         ) {
             abort(403);
+        } else {
+            $this->selectedTags = $this->course->tags()
+                                                    ->where('type', 'course')
+                                                    ->get()
+                                                    ->map(fn($tag) => $tag->name)
+                                                    ->toArray();
         }
         if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
