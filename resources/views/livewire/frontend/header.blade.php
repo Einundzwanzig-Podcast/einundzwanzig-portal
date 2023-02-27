@@ -3,7 +3,7 @@
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Einundzwanzig Portal</span>
-                <img class="h-12 w-auto" src="{{ asset('img/einundzwanzig.png') }}" alt="Logo">
+                <img class="h-2 sm:h-4 w-auto" src="{{ asset('img/einundzwanzig-horizontal.svg') }}" alt="Logo">
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -63,7 +63,7 @@
             <div class="flex items-center justify-between">
                 <a href="#" class="-m-1.5 p-1.5">
                     <span class="sr-only">Einundzwanzig Portal</span>
-                    <img class="h-8 w-auto" src="{{ asset('img/einundzwanzig.png') }}" alt="Logo">
+                    <img class="h-2 sm:h-4 w-auto" src="{{ asset('img/einundzwanzig-horizontal.svg') }}" alt="Logo">
                 </a>
                 <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="open = false">
                     <span class="sr-only">Close menu</span>
