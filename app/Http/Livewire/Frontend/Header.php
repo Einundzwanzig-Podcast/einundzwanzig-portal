@@ -64,14 +64,17 @@ class Header extends Component
 
     public function updatedC($value)
     {
-        return to_route($this->currentRouteName, ['country' => $value, 'lang' => $this->l]);
+        $url = str(request()->header('Referer'))->explode('/');
+        $url[3] = $value;
+
+        return redirect($url->implode('/'));
     }
 
     public function updatedL($value)
     {
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
 
-        return to_route($this->currentRouteName, ['country' => $this->c, 'l' => $value]);
+        return redirect(request()->header('Referer'));
     }
 
     public function render()
