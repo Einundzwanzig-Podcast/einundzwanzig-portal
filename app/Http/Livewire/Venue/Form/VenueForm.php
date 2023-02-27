@@ -32,7 +32,11 @@ class VenueForm extends Component
             'images.*' => [Rule::requiredIf(!$this->venue->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
             'venue.city_id' => 'required',
-            'venue.name'    => 'required',
+            'venue.name'              => [
+                'required',
+                Rule::unique('venues', 'name')
+                    ->ignore($this->venue),
+            ],
             'venue.street'  => 'required',
         ];
     }
@@ -67,7 +71,7 @@ class VenueForm extends Component
         $this->validate();
         $this->venue->save();
 
-        if (count($this->images) > 0) {
+        if ($this->images && count($this->images) > 0) {
             foreach ($this->images as $item) {
                 $this->venue->addMedia($item)
                             ->toMediaCollection('images');
