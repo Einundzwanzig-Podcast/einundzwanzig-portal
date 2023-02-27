@@ -1,6 +1,6 @@
 <div class="flex flex-col space-y-1">
-    <div>
-        @if($row->meetup_events_count > 0)
+    @if($row->meetup_events_count > 0)
+        <div>
             <x-button
                 xs
                 amber
@@ -8,10 +8,10 @@
                 <i class="fa fa-thin fa-calendar mr-2"></i>
                 {{ __('Show dates') }} ({{ $row->meetup_events_count }})
             </x-button>
-        @endif
-    </div>
-    <div>
-        @if($row->meetup_events_count < 1)
+        </div>
+    @endif
+    @if($row->meetup_events_count < 1)
+        <div>
             <x-button
                 xs
                 outlined
@@ -19,8 +19,8 @@
                 <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
                 {{ __('Show dates') }} ({{ $row->meetup_events_count }})
             </x-button>
-        @endif
-    </div>
+        </div>
+    @endif
     <div>
         <x-button
             xs
@@ -42,8 +42,8 @@
             {{ __('Show landing page') }}
         </x-button>
     </div>
-    <div>
-        @if($row->telegram_link)
+    @if($row->telegram_link)
+        <div>
             <x-button
                 xs
                 black
@@ -53,10 +53,10 @@
                 <i class="fa fa-thin fa-external-link mr-2"></i>
                 {{ __('Telegram-Link') }}
             </x-button>
-        @endif
-    </div>
-    <div>
-        @if($row->webpage)
+        </div>
+    @endif
+    @if($row->webpage)
+        <div>
             <x-button
                 xs
                 black
@@ -66,10 +66,10 @@
                 <i class="fa fa-thin fa-external-link mr-2"></i>
                 {{ __('Website') }}
             </x-button>
-        @endif
-    </div>
-    <div>
-        @if($row->twitter_username)
+        </div>
+    @endif
+    @if($row->twitter_username)
+        <div>
             <x-button
                 xs
                 black
@@ -79,19 +79,33 @@
                 <i class="fa fa-brand fa-twitter mr-2"></i>
                 {{ __('Twitter') }}
             </x-button>
-        @endif
-    </div>
-    <div x-data="{currentUrl: window.location.href}">
-        @if(auth()->check() && auth()->user()->meetups->contains($row))
-            <a x-bind:href="'/{{ $country->code ?? 'de' }}/meetup/meetup/form/{{ $row->id }}?fromUrl='+currentUrl">
-                <x-button
-                    xs
-                    amber
-                >
-                    <i class="fa fa-thin fa-edit mr-2"></i>
-                    {{ __('Edit') }}
-                </x-button>
-            </a>
-        @endif
-    </div>
+        </div>
+    @endif
+    @if($row->nostr)
+        <div
+            x-data="{
+                      textToCopy: '{{ $row->nostr }}',
+                    }"
+            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('PubKey copied!') }}',icon:'success'});"
+        >
+            <x-button
+                xs
+                black
+            >
+                <i class="fa fa-thin fa-clipboard mr-2"></i>
+                {{ __('Nostr') }}
+            </x-button>
+        </div>
+    @endif
+    @if(auth()->check() && auth()->user()->meetups->contains($row))
+        <a x-bind:href="'/{{ $country->code ?? 'de' }}/meetup/meetup/form/{{ $row->id }}?fromUrl='+currentUrl">
+            <x-button
+                xs
+                amber
+            >
+                <i class="fa fa-thin fa-edit mr-2"></i>
+                {{ __('Edit') }}
+            </x-button>
+        </a>
+    @endif
 </div>
