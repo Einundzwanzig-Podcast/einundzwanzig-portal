@@ -143,4 +143,5 @@
         </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 </div>

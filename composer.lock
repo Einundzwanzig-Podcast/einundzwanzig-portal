@@ -14617,16 +14617,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "12.18.3",
+            "version": "12.18.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "b7f80e78e9555895f1a94db9a3bf311c98942bff"
+                "reference": "b224d7f29fb792c2e816de270c930d8a77d25249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/b7f80e78e9555895f1a94db9a3bf311c98942bff",
-                "reference": "b7f80e78e9555895f1a94db9a3bf311c98942bff",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/b224d7f29fb792c2e816de270c930d8a77d25249",
+                "reference": "b224d7f29fb792c2e816de270c930d8a77d25249",
                 "shasum": ""
             },
             "require": {
@@ -14679,7 +14679,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-02-23T16:22:56+00:00"
+            "time": "2023-02-27T13:39:16+00:00"
         },
         {
             "name": "laravel-lang/publisher",
@@ -15565,16 +15565,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.3",
+            "version": "9.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e7b1615e3e887d6c719121c6d4a44b0ab9645555"
+                "reference": "9125ee085b6d95e78277dc07aa1f46f9e0607b8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e7b1615e3e887d6c719121c6d4a44b0ab9645555",
-                "reference": "e7b1615e3e887d6c719121c6d4a44b0ab9645555",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9125ee085b6d95e78277dc07aa1f46f9e0607b8d",
+                "reference": "9125ee085b6d95e78277dc07aa1f46f9e0607b8d",
                 "shasum": ""
             },
             "require": {
@@ -15647,7 +15647,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.3"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.4"
             },
             "funding": [
                 {
@@ -15663,7 +15663,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-04T13:37:15+00:00"
+            "time": "2023-02-27T13:06:37+00:00"
         },
         {
             "name": "sebastian/cli-parser",

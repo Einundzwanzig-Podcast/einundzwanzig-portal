@@ -1,6 +1,7 @@
 <div>
     {{-- HEADER --}}
     <livewire:frontend.header :country="null"/>
+
     <div class="container p-4 mx-auto bg-21gray my-2">
 
         <div class="pb-5 flex flex-row justify-between">
@@ -179,4 +180,6 @@
             </div>
         </form>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 </div>

@@ -72,6 +72,7 @@ class LibraryItemForm extends Component
             $this->libraryItem = new LibraryItem([
                 'approved'  => true,
                 'read_time' => 1,
+                'value' => '',
             ]);
             if ($this->lecturer) {
                 $this->library = Library::query()
