@@ -20,7 +20,7 @@ class LibraryItemObserver
         try {
             $libraryItem->setStatus('published');
 
-            if ($libraryItem->type !== LibraryItemType::MarkdownArticle()) {
+            if (!$libraryItem->news) {
                 if ($libraryItem->whereDoesntHave('libraries',
                     fn($query) => $query->where('libraries.is_public', false))
                                 ->exists()) {
