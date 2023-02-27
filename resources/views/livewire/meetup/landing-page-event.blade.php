@@ -7,41 +7,23 @@
             <div class="relative py-4 sm:py-4">
                 <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
                     <div class="relative sm:py-4 lg:py-0">
-                        <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
-                            <div class="absolute inset-y-0 right-1/2 w-full rounded-r-3xl lg:right-72"></div>
-                            <svg class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404"
-                                 height="392" fill="none" viewBox="0 0 404 392">
-                                <defs>
-                                    <pattern id="02f20b47-fd69-4224-a62a-4c9de5c763f7" x="0" y="0" width="20"
-                                             height="20" patternUnits="userSpaceOnUse">
-                                        <rect x="0" y="0" width="4" height="4" class="text-gray-200"
-                                              fill="currentColor"/>
-                                    </pattern>
-                                </defs>
-                                <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"/>
-                            </svg>
-                        </div>
                         <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:px-0 lg:py-12">
                             <!-- Testimonial card-->
-                            <div class="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
+                            <div class="relative overflow-hidden rounded-2xl pt-64 pb-10l">
                                 <img class="absolute inset-0 h-full w-full object-contain"
                                      src="{{ $meetup->getFirstMediaUrl('logo', 'preview') }}"
                                      alt="">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-amber-600 via-amber-600 opacity-80"></div>
-                                <div class="relative px-8">
-                                    <blockquote class="mt-8">
-                                        <div class="relative text-lg font-medium text-gray-900 md:flex-grow">
-                                            <p class="relative">{{ $meetup->intro }}</p>
-                                        </div>
-
-                                        <footer class="mt-4">
-                                            <p class="text-base font-semibold text-gray-900">{{ $meetup->users->count() }} {{ __('Plebs') }}</p>
-                                        </footer>
-                                    </blockquote>
-                                </div>
                             </div>
                         </div>
+                        <blockquote class="mt-8">
+                            <div class="relative text-lg font-medium text-gray-200 md:flex-grow">
+                                <p class="relative">{{ $meetup->intro }}</p>
+                            </div>
+
+                            <footer class="mt-4">
+                                <p class="text-base font-semibold text-gray-200">{{ $meetup->users->count() }} {{ __('Plebs') }}</p>
+                            </footer>
+                        </blockquote>
                         <div>
                             @if(auth()->check())
                                 <livewire:comments :model="$meetupEvent" newest-first hide-notification-options/>
