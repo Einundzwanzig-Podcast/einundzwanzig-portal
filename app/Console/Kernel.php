@@ -47,39 +47,39 @@ class Kernel extends ConsoleKernel
         ])
                  ->dailyAt('11:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'Course',
+            '--model' => 'OrangePill',
         ])
                  ->dailyAt('12:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'OrangePill',
+            '--model' => 'LibraryItem',
         ])
                  ->dailyAt('13:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'LibraryItem',
+            '--model' => 'BitcoinEvent',
         ])
                  ->dailyAt('14:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'BitcoinEvent',
+            '--model' => 'CourseEvent',
         ])
                  ->dailyAt('15:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'CourseEvent',
+            '--model' => 'MeetupEvent',
         ])
                  ->dailyAt('16:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'MeetupEvent',
+            '--model' => 'Meetup',
         ])
                  ->dailyAt('17:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'Meetup',
+            '--model' => 'OrangePill',
         ])
                  ->dailyAt('18:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'Course',
+            '--model' => 'LibraryItem',
         ])
                  ->dailyAt('19:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'OrangePill',
+            '--model' => 'BitcoinEvent',
         ])
                  ->dailyAt('20:00');
         $schedule->command(PublishUnpublishedItems::class, [
@@ -87,7 +87,7 @@ class Kernel extends ConsoleKernel
         ])
                  ->dailyAt('21:00');
         $schedule->command(PublishUnpublishedItems::class, [
-            '--model' => 'BitcoinEvent',
+            '--model' => 'LibraryItem',
         ])
                  ->dailyAt('22:00');
     }

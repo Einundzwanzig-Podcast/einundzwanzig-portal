@@ -46,7 +46,6 @@ class EventServiceProvider extends ServiceProvider
         MeetupEvent::observe(MeetupEventObserver::class);
         OrangePill::observe(OrangePillObserver::class);
         CourseEvent::observe(CourseEventObserver::class);
-        Course::observe(CourseObserver::class);
         BitcoinEvent::observe(BitcoinEventObserver::class);
         LibraryItem::observe(LibraryItemObserver::class);
     }
