@@ -42,16 +42,16 @@
                                  :placeholder="__('Name')"/>
                     </x-input.group>
 
-                    <x-input.group :for="md5('city.longitude')" :label="__('Longitude')">
-                        <x-input autocomplete="off" wire:model.debounce="city.longitude"
-                                 :placeholder="__('Longitude')"/>
+                    <x-input.group :for="md5('city.latitude')" :label="__('Latitude')">
+                        <x-input autocomplete="off" wire:model.debounce="city.latitude"
+                                 :placeholder="__('Latitude')"/>
                         <div class="text-amber-500 text-xs py-2"><a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>
                         </div>
                     </x-input.group>
 
-                    <x-input.group :for="md5('city.latitude')" :label="__('Latitude')">
-                        <x-input autocomplete="off" wire:model.debounce="city.latitude"
-                                 :placeholder="__('Latitude')"/>
+                    <x-input.group :for="md5('city.longitude')" :label="__('Longitude')">
+                        <x-input autocomplete="off" wire:model.debounce="city.longitude"
+                                 :placeholder="__('Longitude')"/>
                         <div class="text-amber-500 text-xs py-2"><a target="_blank" href="https://www.latlong.net/">https://www.latlong.net/</a>
                         </div>
                     </x-input.group>
