@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(new PruneStaleAttachments)
                  ->daily();
         $schedule->command(SyncOpenBooks::class)
-                 ->dailyAt('04:00');
+                 ->hourlyAt(15);
         $schedule->command(ReadAndSyncPodcastFeeds::class)
                  ->dailyAt('04:30');
         $schedule->command(CleanupLoginKeys::class)
