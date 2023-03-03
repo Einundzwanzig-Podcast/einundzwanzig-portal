@@ -37,6 +37,8 @@ class PublishUnpublishedItems extends Command
                            ->when($modelName === 'LibraryItem', fn($q) => $q->where('type', '<>', 'markdown_article'))
                            ->orderByDesc('created_at')
                            ->first();
-        $this->publishOnNostr($model, $this->getText($model));
+        if ($model){
+            $this->publishOnNostr($model, $this->getText($model));
+        }
     }
 }
