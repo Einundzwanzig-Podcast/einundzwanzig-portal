@@ -65,11 +65,6 @@
                                 <span class="ml-2">{{ $libraryItem->main_image_caption ?? $libraryItem->name }}</span>
                             </figcaption>
                         </figure>
-                        <div class="hidden md:block my-4">
-                            @if(auth()->check())
-                                <livewire:comments :model="$libraryItem" newest-first hide-notification-options/>
-                            @endif
-                        </div>
                     </div>
                 </div>
                 <div class="mt-8 lg:mt-0">
@@ -167,4 +162,15 @@
     </div>
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
+
+    <div wire:ignore class="z-50">
+        <script
+            src="https://nostri.chat/public/bundle.js"
+            data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
+            data-chat-type="GLOBAL"
+            data-chat-tags="#einundzwanzig-portal-{{ $libraryItem->slug }}"
+            data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
+        ></script>
+        <link rel="stylesheet" href="https://nostri.chat/public/bundle.css">
+    </div>
 </div>

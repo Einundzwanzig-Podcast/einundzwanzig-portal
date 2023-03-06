@@ -24,11 +24,6 @@
                                 <p class="text-base font-semibold text-gray-200">{{ $meetup->users->count() }} {{ __('Plebs') }}</p>
                             </footer>
                         </blockquote>
-                        <div>
-                            @if(auth()->check())
-                                <livewire:comments :model="$meetupEvent" newest-first hide-notification-options/>
-                            @endif
-                        </div>
                     </div>
 
                     <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:px-0">
@@ -272,4 +267,15 @@
     @endpush
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
+
+    <div wire:ignore class="z-50">
+        <script
+            src="https://nostri.chat/public/bundle.js"
+            data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
+            data-chat-type="GLOBAL"
+            data-chat-tags="#einundzwanzig-portal-{{ $meetupEvent->meetup->slug }}"
+            data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
+        ></script>
+        <link rel="stylesheet" href="https://nostri.chat/public/bundle.css">
+    </div>
 </div>

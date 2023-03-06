@@ -10,18 +10,6 @@
                         {{ __('Highscore Table') }}
                     </h2>
                 </div>
-                <div class="mt-4 flex md:mt-0 md:ml-4">
-                    @if(auth()->check())
-                        <x-button
-                            class="relative"
-                            primary
-                            lg
-                            wire:click="toggleChat">
-                            <i class="fa-thin fa-comments"></i>
-                            Chat
-                        </x-button>
-                    @endif
-                </div>
             </div>
 
             <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -169,4 +157,15 @@
     </section>
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
+
+    <div wire:ignore class="z-50">
+        <script
+            src="https://nostri.chat/public/bundle.js"
+            data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
+            data-chat-type="GLOBAL"
+            data-chat-tags="#einundzwanzig-bookcases"
+            data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
+        ></script>
+        <link rel="stylesheet" href="https://nostri.chat/public/bundle.css">
+    </div>
 </div>
