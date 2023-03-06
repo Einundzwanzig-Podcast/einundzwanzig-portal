@@ -168,7 +168,7 @@
             src="https://nostri.chat/public/bundle.js"
             data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
             data-chat-type="GLOBAL"
-            data-chat-tags="#einundzwanzig-portal-{{ $libraryItem->slug }}"
+            data-chat-tags="#einundzwanzig_portal_{{ str($libraryItem->slug)->replace('-', '_') }}"
             data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
         ></script>
         <link rel="stylesheet" href="https://nostri.chat/public/bundle.css">
