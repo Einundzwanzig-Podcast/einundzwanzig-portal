@@ -60,9 +60,9 @@
                             :placeholder="__('Start')"/>
                     </x-input.group>
 
-                    @if(!$meetupEvent->id)
-                        <x-input.group :for="md5('recurring')" :label="__('Recurring appointment')">
-                            <x-toggle :label="__('Recurring appointment')" wire:model="recurring"/>
+                    @if(!$meetupEvent->id && $meetupEvent->start)
+                        <x-input.group :for="md5('recurringid')" :label="__('Recurring appointment / monthly')">
+                            <x-toggle lg :label="__('Recurring appointment')" wire:model="recurring"/>
                             <p class="text-xs text-amber-400 py-2">{{ __('The recurring appointments are created in the database as new entries. Please be careful with this function, otherwise you will have to change or delete all the appointments you have created manually if you make an error.') }}</p>
                         </x-input.group>
                     @endif
@@ -91,7 +91,7 @@
                     </x-input.group>
 
                     <x-input.group :for="md5('grid')" :label="__('Recurring appointments')">
-                        @if($meetupEvent->start && $recurring)
+                        @if($recurring && count($series) === $repetitions)
                             <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
                                 @for($i = 0; $i < $repetitions; $i++)
                                     <x-datetime-picker

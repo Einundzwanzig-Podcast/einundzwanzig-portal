@@ -17,7 +17,7 @@ class MeetupEventForm extends Component
 
     public bool $recurring = false;
 
-    public int $repetitions = 52;
+    public int $repetitions = 12;
 
     public array $series = [];
 
@@ -34,6 +34,7 @@ class MeetupEventForm extends Component
             'meetupEvent.description' => 'string|nullable',
             'meetupEvent.link'        => 'url|nullable',
 
+            'series'         => 'array',
             'series.*.start' => 'required',
 
             'recurring'   => 'bool',
@@ -63,7 +64,7 @@ class MeetupEventForm extends Component
 
     public function updatedMeetupEventStart($value)
     {
-        $this->validate();
+        $this->validateOnly('meetupEvent.start');
         if ($this->recurring) {
             $this->updatedRecurring(true);
         }
@@ -71,23 +72,24 @@ class MeetupEventForm extends Component
 
     public function updatedRecurring($value)
     {
-        $this->validate();
+        $this->validateOnly('recurring');
+        $series = [];
         if ($value && $this->meetupEvent->start) {
-            $this->series = [];
             for ($i = 0; $i < $this->repetitions; $i++) {
-                $this->series[] = [
-                    'start' => $this->meetupEvent->start->addWeeks($i + 1)
+                $series[] = [
+                    'start' => $this->meetupEvent->start->addMonths($i + 1)
                                                         ->toDateTimeString(),
                 ];
             }
         }
+        $this->series = $series;
     }
 
     public function updatedRepetitions($value)
     {
-        $this->validate();
+        $this->validateOnly('repetitions');
         if ($this->recurring) {
-            $this->updatedRecurring(true);
+            $this->updatedRecurring(true, $value);
         }
     }
 
