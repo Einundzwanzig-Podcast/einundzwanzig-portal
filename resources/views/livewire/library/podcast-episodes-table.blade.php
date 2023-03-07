@@ -45,7 +45,7 @@
                             <div class="flex-shrink-0 pt-6">
                                 <a href="{{ $episode->data['link'] }}" target="_blank">
                                     <img class="h-48 w-full object-contain"
-                                         src="{{ $episode->data['image'] }}"
+                                         src="{{ $episode->data['image'] ?? $episode->podcast->data['image'] }}"
                                          alt="{{ $episode->data['title'] }}">
                                 </a>
                             </div>
