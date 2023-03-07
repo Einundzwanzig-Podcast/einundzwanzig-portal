@@ -33,6 +33,12 @@
                                 {{ __('Search') }}
                             </a>
 
+                            <a href="{{ route('library.table.podcastsEpisodes', ['country' => $country]) }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-podcast flex-none text-gray-400"></i>
+                                {{ __('Podcast Episodes') }}
+                            </a>
+
                             @auth
                                 <a href="{{ route('library.table.lecturer', ['country' => $country]) }}"
                                    class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">

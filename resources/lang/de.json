@@ -792,5 +792,11 @@
     "Manage cities\/areas": "Verwalte Städte\/Gebiete",
     "Manage venues": "Verwalte Veranstaltungsorte",
     "Image deleted!": "Bild gelöscht!",
-    "Current pictures": "Derzeitige Bilder"
+    "Current pictures": "Derzeitige Bilder",
+    "PubKey copied!": "Public Key kopiert!",
+    "Nostr": "",
+    "Podcast Episodes": "Podcast-Episoden",
+    "Language": "Sprache",
+    "minutes": "Minuten",
+    "Recurring appointment \/ monthly": "Wiederkehrende Termine \/ monatlich"
 }

@@ -202,6 +202,9 @@ Route::middleware([])
          Route::get('/library-item', \App\Http\Livewire\Library\LibraryTable::class)
               ->name('table.libraryItems');
 
+         Route::get('/podcast-episodes', \App\Http\Livewire\Library\PodcastEpisodesTable::class)
+              ->name('table.podcastsEpisodes');
+
          Route::get('/content-creator', \App\Http\Livewire\Library\LibraryTable::class)
               ->name('table.lecturer');
      });
