@@ -43,6 +43,8 @@ class PodcastEpisodesTable extends Component
                                      fn($query, $search) => $query
                                          ->where('data->title', 'ilike', "%{$search}%")
                                          ->orWhere('data->description', 'ilike', "%{$search}%")
+                                         ->orWhereHas('podcast',
+                                             fn($query) => $query->where('data->title', 'ilike', "%{$search}%"))
                                  )
                                  ->orderByDesc('data->datePublished')
                                  ->paginate($this->perPage),
