@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Library;
 use App\Models\Country;
 use App\Models\Episode;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class PodcastEpisodesTable extends Component
 {
@@ -45,6 +46,12 @@ class PodcastEpisodesTable extends Component
                                  )
                                  ->orderByDesc('data->datePublished')
                                  ->paginate($this->perPage),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Podcast Episodes'),
+                description: __('Search and find Bitcoin Podcast episodes.'),
+                image: asset('img/Screenshot_Podcast_Episodes.png')
+            ),
         ]);
     }
 }
