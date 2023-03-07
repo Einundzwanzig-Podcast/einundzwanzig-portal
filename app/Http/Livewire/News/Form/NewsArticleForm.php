@@ -37,10 +37,10 @@ class NewsArticleForm extends Component
             'libraryItem.type'               => 'required',
             'libraryItem.language_code'      => 'required',
             'libraryItem.value'              => 'required',
-            'libraryItem.subtitle'           => 'required',
+            'libraryItem.subtitle'           => 'string|nullable',
             'libraryItem.excerpt'            => 'required',
-            'libraryItem.main_image_caption' => 'required',
-            'libraryItem.read_time'          => 'required',
+            'libraryItem.main_image_caption' => 'string|nullable',
+            'libraryItem.read_time'          => 'numeric|nullable',
             'libraryItem.approved'           => 'boolean',
             'libraryItem.news'               => 'boolean',
         ];
