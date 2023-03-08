@@ -27,10 +27,11 @@ class ArticleOverview extends Component
         } else {
             $libraryItemName .= ' von '.$libraryItem->lecturer->name;
         }
-        $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld",
+        $text = sprintf("Ein neuer News-Artikel wurde verfasst:\n\n%s\n\n%s\n\n#Bitcoin #News #Einundzwanzig #gesundesgeld #einundzwanzig_portal_%s",
             $libraryItemName,
             url()->route('article.view',
                 ['libraryItem' => $libraryItem->slug]),
+            str($libraryItem->slug)->replace('-', '_')
         );
         $result = $this->publishOnNostr($libraryItem, $text);
         if ($result['success']) {
