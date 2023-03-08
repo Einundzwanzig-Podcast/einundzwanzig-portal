@@ -45,7 +45,7 @@ trait NostrTrait
     {
         $from = '';
         if ($model instanceof BitcoinEvent) {
-            return sprintf("Ein neues Event wurde eingestellt:\n%s\n%s bis %s\n%s\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld",
+            return sprintf("Ein neues Event wurde eingestellt:\n%s\n%s bis %s\n%s\n%s\n\n#Bitcoin #Event #Einundzwanzig #gesundesgeld #einundzwanzig_portal_events",
                 $model->title,
                 $model->from->asDateTime(),
                 $model->to->asDateTime(),
@@ -60,12 +60,13 @@ trait NostrTrait
                 $from .= $model->course->lecturer->name;
             }
 
-            return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
+            return sprintf("Unser Dozent %s hat einen neuen Kurs-Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld #einundzwanzig_portal_lecturer_%s",
                 $from,
                 $model->course->name,
                 str($model->course->description)->toString(),
                 url()->route('school.landingPage.lecturer',
                     ['country' => 'de', 'lecturer' => $model->course->lecturer]),
+                str($model->course->lecturer->slug)->replace('-', '_')
             );
         }
         if ($model instanceof MeetupEvent) {
@@ -74,12 +75,13 @@ trait NostrTrait
                 $from .= ' @'.$model->meetup->nostr;
             }
 
-            return sprintf("%s hat einen neuen Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+            return sprintf("%s hat einen neuen Termin eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld #einundzwanzig_portal_%s",
                 $from,
                 $model->start->asDateTime(),
                 $model->location,
                 url()->route('meetup.event.landing',
                     ['country' => 'de', 'meetupEvent' => $model->id]),
+                str($model->meetup->slug)->replace('-', '_')
             );
         }
         if ($model instanceof Meetup) {
@@ -88,9 +90,10 @@ trait NostrTrait
                 $from .= ' @'.$model->nostr;
             }
 
-            return sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n%s\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld",
+            return sprintf("Eine neue Meetup Gruppe wurde hinzugefügt:\n%s\n%s\n\n#Bitcoin #Meetup #Einundzwanzig #gesundesgeld #einundzwanzig_portal_%s",
                 $from,
-                url()->route('meetup.landing', ['country' => $model->city->country->code, 'meetup' => $model])
+                url()->route('meetup.landing', ['country' => $model->city->country->code, 'meetup' => $model]),
+                str($model->slug)->replace('-', '_')
             );
         }
         if ($model instanceof Course) {
@@ -100,12 +103,13 @@ trait NostrTrait
                 $from .= $model->lecturer->name;
             }
 
-            return sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld",
+            return sprintf("Unser Dozent %s hat einen neuen Kurs eingestellt:\n%s\n%s\n%s\n\n#Bitcoin #Kurs #Education #Einundzwanzig #gesundesgeld #einundzwanzig_portal_lecturer_%s",
                 $from,
                 $model->name,
                 str($model->description)->toString(),
                 url()->route('school.landingPage.lecturer',
                     ['country' => 'de', 'lecturer' => $model->lecturer]),
+                str($model->lecturer->slug)->replace('-', '_')
             );
         }
         if ($model instanceof LibraryItem) {
@@ -116,10 +120,11 @@ trait NostrTrait
                 $from .= ' von '.$model->lecturer->name;
             }
 
-            return sprintf("Es gibt was Neues zum Lesen oder Anhören:\n%s\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld",
+            return sprintf("Es gibt was Neues zum Lesen oder Anhören:\n%s\n%s\n\n#Bitcoin #Wissen #Einundzwanzig #gesundesgeld #einundzwanzig_portal_%s",
                 $from,
                 url()->route('article.view',
                     ['libraryItem' => $model->slug]),
+                str($model->slug)->replace('-', '_')
             );
         }
         if ($model instanceof OrangePill) {
