@@ -137,7 +137,7 @@
 
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-3 sm:row-start-3 md:row-start-1 xl:row-start-3">
-                    <a href="{{ route('bookCases.table.city', ['country' => $c]) }}"
+                    <a href="{{ route('bookCases.world', ['country' => $c]) }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
                        style="aspect-ratio: 1/1;">
                         <div class="absolute inset-0 w-full h-full">
