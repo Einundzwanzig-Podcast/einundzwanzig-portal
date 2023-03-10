@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62d971b702036ea44d2ac9abc26069e3",
+    "content-hash": "e0d111fae990e22e853f49e91eaf4138",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -2444,80 +2444,6 @@
                 "source": "https://github.com/JackieDo/Timezone-List/tree/5.1.3"
             },
             "time": "2022-03-17T15:10:43+00:00"
-        },
-        {
-            "name": "jantinnerezo/livewire-range-slider",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/HolgerHatGarKeineNode/livewire-range-slider.git",
-                "reference": "3b6b28ca22be89bcb65b6b90e32ca7d04c267382"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/HolgerHatGarKeineNode/livewire-range-slider/zipball/3b6b28ca22be89bcb65b6b90e32ca7d04c267382",
-                "reference": "3b6b28ca22be89bcb65b6b90e32ca7d04c267382",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^8.67|^9.0|^10.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "livewire/livewire": "^2.8",
-                "orchestra/testbench": "^6.0",
-                "phpunit/phpunit": "^9.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Jantinnerezo\\LivewireRangeSlider\\LivewireRangeSliderServiceProvider"
-                    ],
-                    "aliases": {
-                        "LivewireRangeSlider": "Jantinnerezo\\LivewireRangeSlider\\LivewireRangeSliderFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jantinnerezo\\LivewireRangeSlider\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Jantinnerezo\\LivewireRangeSlider\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ],
-                "test-coverage": [
-                    "vendor/bin/phpunit --coverage-html coverage"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jantinn Erezo",
-                    "email": "erezojantin@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A Tall Stack wrapper for noUiSlider Range Slider",
-            "homepage": "https://github.com/jantinnerezo/livewire-range-slider",
-            "keywords": [
-                "jantinnerezo",
-                "livewire-range-slider"
-            ],
-            "support": {
-                "source": "https://github.com/HolgerHatGarKeineNode/livewire-range-slider/tree/main"
-            },
-            "time": "2023-03-10T19:40:55+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
@@ -17327,8 +17253,7 @@
         "ebess/advanced-nova-media-library": 20,
         "qcod/laravel-gamify": 20,
         "stijnvanouplines/blade-country-flags": 20,
-        "wireui/wireui": 20,
-        "jantinnerezo/livewire-range-slider": 20
+        "wireui/wireui": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

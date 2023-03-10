@@ -61,8 +61,7 @@
         "symfony/mailgun-mailer": "^6.2",
         "wesselperik/nova-status-field": "^2.1",
         "wireui/wireui": "dev-main",
-        "ziffmedia/nova-select-plus": "^2.0",
-        "jantinnerezo/livewire-range-slider": "dev-main#3b6b28ca22be89bcb65b6b90e32ca7d04c267382"
+        "ziffmedia/nova-select-plus": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -139,10 +138,6 @@
             "options": {
                 "symlink": false
             }
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/HolgerHatGarKeineNode/livewire-range-slider"
         },
         {
             "type": "vcs",

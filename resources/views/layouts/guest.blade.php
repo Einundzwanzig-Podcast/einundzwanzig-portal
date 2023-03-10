@@ -63,6 +63,5 @@
 <!-- ProductLift SDK - Include it only once -->
 <script defer src="https://bitcoin.productlift.dev/widgets_sdk"></script>
 <x-comments::scripts/>
-<x-livewire-range-slider::scripts />
 </body>
 </html>
