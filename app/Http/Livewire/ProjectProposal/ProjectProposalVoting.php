@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class ProjectProposalVoting extends Component
 {
@@ -48,6 +49,9 @@ class ProjectProposalVoting extends Component
             $this->vote->user_id = auth()->id();
             $this->vote->project_proposal_id = $this->projectProposal->id;
             $this->vote->value = false;
+        }
+        if (!$this->fromUrl) {
+            $this->fromUrl = url()->previous();
         }
     }
 
@@ -102,6 +106,12 @@ class ProjectProposalVoting extends Component
                                     })
                                     ->orderByDesc('votes_count')
                                     ->get(),
+        ])->layout('layouts.app', [
+            'SEOData' => new SEOData(
+                title: __('Project Proposal'),
+                description: __('Submit a project proposal and let the community vote on it through the elected voters. All other community members can also vote.'),
+                image: asset('img/voting.jpg')
+            ),
         ]);
     }
 }
