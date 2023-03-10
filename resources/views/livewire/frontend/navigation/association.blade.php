@@ -3,7 +3,7 @@
     <button type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
             @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="true"
             :aria-expanded="open.toString()">
-        {{ __('Project Funding') }}
+        {{ __('Association') }}
         <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor"
              aria-hidden="true">
             <path fill-rule="evenodd"
