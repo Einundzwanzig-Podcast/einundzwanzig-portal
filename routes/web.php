@@ -118,6 +118,10 @@ Route::middleware([])
      ->get('/lecturer-material/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
      ->name('lecturerMaterial.view');
 
+Route::get('/project/voting/{projectProposal:slug}', \App\Http\Livewire\ProjectProposal\ProjectProposalVoting::class)
+     ->name('voting.projectFunding')
+     ->middleware(['auth']);
+
 Route::middleware([
     'auth',
 ])
@@ -218,10 +222,6 @@ Route::middleware([])
      ->group(function () {
          Route::get('/project/form/{projectProposal?}', \App\Http\Livewire\ProjectProposal\Form\ProjectProposalForm::class)
               ->name('projectProposal.form')
-              ->middleware(['auth']);
-
-         Route::get('/project/voting/{projectProposal?}', \App\Http\Livewire\ProjectProposal\ProjectProposalVoting::class)
-              ->name('voting.projectFunding')
               ->middleware(['auth']);
 
          Route::get('/projects', \App\Http\Livewire\ProjectProposal\ProjectProposalTable::class)

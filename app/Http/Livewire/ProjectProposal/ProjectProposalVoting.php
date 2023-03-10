@@ -12,9 +12,6 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class ProjectProposalVoting extends Component
 {
-
-    public Country $country;
-
     public ?ProjectProposal $projectProposal = null;
     public ?Vote $vote = null;
 
@@ -62,7 +59,7 @@ class ProjectProposalVoting extends Component
         $this->vote->save();
 
         return to_route('project.voting.projectFunding',
-            ['country' => $this->country, 'projectProposal' => $this->projectProposal, 'fromUrl' => $this->fromUrl]);
+            ['projectProposal' => $this->projectProposal, 'fromUrl' => $this->fromUrl]);
     }
 
     public function no()
@@ -73,7 +70,7 @@ class ProjectProposalVoting extends Component
         $this->vote->save();
 
         return to_route('project.voting.projectFunding',
-            ['country' => $this->country, 'projectProposal' => $this->projectProposal, 'fromUrl' => $this->fromUrl]);
+            ['projectProposal' => $this->projectProposal, 'fromUrl' => $this->fromUrl]);
     }
 
     public function render()
