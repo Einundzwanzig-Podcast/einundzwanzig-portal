@@ -811,5 +811,7 @@
     "Please write a detailed and understandable application text, so that the vote on a possible support can take place.": "Bitte schreibe einen detaillierten und verständlichen Bewerbungstext, damit die Abstimmung über eine mögliche Unterstützung stattfinden kann.",
     "Voting": "Abstimmung",
     "Reason": "Ablehnungsgrund",
-    "not voted yet": "bisher nicht abgestimmt"
+    "not voted yet": "bisher nicht abgestimmt",
+    "Entitled voters": "Stimmberechtigte",
+    "Other voters": "Alle anderen"
 }

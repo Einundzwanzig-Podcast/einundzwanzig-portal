@@ -809,5 +809,7 @@
     "Please write a detailed and understandable application text, so that the vote on a possible support can take place.": "",
     "Voting": "",
     "Reason": "",
-    "not voted yet": ""
+    "not voted yet": "",
+    "Entitled voters": "",
+    "Other voters": ""
 }

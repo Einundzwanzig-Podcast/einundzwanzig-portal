@@ -44,7 +44,7 @@
                             x-data="{
                             yes: [{{ $entitledVoters->pluck('votes')->collapse()->where('value', 1)->count() }},{{ $otherVoters->pluck('votes')->collapse()->where('value', 1)->count() }}],
                             no: [{{ $entitledVoters->pluck('votes')->collapse()->where('value', 0)->count() }},{{ $otherVoters->pluck('votes')->collapse()->where('value', 0)->count() }}],
-                            labels: ['Entitled voters', 'Other voters',],
+                            labels: ['{{ __('Entitled voters') }}', '{{ __('Other voters') }}',],
                             init() {
                                 let chart = new ApexCharts(this.$refs.chart, this.options)
                                 chart.render()
@@ -84,7 +84,7 @@
 
                         <div>
                             <div class="border-b border-gray-200 bg-dark px-4 py-5 sm:px-6">
-                                <h3 class="text-base font-semibold leading-6 text-gray-200">Entitled voters</h3>
+                                <h3 class="text-base font-semibold leading-6 text-gray-200">{{ __('Entitled voters') }}</h3>
                             </div>
 
                             <ul role="list" class="divide-y divide-gray-200">
@@ -123,7 +123,7 @@
 
                         <div>
                             <div class="border-b border-gray-200 bg-dark px-4 py-5 sm:px-6">
-                                <h3 class="text-base font-semibold leading-6 text-gray-200">Other voters</h3>
+                                <h3 class="text-base font-semibold leading-6 text-gray-200">{{ __('Other voters') }}</h3>
                             </div>
 
                             <ul role="list" class="divide-y divide-gray-200">
