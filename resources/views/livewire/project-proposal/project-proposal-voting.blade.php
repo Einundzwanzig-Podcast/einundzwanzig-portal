@@ -66,6 +66,21 @@
                             <x-button lg primary wire:click="no">
                                 No, don't support it!
                             </x-button>
+                            <div>
+                                <span class="text-amber-500">{{ __('Your vote') }}:</span>
+                                @php
+                                    $myVote = $projectProposal->votes->where('user_id', auth()->id())->first();
+                                @endphp
+                                @if($myVote && $myVote->value)
+                                    <x-badge green>{{ __('Yes') }}</x-badge>
+                                @endif
+                                @if($myVote && !$myVote->value)
+                                    <x-badge red>{{ __('No') }}</x-badge>
+                                @endif
+                                @if(!$myVote)
+                                    <x-badge>{{ __('not voted yet') }}</x-badge>
+                                @endif
+                            </div>
                         </div>
 
                         <div>

@@ -38,6 +38,7 @@ class ProjectProposalVoting extends Component
 
     public function mount()
     {
+        $this->projectProposal->load('votes');
         $vote = Vote::query()
                     ->where('user_id', auth()->id())
                     ->where('project_proposal_id', $this->projectProposal->id)
