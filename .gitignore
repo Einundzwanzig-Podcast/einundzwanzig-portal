@@ -28,3 +28,5 @@ auth.json
 yarn-error.log
 .yarn/*
 !.yarn/releases
+
+.blueprint

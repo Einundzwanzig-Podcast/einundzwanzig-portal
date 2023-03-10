@@ -210,6 +210,25 @@ Route::middleware([])
      });
 
 /*
+ * Project Funding
+ * */
+Route::middleware([])
+     ->as('project.')
+     ->prefix('/{country:code}/project-funding')
+     ->group(function () {
+         Route::get('/project/form/{projectProposal?}', \App\Http\Livewire\ProjectProposal\Form\ProjectProposalForm::class)
+              ->name('projectProposal.form')
+              ->middleware(['auth']);
+
+         Route::get('/project/voting/{projectProposal?}', \App\Http\Livewire\ProjectProposal\ProjectProposalVoting::class)
+              ->name('voting.projectFunding')
+              ->middleware(['auth']);
+
+         Route::get('/projects', \App\Http\Livewire\ProjectProposal\ProjectProposalTable::class)
+              ->name('table.projectFunding');
+     });
+
+/*
  * Books
  * */
 Route::middleware([])

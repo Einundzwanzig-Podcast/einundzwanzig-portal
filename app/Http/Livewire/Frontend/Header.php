@@ -82,74 +82,75 @@ class Header extends Component
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
 
         return view('livewire.frontend.header', [
-            'news'          => LibraryItem::query()
-                                          ->with([
-                                              'createdBy.roles',
-                                              'lecturer',
-                                              'tags',
-                                          ])
-                                          ->where('type', 'markdown_article')
-                                          ->where('approved', true)
-                                          ->where('news', true)
-                                          ->orderByDesc('created_at')
-                                          ->take(2)
-                                          ->get(),
-            'meetups'       => MeetupEvent::query()
-                                          ->with([
-                                              'meetup.users',
-                                              'meetup.city.country',
-                                          ])
-                                          ->where('start', '>', now())
-                                          ->orderBy('start')
-                                          ->take(2)
-                                          ->get(),
-            'courseEvents'  => CourseEvent::query()
-                                          ->with([
-                                              'venue.city.country',
-                                              'course.lecturer',
-                                          ])
-                                          ->where('from', '>', now())
-                                          ->orderBy('from')
-                                          ->take(2)
-                                          ->get(),
-            'libraryItems'  => LibraryItem::query()
-                                          ->with([
-                                              'lecturer',
-                                          ])
-                                          ->where('type', '<>', 'markdown_article')
-                                          ->orderByDesc('created_at')
-                                          ->take(2)
-                                          ->get(),
-            'bitcoinEvents' => BitcoinEvent::query()
-                                           ->with([
-                                               'venue',
-                                           ])
-                                           ->where('from', '>', now())
-                                           ->orderBy('from')
-                                           ->take(2)
-                                           ->get(),
-            'orangePills'   => OrangePill::query()
-                                         ->with([
-                                             'user',
-                                             'bookCase',
-                                         ])
-                                         ->orderByDesc('date')
-                                         ->take(2)
-                                         ->get(),
-            'cities'        => City::query()
-                                   ->select(['latitude', 'longitude'])
-                                   ->get(),
-            'countries'     => Country::query()
-                                      ->select('id', 'name', 'code')
-                                      ->orderBy('name')
-                                      ->get()
-                                      ->map(function (Country $country) {
-                                          $country->name = config('countries.emoji_flags')[str($country->code)
-                                                  ->upper()
-                                                  ->toString()].' '.$country->name;
+            'news'             => LibraryItem::query()
+                                             ->with([
+                                                 'createdBy.roles',
+                                                 'lecturer',
+                                                 'tags',
+                                             ])
+                                             ->where('type', 'markdown_article')
+                                             ->where('approved', true)
+                                             ->where('news', true)
+                                             ->orderByDesc('created_at')
+                                             ->take(2)
+                                             ->get(),
+            'meetups'          => MeetupEvent::query()
+                                             ->with([
+                                                 'meetup.users',
+                                                 'meetup.city.country',
+                                             ])
+                                             ->where('start', '>', now())
+                                             ->orderBy('start')
+                                             ->take(2)
+                                             ->get(),
+            'courseEvents'     => CourseEvent::query()
+                                             ->with([
+                                                 'venue.city.country',
+                                                 'course.lecturer',
+                                             ])
+                                             ->where('from', '>', now())
+                                             ->orderBy('from')
+                                             ->take(2)
+                                             ->get(),
+            'libraryItems'     => LibraryItem::query()
+                                             ->with([
+                                                 'lecturer',
+                                             ])
+                                             ->where('type', '<>', 'markdown_article')
+                                             ->orderByDesc('created_at')
+                                             ->take(2)
+                                             ->get(),
+            'bitcoinEvents'    => BitcoinEvent::query()
+                                              ->with([
+                                                  'venue',
+                                              ])
+                                              ->where('from', '>', now())
+                                              ->orderBy('from')
+                                              ->take(2)
+                                              ->get(),
+            'orangePills'      => OrangePill::query()
+                                            ->with([
+                                                'user',
+                                                'bookCase',
+                                            ])
+                                            ->orderByDesc('date')
+                                            ->take(2)
+                                            ->get(),
+            'projectProposals' => [],
+            'cities'           => City::query()
+                                      ->select(['latitude', 'longitude'])
+                                      ->get(),
+            'countries'        => Country::query()
+                                         ->select('id', 'name', 'code')
+                                         ->orderBy('name')
+                                         ->get()
+                                         ->map(function (Country $country) {
+                                             $country->name = config('countries.emoji_flags')[str($country->code)
+                                                     ->upper()
+                                                     ->toString()].' '.$country->name;
 
-                                          return $country;
-                                      }),
+                                             return $country;
+                                         }),
         ]);
     }
 }

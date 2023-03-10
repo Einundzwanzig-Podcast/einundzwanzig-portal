@@ -54,6 +54,7 @@ class CreatePermissions extends Command
             'OrangePillPolicy',
             'ParticipantPolicy',
             'PodcastPolicy',
+            'ProjectProposalPolicy',
             'RegistrationPolicy',
             'TeamPolicy',
             'UserPolicy',

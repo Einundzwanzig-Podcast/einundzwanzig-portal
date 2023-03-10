@@ -31,6 +31,8 @@
 
             @include('livewire.frontend.navigation.bookcases')
 
+            @include('livewire.frontend.navigation.association')
+
             @auth
                 @include('livewire.frontend.navigation.profile')
             @endauth

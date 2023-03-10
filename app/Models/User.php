@@ -36,7 +36,6 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     /**
      * The attributes that should be hidden for serialization.
-     *
      * @var array
      */
     protected $hidden = [
@@ -48,7 +47,6 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     /**
      * The attributes that should be cast.
-     *
      * @var array
      */
     protected $casts = [
@@ -57,7 +55,6 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     /**
      * The accessors to append to the model's array form.
-     *
      * @var array
      */
     protected $appends = [
@@ -92,5 +89,10 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
     public function reputations()
     {
         return $this->morphMany('QCod\Gamify\Reputation', 'subject');
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
     }
 }

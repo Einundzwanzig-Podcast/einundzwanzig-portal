@@ -799,5 +799,17 @@
     "Language": "Sprache",
     "minutes": "Minuten",
     "Recurring appointment \/ monthly": "Wiederkehrende Termine \/ monatlich",
-    "Search and find Bitcoin Podcast episodes.": "Suche und finde Bitcoin Podcast-Episoden."
+    "Search and find Bitcoin Podcast episodes.": "Suche und finde Bitcoin Podcast-Episoden.",
+    "Intended support in sats": "Beabsichtigte Unterstützung in sats",
+    "Vote": "Abstimmen",
+    "Submit project for funding": "Projekt zur Finanzierung einreichen",
+    "Project Funding": "Projekt-Unterstützung",
+    "Project Funding and Voting": "Projekt-Unterstützung und Abstimmung",
+    "Submitted projects": "Eingereichte Projekte",
+    "Project Proposal": "Projekt-Vorschlag",
+    "Project description": "Projekt-Beschreibung",
+    "Please write a detailed and understandable application text, so that the vote on a possible support can take place.": "Bitte schreibe einen detaillierten und verständlichen Bewerbungstext, damit die Abstimmung über eine mögliche Unterstützung stattfinden kann.",
+    "Voting": "Abstimmung",
+    "Reason": "Ablehnungsgrund",
+    "not voted yet": "bisher nicht abgestimmt"
 }
