@@ -23,7 +23,7 @@
         <div class="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 gap-x-8 py-10 px-6 lg:grid-cols-2 lg:px-8">
             <div class="grid grid-cols-2 gap-x-6 sm:gap-x-8">
                 <div>
-                    <h3 class="text-sm font-medium leading-6 text-gray-500">{{ __('Project Funding and Voting') }}</h3>
+                    <h3 class="text-sm font-medium leading-6 text-gray-500">{{ __('Association') }}</h3>
                     <div class="mt-6 flow-root">
                         <div class="-my-2">
 

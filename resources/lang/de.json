@@ -802,7 +802,7 @@
     "Search and find Bitcoin Podcast episodes.": "Suche und finde Bitcoin Podcast-Episoden.",
     "Intended support in sats": "Beabsichtigte Unterstützung in sats",
     "Vote": "Abstimmen",
-    "Submit project for funding": "Projekt zur Finanzierung einreichen",
+    "Submit project for funding": "Projekt für Unterstützung bewerben",
     "Project Funding": "Projekt-Unterstützung",
     "Project Funding and Voting": "Projekt-Unterstützung und Abstimmung",
     "Submitted projects": "Eingereichte Projekte",
@@ -818,5 +818,6 @@
     "Submitted by": "Übermittelt von",
     "This project requires": "Dieses Projekt benötigt\/beantragt",
     "sats": "sats",
-    "Your vote": "Deine Stimme"
+    "Your vote": "Deine Stimme",
+    "Association": "Verein"
 }
