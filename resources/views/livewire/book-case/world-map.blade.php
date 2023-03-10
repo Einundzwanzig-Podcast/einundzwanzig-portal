@@ -57,7 +57,7 @@
             src="{{ asset('dist/einundzwanzig.chat.js') }}"
             data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
             data-chat-type="GLOBAL"
-            data-chat-tags="#einundzwanzig-bookcases"
+            data-chat-tags="#einundzwanzig_bookcases"
             data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
         ></script>
         <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
