@@ -30,9 +30,9 @@ class MeetupEventForm extends Component
         return [
             'meetupEvent.meetup_id'   => 'required',
             'meetupEvent.start'       => 'required',
-            'meetupEvent.location'    => 'string|nullable',
+            'meetupEvent.location'    => 'string|max:255|nullable',
             'meetupEvent.description' => 'string|nullable',
-            'meetupEvent.link'        => 'url|nullable',
+            'meetupEvent.link'        => 'url|max:255|nullable',
 
             'series'         => 'array',
             'series.*.start' => 'required',
