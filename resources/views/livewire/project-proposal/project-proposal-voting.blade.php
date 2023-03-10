@@ -21,7 +21,32 @@
             <div class="space-y-8 divide-y divide-gray-700 sm:space-y-5">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
-                    <div>
+                    <div class="px-12">
+                        <div class="border-b border-gray-200 bg-dark px-4 py-5 sm:px-6">
+                            <h3 class="text-base font-semibold leading-6 text-gray-200">{{ __('Submitted by') }}</h3>
+                        </div>
+
+                        <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
+                            <div class="mt-6 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div>
+                                        <span class="sr-only text-gray-200">{{ $projectProposal->user->name }}</span>
+                                        <img class="h-10 w-10 object-cover rounded"
+                                             src="{{ $projectProposal->user->profile_photo_url }}"
+                                             alt="{{ $projectProposal->user->name }}">
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <div class="text-sm font-medium text-gray-200">
+                                        <div class="text-gray-200">{{ $projectProposal->user->name }}</div>
+                                    </div>
+                                    <div class="flex space-x-1 text-sm text-gray-300">
+                                        <span class="font-bold">{{ __('This project requires') }} </span><span class="font-bold text-amber-500">{{ $projectProposal->support_in_sats }} {{ __('sats') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="border-b border-gray-200 bg-dark px-4 py-5 sm:px-6">
                             <h3 class="text-base font-semibold leading-6 text-gray-200">{{ __('Description') }}</h3>
                         </div>
