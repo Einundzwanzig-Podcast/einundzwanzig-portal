@@ -41,7 +41,7 @@
                                         <div class="text-gray-200">{{ $projectProposal->user->name }}</div>
                                     </div>
                                     <div class="flex space-x-1 text-sm text-gray-300">
-                                        <span class="font-bold">{{ __('This project requires') }} </span><span class="font-bold text-amber-500">{{ $projectProposal->support_in_sats }} {{ __('sats') }}</span>
+                                        <span class="font-bold">{{ __('This project requires') }} </span><span class="font-bold text-amber-500">{{ number_format($projectProposal->support_in_sats, 0, ',', '.') }} {{ __('sats') }}</span>
                                     </div>
                                 </div>
                             </div>
