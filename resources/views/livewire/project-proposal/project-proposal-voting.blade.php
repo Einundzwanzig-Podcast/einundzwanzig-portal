@@ -63,10 +63,10 @@
                     <div class="sm:mt-5 space-y-6 sm:space-y-5">
                         <div class="w-full flex space-x-4">
                             <x-button lg positive wire:click="yes">
-                                Yes, support it!
+                                {{ __('Yes, support it!') }}
                             </x-button>
                             <x-button lg negative wire:click="no">
-                                No, don't support it!
+                                {{ __('No') }}
                             </x-button>
                             <div>
                                 <span class="text-amber-500">{{ __('Your vote') }}:</span>
