@@ -58,7 +58,7 @@ class ProjectProposalVoting extends Component
         $this->vote->value = true;
         $this->vote->save();
 
-        return to_route('project.voting.projectFunding',
+        return to_route('voting.projectFunding',
             ['projectProposal' => $this->projectProposal, 'fromUrl' => $this->fromUrl]);
     }
 
@@ -69,7 +69,7 @@ class ProjectProposalVoting extends Component
         $this->vote->value = false;
         $this->vote->save();
 
-        return to_route('project.voting.projectFunding',
+        return to_route('voting.projectFunding',
             ['projectProposal' => $this->projectProposal, 'fromUrl' => $this->fromUrl]);
     }
 

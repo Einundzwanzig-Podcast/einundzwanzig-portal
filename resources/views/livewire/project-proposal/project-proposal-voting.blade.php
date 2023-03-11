@@ -7,6 +7,7 @@
         <div class="pb-5 flex flex-row justify-between">
             <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Voting') }}
                 : {{ $projectProposal->name }}</h3>
+            <img class="h-32" src="{{ $projectProposal->getFirstMediaUrl('main') }}" alt="{{ $projectProposal->name }}">
             <div class="flex flex-row space-x-2 items-center">
                 <div>
                     <x-button :href="$fromUrl">
@@ -41,7 +42,8 @@
                                         <div class="text-gray-200">{{ $projectProposal->user->name }}</div>
                                     </div>
                                     <div class="flex space-x-1 text-sm text-gray-300">
-                                        <span class="font-bold">{{ __('This project requires') }} </span><span class="font-bold text-amber-500">{{ number_format($projectProposal->support_in_sats, 0, ',', '.') }} {{ __('sats') }}</span>
+                                        <span class="font-bold">{{ __('This project requires') }} </span><span
+                                            class="font-bold text-amber-500">{{ number_format($projectProposal->support_in_sats, 0, ',', '.') }} {{ __('sats') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -145,13 +147,15 @@
                                     @foreach($entitledVoters as $voter)
                                         @php
                                             $vote = $voter->votes->first();
-                                            if (!$voter->votes->first()) {
+                                            if (!$vote) {
                                                 $text = __('not voted yet');
-                                            } elseif (!$vote->value) {
+                                            } elseif ($vote && !$vote->value) {
                                                 $text = __('Reason') . ': ' . $voter->votes->first()?->reason;
+                                            } else {
+                                                $text = '';
                                             }
                                         @endphp
-                                        <li class="flex py-4">
+                                        <li class="flex py-4" wire:key="entitled_vote_{{ $voter->id }}">
                                             <img class="h-10 w-10 rounded-full" src="{{ $voter->profile_photo_url }}"
                                                  alt="">
                                             <div class="ml-3">
@@ -184,13 +188,15 @@
                                     @foreach($otherVoters as $voter)
                                         @php
                                             $vote = $voter->votes->first();
-                                            if (!$voter->votes->first()) {
+                                            if (!$vote) {
                                                 $text = __('not voted yet');
-                                            } elseif (!$vote->value) {
+                                            } elseif ($vote && !$vote->value) {
                                                 $text = __('Reason') . ': ' . $voter->votes->first()?->reason;
+                                            } else {
+                                                $text = '';
                                             }
                                         @endphp
-                                        <li class="flex py-4">
+                                        <li class="flex py-4" wire:key="other_vote_{{ $voter->id }}">
                                             <img class="h-10 w-10 rounded-full" src="{{ $voter->profile_photo_url }}"
                                                  alt="">
                                             <div class="ml-3">
