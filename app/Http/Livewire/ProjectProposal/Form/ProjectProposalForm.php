@@ -55,6 +55,12 @@ class ProjectProposalForm extends Component
         $this->validate();
         $this->projectProposal->save();
 
+        if ($this->image) {
+            $this->projectProposal->addMedia($this->image)
+                              ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
+                              ->toMediaCollection('main');
+        }
+
         return redirect($this->fromUrl);
     }
 

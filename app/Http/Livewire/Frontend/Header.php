@@ -9,6 +9,7 @@ use App\Models\CourseEvent;
 use App\Models\LibraryItem;
 use App\Models\MeetupEvent;
 use App\Models\OrangePill;
+use App\Models\ProjectProposal;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
@@ -136,7 +137,7 @@ class Header extends Component
                                             ->orderByDesc('date')
                                             ->take(2)
                                             ->get(),
-            'projectProposals' => [],
+            'projectProposals' => ProjectProposal::query()->with(['votes'])->get(),
             'cities'           => City::query()
                                       ->select(['latitude', 'longitude'])
                                       ->get(),

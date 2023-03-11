@@ -67,19 +67,20 @@
                         </div>
                         <div>
                             <div class="flex items-center gap-x-4">
-                                <div
-                                    class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 text-xs font-medium text-gray-600 hover:bg-gray-100">
-                                    {{ $item->name }}
-                                </div>
+                                <div class="font-bold">{{ __('This project requires') }} </div><div
+                                    class="font-bold text-amber-500">{{ number_format($item->support_in_sats, 0, ',', '.') }} {{ __('sats') }}</div>
                             </div>
                             <h4 class="mt-2 text-sm font-semibold leading-6 text-gray-900">
-                                <a href="{{ route('libraryItem.view', ['libraryItem' => $item]) }}">
+                                <a href="{{ route('voting.projectFunding', ['projectProposal' => $item]) }}">
                                     <span class="absolute inset-0"></span>
                                     {{ $item->name }}
                                 </a>
                             </h4>
                             <p class="mt-2 text-sm leading-6 text-gray-600 truncate">
-                                {{ $item->description }}
+                                {{ __('Yes') }}: {{ $item->votes->where('value', 1)->count() }} / {{ __('No') }}: {{ $item->votes->where('value', 0)->count() }}
+                            </p>
+                            <p class="mt-2 text-sm leading-6 text-gray-600 truncate">
+                                {{ __('From') }}: {{ $item->user->name }}
                             </p>
                         </div>
                     </article>
