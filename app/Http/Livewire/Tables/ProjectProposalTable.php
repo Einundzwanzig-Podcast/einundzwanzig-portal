@@ -16,7 +16,7 @@ class ProjectProposalTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-             ->setAdditionalSelects(['project_proposals.id', 'project_proposals.created_by', 'project_proposals.slug'])
+             ->setAdditionalSelects(['project_proposals.id', 'project_proposals.created_by', 'project_proposals.slug', 'project_proposals.user_id'])
              ->setThAttributes(function (Column $column) {
                  return [
                      'class' => 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:bg-gray-800 dark:text-gray-400',
@@ -45,6 +45,10 @@ class ProjectProposalTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
+            Column::make(__('From'))
+                  ->label(
+                      fn ($row, Column $column) => view('columns.project_proposals.author')->withRow($row)
+                  ),
             Column::make("Name", "name")
                 ->sortable(),
             Column::make(__('Intended support in sats'), "support_in_sats")
@@ -61,6 +65,6 @@ class ProjectProposalTable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return ProjectProposal::query();
+        return ProjectProposal::query()->with(['user']);
     }
 }
