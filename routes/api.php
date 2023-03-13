@@ -117,7 +117,7 @@ Route::get('/lnurl-auth-callback', function (Request $request) {
                 'is_lecturer' => true,
                 'name'        => $fakeName,
                 'email'       => str($request->key)->substr(-12).'@portal.einundzwanzig.space',
-                'lnbits'      => null,
+                'lnbits'      => [],
             ]);
             $user->ownedTeams()
                  ->save(Team::forceCreate([
