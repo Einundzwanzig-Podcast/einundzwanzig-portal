@@ -16,10 +16,8 @@ trait LNBitsTrait
         return $response->status() === 200;
     }
 
-    public function createInvoice($sats, $memo)
+    public function createInvoice($sats, $memo, $lnbits)
     {
-        $lnbits = auth()->user()->lnbits;
-
         $response = Http::withHeaders([
             'X-Api-Key' => $lnbits['read_key'],
         ])

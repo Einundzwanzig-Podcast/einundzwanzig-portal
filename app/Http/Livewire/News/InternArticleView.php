@@ -45,7 +45,8 @@ class InternArticleView extends Component
     {
         $invoice = $this->createInvoice(
             sats: $this->libraryItem->sats,
-            memo: 'Payment for: "'.$this->libraryItem->slug.'" on Einundzwanzig Portal.'
+            memo: 'Payment for: "'.$this->libraryItem->slug.'" on Einundzwanzig Portal.',
+            lnbits: $this->libraryItem->createdBy->lnbits,
         );
         session('payment_hash_article_'.$this->libraryItem->id, $invoice['payment_hash']);
         $this->paymentHash = $invoice['payment_hash'];
