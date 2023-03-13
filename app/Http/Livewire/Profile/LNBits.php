@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Profile;
 
+use App\Traits\LNBitsTrait;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
 class LNBits extends Component
 {
     use Actions;
+    use LNBitsTrait;
 
     public array $settings = [
         'url'       => 'https://legend.lnbits.com',
@@ -34,6 +36,12 @@ class LNBits extends Component
     public function save()
     {
         $this->validate();
+        if ($this->checkLnbitsSettings($this->settings['read_key'], $this->settings['url'], $this->settings['wallet_id']) === false) {
+            $this->notification()
+                 ->error(__('LNBits settings are not valid!'));
+
+            return;
+        }
         $user = auth()->user();
         $user->lnbits = $this->settings;
         $user->save();

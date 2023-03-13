@@ -30,6 +30,15 @@
                                 {{ __('Submit paid news article') }}
                                 <i class="fa fa-thin fa-coins"></i>
                             </x-button>
+                        @else
+                            <x-button
+                                class="whitespace-nowrap"
+                                :href="route('profile.lnbits')"
+                                black>
+                                <i class="fa fa-thin fa-gear"></i>
+                                {{ __('Setup LNBits for paid articles') }}
+                                <i class="fa fa-thin fa-coins"></i>
+                            </x-button>
                         @endif
                     @endauth
                 </div>

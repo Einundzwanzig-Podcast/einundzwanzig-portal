@@ -6,6 +6,16 @@ use Illuminate\Support\Facades\Http;
 
 trait LNBitsTrait
 {
+    public function checkLnbitsSettings($read_key, $uri, $id)
+    {
+        $response = Http::withHeaders([
+            'X-Api-Key' => $read_key,
+        ])
+                        ->get($uri.'/api/v1/wallet');
+
+        return $response->status() === 200;
+    }
+
     public function createInvoice($sats, $memo)
     {
         $lnbits = auth()->user()->lnbits;

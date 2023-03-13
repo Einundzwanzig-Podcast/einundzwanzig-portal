@@ -837,8 +837,11 @@
     "Payment hash copied!": "Payment Hash kopiert!",
     "Copy payment hash": "Kopiere Payment Hash",
     "Enter the data of your LNBits instance here to receive sats for articles, for example.": "Gib hier die Daten deiner LNBits-Instanz ein, um sats für zum Beispiel Artikel zu erhalten.",
-    "LNBits Url": "",
-    "Wallet ID": "",
-    "Invoice\/read key": "",
-    "paid": "zu bezahlen"
+    "LNBits Url": "LNBits Url",
+    "Wallet ID": "Wallet ID",
+    "Invoice\/read key": "Invoice\/read key",
+    "paid": "zu bezahlen",
+    "Setup LNBits for paid articles": "Setze LNBits für bezahlte Artikel ein",
+    "Click QR-Code to open your wallet": "Klicke auf den QR-Code, um deine Wallet zu öffnen",
+    "LNBits settings are not valid!": "LNBits-Einstellungen sind nicht gültig!"
 }

@@ -22,9 +22,9 @@
                         </div>
                     </div>
                     <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-200">
-                        <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
-                        </p>
+                        <div class="text-sm font-medium text-gray-200">
+                            <div class="text-gray-200">{{ $libraryItem->lecturer->name }}</div>
+                        </div>
                         <div class="flex space-x-1 text-sm text-gray-500">
                             <time datetime="2020-03-16">{{ $libraryItem->created_at->asDateTime() }}</time>
                             @if($libraryItem->read_time)
