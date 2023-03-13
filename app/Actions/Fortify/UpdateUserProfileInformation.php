@@ -47,7 +47,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'node_id' => $input['node_id'],
                 'email' => $input['email'],
                 'timezone' => $input['timezone'],
-                'lnbits' => $user->lnbits ?? [],
             ])
                  ->save();
         }
@@ -69,7 +68,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'email' => $input['email'],
             'timezone' => $input['timezone'],
             'email_verified_at' => null,
-            'lnbits' => $user->lnbits ?? [],
         ])
              ->save();
 
