@@ -30,10 +30,8 @@ trait LNBitsTrait
         return $response->json();
     }
 
-    public function check($paymentHash)
+    public function check($paymentHash, $lnbits)
     {
-        $lnbits = auth()->user()->lnbits;
-
         $response = Http::withHeaders([
             'X-Api-Key' => $lnbits['read_key'],
         ])

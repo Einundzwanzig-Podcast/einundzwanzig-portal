@@ -71,7 +71,7 @@ class InternArticleView extends Component
 
     public function checkPaymentHash()
     {
-        $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash);
+        $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash, $this->libraryItem->createdBy->lnbits);
         if (isset($invoice['paid']) && $invoice['paid']) {
             $this->invoicePaid = true;
             auth()
