@@ -45,10 +45,6 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
         'library_id'  => 'integer',
     ];
 
-    protected $hidden = [
-        'value_to_be_paid',
-    ];
-
     public static function getFeedItems()
     {
         return self::query()
