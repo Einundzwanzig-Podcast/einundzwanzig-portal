@@ -33,10 +33,10 @@ class InternArticleView extends Component
             abort(403, __('Sorry! You are not authorized to perform this action.'));
         }
         if (auth()->check() && auth()
-                ->user()
-                ->paidArticles()
-                ->where('library_item_id', $this->libraryItem->id)
-                ->count() > 0) {
+                                   ->user()
+                                   ->paidArticles()
+                                   ->where('library_item_id', $this->libraryItem->id)
+                                   ->count() > 0) {
             $this->invoicePaid = true;
         }
     }
@@ -51,7 +51,15 @@ class InternArticleView extends Component
         $this->paymentHash = $invoice['payment_hash'];
         $this->qrCode = base64_encode(QrCode::format('png')
                                             ->size(300)
-                                            ->merge($this->libraryItem->lecturer->getFirstMedia('avatar') ? $this->libraryItem->lecturer->getFirstMediaPath('avatar') : '/public/img/einundzwanzig.png',
+                                            ->merge($this->libraryItem->lecturer->getFirstMedia('avatar')
+                                                ? str(
+                                                    $this->libraryItem
+                                                        ->lecturer
+                                                        ->getFirstMediaPath('avatar'))
+                                                    ->replace('/home/einundzwanzig/portal.einundzwanzig.space',
+                                                        ''
+                                                    )
+                                                : '/public/img/einundzwanzig.png',
                                                 .3)
                                             ->errorCorrection('H')
                                             ->generate($invoice['payment_request']));
