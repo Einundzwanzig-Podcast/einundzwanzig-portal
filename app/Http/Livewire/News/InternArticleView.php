@@ -32,7 +32,7 @@ class InternArticleView extends Component
                                          ->count() > 0 && !auth()->check()) {
             abort(403, __('Sorry! You are not authorized to perform this action.'));
         }
-        if (auth()
+        if (auth()->check() && auth()
                 ->user()
                 ->paidArticles()
                 ->where('library_item_id', $this->libraryItem->id)
