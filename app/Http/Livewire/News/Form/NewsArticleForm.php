@@ -74,6 +74,9 @@ class NewsArticleForm extends Component
         if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
         }
+        if (!$this->libraryItem->value_to_be_paid) {
+            $this->libraryItem->value_to_be_paid = '';
+        }
     }
 
     public function updatedImages($value)
