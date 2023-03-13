@@ -47,6 +47,11 @@
 
                 @foreach($libraryItems as $libraryItem)
                     @if($libraryItem->approved || $libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
+                        @php
+                            if($libraryItem->sats && !auth()->check()) {
+                                continue;
+                            }
+                        @endphp
                         <div wire:key="library_item_{{ $libraryItem->id }}" wire:loading.class="opacity-25"
                              class="relative flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
                             @if($libraryItem->sats)
