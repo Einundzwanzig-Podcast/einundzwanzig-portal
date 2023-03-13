@@ -5,6 +5,7 @@ namespace App\Http\Livewire\News;
 use App\Models\LibraryItem;
 use App\Traits\LNBitsTrait;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -71,12 +72,14 @@ class InternArticleView extends Component
     public function checkPaymentHash()
     {
         $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash);
-        if ($invoice['paid']) {
+        if (isset($invoice['paid']) && $invoice['paid']) {
             $this->invoicePaid = true;
             auth()
                 ->user()
                 ->paidArticles()
                 ->syncWithoutDetaching($this->libraryItem->id);
+        } else {
+            Log::error(json_encode($invoice, JSON_THROW_ON_ERROR));
         }
     }
 
