@@ -118,7 +118,7 @@ Route::get('/lnurl-auth-callback', function (Request $request) {
                 'name'        => $fakeName,
                 'email'       => str($request->key)->substr(-12).'@portal.einundzwanzig.space',
                 'lnbits'      => [
-                    'api_key'   => null,
+                    'read_key'   => null,
                     'url'       => null,
                     'wallet_id' => null,
                 ],
