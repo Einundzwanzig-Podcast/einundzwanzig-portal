@@ -42,6 +42,12 @@
                                 {{ __('My meetups') }}
                             </a>
 
+                            <a href="{{ route('profile.lnbits') }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-key-skeleton-left-right flex-none text-gray-400"></i>
+                                {{ __('LNBits') }}
+                            </a>
+
                         </div>
                     </div>
                 </div>

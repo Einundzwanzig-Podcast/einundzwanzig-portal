@@ -1,11 +1,1 @@
 models:
-  ProjectProposal:
-    user_id: foreign
-    name: string unique
-    support_in_sats: integer unsigned
-    description: text
-  Vote:
-    user_id: foreign
-    project_proposal_id: foreign
-    value: integer unsigned
-    reason: text nullable

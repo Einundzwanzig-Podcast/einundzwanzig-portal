@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0d111fae990e22e853f49e91eaf4138",
+    "content-hash": "82090857f80131ea826eeac73a9f26dd",
     "packages": [
         {
             "name": "akuechler/laravel-geoly",
@@ -5526,16 +5526,16 @@
         },
         {
             "name": "openspout/openspout",
-            "version": "v4.12.2",
+            "version": "v4.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openspout/openspout.git",
-                "reference": "90ceeefef3750dd2afab95689ed2107dd576905e"
+                "reference": "e01cab951c04ef184c567a880290997e94386f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openspout/openspout/zipball/90ceeefef3750dd2afab95689ed2107dd576905e",
-                "reference": "90ceeefef3750dd2afab95689ed2107dd576905e",
+                "url": "https://api.github.com/repos/openspout/openspout/zipball/e01cab951c04ef184c567a880290997e94386f94",
+                "reference": "e01cab951c04ef184c567a880290997e94386f94",
                 "shasum": ""
             },
             "require": {
@@ -5603,7 +5603,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openspout/openspout/issues",
-                "source": "https://github.com/openspout/openspout/tree/v4.12.2"
+                "source": "https://github.com/openspout/openspout/tree/v4.13.0"
             },
             "funding": [
                 {
@@ -5615,7 +5615,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-03T07:45:00+00:00"
+            "time": "2023-03-13T14:32:53+00:00"
         },
         {
             "name": "paragonie/ciphersweet",
@@ -7557,16 +7557,16 @@
         },
         {
             "name": "rap2hpoutre/fast-excel",
-            "version": "v5.1.1",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/fast-excel.git",
-                "reference": "05bc956fa6121b239c98960ea9b551116f20b058"
+                "reference": "c6d2b8b707b85f7c43028d3b4cc969388d8b6c17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/05bc956fa6121b239c98960ea9b551116f20b058",
-                "reference": "05bc956fa6121b239c98960ea9b551116f20b058",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/c6d2b8b707b85f7c43028d3b4cc969388d8b6c17",
+                "reference": "c6d2b8b707b85f7c43028d3b4cc969388d8b6c17",
                 "shasum": ""
             },
             "require": {
@@ -7615,7 +7615,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rap2hpoutre/fast-excel/issues",
-                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v5.1.1"
+                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v5.2.0"
             },
             "funding": [
                 {
@@ -7623,7 +7623,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-09T15:13:18+00:00"
+            "time": "2023-03-13T14:25:33+00:00"
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
@@ -7755,16 +7755,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "3.14.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "60dd3f74ab21cc2bf53f39bf7c342798bc185c23"
+                "reference": "c6a0e24d2f8da8d8f57cdcc87ca635248c1a91c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/60dd3f74ab21cc2bf53f39bf7c342798bc185c23",
-                "reference": "60dd3f74ab21cc2bf53f39bf7c342798bc185c23",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/c6a0e24d2f8da8d8f57cdcc87ca635248c1a91c5",
+                "reference": "c6a0e24d2f8da8d8f57cdcc87ca635248c1a91c5",
                 "shasum": ""
             },
             "require": {
@@ -7843,7 +7843,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-php/issues",
-                "source": "https://github.com/getsentry/sentry-php/tree/3.14.0"
+                "source": "https://github.com/getsentry/sentry-php/tree/3.15.0"
             },
             "funding": [
                 {
@@ -7855,7 +7855,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-03-05T21:31:25+00:00"
+            "time": "2023-03-13T11:45:26+00:00"
         },
         {
             "name": "sentry/sentry-laravel",
@@ -14542,6 +14542,68 @@
             "time": "2023-02-13T14:52:08+00:00"
         },
         {
+            "name": "laracasts/generators",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HolgerHatGarKeineNode/Laravel-5-Generators-Extended.git",
+                "reference": "7728ee6045ffdd5ae47fa209bc5fbd69492d90ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HolgerHatGarKeineNode/Laravel-5-Generators-Extended/zipball/7728ee6045ffdd5ae47fa209bc5fbd69492d90ce",
+                "reference": "7728ee6045ffdd5ae47fa209bc5fbd69492d90ce",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~6.0|~7.0|~8.0|~9.0|~10.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~6.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Generators\\GeneratorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laracasts\\Generators\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpspec run"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                },
+                {
+                    "name": "Cristian Tabacitu",
+                    "email": "hello@tabaciu.ro"
+                }
+            ],
+            "description": "Advanced Laravel generators, that include schema information.",
+            "keywords": [
+                "generators",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/HolgerHatGarKeineNode/Laravel-5-Generators-Extended/tree/master"
+            },
+            "time": "2023-03-13T14:54:33+00:00"
+        },
+        {
             "name": "laravel-lang/attributes",
             "version": "v2.3.2",
             "source": {
@@ -17253,7 +17315,8 @@
         "ebess/advanced-nova-media-library": 20,
         "qcod/laravel-gamify": 20,
         "stijnvanouplines/blade-country-flags": 20,
-        "wireui/wireui": 20
+        "wireui/wireui": 20,
+        "laracasts/generators": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

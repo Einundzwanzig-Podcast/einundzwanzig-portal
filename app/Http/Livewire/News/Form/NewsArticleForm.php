@@ -24,8 +24,9 @@ class NewsArticleForm extends Component
     public array $temporaryUrls = [];
 
     public ?string $fromUrl = '';
+    public bool $paid = false;
 
-    protected $queryString = ['fromUrl' => ['except' => '']];
+    protected $queryString = ['fromUrl' => ['except' => ''], 'paid' => ['except' => false]];
 
     public function rules()
     {
@@ -37,6 +38,7 @@ class NewsArticleForm extends Component
             'libraryItem.type'               => 'required',
             'libraryItem.language_code'      => 'required',
             'libraryItem.value'              => 'required',
+            'libraryItem.sats'               => 'required',
             'libraryItem.subtitle'           => 'string|nullable',
             'libraryItem.excerpt'            => 'required',
             'libraryItem.main_image_caption' => 'string|nullable',
@@ -50,12 +52,14 @@ class NewsArticleForm extends Component
     {
         if ($this->libraryItem === null) {
             $this->libraryItem = new LibraryItem([
-                'type'          => 'markdown_article',
-                'value'         => '',
-                'read_time'     => 1,
-                'news'          => true,
-                'language_code' => 'de',
-                'approved'      => auth()
+                'type'             => 'markdown_article',
+                'value'            => '',
+                'value_to_be_paid' => '',
+                'read_time'        => 1,
+                'sats'             => 21,
+                'news'             => true,
+                'language_code'    => 'de',
+                'approved'         => auth()
                     ->user()
                     ->hasRole('news-editor'),
             ]);

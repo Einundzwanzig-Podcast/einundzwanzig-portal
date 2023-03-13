@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use ParagonIE\CipherSweet\BlindIndex;
 use ParagonIE\CipherSweet\EncryptedRow;
+use ParagonIE\CipherSweet\JsonFieldMap;
 use QCod\Gamify\Gamify;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
@@ -63,12 +64,18 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
 
     public static function configureCipherSweet(EncryptedRow $encryptedRow): void
     {
+        $map = (new JsonFieldMap())
+            ->addTextField('url')
+            ->addTextField('read_key')
+            ->addTextField('wallet_id');
+
         $encryptedRow
             ->addField('public_key')
             ->addField('lightning_address')
             ->addField('lnurl')
             ->addField('node_id')
             ->addField('email')
+            ->addJsonField('lnbits', $map)
             ->addBlindIndex('public_key', new BlindIndex('public_key_index'))
             ->addBlindIndex('lightning_address', new BlindIndex('lightning_address_index'))
             ->addBlindIndex('lnurl', new BlindIndex('lnurl_index'))
@@ -94,5 +101,10 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
     public function votes()
     {
         return $this->hasMany(Vote::class);
+    }
+
+    public function paidArticles()
+    {
+        return $this->belongsToMany(LibraryItem::class, 'library_item_user', 'user_id', 'library_item_id');
     }
 }

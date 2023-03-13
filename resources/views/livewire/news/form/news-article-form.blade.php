@@ -5,7 +5,11 @@
     <div class="container p-4 mx-auto bg-21gray my-2">
 
         <div class="pb-5 flex flex-row justify-between">
-            <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('News Article') }}</h3>
+            @if($paid)
+                <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('Paid News Article') }}</h3>
+            @else
+                <h3 class="text-lg font-medium leading-6 text-gray-200">{{ __('News Article') }}</h3>
+            @endif
             <div class="flex flex-row space-x-2 items-center justify-between">
                 <div x-data="{}">
                     @if($libraryItem->created_by === auth()->id())
@@ -35,6 +39,13 @@
         <form class="space-y-8 divide-y divide-gray-700 pb-24">
             <div class="space-y-8 divide-y divide-gray-700 sm:space-y-5">
                 <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+
+                    @if($paid)
+                        <x-input.group :for="md5('libraryItem.sats')" :label="__('sats')">
+                            <x-inputs.number min="21" autocomplete="off" wire:model.debounce="libraryItem.sats"
+                                             :placeholder="__('sats')" :hint="__('How many sats to read this article?')"/>
+                        </x-input.group>
+                    @endif
 
                     <x-input.group :for="md5('libraryItem.lecturer_id')">
                         <x-slot name="label">
@@ -113,12 +124,21 @@
                             />
                         </x-input.group>
 
-                        <x-input.group :for="md5('libraryItem.value')" :label="__('Article as Markdown')">
+                        <x-input.group :for="md5('libraryItem.value')" :label="$paid ? __('Free part of the Article as Markdown') : __('Article as Markdown')">
                             <div
                                 class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
                             <x-input.simple-mde wire:model.defer="libraryItem.value"/>
                             @error('libraryItem.value') <span class="text-red-500 py-2">{{ $message }}</span> @enderror
                         </x-input.group>
+
+                        @if($paid)
+                                <x-input.group :for="md5('libraryItem.value_to_be_paid')" :label="__('Part of the article to be paid')">
+                                    <div
+                                        class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
+                                    <x-input.simple-mde wire:model.defer="libraryItem.value_to_be_paid"/>
+                                    @error('libraryItem.value_to_be_paid') <span class="text-red-500 py-2">{{ $message }}</span> @enderror
+                                </x-input.group>
+                        @endif
 
                         <x-input.group :for="md5('libraryItem.read_time')" :label="__('Time to read')">
                             <x-inputs.number min="1" autocomplete="off" wire:model.debounce="libraryItem.read_time"

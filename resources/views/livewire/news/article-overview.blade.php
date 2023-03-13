@@ -15,11 +15,22 @@
                 <div>
                     @auth
                         <x-button
+                            class="whitespace-nowrap"
                             :href="route('news.form')"
                             primary>
                             <i class="fa fa-thin fa-plus"></i>
                             {{ __('Submit news articles') }}
                         </x-button>
+                        @if(auth()->user()->lnbits)
+                            <x-button
+                                class="whitespace-nowrap"
+                                :href="route('news.form', ['paid' => true])"
+                                primary>
+                                <i class="fa fa-thin fa-plus"></i>
+                                {{ __('Submit paid news article') }}
+                                <i class="fa fa-thin fa-coins"></i>
+                            </x-button>
+                        @endif
                     @endauth
                 </div>
             </div>
@@ -28,7 +39,15 @@
                 @foreach($libraryItems as $libraryItem)
                     @if($libraryItem->approved || $libraryItem->created_by === auth()->id() || auth()->user()?->hasRole('news-editor'))
                         <div wire:key="library_item_{{ $libraryItem->id }}" wire:loading.class="opacity-25"
-                             class="flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
+                             class="relative flex flex-col overflow-hidden rounded-lg  border-2 border-[#F7931A]">
+                            @if($libraryItem->sats)
+                                <div class="absolute -left-1 top-0 h-16 w-16">
+                                    <div
+                                        class="absolute transform -rotate-45 bg-amber-500 text-center text-white font-semibold py-1 left-[-34px] top-[32px] w-[170px]">
+                                        {{ __('paid') }}
+                                    </div>
+                                </div>
+                            @endif
                             <div class="flex-shrink-0 pt-6">
                                 <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
                                     <img class="h-48 w-full object-contain"

@@ -76,7 +76,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "laracasts/generators": "dev-master#7728ee6045ffdd5ae47fa209bc5fbd69492d90ce"
     },
     "autoload": {
         "psr-4": {
@@ -138,6 +139,10 @@
             "options": {
                 "symlink": false
             }
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/HolgerHatGarKeineNode/Laravel-5-Generators-Extended"
         },
         {
             "type": "vcs",

@@ -3,13 +3,25 @@
 namespace App\Http\Livewire\News;
 
 use App\Models\LibraryItem;
+use App\Traits\LNBitsTrait;
 use Carbon\Carbon;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class InternArticleView extends Component
 {
+    use LNBitsTrait;
+
     public LibraryItem $libraryItem;
+
+    public $qrCode = '';
+    public $invoice = '';
+    public $paymentHash = '';
+    public $checkid = null;
+    public $checkThisPaymentHash = '';
+    public bool $invoicePaid = false;
+    public bool $alreadyPaid = false;
 
     public function mount()
     {
@@ -17,8 +29,45 @@ class InternArticleView extends Component
             'libraries',
         ]);
         if ($this->libraryItem->libraries->where('is_public', false)
-                                         ->count() > 0 && ! auth()->check()) {
+                                         ->count() > 0 && !auth()->check()) {
             abort(403, __('Sorry! You are not authorized to perform this action.'));
+        }
+        if (auth()
+                ->user()
+                ->paidArticles()
+                ->where('library_item_id', $this->libraryItem->id)
+                ->count() > 0) {
+            $this->invoicePaid = true;
+        }
+    }
+
+    public function pay()
+    {
+        $invoice = $this->createInvoice(
+            sats: $this->libraryItem->sats,
+            memo: 'Payment for: "'.$this->libraryItem->slug.'" on Einundzwanzig Portal.'
+        );
+        session('payment_hash_article_'.$this->libraryItem->id, $invoice['payment_hash']);
+        $this->paymentHash = $invoice['payment_hash'];
+        $this->qrCode = base64_encode(QrCode::format('png')
+                                            ->size(300)
+                                            ->merge($this->libraryItem->lecturer->getFirstMedia('avatar') ? $this->libraryItem->lecturer->getFirstMediaPath('avatar') : '/public/img/einundzwanzig.png',
+                                                .3)
+                                            ->errorCorrection('H')
+                                            ->generate($invoice['payment_request']));
+        $this->invoice = $invoice['payment_request'];
+        $this->checkid = $invoice['checking_id'];
+    }
+
+    public function checkPaymentHash()
+    {
+        $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash);
+        if ($invoice['paid']) {
+            $this->invoicePaid = true;
+            auth()
+                ->user()
+                ->paidArticles()
+                ->syncWithoutDetaching($this->libraryItem->id);
         }
     }
 

@@ -138,7 +138,127 @@
                                 {!! $libraryItem->value !!}
                             </x-markdown>
                         @endif
+                    </div>
 
+                    @if($libraryItem->sats && !$invoicePaid)
+                        <div
+                            class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                            <div
+                                class="relative isolate overflow-hidden bg-gray-900 px-6 py-12 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+                                <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                                    {{ __('You can read the full article if you paid with Lightning') }}
+                                </h2>
+                                <div
+                                    class="flex max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl justify-center items-center">
+                                    <div class="mt-6 flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <div>
+                                                <span
+                                                    class="sr-only text-gray-200">{{ $libraryItem->lecturer->name }}</span>
+                                                <img class="h-10 w-10 object-cover rounded"
+                                                     src="{{ $libraryItem->lecturer->getFirstMediaUrl('avatar') }}"
+                                                     alt="{{ $libraryItem->lecturer->name }}">
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <div class="text-sm font-medium text-gray-200">
+                                                <div class="text-gray-200">{{ __('Receiver') }}
+                                                    : {{ $libraryItem->lecturer->name }}</div>
+                                            </div>
+                                            <div class="flex space-x-1 text-sm text-gray-300">
+                                                <time
+                                                    datetime="2020-03-16">{{ number_format($libraryItem->sats, 0, ',', '.') }} {{ __('sats') }}</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if(!$invoice)
+                                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                                        <div
+                                            wire:click="pay"
+                                            class="cursor-pointer rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                            <i class="fa-thin fa-bolt"></i>
+                                            Pay with lightning
+                                        </div>
+                                        <div wire:click="$set('alreadyPaid', true)" class="cursor-pointer text-sm font-semibold leading-6 text-white">{{ __('already paid?') }} <span aria-hidden="true">→</span></div>
+                                    </div>
+                                @else
+                                    <div class="mt-10 flex items-center justify-center gap-x-6 bg-white py-12">
+                                        <div class="flex justify-center" wire:key="qrcode">
+                                            <a href="lightning:{{ $this->invoice }}">
+                                                <img src="{{ 'data:image/png;base64, '. $this->qrCode }}" alt="qrcode">
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if(!$invoice)
+                                    <svg viewBox="0 0 1024 1024"
+                                         class="absolute top-1/2 left-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+                                         aria-hidden="true">
+                                        <circle cx="512" cy="512" r="512"
+                                                fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)" fill-opacity="0.7"/>
+                                        <defs>
+                                            <radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
+                                                <stop stop-color="#F7931A"/>
+                                                <stop offset="1" stop-color="#F7931A"/>
+                                            </radialGradient>
+                                        </defs>
+                                    </svg>
+                                @endif
+                                @if($alreadyPaid)
+                                    <div class="flex items-center justify-center gap-x-6 py-2">
+                                        <div class="w-full flex flex-col space-y-2 justify-center" wire:key="paymentHash">
+                                            <div class="w-full my-2 flex justify-center font-mono break-all py-2">
+                                                <x-input.group :for="md5('checkThisPaymentHash')" :label="__('Payment Hash')">
+                                                    <x-input autocomplete="off" wire:model.debounce="checkThisPaymentHash"
+                                                             :placeholder="__('Payment Hash')"/>
+                                                </x-input.group>
+                                            </div>
+                                        </div>
+                                        @if($checkThisPaymentHash)
+                                            <div wire:poll.keep-alive="checkPaymentHash" wire:key="checkPaymentHash"></div>
+                                        @endif
+                                    </div>
+                                @endif
+                                @if($invoice)
+                                    <div class="flex items-center justify-center gap-x-6 bg-white py-2">
+                                        <div class="w-full flex flex-col space-y-2 justify-center" wire:key="paymentHash">
+                                            <div class="w-full my-2 flex justify-center font-mono break-all py-2">
+                                                <input class="w-full" readonly wire:key="paymentHashInput"
+                                                       onClick="this.select();"
+                                                       value="{{ $this->paymentHash }}"/>
+                                            </div>
+                                            <div
+                                                x-data="{
+                                                  textToCopy: '{{ $this->paymentHash }}',
+                                                }"
+                                                @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Payment hash copied!') }}',icon:'success'});"
+                                            >
+                                                <x-button
+                                                    black
+                                                >
+                                                    <i class="fa fa-thin fa-clipboard"></i>
+                                                    {{ __('Copy payment hash') }}
+                                                </x-button>
+                                            </div>
+                                        </div>
+                                        <div wire:poll.keep-alive="checkPaymentHash" wire:key="checkPaymentHash"></div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @else
+                        <div
+                            class="prose md:prose-lg prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
+
+                            <x-markdown class="leading-normal">
+                                {!! $libraryItem->value_to_be_paid !!}
+                            </x-markdown>
+
+                        </div>
+                    @endif
+
+                    <div wire:ignore>
                         <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4 mt-4">
                             @if($libraryItem->lecturer->lightning_address || $libraryItem->lecturer->lnurl || $libraryItem->lecturer->node_id)
                                 <h1>value-4-value</h1>
@@ -163,7 +283,14 @@
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
 
+    <div x-data="{paid: @entangle('invoicePaid')}" x-init="$watch('paid', value => {if (value) {
+        party.confetti(document.body, {
+            count: party.variation.range(20, 40),
+        });
+    }})"></div>
+
     <div wire:ignore class="z-50">
+        <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
         <script
             src="{{ asset('dist/einundzwanzig.chat.js') }}"
             data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"

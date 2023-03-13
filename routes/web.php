@@ -131,6 +131,12 @@ Route::middleware([
 Route::middleware([
     'auth',
 ])
+     ->get('/lnbits', \App\Http\Livewire\Profile\LNBits::class)
+     ->name('profile.lnbits');
+
+Route::middleware([
+    'auth',
+])
      ->get('/change-lightning-wallet', \App\Http\Livewire\Wallet\LightningWallet::class)
      ->name('profile.wallet');
 
@@ -220,7 +226,8 @@ Route::middleware([])
      ->as('project.')
      ->prefix('/{country:code}/project-funding')
      ->group(function () {
-         Route::get('/project/form/{projectProposal?}', \App\Http\Livewire\ProjectProposal\Form\ProjectProposalForm::class)
+         Route::get('/project/form/{projectProposal?}',
+             \App\Http\Livewire\ProjectProposal\Form\ProjectProposalForm::class)
               ->name('projectProposal.form')
               ->middleware(['auth']);
 

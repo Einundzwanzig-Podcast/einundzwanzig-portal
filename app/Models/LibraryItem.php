@@ -31,20 +31,22 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
 
     /**
      * The attributes that aren't mass assignable.
-     *
      * @var array
      */
     protected $guarded = [];
 
     /**
      * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
+        'id'          => 'integer',
         'lecturer_id' => 'integer',
-        'library_id' => 'integer',
+        'library_id'  => 'integer',
+    ];
+
+    protected $hidden = [
+        'value_to_be_paid',
     ];
 
     public static function getFeedItems()
@@ -63,7 +65,7 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (! $model->created_by) {
+            if (!$model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
