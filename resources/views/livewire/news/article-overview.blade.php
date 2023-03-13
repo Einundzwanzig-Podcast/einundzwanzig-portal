@@ -24,7 +24,7 @@
                         @if(auth()->user()->lnbits)
                             <x-button
                                 class="whitespace-nowrap"
-                                :href="route('news.form', ['paid' => true])"
+                                :href="route('news.form', ['type' => 'paid'])"
                                 primary>
                                 <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Submit paid news article') }}

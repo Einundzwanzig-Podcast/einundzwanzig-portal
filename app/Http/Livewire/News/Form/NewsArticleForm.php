@@ -24,9 +24,12 @@ class NewsArticleForm extends Component
     public array $temporaryUrls = [];
 
     public ?string $fromUrl = '';
+
+    public string $type = '';
+
     public bool $paid = false;
 
-    protected $queryString = ['fromUrl' => ['except' => ''], 'paid' => ['except' => false]];
+    protected $queryString = ['fromUrl' => ['except' => ''], 'type' => ['except' => '']];
 
     public function rules()
     {
@@ -50,6 +53,9 @@ class NewsArticleForm extends Component
 
     public function mount()
     {
+        if ($this->type === 'paid') {
+            $this->paid = true;
+        }
         if ($this->libraryItem === null) {
             $this->libraryItem = new LibraryItem([
                 'type'             => 'markdown_article',
