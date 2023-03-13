@@ -21,7 +21,7 @@
                             <i class="fa fa-thin fa-plus"></i>
                             {{ __('Submit news articles') }}
                         </x-button>
-                        @if(auth()->user()->lnbits)
+                        @if(auth()->user()->lnbits['wallet_id'])
                             <x-button
                                 class="whitespace-nowrap"
                                 :href="route('news.form', ['type' => 'paid'])"
