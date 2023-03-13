@@ -183,7 +183,10 @@
                                         <div wire:click="$set('alreadyPaid', true)" class="cursor-pointer text-sm font-semibold leading-6 text-white">{{ __('already paid?') }} <span aria-hidden="true">→</span></div>
                                     </div>
                                 @else
-                                    <div class="mt-10 flex items-center justify-center gap-x-6 bg-white py-12">
+                                    <div class="mt-10 flex flex-col items-center justify-center gap-x-6 bg-white pb-12">
+                                        <div class="text-sm font-semibold text-gray-900 py-6">
+                                            {{ __('Click QR-Code to open your wallet') }}
+                                        </div>
                                         <div class="flex justify-center" wire:key="qrcode">
                                             <a href="lightning:{{ $this->invoice }}">
                                                 <img src="{{ 'data:image/png;base64, '. $this->qrCode }}" alt="qrcode">
@@ -206,7 +209,7 @@
                                     </svg>
                                 @endif
                                 @if($alreadyPaid)
-                                    <div class="flex items-center justify-center gap-x-6 py-2">
+                                    <div class="flex items-center justify-center gap-x-6 py-2" wire:key="checkPaymentHashDiv">
                                         <div class="w-full flex flex-col space-y-2 justify-center" wire:key="paymentHash">
                                             <div class="w-full my-2 flex justify-center font-mono break-all py-2">
                                                 <x-input.group :for="md5('checkThisPaymentHash')" :label="__('Payment Hash')">
@@ -222,17 +225,17 @@
                                 @endif
                                 @if($invoice)
                                     <div class="flex items-center justify-center gap-x-6 bg-white py-2">
-                                        <div class="w-full flex flex-col space-y-2 justify-center" wire:key="paymentHash">
-                                            <div class="w-full my-2 flex justify-center font-mono break-all py-2">
+                                        <div
+                                            x-data="{
+                                                  textToCopy: '{{ $this->paymentHash }}',
+                                                }"
+                                            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Payment hash copied!') }}',icon:'success'});" class="w-full flex flex-col space-y-2 justify-center" wire:key="paymentHash">
+                                            <div class="w-full my-2 flex justify-center font-mono break-all px-6">
                                                 <input class="w-full" readonly wire:key="paymentHashInput"
                                                        onClick="this.select();"
                                                        value="{{ $this->paymentHash }}"/>
                                             </div>
                                             <div
-                                                x-data="{
-                                                  textToCopy: '{{ $this->paymentHash }}',
-                                                }"
-                                                @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Payment hash copied!') }}',icon:'success'});"
                                             >
                                                 <x-button
                                                     black
@@ -261,7 +264,7 @@
                     <div wire:ignore>
                         <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4 mt-4">
                             @if($libraryItem->lecturer->lightning_address || $libraryItem->lecturer->lnurl || $libraryItem->lecturer->node_id)
-                                <h1>value-4-value</h1>
+                                <h1 class="text-2xl text-gray-200">value-4-value</h1>
                                 <div wire:ignore>
                                     <lightning-widget
                                         name="{{ $libraryItem->lecturer->name }}"
