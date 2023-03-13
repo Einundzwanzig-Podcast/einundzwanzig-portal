@@ -154,7 +154,7 @@
                                                 </div>
                                                 <div>
                                                     <x-button xs
-                                                              :href="route('news.form', ['libraryItem' => $libraryItem])">
+                                                              :href="route('news.form', ['libraryItem' => $libraryItem, 'type' => $libraryItem->sats ? 'paid' : null])">
                                                         <i class="fa fa-thin fa-edit"></i>
                                                         {{ __('Edit') }}
                                                     </x-button>
