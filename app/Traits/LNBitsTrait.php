@@ -25,7 +25,7 @@ trait LNBitsTrait
                 'out'    => false,
                 'amount' => $sats,
                 'memo'   => $memo,
-            ]);
+            ])->throw();
 
         return $response->json();
     }

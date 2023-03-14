@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use WireUi\Traits\Actions;
 
 class InternArticleView extends Component
 {
+    use Actions;
     use LNBitsTrait;
 
     public LibraryItem $libraryItem;
@@ -44,11 +46,18 @@ class InternArticleView extends Component
 
     public function pay()
     {
-        $invoice = $this->createInvoice(
-            sats: $this->libraryItem->sats,
-            memo: 'Payment for: "'.$this->libraryItem->slug.'" on Einundzwanzig Portal.',
-            lnbits: $this->libraryItem->createdBy->lnbits,
-        );
+        try {
+            $invoice = $this->createInvoice(
+                sats: $this->libraryItem->sats,
+                memo: 'Payment for: "'.$this->libraryItem->slug.'" on Einundzwanzig Portal.',
+                lnbits: $this->libraryItem->createdBy->lnbits,
+            );
+        } catch (\Exception $e) {
+            $this->notification()
+                 ->error('LNBits error: '.$e->getMessage());
+
+            return;
+        }
         session('payment_hash_article_'.$this->libraryItem->id, $invoice['payment_hash']);
         $this->paymentHash = $invoice['payment_hash'];
         $this->qrCode = base64_encode(QrCode::format('png')
@@ -71,7 +80,15 @@ class InternArticleView extends Component
 
     public function checkPaymentHash()
     {
-        $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash, $this->libraryItem->createdBy->lnbits);
+        try {
+            $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash,
+                $this->libraryItem->createdBy->lnbits);
+        } catch (\Exception $e) {
+            $this->notification()
+                 ->error('LNBits error: '.$e->getMessage());
+
+            return;
+        }
         if (isset($invoice['paid']) && $invoice['paid']) {
             $this->invoicePaid = true;
             if (auth()->check()) {
