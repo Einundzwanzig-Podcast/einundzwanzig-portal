@@ -21,7 +21,7 @@
                             <i class="fa fa-thin fa-plus"></i>
                             {{ __('Submit news articles') }}
                         </x-button>
-                        @if(auth()->user()->lnbits['wallet_id'])
+                        @if(auth()->check() && auth()->user()->lnbits['wallet_id'])
                             <x-button
                                 class="whitespace-nowrap"
                                 :href="route('news.form', ['type' => 'paid'])"
@@ -30,7 +30,7 @@
                                 {{ __('Submit paid news article') }}
                                 <i class="fa fa-thin fa-coins"></i>
                             </x-button>
-                        @else
+                        @elseif(auth()->check())
                             <x-button
                                 class="whitespace-nowrap"
                                 :href="route('profile.lnbits')"
