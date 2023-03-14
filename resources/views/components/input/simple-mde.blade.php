@@ -52,7 +52,9 @@
     }"
     class="w-full"
 >
-    <textarea x-ref="editor"></textarea>
+    <div class="prose max-w-none">
+        <textarea x-ref="editor"></textarea>
+    </div>
     <style>
         .EasyMDEContainer {
             background-color: white;
