@@ -63,7 +63,7 @@ class NewsArticleForm extends Component
                 'value'            => '',
                 'value_to_be_paid' => '',
                 'read_time'        => 1,
-                'sats'             => 21,
+                'sats'             => $this->paid ? 21 : null,
                 'news'             => true,
                 'language_code'    => 'de',
                 'approved'         => auth()
