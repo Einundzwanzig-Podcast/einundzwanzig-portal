@@ -53,7 +53,7 @@
                                 <div class="absolute -left-1 top-0 h-16 w-16">
                                     <div
                                         class="absolute transform -rotate-45 bg-amber-500 text-center text-white font-semibold py-1 left-[-34px] top-[32px] w-[170px]">
-                                        {{ __('paid') }}
+                                        {{ number_format($libraryItem->sats, 0, ',', '.') }} {{ __('sats') }}
                                     </div>
                                 </div>
                             @endif

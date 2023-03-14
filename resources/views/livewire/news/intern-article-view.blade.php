@@ -166,8 +166,7 @@
                                                     : {{ $libraryItem->lecturer->name }}</div>
                                             </div>
                                             <div class="flex space-x-1 text-sm text-gray-300">
-                                                <time
-                                                    datetime="2020-03-16">{{ number_format($libraryItem->sats, 0, ',', '.') }} {{ __('sats') }}</time>
+                                                <time>{{ number_format($libraryItem->sats, 0, ',', '.') }} {{ __('sats') }}</time>
                                             </div>
                                         </div>
                                     </div>
