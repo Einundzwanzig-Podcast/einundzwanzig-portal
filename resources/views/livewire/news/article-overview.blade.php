@@ -8,11 +8,11 @@
             <div class="h-1/3 bg-21gray sm:h-2/3"></div>
         </div>
         <div class="relative mx-auto max-w-7xl">
-            <div class="flex flex-row justify-center items-center space-x-2">
+            <div class="flex flex-col sm:flex-row justify-center items-center space-x-2">
                 <div>
                     <img class="h-32 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                 </div>
-                <div>
+                <div class="space-y-2 sm:space-y-0">
                     @auth
                         <x-button
                             class="whitespace-nowrap"
