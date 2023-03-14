@@ -41,8 +41,8 @@ class NewsArticleForm extends Component
             'libraryItem.type'               => 'required',
             'libraryItem.language_code'      => 'required',
             'libraryItem.value'              => 'required',
-            'libraryItem.value_to_be_paid'   => [Rule::requiredIf(!$this->libraryItem->sats), 'string',],
-            'libraryItem.sats'               => [Rule::requiredIf(!$this->libraryItem->sats), 'numeric',],
+            'libraryItem.value_to_be_paid'   => [Rule::requiredIf($this->libraryItem->sats), 'nullable', 'string',],
+            'libraryItem.sats'               => [Rule::requiredIf($this->libraryItem->sats), 'nullable', 'numeric',],
             'libraryItem.subtitle'           => 'string|nullable',
             'libraryItem.excerpt'            => 'required',
             'libraryItem.main_image_caption' => 'string|nullable',
@@ -66,9 +66,7 @@ class NewsArticleForm extends Component
                 'sats'             => $this->paid ? 21 : null,
                 'news'             => true,
                 'language_code'    => 'de',
-                'approved'         => auth()
-                    ->user()
-                    ->hasRole('news-editor'),
+                'approved'         => false,
             ]);
         }
         if (!$this->fromUrl) {
