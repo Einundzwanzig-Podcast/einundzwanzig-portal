@@ -174,12 +174,13 @@
                                 </div>
                                 @if(!$invoice)
                                     <div class="mt-10 flex items-center justify-center gap-x-6">
-                                        <div
-                                            wire:click="pay"
-                                            class="cursor-pointer rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                        <x-button
+                                            wire.loading.attr="disabled"
+                                            primary
+                                            wire:click="pay">
                                             <i class="fa-thin fa-bolt"></i>
                                             Pay with lightning
-                                        </div>
+                                        </x-button>
                                         <div wire:click="$set('alreadyPaid', true)" class="cursor-pointer text-sm font-semibold leading-6 text-white">{{ __('already paid?') }} <span aria-hidden="true">→</span></div>
                                     </div>
                                 @else
@@ -243,6 +244,9 @@
                                                     <i class="fa fa-thin fa-clipboard"></i>
                                                     {{ __('Copy payment hash') }}
                                                 </x-button>
+                                            </div>
+                                            <div class="w-full my-2 flex justify-center font-mono font-bold p-4">
+                                                <p class="text-amber-500">{{ __('As a guest, please save your payment hash so that you can unlock this article later. Unfortunately, we cannot save your purchase status permanently for guests. Please log in to use this feature.') }}</p>
                                             </div>
                                         </div>
                                         <div wire:poll.keep-alive="checkPaymentHash" wire:key="checkPaymentHash"></div>

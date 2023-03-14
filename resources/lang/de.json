@@ -843,5 +843,6 @@
     "paid": "zu bezahlen",
     "Setup LNBits for paid articles": "Setze LNBits für bezahlte Artikel ein",
     "Click QR-Code to open your wallet": "Klicke auf den QR-Code, um deine Wallet zu öffnen",
-    "LNBits settings are not valid!": "LNBits-Einstellungen sind nicht gültig!"
+    "LNBits settings are not valid!": "LNBits-Einstellungen sind nicht gültig!",
+    "As a guest, please save your payment hash so that you can unlock this article later. Unfortunately, we cannot save your purchase status permanently for guests. Please log in to use this feature.": "Bitte speichere als Gast deinen Payment Hash, damit du diesen Artikel später entsperren kannst. Leider können wir deinen Kaufstatus nicht dauerhaft speichern. Bitte melde dich an, um diese Funktion zu nutzen."
 }

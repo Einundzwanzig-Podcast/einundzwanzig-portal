@@ -33,9 +33,6 @@ class InternArticleView extends Component
                                          ->count() > 0 && !auth()->check()) {
             abort(403, __('Sorry! You are not authorized to perform this action.'));
         }
-        if ($this->libraryItem->sats && !auth()->check()) {
-            return to_route('article.overview');
-        }
         if (auth()->check() && auth()
                                    ->user()
                                    ->paidArticles()
@@ -77,10 +74,12 @@ class InternArticleView extends Component
         $invoice = $this->check($this->checkid ?? $this->checkThisPaymentHash, $this->libraryItem->createdBy->lnbits);
         if (isset($invoice['paid']) && $invoice['paid']) {
             $this->invoicePaid = true;
-            auth()
-                ->user()
-                ->paidArticles()
-                ->syncWithoutDetaching($this->libraryItem->id);
+            if (auth()->check()) {
+                auth()
+                    ->user()
+                    ->paidArticles()
+                    ->syncWithoutDetaching($this->libraryItem->id);
+            }
         } else {
             Log::error(json_encode($invoice, JSON_THROW_ON_ERROR));
         }
