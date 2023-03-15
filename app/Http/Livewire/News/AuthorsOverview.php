@@ -17,6 +17,7 @@ class AuthorsOverview extends Component
                                  ->withCount([
                                      'libraryItems' => fn($query) => $query->where('library_items.news', true),
                                  ])
+                                 ->orderByDesc('library_items_count')
                                  ->get(),
         ]);
     }
