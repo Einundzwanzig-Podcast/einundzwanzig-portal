@@ -1,4 +1,4 @@
-<div class="h-full">
+<div class="h-full bg-white">
     @php
         $focus = '';
         $map = $country->code . '_merc';
