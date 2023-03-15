@@ -5,15 +5,26 @@
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 py-4">
             <div class="w-full flex justify-end">
-                <x-button
-                    x-data="{
+                <div class="flex flex-col space-y-2">
+                    <x-button
+                        x-data="{
                     textToCopy: '{{ route('meetup.ics', ['country' => $country]) }}',
                     }"
-                    @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
-                    amber>
-                    <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
-                    {{ __('Calendar Stream-Url for all meetup events') }}
-                </x-button>
+                        @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                        amber>
+                        <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
+                        {{ __('Calendar Stream-Url for all meetup events') }}
+                    </x-button>
+                    <x-button
+                        x-data="{
+                        textToCopy: '{{ $mapEmbedCode }}',
+                    }"
+                        @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Embed code for the map copied!') }}',icon:'success'});"
+                        amber>
+                        <i class="fa fa-thin fa-code mr-2"></i>
+                        {{ __('Copy embed code for the map') }} <img class="h-6 rounded" src="{{ asset('vendor/blade-country-flags/4x3-'. $country->code .'.svg') }}" alt="{{ $country->code }}">
+                    </x-button>
+                </div>
             </div>
             <div class="flex flex-col sm:flex-row">
                 @php
