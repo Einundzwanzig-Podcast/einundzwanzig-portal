@@ -85,7 +85,7 @@ class LecturerTable extends DataTableComponent
         return Lecturer::query()
                        ->withCount([
                            'courses',
-                           'libraryItems',
+                           'libraryItems' => fn($query) => $query->where('news', false)
                        ]);
     }
 
@@ -108,10 +108,8 @@ class LecturerTable extends DataTableComponent
             return to_route('library.table.libraryItems', [
                 '#table',
                 'country' => $this->country,
-                'library_items' => [
-                    'filters' => [
-                        'lecturer_id' => $lecturer->id,
-                    ],
+                'filters' => [
+                    'lecturer_id' => $lecturer->id,
                 ],
             ]);
         }

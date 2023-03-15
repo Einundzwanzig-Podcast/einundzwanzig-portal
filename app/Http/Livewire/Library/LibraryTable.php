@@ -104,6 +104,10 @@ class LibraryTable extends Component
                                                      ->where('libraries.name', $this->currentTab)
                                              )
                                          )
+                                         ->when(isset($this->filters['lecturer_id']),
+                                             fn($query) => $query->where('library_items.lecturer_id',
+                                                 $this->filters['lecturer_id'])
+                                         )
                                          ->when(isset($this->filters['tag']), fn($query) => $query->whereHas('tags',
                                              fn($query) => $query->whereIn('tags.id', $this->filters['tag'])))
                                          ->when(isset($this->filters['language']),
