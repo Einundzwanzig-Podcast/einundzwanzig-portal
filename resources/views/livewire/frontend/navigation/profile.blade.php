@@ -32,19 +32,19 @@
 
                             <a href="{{ route('profile.show') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-city flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-city flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('My profile') }}
                             </a>
 
                             <a href="{{ route('profile.meetups') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-user-group flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-user-group flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('My meetups') }}
                             </a>
 
                             <a href="{{ route('profile.lnbits') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-key-skeleton-left-right flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-key-skeleton-left-right flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('LNBits') }}
                             </a>
 
@@ -58,7 +58,7 @@
 
                             <a href="{{ route('profile.wallet') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-bolt flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Change lightning wallet/pubkey') }}
                             </a>
 

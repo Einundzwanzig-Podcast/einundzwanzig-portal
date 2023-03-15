@@ -29,7 +29,7 @@
 
                             <a href="{{ route('article.overview') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-newspaper flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-newspaper flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('News Article') }}
                             </a>
 
@@ -43,13 +43,13 @@
 
                             <a href="{{ route('news.form') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Submit news articles') }}
                             </a>
 
                             <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage content creators') }}
                             </a>
 

@@ -29,7 +29,7 @@
 
                             <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-calendar-lines-pen flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-calendar-lines-pen flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Events') }}
                             </a>
 
@@ -43,25 +43,25 @@
 
                             <a href="{{ route('venue.form') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Create venue') }}
                             </a>
 
                             <a href="{{ route('bitcoinEvent.form') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Register event') }}
                             </a>
 
                             <a href="{{ route('bookCases.table.city', ['country' => $country, 'manage' => true]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage cities/areas') }}
                             </a>
 
                             <a href="{{ route('school.table.venue', ['country' => $country, 'manage' => true]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage venues') }}
                             </a>
 
