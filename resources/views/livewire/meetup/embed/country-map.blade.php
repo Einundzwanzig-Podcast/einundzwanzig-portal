@@ -1,4 +1,4 @@
-<div class="h-full bg-white">
+<div class="h-full {{ $darkMode ? 'bg-21gray' : 'bg-white' }}">
     @php
         $focus = '';
         $map = $country->code . '_merc';

@@ -11,6 +11,10 @@ class CountryMap extends Component
 {
     public Country $country;
 
+    public bool $darkMode = false;
+
+    protected $queryString = ['darkMode' => ['except' => false]];
+
     public function render()
     {
         return view('livewire.meetup.embed.country-map', [
