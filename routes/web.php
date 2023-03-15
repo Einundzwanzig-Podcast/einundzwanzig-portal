@@ -26,6 +26,10 @@ Route::middleware([])
      ->get('/news', \App\Http\Livewire\News\ArticleOverview::class)
      ->name('article.overview');
 
+Route::middleware([])
+     ->get('/news/authors', \App\Http\Livewire\News\AuthorsOverview::class)
+     ->name('authors.overview');
+
 /*
  * News
  * */

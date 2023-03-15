@@ -12,7 +12,12 @@
                 <div>
                     <img class="h-32 object-cover" src="{{ asset('img/einundzwanzig-news-colored.png') }}" alt="">
                 </div>
-                <div class="space-y-2 sm:space-y-0">
+                <div class="flex flex-col space-y-2">
+                    @if(isset($filters['author']))
+                        <x-button wire:click="resetFiltering"
+                                  xs>{{ __('Reset filtering') }}
+                        </x-button>
+                    @endif
                     @auth
                         <x-button
                             class="whitespace-nowrap"

@@ -33,6 +33,12 @@
                                 {{ __('News Article') }}
                             </a>
 
+                            <a href="{{ route('authors.overview') }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-pen-nib flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                {{ __('Authors') }}
+                            </a>
+
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,12 @@ class ArticleOverview extends Component
     use Actions;
     use NostrTrait;
 
+    public array $filters = [];
+
+    protected $queryString = [
+        'filters' => ['except' => ''],
+    ];
+
     public function nostr($id)
     {
         $libraryItem = LibraryItem::query()
@@ -56,6 +62,11 @@ class ArticleOverview extends Component
         $this->emit('$refresh');
     }
 
+    public function resetFiltering()
+    {
+        return to_route('article.overview');
+    }
+
     public function render()
     {
         return view('livewire.news.article-overview', [
@@ -65,6 +76,11 @@ class ArticleOverview extends Component
                                              'lecturer',
                                              'tags',
                                          ])
+                                         ->when(
+                                             isset($this->filters['author']),
+                                             fn($query) => $query->whereHas('lecturer',
+                                                 fn($query) => $query->where('lecturers.slug',
+                                                     $this->filters['author'])))
                                          ->where('type', 'markdown_article')
                                          ->where('news', true)
                                          ->orderByDesc('created_at')
