@@ -1,4 +1,23 @@
 <div class="min-h-screen bg-21gray flex flex-col justify-between">
+    <div
+        class="flex flex-col space-y-2 sm:space-y-0 sm:flex-row items-center justify-between gap-x-6 bg-gray-900 py-2.5 px-6 sm:pr-3.5 lg:pl-8">
+        <p class="text-sm leading-6 text-white">
+            Im kompletten deutschsprachigen Raum entstehen seit einiger Zeit “Meet-Ups”. In den regionalen Gruppen
+            tauscht man sich über diese und andere Themen via Telegram oder meist auch einmal monatlich bei einem
+            Stammtisch vor Ort aus. Der Austausch ist völlig unentgeltlich und keiner will dir irgendetwas verkaufen
+            oder gar “andrehen”. Wir sind einfach ganz normale Leute. 😀
+        </p>
+        <p class="text-sm leading-6 text-white">
+            Du hast Lust mehr über Geld und all seine Facetten zu erfahren? Dann trete deiner regionalen
+            “Einundzwanzig-Community” bei. Suche einfach ein Meet-Up in deiner Umgebung und schon findest du
+            interessierte Leute und interessante Gesprächspartner.
+        </p>
+        <p class="text-sm leading-6 text-white">PS: Bitcoin ist begrenzt und daher nicht von Staaten oder Notenbanken
+            inflationierbar. Es wird niemals mehr als 21 Millionen Bitcoin geben. Daher auch der Name “Einundzwanzig”
+            😉
+        </p>
+    </div>
+
     <section class="relative px-10 pt-16 pb-24 sm:py-16 sm:overflow-hidden">
         <img class="absolute h-43 left-0 z-0 w-3/4 transform -translate-y-1/2 opacity-70 top-1/2"
              src="{{ asset('img/gradient-blob.svg') }}">
