@@ -35,6 +35,7 @@ class CountryMap extends Component
                                    ]),
                                ]),
         ])->layout('layouts.app', [
+            'darkModeDisabled' => !$this->darkMode,
             'SEOData' => new SEOData(
                 title: __('Meetups'),
                 description: __('Bitcoiner Meetups are a great way to meet other Bitcoiners in your area. You can learn from each other, share ideas, and have fun!'),
