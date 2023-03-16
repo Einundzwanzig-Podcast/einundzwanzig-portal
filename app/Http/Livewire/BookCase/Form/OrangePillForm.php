@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\BookCase\Form;
 
+use App\Gamify\Points\BookCaseOrangePilled;
 use App\Models\BookCase;
 use App\Models\Country;
 use App\Models\OrangePill;
@@ -73,6 +74,7 @@ class OrangePillForm extends Component
     public function deleteMe()
     {
         $this->orangePill->delete();
+        auth()->user()->undoPoint(new BookCaseOrangePilled(auth()->user()));
 
         return redirect($this->fromUrl);
     }
