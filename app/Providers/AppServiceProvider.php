@@ -9,6 +9,12 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 use Spatie\Translatable\Facades\Translatable;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Events\BeforeSheet;
+use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Writer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +25,63 @@ class AppServiceProvider extends ServiceProvider
     {
         Date::use(
             Carbon::class
+        );
+
+        // excel config
+        Sheet::macro(
+            'styleCells',
+            function (
+                Sheet $sheet,
+                string $cellRange,
+                array $style
+            ) {
+                $sheet
+                    ->getDelegate()
+                    ->getStyle($cellRange)
+                    ->applyFromArray($style);
+            }
+        );
+        Sheet::macro(
+            'setAutofilter',
+            function (
+                Sheet $sheet,
+                $cellRange
+            ) {
+                $sheet->getDelegate()
+                      ->setAutoFilter($cellRange);
+            }
+        );
+        Writer::listen(
+            BeforeExport::class,
+            function () {
+            }
+        );
+        Writer::listen(
+            BeforeWriting::class,
+            function () {
+            }
+        );
+        Sheet::listen(
+            BeforeSheet::class,
+            function () {
+            }
+        );
+        Sheet::listen(
+            AfterSheet::class,
+            function ($event) {
+                $event->sheet->freezePane('A2');
+                $event->sheet->setAutofilter(
+                    $event->sheet->calculateWorksheetDimension()
+                );
+                $event->sheet->styleCells(
+                    'A1:'.$event->sheet->getHighestColumn().'1',
+                    [
+                        'font' => [
+                            'bold' => true,
+                        ],
+                    ]
+                );
+            }
         );
     }
 

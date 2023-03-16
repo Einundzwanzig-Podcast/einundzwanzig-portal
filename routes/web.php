@@ -44,6 +44,19 @@ Route::middleware([
      });
 
 /*
+ * Exports
+ * */
+Route::middleware([
+    'auth',
+])
+     ->as('export.')
+     ->prefix('/export')
+     ->group(function () {
+         Route::get('/meetup-event/{meetupEvent}', \App\Http\Controllers\Export\MeetupEventAttendeesExportController::class)
+              ->name('meetupEvent');
+     });
+
+/*
  * Content Creator
  * */
 Route::middleware([

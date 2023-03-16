@@ -19,11 +19,51 @@
                             <div class="relative text-lg font-medium text-gray-200 md:flex-grow">
                                 <p class="relative">{{ $meetup->intro }}</p>
                             </div>
-
-                            <footer class="mt-4">
-                                <p class="text-base font-semibold text-gray-200">{{ $meetup->users->count() }} {{ __('Plebs') }}</p>
-                            </footer>
                         </blockquote>
+
+                        <x-button black target="_blank" class="mb-6"
+                                  :href="route('export.meetupEvent', ['meetupEvent' => $meetupEvent])">
+                            <i class="fa-thin fa-file-excel"></i>
+                            {{ __('Download') }}
+                        </x-button>
+
+                        <div class="border-b border-gray-200 pb-5">
+                            <h3 class="text-base font-semibold leading-6 text-gray-200">{{ __('Confirmations') }}</h3>
+                        </div>
+                        <ul role="list" class="divide-y divide-gray-200">
+
+                            @foreach($attendees as $a)
+                                <li class="flex py-4">
+                                    <img class="h-10 w-10 rounded-full"
+                                         src="{{ $a['user']['profile_photo_url'] ?? 'https://ui-avatars.com/api/?name='.urlencode($a['name']).'&color=7F9CF5&background=EBF4FF' }}"
+                                         alt="{{ $a['name'] }}">
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-200">{{ $a['name'] }}</p>
+                                        <p class="text-sm text-green-300">{{ __('Participation confirmed') }}</p>
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
+
+                        <div class="border-b border-gray-200 pb-5 mt-6">
+                            <h3 class="text-base font-semibold leading-6 text-gray-200">{{ __('Perhaps') }}</h3>
+                        </div>
+                        <ul role="list" class="divide-y divide-gray-200">
+
+                            @foreach($mightAttendees as $a)
+                                <li class="flex py-4">
+                                    <img class="h-10 w-10 rounded-full"
+                                         src="{{ $a['user']['profile_photo_url'] ?? 'https://ui-avatars.com/api/?name='.urlencode($a['name']).'&color=7F9CF5&background=EBF4FF' }}"
+                                         alt="{{ $a['name'] }}">
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-200">{{ $a['name'] }}</p>
+                                        <p class="text-sm text-yellow-300">{{ __('Perhaps') }}</p>
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
                     </div>
 
                     <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:px-0">
