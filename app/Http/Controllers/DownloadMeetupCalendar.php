@@ -25,8 +25,7 @@ class DownloadMeetupCalendar extends Controller
             $events = $meetup->meetupEvents;
             $image = $meetup->getFirstMediaUrl('logo');
         } elseif ($request->has('my')) {
-            $ids = auth()->user()->meetups->pluck('id')
-                                          ->toArray();
+            $ids = $request->input('my');
             $events = MeetupEvent::query()
                                  ->with([
                                      'meetup',
