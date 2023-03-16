@@ -21,7 +21,7 @@
                             </div>
                         </blockquote>
 
-                        <x-button black target="_blank" class="mb-6"
+                        <x-button black target="_blank" class="my-6"
                                   :href="route('export.meetupEvent', ['meetupEvent' => $meetupEvent])">
                             <i class="fa-thin fa-file-excel"></i>
                             {{ __('Download') }}
