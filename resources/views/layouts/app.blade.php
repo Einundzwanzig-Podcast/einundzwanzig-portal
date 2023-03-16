@@ -34,20 +34,20 @@
     <script src="{{ asset('dist/heatmap.min.js') }}"></script>
     <script src="{{ asset('dist/leaflet-heatmap.js') }}"></script>
     <script src="{{ asset('dist/leaflet-providers.js') }}"></script>
-    <wireui:scripts />
+    <wireui:scripts/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
           media="screen"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
     <x-comments::styles/>
-    <x-embed-styles />
+    <x-embed-styles/>
     @livewireStyles
     @include('layouts.styles')
 </head>
-<body class="font-sans antialiased {{ isset($darkModeDisabled) && !$darkModeDisabled ?'bg-21gray' : '' }} dark">
+<body class="font-sans antialiased {{ isset($darkModeDisabled) && $darkModeDisabled ? '' : 'bg-21gray' }} dark">
 <x-notifications z-index="z-[99999]" blur="md" align="center"/>
-<x-dialog z-index="z-[99999]" blur="md" align="center" />
+<x-dialog z-index="z-[99999]" blur="md" align="center"/>
 @if(auth()->user())
     {{-- HIGHSCORE-CHAT --}}
     <livewire:chat.highscore-chat/>
