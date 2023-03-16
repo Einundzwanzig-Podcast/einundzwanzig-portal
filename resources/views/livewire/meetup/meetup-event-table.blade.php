@@ -16,15 +16,17 @@
                             <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
                             {{ __('Calendar Stream-Url for all meetup events') }}
                         </x-button>
-                        <x-button
-                            x-data="{
-                                textToCopy: '{{ route('meetup.ics', ['country' => $country, 'my' => auth()->user()->meetups->pluck('id')->toArray()]) }}',
-                            }"
-                            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
-                            black>
-                            <i class="fa fa-thin fa-calendar-heart mr-2"></i>
-                            {{ __('Calendar Stream-Url for my meetups only') }}
-                        </x-button>
+                        @if(auth()->check() && auth()->user()->meetups->count() > 0)
+                            <x-button
+                                x-data="{
+                                    textToCopy: '{{ route('meetup.ics', ['country' => $country, 'my' => auth()->user()->meetups->pluck('id')->toArray()]) }}',
+                                }"
+                                @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                                black>
+                                <i class="fa fa-thin fa-calendar-heart mr-2"></i>
+                                {{ __('Calendar Stream-Url for my meetups only') }}
+                            </x-button>
+                        @endif
                         <x-button
                             x-data="{
                                 textToCopy: '{{ $mapEmbedCode }}',
