@@ -13,11 +13,18 @@ class ArticleOverview extends Component
     use Actions;
     use NostrTrait;
 
+    public $perPage = 9;
+
     public array $filters = [];
 
     protected $queryString = [
         'filters' => ['except' => ''],
     ];
+
+    public function loadMore()
+    {
+        $this->perPage += 9;
+    }
 
     public function nostr($id)
     {
@@ -84,7 +91,7 @@ class ArticleOverview extends Component
                                          ->where('type', 'markdown_article')
                                          ->where('news', true)
                                          ->orderByDesc('created_at')
-                                         ->get(),
+                                         ->paginate($this->perPage),
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: __('News'),
