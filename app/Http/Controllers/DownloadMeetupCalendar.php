@@ -25,7 +25,8 @@ class DownloadMeetupCalendar extends Controller
             $events = $meetup->meetupEvents;
             $image = $meetup->getFirstMediaUrl('logo');
         } elseif ($request->has('my')) {
-            $ids = auth()->user()->meetups->pluck('id')->toArray();
+            $ids = auth()->user()->meetups->pluck('id')
+                                          ->toArray();
             $events = MeetupEvent::query()
                                  ->with([
                                      'meetup',
@@ -48,7 +49,7 @@ class DownloadMeetupCalendar extends Controller
                               ->uniqueIdentifier(str($event->meetup->name)->slug().$event->id)
                               ->address($event->location ?? __('no location set'))
                               ->description(str_replace(["\r", "\n"], '', $event->description).' Link: '.$event->link)
-                              ->image($image)
+                              ->image($event->meetup->getFirstMedia('logo') ? $event->meetup->getFirstMediaUrl('logo') : $image)
                               ->startsAt($event->start);
         }
 
