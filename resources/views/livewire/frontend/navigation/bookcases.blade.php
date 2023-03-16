@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <h4 class="mt-2 text-sm font-semibold leading-6 text-gray-900">
-                                <a href="{{ route('bookCases.comment.bookcase', ['country' => $country, 'bookCase' => $item]) }}">
+                                <a href="{{ route('bookCases.comment.bookcase', ['country' => $country, 'bookCase' => $item->bookCase]) }}">
                                     <span class="absolute inset-0"></span>
                                     {{ $item->bookCase->title }}
                                 </a>
