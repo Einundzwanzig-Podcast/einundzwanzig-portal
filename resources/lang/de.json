@@ -856,5 +856,6 @@
     "Click on any of the authors to see their articles.": "Klicke auf einen der Autoren, um die Artikel zu lesen.",
     "articles": "Artikel",
     "Participation confirmed": "Teilnahme bestätigt",
-    "There was an error on row :row. :message": "Es gab einen Fehler in Zeile :row. :message"
+    "There was an error on row :row. :message": "Es gab einen Fehler in Zeile :row. :message",
+    "Calendar Stream-Url for my meetups only": "Calendar Stream-Url nur für meine Meetups"
 }

@@ -6,15 +6,37 @@
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4" id="table">
             <div>
                 <div class="w-full flex justify-end my-2">
-                    <x-button
-                        x-data="{
+                    <div class="flex flex-col space-y-2">
+                        <x-button
+                            x-data="{
                             textToCopy: '{{ route('meetup.ics', ['country' => $country]) }}',
                         }"
-                        @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
-                        amber>
-                        <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
-                        {{ __('Calendar Stream-Url for all meetup events') }}
-                    </x-button>
+                            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                            amber>
+                            <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
+                            {{ __('Calendar Stream-Url for all meetup events') }}
+                        </x-button>
+                        <x-button
+                            x-data="{
+                    textToCopy: '{{ route('meetup.ics', ['country' => $country, 'my' => true]) }}',
+                    }"
+                            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                            black>
+                            <i class="fa fa-thin fa-calendar-heart mr-2"></i>
+                            {{ __('Calendar Stream-Url for my meetups only') }}
+                        </x-button>
+                        <x-button
+                            x-data="{
+                        textToCopy: '{{ $mapEmbedCode }}',
+                    }"
+                            @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Embed code for the map copied!') }}',icon:'success'});"
+                            amber>
+                            <i class="fa fa-thin fa-code mr-2"></i>
+                            {{ __('Copy embed code for the map') }} <img class="h-6 rounded"
+                                                                         src="{{ asset('vendor/blade-country-flags/4x3-'. $country->code .'.svg') }}"
+                                                                         alt="{{ $country->code }}">
+                        </x-button>
+                    </div>
                 </div>
                 <div class="flex items-start">
                     <div class="w-full sm:w-1/2">
@@ -32,6 +54,7 @@
                             .calendar {
                                 max-height: 280px;
                             }
+
                             .calendar .calendar-header {
                                 background-color: #F7931A;
                                 color: white;

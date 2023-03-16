@@ -24,6 +24,15 @@ class DownloadMeetupCalendar extends Controller
                             ->findOrFail($request->input('meetup'));
             $events = $meetup->meetupEvents;
             $image = $meetup->getFirstMediaUrl('logo');
+        } elseif ($request->has('my')) {
+            $ids = auth()->user()->meetups->pluck('id')->toArray();
+            $events = MeetupEvent::query()
+                                 ->with([
+                                     'meetup',
+                                 ])
+                                 ->whereHas('meetup', fn($query) => $query->whereIn('meetups.id', $ids))
+                                 ->get();
+            $image = asset('img/einundzwanzig-horizontal.png');
         } else {
             $events = MeetupEvent::query()
                                  ->with([

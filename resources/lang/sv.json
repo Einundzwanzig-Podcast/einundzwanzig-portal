@@ -818,5 +818,7 @@
     "articles": "",
     "Participation confirmed": "",
     "Perhabs": "",
-    "There was an error on row :row. :message": ""
+    "There was an error on row :row. :message": "",
+    "Calendar Stream-Url for my meetups only": "",
+    "Calendar Stream-Url for my meetups": ""
 }
