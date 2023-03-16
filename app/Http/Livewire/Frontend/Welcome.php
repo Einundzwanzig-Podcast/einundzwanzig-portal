@@ -67,7 +67,7 @@ class Welcome extends Component
             'SEOData' => new SEOData(
                 title: __('Welcome'),
                 description: __('Welcome to the portal of the Einundzwanzig Community.'),
-                image: asset('img/screenshot.png')
+                image: url()->route('imgPublic', ['path' => 'img/screenshot.png', 'h' => 630, 'w' => 1200, 'fit' => 'crop'])
             ),
         ]);
     }

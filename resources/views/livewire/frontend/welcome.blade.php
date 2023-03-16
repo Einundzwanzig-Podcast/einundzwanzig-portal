@@ -13,7 +13,7 @@
             interessierte Leute und interessante Gesprächspartner.
         </p>
         <p class="text-sm leading-6 text-white">PS: Bitcoin ist begrenzt und daher nicht von Staaten oder Notenbanken
-            inflationierbar. Es wird niemals mehr als 21 Millionen Bitcoin geben. Daher auch der Name “Einundzwanzig”
+            inflationierbar. Es wird niemals mehr als 21 Millionen bitcoins geben. Daher auch der Name “Einundzwanzig”
             😉
         </p>
     </div>

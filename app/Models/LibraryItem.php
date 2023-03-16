@@ -81,6 +81,9 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
             ->addMediaConversion('preview')
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
+        $this->addMediaConversion('seo')
+             ->fit(Manipulations::FIT_CROP, 1200, 630)
+             ->nonQueued();
         $this->addMediaConversion('thumb')
              ->fit(Manipulations::FIT_CROP, 130, 130)
              ->width(130)

@@ -115,7 +115,11 @@ class InternArticleView extends Component
                 title: $this->libraryItem->name,
                 description: strip_tags($this->libraryItem->excerpt) ?? __('Here we post important news that is relevant for everyone.'),
                 author: $this->libraryItem->lecturer->name,
-                image: $this->libraryItem->getFirstMedia('main') ? $this->libraryItem->getFirstMediaUrl('main') : asset('img/einundzwanzig-wallpaper-benrath.png'),
+                image: $this->libraryItem->getFirstMedia('main')
+                    ? $this->libraryItem->getFirstMediaUrl('main', 'seo')
+                    : url()->route('imgPublic', [
+                        'path' => 'img/einundzwanzig-wallpaper-benrath.png', 'h' => 630, 'w' => 1200, 'fit' => 'crop'
+                    ]),
                 published_time: Carbon::parse($this->libraryItem->created_at),
                 type: 'article',
             ),

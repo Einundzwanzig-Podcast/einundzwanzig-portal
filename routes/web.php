@@ -11,6 +11,10 @@ Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
      ->where('path', '.*')
      ->name('img');
 
+Route::get('/img-public/{path}', \App\Http\Controllers\ImageController::class)
+     ->where('path', '.*')
+     ->name('imgPublic');
+
 Route::get('auth/auth47', \App\Http\Livewire\Auth\Auth47Component::class)
      ->name('auth.auth47');
 

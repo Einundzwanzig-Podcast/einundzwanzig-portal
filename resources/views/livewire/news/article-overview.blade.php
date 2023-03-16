@@ -65,7 +65,7 @@
                             <div class="flex-shrink-0 pt-6">
                                 <a href="{{ route('article.view', ['libraryItem' => $libraryItem]) }}">
                                     <img class="h-48 w-full object-contain"
-                                         src="{{ $libraryItem->getFirstMediaUrl('main') }}"
+                                         src="{{ $libraryItem->getFirstMediaUrl('main', 'seo') }}"
                                          alt="{{ $libraryItem->name }}">
                                 </a>
                             </div>
