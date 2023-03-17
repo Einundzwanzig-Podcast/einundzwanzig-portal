@@ -267,7 +267,9 @@
                             @if($payNymQrCode)
                                 <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4 mt-4">
                                     <h1 class="text-2xl text-gray-200">PayNym</h1>
-                                    <img src="{{ 'data:image/png;base64, '. $payNymQrCode }}" alt="qrcode">
+                                    <div class="p-12 bg-white">
+                                        <img src="{{ 'data:image/png;base64, '. $payNymQrCode }}" alt="qrcode">
+                                    </div>
                                 </div>
                             @endif
 
