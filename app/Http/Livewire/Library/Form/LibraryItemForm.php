@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
 use App\Models\Tag;
+use App\Traits\HasTagsTrait;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -14,6 +15,7 @@ use Spatie\LaravelOptions\Options;
 
 class LibraryItemForm extends Component
 {
+    use HasTagsTrait;
     use WithFileUploads;
 
     public Country $country;
@@ -25,8 +27,6 @@ class LibraryItemForm extends Component
     public $image;
 
     public $file;
-
-    public array $selectedTags = [];
 
     public bool $lecturer = false;
 
@@ -122,18 +122,6 @@ class LibraryItemForm extends Component
         return to_route('library.table.libraryItems', ['country' => $this->country]);
     }
 
-    public function selectTag($name)
-    {
-        $selectedTags = collect($this->selectedTags);
-        if ($selectedTags->contains($name)) {
-            $selectedTags = $selectedTags->filter(fn($tag) => $tag !== $name);
-        } else {
-            $selectedTags->push($name);
-        }
-        $this->selectedTags = $selectedTags->values()
-                                           ->toArray();
-    }
-
     public function render()
     {
         return view('livewire.library.form.library-item-form', [
@@ -150,9 +138,6 @@ class LibraryItemForm extends Component
                                       'name' => $library->name,
                                   ])
                                   ->toArray(),
-            'tags'      => Tag::query()
-                              ->where('type', 'library_item')
-                              ->get(),
         ]);
     }
 }

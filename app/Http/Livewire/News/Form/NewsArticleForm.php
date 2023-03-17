@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\News\Form;
 
 use App\Models\LibraryItem;
+use App\Traits\HasTagsTrait;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class NewsArticleForm extends Component
 {
+    use HasTagsTrait;
     use WithFileUploads;
 
     public ?LibraryItem $libraryItem = null;
@@ -36,13 +38,17 @@ class NewsArticleForm extends Component
         return [
             'image' => [Rule::requiredIf(!$this->libraryItem->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
+            'selectedTags' => 'array|min:1',
+
             'libraryItem.lecturer_id'        => 'required',
             'libraryItem.name'               => 'required',
             'libraryItem.type'               => 'required',
             'libraryItem.language_code'      => 'required',
             'libraryItem.value'              => 'required',
             'libraryItem.value_to_be_paid'   => [Rule::requiredIf($this->libraryItem->sats > 0), 'nullable', 'string',],
-            'libraryItem.sats'               => [Rule::requiredIf($this->libraryItem->sats > 0), 'nullable', 'numeric',],
+            'libraryItem.sats'               => [
+                Rule::requiredIf($this->libraryItem->sats > 0), 'nullable', 'numeric',
+            ],
             'libraryItem.subtitle'           => 'string|nullable',
             'libraryItem.excerpt'            => 'required',
             'libraryItem.main_image_caption' => 'string|nullable',
@@ -68,6 +74,7 @@ class NewsArticleForm extends Component
                 'language_code'    => 'de',
                 'approved'         => false,
             ]);
+            $this->selectedTags[] = 'News';
         }
         if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
@@ -92,6 +99,11 @@ class NewsArticleForm extends Component
     {
         $this->validate();
         $this->libraryItem->save();
+
+        $this->libraryItem->syncTagsWithType(
+            $this->selectedTags,
+            'library_item'
+        );
 
         if ($this->image) {
             $this->libraryItem->addMedia($this->image)

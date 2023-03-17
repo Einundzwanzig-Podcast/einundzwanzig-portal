@@ -74,19 +74,42 @@
                     </x-input.group>
 
                     <x-input.group :for="md5('selectedTags')" :label="__('Tags')">
+                        <x-slot name="label">
+                            <div class="flex flex-row space-x-4 items-center">
+                                <div>
+                                    {{ __('Tags') }}
+                                </div>
+                                @if(!$addTag)
+                                    <x-button
+                                        xs
+                                        wire:click="$set('addTag', true)"
+                                    >
+                                        <i class="fa fa-thin fa-plus"></i>
+                                        {{ __('Add') }}
+                                    </x-button>
+                                @else
+                                    <x-input label="" wire:model.debounce="newTag" placeholder="{{ __('New tag') }}"/>
+                                    <x-button
+                                        xs
+                                        wire:click="addTag">
+                                        <i class="text-xl fa-thin fa-save"></i>
+                                    </x-button>
+                                @endif
+                            </div>
+                        </x-slot>
                         <div class="py-2 flex flex-wrap items-center space-x-1">
                             @foreach($tags as $tag)
                                 <div class="cursor-pointer" wire:key="tag{{ $loop->index }}"
-                                     wire:click="selectTag('{{ $tag->name }}')">
-                                    @if(collect($selectedTags)->contains($tag->name))
+                                     wire:click="selectTag('{{ $tag['name'] }}')">
+                                    @if(collect($selectedTags)->contains($tag['name']))
                                         <x-badge
                                             amber>
-                                            {{ $tag->name }}
+                                            {{ $tag['name'] }}
                                         </x-badge>
                                     @else
                                         <x-badge
                                             black>
-                                            {{ $tag->name }}
+                                            {{ $tag['name']}}
                                         </x-badge>
                                     @endif
                                 </div>

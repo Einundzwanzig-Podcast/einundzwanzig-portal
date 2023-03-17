@@ -93,10 +93,10 @@
                             </div>
                             <div class="flex flex-1 flex-col justify-between bg-21gray p-6">
                                 <div class="flex-1">
-                                    <p class="text-sm font-medium text-amber-600">
-                                    <div
-                                        class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
-                                    </p>
+                                    <div class="text-sm font-medium text-amber-600">
+                                        <div
+                                            class="text-amber-500">{{ $libraryItem->tags->pluck('name')->join(', ') }}</div>
+                                    </div>
                                     <a href="{{ $link }}"
                                        class="mt-2 block">
                                         <p class="text-xl font-semibold text-gray-200">{{ $libraryItem->name }}</p>

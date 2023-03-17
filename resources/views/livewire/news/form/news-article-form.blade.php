@@ -43,7 +43,8 @@
                     @if($paid)
                         <x-input.group :for="md5('libraryItem.sats')" :label="__('sats')">
                             <x-inputs.number min="21" autocomplete="off" wire:model.debounce="libraryItem.sats"
-                                             :placeholder="__('sats')" :hint="__('How many sats to read this article?')"/>
+                                             :placeholder="__('sats')"
+                                             :hint="__('How many sats to read this article?')"/>
                         </x-input.group>
                     @endif
 
@@ -75,6 +76,50 @@
                             option-label="name"
                             option-value="id"
                         />
+                    </x-input.group>
+
+                    <x-input.group :for="md5('selectedTags')" :label="__('Tags')">
+                        <x-slot name="label">
+                            <div class="flex flex-row space-x-4 items-center">
+                                <div>
+                                    {{ __('Tags') }}
+                                </div>
+                                @if(!$addTag)
+                                    <x-button
+                                        xs
+                                        wire:click="$set('addTag', true)"
+                                    >
+                                        <i class="fa fa-thin fa-plus"></i>
+                                        {{ __('Add') }}
+                                    </x-button>
+                                    @else
+                                    <x-input label="" wire:model.debounce="newTag" placeholder="{{ __('New tag') }}"/>
+                                    <x-button
+                                        xs
+                                        wire:click="addTag">
+                                        <i class="text-xl fa-thin fa-save"></i>
+                                    </x-button>
+                                @endif
+                            </div>
+                        </x-slot>
+                        <div class="py-2 flex flex-wrap items-center space-x-1">
+                            @foreach($tags as $tag)
+                                <div class="cursor-pointer" wire:key="tag{{ $loop->index }}"
+                                     wire:click="selectTag('{{ $tag['name'] }}')">
+                                    @if(collect($selectedTags)->contains($tag['name']))
+                                        <x-badge
+                                            amber>
+                                            {{ $tag['name'] }}
+                                        </x-badge>
+                                    @else
+                                        <x-badge
+                                            black>
+                                            {{ $tag['name'] }}
+                                        </x-badge>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
                     </x-input.group>
 
                     @if($libraryItem->lecturer_id)
@@ -124,7 +169,8 @@
                             />
                         </x-input.group>
 
-                        <x-input.group :for="md5('libraryItem.value')" :label="$paid ? __('Free part of the Article as Markdown') : __('Article as Markdown')">
+                        <x-input.group :for="md5('libraryItem.value')"
+                                       :label="$paid ? __('Free part of the Article as Markdown') : __('Article as Markdown')">
                             <div
                                 class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
                             <x-input.simple-mde wire:model.defer="libraryItem.value"/>
@@ -132,12 +178,14 @@
                         </x-input.group>
 
                         @if($paid)
-                                <x-input.group :for="md5('libraryItem.value_to_be_paid')" :label="__('Part of the article to be paid')">
-                                    <div
-                                        class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
-                                    <x-input.simple-mde wire:model.defer="libraryItem.value_to_be_paid"/>
-                                    @error('libraryItem.value_to_be_paid') <span class="text-red-500 py-2">{{ $message }}</span> @enderror
-                                </x-input.group>
+                            <x-input.group :for="md5('libraryItem.value_to_be_paid')"
+                                           :label="__('Part of the article to be paid')">
+                                <div
+                                    class="text-amber-500 text-xs py-2">{{ __('For images in Markdown, please use eg. Imgur or another provider.') }}</div>
+                                <x-input.simple-mde wire:model.defer="libraryItem.value_to_be_paid"/>
+                                @error('libraryItem.value_to_be_paid') <span
+                                    class="text-red-500 py-2">{{ $message }}</span> @enderror
+                            </x-input.group>
                         @endif
 
                         <x-input.group :for="md5('libraryItem.read_time')" :label="__('Time to read')">
