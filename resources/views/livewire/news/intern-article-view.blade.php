@@ -97,7 +97,7 @@
                                                 <i class="fa fa-brand fa-youtube mr-2"></i>
                                                 {{ __('Open on Youtube') }}
                                             </x-button>
-                                        @elseif($libraryItem->type !== 'markdown_article')
+                                        @elseif($libraryItem->type !== 'markdown_article' && $libraryItem->type !== 'markdown_article_extern')
                                             <x-button lg amber :href="$libraryItem->value" target="_blank">
                                                 <i class="fa fa-thin fa-book-open mr-2"></i>
                                                 {{ __('Open') }}
