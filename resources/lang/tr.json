@@ -835,5 +835,7 @@
     "Calendar Stream-Url for my meetups": "",
     "Avatar\/Picture": "",
     "PayNym": "",
-    "starts with PM...": ""
+    "starts with PM...": "",
+    "Tags must be unique": "",
+    "New tag": ""
 }

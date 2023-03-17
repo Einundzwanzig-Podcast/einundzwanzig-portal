@@ -860,5 +860,7 @@
     "Calendar Stream-Url for my meetups only": "Kalender-Stream-Url nur für meine Meetups",
     "Avatar\/Picture": "Avatar\/Bild",
     "PayNym": "",
-    "starts with PM...": "startet mit PM..."
+    "starts with PM...": "startet mit PM...",
+    "Tags must be unique": "Tags müssen einzigartig sein",
+    "New tag": "Neuer Tag"
 }
