@@ -63,7 +63,7 @@ class NewsArticleForm extends Component
         if ($this->type === 'paid') {
             $this->paid = true;
         }
-        if ($this->libraryItem === null) {
+        if (!$this->libraryItem) {
             $this->libraryItem = new LibraryItem([
                 'type'             => 'markdown_article',
                 'value'            => '',
@@ -75,6 +75,12 @@ class NewsArticleForm extends Component
                 'approved'         => false,
             ]);
             $this->selectedTags[] = 'News';
+        } else {
+            $this->selectedTags = $this->libraryItem->tags()
+                                                    ->where('type', 'library_item')
+                                                    ->get()
+                                                    ->map(fn($tag) => $tag->name)
+                                                    ->toArray();
         }
         if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
