@@ -53,9 +53,9 @@ class LibraryItemForm extends Component
             'libraryItem.value'              => [
                 'required',
                 Rule::when(
-                    $this->libraryItem->type !== LibraryItemType::MarkdownArticle
-                    && $this->libraryItem->type !== LibraryItemType::MarkdownArticleExtern
-                    && $this->libraryItem->type !== LibraryItemType::DownloadableFile, ['url']
+                    $this->libraryItem->type !== LibraryItemType::MarkdownArticle()
+                    && $this->libraryItem->type !== LibraryItemType::MarkdownArticleExtern()
+                    && $this->libraryItem->type !== LibraryItemType::DownloadableFile(), ['url']
                 ),
             ],
             'libraryItem.subtitle'           => 'required',
