@@ -20,7 +20,7 @@
             <div class="space-y-8 divide-y divide-gray-700 sm:space-y-5">
                 <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
 
-                    <x-input.group :for=" md5('image')" :label="__('Main picture')">
+                    <x-input.group :for=" md5('image')" :label="__('Avatar/Picture')">
                         <div class="py-4">
                             @if ($image)
                                 <div class="text-gray-200">{{ __('Preview') }}:</div>
@@ -67,6 +67,11 @@
                     <x-input.group :for="md5('lecturer.website')" :label="__('Website')">
                         <x-input autocomplete="off" wire:model.debounce="lecturer.website"
                                  :placeholder="__('Website')"/>
+                    </x-input.group>
+
+                    <x-input.group :for="md5('lecturer.paynym')" :label="__('PayNym')">
+                        <x-input autocomplete="off" wire:model.debounce="lecturer.paynym"
+                                 :placeholder="__('PayNym')" :hint="__('starts with PM...')"/>
                     </x-input.group>
 
                     <x-input.group :for="md5('lecturer.lightning_address')" :label="__('Lightning Address')">

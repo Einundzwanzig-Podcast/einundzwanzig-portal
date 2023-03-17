@@ -73,6 +73,16 @@
             <x-jet-input-error for="nostr" class="mt-2"/>
         </div>
 
+        <!-- paynym -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="paynym" value="{{ __('PayNym') }}"/>
+            <x-jet-input id="paynym" type="text" class="mt-1 block w-full"
+                         wire:model.defer="state.paynym"
+                         autocomplete="paynym"/>
+            <p class="text-xs">{{ __('starts with PM...') }}</p>
+            <x-jet-input-error for="paynym" class="mt-2"/>
+        </div>
+
         <!-- lightning_address -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="lightning_address" value="{{ __('Lightning Address') }}"/>

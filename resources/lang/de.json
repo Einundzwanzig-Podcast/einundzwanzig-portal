@@ -857,5 +857,8 @@
     "articles": "Artikel",
     "Participation confirmed": "Teilnahme bestätigt",
     "There was an error on row :row. :message": "Es gab einen Fehler in Zeile :row. :message",
-    "Calendar Stream-Url for my meetups only": "Kalender-Stream-Url nur für meine Meetups"
+    "Calendar Stream-Url for my meetups only": "Kalender-Stream-Url nur für meine Meetups",
+    "Avatar\/Picture": "Avatar\/Bild",
+    "PayNym": "",
+    "starts with PM...": "startet mit PM..."
 }

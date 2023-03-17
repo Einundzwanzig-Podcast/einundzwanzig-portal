@@ -26,6 +26,8 @@ class InternArticleView extends Component
     public bool $invoicePaid = false;
     public bool $alreadyPaid = false;
 
+    public ?string $payNymQrCode = '';
+
     public function mount()
     {
         $this->libraryItem->load([
@@ -41,6 +43,22 @@ class InternArticleView extends Component
                                    ->where('library_item_id', $this->libraryItem->id)
                                    ->count() > 0) {
             $this->invoicePaid = true;
+        }
+        if ($this->libraryItem->lecturer->paynym) {
+            $this->payNymQrCode = base64_encode(QrCode::format('png')
+                                                     ->size(300)
+                                                     ->merge($this->libraryItem->lecturer->getFirstMedia('avatar')
+                                                         ? str(
+                                                             $this->libraryItem
+                                                                 ->lecturer
+                                                                 ->getFirstMediaPath('avatar'))
+                                                             ->replace('/home/einundzwanzig/portal.einundzwanzig.space',
+                                                                 ''
+                                                             )
+                                                         : '/public/img/einundzwanzig.png',
+                                                         .3)
+                                                     ->errorCorrection('H')
+                                                     ->generate($this->libraryItem->lecturer->paynym));
         }
     }
 

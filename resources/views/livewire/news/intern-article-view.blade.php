@@ -264,6 +264,13 @@
                                 </div>
                             @endif
 
+                            @if($payNymQrCode)
+                                <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4 mt-4">
+                                    <h1 class="text-2xl text-gray-200">PayNym</h1>
+                                    <img src="{{ 'data:image/png;base64, '. $payNymQrCode }}" alt="qrcode">
+                                </div>
+                            @endif
+
                             <div wire:ignore>
                                 <div class="flex flex-col sm:flex-row justify-center space-x-4 border-t border-white py-4 mt-4">
                                     @if($libraryItem->lecturer->lightning_address || $libraryItem->lecturer->lnurl || $libraryItem->lecturer->node_id)

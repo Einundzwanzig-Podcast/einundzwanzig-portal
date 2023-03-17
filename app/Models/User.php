@@ -75,11 +75,13 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
             ->addField('lnurl')
             ->addField('node_id')
             ->addField('email')
+            ->addField('paynym')
             ->addJsonField('lnbits', $map)
             ->addBlindIndex('public_key', new BlindIndex('public_key_index'))
             ->addBlindIndex('lightning_address', new BlindIndex('lightning_address_index'))
             ->addBlindIndex('lnurl', new BlindIndex('lnurl_index'))
             ->addBlindIndex('node_id', new BlindIndex('node_id_index'))
+            ->addBlindIndex('paynym', new BlindIndex('paynym_index'))
             ->addBlindIndex('email', new BlindIndex('email_index'));
     }
 
