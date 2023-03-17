@@ -97,7 +97,7 @@
             </x-button>
         </div>
     @endif
-    @if(auth()->check() && auth()->user()->meetups->contains($row))
+    @can('update', $row)
         <div>
             <x-button
                 :href="route('meetup.meetup.form', ['meetup' => $row->id, 'country' => $country])"
@@ -108,5 +108,5 @@
                 {{ __('Edit') }}
             </x-button>
         </div>
-    @endif
+    @endcan
 </div>
