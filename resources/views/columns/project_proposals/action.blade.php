@@ -10,7 +10,7 @@
     @endcan
     @auth
         <div>
-            <x-button xs black :href="route('voting.projectFunding', ['projectProposal' => $row])">
+            <x-button class="whitespace-nowrap" xs black :href="route('voting.projectFunding', ['projectProposal' => $row])">
                 <i class="fa fa-thin fa-check-to-slot mr-2"></i>
                 {{ __('Vote') }} [0]
             </x-button>
