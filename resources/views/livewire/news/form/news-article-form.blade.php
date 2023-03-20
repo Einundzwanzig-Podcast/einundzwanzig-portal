@@ -92,7 +92,7 @@
                                         <i class="fa fa-thin fa-plus"></i>
                                         {{ __('Add') }}
                                     </x-button>
-                                    @else
+                                @else
                                     <x-input label="" wire:model.debounce="newTag" placeholder="{{ __('New tag') }}"/>
                                     <x-button
                                         xs
@@ -102,23 +102,28 @@
                                 @endif
                             </div>
                         </x-slot>
-                        <div class="py-2 flex flex-wrap items-center space-x-1">
-                            @foreach($tags as $tag)
-                                <div class="cursor-pointer" wire:key="tag{{ $loop->index }}"
-                                     wire:click="selectTag('{{ $tag['name'] }}')">
-                                    @if(collect($selectedTags)->contains($tag['name']))
-                                        <x-badge
-                                            amber>
-                                            {{ $tag['name'] }}
-                                        </x-badge>
-                                    @else
-                                        <x-badge
-                                            black>
-                                            {{ $tag['name'] }}
-                                        </x-badge>
-                                    @endif
-                                </div>
-                            @endforeach
+                        <div class="flex flex-col">
+                            <div class="py-2 flex flex-wrap items-center space-x-1">
+                                @foreach($tags as $tag)
+                                    <div class="cursor-pointer" wire:key="tag{{ $loop->index }}"
+                                         wire:click="selectTag('{{ $tag['name'] }}')">
+                                        @if(collect($selectedTags)->contains($tag['name']))
+                                            <x-badge
+                                                amber>
+                                                {{ $tag['name'] }}
+                                            </x-badge>
+                                        @else
+                                            <x-badge
+                                                black>
+                                                {{ $tag['name'] }}
+                                            </x-badge>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            @error('selectedTags')
+                            <div class="text-red-500">{{ $message }}</div>
+                            @enderror
                         </div>
                     </x-input.group>
 
