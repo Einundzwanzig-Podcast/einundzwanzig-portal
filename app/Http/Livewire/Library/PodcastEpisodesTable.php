@@ -39,6 +39,7 @@ class PodcastEpisodesTable extends Component
         return view('livewire.library.podcast-episodes-table', [
             'episodes' => Episode::query()
                                  ->with(['podcast'])
+                                 ->whereNot('data->link', '=', '')
                                  ->when($this->search,
                                      fn($query, $search) => $query
                                          ->where('data->title', 'ilike', "%{$search}%")
