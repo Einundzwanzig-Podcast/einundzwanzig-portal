@@ -155,7 +155,7 @@
                                     },
                                     regionStyle: {
                                         initial: {
-                                            fill: '#151515'
+                                            fill: '#a4a4a4'
                                         },
                                         hover: {
                                             'fill-opacity': 1,
