@@ -83,7 +83,7 @@
                         }
                     }"
                 >
-                    <div id="map" style="width: 100%;" class="h-[200px] sm:h-[400px] my-4 sm:my-0"></div>
+                    <div id="map" style="width: 100%;" class="h-[200px] sm:h-[400px] my-4 sm:my-0 bg-gray-900"></div>
                 </div>
             </div>
         </div>

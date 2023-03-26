@@ -38,7 +38,7 @@
                     }
                 }"
             >
-                <div id="mapworld" style="width: 100%;" class="h-[200px] sm:h-[400px]"></div>
+                <div id="mapworld" style="width: 100%;" class="h-[200px] sm:h-[400px] bg-gray-900"></div>
             </div>
         </div>
     </section>
