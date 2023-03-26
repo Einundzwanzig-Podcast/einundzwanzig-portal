@@ -29,7 +29,7 @@
 
                     <x-input.group :for="md5('image')" :label="__('Images')">
                         <div class="py-4">
-                            @if ($images)
+                            @if ($images && str($image->getMimeType())->contains(['image/jpeg','image/jpg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']))
                                 <div class="grid grid-cols-4 gap-1">
                                     @foreach($images as $image)
                                         <div>

@@ -130,7 +130,7 @@
                     @if($libraryItem->lecturer_id)
                         <x-input.group :for="md5('image')" :label="__('Main picture')">
                             <div class="py-4">
-                                @if ($image)
+                                @if ($image && str($image->getMimeType())->contains(['image/jpeg','image/jpg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']))
                                     <div class="text-gray-200">{{ __('Preview') }}:</div>
                                     <img class="h-48 object-contain" src="{{ $image->temporaryUrl() }}">
                                 @endif

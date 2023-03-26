@@ -125,7 +125,7 @@ return [
         'numeric' => ':Attribute muss größer oder gleich :value sein.',
         'string' => ':Attribute muss mindestens :value Zeichen lang sein.',
     ],
-    'image' => ':Attribute muss ein Bild sein.',
+    'image' => ':Attribute muss ein Bild sein. (jpg, png, gif, svg oder webp)',
     'in' => 'Der gewählte Wert für :attribute ist ungültig.',
     'in_array' => 'Der gewählte Wert für :attribute kommt nicht in :other vor.',
     'integer' => ':Attribute muss eine ganze Zahl sein.',
