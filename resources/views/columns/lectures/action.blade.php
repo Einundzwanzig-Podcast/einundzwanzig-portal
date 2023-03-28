@@ -4,7 +4,7 @@
             <x-button
                 xs amber wire:click="lecturerSearch({{ $row->id }})">
                 <i class="fa fa-thin fa-calendar mr-2"></i>
-                {{ __('Show dates') }} ({{ $row->courses_count }})
+                {{ __('Show dates') }} ({{ $row->courses_events_count }})
             </x-button>
         @endif
     </div>
@@ -13,7 +13,7 @@
             <x-button
                 xs outlined wire:click="lecturerSearch({{ $row->id }})">
                 <i class="fa fa-thin fa-calendar mr-2"></i>
-                {{ __('Show dates') }} ({{ $row->courses_count }})
+                {{ __('Show dates') }} ({{ $row->courses_events_count }})
             </x-button>
         @endif
     </div>

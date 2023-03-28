@@ -85,6 +85,7 @@ class LecturerTable extends DataTableComponent
         return Lecturer::query()
                        ->withCount([
                            'courses',
+                           'coursesEvents',
                            'libraryItems' => fn($query) => $query->where('news', false)
                        ]);
     }
