@@ -30,10 +30,10 @@ class OrangePillForm extends Component
     {
         return [
             'orangePill.book_case_id' => ['required'],
-            'orangePill.user_id' => ['required'],
-            'orangePill.amount' => ['required', 'numeric'],
-            'orangePill.date' => ['required', 'date'],
-            'orangePill.comment' => ['required', 'string'],
+            'orangePill.user_id'      => ['required'],
+            'orangePill.amount'       => ['required', 'numeric'],
+            'orangePill.date'         => ['required', 'date'],
+            'orangePill.comment'      => ['required', 'string'],
 
             'image' => ['max:8192', Rule::requiredIf(!$this->orangePill->id), 'image', 'nullable'], // 8MB Max
         ];
@@ -41,12 +41,12 @@ class OrangePillForm extends Component
 
     public function mount()
     {
-        if (! $this->orangePill) {
+        if (!$this->orangePill) {
             $this->orangePill = new OrangePill([
-                'user_id' => auth()->id(),
+                'user_id'      => auth()->id(),
                 'book_case_id' => $this->bookCase->id,
-                'date' => now(),
-                'amount' => 1,
+                'date'         => now(),
+                'amount'       => 1,
             ]);
         } elseif ($this->orangePill->user_id !== auth()->id()) {
             abort(403);
@@ -58,6 +58,9 @@ class OrangePillForm extends Component
 
     public function save()
     {
+        if (!auth()->check()) {
+            return to_route('auth.ln');
+        }
         $this->validate();
         $this->orangePill->save();
 
@@ -74,7 +77,9 @@ class OrangePillForm extends Component
     public function deleteMe()
     {
         $this->orangePill->delete();
-        auth()->user()->undoPoint(new BookCaseOrangePilled(auth()->user()));
+        auth()
+            ->user()
+            ->undoPoint(new BookCaseOrangePilled(auth()->user()));
 
         return redirect($this->fromUrl);
     }
