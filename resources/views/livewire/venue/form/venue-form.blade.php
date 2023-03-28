@@ -29,13 +29,15 @@
 
                     <x-input.group :for="md5('image')" :label="__('Images')">
                         <div class="py-4">
-                            @if ($images && str($image->getMimeType())->contains(['image/jpeg','image/jpg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']))
+                            @if ($images)
                                 <div class="grid grid-cols-4 gap-1">
                                     @foreach($images as $image)
-                                        <div>
-                                            <div class="text-gray-200">{{ __('Preview') }}:</div>
-                                            <img class="h-48 object-contain" src="{{ $image->temporaryUrl() }}">
-                                        </div>
+                                        @if(str($image->getMimeType())->contains(['image/jpeg','image/jpg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']))
+                                            <div>
+                                                <div class="text-gray-200">{{ __('Preview') }}:</div>
+                                                <img class="h-48 object-contain" src="{{ $image->temporaryUrl() }}">
+                                            </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             @endif
@@ -43,7 +45,8 @@
                                 <div class="text-gray-200">{{ __('Current pictures') }}:</div>
                                 <div class="grid grid-cols-4 gap-1">
                                     @foreach($venue->getMedia('images') as $image)
-                                        <div class="space-y-2" wire:key="image_{{ $image->id }}" wire:click="deleteMedia({{ $image->id }})">
+                                        <div class="space-y-2" wire:key="image_{{ $image->id }}"
+                                             wire:click="deleteMedia({{ $image->id }})">
                                             <div class="flex justify-center">
                                                 <img class="h-48 object-contain" src="{{ $image->getUrl() }}">
                                             </div>
