@@ -17,7 +17,7 @@
                 </svg>
             </button>
         </div>
-        <div class="hidden lg:flex lg:gap-x-12" x-data="Components.popoverGroup()" x-init="init()">
+        <div class="hidden lg:flex lg:gap-x-8" x-data="Components.popoverGroup()" x-init="init()">
 
             @include('livewire.frontend.navigation.news')
 
