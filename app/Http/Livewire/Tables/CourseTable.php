@@ -103,8 +103,6 @@ class CourseTable extends DataTableComponent
                      ->withCount([
                          'courseEvents' => fn($query) => $query->where('course_events.from', '>', now()),
                      ])
-                     ->whereHas('courseEvents.venue.city.country',
-                         fn ($query) => $query->where('countries.code', $this->country))
                      ->orderByDesc('course_events_count')
                      ->orderBy('courses.id');
     }
