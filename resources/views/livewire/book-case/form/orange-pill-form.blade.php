@@ -43,42 +43,44 @@
                         @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
                     </x-input.group>
 
-                    <x-input.group :for="md5('orangePill.amount')" :label="__('Amount')">
-                        <x-input
-                            min="1"
-                            type="number"
-                            wire:model.debounce="orangePill.amount"
-                            label="{{ __('Number of books') }}"
-                            placeholder="{{ __('Number of books') }}"
-                            corner-hint="{{ __('How many bitcoin books have you put in?') }}"
-                        />
-                    </x-input.group>
+                    @if($image && str($image->getMimeType())->contains(['image/jpeg','image/jpg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']))
+                        <x-input.group :for="md5('orangePill.amount')" :label="__('Amount')">
+                            <x-input
+                                min="1"
+                                type="number"
+                                wire:model.debounce="orangePill.amount"
+                                label="{{ __('Number of books') }}"
+                                placeholder="{{ __('Number of books') }}"
+                                corner-hint="{{ __('How many bitcoin books have you put in?') }}"
+                            />
+                        </x-input.group>
 
-                    <x-input.group :for="md5('orangePill.date')" :label="__('Date')">
-                        <x-datetime-picker
-                            label="{{ __('Date') }}"
-                            placeholder="{{ __('Date') }}"
-                            wire:model.defer="orangePill.date"
-                            timezone="UTC"
-                            user-timezone="{{ config('app.user-timezone') }}"
-                            corner-hint="{{ __('When did you put bitcoin books in?') }}"
-                            without-time
-                            display-format="DD.MM.YYYY"
-                        />
-                    </x-input.group>
+                        <x-input.group :for="md5('orangePill.date')" :label="__('Date')">
+                            <x-datetime-picker
+                                label="{{ __('Date') }}"
+                                placeholder="{{ __('Date') }}"
+                                wire:model.defer="orangePill.date"
+                                timezone="UTC"
+                                user-timezone="{{ config('app.user-timezone') }}"
+                                corner-hint="{{ __('When did you put bitcoin books in?') }}"
+                                without-time
+                                display-format="DD.MM.YYYY"
+                            />
+                        </x-input.group>
 
-                    <x-input.group :for="md5('orangePill.comment')" :label="__('Comment')">
-                        <x-textarea wire:model.defer="orangePill.comment" label="{{ __('Comment') }}"
-                                    placeholder="{{ __('Comment') }}"
-                                    corner-hint="{{ __('For example, what books you put in.') }}"/>
-                    </x-input.group>
+                        <x-input.group :for="md5('orangePill.comment')" :label="__('Comment')">
+                            <x-textarea wire:model.defer="orangePill.comment" label="{{ __('Comment') }}"
+                                        placeholder="{{ __('Comment') }}"
+                                        corner-hint="{{ __('For example, what books you put in.') }}"/>
+                        </x-input.group>
 
-                    <x-input.group :for="md5('orangePill.save')" label="">
-                        <x-button primary wire:click="save">
-                            <i class="fa fa-thin fa-save"></i>
-                            {{ __('Save') }}
-                        </x-button>
-                    </x-input.group>
+                        <x-input.group :for="md5('orangePill.save')" label="">
+                            <x-button primary wire:click="save">
+                                <i class="fa fa-thin fa-save"></i>
+                                {{ __('Save') }}
+                            </x-button>
+                        </x-input.group>
+                    @endif
 
                 </div>
             </div>
