@@ -1,34 +1,16 @@
-<div class="flex flex-col">
+<div class="bg-21gray h-screen justify-between">
+    {{-- HEADER --}}
+    <livewire:frontend.header :country="null"/>
+
     <section class="">
         <div class="px-10 pt-6 mx-auto max-w-7xl">
             <div class="w-full mx-auto text-left md:text-center">
                 <h1 class="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-900 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                     <span
-                        class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-500 lg:inline">{{ __('Meetup') }}</span>
-                    <br class="lg:block hidden"> {{ __('choice') }}
+                        class="w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-500 lg:inline">{{ __('My meetups') }}</span>
                 </h1>
                 <p class="px-0 mb-6 text-lg text-gray-200 md:text-xl lg:px-24">
                     {{ __('Select one or more meetup groups so that you can get access to these groups in the backend.') }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section x-data="{ open: @entangle('hasMeetups') }"
-             x-show="open"
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0 scale-90"
-             x-transition:enter-end="opacity-100 scale-100"
-             x-transition:leave="transition ease-in duration-300"
-             x-transition:leave-start="opacity-100 scale-100"
-             x-transition:leave-end="opacity-0 scale-90"
-    >
-        <div class="px-10 pt-6 mx-auto max-w-7xl">
-            <div class="w-full mx-auto text-left md:text-center">
-                <p class="px-0 mb-6 text-lg text-gray-200 md:text-xl lg:px-24">
-                    <x-button wire:click="next" primary lg>
-                        {{ __('Thanks, continue here') }}
-                    </x-button>
                 </p>
             </div>
         </div>
