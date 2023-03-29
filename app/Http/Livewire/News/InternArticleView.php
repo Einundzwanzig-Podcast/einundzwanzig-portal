@@ -122,13 +122,17 @@ class InternArticleView extends Component
 
     public function render()
     {
-        if ($this->libraryItem->type === 'markdown_article') {
-            $description = $this->libraryItem->excerpt ?? __('An entry in the library of Einundzwanzig.');
-        } else {
-            $description = $this->libraryItem->excerpt ?? __('Here we post important news that is relevant for everyone.');
-        }
+        $markdown = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
+            ->highlightTheme('github-dark')
+            ->toHtml($this->libraryItem->value);
+        $markdownPaid = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
+            ->highlightTheme('github-dark')
+            ->toHtml($this->libraryItem->value_to_be_paid);
 
-        return view('livewire.news.intern-article-view')->layout('layouts.app', [
+        return view('livewire.news.intern-article-view', [
+            'markdown' => $markdown,
+            'markdownPaid' => $markdownPaid,
+        ])->layout('layouts.app', [
             'SEOData' => new SEOData(
                 title: $this->libraryItem->name,
                 description: strip_tags($this->libraryItem->excerpt) ?? __('Here we post important news that is relevant for everyone.'),
