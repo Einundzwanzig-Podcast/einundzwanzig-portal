@@ -79,7 +79,7 @@ class OrangePillForm extends Component
         $this->orangePill->delete();
         auth()
             ->user()
-            ->undoPoint(new BookCaseOrangePilled(auth()->user()));
+            ->undoPoint(new BookCaseOrangePilled($this->orangePill));
 
         return redirect($this->fromUrl);
     }
