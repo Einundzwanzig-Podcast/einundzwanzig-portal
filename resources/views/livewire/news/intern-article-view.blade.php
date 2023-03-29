@@ -287,7 +287,7 @@
                                 <div
                                     class="prose md:prose-lg prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
 
-                                    <<x-markdown class="leading-normal">
+                                    <x-markdown class="leading-normal">
                                         {!! $libraryItem->value_to_be_paid !!}
                                     </x-markdown>
 
