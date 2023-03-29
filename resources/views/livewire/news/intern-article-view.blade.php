@@ -1,4 +1,4 @@
-<div class="bg-21gray flex flex-col h-screen justify-between">
+<div class="bg-21gray">
     @googlefonts('article')
     {{-- HEADER --}}
     <livewire:frontend.header :country="null"/>
@@ -286,6 +286,7 @@
                             @else
                                 <div
                                     class="prose md:prose-lg prose-invert mx-auto mt-5 text-gray-100 lg:col-start-1 lg:row-start-1 lg:max-w-none">
+
                                     <x-markdown class="leading-normal">
                                         {!! $libraryItem->value_to_be_paid !!}
                                     </x-markdown>
@@ -339,15 +340,17 @@
         });
     }})"></div>
 
-    <div wire:ignore class="z-50">
-        <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
-        <script
-            src="{{ asset('dist/einundzwanzig.chat.js') }}"
-            data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
-            data-chat-type="GLOBAL"
-            data-chat-tags="#einundzwanzig_portal_{{ str($libraryItem->slug)->replace('-', '_') }}"
-            data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
-        ></script>
-        <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
-    </div>
+    @push('modals')
+        <div wire:ignore class="z-50">
+            <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+            <script
+                src="{{ asset('dist/einundzwanzig.chat.js') }}"
+                data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
+                data-chat-type="GLOBAL"
+                data-chat-tags="#einundzwanzig_portal_{{ str($libraryItem->slug)->replace('-', '_') }}"
+                data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
+            ></script>
+            <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
+        </div>
+    @endpush
 </div>

@@ -1,8 +1,9 @@
-<div class="bg-21gray flex flex-col h-screen justify-between">
+<div class="bg-21gray">
     @push('feeds')
         <x-feed-links/>
     @endpush
     <livewire:frontend.header :country="null"/>
+
     <div class="relative bg-21gray px-6 pt-2 pb-20 lg:px-8 lg:pt-2 lg:pb-2">
         <div class="absolute inset-0">
             <div class="h-1/3 bg-21gray sm:h-2/3"></div>
@@ -194,17 +195,20 @@
             </div>
         </div>
     </div>
+
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
 
-    <div wire:ignore class="z-50">
-        <script
-            src="{{ asset('dist/einundzwanzig.chat.js') }}"
-            data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
-            data-chat-type="GLOBAL"
-            data-chat-tags="#einundzwanzig_portal_news"
-            data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
-        ></script>
-        <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
-    </div>
+    @push('modals')
+        <div wire:ignore class="z-50">
+            <script
+                src="{{ asset('dist/einundzwanzig.chat.js') }}"
+                data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
+                data-chat-type="GLOBAL"
+                data-chat-tags="#einundzwanzig_portal_news"
+                data-relays="wss://nostr.einundzwanzig.space,wss://nostr.easify.de,wss://nostr.mom,wss://relay.damus.io,wss://relay.snort.social"
+            ></script>
+            <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
+        </div>
+    @endpush
 </div>
