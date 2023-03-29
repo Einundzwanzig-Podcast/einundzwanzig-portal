@@ -124,14 +124,20 @@ class InternArticleView extends Component
 
     public function render()
     {
-        $markdown = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
-            ->addExtension(new CommonMarkCoreExtension())
-            ->addExtension(new HighlightCodeExtension('github-dark'))
-            ->toHtml($this->libraryItem->value ?? '');
-        $markdownPaid = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
-            ->addExtension(new CommonMarkCoreExtension())
-            ->addExtension(new HighlightCodeExtension('github-dark'))
-            ->toHtml($this->libraryItem->value_to_be_paid ?? '');
+        $markdown = '';
+        $markdownPaid = '';
+        if ($this->libraryItem->value) {
+            $markdown = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
+                ->addExtension(new CommonMarkCoreExtension())
+                ->addExtension(new HighlightCodeExtension('github-dark'))
+                ->toHtml($this->libraryItem->value);
+        }
+        if ($this->libraryItem->value_to_be_paid) {
+            $markdownPaid = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
+                ->addExtension(new CommonMarkCoreExtension())
+                ->addExtension(new HighlightCodeExtension('github-dark'))
+                ->toHtml($this->libraryItem->value_to_be_paid);
+        }
 
         return view('livewire.news.intern-article-view', [
             'markdown'     => $markdown,
