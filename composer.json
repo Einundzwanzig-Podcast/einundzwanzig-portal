@@ -41,6 +41,7 @@
         "sentry/sentry-laravel": "^3.2",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "simplito/elliptic-php": "^1.0",
+        "spatie/commonmark-shiki-highlighter": "^2.1",
         "spatie/eloquent-sortable": "^4.0",
         "spatie/icalendar-generator": "^2.5",
         "spatie/laravel-ciphersweet": "^1.0",

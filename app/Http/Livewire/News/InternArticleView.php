@@ -6,9 +6,11 @@ use App\Models\LibraryItem;
 use App\Traits\LNBitsTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use WireUi\Traits\Actions;
 
 class InternArticleView extends Component
@@ -46,19 +48,19 @@ class InternArticleView extends Component
         }
         if ($this->libraryItem->lecturer->paynym) {
             $this->payNymQrCode = base64_encode(QrCode::format('png')
-                                                     ->size(300)
-                                                     ->merge($this->libraryItem->lecturer->getFirstMedia('avatar')
-                                                         ? str(
-                                                             $this->libraryItem
-                                                                 ->lecturer
-                                                                 ->getFirstMediaPath('avatar'))
-                                                             ->replace('/home/einundzwanzig/portal.einundzwanzig.space',
-                                                                 ''
-                                                             )
-                                                         : '/public/img/einundzwanzig.png',
-                                                         .3)
-                                                     ->errorCorrection('H')
-                                                     ->generate($this->libraryItem->lecturer->paynym));
+                                                      ->size(300)
+                                                      ->merge($this->libraryItem->lecturer->getFirstMedia('avatar')
+                                                          ? str(
+                                                              $this->libraryItem
+                                                                  ->lecturer
+                                                                  ->getFirstMediaPath('avatar'))
+                                                              ->replace('/home/einundzwanzig/portal.einundzwanzig.space',
+                                                                  ''
+                                                              )
+                                                          : '/public/img/einundzwanzig.png',
+                                                          .3)
+                                                      ->errorCorrection('H')
+                                                      ->generate($this->libraryItem->lecturer->paynym));
         }
     }
 
@@ -123,14 +125,16 @@ class InternArticleView extends Component
     public function render()
     {
         $markdown = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
-            ->highlightTheme('github-dark')
+            ->addExtension(new CommonMarkCoreExtension())
+            ->addExtension(new HighlightCodeExtension('github-dark'))
             ->toHtml($this->libraryItem->value);
         $markdownPaid = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
-            ->highlightTheme('github-dark')
+            ->addExtension(new CommonMarkCoreExtension())
+            ->addExtension(new HighlightCodeExtension('github-dark'))
             ->toHtml($this->libraryItem->value_to_be_paid);
 
         return view('livewire.news.intern-article-view', [
-            'markdown' => $markdown,
+            'markdown'     => $markdown,
             'markdownPaid' => $markdownPaid,
         ])->layout('layouts.app', [
             'SEOData' => new SEOData(

@@ -1,4 +1,29 @@
 <style>
+    .shiki .highlight {
+        background-color: hsl(197, 88%, 94%);
+        padding: 3px 0;
+    }
+
+    .shiki .add {
+        background-color: hsl(136, 100%, 96%);
+        padding: 3px 0;
+    }
+
+    .shiki .del {
+        background-color: hsl(354, 100%, 96%);
+        padding: 3px 0;
+    }
+
+    .shiki.focus .line:not(.focus) {
+        transition: all 250ms;
+        filter: blur(2px);
+    }
+
+    .shiki.focus:hover .line {
+        transition: all 250ms;
+        filter: blur(0);
+    }
+
     .comments {
         --comments-color-background: rgb(34, 34, 34);
         --comments-color-background: rgb(34, 34, 34);
