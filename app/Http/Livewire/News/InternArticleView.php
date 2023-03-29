@@ -127,11 +127,11 @@ class InternArticleView extends Component
         $markdown = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
             ->addExtension(new CommonMarkCoreExtension())
             ->addExtension(new HighlightCodeExtension('github-dark'))
-            ->toHtml($this->libraryItem->value);
+            ->toHtml($this->libraryItem->value ?? '');
         $markdownPaid = app(\Spatie\LaravelMarkdown\MarkdownRenderer::class)
             ->addExtension(new CommonMarkCoreExtension())
             ->addExtension(new HighlightCodeExtension('github-dark'))
-            ->toHtml($this->libraryItem->value_to_be_paid);
+            ->toHtml($this->libraryItem->value_to_be_paid ?? '');
 
         return view('livewire.news.intern-article-view', [
             'markdown'     => $markdown,
