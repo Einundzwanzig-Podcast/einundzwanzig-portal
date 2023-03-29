@@ -24,7 +24,8 @@
     },
     "dependencies": {
         "leaflet.heat": "^0.2.0",
-        "mapshaper": "^0.6.24"
+        "mapshaper": "^0.6.24",
+        "shiki": "^0.14.1"
     },
     "packageManager": "yarn@3.4.1"
 }
