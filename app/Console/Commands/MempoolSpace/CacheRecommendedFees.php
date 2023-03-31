@@ -34,7 +34,7 @@ class CacheRecommendedFees extends Command
         $result = $client->completions()
                          ->create([
                              'model'       => 'text-davinci-003',
-                             'prompt'      => sprintf('Erstelle einen Wetterbericht für den Bitcoin Mempool mit folgenden Gebühren: fastestFee: %s sat/vB, halfHourFee: %s sat/vB, hourFee: %s sat/vB, economyFee: %s sat/vB, minimumFee: %s sat/vB. Fasse mit maximal 400 Zeichen zusammen und schreibe im Stile eines Wetterberichtes aus dem Fernsehen um. Schreibe nichts von schnellen Gebühren, sondern interpretiere die Gebühren anders. Schreibe auch nichts von schnellen Gebühren.',
+                             'prompt'      => sprintf('Erstelle einen Wetterbericht für den Bitcoin Mempool mit folgenden Gebühren: fastestFee: %s sat/vB, halfHourFee: %s sat/vB, hourFee: %s sat/vB, economyFee: %s sat/vB, minimumFee: %s sat/vB. Fasse mit maximal 400 Zeichen zusammen und schreibe im Stile eines Wetterberichtes aus dem Fernsehen um. Schreibe nichts von schnellen Gebühren, sondern interpretiere die Gebühren anders. Schreibe auch nichts von schnellen Gebühren. Alle Gebühren über 40 ist krass heiß. Gebühren über 20 sind übermäßig warm. Gebühren über 10 sind normal warm. Und Gebühren unter 2 sind sehr kalt.',
                                  $result['fastestFee'],
                                  $result['halfHourFee'],
                                  $result['hourFee'],
