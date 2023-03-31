@@ -10,7 +10,28 @@
         <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#FABE75] to-[#F7931A] opacity-30"
              style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
     </div>
-    <div class="w-full flex flex-col sm:flex-row sm:space-x-4 justify-center">
+    <div class="w-full flex flex-col sm:flex-row items-center sm:space-x-4 justify-center">
+        <div x-data="{
+            height: null,
+            init() {
+                const that = this;
+                const tip = async () => {
+                    const {
+                      bitcoin: { blocks },
+                    } = mempoolJS();
+                    const blocksTipHeight = await blocks.getBlocksTipHeight();
+                    that.height = blocksTipHeight;
+                    console.log(blocksTipHeight);
+                };
+                tip();
+                setInterval(tip, 10000);
+            }
+        }">
+            <span class="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-0.5 text-sm font-medium text-amber-800">
+              <i class="-ml-0.5 mr-1.5 h-2 w-2 text-amber-400"></i>
+              Blockhöhe <span class="font-bold text-2xl ml-4" x-text="height"></span>
+            </span>
+        </div>
         <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
             {{ $weather }} (um {{ \App\Support\Carbon::parse($changed)->asTime() }} Uhr aktualisiert - stündlich)
         </div>
@@ -28,15 +49,21 @@
                             hostname: 'mempool.space'
                         });
                         const ws = websocket.initClient({
-                            options: ['stats'],
+                            options: ['blocks', 'stats', 'mempool-blocks', 'live-2h-chart'],
                         });
                         ws.addEventListener('message', function incoming({data}) {
                             const res = JSON.parse(data.toString());
-                            that.fastestFee = res.fees.fastestFee;
-                            that.halfHourFee = res.fees.halfHourFee;
-                            that.hourFee = res.fees.hourFee;
-                            that.economyFee = res.fees.economyFee;
-                            that.minimumFee = res.fees.minimumFee;
+                            if (res.block) {
+                              console.log(res.block);
+                            }
+                            if (res.fees) {
+                                that.fastestFee = res.fees.fastestFee;
+                                that.halfHourFee = res.fees.halfHourFee;
+                                that.hourFee = res.fees.hourFee;
+                                that.economyFee = res.fees.economyFee;
+                                that.minimumFee = res.fees.minimumFee;
+                                console.log(res.fees);
+                            }
                         });
                     };
                     init();
@@ -46,7 +73,8 @@
             <template x-if="!minimumFee">
                 <div class="text-amber-500 w-[384px]">
                     <div class="h-3 w-3">
-                        <span class="animate-ping inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+                        <span
+                            class="animate-ping inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
                     </div>
                     Loading fees...
                 </div>
