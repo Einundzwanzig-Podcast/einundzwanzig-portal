@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\Database\CleanupLoginKeys;
 use App\Console\Commands\Feed\ReadAndSyncPodcastFeeds;
+use App\Console\Commands\MempoolSpace\CacheRecommendedFees;
 use App\Console\Commands\Nostr\PublishUnpublishedItems;
 use App\Console\Commands\OpenBooks\SyncOpenBooks;
 use Illuminate\Console\Scheduling\Schedule;
@@ -22,6 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command(CacheRecommendedFees::class)->hourly();
         $schedule->call(new PruneStaleAttachments)
                  ->daily();
         $schedule->command(SyncOpenBooks::class)

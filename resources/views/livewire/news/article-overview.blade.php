@@ -4,6 +4,8 @@
     @endpush
     <livewire:frontend.header :country="null"/>
 
+    <livewire:banner.mempool-weather/>
+
     <div class="relative bg-21gray px-6 pt-2 pb-20 lg:px-8 lg:pt-2 lg:pb-2">
         <div class="absolute inset-0">
             <div class="h-1/3 bg-21gray sm:h-2/3"></div>
