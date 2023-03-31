@@ -12,7 +12,7 @@
     </div>
     <div class="w-full flex flex-col sm:flex-row sm:space-x-4 justify-center">
         <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
-            {{ $weather }} (um {{ \App\Support\Carbon::parse($changed)->asTime() }} Uhr aktualisiert)
+            {{ $weather }} (um {{ \App\Support\Carbon::parse($changed)->asTime() }} Uhr aktualisiert - stündlich)
         </div>
         <div>
             <div
