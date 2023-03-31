@@ -33,15 +33,15 @@ class Test extends Command
 
         $result = $client->completions()
                          ->create([
-                             'model'  => 'text-davinci-003',
-                             'prompt' => sprintf('Erstelle einen Wetterbericht für den Bitcoin Mempool mit folgenden Gebühren: fastestFee: %s sat/vB, halfHourFee: %s sat/vB, hourFee: %s sat/vB, economyFee: %s sat/vB, minimumFee: %s sat/vB. Fasse mit maximal 400 Zeichen zusammen und schreibe im Stile eines Wetterberichtes aus dem Fernsehen um.',
+                             'model'       => 'text-davinci-003',
+                             'prompt'      => sprintf('Erstelle einen Wetterbericht für den Bitcoin Mempool mit folgenden Gebühren: fastestFee: %s sat/vB, halfHourFee: %s sat/vB, hourFee: %s sat/vB, economyFee: %s sat/vB, minimumFee: %s sat/vB. Fasse mit maximal 400 Zeichen zusammen und schreibe im Stile eines Wetterberichtes aus dem Fernsehen um.',
                                  $result['fastestFee'],
                                  $result['halfHourFee'],
                                  $result['hourFee'],
                                  $result['economyFee'],
                                  $result['minimumFee']
                              ),
-                             'max_tokens' => 400,
+                             'max_tokens'  => 400,
                              'temperature' => 1
                          ]);
 

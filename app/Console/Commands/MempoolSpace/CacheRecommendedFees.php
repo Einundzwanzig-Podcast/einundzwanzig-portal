@@ -4,6 +4,7 @@ namespace App\Console\Commands\MempoolSpace;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use OpenAI;
 
 class CacheRecommendedFees extends Command
 {

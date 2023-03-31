@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Banner;
 
+use App\Console\Commands\MempoolSpace\CacheRecommendedFees;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
@@ -21,7 +22,7 @@ class MempoolWeather extends Component
         if (cache()->has('mempool-weather')) {
             $this->weather = cache()->get('mempool-weather');
         } else {
-            Artisan::call('test');
+            Artisan::call(CacheRecommendedFees::class);
             $this->weather = cache()->get('mempool-weather');
         }
         $result = Http::get('https://mempool.space/api/v1/fees/recommended');
