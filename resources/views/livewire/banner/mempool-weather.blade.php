@@ -21,13 +21,13 @@
                     } = mempoolJS();
                     const blocksTipHeight = await blocks.getBlocksTipHeight();
                     that.height = blocksTipHeight;
-                    console.log(blocksTipHeight);
                 };
                 tip();
                 setInterval(tip, 10000);
             }
         }">
-            <span class="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-0.5 text-sm font-medium text-amber-800">
+            <span
+                class="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-0.5 text-sm font-medium text-amber-800">
               <i class="-ml-0.5 mr-1.5 h-2 w-2 text-amber-400"></i>
               Blockhöhe <span class="font-bold text-2xl ml-4" x-text="height"></span>
             </span>
@@ -54,7 +54,6 @@
                         ws.addEventListener('message', function incoming({data}) {
                             const res = JSON.parse(data.toString());
                             if (res.block) {
-                              console.log(res.block);
                             }
                             if (res.fees) {
                                 that.fastestFee = res.fees.fastestFee;
@@ -62,7 +61,6 @@
                                 that.hourFee = res.fees.hourFee;
                                 that.economyFee = res.fees.economyFee;
                                 that.minimumFee = res.fees.minimumFee;
-                                console.log(res.fees);
                             }
                         });
                     };
