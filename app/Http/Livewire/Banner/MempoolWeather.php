@@ -16,6 +16,7 @@ class MempoolWeather extends Component
     public $hourFee;
     public $economyFee;
     public $minimumFee;
+    public $changed;
 
     public function mount()
     {
@@ -32,6 +33,7 @@ class MempoolWeather extends Component
         $this->hourFee = $result['hourFee'];
         $this->economyFee = $result['economyFee'];
         $this->minimumFee = $result['minimumFee'];
+        $this->changed = cache()->get('mempool-weather-changed');
     }
 
     public function render()

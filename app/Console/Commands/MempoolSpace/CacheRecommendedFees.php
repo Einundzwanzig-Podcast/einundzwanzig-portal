@@ -46,5 +46,6 @@ class CacheRecommendedFees extends Command
                          ]);
 
         cache()->put('mempool-weather', $result['choices'][0]['text'], now()->addMinutes(62));
+        cache()->put('mempool-weather-changed', now()->toDateTimeString(), now()->addMinutes(62));
     }
 }
