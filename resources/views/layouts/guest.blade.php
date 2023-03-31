@@ -16,6 +16,7 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
           media="screen"/>
+    <script src="https://mempool.space/mempool.js"></script>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/world-mill.js') }}"></script>

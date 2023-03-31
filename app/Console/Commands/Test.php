@@ -45,6 +45,6 @@ class Test extends Command
                              'temperature' => 1
                          ]);
 
-        cache()->put('mempool-weather', $result['choices'][0]['text'], now()->addMinutes(60));
+       echo $result['choices'][0]['text'];
     }
 }

@@ -14,6 +14,7 @@
     <!-- Fonts -->
     @googlefonts
     <!-- Scripts -->
+    <script src="https://mempool.space/mempool.js"></script>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/world-mill.js') }}"></script>
