@@ -29,7 +29,7 @@
             <span
                 class="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-0.5 text-sm font-medium text-amber-800">
               <i class="-ml-0.5 mr-1.5 h-2 w-2 text-amber-400"></i>
-              Blockhöhe <span class="font-bold text-2xl ml-4" x-text="height"></span>
+              Blockhöhe <span class="font-bold text-2xl ml-4" x-text="height.toLocaleString('de-DE')"></span>
             </span>
         </div>
         <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
