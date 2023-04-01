@@ -4,6 +4,7 @@ namespace App\Console\Commands\MempoolSpace;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use OpenAI;
 
 class CacheRecommendedFees extends Command
@@ -25,27 +26,31 @@ class CacheRecommendedFees extends Command
      */
     public function handle(): void
     {
-        $apiKey = config('services.open-ai.apiKey');
-        $client = OpenAI::client($apiKey);
+        try {
+            $apiKey = config('services.open-ai.apiKey');
+            $client = OpenAI::client($apiKey);
 
-        $result = Http::get('https://mempool.space/api/v1/fees/recommended');
-        $result = $result->json();
+            $result = Http::get('https://mempool.space/api/v1/fees/recommended');
+            $result = $result->json();
 
-        $result = $client->completions()
-                         ->create([
-                             'model'       => 'text-davinci-003',
-                             'prompt'      => sprintf('Erstelle einen Wetterbericht für den Bitcoin Mempool mit folgenden Gebühren: fastestFee: %s sat/vB, halfHourFee: %s sat/vB, hourFee: %s sat/vB, economyFee: %s sat/vB, minimumFee: %s sat/vB. Fasse mit maximal 400 Zeichen zusammen und schreibe im Stile eines Wetterberichtes aus dem Fernsehen um. Schreibe nichts von schnellen Gebühren, sondern interpretiere die Gebühren anders. Schreibe auch nichts von schnellen Gebühren. Alle Gebühren über 40 ist krass heiß. Gebühren über 20 sind übermäßig warm. Gebühren über 10 sind normal warm. Und Gebühren unter 2 sind sehr kalt.',
-                                 $result['fastestFee'],
-                                 $result['halfHourFee'],
-                                 $result['hourFee'],
-                                 $result['economyFee'],
-                                 $result['minimumFee']
-                             ),
-                             'max_tokens'  => 400,
-                             'temperature' => 1
-                         ]);
+            $result = $client->completions()
+                             ->create([
+                                 'model'       => 'text-davinci-003',
+                                 'prompt'      => sprintf('Erstelle einen Wetterbericht für den Bitcoin Mempool mit folgenden Gebühren: fastestFee: %s sat/vB, halfHourFee: %s sat/vB, hourFee: %s sat/vB, economyFee: %s sat/vB, minimumFee: %s sat/vB. Fasse mit maximal 400 Zeichen zusammen und schreibe im Stile eines Wetterberichtes aus dem Fernsehen um. Schreibe nichts von schnellen Gebühren, sondern interpretiere die Gebühren anders. Schreibe auch nichts von schnellen Gebühren. Alle Gebühren über 40 ist krass heiß. Gebühren über 20 sind übermäßig warm. Gebühren über 10 sind normal warm. Und Gebühren unter 2 sind sehr kalt.',
+                                     $result['fastestFee'],
+                                     $result['halfHourFee'],
+                                     $result['hourFee'],
+                                     $result['economyFee'],
+                                     $result['minimumFee']
+                                 ),
+                                 'max_tokens'  => 400,
+                                 'temperature' => 1
+                             ]);
 
-        cache()->put('mempool-weather', $result['choices'][0]['text'], now()->addMinutes(62));
-        cache()->put('mempool-weather-changed', now()->toDateTimeString(), now()->addMinutes(62));
+            cache()->put('mempool-weather', $result['choices'][0]['text'], now()->addMinutes(62));
+            cache()->put('mempool-weather-changed', now()->toDateTimeString(), now()->addMinutes(62));
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
     }
 }
