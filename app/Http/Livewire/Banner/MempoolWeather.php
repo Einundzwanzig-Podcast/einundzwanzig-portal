@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class MempoolWeather extends Component
 {
-    public ?string $weather = '';
+    public $weather;
     public $changed;
 
     public function mount()
