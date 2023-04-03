@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command(CacheRecommendedFees::class)->hourly();
+        $schedule->command(CacheRecommendedFees::class)->everyFourHours();
         $schedule->call(new PruneStaleAttachments)
                  ->daily();
         $schedule->command(SyncOpenBooks::class)

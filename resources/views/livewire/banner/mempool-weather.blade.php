@@ -34,7 +34,7 @@
         </div>
         @if(!empty($weather))
             <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
-                {{  $weather }} (um {{ \App\Support\Carbon::parse($changed)->asTime() }} Uhr aktualisiert - stündlich)
+                {{  $weather }} (um {{ \App\Support\Carbon::parse($changed)->asTime() }} Uhr aktualisiert - jede 4. Stunde)
             </div>
         @else
             <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
