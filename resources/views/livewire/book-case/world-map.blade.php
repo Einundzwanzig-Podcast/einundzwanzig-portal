@@ -7,6 +7,8 @@
     <section class="w-full mb-12">
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10">
 
+            <livewire:book-case.stats/>
+
             <h1 class="text-xl font-bold py-4 text-gray-200">
                 {{ __('World Map') }}
             </h1>
