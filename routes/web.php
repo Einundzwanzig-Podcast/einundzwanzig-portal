@@ -7,6 +7,10 @@ Route::middleware([])
      ->get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
 
+Route::middleware([])
+     ->get('/hello', \App\Http\Livewire\Hello::class)
+     ->name('hello');
+
 Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
      ->where('path', '.*')
      ->name('img');
