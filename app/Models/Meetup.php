@@ -100,9 +100,9 @@ class Meetup extends Model implements HasMedia
     {
         $media = $this->getFirstMedia('logo');
         if ($media) {
-            $path = str($media->getPath())->after('public/');
+            $path = str($media->getPath())->after('storage/app/');
         } else {
-            $path = 'fallback/einundzwanzig.png';
+            $path = 'public/fallback/einundzwanzig.png';
         }
 
         return Attribute::make(

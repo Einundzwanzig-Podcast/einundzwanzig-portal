@@ -19,9 +19,7 @@ class ImageController extends Controller
      */
     public function __invoke(Request $request, Filesystem $filesystem, $path)
     {
-        if (str($request->path())->contains('img-public')) {
-            $filesystemPublic = Storage::disk('publicDisk');
-        }
+        $filesystemPublic = Storage::disk('publicDisk');
 
         $server = ServerFactory::create([
             'response'          => new LaravelResponseFactory(app('request')),
