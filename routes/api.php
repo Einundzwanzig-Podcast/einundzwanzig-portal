@@ -76,7 +76,7 @@ Route::middleware([])
                                                                'continent'        => 'europe',
                                                                'icon:square'      => $meetup->logoSquare,
                                                                //'contact:email'          => null,
-                                                               'contact:twitter'  => 'https://twitter.com/'.$meetup->twitter_username,
+                                                               'contact:twitter'  => $meetup->twitter_username ? 'https://twitter.com/'.$meetup->twitter_username : null,
                                                                'contact:website'  => $meetup->webpage,
                                                                'contact:telegram' => $meetup->telegram_link,
                                                                'contact:nostr'    => $meetup->nostr,
