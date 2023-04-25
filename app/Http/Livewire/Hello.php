@@ -51,7 +51,7 @@ class Hello extends Component
         $this->paymentHash = $invoice['payment_hash'];
         $this->qrCode = base64_encode(QrCode::format('png')
                                             ->size(300)
-                                            ->merge('/public/img/einundzwanzig.png', .3)
+                                            ->merge('/public/img/markus_turm.png', .3)
                                             ->errorCorrection('H')
                                             ->generate($invoice['payment_request']));
         $this->invoice = $invoice['payment_request'];
