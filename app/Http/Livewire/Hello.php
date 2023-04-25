@@ -36,9 +36,9 @@ class Hello extends Component
                 sats: 21,
                 memo: 'Payment for: Bitcoin im Ländle 2023 - Code is Speech',
                 lnbits: [
-                    'url'       => 'https://legend.lnbits.com',
-                    'wallet_id' => 'b9b095edd0db4bf8995f1bbc90b195c5',
-                    'read_key'  => '67e6d7f94f5345119d6c799d768a029e',
+                    'url'       => config('services.lnbits.url'),
+                    'wallet_id' => config('services.lnbits.wallet_id'),
+                    'read_key'  => config('services.lnbits.read_key'),
                 ],
             );
         } catch (\Exception $e) {
@@ -62,9 +62,9 @@ class Hello extends Component
     {
         try {
             $invoice = $this->check($this->checkid, [
-                'url'       => 'https://legend.lnbits.com',
-                'wallet_id' => 'b9b095edd0db4bf8995f1bbc90b195c5',
-                'read_key'  => '67e6d7f94f5345119d6c799d768a029e',
+                'url'       => config('services.lnbits.url'),
+                'wallet_id' => config('services.lnbits.wallet_id'),
+                'read_key'  => config('services.lnbits.read_key'),
             ]);
         } catch (\Exception $e) {
             $this->notification()

@@ -46,4 +46,10 @@ return [
         'redirect'      => env('TWITTER_REDIRECT_URI'),
     ],
 
+    'lnbits' => [
+        'url'       => env('LNBITS_URL'),
+        'wallet_id' => env('LNBITS_WALLET_ID'),
+        'read_key'  => env('LNBITS_READ_KEY'),
+    ]
+
 ];
