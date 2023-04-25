@@ -4,11 +4,14 @@ namespace App\Http\Livewire\BookCase;
 
 use App\Models\Country;
 use App\Models\User;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class HighscoreTable extends Component
 {
+    use HasTextToSpeech;
+
     public Country $country;
 
     public bool $viewingModal = false;

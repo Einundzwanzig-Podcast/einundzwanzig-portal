@@ -4,11 +4,14 @@ namespace App\Http\Livewire\BitcoinEvent;
 
 use App\Models\BitcoinEvent;
 use App\Models\Country;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class BitcoinEventTable extends Component
 {
+    use HasTextToSpeech;
+
     public Country $country;
 
     public ?int $year = null;

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\School;
 
 use App\Models\Country;
 use App\Models\CourseEvent;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 

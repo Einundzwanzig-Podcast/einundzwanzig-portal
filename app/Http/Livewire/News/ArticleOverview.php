@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\News;
 
 use App\Models\LibraryItem;
+use App\Traits\HasTextToSpeech;
 use App\Traits\NostrTrait;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
@@ -12,6 +13,7 @@ class ArticleOverview extends Component
 {
     use Actions;
     use NostrTrait;
+    use HasTextToSpeech;
 
     public $perPage = 9;
 

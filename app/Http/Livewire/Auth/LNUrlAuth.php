@@ -5,12 +5,15 @@ namespace App\Http\Livewire\Auth;
 use App\Models\LoginKey;
 use App\Models\User;
 use App\Notifications\ModelCreatedNotification;
+use App\Traits\HasTextToSpeech;
 use eza\lnurl;
 use Livewire\Component;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class LNUrlAuth extends Component
 {
+    use HasTextToSpeech;
+
     public ?string $k1 = null;
 
     protected ?string $url = null;

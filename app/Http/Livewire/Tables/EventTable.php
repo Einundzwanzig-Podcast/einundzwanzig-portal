@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Tables;
 use App\Models\Category;
 use App\Models\CourseEvent;
 use App\Models\Lecturer;
+use App\Traits\HasTextToSpeech;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -14,6 +15,8 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class EventTable extends DataTableComponent
 {
+    use HasTextToSpeech;
+
     public string $country;
 
     public bool $viewingModal = false;

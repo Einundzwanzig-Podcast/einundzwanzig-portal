@@ -4,12 +4,15 @@ namespace App\Http\Livewire\News\Form;
 
 use App\Models\LibraryItem;
 use App\Traits\HasTagsTrait;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use WireUi\Traits\Actions;
 
 class NewsArticleForm extends Component
 {
+    use Actions;
     use HasTagsTrait;
     use WithFileUploads;
 
@@ -104,6 +107,20 @@ class NewsArticleForm extends Component
     public function save()
     {
         $this->validate();
+
+        if (str($this->libraryItem->value)->contains('Turm')) {
+            $text = sprintf("
+            Markus Turm hat deinen Artikel geprüft aber nicht freigegeben.
+            Dein Artikel ist leider nicht toxisch genug.
+            Außerdem musst du mindestens 2 Provokation pro Absatz einbauen, um die gewünschte Turm Qualität zu erreichen.
+            ");
+            File::put(storage_path('app/public/tts/news_error.txt'), $text);
+            dispatch(new \App\Jobs\CodeIsSpeech('news_error', false))->delay(now()->addSecond());
+            $this->notification()->error('Markus Turm hat deinen Artikel abgelehnt.');
+
+            return;
+        }
+
         $this->libraryItem->save();
 
         $this->libraryItem->syncTagsWithType(

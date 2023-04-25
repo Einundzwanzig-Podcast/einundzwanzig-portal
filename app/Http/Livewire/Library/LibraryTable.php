@@ -6,11 +6,14 @@ use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
 use App\Models\Tag;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class LibraryTable extends Component
 {
+    use HasTextToSpeech;
+
     public Country $country;
 
     public array $filters = [];

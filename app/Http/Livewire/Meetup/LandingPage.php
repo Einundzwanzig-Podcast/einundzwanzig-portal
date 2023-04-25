@@ -5,11 +5,14 @@ namespace App\Http\Livewire\Meetup;
 use App\Models\Country;
 use App\Models\Meetup;
 use App\Models\MeetupEvent;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class LandingPage extends Component
 {
+    use HasTextToSpeech;
+
     public Meetup $meetup;
 
     public Country $country;

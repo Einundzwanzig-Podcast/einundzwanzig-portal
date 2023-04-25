@@ -137,7 +137,7 @@ class Header extends Component
                                             ->orderByDesc('date')
                                             ->take(2)
                                             ->get(),
-            'projectProposals' => ProjectProposal::query()->with(['votes'])->get(),
+            'projectProposals' => ProjectProposal::query()->with(['user','votes'])->get(),
             'cities'           => City::query()
                                       ->select(['latitude', 'longitude'])
                                       ->get(),

@@ -4,11 +4,14 @@ namespace App\Http\Livewire\BookCase;
 
 use App\Models\BookCase;
 use App\Models\Country;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class WorldMap extends Component
 {
+    use HasTextToSpeech;
+
     public Country $country;
 
     public function render()

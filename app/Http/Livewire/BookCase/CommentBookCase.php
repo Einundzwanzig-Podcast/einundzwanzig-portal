@@ -4,6 +4,7 @@ namespace App\Http\Livewire\BookCase;
 
 use App\Models\BookCase;
 use App\Models\Country;
+use App\Traits\HasTextToSpeech;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
@@ -11,6 +12,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CommentBookCase extends Component
 {
+    use HasTextToSpeech;
     use WithFileUploads;
 
     public Country $country;
@@ -20,6 +22,13 @@ class CommentBookCase extends Component
     public string $c = 'de';
 
     public BookCase $bookCase;
+
+    public function mount()
+    {
+        $this->bookCase->load([
+            'orangePills.user',
+        ]);
+    }
 
     public function save()
     {

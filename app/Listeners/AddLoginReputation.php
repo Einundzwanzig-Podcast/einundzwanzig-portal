@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\PlebLoggedInEvent;
 use App\Gamify\Points\LoggedIn;
+use Illuminate\Support\Facades\File;
 
 class AddLoginReputation
 {

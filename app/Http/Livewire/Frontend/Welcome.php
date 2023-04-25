@@ -3,12 +3,15 @@
 namespace App\Http\Livewire\Frontend;
 
 use App\Models\Country;
+use App\Traits\HasTextToSpeech;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class Welcome extends Component
 {
+    use HasTextToSpeech;
+
     public string $c = 'de';
 
     public string $l = 'de';

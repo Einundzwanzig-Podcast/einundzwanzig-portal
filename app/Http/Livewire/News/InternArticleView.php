@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\News;
 
 use App\Models\LibraryItem;
+use App\Traits\HasTextToSpeech;
 use App\Traits\LNBitsTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -17,6 +18,7 @@ class InternArticleView extends Component
 {
     use Actions;
     use LNBitsTrait;
+    use HasTextToSpeech;
 
     public LibraryItem $libraryItem;
 
