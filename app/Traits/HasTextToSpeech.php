@@ -21,7 +21,7 @@ trait HasTextToSpeech
 
         if (
             in_array($id, [
-                //'authLn',
+                'authLn',
                 'profileLnbits',
                 'meetupWorld',
                 'bitcoinEventTableBitcoinEvent',
