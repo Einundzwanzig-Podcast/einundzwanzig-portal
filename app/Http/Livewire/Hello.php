@@ -24,7 +24,7 @@ class Hello extends Component
     public function rules()
     {
         return [
-            'message' => 'required|string|max:255',
+            'message' => 'required|string|max:1000',
         ];
     }
 
