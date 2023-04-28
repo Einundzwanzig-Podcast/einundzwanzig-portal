@@ -7,6 +7,10 @@ Route::middleware([])
      ->get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
 
+Route::middleware([])
+     ->get('code', \App\Http\Livewire\Code::class)
+     ->name('code');
+
 Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
      ->where('path', '.*')
      ->name('img');
@@ -59,7 +63,8 @@ Route::middleware([
      ->as('export.')
      ->prefix('/export')
      ->group(function () {
-         Route::get('/meetup-event/{meetupEvent}', \App\Http\Controllers\Export\MeetupEventAttendeesExportController::class)
+         Route::get('/meetup-event/{meetupEvent}',
+             \App\Http\Controllers\Export\MeetupEventAttendeesExportController::class)
               ->name('meetupEvent');
      });
 
