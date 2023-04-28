@@ -12,7 +12,7 @@ class Code extends Component
 
         $qrCode = base64_encode(QrCode::format('png')
                                             ->size(500)
-                                            ->merge('/public/img/einundzwanzig.png', .3)
+                                            ->merge('/public/img/brezeln.jpg', .3)
                                             ->errorCorrection('H')
                                             ->generate('https://portal.einundzwanzig.space/hello'));
 
