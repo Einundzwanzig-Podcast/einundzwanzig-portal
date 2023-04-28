@@ -34,7 +34,7 @@ class MeetupEventTable extends Component
                                     ->with([
                                         'meetup.city.country',
                                     ])
-                                    ->where('meetup_events.start', '>=', now())
+                                    ->where('meetup_events.start', '>=', now()->subDay())
                                     ->whereHas('meetup.city.country',
                                         fn ($query) => $query->where('countries.code', $this->country->code))
                                     ->get()
@@ -47,7 +47,7 @@ class MeetupEventTable extends Component
                                     ->with([
                                         'meetup.city.country',
                                     ])
-                                    ->where('meetup_events.start', '>=', now())
+                                    ->where('meetup_events.start', '>=', now()->subDay())
                                     ->whereHas('meetup.city.country',
                                         fn ($query) => $query->where('countries.code', $this->country->code))
                                     ->get()

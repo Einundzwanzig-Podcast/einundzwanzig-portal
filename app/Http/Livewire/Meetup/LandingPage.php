@@ -33,7 +33,7 @@ class LandingPage extends Component
                                              'meetup.city.country',
                                          ])
                                          ->where('meetup_events.meetup_id', $this->meetup->id)
-                                         ->where('meetup_events.start', '>=', now())
+                                         ->where('meetup_events.start', '>=', now()->subDay())
                                          ->orderBy('start')
                                          ->get(),
             'events' => MeetupEvent::query()
@@ -41,7 +41,7 @@ class LandingPage extends Component
                                              'meetup.city.country',
                                          ])
                                          ->where('meetup_events.meetup_id', $this->meetup->id)
-                                         ->where('meetup_events.start', '>=', now())
+                                         ->where('meetup_events.start', '>=', now()->subDay())
                                          ->orderBy('start')
                                          ->get()
                                          ->map(fn ($event) => [
