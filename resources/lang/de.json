@@ -864,5 +864,6 @@
     "Tags must be unique": "Tags müssen einzigartig sein",
     "New tag": "Neuer Tag",
     "Book cases orange pilled": "Anzahl der Buchregal-Einträge",
-    "Number of plebs": "Anzahl der Plebs mit Buchregal-Eintrag"
+    "Number of plebs": "Anzahl der Plebs mit Buchregal-Eintrag",
+    "An error occurred while uploading the file: :error": ""
 }
