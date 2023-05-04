@@ -14,13 +14,13 @@ class MempoolWeather extends Component
 
     public function mount()
     {
-        if (cache()->has('mempool-weather')) {
+        /*if (cache()->has('mempool-weather')) {
             $this->weather = cache()->get('mempool-weather');
         } else {
             Artisan::call(CacheRecommendedFees::class);
             $this->weather = cache()->get('mempool-weather');
         }
-        $this->changed = cache()->get('mempool-weather-changed');
+        $this->changed = cache()->get('mempool-weather-changed');*/
     }
 
     public function render()

@@ -32,7 +32,7 @@
               Blockhöhe <span class="font-bold text-2xl ml-4" x-text="height && height.toLocaleString('de-DE')"></span>
             </span>
         </div>
-        @if(!empty($weather))
+        {{--@if(!empty($weather))
             <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
                 {{  $weather }} (um {{ \App\Support\Carbon::parse($changed)->asTime() }} Uhr aktualisiert - jede 4. Stunde)
             </div>
@@ -40,7 +40,7 @@
             <div class="text-md leading-6 text-gray-900 text-center max-w-screen-2xl">
                 Wetterdaten werden in Kürze wieder verfügbar sein. (OpenAI Quota exceeded)
             </div>
-        @endif
+        @endif--}}
         <div
             x-data="{
                 fastestFee: null,
