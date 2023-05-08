@@ -29,7 +29,10 @@ class ImageController extends Controller
             'base_url'          => $request->route()
                                            ->getName() === 'imgPublic' ? '' : 'img',
         ]);
-
-        return $server->getImageResponse($path, request()->all());
+        try {
+            return $server->getImageResponse($path, request()->all());
+        } catch (\Exception $exception) {
+            abort(404);
+        }
     }
 }
