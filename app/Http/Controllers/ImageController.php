@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 
@@ -31,7 +32,7 @@ class ImageController extends Controller
         ]);
         try {
             return $server->getImageResponse($path, request()->all());
-        } catch (\Exception $exception) {
+        } catch (FileNotFoundException $exception) {
             abort(404);
         }
     }
