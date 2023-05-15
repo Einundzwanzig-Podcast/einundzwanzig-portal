@@ -92,7 +92,7 @@
                     </div>
                 </div>
 
-                <div class="pt-12" x-show="!currentUser">
+                <div class="pt-12">
                     {{ __('Scan this code or copy & paste it to your lightning wallet. Or click to login with your wallet.') }}
                 </div>
             @endif
