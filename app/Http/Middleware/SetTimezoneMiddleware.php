@@ -20,6 +20,7 @@ class SetTimezoneMiddleware
         $locale = Cookie::get('lang') ?: config('app.locale');
         if (str($locale)->contains('ey')) {
             $locale = 'de';
+            Cookie::expire('lang');
         }
         App::setLocale($locale);
         if ($request->country) {
