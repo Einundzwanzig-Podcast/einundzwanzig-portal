@@ -11,6 +11,9 @@ class Footer extends Component
 {
     public function render()
     {
+        if (str(Cookie::get('lang'))->contains('ey')) {
+            Cookie::forget('lang');
+        }
         $l = Cookie::get('lang', config('app.locale'));
         $language = Language::query()
                             ->where('language', $l)
