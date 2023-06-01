@@ -18,7 +18,7 @@ class Footer extends Component
         $language = Language::query()
                             ->where('language', $l)
                             ->first();
-        if (!$language) {
+        if (!$language || str($l)->contains('ey')) {
             $language = Language::query()
                                 ->where('language', config('app.locale'))
                                 ->first();
