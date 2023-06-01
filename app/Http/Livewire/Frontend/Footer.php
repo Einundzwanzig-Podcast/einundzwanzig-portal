@@ -15,6 +15,11 @@ class Footer extends Component
         $language = Language::query()
                             ->where('language', $l)
                             ->first();
+        if (!$language) {
+            $language = Language::query()
+                                ->where('language', config('app.locale'))
+                                ->first();
+        }
         $translated = $language->translations()
                                ->whereNotNull('value')
                                ->where('value', '<>', '')
@@ -26,7 +31,7 @@ class Footer extends Component
 
         return view('livewire.frontend.footer', [
             'percentTranslated' => $l === 'en' ? 100 : round(($translated / $toTranslate) * 100),
-            'language' => $language,
+            'language'          => $language,
         ]);
     }
 }
