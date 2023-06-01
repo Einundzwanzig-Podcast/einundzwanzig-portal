@@ -88,6 +88,8 @@ return [
 
     'locale' => 'de',
 
+    'country' => 'de',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

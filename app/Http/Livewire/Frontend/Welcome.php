@@ -26,6 +26,9 @@ class Welcome extends Component
     public function mount()
     {
         $this->l = Cookie::get('lang') ?: config('app.locale');
+        $this->c = Cookie::get('country') ?: config('app.country');
+        Cookie::queue('lang', $this->l, 60 * 24 * 365);
+        Cookie::queue('country', $this->c, 60 * 24 * 365);
     }
 
     public function updated($property, $value)
@@ -43,14 +46,13 @@ class Welcome extends Component
         }
 
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
+        Cookie::queue('country', $this->c, 60 * 24 * 365);
 
         return to_route('welcome', ['c' => $c, 'l' => $l]);
     }
 
     public function render()
     {
-        Cookie::queue('lang', $this->l, 60 * 24 * 365);
-
         return view('livewire.frontend.welcome', [
             'countries' => Country::query()
                                   ->select('id', 'name', 'code')

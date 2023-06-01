@@ -45,13 +45,13 @@ class Header extends Component
     {
         $this->timezone = config('app.user-timezone');
         $this->l = Cookie::get('lang') ?: config('app.locale');
+        $this->c = Cookie::get('country') ?: config('app.country');
         if (!$this->country) {
             $this->country = Country::query()
                                     ->where('code', $this->c)
                                     ->first();
         }
         $this->currentRouteName = Route::currentRouteName();
-        $this->c = $this->country->code;
     }
 
     public function updatedTimezone($value)
@@ -65,6 +65,7 @@ class Header extends Component
 
     public function updatedC($value)
     {
+        Cookie::queue('country', $value, 60 * 24 * 365);
         $url = str(request()->header('Referer'))->explode('/');
         $url[3] = $value;
 
@@ -73,15 +74,13 @@ class Header extends Component
 
     public function updatedL($value)
     {
-        Cookie::queue('lang', $this->l, 60 * 24 * 365);
+        Cookie::queue('lang', $value, 60 * 24 * 365);
 
         return redirect(request()->header('Referer'));
     }
 
     public function render()
     {
-        Cookie::queue('lang', $this->l, 60 * 24 * 365);
-
         return view('livewire.frontend.header', [
             'news'             => LibraryItem::query()
                                              ->with([
@@ -137,10 +136,13 @@ class Header extends Component
                                             ->orderByDesc('date')
                                             ->take(2)
                                             ->get(),
-            'projectProposals' => ProjectProposal::query()->with([
-                'votes',
-                'user',
-            ])->get(),
+            'projectProposals' => ProjectProposal::query()
+                                                 ->with([
+                                                     'votes',
+                                                     'user',
+                                                 ])
+                                                 ->take(2)
+                                                 ->get(),
             'cities'           => City::query()
                                       ->select(['latitude', 'longitude'])
                                       ->get(),

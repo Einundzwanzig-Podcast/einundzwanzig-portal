@@ -18,6 +18,12 @@ class SetTimezoneMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         App::setLocale(Cookie::get('lang') ?: config('app.locale'));
+        if ($request->country) {
+            config([
+                'app.country' => $request->country,
+            ]);
+            Cookie::queue('country', $request->country, 60 * 24 * 365);
+        }
         if ($request->user()
             && $timezone = $request->user()->timezone
         ) {
