@@ -57,6 +57,7 @@ class ReadAndSyncPodcastFeeds extends Command
             5783120, // Bitcoin´s Energie und Zeit
             558916, // Bitcoin verstehen
             5248065, // Bitcoin Sozial – Lesestunde
+            6413036, // Gassi Dialoge
         ];
 
         foreach ($feedIds as $feedId) {
