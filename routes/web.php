@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware([])
+     ->get('/bsc', \App\Http\Livewire\Specials\BalticSeaCircle::class)
+     ->name('specials.bsc');
+
+Route::middleware([])
      ->get('/', \App\Http\Livewire\Frontend\Welcome::class)
      ->name('welcome');
 
@@ -64,7 +68,8 @@ Route::middleware([
      ->as('export.')
      ->prefix('/export')
      ->group(function () {
-         Route::get('/meetup-event/{meetupEvent}', \App\Http\Controllers\Export\MeetupEventAttendeesExportController::class)
+         Route::get('/meetup-event/{meetupEvent}',
+             \App\Http\Controllers\Export\MeetupEventAttendeesExportController::class)
               ->name('meetupEvent');
      });
 
