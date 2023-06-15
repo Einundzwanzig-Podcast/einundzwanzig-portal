@@ -341,7 +341,7 @@
     }})"></div>
 
     @push('modals')
-        <div wire:ignore class="z-50">
+        <div wire:ignore class="z-50 hidden md:block">
             <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
             <script
                 src="{{ asset('dist/einundzwanzig.chat.js') }}"

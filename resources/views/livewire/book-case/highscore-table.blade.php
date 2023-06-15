@@ -161,7 +161,7 @@
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
 
-    <div wire:ignore class="z-50">
+    <div wire:ignore class="z-50 hidden md:block">
         <script
             src="{{ asset('dist/einundzwanzig.chat.js') }}"
             data-website-owner-pubkey="daf83d92768b5d0005373f83e30d4203c0b747c170449e02fea611a0da125ee6"
