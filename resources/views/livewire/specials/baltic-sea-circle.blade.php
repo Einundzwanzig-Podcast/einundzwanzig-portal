@@ -45,9 +45,9 @@
             function () {
                 $('#me')
                     .vegas({
-                        delay:                   7000,
+                        delay:                   10000,
                         timer:                   true,
-                        shuffle:                 true,
+                        shuffle:                 false,
                         firstTransition:         'blur',
                         firstTransitionDuration: 5000,
                         transition:              'blur',
