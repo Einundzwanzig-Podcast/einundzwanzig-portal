@@ -19,6 +19,13 @@
                 Cercatrova.</p>
             <p class="mt-6 text-base leading-7 text-gray-600">Gut Barsthorst, Hamburg</p>
             <p class="mt-6 text-base leading-7 text-gray-600">
+                <x-button primary lg href="https://t.me/rallyejukebox"
+                          target="_blank">
+                    <i class="fa-thin fa-music"></i>
+                    Musik Jukebox
+                </x-button>
+            </p>
+            <p class="mt-6 text-base leading-7 text-gray-600">
                 <x-button primary lg href="https://findpenguins.com/superlative-adventure-club/live?rallye=2023-bsc"
                           target="_blank">
                     <i class="fa-thin fa-map"></i>
