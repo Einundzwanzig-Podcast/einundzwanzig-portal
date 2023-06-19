@@ -74,7 +74,7 @@
                 xs
                 black
                 target="_blank"
-                :href="$row->twitter_username"
+                :href="'https://twitter.com/'.$row->twitter_username"
             >
                 <i class="fa fa-brand fa-twitter mr-2"></i>
                 {{ __('Twitter') }}
