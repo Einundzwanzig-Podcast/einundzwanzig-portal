@@ -2,10 +2,10 @@
     <livewire:frontend.header :country="$country"/>
     {{-- MAIN --}}
     <section class="w-full mb-12 mt-8">
-        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row">
+        <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4">
             <div class="flex flex-col sm:flex-row sm:space-x-6 justify-between">
                 <div class="sm:w-2/3 flex flex-col">
-                    <h1 class="mb-6 text-5xl font-extrabold leading-none tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
+                    <h1 class="mb-6 text-xl font-extrabold leading-none tracking-normal text-gray-200 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight">
                         <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200">{{ $lecturer->name }}</span><br
                             class="lg:block hidden">
