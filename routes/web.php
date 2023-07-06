@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\News\InternArticleView;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -141,15 +142,15 @@ Route::middleware([
      });
 
 Route::middleware([])
-     ->get('/news/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
+     ->get('/news/{libraryItem:slug}', InternArticleView::class)
      ->name('article.view');
 
 Route::middleware([])
-     ->get('/library-item/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
+     ->get('/library-item/{libraryItem:slug}', InternArticleView::class)
      ->name('libraryItem.view');
 
 Route::middleware([])
-     ->get('/lecturer-material/{libraryItem:slug}', \App\Http\Livewire\News\InternArticleView::class)
+     ->get('/lecturer-material/{libraryItem:slug}', InternArticleView::class)
      ->name('lecturerMaterial.view');
 
 Route::get('/project/voting/{projectProposal:slug}', \App\Http\Livewire\ProjectProposal\ProjectProposalVoting::class)

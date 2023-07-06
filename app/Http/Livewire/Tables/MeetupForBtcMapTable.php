@@ -38,7 +38,7 @@ class MeetupForBtcMapTable extends DataTableComponent
             Column::make('Country', 'city.country.name')
                   ->sortable(),
             Column::make('Actions')
-                  ->label(fn ($row, Column $column) => view('columns.meetups.osm-actions', ['row' => $row])),
+                  ->label(fn($row, Column $column) => view('columns.meetups.osm-actions', ['row' => $row])),
         ];
     }
 
@@ -48,6 +48,7 @@ class MeetupForBtcMapTable extends DataTableComponent
                      ->with([
                          'city.country',
                      ])
+                     ->where('community', '=', 'einundzwanzig')
                      ->orderBy('cities.population');
     }
 }
