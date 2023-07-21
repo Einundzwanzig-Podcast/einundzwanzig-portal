@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .telegram-blue { color: #0088cc; }
-        .designer-green { color: #009900; }
+        .button-hover:hover { background-color: #FF9900; color: #fff;}
+        .link-gray { color: #aaaaaa; }
+        /* Buttons Text weiß und beim Hover Hintergrundfarbe Bitcoin-Orange */
+        .btn, x-button {
+            color: #fff;
+        }
+        .btn:hover, x-button:hover {
+            background-color: #FF9900;
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -19,7 +27,7 @@
     <div class="px-8 md:px-24 py-5">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-5xl text-orange-500">Anleitung zum Bücherverleih</h1>
-            <button class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">Sprache wechseln</button>
+            <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">Translate to english</button>
         </div>
 
         <h2 class="text-3xl mb-4 text-white">Hallo Pleb,</h2>
@@ -45,12 +53,26 @@
                 <p class="text-lg text-gray-300 mb-2">(Zum Editieren brauchst du <a href="https://www.adobe.com/de/products/illustrator.html" target="_blank" class="text-orange-500 underline link-gray">Adobe Illustrator)</a></p>
                 <img src="{{ asset('/img/etiketten-min.jpeg') }}" alt="Buch Etiketten" class="mb-4 w-full object-cover h-64 rounded-md shadow-md">
                 <div class="flex space-x-2">
-                    <x-button download href="{{ asset('assets/book-etiketten-source.jpg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                    <p class="text-white">
                         Source-Datei Download
+                    </p>
+                </button>
+                <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                    <p class="text-white">
+                        Beispiel-Datei Download
+                    </p>
+                </button>
+                    <!-- <x-button  download href="{{ asset('assets/book-etiketten-source.jpg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                        <p class="text-white">
+                        Source-Datei Download
+                        </p>
                     </x-button>
                     <x-button download href="{{ asset('/img/etiketten-min.jpeg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                        <p class="text-white">
                         Beispiel-Datei Download
-                    </x-button>
+                        </p>
+                    </x-button> -->
                 </div>
             </div>
 
@@ -60,12 +82,26 @@
 
                 <img src="{{ asset('/img/flyer-min.jpeg') }}" alt="Flyer" class="mb-4 w-full object-cover h-64 rounded-md shadow-md">
                 <div class="flex space-x-2">
-                    <x-button download href="{{ asset('assets/flyer-source.jpg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                    <p class="text-white">
                         Source-Datei Download
-                    </x-button>
-                    <x-button download href="{{ asset('/img/flyer-min.jpeg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                    </p>
+                </button>
+                <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                    <p class="text-white">
                         Beispiel-Datei Download
+                    </p>
+                </button>
+                    <!-- <x-button  download href="{{ asset('assets/book-etiketten-source.jpg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                        <p class="text-white">
+                        Source-Datei Download
+                        </p>
                     </x-button>
+                    <x-button download href="{{ asset('/img/etiketten-min.jpeg') }}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                        <p class="text-white">
+                        Beispiel-Datei Download
+                        </p>
+                    </x-button> -->
                 </div>
             </div>
         </div>
