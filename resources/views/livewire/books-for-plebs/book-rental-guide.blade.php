@@ -27,7 +27,8 @@
     <div class="px-8 md:px-24 py-5">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-5xl text-orange-500">Anleitung zum Bücherverleih</h1>
-            <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">Translate to english</button>
+            <img src="{{ asset('/img/apple_touch_icon.png') }}" alt="Buch Etiketten" class="mb-4  object-cover h-32  rounded-md shadow-md">
+            
         </div>
 
         <h2 class="text-3xl mb-4 text-white">Hallo Pleb,</h2>
@@ -51,7 +52,7 @@
             <div class="flex flex-col items-start">
                 <h2 class="text-2xl mb-2 text-orange-500">Bücheretiketten</h2>
                 <p class="text-lg text-gray-300 mb-2">(Zum Editieren brauchst du <a href="https://www.adobe.com/de/products/illustrator.html" target="_blank" class="text-orange-500 underline link-gray">Adobe Illustrator)</a></p>
-                <img src="{{ asset('/img/etiketten-min.jpeg') }}" alt="Buch Etiketten" class="mb-4 w-full object-cover h-64 rounded-md shadow-md">
+                <img src="{{ asset('/img/etiketten-min.jpeg') }}" alt="Buch Etiketten" class="mb-4 object-cover h-64 rounded-md shadow-md">
                 <div class="flex space-x-2">
                 <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                     <p class="text-white">
@@ -80,7 +81,7 @@
                 <h2 class="text-2xl mb-2 text-orange-500">Flyer</h2>
                 <p class="text-lg text-gray-300 mb-2">(Zum Editieren brauchst du <a href="https://www.adobe.com/de/products/illustrator.html" target="_blank" class="text-orange-500 underline link-gray">Adobe Illustrator)</a></p>
 
-                <img src="{{ asset('/img/flyer-min.jpeg') }}" alt="Flyer" class="mb-4 w-full object-cover h-64 rounded-md shadow-md">
+                <img src="{{ asset('/img/flyer-min.jpeg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
                 <div class="flex space-x-2">
                 <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                     <p class="text-white">
