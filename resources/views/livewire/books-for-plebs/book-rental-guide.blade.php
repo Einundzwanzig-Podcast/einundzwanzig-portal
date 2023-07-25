@@ -79,7 +79,7 @@
                 Adobe Illustrator)
               </a>
             </p>
-            <img src="{{ asset('/img/etiketten-min.jpeg') }}" alt="Buch Etiketten"
+            <img src="{{ asset('/img/etikett_bucherVerleih-min.jpg') }}" alt="Buch Etiketten"
             class="mb-4 object-cover h-64 rounded-md shadow-md">
             <div class="flex justify-center space-x-2">
               <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
@@ -105,7 +105,7 @@
                 Adobe Illustrator)
               </a>
             </p>
-            <img src="{{ asset('/img/flyer-min.jpeg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
+            <img src="{{ asset('/img/flyerBuecherverleih-min.jpg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
             <div class="flex space-x-2">
               <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                 <p class="text-white">
@@ -127,7 +127,7 @@
             ₿itcoin
           </span>
           QR-Code zu erstellen, kopiere einfach die Empfangsadresse aus der Wallet
-          deiner Wahl und fügst sie hier ein:
+          deiner Wahl und füge sie hier ein:
           <br>
           <a href="https://www.qr-code-generator.com/" target="_blank" class="text-orange-500 underline">
             www.qr-code-generator.com
@@ -136,21 +136,27 @@
 
         <p class="text-lg text-white font-bold mb-8">
           Der QR-Code-Generator akzeptiert sowohl Lightning als auch Onchain-Empfangsadressen.
+          Wir empfehlen dir jedoch Lightning zu verwenden, da es schneller und zumeist deutlich günstiger als Onchain ist.
           <br>
           <span class="flex items-center text-red-500">
             <i class="fas fa-exclamation-triangle mr-2">
             </i>
-            Vorsicht: Lightning-Rechnungen, für einen bestimmten Betrag sind nicht
-            geeignet! Weil diese nach drei Zahlungen ablaufen.
+            Vorsicht: Bitte KEINE Lightning-Adressen,verwenden, da diese nach einem bestimmten Zeitraum ablaufen!
+            Stattdessen nutzt Ihr bitte eine LNURL, da diese Statisch sind.
+          </span>
+          <span>
+            Tipp: Der Lightning TipBot "LN.tips" erzeugt euch eine. Dazu müsst Ihr diesen nur aktivieren und mit dem Befehl 
+            "/advanced" eure LNURL anzeigen lassen und diese copy-pasten.
+            Alternativ kann dies auch die WalletOfSatoshi, dort sehen Sie aus wie E-Mail Adessen, wie zum Beispiel: 
+            "BitcoinKalle@walletofsatoshi.com"
           </span>
         </p>
 
         <p class="text-lg text-white">
           Für die sichere Lagerung deiner Bücher empfehlen wir einen Meetup-Ort,
           an dem du regelmäßig bist und die Bücher auch sicher verstaut werden können.
-          Um sicherzustellen, dass der QR-Code nicht entfernt und ausgetauscht wird,
-          empfehlen wir, dass du die Seiten mit Klebeband verbindest oder den QR-Code
-          mit einer Heißklebepistole auf das Buch klebst.
+          Falls dem nicht der Fall ist, solltet Ihr die Bücher lieber jedes mal separat mit zum Meetup 
+          nehmen und die nicht verliehenen Bücher auch wieder mit zurück.
         </p>
 
         <p class="text-lg text-white mt-8">
@@ -160,6 +166,7 @@
 
         <p class="text-lg text-white">
           <a href="https://t.me/BOOKRING4SATS" target="_blank" class="text-orange-500 underline telegram-blue">
+            <br>
             <i class="fab fa-telegram mr-2">
             </i>
             @BOOKRING4SATS
