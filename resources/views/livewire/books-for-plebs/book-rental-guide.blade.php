@@ -64,10 +64,17 @@
             </i>
             @LottiTheFuchs
           </a>
+          <br>
+          <a href="https://t.me/Robin_Hodl21" target="_blank" class="text-orange-500 underline telegram-blue">
+            <i class="fab fa-telegram mr-2">
+            </i>
+            @Robin_Hodl21
+          </a>
         </p>
         <br>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <!-- Bücheretiketten -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div class="flex flex-col items-center">
             <h2 class="text-2xl mb-2 text-orange-500">
               Bücheretiketten
@@ -82,18 +89,20 @@
             <img src="{{ asset('/img/etikett_bucherVerleih-min.jpg') }}" alt="Buch Etiketten"
             class="mb-4 object-cover h-64 rounded-md shadow-md">
             <div class="flex justify-center space-x-2">
-              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+            <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                 <p class="text-white">
-                  Source-Datei Download
+                  Download .jpg
                 </p>
               </button>
               <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                 <p class="text-white">
-                  Beispiel-Datei Download
+                  Download .ai
                 </p>
               </button>
             </div>
           </div>
+
+          <!-- Flyer -->
           <div class="flex flex-col items-center">
             <h2 class="text-2xl mb-2 text-orange-500">
               Flyer
@@ -109,12 +118,52 @@
             <div class="flex space-x-2">
               <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                 <p class="text-white">
-                  Source-Datei Download
+                  Download .jpg
                 </p>
               </button>
               <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                 <p class="text-white">
-                  Beispiel-Datei Download
+                  Download .ai
+                </p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Lesezeichen -->
+          <div class="flex flex-col items-center">
+            <h2 class="text-2xl mb-2 text-orange-500">
+              Lesezeichen
+            </h2>
+            <p class="text-lg text-gray-300 mb-2">
+              (Nicht editierbar)
+              </a>
+            </p>
+            <img src="{{ asset('/img/Lesezeichen-min.jpg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
+
+            <div class="flex space-x-2">
+              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                <p class="text-white">
+                  Download .jpg
+                </p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bookring4Sats -->
+          <div class="flex flex-col items-center">
+            <h2 class="text-2xl mb-2 text-orange-500">
+            Bookring4Sats 
+            </h2>
+            <p class="text-lg text-gray-300 mb-2">
+              (Nicht editierbar)
+              </a>
+            </p>
+            <img src="{{ asset('/img/B4S-min.jpg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
+
+            <div class="flex space-x-2">
+              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                <p class="text-white">
+                  Download .jpg
                 </p>
               </button>
             </div>
