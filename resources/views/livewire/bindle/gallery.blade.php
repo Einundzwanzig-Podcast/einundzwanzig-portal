@@ -37,7 +37,11 @@
                                     </div>
                                     <p class="mt-2 block truncate text-sm font-medium text-gray-100">{{ $bindle->name }}</p>
                                     <div>
-                                        <a href="{{ $bindle->value }}" target="_blank" class="text-md font-medium text-gray-100">{{ $bindle->value }}</a>
+                                        @php
+                                            $url = $bindle->value;
+                                            $url = strtok($url, "?");
+                                        @endphp
+                                        <a href="{{ $url }}" target="_blank" class="text-md font-medium text-gray-100">{{ $url }}</a>
                                     </div>
                                 </div>
                                 <div class="text-sm font-medium text-gray-100 py-4">
