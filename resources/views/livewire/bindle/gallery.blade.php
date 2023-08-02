@@ -20,7 +20,7 @@
                     <h1 class="text-4xl text-white py-8">Sent from my #₿indle🧡</h1>
 
                     <ul role="list"
-                        class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                        class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 
                         @foreach($bindles as $bindle)
                             <li wire:key="image_{{ $bindle->id }}">
@@ -42,7 +42,9 @@
                                             $url = strtok($url, "?");
                                         @endphp
                                         <div class="text-white mt-4">{{ __('Wurde zuerst hier gepostet:') }}</div>
-                                        <a href="{{ $url }}" target="_blank" class="text-md font-medium text-orange-400">{{ $url }}</a>
+                                        <div class="break-words">
+                                            <a href="{{ $url }}" target="_blank" class="text-md font-medium text-orange-400">{{ $url }}</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="text-sm font-medium text-gray-100 py-4">
