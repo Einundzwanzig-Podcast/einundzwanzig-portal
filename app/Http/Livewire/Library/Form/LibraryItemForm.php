@@ -158,7 +158,7 @@ class LibraryItemForm extends Component
             )
             ->toArray();
         $libaries = Library::query()
-            ->when(auth()->id() !== config('portal.bonus.fiat-tracker-user-id'),
+            ->when(auth()->id() != config('portal.bonus.fiat-tracker-user-id'),
                 fn($query) => $query->where('name', '!=', 'Bindle')
             )
             ->get()
@@ -168,7 +168,7 @@ class LibraryItemForm extends Component
             ])
             ->toArray();
 
-        if (auth()->id() === config('portal.bonus.fiat-tracker-user-id')) {
+        if (auth()->id() == config('portal.bonus.fiat-tracker-user-id')) {
             $types = collect($types)->prepend([
                 'label' => 'Bindle',
                 'value' => 'bindle',

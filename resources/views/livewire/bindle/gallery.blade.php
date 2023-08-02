@@ -8,7 +8,7 @@
 
             <div>
                 <div class="py-6">
-                    @if(auth()->id() === config('portal.bonus.fiat-tracker-user-id'))
+                    @if(auth()->id() == config('portal.bonus.fiat-tracker-user-id'))
                         <x-button icon="plus"
                                   :href="route('library.libraryItem.form', ['country' => 'de'])">
                             {{ __('Neues Bindle hochladen') }}
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="text-sm font-medium text-gray-100 py-4">
-                                    @if(auth()->id() === config('portal.bonus.fiat-tracker-user-id'))
+                                    @if(auth()->id() == config('portal.bonus.fiat-tracker-user-id'))
                                         <x-button
                                             negative
                                             xs
