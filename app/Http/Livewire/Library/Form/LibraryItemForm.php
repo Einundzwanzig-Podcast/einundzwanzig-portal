@@ -29,11 +29,14 @@ class LibraryItemForm extends Component
 
     public bool $lecturer = false;
 
+    public bool $isBindle = false;
+
     public ?string $fromUrl = '';
 
     protected $queryString = [
         'fromUrl' => ['except' => ''],
         'lecturer' => ['except' => false],
+        'isBindle' => ['except' => false],
     ];
 
     public function rules()
@@ -57,7 +60,13 @@ class LibraryItemForm extends Component
                     && $this->libraryItem->type !== LibraryItemType::DownloadableFile(), ['url']
                 ),
             ],
-            'libraryItem.subtitle' => 'required',
+            'libraryItem.subtitle' =>
+                [
+                    Rule::when(
+                        $this->libraryItem->type !== 'bindle',
+                        'required',
+                    )
+                ],
             'libraryItem.excerpt' =>
                 [
                     Rule::when(
@@ -95,7 +104,7 @@ class LibraryItemForm extends Component
             $this->libraryItem = new LibraryItem([
                 'approved' => true,
                 'read_time' => 1,
-                'value' => '',
+                'value' => ''
             ]);
             if ($this->lecturer) {
                 $this->library = Library::query()
@@ -113,6 +122,13 @@ class LibraryItemForm extends Component
         }
         if (!$this->fromUrl) {
             $this->fromUrl = url()->previous();
+        }
+        if ($this->isBindle) {
+            $this->library = 21;
+            $this->libraryItem->lecturer_id = 125;
+            $this->libraryItem->type = 'bindle';
+            $this->libraryItem->language_code = 'de';
+            $this->selectedTags = ['Bindle'];
         }
     }
 

@@ -10,7 +10,7 @@
                 <div class="py-6">
                     @if(auth()->id() == config('portal.bonus.fiat-tracker-user-id'))
                         <x-button icon="plus"
-                                  :href="route('library.libraryItem.form', ['country' => 'de'])">
+                                  :href="route('library.libraryItem.form', ['country' => 'de', 'isBindle' => true])">
                             {{ __('Neues Bindle hochladen') }}
                         </x-button>
                     @endif
