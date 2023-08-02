@@ -41,7 +41,8 @@
                                             $url = $bindle->value;
                                             $url = strtok($url, "?");
                                         @endphp
-                                        <a href="{{ $url }}" target="_blank" class="text-md font-medium text-gray-100">{{ $url }}</a>
+                                        <div class="text-white mt-4">{{ __('Wurde zuerst hier gepostet:') }}</div>
+                                        <a href="{{ $url }}" target="_blank" class="text-md font-medium text-orange-400">{{ $url }}</a>
                                     </div>
                                 </div>
                                 <div class="text-sm font-medium text-gray-100 py-4">
