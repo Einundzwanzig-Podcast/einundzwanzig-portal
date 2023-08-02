@@ -53,11 +53,13 @@
                                 {{ __('Submit news articles') }}
                             </a>
 
-                            <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
-                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
-                                {{ __('Manage content creators') }}
-                            </a>
+                            @if($country)
+                                <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
+                                   class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                    <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                    {{ __('Manage content creators') }}
+                                </a>
+                            @endif
 
                         </div>
                     </div>
