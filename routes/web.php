@@ -20,6 +20,10 @@ Route::middleware([])
      ->get('/kaninchenbau', \App\Http\Livewire\Helper\FollowTheRabbit::class)
      ->name('kaninchenbau');
 
+Route::middleware([])
+     ->get('/bindles', \App\Http\Livewire\Bindle\Gallery::class)
+     ->name('bindles');
+
 Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
      ->where('path', '.*')
      ->name('img');

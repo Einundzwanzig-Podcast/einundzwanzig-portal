@@ -39,13 +39,13 @@
                             wire:model="libraryItem.lecturer_id"
                             :searchable="true"
                             :async-data="[
-                            'api' => route('api.lecturers.index'),
-                            'method' => 'GET', // default is GET
-                        ]"
+                                'api' => route('api.lecturers.index'),
+                                'method' => 'GET', // default is GET
+                            ]"
                             :template="[
-                            'name'   => 'user-option',
-                            'config' => ['src' => 'image']
-                        ]"
+                                'name'   => 'user-option',
+                                'config' => ['src' => 'image']
+                            ]"
                             option-label="name"
                             option-value="id"
                         />

@@ -57,6 +57,12 @@
                                 {{ __('Podcast Episodes') }}
                             </a>
 
+                            <a href="{{ route('bindles', ['country' => null]) }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-image flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                {{ __('Bindles') }}
+                            </a>
+
                             @auth
                                 <a href="{{ route('library.table.lecturer', ['country' => $country]) }}"
                                    class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">

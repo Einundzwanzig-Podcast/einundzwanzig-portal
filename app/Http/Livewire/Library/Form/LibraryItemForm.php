@@ -6,7 +6,6 @@ use App\Enums\LibraryItemType;
 use App\Models\Country;
 use App\Models\Library;
 use App\Models\LibraryItem;
-use App\Models\Tag;
 use App\Traits\HasTagsTrait;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -33,7 +32,7 @@ class LibraryItemForm extends Component
     public ?string $fromUrl = '';
 
     protected $queryString = [
-        'fromUrl'  => ['except' => ''],
+        'fromUrl' => ['except' => ''],
         'lecturer' => ['except' => false],
     ];
 
@@ -46,11 +45,11 @@ class LibraryItemForm extends Component
 
             'selectedTags' => 'array|min:1',
 
-            'libraryItem.lecturer_id'        => 'required',
-            'libraryItem.name'               => 'required',
-            'libraryItem.type'               => 'required',
-            'libraryItem.language_code'      => 'required',
-            'libraryItem.value'              => [
+            'libraryItem.lecturer_id' => 'required',
+            'libraryItem.name' => 'required',
+            'libraryItem.type' => 'required',
+            'libraryItem.language_code' => 'required',
+            'libraryItem.value' => [
                 'required',
                 Rule::when(
                     $this->libraryItem->type !== LibraryItemType::MarkdownArticle()
@@ -58,11 +57,35 @@ class LibraryItemForm extends Component
                     && $this->libraryItem->type !== LibraryItemType::DownloadableFile(), ['url']
                 ),
             ],
-            'libraryItem.subtitle'           => 'required',
-            'libraryItem.excerpt'            => 'required',
-            'libraryItem.main_image_caption' => 'required',
-            'libraryItem.read_time'          => 'required',
-            'libraryItem.approved'           => 'boolean',
+            'libraryItem.subtitle' => 'required',
+            'libraryItem.excerpt' =>
+                [
+                    Rule::when(
+                        $this->libraryItem->type !== 'bindle',
+                        'required',
+                    )
+                ],
+            'libraryItem.main_image_caption' =>
+                [
+                    Rule::when(
+                        $this->libraryItem->type !== 'bindle',
+                        'required',
+                    )
+                ],
+            'libraryItem.read_time' =>
+                [
+                    Rule::when(
+                        $this->libraryItem->type !== 'bindle',
+                        'required',
+                    )
+                ],
+            'libraryItem.approved' =>
+                [
+                    Rule::when(
+                        $this->libraryItem->type !== 'bindle',
+                        'required',
+                    )
+                ],
         ];
     }
 
@@ -70,22 +93,22 @@ class LibraryItemForm extends Component
     {
         if (!$this->libraryItem) {
             $this->libraryItem = new LibraryItem([
-                'approved'  => true,
+                'approved' => true,
                 'read_time' => 1,
-                'value'     => '',
+                'value' => '',
             ]);
             if ($this->lecturer) {
                 $this->library = Library::query()
-                                        ->firstWhere('name', '=', 'Dozentenmaterial')?->id;
+                    ->firstWhere('name', '=', 'Dozentenmaterial')?->id;
             }
         } else {
             $this->selectedTags = $this->libraryItem->tags()
-                                                    ->where('type', 'library_item')
-                                                    ->get()
-                                                    ->map(fn($tag) => $tag->name)
-                                                    ->toArray();
+                ->where('type', 'library_item')
+                ->get()
+                ->map(fn($tag) => $tag->name)
+                ->toArray();
             $this->library = $this->libraryItem->libraries()
-                                               ->first()
+                ->first()
                 ->id;
         }
         if (!$this->fromUrl) {
@@ -106,38 +129,55 @@ class LibraryItemForm extends Component
 
         if ($this->image) {
             $this->libraryItem->addMedia($this->image)
-                              ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
-                              ->toMediaCollection('main');
+                ->usingFileName(md5($this->image->getClientOriginalName()) . '.' . $this->image->getClientOriginalExtension())
+                ->toMediaCollection('main');
         }
 
         if ($this->file) {
             $this->libraryItem->addMedia($this->file)
-                              ->usingFileName(md5($this->file->getClientOriginalName()).'.'.$this->file->getClientOriginalExtension())
-                              ->toMediaCollection('single_file');
+                ->usingFileName(md5($this->file->getClientOriginalName()) . '.' . $this->file->getClientOriginalExtension())
+                ->toMediaCollection('single_file');
         }
 
         $this->libraryItem->libraries()
-                          ->syncWithoutDetaching([(int) $this->library]);
+            ->syncWithoutDetaching([(int)$this->library]);
+
+        if ($this->libraryItem->type === 'bindle') {
+            return to_route('bindles');
+        }
 
         return to_route('library.table.libraryItems', ['country' => $this->country]);
     }
 
     public function render()
     {
+        $types = Options::forEnum(LibraryItemType::class)
+            ->filter(
+                fn($type) => $type !== LibraryItemType::PodcastEpisode
+                    && $type !== LibraryItemType::MarkdownArticle
+            )
+            ->toArray();
+        $libaries = Library::query()
+            ->when(auth()->id() !== config('portal.bonus.fiat-tracker-user-id'),
+                fn($query) => $query->where('name', '!=', 'Bindle')
+            )
+            ->get()
+            ->map(fn($library) => [
+                'id' => $library->id,
+                'name' => $library->name,
+            ])
+            ->toArray();
+
+        if (auth()->id() === config('portal.bonus.fiat-tracker-user-id')) {
+            $types = collect($types)->prepend([
+                'label' => 'Bindle',
+                'value' => 'bindle',
+            ]);
+        }
+
         return view('livewire.library.form.library-item-form', [
-            'types'     => Options::forEnum(LibraryItemType::class)
-                                  ->filter(
-                                      fn($type) => $type !== LibraryItemType::PodcastEpisode
-                                                   && $type !== LibraryItemType::MarkdownArticle
-                                  )
-                                  ->toArray(),
-            'libraries' => Library::query()
-                                  ->get()
-                                  ->map(fn($library) => [
-                                      'id'   => $library->id,
-                                      'name' => $library->name,
-                                  ])
-                                  ->toArray(),
+            'types' => $types,
+            'libraries' => $libaries,
         ]);
     }
 }
