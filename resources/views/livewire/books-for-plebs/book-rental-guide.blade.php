@@ -89,16 +89,22 @@
             <img src="{{ asset('/img/etikett_bucherVerleih-min.jpg') }}" alt="Buch Etiketten"
             class="mb-4 object-cover h-64 rounded-md shadow-md">
             <div class="flex justify-center space-x-2">
-            <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+            <!-- Download .jpg -->
+              <x-button 
+              class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              download="Bücheretiketten" href="{{ asset('/img/etikett_bucherVerleih-min.jpg') }}">
                 <p class="text-white">
-                  Download .jpg
+                Download .jpg
                 </p>
-              </button>
-              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+              </x-button>
+            <!-- Download SourceFile -->
+              <x-button 
+              class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              download="Bücheretiketten" href="{{ asset('/img/Bucheretiketten.pdf') }}">
                 <p class="text-white">
-                  Download .ai
+                  Download .pdf
                 </p>
-              </button>
+              </x-button>
             </div>
           </div>
 
@@ -116,16 +122,20 @@
             </p>
             <img src="{{ asset('/img/flyerBuecherverleih-min.jpg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
             <div class="flex space-x-2">
-              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+              <x-button 
+              class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              download="Flyer" href="{{ asset('/img/flyerBuecherverleih-min.jpg') }}">
                 <p class="text-white">
                   Download .jpg
                 </p>
-              </button>
-              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+              </x-button>
+              <x-button 
+              class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              download href="{{ asset('/img/source_file_Flyer.ai') }}">
                 <p class="text-white">
                   Download .ai
                 </p>
-              </button>
+              </x-button>
             </div>
           </div>
 
@@ -141,11 +151,13 @@
             <img src="{{ asset('/img/Lesezeichen-min.jpg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
 
             <div class="flex space-x-2">
-              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+              <x-button 
+              class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              download download="Lesezeichen" href="{{ asset('/img/Lesezeichen-min.jpg') }}">
                 <p class="text-white">
                   Download .jpg
                 </p>
-              </button>
+              </x-button>
             </div>
           </div>
 
@@ -161,11 +173,13 @@
             <img src="{{ asset('/img/B4S-min.jpg') }}" alt="Flyer" class="mb-4 object-cover h-64 rounded-md shadow-md">
 
             <div class="flex space-x-2">
-              <button class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+              <x-button 
+              class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              download="B4S" href="{{ asset('/img/B4S-min.jpg') }}">
                 <p class="text-white">
                   Download .jpg
                 </p>
-              </button>
+              </x-button>
             </div>
           </div>
         </div>
