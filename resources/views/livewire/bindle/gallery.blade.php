@@ -31,9 +31,6 @@
                                             <img src="{{ $bindle->getFirstMediaUrl('main') }}" alt="{{ $bindle->name }}"
                                                  class="object-cover">
                                         </a>
-                                        <button type="button" class="absolute inset-0 focus:outline-none">
-                                            <span class="sr-only">{{ $bindle->name }}</span>
-                                        </button>
                                     </div>
                                     <p class="mt-2 block truncate text-sm font-medium text-gray-100">{{ $bindle->name }}</p>
                                     <div>
