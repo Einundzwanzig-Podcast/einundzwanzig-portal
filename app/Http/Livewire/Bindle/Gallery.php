@@ -15,6 +15,7 @@ class Gallery extends Component
     {
         $this->bindles = LibraryItem::query()
             ->where('type', 'bindle')
+            ->latest('id')
             ->get();
     }
 
