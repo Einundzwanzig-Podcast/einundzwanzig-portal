@@ -29,31 +29,31 @@
 
                             <a href="{{ route('school.table.city', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-city flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-city flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Cities') }}
                             </a>
 
                             <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-chalkboard-user flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-chalkboard-user flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Lecturers') }}
                             </a>
 
                             <a href="{{ route('school.table.venue', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-building flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-building flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Venues') }}
                             </a>
 
                             <a href="{{ route('school.table.course', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-screen-users flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-screen-users flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Courses') }}
                             </a>
 
                             <a href="{{ route('school.table.event', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-calendar flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-calendar flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Course Events') }}
                             </a>
 
@@ -67,43 +67,43 @@
 
                             <a href="{{ route('contentCreator.form') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Register lecturer') }}
                             </a>
 
                             <a href="{{ route('venue.form') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Create venue') }}
                             </a>
 
                             <a href="{{ route('course.form.course') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Register course') }}
                             </a>
 
                             <a href="{{ route('course.form.courseEvent') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Register course date') }}
                             </a>
 
                             <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage lecturers') }}
                             </a>
 
                             <a href="{{ route('bookCases.table.city', ['country' => $country, 'manage' => true]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage cities/areas') }}
                             </a>
 
                             <a href="{{ route('school.table.venue', ['country' => $country, 'manage' => true]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage venues') }}
                             </a>
 

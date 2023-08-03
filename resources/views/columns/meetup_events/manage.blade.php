@@ -6,7 +6,7 @@
                 xs
                 :href="route('meetup.event.form', ['country' => $row->meetup->city->country, 'meetupEvent' => $row])"
             >
-                <i class="fa fa-thin fa-edit mr-2"></i>
+                <i class="fa fa-solid fa-edit mr-2"></i>
                 {{ __('Edit') }}
             </x-button>
         @else

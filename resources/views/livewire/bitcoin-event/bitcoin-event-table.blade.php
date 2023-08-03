@@ -12,7 +12,7 @@
                     }"
                     @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
                     amber>
-                    <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
+                    <i class="fa fa-solid fa-calendar-arrow-down mr-2"></i>
                     {{ __('Calendar Stream-Url') }} ({{ $events->count() }})
                 </x-button>
             </div>

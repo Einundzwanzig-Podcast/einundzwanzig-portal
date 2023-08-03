@@ -10,7 +10,7 @@
 
                 <div>
                     <x-button :href="$fromUrl">
-                        <i class="fa fa-thin fa-arrow-left"></i>
+                        <i class="fa fa-solid fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>
@@ -60,7 +60,7 @@
                                     {{ __('City/Area') }}
                                 </div>
                                 <x-button xs :href="route('city.form')">
-                                    <i class="fa fa-thin fa-plus"></i>
+                                    <i class="fa fa-solid fa-plus"></i>
                                     {{ __('New City') }}
                                 </x-button>
                             </div>
@@ -119,7 +119,7 @@
 
                     <x-input.group :for="md5('meetup.link')" :label="__('Action')">
                         <x-button primary wire:click="submit">
-                            <i class="fa fa-thin fa-save"></i>
+                            <i class="fa fa-solid fa-save"></i>
                             {{ __('Save') }}
                         </x-button>
                     </x-input.group>

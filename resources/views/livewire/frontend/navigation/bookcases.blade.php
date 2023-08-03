@@ -29,32 +29,32 @@
 
                             <a href="{{ route('bookCases.table.city', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-city flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-city flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('City search') }}
                             </a>
 
                             <a href="{{ route('bookCases.table.bookcases', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-book flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-book flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Bookcases') }}
                             </a>
 
                             <a href="{{ route('bookCases.world', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-map flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-map flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('World map') }}
                             </a>
 
                             <a href="{{ route('bookCases.heatmap', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-heat flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-heat flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Heatmap') }}
                             </a>
 
                             @auth
                                 <a href="{{ route('bookCases.highScoreTable', ['country' => $country]) }}"
                                    class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                    <i class="fa-thin fa-star flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                    <i class="fa-solid fa-star flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                     {{ __('Highscore Table') }}
                                 </a>
                             @endauth
@@ -69,7 +69,7 @@
 
                             <a href="https://openbookcase.de/" target="_blank"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Submit new book case') }}
                             </a>
 

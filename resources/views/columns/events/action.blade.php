@@ -7,7 +7,7 @@
         <div>
             <x-button xs class="whitespace-nowrap" amber
                       :href="route('course.form.courseEvent', ['courseEvent' => $row])">
-                <i class="fa-thin fa-edit"></i>
+                <i class="fa-solid fa-edit"></i>
                 {{ __('Edit') }}
             </x-button>
         </div>

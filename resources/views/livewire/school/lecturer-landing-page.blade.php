@@ -92,7 +92,7 @@
                                 <div class="-ml-px flex w-0 flex-1">
                                     <a target="_blank" href="{{ $courseEvent->link }}"
                                        class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
-                                        <i class="text-gray-100 text-2xl fa-thin fa-right-to-bracket"></i>
+                                        <i class="text-gray-100 text-2xl fa-solid fa-right-to-bracket"></i>
                                         <span class="ml-3 text-gray-100 text-2xl">{{ __('Register') }}</span>
                                     </a>
                                 </div>
@@ -180,7 +180,7 @@
 
                 <div class="p-4 w-full flex justify-end">
                     <x-button :href="route('welcome')" primary lg class="whitespace-nowrap">
-                        <i class="fa fa-thin fa-arrow-left mr-2"></i>
+                        <i class="fa fa-solid fa-arrow-left mr-2"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>

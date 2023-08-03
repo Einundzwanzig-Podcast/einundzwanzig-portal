@@ -13,7 +13,7 @@
                             flat
                             squared
                         >
-                            <i class="fa-thin fa-xmark"></i>
+                            <i class="fa-solid fa-xmark"></i>
                         </x-button>
                     </div>
                 </x-slot>

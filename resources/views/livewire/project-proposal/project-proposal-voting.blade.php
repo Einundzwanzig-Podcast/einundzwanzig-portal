@@ -11,7 +11,7 @@
             <div class="flex flex-row space-x-2 items-center">
                 <div>
                     <x-button :href="$fromUrl">
-                        <i class="fa fa-thin fa-arrow-left"></i>
+                        <i class="fa fa-solid fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>

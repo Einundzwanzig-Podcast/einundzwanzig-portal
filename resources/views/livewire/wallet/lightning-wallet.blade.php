@@ -35,11 +35,11 @@
             @if(!$confirmed)
                 <div>
                     <x-button primary wire:click="confirm">
-                        <i class="fa-thin fa-check"></i>
+                        <i class="fa-solid fa-check"></i>
                         {{ __('Confirm') }}
                     </x-button>
                     <x-button secondary href="/">
-                        <i class="fa-thin fa-times"></i>
+                        <i class="fa-solid fa-times"></i>
                         {{ __('Cancel') }}
                     </x-button>
                 </div>
@@ -65,7 +65,7 @@
                         <x-button
                             black
                         >
-                            <i class="fa fa-thin fa-clipboard"></i>
+                            <i class="fa fa-solid fa-clipboard"></i>
                             {{ __('Copy') }}
                         </x-button>
                     </div>

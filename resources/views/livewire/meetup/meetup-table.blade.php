@@ -12,7 +12,7 @@
                         }"
                         @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
                         amber>
-                        <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
+                        <i class="fa fa-solid fa-calendar-arrow-down mr-2"></i>
                         {{ __('Calendar Stream-Url for all meetup events') }}
                     </x-button>
                     @if(auth()->check() && auth()->user()->meetups->count() > 0)
@@ -22,7 +22,7 @@
                             }"
                             @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
                             black>
-                            <i class="fa fa-thin fa-calendar-heart mr-2"></i>
+                            <i class="fa fa-solid fa-calendar-heart mr-2"></i>
                             {{ __('Calendar Stream-Url for my meetups only') }}
                         </x-button>
                     @endif
@@ -32,7 +32,7 @@
                         }"
                         @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Embed code for the map copied!') }}',icon:'success'});"
                         amber>
-                        <i class="fa fa-thin fa-code mr-2"></i>
+                        <i class="fa fa-solid fa-code mr-2"></i>
                         {{ __('Copy embed code for the map') }} <img class="h-6 rounded"
                                                                      src="{{ asset('vendor/blade-country-flags/4x3-'. $country->code .'.svg') }}"
                                                                      alt="{{ $country->code }}">

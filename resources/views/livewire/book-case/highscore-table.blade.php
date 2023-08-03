@@ -32,13 +32,13 @@
                                              x-transition:leave-start="opacity-100"
                                              x-transition:leave-end="opacity-0 scale-90"
                                              class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-xl font-bold text-gray-800 hover:text-gray-900">
-                                            <i class="fa-thin fa-bolt-lightning"></i>
+                                            <i class="fa-solid fa-bolt-lightning"></i>
                                             <span class="ml-3" x-text="show ? 'Schließen' : 'Donate'"></span>
                                         </div>
                                     @else
                                         <a href="{{ route('profile.show') }}"
                                            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-xl font-bold text-gray-800 hover:text-gray-900">
-                                            <i class="fa-thin fa-bolt-slash"></i>
+                                            <i class="fa-solid fa-bolt-slash"></i>
                                             <span class="ml-3">{{ __('Missing lightning address') }}</span>
                                         </a>
                                     @endif

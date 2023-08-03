@@ -23,7 +23,7 @@
 
                         <x-button black target="_blank" class="my-6"
                                   :href="route('export.meetupEvent', ['meetupEvent' => $meetupEvent])">
-                            <i class="fa-thin fa-file-excel"></i>
+                            <i class="fa-solid fa-file-excel"></i>
                             {{ __('Download') }}
                         </x-button>
 
@@ -88,7 +88,7 @@
                                             target="_blank"
                                             :href="$meetupEvent->link"
                                             primary lg class="mt-4 whitespace-nowrap">
-                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            <i class="fa fa-solid fa-external-link mr-2"></i>
                                             {{ __('Event-Link') }}
                                         </x-button>
                                     @endif
@@ -101,7 +101,7 @@
                                             target="_blank"
                                             :href="$meetup->telegram_link"
                                             secondary lg class="mt-4 whitespace-nowrap">
-                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            <i class="fa fa-solid fa-external-link mr-2"></i>
                                             {{ __('Telegram-Link') }}
                                         </x-button>
                                     @endif
@@ -112,7 +112,7 @@
                                             target="_blank"
                                             :href="$meetup->webpage"
                                             secondary lg class="mt-4 whitespace-nowrap">
-                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            <i class="fa fa-solid fa-external-link mr-2"></i>
                                             {{ __('Website') }}
                                         </x-button>
                                     @endif
@@ -123,7 +123,7 @@
                                             target="_blank"
                                             :href="$meetup->matrix_group"
                                             secondary lg class="mt-4 whitespace-nowrap">
-                                            <i class="fa fa-thin fa-people-group mr-2"></i>
+                                            <i class="fa fa-solid fa-people-group mr-2"></i>
                                             {{ __('Matrix-Group') }}
                                         </x-button>
                                     @endif
@@ -134,7 +134,7 @@
                                             target="_blank"
                                             :href="'https://twitter.com/'.$meetup->twitter_username"
                                             secondary lg class="mt-4 whitespace-nowrap">
-                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            <i class="fa fa-solid fa-external-link mr-2"></i>
                                             {{ __('Twitter') }}
                                         </x-button>
                                     @endif
@@ -181,7 +181,7 @@
                                                         execute: () => window.$wireui.notify({'title': '{{ __('You have not confirmed your participation.') }}','icon': 'warning'})}
                                                 })"
                                             >
-                                                <i class="fa fa-thin fa-check mr-2"></i>
+                                                <i class="fa fa-solid fa-check mr-2"></i>
                                                 {{ __('I will show up') }}
                                             </x-button>
                                         </div>
@@ -196,7 +196,7 @@
                                                         reject: {label: '{{ __('No, cancel') }}',
                                                 }})"
                                                 lg primary>
-                                                <i class="fa fa-thin fa-face-frown mr-2"></i>
+                                                <i class="fa fa-solid fa-face-frown mr-2"></i>
                                                 {{ __('Unfortunately I cannot come') }}
                                             </x-button>
                                         </div>
@@ -214,7 +214,7 @@
                                                     reject: {label: '{{ __('No, cancel') }}',
                                                     execute: () => window.$wireui.notify({'title': '{{ __('You have not confirmed your participation.') }}','icon': 'warning'})}})"
                                                 lg>
-                                                <i class="fa fa-thin fa-question mr-2"></i>
+                                                <i class="fa fa-solid fa-question mr-2"></i>
                                                 {{ __('Might attend') }}
                                             </x-button>
                                         </div>
@@ -248,7 +248,7 @@
                                                     </ul>
                                                     <div class="w-full flex justify-end">
                                                         <x-button xs secondary :href="route('auth.ln')">
-                                                            <i class="fa fa-thin fa-sign-in"></i>
+                                                            <i class="fa fa-solid fa-sign-in"></i>
                                                             {{ __('Login') }}
                                                         </x-button>
                                                     </div>
@@ -294,7 +294,7 @@
                                 </ul>
                                 <div class="w-full flex justify-end">
                                     <x-button xs secondary :href="route('auth.ln')">
-                                        <i class="fa fa-thin fa-sign-in"></i>
+                                        <i class="fa fa-solid fa-sign-in"></i>
                                         {{ __('Login') }}
                                     </x-button>
                                 </div>

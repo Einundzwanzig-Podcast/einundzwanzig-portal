@@ -15,7 +15,7 @@
     @can('update', $row)
         <div>
             <x-button class="whitespace-nowrap" amber xs :href="route('course.form.course', ['course' => $row])">
-                <i class="fa fa-thin fa-edit"></i>
+                <i class="fa fa-solid fa-edit"></i>
                 {{ __('Edit') }}
             </x-button>
         </div>

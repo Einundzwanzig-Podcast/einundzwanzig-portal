@@ -6,7 +6,7 @@
             xs
             :href="route('meetup.event.landing', ['country' => $row->meetup->city->country, 'meetupEvent' => $row->id])"
         >
-            <i class="fa fa-thin fa-browser mr-2"></i>
+            <i class="fa fa-solid fa-browser mr-2"></i>
             {{ __('Link to participate') }}
         </x-button>
     </div>
@@ -18,7 +18,7 @@
                 target="_blank"
                 :href="$row->meetup->telegram_link"
             >
-                <i class="fa fa-thin fa-external-link mr-2"></i>
+                <i class="fa fa-solid fa-external-link mr-2"></i>
                 {{ __('Telegram-Link') }}
             </x-button>
         </div>
@@ -31,7 +31,7 @@
                 target="_blank"
                 :href="$row->meetup->webpage"
             >
-                <i class="fa fa-thin fa-external-link mr-2"></i>
+                <i class="fa fa-solid fa-external-link mr-2"></i>
                 {{ __('Website') }}
             </x-button>
         </div>
@@ -60,7 +60,7 @@
                 xs
                 black
             >
-                <i class="fa fa-thin fa-clipboard mr-2"></i>
+                <i class="fa fa-solid fa-clipboard mr-2"></i>
                 {{ __('Nostr') }}
             </x-button>
         </div>

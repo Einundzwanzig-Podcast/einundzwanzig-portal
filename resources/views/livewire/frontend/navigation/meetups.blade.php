@@ -29,19 +29,19 @@
 
                             <a href="{{ route('meetup.world', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-globe flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-globe flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('World map') }}
                             </a>
 
                             <a href="{{ route('meetup.table.meetup', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-people-group flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-people-group flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Meetups') }}
                             </a>
 
                             <a href="{{ route('meetup.table.meetupEvent', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-calendar flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-calendar flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Meetup dates') }}
                             </a>
 
@@ -55,25 +55,25 @@
 
                             <a href="{{ route('meetup.meetup.form', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Submit Meetup') }}
                             </a>
 
                             <a href="{{ route('meetup.event.form', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Register Meetup date') }}
                             </a>
 
                             <a href="{{ route('bookCases.table.city', ['country' => $country, 'manage' => true]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-list flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Manage cities/areas') }}
                             </a>
 
                             <a href="{{ route('profile.meetups') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-user-group flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-user-group flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('My meetups') }}
                             </a>
 

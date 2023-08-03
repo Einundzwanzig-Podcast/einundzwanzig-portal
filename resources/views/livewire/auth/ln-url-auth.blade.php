@@ -36,7 +36,7 @@
                     <x-button
                         black
                     >
-                        <i class="fa fa-thin fa-clipboard"></i>
+                        <i class="fa fa-solid fa-clipboard"></i>
                         {{ __('Copy') }}
                     </x-button>
                 </div>

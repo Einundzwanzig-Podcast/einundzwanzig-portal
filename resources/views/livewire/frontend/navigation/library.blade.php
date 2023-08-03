@@ -29,50 +29,50 @@
 
                             <a href="{{ route('library.table.libraryItems', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-search flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-search flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Search') }}
                             </a>
 
                             <a href="{{ route('library.table.libraryItems', ['country' => $country, 'currentTab' => 'Tutorials']) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-graduation-cap flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-graduation-cap flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Tutorials') }}
                             </a>
 
                             <a href="{{ route('library.table.libraryItems', ['country' => $country, 'currentTab' => 'Videos']) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-video flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-video flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Videos') }}
                             </a>
 
                             <a href="{{ route('library.table.libraryItems', ['country' => $country, 'currentTab' => 'Bücher']) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-book flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-book flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Bücher') }}
                             </a>
 
                             <a href="{{ route('buecherverleih') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-book-arrow-right flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-book-arrow-right flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Bücherverleih') }}
                             </a>
 
                             <a href="{{ route('library.table.podcastsEpisodes', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-podcast flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-podcast flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Podcast Episodes') }}
                             </a>
 
                             <a href="{{ route('bindles', ['country' => null]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-image flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-image flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Bindles') }}
                             </a>
 
                             @auth
                                 <a href="{{ route('library.table.lecturer', ['country' => $country]) }}"
                                    class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                    <i class="fa-thin fa-school flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                    <i class="fa-solid fa-school flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                     {{ __('Library for lecturers') }}
                                 </a>
                             @endauth
@@ -87,13 +87,13 @@
 
                             <a href="{{ route('library.libraryItem.form', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400"></i>
                                 {{ __('Submit contents') }}
                             </a>
 
                             <a href="{{ route('school.table.lecturer', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-list flex-none text-gray-400"></i>
+                                <i class="fa-solid fa-list flex-none text-gray-400"></i>
                                 {{ __('Manage content creators') }}
                             </a>
 

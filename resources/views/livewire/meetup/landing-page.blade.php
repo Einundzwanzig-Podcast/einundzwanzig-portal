@@ -22,7 +22,7 @@
                             target="_blank"
                             :href="$meetup->telegram_link"
                             primary lg class="mt-4 whitespace-nowrap">
-                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                            <i class="fa fa-solid fa-external-link mr-2"></i>
                             {{ __('Telegram-Link') }}
                         </x-button>
                     @endif
@@ -31,7 +31,7 @@
                             target="_blank"
                             :href="$meetup->webpage"
                             primary lg class="mt-4 whitespace-nowrap">
-                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                            <i class="fa fa-solid fa-external-link mr-2"></i>
                             {{ __('Website') }}
                         </x-button>
                     @endif
@@ -40,7 +40,7 @@
                             target="_blank"
                             :href="$meetup->matrix_group"
                             primary lg class="mt-4 whitespace-nowrap">
-                            <i class="fa fa-thin fa-people-group mr-2"></i>
+                            <i class="fa fa-solid fa-people-group mr-2"></i>
                             {{ __('Matrix-Group') }}
                         </x-button>
                     @endif
@@ -49,7 +49,7 @@
                             target="_blank"
                             :href="'https://twitter.com/'.$meetup->twitter_username"
                             primary lg class="mt-4 whitespace-nowrap">
-                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                            <i class="fa fa-solid fa-external-link mr-2"></i>
                             {{ __('Twitter') }}
                         </x-button>
                     @endif
@@ -119,7 +119,7 @@
                                 <div class="-ml-px flex w-0 flex-1">
                                     <a target="_blank" href="{{ route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $meetupEvent]) }}"
                                        class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
-                                        <i class="text-gray-100 text-2xl fa-thin fa-right-to-bracket"></i>
+                                        <i class="text-gray-100 text-2xl fa-solid fa-right-to-bracket"></i>
                                         <span class="ml-3 text-gray-100 text-2xl">{{ __('Link to participate') }}</span>
                                     </a>
                                 </div>

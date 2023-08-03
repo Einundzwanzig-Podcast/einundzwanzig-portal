@@ -29,7 +29,7 @@
 
                             <a href="{{ route('project.table.projectFunding', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-rectangle-history flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-rectangle-history flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Submitted projects') }}
                             </a>
 
@@ -43,7 +43,7 @@
 
                             <a href="{{ route('project.projectProposal.form', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <i class="fa-thin fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                <i class="fa-solid fa-plus flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Submit project for funding') }}
                             </a>
 
