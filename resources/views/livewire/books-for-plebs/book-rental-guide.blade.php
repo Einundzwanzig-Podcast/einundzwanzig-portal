@@ -173,14 +173,6 @@
           </div>
         </div>
 
-
-        <a download="true" href="{{url('download')}}" class="btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-          download="zip" href="{{ asset('public/buecherverleih.zip') }}">
-          <p class="text-white">
-            Download .zip
-          </p>
-        </a>
-
         <p class="text-lg mb-8 text-white">
           Um deinen
           <span class="text-orange-500">
