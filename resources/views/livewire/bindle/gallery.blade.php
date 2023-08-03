@@ -23,7 +23,7 @@
                     </div>
 
                     <ul role="list"
-                        class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                        class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 
                         @foreach($bindles as $bindle)
                             <li wire:key="image_{{ $bindle->id }}">
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="xl:fixed xl:right-4 xl:top-24">
                 <div wire:ignore>
                     <div
                         class="flex flex-col justify-center text-center space-x-4 py-4 mt-4">
