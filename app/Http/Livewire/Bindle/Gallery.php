@@ -10,11 +10,21 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 class Gallery extends Component
 {
     public Collection $bindles;
+    public string $search = '';
 
     public function mount()
     {
         $this->bindles = LibraryItem::query()
             ->where('type', 'bindle')
+            ->latest('id')
+            ->get();
+    }
+
+    public function updatedSearch($value)
+    {
+        $this->bindles = LibraryItem::query()
+            ->where('type', 'bindle')
+            ->where('name', 'ilike', "%{$value}%")
             ->latest('id')
             ->get();
     }

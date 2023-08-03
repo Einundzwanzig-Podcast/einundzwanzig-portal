@@ -17,7 +17,10 @@
                 </div>
 
                 <div>
-                    <h1 class="text-4xl text-white py-8">Sent from my #₿indle🧡</h1>
+                    <div class="flex space-x-6">
+                        <h1 class="text-4xl text-white py-8">Sent from my #₿indle🧡</h1>
+                        <x-input label="{{ __('Suche') }}" wire:model.debounce="search"/>
+                    </div>
 
                     <ul role="list"
                         class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
@@ -32,7 +35,8 @@
                                                  class="object-cover">
                                         </a>
                                     </div>
-                                    <p class="mt-2 block truncate text-sm font-medium text-gray-100">{{ $bindle->name }}</p>
+                                    <p class="mt-2 block truncate text-md font-medium text-gray-100">{{ $bindle->name }}</p>
+                                    <p class="mt-2 block truncate text-md font-medium text-gray-100">{{ $bindle->created_at->asDate() }}</p>
                                     <div>
                                         @php
                                             $url = $bindle->value;
