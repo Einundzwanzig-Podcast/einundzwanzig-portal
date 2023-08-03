@@ -3,6 +3,7 @@
 use App\Http\Livewire\News\InternArticleView;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Response;
 
 Route::middleware([])
      ->get('/bsc', \App\Http\Livewire\Specials\BalticSeaCircle::class)
@@ -23,6 +24,10 @@ Route::middleware([])
 Route::middleware([])
      ->get('/bindles', \App\Http\Livewire\Bindle\Gallery::class)
      ->name('bindles');
+
+Route::middleware([])
+    ->get('/buecherverleih', \App\Http\Livewire\BooksForPlebs\BookRentalGuide::class)
+    ->name('buecherverleih');
 
 Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
      ->where('path', '.*')
@@ -384,3 +389,51 @@ Route::middleware([
      });
 
 Route::feeds();
+
+Route::get('/download', function () {
+
+     // Get the file path from the public folder
+     $filePath = public_path("buecherverleih.zip");
+     
+     $filename = "buecherverleih.zip";
+     
+     // Check if the file exists
+     if (!file_exists($filePath)) {
+     abort(404);
+     }
+     
+     // Generate a response with the file for download
+     return Response::download($filePath, $filename);
+     });
+
+Route::get('/download-flyer', function () {
+
+     // Get the file path from the public folder
+     $filePath = public_path("flyer.zip");
+          
+     $filename = "flyer.zip";
+          
+     // Check if the file exists
+     if (!file_exists($filePath)) {
+     abort(404);
+     }
+          
+     // Generate a response with the file for download
+     return Response::download($filePath, $filename);
+     });
+
+Route::get('/download-etiketten', function () {
+
+     // Get the file path from the public folder
+     $filePath = public_path("etiketten.zip");
+               
+     $filename = "etiketten.zip";
+               
+     // Check if the file exists
+     if (!file_exists($filePath)) {
+     abort(404);
+     }
+               
+     // Generate a response with the file for download
+     return Response::download($filePath, $filename);
+     });

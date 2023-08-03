@@ -51,6 +51,12 @@
                                 {{ __('Bücher') }}
                             </a>
 
+                            <a href="{{ route('buecherverleih') }}"
+                               class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
+                                <i class="fa-thin fa-book-arrow-right flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
+                                {{ __('Bücherverleih') }}
+                            </a>
+
                             <a href="{{ route('library.table.podcastsEpisodes', ['country' => $country]) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
                                 <i class="fa-thin fa-podcast flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
