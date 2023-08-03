@@ -22,8 +22,8 @@ Route::middleware([])
      ->name('kaninchenbau');
 
 Route::middleware([])
-    ->get('/kaninchenbau', \App\Http\Livewire\Helper\FollowTheRabbit::class)
-    ->name('kaninchenbau');
+     ->get('/bindles', \App\Http\Livewire\Bindle\Gallery::class)
+     ->name('bindles');
 
 Route::middleware([])
     ->get('/buecherverleih', \App\Http\Livewire\BooksForPlebs\BookRentalGuide::class)
