@@ -57,6 +57,7 @@ class DatabaseSeeder extends Seeder
             'password'          => bcrypt('1234'),
             'remember_token'    => Str::random(10),
             'is_lecturer'       => true,
+            'lnbits' => '{"read_key":null,"url":null,"wallet_id":null}',
         ]);
         $entitledUser = User::create([
             'name'              => 'Entitled Voter',
@@ -65,6 +66,7 @@ class DatabaseSeeder extends Seeder
             'password'          => bcrypt('1234'),
             'remember_token'    => Str::random(10),
             'is_lecturer'       => true,
+            'lnbits' => '{"read_key":null,"url":null,"wallet_id":null}',
         ]);
         $entitledUser->assignRole('entitled-voter');
         User::create([
@@ -74,6 +76,7 @@ class DatabaseSeeder extends Seeder
             'password'          => bcrypt('1234'),
             'remember_token'    => Str::random(10),
             'is_lecturer'       => true,
+            'lnbits' => '{"read_key":null,"url":null,"wallet_id":null}',
         ]);
         $team = Team::create([
             'name'          => 'Admin Team',

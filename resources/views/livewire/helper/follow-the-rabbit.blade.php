@@ -1,6 +1,6 @@
 <div class="h-screen w-full">
 
-    <livewire:frontend.header :country="null"/>
+    <livewire:frontend.header :country="\App\Models\Country::query()->where('code', 'de')->first()"/>
 
     <div class="px-2 sm:px-24">
         <iframe allowfullscreen="true" src="https://www.easyzoom.com/embed/afa0fda48faa425eb20f323e03cae346" width="100%"

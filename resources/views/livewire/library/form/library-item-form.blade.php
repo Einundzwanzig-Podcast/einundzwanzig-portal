@@ -39,13 +39,13 @@
                             wire:model="libraryItem.lecturer_id"
                             :searchable="true"
                             :async-data="[
-                            'api' => route('api.lecturers.index'),
-                            'method' => 'GET', // default is GET
-                        ]"
+                                'api' => route('api.lecturers.index'),
+                                'method' => 'GET', // default is GET
+                            ]"
                             :template="[
-                            'name'   => 'user-option',
-                            'config' => ['src' => 'image']
-                        ]"
+                                'name'   => 'user-option',
+                                'config' => ['src' => 'image']
+                            ]"
                             option-label="name"
                             option-value="id"
                         />
@@ -133,38 +133,43 @@
                             @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
                         </x-input.group>
 
-                        <x-input.group :for="md5('libraryItem.main_image_caption')" :label="__('Main image caption')">
-                            <x-input autocomplete="off" wire:model.debounce="libraryItem.main_image_caption"
-                                     :placeholder="__('Main image caption')"
-                                     :cornerHint="__('Ex: Photo by Timothy Vollmer/ CC BY')"/>
-                        </x-input.group>
+                        @if(!$isBindle)
+                            <x-input.group :for="md5('libraryItem.main_image_caption')"
+                                           :label="__('Main image caption')">
+                                <x-input autocomplete="off" wire:model.debounce="libraryItem.main_image_caption"
+                                         :placeholder="__('Main image caption')"
+                                         :cornerHint="__('Ex: Photo by Timothy Vollmer/ CC BY')"/>
+                            </x-input.group>
+                        @endif
 
                         <x-input.group :for="md5('libraryItem.name')" :label="__('Title')">
                             <x-input autocomplete="off" wire:model.debounce="libraryItem.name"
                                      :placeholder="__('Title')"/>
                         </x-input.group>
 
-                        <x-input.group :for="md5('libraryItem.subtitle')" :label="__('Subtitle')">
-                            <x-input autocomplete="off" wire:model.debounce="libraryItem.subtitle"
-                                     :placeholder="__('Subtitle')"/>
-                        </x-input.group>
+                        @if(!$isBindle)
+                            <x-input.group :for="md5('libraryItem.subtitle')" :label="__('Subtitle')">
+                                <x-input autocomplete="off" wire:model.debounce="libraryItem.subtitle"
+                                         :placeholder="__('Subtitle')"/>
+                            </x-input.group>
 
-                        <x-input.group :for="md5('libraryItem.excerpt')" :label="__('Excerpt')">
-                            <x-textarea autocomplete="off" wire:model.debounce="libraryItem.excerpt"
-                                        :placeholder="__('Excerpt')"/>
-                        </x-input.group>
+                            <x-input.group :for="md5('libraryItem.excerpt')" :label="__('Excerpt')">
+                                <x-textarea autocomplete="off" wire:model.debounce="libraryItem.excerpt"
+                                            :placeholder="__('Excerpt')"/>
+                            </x-input.group>
 
-                        <x-input.group :for="md5('libraryItem.language_code')" :label="__('Language Code')">
-                            <x-select
-                                placeholder="{{ __('Choose language') }}"
-                                wire:model="libraryItem.language_code"
-                                :clearable="false"
-                                :searchable="true"
-                                :async-data="route('api.languages.index')"
-                                option-label="name"
-                                option-value="language"
-                            />
-                        </x-input.group>
+                            <x-input.group :for="md5('libraryItem.language_code')" :label="__('Language Code')">
+                                <x-select
+                                    placeholder="{{ __('Choose language') }}"
+                                    wire:model="libraryItem.language_code"
+                                    :clearable="false"
+                                    :searchable="true"
+                                    :async-data="route('api.languages.index')"
+                                    option-label="name"
+                                    option-value="language"
+                                />
+                            </x-input.group>
+                        @endif
 
                         @if($libraryItem->type === App\Enums\LibraryItemType::MarkdownArticleExtern())
                             <x-input.group :for="md5('libraryItem.value')" :label="__('Article as Markdown')">
@@ -186,10 +191,13 @@
                             </x-input.group>
                         @endif
 
-                        <x-input.group :for="md5('libraryItem.read_time')" :label="__('Time to read')">
-                            <x-inputs.number min="1" autocomplete="off" wire:model.debounce="libraryItem.read_time"
-                                             :placeholder="__('Time to read')" :hint="__('How many minutes to read?')"/>
-                        </x-input.group>
+                        @if(!$isBindle)
+                            <x-input.group :for="md5('libraryItem.read_time')" :label="__('Time to read')">
+                                <x-inputs.number min="1" autocomplete="off" wire:model.debounce="libraryItem.read_time"
+                                                 :placeholder="__('Time to read')"
+                                                 :hint="__('How many minutes to read?')"/>
+                            </x-input.group>
+                        @endif
 
                         <x-input.group :for="md5('meetupEvent.link')" label="">
                             <x-button primary wire:click="save">
