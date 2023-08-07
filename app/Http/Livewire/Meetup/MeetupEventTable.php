@@ -31,7 +31,6 @@ class MeetupEventTable extends Component
     {
         return view('livewire.meetup.meetup-event-table', [
             'markers' => MeetupEvent::query()
-                ->where('visible_on_map', true)
                 ->with([
                     'meetup.city.country',
                 ])
