@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Enums\LibraryItemType;
 use App\Models\LibraryItem;
 use App\Traits\NostrTrait;
 use Exception;
@@ -21,9 +20,13 @@ class LibraryItemObserver
             $libraryItem->setStatus('published');
 
             if (!$libraryItem->news) {
-                if ($libraryItem->whereDoesntHave('libraries',
-                    fn($query) => $query->where('libraries.is_public', false))
-                                ->exists()) {
+                if (
+                    $libraryItem->type !== 'bindle'
+                    && $libraryItem
+                    ->whereDoesntHave('libraries',
+                        fn($query) => $query->where('libraries.is_public', false))
+                    ->exists()
+                ) {
                     $this->publishOnNostr($libraryItem, $this->getText($libraryItem));
                 }
             }
