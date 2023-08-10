@@ -36,12 +36,12 @@
                 >
                     @if(in_array($tag->id, $filters['tag'] ?? [], false))
                         <x-badge squared amber>
-                            <i class="fa fa-solid fa-{{ $tag->icon }}"></i>
+                            <i class="fa fa-thin fa-{{ $tag->icon }}"></i>
                             {{ $tag->name }}
                         </x-badge>
                     @else
                         <x-badge squared gray>
-                            <i class="fa fa-solid fa-{{ $tag->icon }}"></i>
+                            <i class="fa fa-thin fa-{{ $tag->icon }}"></i>
                             {{ $tag->name }}
                         </x-badge>
                     @endif

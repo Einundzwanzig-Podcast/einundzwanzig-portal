@@ -21,7 +21,7 @@
                     <div
                         class="flex flex-shrink-0 justify-center p-0 my-0 mr-4 ml-0 align-baseline border-0 border-solid"
                     >
-                        <i class="fa fa-solid fa-{{ $tag->icon }} text-4xl"></i>
+                        <i class="fa fa-thin fa-{{ $tag->icon }} text-4xl"></i>
                     </div>
                     <div
                         class="flex justify-between p-0 m-0 w-full align-baseline border-0 border-solid md:block lg:w-auto"

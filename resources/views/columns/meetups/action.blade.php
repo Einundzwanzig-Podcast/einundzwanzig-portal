@@ -5,7 +5,7 @@
                 xs
                 amber
                 wire:click="meetupEventSearch({{ $row->id }})">
-                <i class="fa fa-solid fa-calendar mr-2"></i>
+                <i class="fa fa-thin fa-calendar mr-2"></i>
                 {{ __('Show dates') }} ({{ $row->meetup_events_count }})
             </x-button>
         </div>
@@ -16,7 +16,7 @@
                 xs
                 outlined
                 wire:click="meetupEventSearch({{ $row->id }})">
-                <i class="fa fa-solid fa-calendar-circle-exclamation mr-2"></i>
+                <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
                 {{ __('Show dates') }} ({{ $row->meetup_events_count }})
             </x-button>
         </div>
@@ -28,7 +28,7 @@
             x-data="{}"
             @click.prevent="window.navigator.clipboard.writeText('{{ $ics }}');window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
         >
-            <i class="fa fa-solid fa-calendar-arrow-down mr-2"></i>
+            <i class="fa fa-thin fa-calendar-arrow-down mr-2"></i>
             {{ __('Calendar Stream-Url') }} ({{ $row->meetup_events_count }})
         </x-button>
     </div>
@@ -38,7 +38,7 @@
             xs
             :href="route('meetup.landing', ['country' => $country ?? $row->city->country->code, 'meetup' => $row->slug])"
         >
-            <i class="fa fa-solid fa-browser mr-2"></i>
+            <i class="fa fa-thin fa-browser mr-2"></i>
             {{ __('Show landing page') }}
         </x-button>
     </div>
@@ -50,7 +50,7 @@
                 target="_blank"
                 :href="$row->telegram_link"
             >
-                <i class="fa fa-solid fa-external-link mr-2"></i>
+                <i class="fa fa-thin fa-external-link mr-2"></i>
                 {{ __('Telegram-Link') }}
             </x-button>
         </div>
@@ -63,7 +63,7 @@
                 target="_blank"
                 :href="$row->webpage"
             >
-                <i class="fa fa-solid fa-external-link mr-2"></i>
+                <i class="fa fa-thin fa-external-link mr-2"></i>
                 {{ __('Website') }}
             </x-button>
         </div>
@@ -92,7 +92,7 @@
                 xs
                 black
             >
-                <i class="fa fa-solid fa-clipboard mr-2"></i>
+                <i class="fa fa-thin fa-clipboard mr-2"></i>
                 {{ __('Nostr') }}
             </x-button>
         </div>
@@ -104,7 +104,7 @@
                 xs
                 amber
             >
-                <i class="fa fa-solid fa-edit mr-2"></i>
+                <i class="fa fa-thin fa-edit mr-2"></i>
                 {{ __('Edit') }}
             </x-button>
         </div>

@@ -5,7 +5,7 @@
         <div class="w-full mb-6 sm:my-6">
             <div class="flex w-full justify-center mb-4">
                 <x-button primary :href="route('library.libraryItem.form', ['country' => $country])">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-thin fa-plus"></i>
                     {{ __('Submit contents') }}
                 </x-button>
             </div>
@@ -19,7 +19,7 @@
                             flat
                             squared
                         >
-                            <i class="fa-solid fa-xmark"></i>
+                            <i class="fa-thin fa-xmark"></i>
                         </x-button>
                     </div>
                 </x-slot>
@@ -130,7 +130,7 @@
                                             <div>
                                                 <x-button xs
                                                           :href="route('library.libraryItem.form', ['country' => $country, 'libraryItem' => $libraryItem])">
-                                                    <i class="fa fa-solid fa-edit"></i>
+                                                    <i class="fa fa-thin fa-edit"></i>
                                                     {{ __('Edit') }}
                                                 </x-button>
                                             </div>

@@ -9,14 +9,14 @@
                 {{--<div>
                     @if($venue->id)
                         <x-button negative wire:click="deleteMe">
-                            <i class="fa fa-solid fa-trash"></i>
+                            <i class="fa fa-thin fa-trash"></i>
                             {{ __('Delete') }}
                         </x-button>
                     @endif
                 </div>--}}
                 <div>
                     <x-button :href="$fromUrl">
-                        <i class="fa fa-solid fa-arrow-left"></i>
+                        <i class="fa fa-thin fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="flex justify-center">
                                                 <x-button xs>
-                                                    <i class="fa-solid fa-trash"></i>
+                                                    <i class="fa-thin fa-trash"></i>
                                                     {{ __('Delete') }}
                                                 </x-button>
                                             </div>
@@ -71,7 +71,7 @@
                                     {{ __('City') }}
                                 </div>
                                 <x-button xs href="{{ route('city.form') }}">
-                                    <i class="fa fa-solid fa-plus"></i>
+                                    <i class="fa fa-thin fa-plus"></i>
                                     {{ __('New City') }}
                                 </x-button>
                             </div>
@@ -103,7 +103,7 @@
 
                     <x-input.group :for="md5('action')" :label="__('Action')">
                         <x-button primary wire:click="submit">
-                            <i class="fa fa-solid fa-save"></i>
+                            <i class="fa fa-thin fa-save"></i>
                             {{ __('Save') }}
                         </x-button>
                     </x-input.group>

@@ -3,7 +3,7 @@
         <div>
             <x-button xs amber
                       :href="route('project.projectProposal.form', ['country' => $country, 'projectProposal' => $row])">
-                <i class="fa fa-solid fa-edit mr-2"></i>
+                <i class="fa fa-thin fa-edit mr-2"></i>
                 {{ __('Edit') }}
             </x-button>
         </div>
@@ -11,7 +11,7 @@
     @auth
         <div>
             <x-button class="whitespace-nowrap" xs black :href="route('voting.projectFunding', ['projectProposal' => $row])">
-                <i class="fa fa-solid fa-check-to-slot mr-2"></i>
+                <i class="fa fa-thin fa-check-to-slot mr-2"></i>
                 {{ __('Vote') }} [0]
             </x-button>
         </div>

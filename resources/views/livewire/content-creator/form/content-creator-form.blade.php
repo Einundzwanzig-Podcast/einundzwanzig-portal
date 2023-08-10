@@ -9,7 +9,7 @@
             <div class="flex flex-row space-x-2 items-center">
                 <div>
                     <x-button :href="$fromUrl">
-                        <i class="fa fa-solid fa-arrow-left"></i>
+                        <i class="fa fa-thin fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>
@@ -91,7 +91,7 @@
 
                     <x-input.group :for="md5('meetupEvent.link')" label="">
                         <x-button primary wire:click="save">
-                            <i class="fa fa-solid fa-save"></i>
+                            <i class="fa fa-thin fa-save"></i>
                             {{ __('Save') }}
                         </x-button>
                     </x-input.group>

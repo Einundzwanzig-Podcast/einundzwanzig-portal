@@ -16,13 +16,13 @@
                     @if(str(request()->route()->getName())->contains('school.'))
                         <div>
                             <x-button xs amber href="/nova/resources/courses" target="_blank">
-                                <i class="fa fa-solid fa-plus"></i>
+                                <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Register course') }}
                             </x-button>
                         </div>
                         <div>
                             <x-button xs amber href="/nova/resources/course-events" target="_blank">
-                                <i class="fa fa-solid fa-plus"></i>
+                                <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Register course date') }}
                             </x-button>
                         </div>
@@ -31,7 +31,7 @@
                     <div>
                         <x-button xs amber href="{{ route('profile.show') }}"
                                   :active="request()->routeIs('profile.show')">
-                            <i class="fa fa-solid fa-user"></i>
+                            <i class="fa fa-thin fa-user"></i>
                             {{ __('My profile') }}
                         </x-button>
                     </div>
@@ -39,7 +39,7 @@
                     <div>
                         <x-button xs amber href="{{ route('profile.wallet') }}"
                                   :active="request()->routeIs('profile.wallet')">
-                            <i class="fa fa-solid fa-qrcode"></i>
+                            <i class="fa fa-thin fa-qrcode"></i>
                             {{ __('Change lightning wallet/pubkey') }}
                         </x-button>
                     </div>

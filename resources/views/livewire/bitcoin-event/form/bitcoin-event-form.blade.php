@@ -19,7 +19,7 @@
                                     reject: {label: '{{ __('No, cancel') }}'},
                                 })"
                                 negative>
-                                <i class="fa fa-solid fa-trash"></i>
+                                <i class="fa fa-thin fa-trash"></i>
                                 {{ __('Delete') }}
                             </x-button>
                         </div>
@@ -27,7 +27,7 @@
                 @endcan
                 <div>
                     <x-button :href="$fromUrl">
-                        <i class="fa fa-solid fa-arrow-left"></i>
+                        <i class="fa fa-thin fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>
@@ -60,7 +60,7 @@
                                     {{ __('Venue') }}
                                 </div>
                                 <x-button xs href="{{ route('venue.form') }}">
-                                    <i class="fa fa-solid fa-plus"></i>
+                                    <i class="fa fa-thin fa-plus"></i>
                                     {{ __('Create venue') }}
                                 </x-button>
                             </div>
@@ -133,7 +133,7 @@
 
                     <x-input.group :for="md5('action')" :label="__('Action')">
                         <x-button primary wire:click="submit">
-                            <i class="fa fa-solid fa-save"></i>
+                            <i class="fa fa-thin fa-save"></i>
                             {{ __('Save') }}
                         </x-button>
                     </x-input.group>

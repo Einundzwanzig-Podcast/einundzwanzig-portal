@@ -9,7 +9,7 @@
             <div class="flex flex-row space-x-2 items-center">
                 <div>
                     <x-button :href="$fromUrl">
-                        <i class="fa fa-solid fa-arrow-left"></i>
+                        <i class="fa fa-thin fa-arrow-left"></i>
                         {{ __('Back') }}
                     </x-button>
                 </div>
@@ -28,7 +28,7 @@
                                 </div>
                                 <div>
                                     <x-button xs :href="route('contentCreator.form')">
-                                        <i class="fa fa-solid fa-plus"></i>
+                                        <i class="fa fa-thin fa-plus"></i>
                                         {{ __('Create new author') }}
                                     </x-button>
                                 </div>
@@ -84,7 +84,7 @@
                                         xs
                                         wire:click="$set('addTag', true)"
                                     >
-                                        <i class="fa fa-solid fa-plus"></i>
+                                        <i class="fa fa-thin fa-plus"></i>
                                         {{ __('Add') }}
                                     </x-button>
                                 @else
@@ -92,7 +92,7 @@
                                     <x-button
                                         xs
                                         wire:click="addTag">
-                                        <i class="text-xl fa-solid fa-save"></i>
+                                        <i class="text-xl fa-thin fa-save"></i>
                                     </x-button>
                                 @endif
                             </div>
@@ -201,7 +201,7 @@
 
                         <x-input.group :for="md5('meetupEvent.link')" label="">
                             <x-button primary wire:click="save">
-                                <i class="fa fa-solid fa-save"></i>
+                                <i class="fa fa-thin fa-save"></i>
                                 {{ __('Save') }}
                             </x-button>
                         </x-input.group>

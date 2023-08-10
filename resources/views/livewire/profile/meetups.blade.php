@@ -46,7 +46,7 @@
                                         flat
                                         squared
                                     >
-                                        <i class="fa-solid fa-xmark"></i>
+                                        <i class="fa-thin fa-xmark"></i>
                                     </x-button>
                                 </div>
                             </x-slot>
@@ -80,7 +80,7 @@
                                                     primary
                                                     wire:click="signUpForMeetup({{ $meetup->id }})"
                                                 >
-                                                    <i class="fa-solid fa-xmark"></i>
+                                                    <i class="fa-thin fa-xmark"></i>
                                                     {{ __('Deselect') }}
                                                 </x-button>
                                             @else
@@ -88,7 +88,7 @@
                                                     black
                                                     wire:click="signUpForMeetup({{ $meetup->id }})"
                                                 >
-                                                    <i class="fa-solid fa-check"></i>
+                                                    <i class="fa-thin fa-check"></i>
                                                     {{ __('Select') }}
                                                 </x-button>
                                             @endif

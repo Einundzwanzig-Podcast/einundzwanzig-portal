@@ -23,7 +23,7 @@
     @else
         <div>
             <x-badge class="whitespace-nowrap" amber>
-                <i class="fa fa-solid fa-shelves-empty mr-2"></i>
+                <i class="fa fa-thin fa-shelves-empty mr-2"></i>
                 {{ __('no bitcoin books yet') }}
             </x-badge>
         </div>

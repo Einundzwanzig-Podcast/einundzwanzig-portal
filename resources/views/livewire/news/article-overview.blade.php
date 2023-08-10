@@ -26,7 +26,7 @@
                             class="whitespace-nowrap"
                             :href="route('news.form')"
                             primary>
-                            <i class="fa fa-solid fa-plus"></i>
+                            <i class="fa fa-thin fa-plus"></i>
                             {{ __('Submit news articles') }}
                         </x-button>
                         @if(auth()->check() && auth()->user()->lnbits['wallet_id'] ?? false)
@@ -34,18 +34,18 @@
                                 class="whitespace-nowrap"
                                 :href="route('news.form', ['type' => 'paid'])"
                                 primary>
-                                <i class="fa fa-solid fa-plus"></i>
+                                <i class="fa fa-thin fa-plus"></i>
                                 {{ __('Submit paid news article') }}
-                                <i class="fa fa-solid fa-coins"></i>
+                                <i class="fa fa-thin fa-coins"></i>
                             </x-button>
                         @elseif(auth()->check())
                             <x-button
                                 class="whitespace-nowrap"
                                 :href="route('profile.lnbits')"
                                 black>
-                                <i class="fa fa-solid fa-gear"></i>
+                                <i class="fa fa-thin fa-gear"></i>
                                 {{ __('Setup LNBits for paid articles') }}
-                                <i class="fa fa-solid fa-coins"></i>
+                                <i class="fa fa-thin fa-coins"></i>
                             </x-button>
                         @endif
                     @endauth
@@ -135,7 +135,7 @@
                                                                         reject: {label: '{{ __('No, cancel') }}'},
                                                                       })"
                                                             >
-                                                                <i class="fa fa-solid fa-message-plus"></i>
+                                                                <i class="fa fa-thin fa-message-plus"></i>
                                                                 {{ __('Publish on Nostr') }}
                                                             </x-button>
                                                         </div>
@@ -143,7 +143,7 @@
                                                     @if($libraryItem->approved && $libraryItem->nostr_status)
                                                         <div>
                                                             <x-badge purple>
-                                                                <i class="fa fa-solid fa-check"></i>
+                                                                <i class="fa fa-thin fa-check"></i>
                                                                 {{ __('nostr') }}
                                                             </x-badge>
                                                         </div>
@@ -155,7 +155,7 @@
                                                             xs
                                                             wire:click="approve({{ $libraryItem->id }})"
                                                         >
-                                                            <i class="fa fa-solid fa-check"></i>
+                                                            <i class="fa fa-thin fa-check"></i>
                                                             {{ __('Approve') }}
                                                         </x-button>
                                                     @endif
@@ -163,7 +163,7 @@
                                                 <div>
                                                     <x-button xs
                                                               :href="route('news.form', ['libraryItem' => $libraryItem, 'type' => $libraryItem->sats ? 'paid' : null])">
-                                                        <i class="fa fa-solid fa-edit"></i>
+                                                        <i class="fa fa-thin fa-edit"></i>
                                                         {{ __('Edit') }}
                                                     </x-button>
                                                 </div>

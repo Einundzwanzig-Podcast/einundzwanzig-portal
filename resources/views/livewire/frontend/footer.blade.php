@@ -38,14 +38,14 @@
                 <li>
                     <a href="https://github.com/Einundzwanzig-Podcast/einundzwanzig-portal/discussions" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
-                        <i class="fa fa-solid fa-thought-bubble mr-1"></i>
+                        <i class="fa fa-thin fa-thought-bubble mr-1"></i>
                         {{ __('Wish List/Feedback') }}
                     </a>
                 </li>
                 <li>
                     <a href="/languages/{{ $language->language }}/translations" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
-                        <i class="fa fa-solid fa-language mr-1"></i>
+                        <i class="fa fa-thin fa-language mr-1"></i>
                         {{ __('Translate (:lang :percent%)', ['lang' => $language->name ? $language->name : $language->language, 'percent' => $percentTranslated]) }}
                     </a>
                 </li>

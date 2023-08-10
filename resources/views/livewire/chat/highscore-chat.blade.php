@@ -108,7 +108,7 @@
                                                         >
                                                             <span>{{ __('Send') }}</span>
                                                             <span class="ml-2">
-                                                              <i class="fa-solid fa-envelope w-4 h-4 transform rotate-45 -mt-px"></i>
+                                                              <i class="fa-thin fa-envelope w-4 h-4 transform rotate-45 -mt-px"></i>
                                                             </span>
                                                         </button>
                                                     </div>

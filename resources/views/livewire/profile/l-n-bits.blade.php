@@ -39,7 +39,7 @@
 
                         <x-input.group :for="md5('save')" label="">
                             <x-button primary wire:click="save">
-                                <i class="fa fa-solid fa-save"></i>
+                                <i class="fa fa-thin fa-save"></i>
                                 {{ __('Save') }}
                             </x-button>
                         </x-input.group>

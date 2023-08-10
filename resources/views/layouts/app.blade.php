@@ -31,7 +31,7 @@
     <script src="{{ asset('vendor/jvector/maps/mx.js') }}"></script>
     <script src="{{ asset('vendor/jvector/maps/us.js') }}"></script>
     <script src="{{ asset('dist/smoothscroll.js') }}"></script>
-    <script src="https://kit.fontawesome.com/9623fbc5ab.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/866fd3d0ab.js" crossorigin="anonymous"></script>
     @mapstyles
     @mapscripts
     <script src="{{ asset('dist/heatmap.min.js') }}"></script>

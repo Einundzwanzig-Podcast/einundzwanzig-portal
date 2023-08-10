@@ -5,7 +5,7 @@
     <div>
         @can('update', $row)
             <x-button primary xs :href="route('bitcoinEvent.form', ['bitcoinEvent' => $row])">
-                <i class="fa-solid fa-edit"></i>
+                <i class="fa-thin fa-edit"></i>
                 {{ __('Edit') }}
             </x-button>
         @endif

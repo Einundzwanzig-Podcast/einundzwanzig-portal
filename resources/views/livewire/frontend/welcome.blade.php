@@ -32,14 +32,14 @@
                     <div class="py-2 sm:py-0">
                         @if(!auth()->check())
                             <x-button secondary href="{{ route('auth.ln') }}">
-                                <i class="fa-solid fa-sign-in"></i>
+                                <i class="fa-thin fa-sign-in"></i>
                                 {{ __('Login') }}
                             </x-button>
                         @else
                             <form method="POST" action="{{ route('logout') }}" class="inline">
                                 @csrf
                                 <x-button secondary type="submit">
-                                    <i class="fa-solid fa-sign-out"></i>
+                                    <i class="fa-thin fa-sign-out"></i>
                                     {{ __('Logout') }}
                                 </x-button>
                             </form>

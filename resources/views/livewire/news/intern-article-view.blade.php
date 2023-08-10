@@ -99,7 +99,7 @@
                                             </x-button>
                                         @elseif($libraryItem->type !== 'markdown_article' && $libraryItem->type !== 'markdown_article_extern')
                                             <x-button lg amber :href="$libraryItem->value" target="_blank">
-                                                <i class="fa fa-solid fa-book-open mr-2"></i>
+                                                <i class="fa fa-thin fa-book-open mr-2"></i>
                                                 {{ __('Open') }}
                                             </x-button>
                                         @endif
@@ -107,13 +107,13 @@
                                     @if($libraryItem->type === 'downloadable_file')
                                         <x-button lg amber :href="$libraryItem->getFirstMediaUrl('single_file')"
                                                   target="_blank">
-                                            <i class="fa fa-solid fa-download mr-2"></i>
+                                            <i class="fa fa-thin fa-download mr-2"></i>
                                             {{ __('Download') }}
                                         </x-button>
                                     @endif
                                     @if($libraryItem->type === 'podcast_episode')
                                         <x-button lg amber :href="$libraryItem->episode->data['link']" target="_blank">
-                                            <i class="fa fa-solid fa-headphones mr-2"></i>
+                                            <i class="fa fa-thin fa-headphones mr-2"></i>
                                             {{ __('Listen') }}
                                         </x-button>
                                     @endif
@@ -124,7 +124,7 @@
                                             }"
                                             @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
                                             lg black>
-                                            <i class="fa fa-solid fa-copy mr-2"></i>
+                                            <i class="fa fa-thin fa-copy mr-2"></i>
                                             {{ __('Share link') }}
                                         </x-button>
                                     @elseif($libraryItem->news)
@@ -134,7 +134,7 @@
                                             }"
                                             @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Share url copied!') }}',icon:'success'});"
                                             xs black>
-                                            <i class="fa fa-solid fa-copy mr-2"></i>
+                                            <i class="fa fa-thin fa-copy mr-2"></i>
                                             {{ __('Share link') }}
                                         </x-button>
                                     @else
@@ -191,7 +191,7 @@
                                                     wire.loading.attr="disabled"
                                                     primary
                                                     wire:click="pay">
-                                                    <i class="fa-solid fa-bolt"></i>
+                                                    <i class="fa-thin fa-bolt"></i>
                                                     Pay with lightning
                                                 </x-button>
                                                 <div wire:click="$set('alreadyPaid', true)"
@@ -268,7 +268,7 @@
                                                         <x-button
                                                             black
                                                         >
-                                                            <i class="fa fa-solid fa-clipboard"></i>
+                                                            <i class="fa fa-thin fa-clipboard"></i>
                                                             {{ __('Copy payment hash') }}
                                                         </x-button>
                                                     </div>
