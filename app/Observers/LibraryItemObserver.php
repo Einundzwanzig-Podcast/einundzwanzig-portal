@@ -19,16 +19,15 @@ class LibraryItemObserver
         try {
             $libraryItem->setStatus('published');
 
-            if (!$libraryItem->news) {
-                if (
-                    $libraryItem->type !== 'bindle'
-                    && $libraryItem
+            if (
+                !$libraryItem->news
+                && $libraryItem->type !== 'bindle'
+                && $libraryItem
                     ->whereDoesntHave('libraries',
                         fn($query) => $query->where('libraries.is_public', false))
                     ->exists()
-                ) {
-                    $this->publishOnNostr($libraryItem, $this->getText($libraryItem));
-                }
+            ) {
+                $this->publishOnNostr($libraryItem, $this->getText($libraryItem));
             }
         } catch (Exception $e) {
             Log::error($e->getMessage());
