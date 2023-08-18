@@ -40,7 +40,8 @@ Route::middleware([])
                     'media',
                 ])
                 ->orderByDesc('id')
-                ->get()->map(fn($item) => [
+                ->get()
+                ->map(fn($item) => [
                     'id' => $item->id,
                     'name' => $item->name,
                     'link' => $item->value,
