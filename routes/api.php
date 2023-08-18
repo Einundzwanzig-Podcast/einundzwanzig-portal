@@ -44,7 +44,7 @@ Route::middleware([])
                 ->map(fn($item) => [
                     'id' => $item->id,
                     'name' => $item->name,
-                    'link' => $item->value,
+                    'link' => strtok($item->value, "?"),
                     'image' => $item->getFirstMediaUrl('main'),
                 ]);
         });
