@@ -33,6 +33,12 @@ Route::middleware([])
         Route::resource('cities', \App\Http\Controllers\Api\CityController::class);
         Route::resource('venues', \App\Http\Controllers\Api\VenueController::class);
         Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
+        Route::get('bindles', function () {
+            return \App\Models\LibraryItem::query()
+                ->where('type', 'bindle')
+                ->orderByDesc('id')
+                ->get();
+        });
         Route::get('meetups', function () {
             return \App\Models\Meetup::query()
                 ->where('visible_on_map', true)
