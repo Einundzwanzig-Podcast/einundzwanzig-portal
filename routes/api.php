@@ -36,8 +36,16 @@ Route::middleware([])
         Route::get('bindles', function () {
             return \App\Models\LibraryItem::query()
                 ->where('type', 'bindle')
+                ->with([
+                    'media',
+                ])
                 ->orderByDesc('id')
-                ->get();
+                ->get()->map(fn($item) => [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'link' => $item->value,
+                    'image' => $item->getFirstMediaUrl('main'),
+                ]);
         });
         Route::get('meetups', function () {
             return \App\Models\Meetup::query()
