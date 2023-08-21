@@ -16,7 +16,6 @@
                     explicitRelayUrls: ['wss://nos.lol', 'wss://eden.nostr.land', 'wss://relay.damus.io', 'wss://nostr.einundzwanzig.space'],
                     signer: this.nip07signer
                 });
-
                 this.ndk.connect();
             },
             login() {

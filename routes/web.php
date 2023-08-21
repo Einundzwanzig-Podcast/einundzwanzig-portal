@@ -53,6 +53,10 @@ Route::middleware([])
     ->get('/news/authors', \App\Http\Livewire\News\AuthorsOverview::class)
     ->name('authors.overview');
 
+Route::middleware([])
+    ->get('/nostr/einundzwanzig-plebs', \App\Http\Livewire\Nostr\PlebsOverview::class)
+    ->name('nostr.plebs');
+
 /*
  * News
  * */
