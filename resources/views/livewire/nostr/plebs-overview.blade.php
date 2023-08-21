@@ -19,10 +19,8 @@
                     ndkUser: null,
                     nip07signer: null,
                     async init() {
-                        this.nip07signer = new window.NDKNip07Signer();
                         this.ndk = new window.NDK({
                             explicitRelayUrls: ['wss://nos.lol', 'wss://eden.nostr.land', 'wss://relay.damus.io', 'wss://nostr.einundzwanzig.space'],
-                            signer: this.nip07signer
                         });
                         this.ndk.connect();
                         this.plebsNpubs.forEach(async npub => {
