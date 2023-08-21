@@ -53,7 +53,19 @@ class Meetups extends Component
         $this->myMeetupNames = auth()
             ->user()
             ->meetups()
-            ->pluck('meetups.name', 'meetups.id')
+            ->with([
+                'city.country'
+            ])
+            ->select('meetups.id', 'meetups.city_id', 'meetups.name', 'meetups.slug')
+            ->get()
+            ->map(fn($meetup) => [
+                'id' => $meetup->id,
+                'name' => $meetup->name,
+                'link' => route('meetup.landing', [
+                    'country' => $meetup->city->country->code,
+                    'meetup' => $meetup,
+                ])
+            ])
             ->toArray();
         if (count($this->myMeetups) > 0) {
             $this->hasMeetups = true;
@@ -80,11 +92,6 @@ class Meetups extends Component
                                ->get();
     }
 
-    public function render()
-    {
-        return view('livewire.profile.meetups');
-    }
-
     public function signUpForMeetup($id)
     {
         $user = auth()->user();
@@ -107,5 +114,10 @@ class Meetups extends Component
             ->toArray();
         $this->notification()
              ->success(__('Saved.'));
+    }
+
+    public function render()
+    {
+        return view('livewire.profile.meetups');
     }
 }

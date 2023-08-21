@@ -23,9 +23,12 @@
                 {{ __('Your current Meetup groups') }}
             </p>
             <div class="grid grid-cols-1 gap-2">
-                @foreach($myMeetupNames as $id => $myMeetupName)
-                    <x-badge class="whitespace-nowrap" lg outline white
-                             label="{{ $myMeetupName }}"/>
+                @foreach($myMeetupNames as $myMeetup)
+                    <a href="{{ $myMeetup['link'] }}">
+                        <x-badge
+                            class="whitespace-nowrap" lg outline white
+                            label="{{ $myMeetup['name'] }}"/>
+                    </a>
                 @endforeach
             </div>
         </div>
