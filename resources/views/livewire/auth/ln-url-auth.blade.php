@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        @if(app()->environment('local'))
+        @if(false && app()->environment('local'))
             <div class="flex items-center justify-end mt-4">
 
                 <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
@@ -99,6 +99,13 @@
                     class="leading-6 text-blue-400 bg-transparent cursor-pointer"
                     style="text-decoration: none; list-style: outside;"
                 >Balance of Satoshis</a
+                >,
+                <a
+                    target="_blank"
+                    href="https://www.walletofsatoshi.com/"
+                    class="leading-6 text-blue-400 bg-transparent cursor-pointer"
+                    style="text-decoration: none; list-style: outside;"
+                >Wallet of Satoshi</a
                 >,
                 <a
                     target="_blank" href="https://blixtwallet.github.io"
@@ -207,12 +214,6 @@
                     style="text-decoration: none; list-style: outside;">Zeus</a>
             </td>
 
-        </div>
-
-        <div class="pt-12">
-            <p class="text-xs">{{ __('Zeus bug:') }} <a target="_blank"
-                                                        href="https://github.com/ZeusLN/zeus/issues/1045">https://github.com/ZeusLN/zeus/issues/1045</a>
-            </p>
         </div>
     </div>
     <div wire:poll="checkAuth" wire:key="checkAuth"></div>

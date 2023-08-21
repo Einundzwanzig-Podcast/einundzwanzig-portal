@@ -59,7 +59,7 @@ class OrangePillForm extends Component
     public function save()
     {
         if (!auth()->check()) {
-            return to_route('auth.ln');
+            return to_route('auth.login');
         }
         $this->validate();
         $this->orangePill->save();

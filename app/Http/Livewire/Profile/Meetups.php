@@ -34,7 +34,7 @@ class Meetups extends Component
     public function mount()
     {
         if (!auth()->user()) {
-            return to_route('auth.ln');
+            return to_route('auth.login');
         }
 
         $this->meetups = Meetup::query()

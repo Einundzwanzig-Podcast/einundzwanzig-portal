@@ -31,7 +31,7 @@
                     />
                     <div class="py-2 sm:py-0">
                         @if(!auth()->check())
-                            <x-button secondary href="{{ route('auth.ln') }}">
+                            <x-button secondary href="{{ route('auth.login') }}">
                                 <i class="fa-thin fa-sign-in"></i>
                                 {{ __('Login') }}
                             </x-button>

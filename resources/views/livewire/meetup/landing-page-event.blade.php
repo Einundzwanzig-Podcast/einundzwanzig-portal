@@ -247,7 +247,7 @@
                                                         <li>{{ __('Log in so that you can edit your participation at any time.') }}</li>
                                                     </ul>
                                                     <div class="w-full flex justify-end">
-                                                        <x-button xs secondary :href="route('auth.ln')">
+                                                        <x-button xs secondary :href="route('auth.login')">
                                                             <i class="fa fa-thin fa-sign-in"></i>
                                                             {{ __('Login') }}
                                                         </x-button>
@@ -293,7 +293,7 @@
                                     <li>{{ __('Log in so that you can edit your participation at any time.') }}</li>
                                 </ul>
                                 <div class="w-full flex justify-end">
-                                    <x-button xs secondary :href="route('auth.ln')">
+                                    <x-button xs secondary :href="route('auth.login')">
                                         <i class="fa fa-thin fa-sign-in"></i>
                                         {{ __('Login') }}
                                     </x-button>

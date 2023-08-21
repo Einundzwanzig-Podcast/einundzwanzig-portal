@@ -79,7 +79,7 @@
             </div>--}}
 
             <div class="flex items-center justify-left mt-4">
-                <x-button href="{{ route('auth.ln') }}" primary icon="lightning-bolt">LNURL-Auth</x-button>
+                <x-button href="{{ route('auth.login') }}" primary icon="lightning-bolt">Login</x-button>
             </div>
         </form>
     </x-jet-authentication-card>
