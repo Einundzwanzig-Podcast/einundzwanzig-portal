@@ -876,5 +876,14 @@
     "Suche": "",
     "Wurde zuerst hier gepostet:": "",
     "Bücherverleih": "",
-    "Bindles": ""
+    "Bindles": "",
+    "Plebs on Nostr": "Plebs auf Nostr",
+    "Followed!": "Gefolgt!",
+    "Follow failed!": "Follow fehlgeschlagen!",
+    "Follow Einundzwanzig plebs": "Follow Einundzwanzig Plebs",
+    "An overview of all Einundzwanzig plebs who have shared their npub.": "Eine Übersicht aller Einundzwanzig Plebs, die ihre npub geteilt haben.",
+    "Go to your profile and add your Nostr-npub. After that you can also log in with Nostr here on the portal.": "Gehe zu deinem Profil und füge deine Nostr-npub hinzu. Danach kannst du dich auch hier auf dem Portal mit Nostr einloggen.",
+    "NIP-07 Login": "",
+    "Logged into Nostr as:": "Eingeoggt in Nostr als:",
+    "NPUB copied!": "NPUB kopiert!"
 }

@@ -138,7 +138,7 @@
                     </g>
                 </g>
         </svg>
-                                {{ __('Nostr Plebs') }}
+                                {{ __('Plebs on Nostr') }}
                             </a>
 
                         </div>
