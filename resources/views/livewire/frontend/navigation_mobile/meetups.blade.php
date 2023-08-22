@@ -22,5 +22,7 @@
            class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Meetups') }}</a>
         <a href="{{ route('meetup.table.meetupEvent', ['country' => $country]) }}"
            class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Meetup dates') }}</a>
+        <a href="{{ route('nostr.plebs') }}"
+           class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Nostr Plebs') }}</a>
     </div>
 </div>
