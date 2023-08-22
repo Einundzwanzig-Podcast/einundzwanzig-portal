@@ -31,7 +31,7 @@ class Login extends Component
 
     public function updatedUserProfile($value)
     {
-        if ($value['npub']) {
+        if (isset($value['npub'])) {
             $firstUser = User::query()->where('nostr', $value['npub'])->first();
             if ($firstUser) {
                 auth()->login($firstUser, true);
