@@ -21,8 +21,10 @@ class PlebsOverview extends Component
                 'paynym',
                 'lnbits',
                 'nostr',
+                'id',
             ])
             ->whereNot('nostr')
+            ->orderByDesc('id')
             ->get()
             ->unique('nostr')
             ->pluck('nostr')
