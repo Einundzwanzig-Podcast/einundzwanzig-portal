@@ -5,6 +5,9 @@
     <div class="bg-21gray py-24 sm:py-32"
          wire:ignore
          x-data="{
+            width: '0',
+            loading: true,
+            loadingFollow: false,
             plebsNpubs: @entangle('plebsNpubs'),
             plebs: [],
             ndk: null,
@@ -24,6 +27,7 @@
                 );
             },
             async init() {
+                $watch('width', value => { if (value > 100) { width = 100 } if (value == 0) { width = 10 } });
                 this.ndk = new window.NDK({
                     explicitRelayUrls: [
                         'wss://eden.nostr.land',
@@ -42,16 +46,24 @@
                     ],
                 });
                 this.ndk.connect();
-                this.plebsNpubs.forEach(async npub => {
-                    const ndkUser = this.ndk.getUser({
-                        npub,
-                    });
-                    await ndkUser.fetchProfile();
-                    if (ndkUser.profile.image) {
-                        ndkUser.profile.npub = npub;
-                        this.plebs.push(ndkUser);
+                const length = this.plebsNpubs.filter(npub => npub.includes('npub1')).length;
+                let counter = 1;
+                for (const npub of this.plebsNpubs) {
+                    if(npub.includes('npub1')) {
+                        const ndkUser = this.ndk.getUser({
+                            npub,
+                        });
+                        await ndkUser.fetchProfile();
+                        if (ndkUser.profile.image) {
+                            ndkUser.profile.npub = npub;
+                            this.plebs.push(ndkUser);
+                            this.width = Math.round(counter / length * 100);
+                            counter++;
+                        }
                     }
-                });
+                }
+                this.loading = false;
+                console.log('LOADING FALSE');
             },
             login () {
                 this.nip07signer = new window.NDKNip07Signer();
@@ -88,6 +100,20 @@
                     }
                 });
             },
+            async followAll() {
+                this.width = 0;
+                this.loadingFollow = true;
+                const length = this.plebs.length;
+                let counter = 1;
+                for (const pleb of this.plebs) {
+                    const follow = await this.currentUser.follow(pleb);
+                    console.log(follow);
+                    this.width = Math.round(counter / length * 100);
+                    counter++;
+                }
+                this.loadingFollow = false;
+                window.$wireui.notify({title:'{{ __('Successfully followed all nostr plebs') }}',icon:'success'});
+            },
             async follow(npubToFollow) {
                 this.followUser = this.ndk.getUser({
                     npub: npubToFollow,
@@ -116,48 +142,105 @@
                         <a class="text-amber-500" href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
                     </p>
                 @endauth
-                {{--<p class="mt-8">
+                <p class="mt-8">
                     <x-button x-show="!currentUser" primary label="{{ __('NIP-07 Login') }}" icon="login"
                               @click="login()"/>
-                </p>--}}
+                </p>
                 <h3 x-show="currentUser && currentUser.profile" class="py-4 text-gray-100 text-2xl">
                     {{ __('Logged into Nostr as:') }}
                 </h3>
-                <div
-                    x-show="currentUser && currentUser.profile"
-                    class="block flex-shrink-0 mt-8">
-                    <div class="flex items-center">
-                        <div>
-                            <img class="inline-block h-9 w-9 rounded-full"
-                                 :src="currentUser.profile.image"
-                                 :alt="currentUser.profile.image"
-                            >
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-100" x-text="currentUser.profile.name"></p>
-                            <p class="text-xs font-medium text-gray-200" x-text="currentUser.profile.nip05"></p>
+                <template x-if="currentUser && currentUser.profile">
+                    <div
+                        x-show="currentUser && currentUser.profile.image"
+                        class="block flex-shrink-0 mt-8">
+                        <div class="flex items-center">
+                            <div>
+                                <img class="inline-block h-9 w-9 rounded-full"
+                                     :src="currentUser.profile.image"
+                                     :alt="currentUser.profile.image"
+                                >
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-100" x-text="currentUser.profile.name"></p>
+                                <p class="text-xs font-medium text-gray-200" x-text="currentUser.profile.nip05"></p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </template>
 
             </div>
 
             <div>
-                <div class="py-4">
-                    <x-input x-ref="searchInput" x-model="search" placeholder="{{ __('Search') }}"/>
+                <div class="py-4 flex space-x-4">
+                    <div class="w-1/2">
+                        <x-input x-ref="searchInput" x-model="search" placeholder="{{ __('Search') }}"/>
+                    </div>
+                    <div>
+                        <x-button
+                            ::disabled="loadingFollow"
+                            @click.prevent="followAll()"
+                            x-show="currentUser && currentUser.profile"
+                        >
+                            <i class="fa-thin fa-user-plus mr-2"></i>
+                            {{ __('Follow all') }}
+                        </x-button>
+                    </div>
+                </div>
+
+                <div
+                    x-show="loading"
+                    class="relative block w-full rounded-lg border-2 border-dashed border-purple-300 p-12 text-center hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <div
+                        class="bg-purple-200 rounded h-6 mt-5"
+                        role="progressbar"
+                        :aria-valuenow="width"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                    >
+                        <div
+                            class="bg-purple-500 rounded h-6 text-center text-white text-sm transition"
+                            :style="`width: ${width}%; transition: width 2s;`"
+                            x-text="`${width}%`"
+                        >
+                        </div>
+                    </div>
+                    <img src="{{ asset('img/running-nostr.gif') }}" alt="running-nostr" class="mt-2 block text-sm font-semibold text-gray-900"/>
+                    <span class="mt-2 block text-sm font-semibold text-gray-100">Loadingstr...</span>
+                </div>
+
+                <div
+                    x-show="loadingFollow"
+                    class="relative block w-full rounded-lg border-2 border-dashed border-purple-300 p-12 text-center hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <div
+                        class="bg-purple-200 rounded h-6 mt-5"
+                        role="progressbar"
+                        :aria-valuenow="width"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                    >
+                        <div
+                            class="bg-purple-500 rounded h-6 text-center text-white text-sm transition"
+                            :style="`width: ${width}%; transition: width 2s;`"
+                            x-text="`${width}%`"
+                        >
+                        </div>
+                    </div>
+                    <img src="{{ asset('img/running-nostr.gif') }}" alt="running-nostr" class="mt-2 block text-sm font-semibold text-gray-900"/>
+                    <span class="mt-2 block text-sm font-semibold text-gray-100">Followstr...</span>
                 </div>
 
                 <ul role="list" class="divide-y divide-gray-100">
 
                     <template x-for="pleb in searchResults">
-                        <li class="flex items-center justify-between gap-x-6 py-5">
+                        <li class="flex items-center justify-between gap-x-6 py-5" x-show="!loading && !loadingFollow">
                             <div class="flex min-w-0 gap-x-4">
                                 <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
                                      :src="pleb.profile.image"
                                      :alt="pleb.profile.name"
                                 >
                                 <div class="min-w-0 flex-auto">
-                                    <p class="text-sm font-semibold leading-6 text-gray-100" x-text="pleb.profile.name"></p>
+                                    <p class="text-sm font-semibold leading-6 text-gray-100"
+                                       x-text="pleb.profile.name"></p>
                                     <p class="mt-1 truncate text-xs leading-5 text-gray-200"
                                        x-text="pleb.profile.nip05"></p>
                                 </div>

@@ -848,5 +848,7 @@
     "Go to your profile and add your Nostr-npub. After that you can also log in with Nostr here on the portal.": "",
     "NIP-07 Login": "",
     "Logged into Nostr as:": "",
-    "NPUB copied!": ""
+    "NPUB copied!": "",
+    "Successfully followed all nostr plebs": "",
+    "Follow all": ""
 }
