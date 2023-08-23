@@ -51,7 +51,7 @@
                 for (const npub of this.plebsNpubs) {
                     if(npub.includes('npub1')) {
                         const ndkUser = this.ndk.getUser({
-                            npub,
+                            npub: npub.trim(),
                         });
                         await ndkUser.fetchProfile();
                         if (ndkUser.profile.image) {
