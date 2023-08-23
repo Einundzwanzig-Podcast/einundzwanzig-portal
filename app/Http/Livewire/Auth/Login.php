@@ -50,7 +50,7 @@ class Login extends Component
                         'url' => null,
                         'wallet_id' => null,
                     ],
-                    'nostr' => $value['npub'],
+                    'nostr' => $value,
                 ]);
                 $user->ownedTeams()
                     ->save(Team::forceCreate([
