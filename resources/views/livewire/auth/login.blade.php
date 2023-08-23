@@ -27,7 +27,7 @@
                         });
                         await ndkUser.fetchProfile();
                         console.log(ndkUser);
-                        this.userProfile = ndkUser.profile;
+                        $wire.login(user.npub);
                     }
                 });
             }
