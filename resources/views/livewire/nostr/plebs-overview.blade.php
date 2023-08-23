@@ -146,6 +146,9 @@
                     <x-button x-show="!currentUser" primary label="{{ __('NIP-07 Login') }}" icon="login"
                               @click="login()"/>
                 </p>
+                <p class="text-gray-100">
+                    <span>{{ __('Log in with your Nostr Extension so you can follow all plebs with one click.') }}</span>
+                </p>
                 <h3 x-show="currentUser && currentUser.profile" class="py-4 text-gray-100 text-2xl">
                     {{ __('Logged into Nostr as:') }}
                 </h3>
