@@ -112,6 +112,9 @@
                 let counter = 1;
                 for (const pleb of this.plebs) {
                     const follow = await this.currentUser.follow(pleb);
+                    this.char = -1;
+                    this.text = 'Followed ' + pleb.profile.name + '!';
+                    this.animate();
                     console.log(follow);
                     this.width = Math.round(counter / length * 100);
                     counter++;
@@ -158,8 +161,10 @@
                     </p>
                 @endauth
                 <p class="mt-8">
-                    <x-button x-show="!currentUser" primary label="{{ __('NIP-07 Login') }}" icon="login"
-                              @click="login()"/>
+                    <x-button
+                        ::disabled="loading"
+                        x-show="!currentUser" primary label="{{ __('NIP-07 Login') }}" icon="login"
+                        @click="login()"/>
                 </p>
                 <p class="text-gray-100">
                     <span>{{ __('Log in with your Nostr Extension so you can follow all plebs with one click.') }}</span>
@@ -226,13 +231,18 @@
                         >
                         </div>
                     </div>
-                    <img src="{{ asset('img/running-nostr.gif') }}" alt="running-nostr" class="mt-2 block text-sm font-semibold text-gray-900"/>
+                    <img src="{{ asset('img/running-nostr.gif') }}" alt="running-nostr"
+                         class="mt-2 block text-sm font-semibold text-gray-900"/>
                     <span class="mt-2 block text-sm font-semibold text-gray-100">Loadingstr...</span>
                 </div>
 
                 <div
                     x-show="loadingFollow"
                     class="relative block w-full rounded-lg border-2 border-dashed border-purple-300 p-12 text-center hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <template x-for="(c, i) in text.split('')"><span
+                            x-text="c"
+                            class="opacity-0 transition ease-in text-2xl text-white"
+                            :class="{'opacity-100':char>=i}"></span></template>
                     <div
                         class="bg-purple-200 rounded h-6 mt-5"
                         role="progressbar"
@@ -247,7 +257,8 @@
                         >
                         </div>
                     </div>
-                    <img src="{{ asset('img/running-nostr.gif') }}" alt="running-nostr" class="mt-2 block text-sm font-semibold text-gray-900"/>
+                    <img src="{{ asset('img/running-nostr.gif') }}" alt="running-nostr"
+                         class="mt-2 block text-sm font-semibold text-gray-900"/>
                     <span class="mt-2 block text-sm font-semibold text-gray-100">Followstr...</span>
                 </div>
 
