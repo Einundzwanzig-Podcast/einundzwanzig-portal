@@ -5,6 +5,8 @@
     <div class="bg-21gray py-24 sm:py-32"
          wire:ignore
          x-data="{
+            text: 'Animate',
+            char: -1,
             width: '0',
             loading: true,
             loadingFollow: false,
@@ -55,6 +57,9 @@
                         });
                         await ndkUser.fetchProfile();
                         if (ndkUser.profile.image) {
+                            this.char = -1;
+                            this.text = ndkUser.profile.name;
+                            this.animate();
                             ndkUser.profile.npub = npub;
                             this.plebs.push(ndkUser);
                             this.width = Math.round(counter / length * 100);
@@ -127,6 +132,16 @@
                     window.$wireui.notify({title:'{{ __('Follow failed!') }}',icon:'error'});
                 }
             },
+            animate() {
+                let timer = setInterval(() => {
+                    this.char++;
+                    if (this.char == this.text.length) {
+                        clearInterval(timer);
+                        timer = null;
+                        return;
+                    }
+                }, 50);
+            }
         }"
     >
         <div class="mx-auto grid max-w-7xl gap-y-20 gap-x-8 px-6 lg:px-8 xl:grid-cols-2">
@@ -193,6 +208,10 @@
                 <div
                     x-show="loading"
                     class="relative block w-full rounded-lg border-2 border-dashed border-purple-300 p-12 text-center hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <template x-for="(c, i) in text.split('')"><span
+                            x-text="c"
+                            class="opacity-0 transition ease-in text-2xl text-white"
+                            :class="{'opacity-100':char>=i}"></span></template>
                     <div
                         class="bg-purple-200 rounded h-6 mt-5"
                         role="progressbar"

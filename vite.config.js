@@ -6,14 +6,10 @@ export default defineConfig({
     plugins: [
         viteStaticCopy({
             targets: [
-                {
-                    src: 'node_modules/disgus/dist/index.js',
-                    dest: 'disgus/index.js'
-                },
-                {
-                    src: 'node_modules/disgus/dist/style.css',
-                    dest: 'disgus/style.js'
-                }
+                // {
+                //     src: 'node_modules/js-confetti/dist/js-confetti.min.js',
+                //     dest: 'js-confetti/js-confetti.min.js'
+                // }
             ]
         }),
         laravel({
