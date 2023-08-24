@@ -6,6 +6,7 @@ use App\Models\Episode;
 use App\Models\Podcast;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class ReadAndSyncPodcastFeeds extends Command
 {
@@ -62,27 +63,30 @@ class ReadAndSyncPodcastFeeds extends Command
 
         foreach ($feedIds as $feedId) {
             $podcast = $client->podcasts->byFeedId($feedId)
-                                        ->json();
-            $this->info('Importing: '.$podcast->feed->title);
+                ->json();
+            $this->info('Importing: ' . $podcast->feed->title);
+            if (is_array($podcast->feed)) {
+                Log::error('Error importing feed: ' . $feedId);
+            }
             $importPodcast = Podcast::query()
-                                    ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
-                                        'title' => $podcast->feed->title,
-                                        'link' => $podcast->feed->link,
-                                        'language_code' => $podcast->feed->language,
-                                        'data' => $podcast->feed,
-                                        'created_by' => 1,
-                                    ]);
+                ->updateOrCreate(['guid' => $podcast->feed->podcastGuid], [
+                    'title' => $podcast->feed->title,
+                    'link' => $podcast->feed->link,
+                    'language_code' => $podcast->feed->language,
+                    'data' => $podcast->feed,
+                    'created_by' => 1,
+                ]);
             $episodes = $client->episodes->withParameters(['max' => 10000])
-                                         ->byFeedId($feedId)
-                                         ->json();
+                ->byFeedId($feedId)
+                ->json();
             foreach ($episodes->items as $item) {
                 Episode::query()
-                       ->updateOrCreate(['guid' => $item->guid], [
-                           'podcast_id' => $importPodcast->id,
-                           'data' => $item,
-                           'created_by' => 1,
-                           'created_at' => Carbon::parse($item->datePublished),
-                       ]);
+                    ->updateOrCreate(['guid' => $item->guid], [
+                        'podcast_id' => $importPodcast->id,
+                        'data' => $item,
+                        'created_by' => 1,
+                        'created_at' => Carbon::parse($item->datePublished),
+                    ]);
             }
             if (app()->environment('local')) {
                 break;
