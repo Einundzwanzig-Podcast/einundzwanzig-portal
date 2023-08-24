@@ -110,7 +110,19 @@ class Meetups extends Component
         $this->myMeetupNames = auth()
             ->user()
             ->meetups()
-            ->pluck('meetups.name', 'meetups.id')
+            ->with([
+                'city.country'
+            ])
+            ->select('meetups.id', 'meetups.city_id', 'meetups.name', 'meetups.slug')
+            ->get()
+            ->map(fn($meetup) => [
+                'id' => $meetup->id,
+                'name' => $meetup->name,
+                'link' => route('meetup.landing', [
+                    'country' => $meetup->city->country->code,
+                    'meetup' => $meetup,
+                ])
+            ])
             ->toArray();
         $this->notification()
              ->success(__('Saved.'));
