@@ -213,6 +213,9 @@
                 <div
                     x-show="loading"
                     class="relative block w-full rounded-lg border-2 border-dashed border-purple-300 p-12 text-center hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <p class="mt-2 block text-lg font-semibold text-amber-500">
+                        You should stack sats as long as this page loads here. This is a low time preference loading bar. 🤙
+                    </p>
                     <template x-for="(c, i) in text.split('')"><span
                             x-text="c"
                             class="opacity-0 transition ease-in text-2xl text-white"
@@ -239,6 +242,9 @@
                 <div
                     x-show="loadingFollow"
                     class="relative block w-full rounded-lg border-2 border-dashed border-purple-300 p-12 text-center hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <p class="mt-2 block text-lg font-semibold text-amber-500">
+                        You should stack sats as long as this page loads here. This is a low time preference loading bar. 🤙
+                    </p>
                     <template x-for="(c, i) in text.split('')"><span
                             x-text="c"
                             class="opacity-0 transition ease-in text-2xl text-white"
