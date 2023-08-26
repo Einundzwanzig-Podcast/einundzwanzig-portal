@@ -54,7 +54,7 @@ class ReadAndSyncPodcastFeeds extends Command
             5910857, // SOS - Shield Of Satoshi - Ein Bitcoin Podcast
             5045045, // Bitcoin Bibliothek
             4138995, // Orange Relationship
-            5326181, // Powering Bitcoin - Bitcoin & Energy
+            // 5326181, // Powering Bitcoin - Bitcoin & Energy
             5783120, // Bitcoin´s Energie und Zeit
             558916, // Bitcoin verstehen
             5248065, // Bitcoin Sozial – Lesestunde
@@ -65,6 +65,7 @@ class ReadAndSyncPodcastFeeds extends Command
             $podcast = $client->podcasts->byFeedId($feedId)
                 ->json();
             if (is_array($podcast->feed)) {
+                dd($podcast->feed);
                 Log::error('Error importing feed: ' . $feedId);
             }
             $this->info('Importing: ' . $podcast->feed->title);
