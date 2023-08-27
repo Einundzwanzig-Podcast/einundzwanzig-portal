@@ -23,7 +23,7 @@ class PlebsOverview extends Component
                 'nostr',
                 'id',
             ])
-            ->whereNot('nostr')
+            ->whereNotNull('nostr')
             ->orderByDesc('id')
             ->get()
             ->unique('nostr')

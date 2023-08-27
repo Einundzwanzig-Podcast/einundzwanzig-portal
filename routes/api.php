@@ -33,6 +33,25 @@ Route::middleware([])
         Route::resource('cities', \App\Http\Controllers\Api\CityController::class);
         Route::resource('venues', \App\Http\Controllers\Api\VenueController::class);
         Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
+        Route::get('nostrplebs', function () {
+            return User::query()
+                ->select([
+                    'email',
+                    'public_key',
+                    'lightning_address',
+                    'lnurl',
+                    'node_id',
+                    'paynym',
+                    'lnbits',
+                    'nostr',
+                    'id',
+                ])
+                ->whereNotNull('nostr')
+                ->orderByDesc('id')
+                ->get()
+                ->unique('nostr')
+                ->pluck('nostr');
+        });
         Route::get('bindles', function () {
             return \App\Models\LibraryItem::query()
                 ->where('type', 'bindle')
