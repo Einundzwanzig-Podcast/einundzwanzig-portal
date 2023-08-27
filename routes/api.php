@@ -47,6 +47,7 @@ Route::middleware([])
                     'id',
                 ])
                 ->whereNotNull('nostr')
+                ->where('nostr', 'like', 'npub1%')
                 ->orderByDesc('id')
                 ->get()
                 ->unique('nostr')
