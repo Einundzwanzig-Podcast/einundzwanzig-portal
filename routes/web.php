@@ -54,7 +54,9 @@ Route::middleware([])
     ->name('authors.overview');
 
 Route::middleware([])
-    ->get('/nostr/einundzwanzig-plebs', \App\Http\Livewire\Nostr\PlebsOverview::class)
+    ->get('/nostr/einundzwanzig-plebs', function () {
+        return redirect('https://einundzwanzigstr.codingarena.de/einundzwanzig-plebs');
+    })
     ->name('nostr.plebs');
 
 /*
