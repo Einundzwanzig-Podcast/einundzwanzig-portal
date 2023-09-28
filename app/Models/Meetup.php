@@ -43,7 +43,7 @@ class Meetup extends Model implements HasMedia
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (! $model->created_by) {
+            if (!$model->created_by) {
                 $model->created_by = auth()->id();
             }
         });
@@ -52,9 +52,9 @@ class Meetup extends Model implements HasMedia
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-                          ->generateSlugsFrom(['name'])
-                          ->saveSlugsTo('slug')
-                          ->usingLanguage(Cookie::get('lang', config('app.locale')));
+            ->generateSlugsFrom(['name'])
+            ->saveSlugsTo('slug')
+            ->usingLanguage(Cookie::get('lang', config('app.locale')));
     }
 
     public function registerMediaConversions(Media $media = null): void
@@ -64,16 +64,16 @@ class Meetup extends Model implements HasMedia
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
         $this->addMediaConversion('thumb')
-             ->fit(Manipulations::FIT_CROP, 130, 130)
-             ->width(130)
-             ->height(130);
+            ->fit(Manipulations::FIT_CROP, 130, 130)
+            ->width(130)
+            ->height(130);
     }
 
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('logo')
-             ->singleFile()
-             ->useFallbackUrl(asset('img/einundzwanzig.png'));
+            ->singleFile()
+            ->useFallbackUrl(asset('img/einundzwanzig.png'));
     }
 
     public function createdBy(): BelongsTo
@@ -91,11 +91,6 @@ class Meetup extends Model implements HasMedia
         return $this->belongsTo(City::class);
     }
 
-    public function meetupEvents(): HasMany
-    {
-        return $this->hasMany(MeetupEvent::class);
-    }
-
     protected function logoSquare(): Attribute
     {
         $media = $this->getFirstMedia('logo');
@@ -106,7 +101,7 @@ class Meetup extends Model implements HasMedia
         }
 
         return Attribute::make(
-            get: fn () => url()->route('img',
+            get: fn() => url()->route('img',
                 [
                     'path' => $path,
                     'w' => 900,
@@ -115,5 +110,27 @@ class Meetup extends Model implements HasMedia
                     'fm' => 'webp',
                 ]),
         );
+    }
+
+    protected function nextEvent(): Attribute
+    {
+        $nextEvent = $this->meetupEvents()->where('start', '>=', now())->orderBy('start')->first();
+
+        return Attribute::make(
+            get: fn() => $nextEvent ? [
+                'start' => $nextEvent->start->toDateTimeString(),
+                'portalLink' => url()->route('meetup.event.landing', ['country' => $this->city->country, 'meetupEvent' => $nextEvent]),
+                'location' => $nextEvent->location,
+                'description' => $nextEvent->description,
+                'link' => $nextEvent->link,
+                'attendees' => count($nextEvent->attendees ?? []),
+                'nostr_note' => str($nextEvent->nostr_status)->after('Sent event ')->before(' to '),
+            ] : null,
+        );
+    }
+
+    public function meetupEvents(): HasMany
+    {
+        return $this->hasMany(MeetupEvent::class);
     }
 }

@@ -72,11 +72,13 @@ Route::middleware([])
             return \App\Models\Meetup::query()
                 ->where('visible_on_map', true)
                 ->with([
-                    'city',
+                    'meetupEvents',
+                    'city.country',
                 ])
                 ->get()
                 ->map(fn($meetup) => [
                     'name' => $meetup->name,
+                    'portalLink' => url()->route('meetup.landing', ['country' => $meetup->city->country, 'meetup' => $meetup]),
                     'url' => $meetup->telegram_link ?? $meetup->webpage,
                     'top' => $meetup->github_data['top'] ?? null,
                     'left' => $meetup->github_data['left'] ?? null,
@@ -87,6 +89,7 @@ Route::middleware([])
                     'latitude' => (float)$meetup->city->latitude,
                     'twitter_username' => $meetup->twitter_username,
                     'website' => $meetup->webpage,
+                    'next_event' => $meetup->nextEvent,
                 ]);
         });
         Route::get('btc-map-communities', function () {

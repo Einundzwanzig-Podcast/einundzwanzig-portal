@@ -20,30 +20,30 @@ class MeetupController extends Controller
         $myMeetupIds = User::query()->find($request->input('user_id'))->meetups->pluck('id');
 
         return Meetup::query()
-                     ->select('id', 'name', 'city_id')
-                     ->with([
-                         'city',
-                     ])
-                     ->whereIn('id', $myMeetupIds->toArray())
-                     ->orderBy('name')
-                     ->when(
-                         $request->search,
-                         fn (Builder $query) => $query
-                             ->where('name', 'like', "%{$request->search}%")
-                             ->orWhereHas('city',
-                                 fn (Builder $query) => $query->where('cities.name', 'ilike', "%{$request->search}%"))
-                     )
-                     ->when(
-                         $request->exists('selected'),
-                         fn (Builder $query) => $query->whereIn('id', $request->input('selected', [])),
-                         fn (Builder $query) => $query->limit(10)
-                     )
-                     ->get()
-                     ->map(function (Meetup $meetup) {
-                         $meetup->profile_image = $meetup->getFirstMediaUrl('logo', 'thumb');
+            ->select('id', 'name', 'city_id', 'slug')
+            ->with([
+                'city.country',
+            ])
+            ->whereIn('id', $myMeetupIds->toArray())
+            ->orderBy('name')
+            ->when(
+                $request->search,
+                fn(Builder $query) => $query
+                    ->where('name', 'like', "%{$request->search}%")
+                    ->orWhereHas('city',
+                        fn(Builder $query) => $query->where('cities.name', 'ilike', "%{$request->search}%"))
+            )
+            ->when(
+                $request->exists('selected'),
+                fn(Builder $query) => $query->whereIn('id', $request->input('selected', [])),
+                fn(Builder $query) => $query->limit(10)
+            )
+            ->get()
+            ->map(function (Meetup $meetup) {
+                $meetup->profile_image = $meetup->getFirstMediaUrl('logo', 'thumb');
 
-                         return $meetup;
-                     });
+                return $meetup;
+            });
     }
 
     /**
