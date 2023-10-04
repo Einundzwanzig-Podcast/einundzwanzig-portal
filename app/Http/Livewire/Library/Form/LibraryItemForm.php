@@ -53,7 +53,7 @@ class LibraryItemForm extends Component
             'libraryItem.type' => 'required',
             'libraryItem.language_code' => 'required',
             'libraryItem.value' => [
-                'required',
+                Rule::when($this->libraryItem->type !== LibraryItemType::DownloadableFile(), 'required'),
                 Rule::when(
                     $this->libraryItem->type !== LibraryItemType::MarkdownArticle()
                     && $this->libraryItem->type !== LibraryItemType::MarkdownArticleExtern(), ['url']
