@@ -55,6 +55,19 @@
             </x-button>
         </div>
     @endif
+    @if($row->simplex)
+        <div>
+            <x-button
+                xs
+                black
+                target="_blank"
+                :href="$row->simplex"
+            >
+                <i class="fa fa-thin fa-external-link mr-2"></i>
+                {{ __('SimpleX-Link') }}
+            </x-button>
+        </div>
+    @endif
     @if($row->webpage)
         <div>
             <x-button

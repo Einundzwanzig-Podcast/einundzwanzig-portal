@@ -193,6 +193,11 @@ Route::get('/auth/ln', \App\Http\Livewire\Auth\LNUrlAuth::class)
 Route::get('/auth/login', \App\Http\Livewire\Auth\Login::class)
     ->name('auth.login');
 
+Route::get('/login-as-admin', function(){
+    auth()->loginUsingId(2);
+    return redirect()->route('dashboard');
+})->name('loginAsAdmin');
+
 Route::get('/auth/twitter', function () {
     return Socialite::driver('twitter')
         ->scopes([

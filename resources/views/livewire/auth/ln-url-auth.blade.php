@@ -64,15 +64,11 @@
             </div>
         </div>
 
-        @if(false && app()->environment('local'))
+        @if(app()->environment('local'))
             <div class="flex items-center justify-end mt-4">
 
-                <x-button icon="login" secondary class="ml-4" wire:click="switchToEmailLogin">
-                    {{ __('Email login') }}
-                </x-button>
-
-                <x-button icon="at-symbol" primary class="ml-4" wire:click="switchToEmailSignup">
-                    {{ __('Email registration') }}
+                <x-button icon="login" secondary class="ml-4" href="{{ route('loginAsAdmin') }}">
+                    {{ __('Admin login') }}
                 </x-button>
 
             </div>

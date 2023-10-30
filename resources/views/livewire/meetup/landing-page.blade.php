@@ -26,6 +26,15 @@
                             {{ __('Telegram-Link') }}
                         </x-button>
                     @endif
+                    @if($meetup->simplex)
+                        <x-button
+                            target="_blank"
+                            :href="$meetup->simplex"
+                            primary lg class="mt-4 whitespace-nowrap">
+                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                            {{ __('SimpleX-Link') }}
+                        </x-button>
+                    @endif
                     @if($meetup->webpage)
                         <x-button
                             target="_blank"

@@ -32,19 +32,20 @@ class MeetupForm extends Component
         return [
             'image' => [Rule::requiredIf(!$this->meetup->id), 'nullable', 'mimes:jpeg,png,jpg,gif', 'max:10240'],
 
-            'meetup.city_id'          => 'required',
-            'meetup.name'             => [
+            'meetup.city_id' => 'required',
+            'meetup.name' => [
                 'required',
                 Rule::unique('meetups', 'name')
                     ->ignore($this->meetup),
             ],
-            'meetup.community'        => 'required',
-            'meetup.telegram_link'    => 'string|nullable|required_without_all:meetup.webpage,meetup.nostr,meetup.twitter_username,meetup.matrix_group',
-            'meetup.intro'            => 'string|nullable',
-            'meetup.webpage'          => 'string|url|nullable|required_without_all:meetup.telegram_link,meetup.nostr,meetup.twitter_username,meetup.matrix_group',
-            'meetup.nostr'            => 'string|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.twitter_username,meetup.matrix_group',
+            'meetup.community' => 'required',
+            'meetup.telegram_link' => 'string|nullable|required_without_all:meetup.webpage,meetup.nostr,meetup.twitter_username,meetup.matrix_group',
+            'meetup.intro' => 'string|nullable',
+            'meetup.webpage' => 'string|url|nullable|required_without_all:meetup.telegram_link,meetup.nostr,meetup.twitter_username,meetup.matrix_group',
+            'meetup.nostr' => 'string|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.twitter_username,meetup.matrix_group',
             'meetup.twitter_username' => 'string|regex:/^[A-z0-9!@]+$/|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.nostr,meetup.matrix_group',
-            'meetup.matrix_group'     => 'string|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.nostr,meetup.twitter_username'
+            'meetup.matrix_group' => 'string|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.nostr,meetup.twitter_username',
+            'meetup.simplex' => 'string|nullable',
         ];
     }
 
@@ -73,8 +74,8 @@ class MeetupForm extends Component
 
         if ($this->image) {
             $this->meetup->addMedia($this->image)
-                         ->usingFileName(md5($this->image->getClientOriginalName()).'.'.$this->image->getClientOriginalExtension())
-                         ->toMediaCollection('logo');
+                ->usingFileName(md5($this->image->getClientOriginalName()) . '.' . $this->image->getClientOriginalExtension())
+                ->toMediaCollection('logo');
         }
 
         auth()

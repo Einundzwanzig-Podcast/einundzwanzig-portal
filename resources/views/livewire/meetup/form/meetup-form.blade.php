@@ -93,6 +93,12 @@
                         />
                     </x-input.group>
 
+                    <x-input.group :for="md5('meetup.simplex')" :label="__('Simplex')">
+                        <x-input autocomplete="off" wire:model.debounce="meetup.simplex"
+                                 :placeholder="__('Simplex')"
+                        />
+                    </x-input.group>
+
                     <x-input.group :for="md5('meetup.matrix_group')" :label="__('Matrix Group')">
                         <x-input autocomplete="off" wire:model.debounce="meetup.matrix_group"
                                  :placeholder="__('Matrix Group')"

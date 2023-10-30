@@ -118,6 +118,17 @@
                                     @endif
                                 </div>
                                 <div>
+                                    @if($meetup->simplex)
+                                        <x-button
+                                            target="_blank"
+                                            :href="$meetup->simplex"
+                                            secondary lg class="mt-4 whitespace-nowrap">
+                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            {{ __('SimpleX') }}
+                                        </x-button>
+                                    @endif
+                                </div>
+                                <div>
                                     @if($meetup->matrix_group)
                                         <x-button
                                             target="_blank"
