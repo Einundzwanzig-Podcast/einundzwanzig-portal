@@ -94,14 +94,18 @@ Route::middleware([])
                     'next_event' => $meetup->nextEvent,
                 ]);
         });
-        Route::get('meetup-events/{date}', function ($date) {
-            $date = \Carbon\Carbon::parse($date);
+        Route::get('meetup-events/{date?}', function ($date = null) {
+            if ($date) {
+                $date = \Carbon\Carbon::parse($date);
+            }
             $events = \App\Models\MeetupEvent::query()
                 ->with([
                     'meetup.city.country'
                 ])
-                ->where('start', '>=', $date)
-                ->where('start', '<=', $date->copy()->endOfMonth())
+                ->when($date, fn($query) => $query
+                    ->where('start', '>=', $date)
+                    ->where('start', '<=', $date->copy()->endOfMonth())
+                )
                 ->get();
 
             return $events->map(fn($event) => [
