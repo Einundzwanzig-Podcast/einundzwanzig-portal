@@ -89,8 +89,39 @@ Route::middleware([])
                     'latitude' => (float)$meetup->city->latitude,
                     'twitter_username' => $meetup->twitter_username,
                     'website' => $meetup->webpage,
+                    'simplex' => $meetup->simplex,
+                    'nostr' => $meetup->nostr,
                     'next_event' => $meetup->nextEvent,
                 ]);
+        });
+        Route::get('meetup-events/{date}', function ($date) {
+            $date = \Carbon\Carbon::parse($date);
+            $events = \App\Models\MeetupEvent::query()
+                ->with([
+                    'meetup.city.country'
+                ])
+                ->where('start', '>=', $date)
+                ->where('start', '<=', $date->copy()->endOfMonth())
+                ->get();
+
+            return $events->map(fn($event) => [
+                'start' => $event->start->format('Y-m-d H:i'),
+                'location' => $event->location,
+                'description' => $event->description,
+                'link' => $event->link,
+                'meetup.name' => $event->meetup->name,
+                'meetup.portalLink' => url()->route('meetup.landing', ['country' => $event->meetup->city->country, 'meetup' => $event->meetup]),
+                'meetup.url' => $event->meetup->telegram_link ?? $event->meetup->webpage,
+                'meetup.country' => str($event->meetup->city->country->code)->upper(),
+                'meetup.city' => $event->meetup->city->name,
+                'meetup.longitude' => (float)$event->meetup->city->longitude,
+                'meetup.latitude' => (float)$event->meetup->city->latitude,
+                'meetup.twitter_username' => $event->meetup->twitter_username,
+                'meetup.website' => $event->meetup->webpage,
+                'meetup.simplex' => $event->meetup->simplex,
+                'meetup.nostr' => $event->meetup->nostr,
+            ]
+            );
         });
         Route::get('btc-map-communities', function () {
             return response()->json(\App\Models\Meetup::query()
