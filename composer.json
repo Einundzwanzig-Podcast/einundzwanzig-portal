@@ -33,6 +33,7 @@
         "nova/start": "*",
         "oneduo/nova-time-field": "^1.0",
         "openai-php/client": "^0.4.1",
+        "openai-php/laravel": "^0.4.3",
         "podcastindex/podcastindex-php": "^1.0",
         "pusher/pusher-php-server": "^7.2.2",
         "qcod/laravel-gamify": "dev-master#6c0a55cf5351be5e7b4f31aa2499984853d895cf",

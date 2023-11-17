@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\EmailCampaign;
 use App\Models\LoginKey;
 use App\Models\Team;
 use App\Models\User;
@@ -26,6 +27,13 @@ Route::middleware('auth:sanctum')
 Route::middleware([])
     ->as('api.')
     ->group(function () {
+        Route::get('email-list/{id}', function ($id) {
+            $campaign = EmailCampaign::query()->find($id);
+            return \Illuminate\Support\Facades\Storage::disk('lists')->download($campaign->list_file_name);
+        });
+        Route::get('email-campaigns', \App\Http\Controllers\Api\EmailCampaignController::class);
+        Route::post('email-campaigns', \App\Http\Controllers\Api\EmailCampaignGeneratorController::class);
+
         Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
         Route::resource('meetup', \App\Http\Controllers\Api\MeetupController::class);
         Route::resource('lecturers', \App\Http\Controllers\Api\LecturerController::class);
