@@ -20,7 +20,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- Styles --}}
     @livewireStyles
-    @include('layouts.styles')
+    @include('components.layouts.styles')
 </head>
 <body class="font-sans antialiased">
 <x-notifications z-index="z-[99999]" blur="md" align="center"/>
@@ -30,6 +30,5 @@
 {{ $slot }}
 @stack('modals')
 @livewireScripts
-<x-comments::scripts/>
 </body>
 </html>

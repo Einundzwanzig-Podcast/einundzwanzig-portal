@@ -9,22 +9,8 @@ class LaravelEcho extends Component
 {
     use Actions;
 
-    protected $listeners = ['echo:plebchannel,.App\Events\PlebLoggedInEvent' => 'plebLoggedIn'];
+    protected $listeners = [
 
-    public function plebLoggedIn($data)
-    {
-        if (auth()->check()) {
-            $this->notification()
-                 ->confirm([
-                     'img' => $data['img'],
-                     'title' => 'Pleb alert!',
-                     'description' => $data['name'].' logged in',
-                     'icon' => 'bell',
-                     'acceptLabel' => '',
-                     'rejectLabel' => '',
-                     'iconColor' => 'primary',
-                     'timeout' => 60000,
-                 ]);
-        }
-    }
+    ];
+
 }
