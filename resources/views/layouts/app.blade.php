@@ -11,58 +11,23 @@
     <link rel="manifest" href="/site.webmanifest">
     @stack('feeds')
     {!! seo($SEOData ?? null) !!}
-    <!-- Fonts -->
+    {{-- Fonts --}}
     @googlefonts
-    <!-- Scripts -->
-    <script src="https://mempool.space/mempool.js"></script>
-    <script src="{{ asset('dist/jquery.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.min.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/world-mill.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/europe-merc.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/de.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/at.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/ch.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/fr.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/es.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/it.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/pt.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/pl.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/se.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/mx.js') }}"></script>
-    <script src="{{ asset('vendor/jvector/maps/us.js') }}"></script>
-    <script src="{{ asset('dist/smoothscroll.js') }}"></script>
+    {{-- Scripts --}}
     <script src="https://kit.fontawesome.com/866fd3d0ab.js" crossorigin="anonymous"></script>
-    @mapstyles
-    @mapscripts
-    <script src="{{ asset('dist/heatmap.min.js') }}"></script>
-    <script src="{{ asset('dist/leaflet-heatmap.js') }}"></script>
-    <script src="{{ asset('dist/leaflet-providers.js') }}"></script>
     <wireui:scripts/>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
-          media="screen"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
-    <x-comments::styles/>
     <x-embed-styles/>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- Styles --}}
     @livewireStyles
     @include('layouts.styles')
 </head>
-<body class="font-sans antialiased {{ isset($darkModeDisabled) && $darkModeDisabled ? '' : 'bg-21gray' }} dark">
+<body class="font-sans antialiased">
 <x-notifications z-index="z-[99999]" blur="md" align="center"/>
 <x-dialog z-index="z-[99999]" blur="md" align="center"/>
-@if(auth()->user())
-    {{-- HIGHSCORE-CHAT --}}
-    <livewire:chat.highscore-chat/>
-@endif
 <livewire:laravel-echo/>
 <x-jet-banner/>
-<div class="min-h-screen">
-    <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
-</div>
+{{ $slot }}
 @stack('modals')
 @livewireScripts
 <x-comments::scripts/>
