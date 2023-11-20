@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Cookie;
-use Spatie\Comments\Models\Concerns\HasComments;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Feed\Feedable;
@@ -27,7 +26,6 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
     use SortableTrait;
     use HasStatuses;
     use HasSlug;
-    use HasComments;
 
     /**
      * The attributes that aren't mass assignable.

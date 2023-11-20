@@ -19,7 +19,7 @@
                 <div>
                     <div class="flex space-x-6">
                         <h1 class="text-4xl text-white py-8">Sent from my #₿indle🧡</h1>
-                        <x-input label="{{ __('Suche') }}" wire:model.debounce="search"/>
+                        <x-input label="{{ __('Suche') }}" wire:model.live.debounce="search"/>
                     </div>
 
                     <ul role="list"

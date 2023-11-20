@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\Response;
 
-Route::get('/', \App\Http\Livewire\Nostr\Start::class)
+Route::get('/', \App\Livewire\Nostr\Start::class)
     ->name('start');
 
 Route::middleware([])
-    ->get('/kaninchenbau', \App\Http\Livewire\Helper\FollowTheRabbit::class)
+    ->get('/kaninchenbau', \App\Livewire\Helper\FollowTheRabbit::class)
     ->name('kaninchenbau');
 
 Route::middleware([])
-    ->get('/bindles', \App\Http\Livewire\Bindle\Gallery::class)
+    ->get('/bindles', \App\Livewire\Bindle\Gallery::class)
     ->name('bindles');
 
 Route::middleware([])
-    ->get('/buecherverleih', \App\Http\Livewire\BooksForPlebs\BookRentalGuide::class)
+    ->get('/buecherverleih', \App\Livewire\BooksForPlebs\BookRentalGuide::class)
     ->name('buecherverleih');
 
 Route::get('/img/{path}', \App\Http\Controllers\ImageController::class)
@@ -42,9 +42,9 @@ Route::middleware([
         /*
         * Meetup OSM
         * */
-        Route::get('/meetup-osm/table', \App\Http\Livewire\Meetup\PrepareForBtcMapTable::class)
+        Route::get('/meetup-osm/table', \App\Livewire\Meetup\PrepareForBtcMapTable::class)
             ->name('osm.meetups');
-        Route::get('/meetup-osm/item/{meetup}', \App\Http\Livewire\Meetup\PrepareForBtcMapItem::class)
+        Route::get('/meetup-osm/item/{meetup}', \App\Livewire\Meetup\PrepareForBtcMapItem::class)
             ->name('osm.meetups.item');
     });
 

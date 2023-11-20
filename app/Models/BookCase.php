@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\Comments\Models\Concerns\HasComments;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -16,7 +15,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class BookCase extends Model implements HasMedia
 {
     use HasFactory;
-    use HasComments;
     use InteractsWithMedia;
     use Geoly;
 

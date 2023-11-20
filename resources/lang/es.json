@@ -396,7 +396,7 @@
     "Rotate -90": "Rotar -90",
     "Rotate +90": "Rotar +90",
     "Update": "Actualizar",
-    "Add New \".concat(e)):this.__(\"Upload New \".concat(e))},mustCrop:function(){return\"mustCrop\"in this.field&&this.field.mustCrop}},watch:{modelValue:function(e){this.images=e||[]},images:function(e,t){this.queueNewImages(e,t),this.$emit(\"update:modelValue": "Añadir nuevo \".concat(e)):this.__(\"Upload New \".concat(e))},mustCrop:function(){return\"mustCrop\"in this.field&&this.field.mustCrop}},watch:{modelValue:function(e){this.images=e||[]},images:function(e,t){this.queueNewImages(e,t),this.$emit(\"update:modelValue",
+    "Add New \".concat(e)):this.__(\"Upload New \".concat(e))},mustCrop:function(){return\"mustCrop\"in this.field&&this.field.mustCrop}},watch:{modelValue:function(e){this.images=e||[]},images:function(e,t){this.queueNewImages(e,t),this.$dispatch(\"update:modelValue": "Añadir nuevo \".concat(e)):this.__(\"Upload New \".concat(e))},mustCrop:function(){return\"mustCrop\"in this.field&&this.field.mustCrop}},watch:{modelValue:function(e){this.images=e||[]},images:function(e,t){this.queueNewImages(e,t),this.$emit(\"update:modelValue",
     "Maximum file size is :amount MB": "El tamaño máximo del archivo es :amount MB",
     "File type must be: :types": "El tipo de archivo debe ser: :types",
     "Uploading": "Cargando",
