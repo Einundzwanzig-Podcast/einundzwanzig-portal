@@ -14,6 +14,8 @@
     {{-- Fonts --}}
     @googlefonts
     {{-- Scripts --}}
+    @mapscripts
+    @include('components.layouts.scripts')
     <script src="https://kit.fontawesome.com/866fd3d0ab.js" crossorigin="anonymous"></script>
     <x-embed-styles/>
     @wireUiScripts
