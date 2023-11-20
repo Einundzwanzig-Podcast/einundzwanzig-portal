@@ -1,3 +1,12 @@
-<div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
+<div x-data="nostrStart(@this)">
+
+    <div class="flex flex-col">
+        @if($user)
+           @foreach($user->meetups as $meetup)
+               <div>
+                   {{ $meetup->name }}
+               </div>
+           @endforeach
+        @endif
+    </div>
 </div>

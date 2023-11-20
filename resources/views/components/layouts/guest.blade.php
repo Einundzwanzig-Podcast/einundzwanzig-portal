@@ -15,20 +15,18 @@
     @googlefonts
     {{-- Scripts --}}
     <script src="https://kit.fontawesome.com/866fd3d0ab.js" crossorigin="anonymous"></script>
-    <wireui:scripts/>
     <x-embed-styles/>
+    @wireUiScripts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- Styles --}}
-    @livewireStyles
     @include('components.layouts.styles')
 </head>
 <body class="font-sans antialiased">
 <x-notifications z-index="z-[99999]" blur="md" align="center"/>
 <x-dialog z-index="z-[99999]" blur="md" align="center"/>
-<livewire:laravel-echo/>
-<x-jet-banner/>
+{{--<livewire:laravel-echo/>--}}
 {{ $slot }}
 @stack('modals')
-@livewireScripts
+@livewireScriptConfig
 </body>
 </html>
