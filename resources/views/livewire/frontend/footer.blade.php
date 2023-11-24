@@ -11,12 +11,12 @@
                     target="_blank"
                     href="https://einundzwanzig.space/kontakt/"
                     class="p-4 text-gray-700 hover:text-gray-400">
-                    Kontakt
+                    {{ __('Contact') }}
                 </a>
                 <a
                     target="_blank" href="https://einundzwanzig.space/datenschutz/"
                     class="p-4 text-gray-700 hover:text-gray-400">
-                    Datenschutz
+                    {{ __('Datenschutz') }}
                 </a>
                 <a href="#" class="p-4 text-gray-700 hover:text-gray-400">
 

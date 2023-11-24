@@ -118,6 +118,13 @@ class DatabaseSeeder extends Seeder
             'longitude'      => 21,
             'latitude'       => 44,
         ]);
+        Country::create([
+            'name'           => 'Nederland',
+            'code'           => 'nl',
+            'language_codes' => ['nl'],
+            'longitude'      => 21,
+            'latitude'       => 44,
+        ]);
         City::create([
             'country_id' => 1,
             'name'       => 'Füssen',

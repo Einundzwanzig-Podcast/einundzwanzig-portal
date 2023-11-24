@@ -11,7 +11,7 @@ return [
     | Supported: "file", "database"
     |
     */
-    'driver' => 'file',
+    'driver' => env('TRANSLATION_DRIVER'),
 
     /*
     |--------------------------------------------------------------------------
