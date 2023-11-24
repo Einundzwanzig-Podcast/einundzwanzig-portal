@@ -27,13 +27,13 @@
                     <div class="mt-6 flow-root">
                         <div class="-my-2">
 
-                            <a href="{{ route('meetup.world', ['country' => $country]) }}"
+                            <a href="{{ route('meetup.world', ['country' => $country ?? 'de']) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
                                 <i class="fa-thin fa-globe flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('World map') }}
                             </a>
 
-                            <a href="{{ route('meetup.table.meetup', ['country' => $country]) }}"
+                            <a href="{{ route('meetup.table.meetup', ['country' => $country ?? 'de']) }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
                                 <i class="fa-thin fa-people-group flex-none text-gray-400 w-6 h-5 mr-2 -ml-1"></i>
                                 {{ __('Meetups') }}
@@ -47,7 +47,8 @@
 
                             <a href="{{ route('nostr.plebs') }}"
                                class="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900">
-                                <svg class="svg-inline--fa flex-none text-gray-400 w-6 h-5 mr-2 -ml-1" fill="#000000" version="1.1" id="nostr" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="svg-inline--fa flex-none text-gray-400 w-6 h-5 mr-2 -ml-1" fill="#000000"
+                                     version="1.1" id="nostr" xmlns="http://www.w3.org/2000/svg"
                                      height="20px" viewBox="0 0 571.004 571.004"
                                      xml:space="preserve">
                 <g>
