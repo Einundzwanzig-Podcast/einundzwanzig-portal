@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Contracts\Foundation\Application;
+
+/**
+ * @returns array<string, bool>
+ */
+return static function (Application $app): array {
+    return [
+        'change.country' => false,
+        'change.language' => true,
+
+        'news' => false,
+        'courses' => false,
+        'library' => false,
+        'events' => true,
+        'bookcases' => false,
+        'meetups' => true,
+        'association' => false,
+
+        'nostr.groups' => false,
+        'nostr.plebs' => false,
+    ];
+};

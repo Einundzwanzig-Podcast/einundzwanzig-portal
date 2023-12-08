@@ -340,6 +340,7 @@
         });
     }})"></div>
 
+    @feature('nostr.groups')
     @push('modals')
         <div wire:ignore class="z-50 hidden md:block">
             <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
@@ -353,4 +354,6 @@
             <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
         </div>
     @endpush
+    @endfeature
+
 </div>

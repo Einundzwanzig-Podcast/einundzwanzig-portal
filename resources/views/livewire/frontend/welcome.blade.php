@@ -1,4 +1,5 @@
 <div class="min-h-screen bg-21gray flex flex-col justify-between">
+
     <section class="relative px-10 pt-16 pb-24 sm:py-16 sm:overflow-hidden">
         <img class="absolute h-43 left-0 z-0 w-3/4 transform -translate-y-1/2 opacity-70 top-1/2"
              src="{{ asset('img/gradient-blob.svg') }}">
@@ -13,6 +14,7 @@
                 </p>
                 <div
                     class="max-w-sm text-lg text-gray-200 space-y-2 sm:space-y-0 sm:space-x-2 flex flex-col sm:flex-row items-start sm:items-end">
+                    @feature('change.country')
                     <x-native-select
                         label="{{ __('Change country') }}"
                         wire:model="c"
@@ -20,6 +22,8 @@
                         option-value="code"
                         :options="$countries"
                     />
+                    @endfeature
+                    @feature('change.language')
                     <x-select
                         label="{{ __('Change language') }}"
                         wire:model="l"
@@ -29,6 +33,7 @@
                         option-label="name"
                         option-value="language"
                     />
+                    @endfeature
                     <div class="py-2 sm:py-0">
                         @if(!auth()->check())
                             <x-button secondary href="{{ route('auth.login') }}">
@@ -50,6 +55,7 @@
             <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
 
                 {{-- News --}}
+                @feature('news')
                 <div class="row-span-2 col-span-full sm:col-span-1 md:col-start-1 sm:row-start-2 md:row-start-3">
                     <a href="{{ route('article.overview') }}"
                        class="relative flex flex-col items-start justify-end w-full h-full overflow-hidden bg-black shadow-lg rounded-xl group"
@@ -68,7 +74,9 @@
                         </div>
                     </a>
                 </div>
+                @endfeature
 
+                @feature('courses')
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-1 xl:col-start-2 sm:row-start-4 md:row-start-5 xl:row-start-2">
                     <a href="{{ route('school.table.course', ['country' => $c]) }}"
@@ -90,7 +98,9 @@
                         </div>
                     </a>
                 </div>
+                @endfeature
 
+                @feature('library')
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-2 xl:col-start-2 sm:row-start-6 md:row-start-2 xl:row-start-4">
                     <a href="{{ route('library.table.libraryItems', ['country' => $c]) }}"
@@ -112,7 +122,9 @@
                         </div>
                     </a>
                 </div>
+                @endfeature
 
+                @feature('events')
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-2 xl:col-start-3 sm:row-start-1 md:row-start-4 xl:row-start-1">
                     <a href="{{ route('bitcoinEvent.table.bitcoinEvent', ['country' => $c]) }}"
@@ -134,7 +146,9 @@
                         </div>
                     </a>
                 </div>
+                @endfeature
 
+                @feature('bookcases')
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-3 sm:row-start-3 md:row-start-1 xl:row-start-3">
                     <a href="{{ route('bookCases.world', ['country' => $c]) }}"
@@ -156,7 +170,9 @@
                         </div>
                     </a>
                 </div>
+                @endfeature
 
+                @feature('meetups')
                 <div
                     class="row-span-2 col-span-full sm:col-span-1 md:col-start-3 xl:col-start-4 sm:row-start-5 md:row-start-3 xl:row-start-2">
                     <a href="{{ route('meetup.table.meetup', ['country' => $c]) }}"
@@ -176,6 +192,7 @@
                         </div>
                     </a>
                 </div>
+                @endfeature
 
             </div>
         </div>
@@ -185,6 +202,7 @@
         <livewire:frontend.footer/>
     </div>
 
+    @feature('nostr.groups')
     <div wire:ignore class="z-50 hidden md:block">
         <script
             src="{{ asset('dist/einundzwanzig.chat.js') }}"
@@ -195,4 +213,5 @@
         ></script>
         <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
     </div>
+    @endfeature
 </div>

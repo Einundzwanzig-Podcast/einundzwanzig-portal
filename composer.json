@@ -65,6 +65,7 @@
         "symfony/mailgun-mailer": "^6.2",
         "wesselperik/nova-status-field": "^2.1",
         "wireui/wireui": "^1.17.9",
+        "ylsideas/feature-flags": "^2.0",
         "ziffmedia/nova-select-plus": "^2.0"
     },
     "require-dev": {
