@@ -26,6 +26,9 @@ class Welcome extends Component
     public function mount()
     {
         $this->l = Cookie::get('lang') ?: config('app.locale');
+        if ($this->l === 'nl-be') {
+            $this->l = 'nl';
+        }
         $this->c = Cookie::get('country') ?: config('app.country');
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
         Cookie::queue('country', $this->c, 60 * 24 * 365);
@@ -43,6 +46,10 @@ class Welcome extends Component
             $l = $value;
         } else {
             $l = $this->l;
+        }
+
+        if ($this->l === 'nl-be') {
+            $this->l = 'nl';
         }
 
         Cookie::queue('lang', $this->l, 60 * 24 * 365);

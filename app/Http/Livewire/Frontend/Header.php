@@ -74,6 +74,10 @@ class Header extends Component
 
     public function updatedL($value)
     {
+        if ($value === 'nl-be') {
+            $value = 'nl';
+        }
+
         Cookie::queue('lang', $value, 60 * 24 * 365);
 
         return redirect(request()->header('Referer'));
