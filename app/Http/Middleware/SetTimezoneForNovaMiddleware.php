@@ -13,11 +13,15 @@ class SetTimezoneForNovaMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        App::setLocale(Cookie::get('lang') ?: config('app.locale'));
+        $l = Cookie::get('lang') ?: config('app.locale');
+        if ($l === 'nl-be') {
+            $l = 'nl';
+        }
+        App::setLocale($l);
         if ($request->user()
             && $timezone = $request->user()->timezone
         ) {
