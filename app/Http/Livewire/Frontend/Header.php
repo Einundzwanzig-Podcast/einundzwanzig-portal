@@ -35,8 +35,8 @@ class Header extends Component
     public function rules()
     {
         return [
-            'c'        => 'required',
-            'l'        => 'required',
+            'c' => 'required',
+            'l' => 'required',
             'timezone' => 'required',
         ];
     }
@@ -48,8 +48,8 @@ class Header extends Component
         $this->c = Cookie::get('country') ?: config('app.country');
         if (!$this->country) {
             $this->country = Country::query()
-                                    ->where('code', $this->c)
-                                    ->first();
+                ->where('code', $this->c)
+                ->first();
         }
         $this->currentRouteName = Route::currentRouteName();
     }
@@ -82,81 +82,80 @@ class Header extends Component
     public function render()
     {
         return view('livewire.frontend.header', [
-            'news'             => LibraryItem::query()
-                                             ->with([
-                                                 'createdBy.roles',
-                                                 'lecturer',
-                                                 'tags',
-                                             ])
-                                             ->where('type', 'markdown_article')
-                                             ->where('approved', true)
-                                             ->where('news', true)
-                                             ->orderByDesc('created_at')
-                                             ->take(2)
-                                             ->get(),
-            'meetups'          => MeetupEvent::query()
-                                             ->with([
-                                                 'meetup.users',
-                                                 'meetup.city.country',
-                                             ])
-                                             ->where('start', '>', now())
-                                             ->orderBy('start')
-                                             ->take(2)
-                                             ->get(),
-            'courseEvents'     => CourseEvent::query()
-                                             ->with([
-                                                 'venue.city.country',
-                                                 'course.lecturer',
-                                             ])
-                                             ->where('from', '>', now())
-                                             ->orderBy('from')
-                                             ->take(2)
-                                             ->get(),
-            'libraryItems'     => LibraryItem::query()
-                                             ->with([
-                                                 'lecturer',
-                                             ])
-                                             ->where('type', '<>', 'markdown_article')
-                                             ->orderByDesc('created_at')
-                                             ->take(2)
-                                             ->get(),
-            'bitcoinEvents'    => BitcoinEvent::query()
-                                              ->with([
-                                                  'venue',
-                                              ])
-                                              ->where('from', '>', now())
-                                              ->orderBy('from')
-                                              ->take(2)
-                                              ->get(),
-            'orangePills'      => OrangePill::query()
-                                            ->with([
-                                                'user',
-                                                'bookCase',
-                                            ])
-                                            ->orderByDesc('date')
-                                            ->take(2)
-                                            ->get(),
+            'news' => LibraryItem::query()
+                ->with([
+                    'createdBy.roles',
+                    'lecturer',
+                    'tags',
+                ])
+                ->where('type', 'markdown_article')
+                ->where('approved', true)
+                ->where('news', true)
+                ->orderByDesc('created_at')
+                ->take(2)
+                ->get(),
+            'meetups' => MeetupEvent::query()
+                ->with([
+                    'meetup.users',
+                    'meetup.city.country',
+                ])
+                ->where('start', '>', now())
+                ->orderBy('start')
+                ->take(2)
+                ->get(),
+            'courseEvents' => CourseEvent::query()
+                ->with([
+                    'venue.city.country',
+                    'course.lecturer',
+                ])
+                ->where('from', '>', now())
+                ->orderBy('from')
+                ->take(2)
+                ->get(),
+            'libraryItems' => LibraryItem::query()
+                ->with([
+                    'lecturer',
+                ])
+                ->where('type', '<>', 'markdown_article')
+                ->orderByDesc('created_at')
+                ->take(2)
+                ->get(),
+            'bitcoinEvents' => BitcoinEvent::query()
+                ->with([
+                    'venue',
+                ])
+                ->where('from', '>', now())
+                ->orderBy('from')
+                ->take(2)
+                ->get(),
+            'orangePills' => OrangePill::query()
+                ->with([
+                    'user',
+                    'bookCase',
+                ])
+                ->orderByDesc('date')
+                ->take(2)
+                ->get(),
             'projectProposals' => ProjectProposal::query()
-                                                 ->with([
-                                                     'votes',
-                                                     'user',
-                                                 ])
-                                                 ->take(2)
-                                                 ->get(),
-            'cities'           => City::query()
-                                      ->select(['latitude', 'longitude'])
-                                      ->get(),
-            'countries'        => Country::query()
-                                         ->select('id', 'name', 'code')
-                                         ->orderBy('name')
-                                         ->get()
-                                         ->map(function (Country $country) {
-                                             $country->name = config('countries.emoji_flags')[str($country->code)
-                                                     ->upper()
-                                                     ->toString()].' '.$country->name;
+                ->with([
+                    'votes',
+                    'user',
+                ])
+                ->take(2)
+                ->get(),
+            'cities' => City::query()
+                ->select(['latitude', 'longitude'])
+                ->get(),
+            'countries' => Country::query()
+                ->select('id', 'name', 'code')
+                ->orderBy('name')
+                ->get()
+                ->map(function (Country $country) {
+                    $flag = config('countries.emoji_flags')[str($country->code)->upper()->toString()] ?? '';
+                    $country->name = $flag . ' ' . $country->name;
 
-                                             return $country;
-                                         }),
+                    return $country;
+                }),
         ]);
     }
 }
