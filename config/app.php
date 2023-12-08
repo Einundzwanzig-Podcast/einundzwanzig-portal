@@ -86,9 +86,9 @@ return [
     |
     */
 
-    'locale' => 'de',
+    'locale' => env('DEFAULT_LOCALE', 'de'),
 
-    'country' => 'de',
+    'country' => env('DEFAULT_LOCALE', 'de'),
 
     /*
     |--------------------------------------------------------------------------
