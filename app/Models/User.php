@@ -70,11 +70,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
             ->addTextField('wallet_id');
 
         $encryptedRow
-            ->addField('public_key')
-            ->addField('lightning_address')
-            ->addField('lnurl')
-            ->addField('node_id')
-            ->addField('email')
+            ->addOptionalTextField('public_key')
+            ->addOptionalTextField('lightning_address')
+            ->addOptionalTextField('lnurl')
+            ->addOptionalTextField('node_id')
+            ->addOptionalTextField('email')
             ->addOptionalTextField('paynym')
             ->addJsonField('lnbits', $map)
             ->addBlindIndex('public_key', new BlindIndex('public_key_index'))

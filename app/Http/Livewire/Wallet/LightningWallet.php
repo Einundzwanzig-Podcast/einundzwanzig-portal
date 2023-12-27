@@ -30,7 +30,7 @@ class LightningWallet extends Component
     {
         $this->k1 = bin2hex(str()->random(32));
         if (app()->environment('local')) {
-            $this->url = 'https://einundzwanzig.eu-1.sharedwithexpose.com/api/lnurl-auth-callback?tag=login&k1='.$this->k1.'&action=login';
+            $this->url = 'https://einundzwanzig.sharedwithexpose.com/api/lnurl-auth-callback?tag=login&k1='.$this->k1.'&action=login';
         } else {
             $this->url = url('/api/lnurl-auth-callback?tag=login&k1='.$this->k1.'&action=login');
         }
