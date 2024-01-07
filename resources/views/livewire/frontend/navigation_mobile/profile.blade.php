@@ -20,6 +20,8 @@
              x-show="open" style="display: none;" x-cloak>
             <a href="{{ route('profile.show') }}"
                class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('My profile') }}</a>
+            <a href="{{ route('profile.meetups') }}"
+               class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('My meetups') }}</a>
             <a href="{{ route('profile.wallet') }}"
                class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Change lightning wallet/pubkey') }}</a>
         </div>
