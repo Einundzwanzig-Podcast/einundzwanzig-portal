@@ -73,11 +73,20 @@
 
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4">
 
-            <section class="h-auto px-10 py-16">
-                <div class="max-w-3xl mx-auto space-y-4 sm:text-center">
-                    <h2 class="text-4xl sm:text-5xl font-semibold text-white">
-                        {{ __('Events') }}
-                    </h2>
+            <section class="h-auto py-16">
+                <div class="mx-auto space-y-4 sm:text-center">
+                    <div class="flex space-x-4 items-baseline">
+                        <div class="text-4xl sm:text-5xl font-semibold text-white">{{ __('Events') }}</div>
+                        <div>
+                            <x-button
+                                x-data="{}"
+                                @click.prevent="window.navigator.clipboard.writeText('{{ route('meetup.ics', ['country' => $this->country ?? $meetup->city->country->code, 'meetup' => $meetup]) }}');window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                                primary lg class="mt-4 whitespace-nowrap">
+                                <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
+                                {{ __('Calendar Stream-Url') }}
+                            </x-button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -86,7 +95,8 @@
                     @php
                         $activeClass = $activeEvent === $meetupEvent->id ? 'bg-gradient-to-r from-amber-800 via-amber-600 to-amber-500' : 'bg-amber-500';
                     @endphp
-                    <li id="meetupEventId_{{ $meetupEvent->id }}" class="{{ $activeClass }} col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg text-center shadow-2xl">
+                    <li id="meetupEventId_{{ $meetupEvent->id }}"
+                        class="{{ $activeClass }} col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg text-center shadow-2xl">
                         <div class="flex flex-1 flex-col p-8">
                             {{--<img class="mx-auto h-32 w-32 object-contain flex-shrink-0 rounded"
                                  src="{{ $meetupEvent->meetup->getFirstMediaUrl('logo') }}"
@@ -117,7 +127,8 @@
                                             </button>
                                         </h2>
                                         <div x-show="expanded" x-collapse>
-                                            <div class="px-6 pb-4 text-left">{!! nl2br($meetupEvent->description) !!}</div>
+                                            <div
+                                                class="px-6 pb-4 text-left">{!! nl2br($meetupEvent->description) !!}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +137,8 @@
                         <div>
                             <div class="-mt-px flex divide-x divide-gray-200">
                                 <div class="-ml-px flex w-0 flex-1">
-                                    <a target="_blank" href="{{ route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $meetupEvent]) }}"
+                                    <a target="_blank"
+                                       href="{{ route('meetup.event.landing', ['country' => $country, 'meetupEvent' => $meetupEvent]) }}"
                                        class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
                                         <i class="text-gray-100 text-2xl fa-thin fa-right-to-bracket"></i>
                                         <span class="ml-3 text-gray-100 text-2xl">{{ __('Link to participate') }}</span>

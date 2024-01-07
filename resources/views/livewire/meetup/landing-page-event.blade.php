@@ -269,6 +269,27 @@
                                     </div>
                                 @endauth
                             </div>
+
+                            <div class="flex flex-col space-y-2">
+                                <x-button
+                                    x-data="{}"
+                                    @click.prevent="window.navigator.clipboard.writeText('{{ route('meetup.ics', ['country' => $this->country ?? $meetup->city->country->code, 'meetup' => $meetup]) }}');window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                                    primary class="mt-4 whitespace-nowrap">
+                                    <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
+                                    {{ __('Calendar Stream-Url') }} {{ $meetup->name }}
+                                </x-button>
+                                @if(auth()->check() && auth()->user()->meetups->count() > 0)
+                                    <x-button
+                                        x-data="{
+                                            textToCopy: '{{ route('meetup.ics', ['country' => 'de', 'my' => auth()->user()->meetups->pluck('id')->toArray()]) }}',
+                                        }"
+                                        @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                                        black>
+                                        <i class="fa fa-thin fa-calendar-heart mr-2"></i>
+                                        {{ __('Calendar Stream-Url for my meetups only') }}
+                                    </x-button>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
