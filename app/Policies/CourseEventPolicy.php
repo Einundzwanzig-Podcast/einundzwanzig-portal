@@ -47,7 +47,7 @@ class CourseEventPolicy extends BasePolicy
      */
     public function update(User $user, CourseEvent $courseEvent): bool
     {
-        return $user->belongsToTeam($courseEvent->course->lecturer->team) || $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
+        return $courseEvent->created_by === $user->id || $user->can((new \ReflectionClass($this))->getShortName() . '.' . __FUNCTION__);
     }
 
     /**
