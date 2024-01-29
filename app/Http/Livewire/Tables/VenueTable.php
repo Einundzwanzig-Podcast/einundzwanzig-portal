@@ -79,7 +79,6 @@ class VenueTable extends DataTableComponent
                     ->withCount([
                         'courseEvents',
                     ])
-                    ->whereHas('city.country', fn ($query) => $query->where('code', $this->country))
                     ->orderByDesc('course_events_count')
                     ->orderBy('venues.id');
     }
