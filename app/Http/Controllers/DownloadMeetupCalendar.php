@@ -19,7 +19,7 @@ class DownloadMeetupCalendar extends Controller
         if ($request->has('meetup')) {
             $meetup = Meetup::query()
                             ->with([
-                                'meetupEvents',
+                                'meetupEvents.meetup',
                             ])
                             ->findOrFail($request->input('meetup'));
             $events = $meetup->meetupEvents;

@@ -19,19 +19,33 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-8" x-data="Components.popoverGroup()" x-init="init()">
 
+            @feature('news')
             @include('livewire.frontend.navigation.news')
+            @endfeature
 
+            @feature('meetups')
             @include('livewire.frontend.navigation.meetups')
+            @endfeature
 
+            @feature('courses')
             @include('livewire.frontend.navigation.courses')
+            @endfeature
 
+            @feature('library')
             @include('livewire.frontend.navigation.library')
+            @endfeature
 
+            @feature('events')
             @include('livewire.frontend.navigation.events')
+            @endfeature
 
+            @feature('bookcases')
             @include('livewire.frontend.navigation.bookcases')
+            @endfeature
 
+            @feature('association')
             @include('livewire.frontend.navigation.association')
+            @endfeature
 
             @auth
                 @include('livewire.frontend.navigation.profile')

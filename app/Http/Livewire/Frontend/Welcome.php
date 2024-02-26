@@ -26,6 +26,9 @@ class Welcome extends Component
     public function mount()
     {
         $this->l = Cookie::get('lang') ?: config('app.locale');
+        if ($this->l === 'nl-be') {
+            $this->l = 'nl';
+        }
         $this->c = Cookie::get('country') ?: config('app.country');
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
         Cookie::queue('country', $this->c, 60 * 24 * 365);
@@ -45,6 +48,10 @@ class Welcome extends Component
             $l = $this->l;
         }
 
+        if ($this->l === 'nl-be') {
+            $this->l = 'nl';
+        }
+
         Cookie::queue('lang', $this->l, 60 * 24 * 365);
         Cookie::queue('country', $this->c, 60 * 24 * 365);
 
@@ -55,16 +62,15 @@ class Welcome extends Component
     {
         return view('livewire.frontend.welcome', [
             'countries' => Country::query()
-                                  ->select('id', 'name', 'code')
-                                  ->orderBy('name')
-                                  ->get()
-                                  ->map(function (Country $country) {
-                                      $country->name = config('countries.emoji_flags')[str($country->code)
-                                              ->upper()
-                                              ->toString()].' '.$country->name;
+                ->select('id', 'name', 'code')
+                ->orderBy('name')
+                ->get()
+                ->map(function (Country $country) {
+                    $flag = config('countries.emoji_flags')[str($country->code)->upper()->toString()] ?? '';
+                    $country->name = $flag . ' ' . $country->name;
 
-                                      return $country;
-                                  }),
+                    return $country;
+                }),
         ])->layout('layouts.guest', [
             'SEOData' => new SEOData(
                 title: __('Welcome'),

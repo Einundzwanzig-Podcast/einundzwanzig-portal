@@ -129,6 +129,17 @@
                                     @endif
                                 </div>
                                 <div>
+                                    @if($meetup->nostr && str($meetup->nostr)->contains('npub1'))
+                                        <x-button
+                                            target="_blank"
+                                            :href="'https://njump.me/'.$meetup->nostr"
+                                            primary lg class="mt-4 whitespace-nowrap">
+                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            {{ __('Nostr') }}
+                                        </x-button>
+                                    @endif
+                                </div>
+                                <div>
                                     @if($meetup->matrix_group)
                                         <x-button
                                             target="_blank"
@@ -269,6 +280,27 @@
                                     </div>
                                 @endauth
                             </div>
+
+                            <div class="flex flex-col space-y-2">
+                                <x-button
+                                    x-data="{}"
+                                    @click.prevent="window.navigator.clipboard.writeText('{{ route('meetup.ics', ['country' => $this->country ?? $meetup->city->country->code, 'meetup' => $meetup]) }}');window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                                    primary class="mt-4 whitespace-nowrap">
+                                    <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
+                                    {{ __('Calendar Stream-Url') }} {{ $meetup->name }}
+                                </x-button>
+                                @if(auth()->check() && auth()->user()->meetups->count() > 0)
+                                    <x-button
+                                        x-data="{
+                                            textToCopy: '{{ route('meetup.ics', ['country' => 'de', 'my' => auth()->user()->meetups->pluck('id')->toArray()]) }}',
+                                        }"
+                                        @click.prevent="window.navigator.clipboard.writeText(textToCopy);window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
+                                        black>
+                                        <i class="fa fa-thin fa-calendar-heart mr-2"></i>
+                                        {{ __('Calendar Stream-Url for my meetups only') }}
+                                    </x-button>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -319,6 +351,7 @@
     {{-- FOOTER --}}
     <livewire:frontend.footer/>
 
+    @feature('nostr.groups')
     <div wire:ignore class="z-50 hidden md:block">
         <script
             src="{{ asset('dist/einundzwanzig.chat.js') }}"
@@ -329,4 +362,6 @@
         ></script>
         <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
     </div>
+    @endfeature
+
 </div>

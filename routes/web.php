@@ -194,7 +194,7 @@ Route::get('/auth/login', \App\Http\Livewire\Auth\Login::class)
     ->name('auth.login');
 
 Route::get('/login-as-admin', function(){
-    auth()->loginUsingId(2);
+    auth()->loginUsingId(144);
     return redirect()->route('dashboard');
 })->name('loginAsAdmin');
 

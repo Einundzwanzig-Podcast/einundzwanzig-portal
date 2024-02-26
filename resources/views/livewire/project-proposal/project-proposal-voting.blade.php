@@ -227,6 +227,7 @@
         </form>
     </div>
 
+    @feature('nostr.groups')
     <div wire:ignore class="z-50 hidden md:block">
         <script
             src="{{ asset('dist/einundzwanzig.chat.js') }}"
@@ -237,4 +238,6 @@
         ></script>
         <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
     </div>
+    @endfeature
+
 </div>

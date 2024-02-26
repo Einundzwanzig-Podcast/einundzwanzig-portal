@@ -164,4 +164,17 @@ class LibraryItem extends Model implements HasMedia, Sortable, Feedable
                              ->link(url()->route('article.view', ['libraryItem' => $this]))
                              ->authorName($this->lecturer->name);
     }
+
+    public static function searchLibraryItems($type, $value = null)
+    {
+        $query = self::query()
+            ->where('type', $type)
+            ->latest('id');
+
+        if ($value) {
+            $query->where('name', 'ilike', "%{$value}%");
+        }
+
+        return $query->get();
+    }
 }

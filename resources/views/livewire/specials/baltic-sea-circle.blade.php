@@ -72,6 +72,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/vegas.min.js"
             integrity="sha512-lYAcY5E6LZVeNB3Pky37SxbYKzo8A68MzKFoPg5oTuolhRm36D+YRvkrAQS4JuKsaGYeJ5KA5taMEtpNlPUeOA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @feature('nostr.groups')
     @push('modals')
         <div wire:ignore class="z-50 hidden md:block">
             <script
@@ -84,4 +86,6 @@
             <link rel="stylesheet" href="{{ asset('dist/einundzwanzig.chat.css') }}">
         </div>
     @endpush
+    @endfeature
+
 </div>

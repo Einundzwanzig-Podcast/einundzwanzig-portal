@@ -14,7 +14,7 @@ class Auth47Component extends Component
     public function mount()
     {
         $this->k1 = bin2hex(str()->random(32));
-        $this->url = 'auth47://'.$this->k1.'?c=https://einundzwanzig.eu-1.sharedwithexpose.com/auth/auth47-callback&r=https://einundzwanzig.eu-1.sharedwithexpose.com/auth/auth47-callback';
+        $this->url = 'auth47://'.$this->k1.'?c=https://einundzwanzig.sharedwithexpose.com/auth/auth47-callback&r=https://einundzwanzig.eu-1.sharedwithexpose.com/auth/auth47-callback';
         $this->qrCode = base64_encode(QrCode::format('png')
                                             ->size(600)
                                             ->errorCorrection('L')

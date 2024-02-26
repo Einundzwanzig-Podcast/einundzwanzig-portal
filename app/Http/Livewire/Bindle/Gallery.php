@@ -14,19 +14,12 @@ class Gallery extends Component
 
     public function mount()
     {
-        $this->bindles = LibraryItem::query()
-            ->where('type', 'bindle')
-            ->latest('id')
-            ->get();
+        $this->bindles = LibraryItem::searchLibraryItems('bindle');
     }
 
     public function updatedSearch($value)
     {
-        $this->bindles = LibraryItem::query()
-            ->where('type', 'bindle')
-            ->where('name', 'ilike', "%{$value}%")
-            ->latest('id')
-            ->get();
+        $this->bindles = LibraryItem::searchLibraryItems('bindle', $value);
     }
 
     public function deleteBindle($id)

@@ -11,7 +11,11 @@ class Footer extends Component
 {
     public function render()
     {
-        $l = Cookie::get('lang', config('app.locale'));
+        $locale = config('app.locale');
+        if ($locale === 'nl-be') {
+            $locale = 'nl';
+        }
+        $l = Cookie::get('lang', $locale);
         $language = Language::query()
                             ->where('language', $l)
                             ->first();
