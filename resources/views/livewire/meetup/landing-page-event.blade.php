@@ -2,6 +2,18 @@
     <livewire:frontend.header :country="null"/>
     {{-- MAIN --}}
     <section class="w-full mb-12 mt-2">
+
+        @can('update', $meetupEvent)
+            <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row justify-end">
+                <x-button
+                    :href="route('meetup.event.form', ['country' => $meetup->city->country, 'meetupEvent' => $meetupEvent])"
+                    primary lg class="whitespace-nowrap cursor-pointer">
+                    <i class="fa fa-thin fa-edit mr-2"></i>
+                    {{ __('Edit') }}
+                </x-button>
+            </div>
+        @endcan
+
         <div class="max-w-screen-2xl mx-auto px-2 sm:px-10 space-y-4 flex flex-col sm:flex-row">
 
             <div class="relative py-4 sm:py-4">

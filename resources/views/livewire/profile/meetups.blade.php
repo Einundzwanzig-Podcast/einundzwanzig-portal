@@ -37,7 +37,7 @@
             </p>
             <div class="grid grid-cols-1 gap-2">
                 @foreach($myMeetupNames as $myMeetup)
-                    <div class="flex items-center space-x-2">
+                    <div class="flex flex-col sm:flex-row items-center space-x-2 space-y-1 sm:space-y-0">
                         <div>
                             <a href="{{ $myMeetup['link'] }}">
                                 <x-badge
@@ -45,7 +45,7 @@
                                     label="{{ $myMeetup['name'] }}"/>
                             </a>
                         </div>
-                        <div>
+                        <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-1 justify-center">
                             <x-badge
                                 x-data="{}"
                                 @click.prevent="window.navigator.clipboard.writeText('{{ $myMeetup['ics'] }}');window.$wireui.notify({title:'{{ __('Calendar Stream Url copied!') }}',description:'{{ __('Paste the calendar stream link into a compatible calendar app.') }}',icon:'success'});"
@@ -53,6 +53,22 @@
                                 <i class="fa fa-thin fa-calendar-circle-exclamation mr-2"></i>
                                 {{ __('Calendar') }}
                             </x-badge>
+                            <a
+                                href="{{ route('meetup.meetup.form', ['meetup' => $myMeetup['id'], 'country' =>  $myMeetup['country']]) }}">
+                                <x-badge
+                                    primary lg class="whitespace-nowrap cursor-pointer">
+                                    <i class="fa fa-thin fa-edit mr-2"></i>
+                                    {{ __('Edit') }}
+                                </x-badge>
+                            </a>
+                            <a
+                                href="{{ route('meetup.table.meetupEvent', ['country' =>  $myMeetup['country']]) }}">
+                                <x-badge
+                                    primary lg class="whitespace-nowrap cursor-pointer">
+                                    <i class="fa fa-thin fa-list mr-2"></i>
+                                    {{ __('Events') }}
+                                </x-badge>
+                            </a>
                         </div>
                     </div>
                 @endforeach

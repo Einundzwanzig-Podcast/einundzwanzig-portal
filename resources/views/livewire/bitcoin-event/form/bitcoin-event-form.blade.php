@@ -79,7 +79,7 @@
                         ]"
                             option-label="name"
                             option-value="id"
-                            option-description="city.name"
+                            option-description="description"
                         />
                     </x-input.group>
 
