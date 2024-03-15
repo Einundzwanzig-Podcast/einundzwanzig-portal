@@ -61,6 +61,7 @@ class Meetups extends Component
             ->map(fn($meetup) => [
                 'id' => $meetup->id,
                 'name' => $meetup->name,
+                'country' => $meetup->city->country->code,
                 'link' => route('meetup.landing', [
                     'country' => $meetup->city->country->code,
                     'meetup' => $meetup,
@@ -122,6 +123,7 @@ class Meetups extends Component
             ->map(fn($meetup) => [
                 'id' => $meetup->id,
                 'name' => $meetup->name,
+                'country' => $meetup->city->country->code,
                 'link' => route('meetup.landing', [
                     'country' => $meetup->city->country->code,
                     'meetup' => $meetup,
