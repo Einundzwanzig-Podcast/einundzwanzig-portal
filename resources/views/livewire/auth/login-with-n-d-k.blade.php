@@ -12,7 +12,7 @@
                 init() {
                     const nip07signer = new window.NDKNip07Signer();
                     const ndk = new window.NDK({
-                        explicitRelayUrls: ['wss://nostr.codingarena.de'],
+                        explicitRelayUrls: ['wss://nostr.codingarena.top'],
                         signer: nip07signer
                     });
 

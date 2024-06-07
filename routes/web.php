@@ -55,7 +55,7 @@ Route::middleware([])
 
 Route::middleware([])
     ->get('/nostr/einundzwanzig-plebs', function () {
-        return redirect('https://einundzwanzigstr.codingarena.de/einundzwanzig-plebs');
+        return redirect('https://einundzwanzigstr.codingarena.top/einundzwanzig-plebs');
     })
     ->name('nostr.plebs');
 

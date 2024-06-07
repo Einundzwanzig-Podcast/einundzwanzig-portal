@@ -43,7 +43,7 @@
                         'wss://relay.nostr.band',
                         'wss://relay.damus.io',
                         'wss://eden.nostr.land',
-                        'wss://nostr.codingarena.de',
+                        'wss://nostr.codingarena.top',
                         'wss://relay.primal.net',
                     ],
                 });
@@ -85,7 +85,7 @@
                         'wss://relay.nostr.band',
                         'wss://relay.damus.io',
                         'wss://eden.nostr.land',
-                        'wss://nostr.codingarena.de',
+                        'wss://nostr.codingarena.top',
                         'wss://relay.primal.net',
                     ],
                     signer: this.nip07signer
