@@ -76,12 +76,13 @@ Route::middleware([])
                     'image' => $item->getFirstMediaUrl('main'),
                 ]);
         });
-        Route::get('meetups', function () {
+        Route::get('meetups', function (Request $request) {
             return \App\Models\Meetup::query()
                 ->where('visible_on_map', true)
                 ->with([
                     'meetupEvents',
                     'city.country',
+                    'media',
                 ])
                 ->get()
                 ->map(fn($meetup) => [
@@ -100,6 +101,7 @@ Route::middleware([])
                     'simplex' => $meetup->simplex,
                     'nostr' => $meetup->nostr,
                     'next_event' => $meetup->nextEvent,
+                    'logo' => $request->has('withLogos') ? $meetup->getFirstMediaUrl('logo') : null,
                 ]);
         });
         Route::get('meetup-events/{date?}', function ($date = null) {
