@@ -101,6 +101,7 @@ Route::middleware([])
                     'simplex' => $meetup->simplex,
                     'nostr' => $meetup->nostr,
                     'next_event' => $meetup->nextEvent,
+                    'intro' => $request->has('withIntro') ? $meetup->intro : null,
                     'logo' => $request->has('withLogos') ? $meetup->getFirstMediaUrl('logo') : null,
                 ]);
         });
