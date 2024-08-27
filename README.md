@@ -46,8 +46,7 @@ WIP
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within this project, please send an e-mail to Benjamin Takats
-via [npub1pt0kw36ue3w2g4haxq3wgm6a2fhtptmzsjlc2j2vphtcgle72qesgpjyc6](https://njump.me/npub1pt0kw36ue3w2g4haxq3wgm6a2fhtptmzsjlc2j2vphtcgle72qesgpjyc6). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this project, please go to [https://gitworkshop.dev/r/naddr1qq2x26tww4hxg7nhv9h856t894cx7un5v9kqzrthwden5te0dehhxtnvdakqygq2man5whxvtjj9dlfsytjx7h2jd6c27c5yh7z5jnqd67z870jsxvpsgqqqw7vs969w83](https://gitworkshop.dev/r/naddr1qq2x26tww4hxg7nhv9h856t894cx7un5v9kqzrthwden5te0dehhxtnvdakqygq2man5whxvtjj9dlfsytjx7h2jd6c27c5yh7z5jnqd67z870jsxvpsgqqqw7vs969w83). All security vulnerabilities will be promptly addressed.
 
 ## License
 
