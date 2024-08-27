@@ -47,7 +47,7 @@ WIP
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within this project, please send an e-mail to Benjamin Takats
-via [bt@affekt.de](mailto:bt@affekt.de). All security vulnerabilities will be promptly addressed.
+via [npub1pt0kw36ue3w2g4haxq3wgm6a2fhtptmzsjlc2j2vphtcgle72qesgpjyc6](https://njump.me/npub1pt0kw36ue3w2g4haxq3wgm6a2fhtptmzsjlc2j2vphtcgle72qesgpjyc6). All security vulnerabilities will be promptly addressed.
 
 ## License
 
