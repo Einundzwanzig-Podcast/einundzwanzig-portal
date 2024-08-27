@@ -1,5 +1,9 @@
 [![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Ff25a1151-9c87-4f14-9943-17d05fa736c9%3Fdate%3D1%26commit%3D1&style=plastic)](https://forge.laravel.com)
 
+## Contributing and Proposals
+
+[https://gitworkshop.dev/r/naddr1qq2x26tww4hxg7nhv9h856t894cx7un5v9kqzrthwden5te0dehhxtnvdakqygq2man5whxvtjj9dlfsytjx7h2jd6c27c5yh7z5jnqd67z870jsxvpsgqqqw7vs969w83](https://gitworkshop.dev/r/naddr1qq2x26tww4hxg7nhv9h856t894cx7un5v9kqzrthwden5te0dehhxtnvdakqygq2man5whxvtjj9dlfsytjx7h2jd6c27c5yh7z5jnqd67z870jsxvpsgqqqw7vs969w83)
+
 ## Development
 
 ### Installation
@@ -39,10 +43,6 @@ docker run --rm \
 #### Update dependencies
 
 ```vendor/bin/sail yarn```
-
-## Contributing
-
-WIP
 
 ## Security Vulnerabilities
 
