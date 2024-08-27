@@ -14,7 +14,7 @@ docker run --rm \
     laravelsail/php81-composer:latest \
     composer install --ignore-platform-reqs
 ```
-*(you need a valid Laravel Nova license)*
+*(you need a valid Laravel Nova license or send a message to [SimpleX - The Ben](https://simplex.chat/contact#/?v=2-4&smp=smp%3A%2F%2Fhejn2gVIqNU6xjtGM3OwQeuk8ZEbDXVJXAlnSBJBWUA%3D%40smp16.simplex.im%2FO9kuNebRK1RwpKSE73p_XDMq9-XOcuI3%23%2F%3Fv%3D1-2%26dh%3DMCowBQYDK2VuAyEAqccFXvqGHCBpm7Iq1r9mGiHe82RolsPHXI8KupC9fRQ%253D%26srv%3Dp3ktngodzi6qrf7w64mmde3syuzrv57y55hxabqcq3l5p6oi7yzze6qd.onion))*
 
 #### Start docker development containers
 
