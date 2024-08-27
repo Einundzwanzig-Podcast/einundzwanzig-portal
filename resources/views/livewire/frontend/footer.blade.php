@@ -29,17 +29,17 @@
             </p>
             <ul class="flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
                 <li>
-                    <a href="https://github.com/Einundzwanzig-Podcast/einundzwanzig-portal" target="_blank"
+                    <a href="https://gitworkshop.dev/r/naddr1qq2x26tww4hxg7nhv9h856t894cx7un5v9kqzrthwden5te0dehhxtnvdakqygq2man5whxvtjj9dlfsytjx7h2jd6c27c5yh7z5jnqd67z870jsxvpsgqqqw7vs969w83" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
                         <i class="fa fab fa-github mr-1"></i>
-                        {{ __('Github') }}
+                        {{ __('Git/Contribution') }}
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/Einundzwanzig-Podcast/einundzwanzig-portal/discussions" target="_blank"
+                    <a href="https://gitworkshop.dev/r/naddr1qq2x26tww4hxg7nhv9h856t894cx7un5v9kqzrthwden5te0dehhxtnvdakqygq2man5whxvtjj9dlfsytjx7h2jd6c27c5yh7z5jnqd67z870jsxvpsgqqqw7vs969w83/proposals" target="_blank"
                        class="px-4 text-gray-500 hover:text-white">
                         <i class="fa fa-thin fa-thought-bubble mr-1"></i>
-                        {{ __('Wish List/Feedback') }}
+                        {{ __('Proposals') }}
                     </a>
                 </li>
                 <li>
