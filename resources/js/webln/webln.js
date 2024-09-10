@@ -10,7 +10,7 @@ export default (livewireComponent) => ({
             .then(response => {
                 console.log('Payment response:', response);
                 this.$wire.call('logThis', 'Payment response: ' + JSON.stringify(response));
-                this.$wire.call('success', response.preimage);
+                this.$wire.call('success');
             })
             .catch(error => {
                 console.error('Payment failed:', error);
