@@ -93,10 +93,6 @@
                 </div>
 
             </div>
-
-            <div class="my-4">
-                <livewire:comments :model="$bookCase" newest-first hide-notification-options/>
-            </div>
         </div>
     </section>
     {{-- FOOTER --}}
