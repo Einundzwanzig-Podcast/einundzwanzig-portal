@@ -26,7 +26,7 @@ class WebLN extends Component
         );
     }
 
-    public function success($preimage)
+    public function success()
     {
         $this->paymentDone = true;
     }
