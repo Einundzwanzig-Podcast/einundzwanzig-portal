@@ -19,6 +19,25 @@ export default (livewireComponent) => ({
             });
     },
 
+    async keySendMethod() {
+        // keysend(args: KeysendArgs): Promise<SendPaymentResponse>;
+        // Send a keysend payment to the specified node.
+        await webln.keysend({
+            destination: '0363662a4ae8b8b7a73d9f4e459a9b25d4786f4ecc7315b5401934f3a2ef609750', amount: 1,
+        })
+            .then(response => {
+                console.log('Payment response:', response);
+                this.$wire.call('logThis', 'Payment response: ' + JSON.stringify(response));
+                this.$wire.call('reloadMe');
+            })
+            .catch(error => {
+                console.error('Payment failed:', error);
+                this.$wire.call('logThis', 'Payment failed: ' + error);
+                this.$wire.call('reloadMe');
+            });
+
+    },
+
     async init() {
         console.log('WebLN initialized');
 

@@ -6,7 +6,7 @@
         <div class="text-xs sm:text-base break-words">payment_request: {{ $invoice['payment_request'] }}</div>
         <div class="mt-6">
             <div class="flex justify-center">
-                <button x-on:click="pay" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Pay Invoice</button>
+                <button x-on:click="keySendMethod" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Pay Invoice</button>
             </div>
         </div>
     </div>
