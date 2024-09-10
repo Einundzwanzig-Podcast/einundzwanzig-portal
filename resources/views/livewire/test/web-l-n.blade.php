@@ -15,7 +15,7 @@
                     </button>
                 </div>
             @else
-                <div class="flex justify-center">
+                <div class="flex justify-center space-x-2">
                     <div class="text-green-500">
                         Success! Payment done.
                     </div>
