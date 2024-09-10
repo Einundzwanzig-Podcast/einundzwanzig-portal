@@ -128,8 +128,6 @@ class BookCase extends Resource
 
             HasMany::make(__('OrangePills'), 'orangePills', OrangePill::class),
 
-            MorphMany::make(__('Comments'), 'comments', Comment::class),
-
             BelongsTo::make(__('Created By'), 'createdBy', User::class)
                      ->canSee(function ($request) {
                          return $request->user()

@@ -42,7 +42,6 @@
     <x-embed-styles />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
-    <x-comments::styles/>
     @livewireStyles
     @include('layouts.styles')
 </head>
@@ -63,6 +62,5 @@
 </div>
 @stack('modals')
 @livewireScripts
-<x-comments::scripts/>
 </body>
 </html>

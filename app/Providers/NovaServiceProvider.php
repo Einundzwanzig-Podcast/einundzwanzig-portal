@@ -6,7 +6,6 @@ use App\Nova\BitcoinEvent;
 use App\Nova\BookCase;
 use App\Nova\Category;
 use App\Nova\City;
-use App\Nova\Comment;
 use App\Nova\Country;
 use App\Nova\Course;
 use App\Nova\CourseEvent;
@@ -44,15 +43,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
-            $comments = $request->user()
-                ->hasRole('super-admin') || $request->user()
-                ->can('CommentPolicy.viewAny') ? [
-                MenuSection::make('Comments', [
-                    MenuItem::resource(Comment::class),
-                ])
-                    ->icon('chat')
-                    ->collapsable(),
-            ] : [];
 
             $adminItems = $request->user()
                 ->hasRole('super-admin') || $request->user()
@@ -151,7 +141,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     ->icon('book-open')
                     ->collapsable(),
 
-            ], $comments, $adminItems, $permissions);
+            ], $adminItems, $permissions);
         });
 
         Nova::withBreadcrumbs();

@@ -692,6 +692,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chrome@npm:^0.0.74":
+  version: 0.0.74
+  resolution: "@types/chrome@npm:0.0.74"
+  dependencies:
+    "@types/filesystem": "*"
+  checksum: 3c6659b9712200d7f7692b41250ae1581945ad9034ddb5875944ede59125aaaef918049934d534b0706a2632d3e79861e8861ba1f49a0397a2805b373b2a1232
+  languageName: node
+  linkType: hard
+
 "@types/concat-stream@npm:^1.6.0":
   version: 1.6.1
   resolution: "@types/concat-stream@npm:1.6.1"
@@ -726,6 +735,22 @@ __metadata:
     "@types/qs": "*"
     "@types/range-parser": "*"
   checksum: 826489811a5b371c10f02443b4ca894ffc05813bfdf2b60c224f5c18ac9a30a2e518cb9ef9fdfcaa2a1bb17f8bfa4ed1859ccdb252e879c9276271b4ee2df5a9
+  languageName: node
+  linkType: hard
+
+"@types/filesystem@npm:*":
+  version: 0.0.36
+  resolution: "@types/filesystem@npm:0.0.36"
+  dependencies:
+    "@types/filewriter": "*"
+  checksum: fad9f6b291598e65a0c5e73e685977b2c86c9bdb1ede5ce29eb35f196bbdf8d668a32bd4361624391ae1eb699362daa13442b75177dd73c6b300967fdd1ed765
+  languageName: node
+  linkType: hard
+
+"@types/filewriter@npm:*":
+  version: 0.0.33
+  resolution: "@types/filewriter@npm:0.0.33"
+  checksum: 56ba7f0d3c2dafbb899e7f5a9574df41d2f07494040aa09f9fd51c7004c0b255c36c554333c380b23625afb50e50cf1d13f5925d956a627d4ee6e3fbe8f3176b
   languageName: node
   linkType: hard
 
@@ -4935,6 +4960,7 @@ __metadata:
     tailwindcss: ^3.1.0
     vite: ^4.1.1
     vite-plugin-static-copy: ^0.16.0
+    webln: ^0.3.2
   languageName: unknown
   linkType: soft
 
@@ -5864,6 +5890,15 @@ __metadata:
   version: 3.2.1
   resolution: "web-streams-polyfill@npm:3.2.1"
   checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
+  languageName: node
+  linkType: hard
+
+"webln@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "webln@npm:0.3.2"
+  dependencies:
+    "@types/chrome": ^0.0.74
+  checksum: 8aa2f773abb33baac8be824aeae2048fe04952bda98b8a21fc30b35ac8516cb6c85e4824390b199d467964b7df6bf34bbdc244443e7f0a3deaa433abed3f5dd0
   languageName: node
   linkType: hard
 

@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware([])
+    ->get('/webln', \App\Http\Livewire\Test\WebLN::class)
+    ->name('webln');
+
+Route::middleware([])
     ->get('/bsc', \App\Http\Livewire\Specials\BalticSeaCircle::class)
     ->name('specials.bsc');
 

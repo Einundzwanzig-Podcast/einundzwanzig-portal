@@ -47,8 +47,6 @@
         "spatie/eloquent-sortable": "^4.0",
         "spatie/icalendar-generator": "^2.5",
         "spatie/laravel-ciphersweet": "^1.0",
-        "spatie/laravel-comments": "^1.4",
-        "spatie/laravel-comments-livewire": "^1.2",
         "spatie/laravel-feed": "^4.2",
         "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-markdown": "^2.2",

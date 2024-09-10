@@ -43,7 +43,6 @@
     <link rel="stylesheet" href="{{ asset('vendor/jvector/jquery-jvectormap-2.0.5.css') }}" type="text/css"
           media="screen"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
-    <x-comments::styles/>
     <x-embed-styles/>
     @livewireStyles
     @include('layouts.styles')
@@ -65,6 +64,5 @@
 </div>
 @stack('modals')
 @livewireScripts
-<x-comments::scripts/>
 </body>
 </html>

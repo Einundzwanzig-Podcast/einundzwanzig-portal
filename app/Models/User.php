@@ -14,13 +14,11 @@ use ParagonIE\CipherSweet\BlindIndex;
 use ParagonIE\CipherSweet\EncryptedRow;
 use ParagonIE\CipherSweet\JsonFieldMap;
 use QCod\Gamify\Gamify;
-use Spatie\Comments\Models\Concerns\InteractsWithComments;
-use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 use Spatie\LaravelCipherSweet\Concerns\UsesCipherSweet;
 use Spatie\LaravelCipherSweet\Contracts\CipherSweetEncrypted;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail, CanComment, CipherSweetEncrypted
+class User extends Authenticatable implements MustVerifyEmail, CipherSweetEncrypted
 {
     use UsesCipherSweet;
     use HasApiTokens;
@@ -30,7 +28,6 @@ class User extends Authenticatable implements MustVerifyEmail, CanComment, Ciphe
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
-    use InteractsWithComments;
     use Gamify;
 
     protected $guarded = [];

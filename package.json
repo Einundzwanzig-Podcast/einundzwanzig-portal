@@ -22,7 +22,8 @@
         "pusher-js": "^7.1.1-beta",
         "tailwindcss": "^3.1.0",
         "vite": "^4.1.1",
-        "vite-plugin-static-copy": "^0.16.0"
+        "vite-plugin-static-copy": "^0.16.0",
+        "webln": "^0.3.2"
     },
     "dependencies": {
         "leaflet.heat": "^0.2.0",
