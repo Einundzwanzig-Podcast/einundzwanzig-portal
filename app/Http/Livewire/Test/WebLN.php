@@ -12,6 +12,8 @@ class WebLN extends Component
 
     public $invoice;
 
+    public bool $paymentDone = false;
+
     public function mount()
     {
         $this->invoice = $this->createInvoice(
@@ -22,6 +24,11 @@ class WebLN extends Component
                 'url' => 'https://bits.codingarena.top',
             ]
         );
+    }
+
+    public function success($preimage)
+    {
+        $this->paymentDone = true;
     }
 
     public function reloadMe()
