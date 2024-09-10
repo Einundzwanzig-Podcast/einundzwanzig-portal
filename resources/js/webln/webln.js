@@ -35,7 +35,6 @@ export default (livewireComponent) => ({
                 this.$wire.call('logThis', 'Payment failed: ' + error);
                 this.$wire.call('reloadMe');
             });
-
     },
 
     async init() {
