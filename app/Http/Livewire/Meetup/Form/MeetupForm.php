@@ -46,6 +46,7 @@ class MeetupForm extends Component
             'meetup.twitter_username' => 'string|regex:/^[A-z0-9!@]+$/|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.nostr,meetup.matrix_group',
             'meetup.matrix_group' => 'string|nullable|required_without_all:meetup.webpage,meetup.telegram_link,meetup.nostr,meetup.twitter_username',
             'meetup.simplex' => 'string|nullable',
+            'meetup.signal' => 'string|nullable',
         ];
     }
 

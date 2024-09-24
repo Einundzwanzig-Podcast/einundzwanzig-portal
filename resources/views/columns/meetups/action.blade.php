@@ -68,6 +68,19 @@
             </x-button>
         </div>
     @endif
+    @if($row->signal)
+        <div>
+            <x-button
+                xs
+                black
+                target="_blank"
+                :href="$row->signal"
+            >
+                <i class="fa fa-thin fa-external-link mr-2"></i>
+                {{ __('Signal') }}
+            </x-button>
+        </div>
+    @endif
     @if($row->webpage)
         <div>
             <x-button

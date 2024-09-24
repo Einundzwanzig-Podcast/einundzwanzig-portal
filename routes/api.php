@@ -99,6 +99,7 @@ Route::middleware([])
                     'twitter_username' => $meetup->twitter_username,
                     'website' => $meetup->webpage,
                     'simplex' => $meetup->simplex,
+                    'signal' => $meetup->signal,
                     'nostr' => $meetup->nostr,
                     'next_event' => $meetup->nextEvent,
                     'intro' => $request->has('withIntro') ? $meetup->intro : null,
@@ -134,6 +135,7 @@ Route::middleware([])
                 'meetup.twitter_username' => $event->meetup->twitter_username,
                 'meetup.website' => $event->meetup->webpage,
                 'meetup.simplex' => $event->meetup->simplex,
+                'meetup.signal' => $event->meetup->signal,
                 'meetup.nostr' => $event->meetup->nostr,
             ]
             );

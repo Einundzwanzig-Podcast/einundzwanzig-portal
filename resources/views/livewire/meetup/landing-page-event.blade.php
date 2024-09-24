@@ -141,6 +141,17 @@
                                     @endif
                                 </div>
                                 <div>
+                                    @if($meetup->signal)
+                                        <x-button
+                                            target="_blank"
+                                            :href="$meetup->signal"
+                                            secondary lg class="mt-4 whitespace-nowrap">
+                                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                                            {{ __('Signal') }}
+                                        </x-button>
+                                    @endif
+                                </div>
+                                <div>
                                     @if($meetup->nostr && str($meetup->nostr)->contains('npub1'))
                                         <x-button
                                             target="_blank"

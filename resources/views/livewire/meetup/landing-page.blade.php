@@ -49,6 +49,15 @@
                             {{ __('SimpleX-Link') }}
                         </x-button>
                     @endif
+                    @if($meetup->signal)
+                        <x-button
+                            target="_blank"
+                            :href="$meetup->signal"
+                            primary lg class="mt-4 whitespace-nowrap">
+                            <i class="fa fa-thin fa-external-link mr-2"></i>
+                            {{ __('Signal') }}
+                        </x-button>
+                    @endif
                     @if($meetup->nostr && str($meetup->nostr)->contains('npub1'))
                         <x-button
                             target="_blank"
