@@ -37,7 +37,6 @@ class CountryPolicy extends BasePolicy
      */
     public function create(User $user): bool
     {
-        dd($user);
         return $user->can((new \ReflectionClass($this))->getShortName().'.'.__FUNCTION__);
     }
 
