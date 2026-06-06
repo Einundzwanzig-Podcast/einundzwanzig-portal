@@ -37,7 +37,8 @@ Route::middleware([])
         Route::resource('countries', \App\Http\Controllers\Api\CountryController::class);
         Route::resource('meetup', \App\Http\Controllers\Api\MeetupController::class);
         Route::resource('lecturers', \App\Http\Controllers\Api\LecturerController::class);
-        Route::resource('courses', \App\Http\Controllers\Api\CourseController::class);
+        Route::resource('courses', \App\Http\Controllers\Api\CourseController::class)
+            ->only(['index', 'show']);
         Route::resource('cities', \App\Http\Controllers\Api\CityController::class);
         Route::resource('venues', \App\Http\Controllers\Api\VenueController::class);
         Route::resource('languages', \App\Http\Controllers\Api\LanguageController::class);
@@ -205,6 +206,27 @@ Route::middleware([])
                 JSON_UNESCAPED_SLASHES,
             );
         });
+    });
+
+/*
+| Authenticated write endpoints (Sanctum token auth).
+| Lets a lecturer create/update their own courses and course events
+| programmatically, e.g. to sync events from an external system.
+*/
+Route::middleware('auth:sanctum')
+    ->as('api.')
+    ->group(function () {
+        Route::post('courses', [\App\Http\Controllers\Api\CourseController::class, 'store'])
+            ->name('courses.store');
+        Route::patch('courses/{course}', [\App\Http\Controllers\Api\CourseController::class, 'update'])
+            ->name('courses.update');
+
+        Route::get('course-events', [\App\Http\Controllers\Api\CourseEventController::class, 'index'])
+            ->name('course-events.index');
+        Route::post('course-events', [\App\Http\Controllers\Api\CourseEventController::class, 'store'])
+            ->name('course-events.store');
+        Route::patch('course-events/{courseEvent}', [\App\Http\Controllers\Api\CourseEventController::class, 'update'])
+            ->name('course-events.update');
     });
 
 Route::get('/lnurl-auth-callback', function (Request $request) {
