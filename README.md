@@ -1,3 +1,14 @@
+> # ⚠️ Dieses Repository ist umgezogen / This repository has moved
+>
+> Die aktive Entwicklung des Einundzwanzig Portals findet ab sofort hier statt:
+>
+> ## 👉 https://github.com/HolgerHatGarKeineNode/einundzwanzig-app
+>
+> Dieses Repository wird **nicht mehr gepflegt** und ist **archiviert (read-only)**.
+> Bitte eröffne Issues, Pull Requests und Stars im neuen Repository.
+>
+> ---
+
 [![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Ff25a1151-9c87-4f14-9943-17d05fa736c9%3Fdate%3D1%26commit%3D1&style=plastic)](https://forge.laravel.com)
 
 ## Contributing and Proposals
